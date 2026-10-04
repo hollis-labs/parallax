@@ -51,4 +51,4 @@ Upstream routing: clock-injected widgets and proven visual primitives belong in 
 | typescript-eslint | 8.71.0 |
 | vite | 7.3.6 |
 
-Go host: `github.com/hollis-labs/chimera v0.0.0-20261004204622-e8327a939965`; generator: `gofakeit/v7 v7.17.1`; Go language floor1.26.6, locally tested Go1.26.8.
+Go host: `github.com/hollis-labs/chimera v0.0.0-20261004205355-30ff18630813`; generator: `gofakeit/v7 v7.17.1`; Go language floor 1.26.6, locally tested Go 1.26.8.
