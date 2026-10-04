@@ -22,7 +22,12 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /api/scenario", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		_ = json.NewEncoder(w).Encode(scenarios.Generate())
+		_ = json.NewEncoder(w).Encode(func() scenarios.Scenario {
+			if r.URL.Query().Get("profile") == "large" {
+				return scenarios.GenerateProfile(80)
+			}
+			return scenarios.Generate()
+		}())
 	})
 	delivery, err := demoplugin.Delivery()
 	if err != nil {

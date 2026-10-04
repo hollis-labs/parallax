@@ -18,6 +18,7 @@ import { useEffect, useState } from "react"
 import { createOperationsExample } from "./chimera/example"
 import { FixedActivity } from "./FixedActivity"
 import fixture from "./fixtures/operations.json"
+import largeFixture from "./fixtures/operations-large.json"
 
 type Task = (typeof fixture.tasks)[number]
 const pluginHost = createOperationsExample(() => {})
@@ -33,7 +34,7 @@ function PluginContribution() {
           widgets.map((w) => <WidgetRenderer key={w.id} widget={w} />)
         ) : (
           <p className="p-4 text-sm text-fg-muted">
-            {unloaded
+            {unloaded || pluginHost.registry.snapshot().revision > 0
               ? "Plugin unavailable after explicit unload."
               : "Loading reviewed contribution…"}
           </p>
@@ -99,14 +100,15 @@ export function App() {
   useEffect(() => {
     if (tick === 6) setPlaying(false)
   }, [tick])
-  useEffect(() => {
+  const changeScenario = (value: string) => {
+    setScenario(value)
     setSelected(null)
     setIntent("")
     setDraft("")
     setQuery("")
     setTick(0)
     setPlaying(false)
-  }, [])
+  }
   useEffect(() => {
     const close = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -121,16 +123,8 @@ export function App() {
     const params = new URLSearchParams({ view: page, scenario, theme, mode, viewport })
     history.replaceState(null, "", `?${params}`)
   }, [page, scenario, theme, mode, viewport])
-  const tasks = (
-    scenario === "empty"
-      ? []
-      : scenario === "large"
-        ? Array.from({ length: 80 }, (_, i) => ({
-            ...fixture.tasks[i % 8],
-            id: `TASK-${(i % 8) + 1}-projection-${i + 1}`,
-          }))
-        : fixture.tasks
-  )
+  const dataset = scenario === "large" ? largeFixture : fixture
+  const tasks = (scenario === "empty" ? [] : dataset.tasks)
     .map((t, i) => ({
       ...t,
       owner: scenario === "missing-metadata" ? "Not provided" : t.owner,
@@ -142,16 +136,13 @@ export function App() {
       status: scenario === "unknown-status" && i === 0 ? "external-review" : t.status,
     }))
     .filter((t) => (t.title + t.id + t.owner).toLowerCase().includes(query.toLowerCase()))
+  const doneCount = tasks.filter((t) => t.status === "done").length
   useEffect(() => {
-    pluginHost.context.set({
-      count: tasks.length,
-      done: tasks.filter((t) => t.status === "done").length,
-      scenario,
-    })
-  }, [scenario, tasks.length, tasks.filter])
-  const session = fixture.sessions.find((r) => r.id === selected?.sessionId),
-    trace = fixture.traces.find((r) => r.id === selected?.traceId),
-    usage = fixture.usage.find((r) => r.id === selected?.usageId)
+    pluginHost.context.set({ count: tasks.length, done: doneCount, scenario })
+  }, [tasks.length, doneCount, scenario])
+  const session = dataset.sessions.find((r) => r.id === selected?.sessionId),
+    trace = dataset.traces.find((r) => r.id === selected?.traceId),
+    usage = dataset.usage.find((r) => r.id === selected?.usageId)
   const total = tasks.reduce((s, t) => s + t.tokens, 0),
     cost = tasks.reduce((s, t) => s + t.cost, 0),
     clock = new Date(Date.parse(fixture.clock) + tick * 60000).toISOString().slice(11, 19)
@@ -192,7 +183,7 @@ export function App() {
                 <select
                   aria-label="Scenario"
                   value={scenario}
-                  onChange={(e) => setScenario(e.target.value)}
+                  onChange={(e) => changeScenario(e.target.value)}
                 >
                   {[
                     "populated",
@@ -337,6 +328,12 @@ export function App() {
                   <Panel title="Transient message draft" icon={<Layers className="size-4" />}>
                     <div className="example-body">
                       <p className="muted">Fixture conversation with the operations review team.</p>
+                      <Button onClick={() => emit("Run fixture", "plan-fixture-01")}>
+                        Inspect run intent
+                      </Button>
+                      <Button onClick={() => emit("Approve review", "review-fixture-01")}>
+                        Inspect approve intent
+                      </Button>
                       <label>
                         Draft
                         <textarea

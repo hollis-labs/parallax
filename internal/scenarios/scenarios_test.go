@@ -51,3 +51,18 @@ func TestBundledFixtureFreshness(t *testing.T) {
 		t.Fatal("bundled JSON differs from generator: run make fixtures")
 	}
 }
+func TestLargeProfile(t *testing.T) {
+	s := GenerateProfile(80)
+	if len(s.Tasks) != 80 || len(s.Sessions) != 80 || len(s.Usage) != 80 || len(s.Traces) != 80 {
+		t.Fatal("volume profile incomplete")
+	}
+	clock, _ := time.Parse(time.RFC3339, s.Clock)
+	ids := map[string]bool{}
+	for _, task := range s.Tasks {
+		start, err := time.Parse(time.RFC3339, task.Started)
+		if err != nil || start.After(clock) || ids[task.RunID] {
+			t.Fatal("incoherent large profile")
+		}
+		ids[task.RunID] = true
+	}
+}

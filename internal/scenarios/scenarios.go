@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/brianvoe/gofakeit/v7"
 	"os"
+	"time"
 )
 
 type Task struct {
@@ -50,14 +51,19 @@ type Scenario struct {
 	Tasks     []Task    `json:"tasks"`
 }
 
-func Generate() Scenario {
+func Generate() Scenario { return GenerateProfile(8) }
+func GenerateProfile(count int) Scenario {
+	if count < 1 || count > 1000 {
+		panic("fixture count outside 1..1000")
+	}
 	f := gofakeit.New(4421)
 	s := Scenario{Version: "operations/v1", Generator: "parallax/v1", Seed: 4421, Clock: "2026-10-04T14:30:00Z", Tasks: []Task{}}
 	titles := []string{"Review gateway permission boundaries", "Build deterministic fixture contracts", "Inspect telemetry sampling drift", "Validate plugin bundle admission", "Reconcile deployment readiness", "Document account role provenance", "Audit workflow retry thresholds", "Capture responsive dashboard evidence"}
 	statuses := []string{"running", "done", "blocked", "done", "queued", "running", "failed", "done"}
-	for i, title := range titles {
+	for i := 0; i < count; i++ {
+		title := titles[i%len(titles)]
 		tokens := f.IntRange(1200, 14000)
-		s.Tasks = append(s.Tasks, Task{ID: fmt.Sprintf("TASK-%03d", i+1), RunID: fmt.Sprintf("RUN-%03d", i+1), SessionID: fmt.Sprintf("SESSION-%03d", i+1), TraceID: fmt.Sprintf("TRACE-%03d", i+1), UsageID: fmt.Sprintf("USAGE-%03d", i+1), Title: title, Owner: f.FirstName(), Status: statuses[i], Tokens: tokens, Cost: float64(tokens) * 0.000002, Started: fmt.Sprintf("2026-10-04T14:%02d:00Z", 10+i*2), Logs: []string{"Fixture context admitted", "Reviewing controlled presentation input", "Scripted outcome: " + statuses[i]}})
+		s.Tasks = append(s.Tasks, Task{ID: fmt.Sprintf("TASK-%03d", i+1), RunID: fmt.Sprintf("RUN-%03d", i+1), SessionID: fmt.Sprintf("SESSION-%03d", i+1), TraceID: fmt.Sprintf("TRACE-%03d", i+1), UsageID: fmt.Sprintf("USAGE-%03d", i+1), Title: title, Owner: f.FirstName(), Status: statuses[i%len(statuses)], Tokens: tokens, Cost: float64(tokens) * 0.000002, Started: time.Date(2026, 10, 4, 14, 30, 0, 0, time.UTC).Add(-time.Duration(count-i+2) * 2 * time.Minute).Format(time.RFC3339), Logs: []string{"Fixture context admitted", "Reviewing controlled presentation input", "Scripted outcome: " + statuses[i%len(statuses)]}})
 	}
 	for _, t := range s.Tasks {
 		s.Sessions = append(s.Sessions, Session{ID: t.SessionID, RunID: t.RunID, Owner: t.Owner})
@@ -66,8 +72,9 @@ func Generate() Scenario {
 	}
 	return s
 }
-func Write(path string) error {
-	b, err := json.MarshalIndent(Generate(), "", "  ")
+func Write(path string) error { return WriteProfile(path, 8) }
+func WriteProfile(path string, count int) error {
+	b, err := json.MarshalIndent(GenerateProfile(count), "", "  ")
 	if err != nil {
 		return err
 	}

@@ -47,6 +47,13 @@ test("real admitted widget/panel follows controlled scenario and uses reviewed b
   await page.keyboard.press("Escape")
   await page.getByLabel("Scenario").selectOption("empty")
   await expect(page.getByLabel("Plugin widget")).toContainText("0 fixture records")
+  await page.getByLabel("Scenario").selectOption("large")
+  await expect(page.getByLabel("Plugin widget")).toContainText("80 fixture records")
+  await page.getByLabel("Filter tasks").fill("Build deterministic")
+  await expect(page.getByLabel("Plugin widget")).toContainText("10 fixture records · 10 complete")
+  await page.getByLabel("Filter tasks").fill("Review gateway")
+  await expect(page.getByLabel("Plugin widget")).toContainText("10 fixture records · 0 complete")
+  await expect(page.getByLabel("Plugin widget")).toContainText("10 fixture records")
   const registry = await page.request.get("/plugins/registry")
   expect(registry.ok()).toBeTruthy()
   const dto = await registry.json()
@@ -90,4 +97,12 @@ test("plugin unload preserves embedded view and shareable review URL", async ({ 
   await expect(page.getByRole("button", { name: /Review gateway permission/ })).toBeVisible()
   await expect(page.getByLabel("Theme")).toHaveValue("p1-green-phosphor")
   await expect(page.getByLabel("Viewport")).toHaveValue("narrow")
+})
+test("built Storybook uses the same controlled fixed-clock records", async ({ page }) => {
+  await page.goto(
+    "http://127.0.0.1:18443/iframe.html?id=operations-fixed-activity--populated&viewMode=story",
+  )
+  await expect(page.getByText("24-hour execution pulse")).toBeVisible()
+  await expect(page.getByText("8 observations")).toBeVisible()
+  await expect(page.getByText("Window ends 14:30 UTC")).toBeVisible()
 })

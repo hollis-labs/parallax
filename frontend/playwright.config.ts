@@ -7,10 +7,18 @@ export default defineConfig({
   outputDir: `${repo}.scratch/test-results`,
   reporter: [["list"]],
   use: { baseURL: "http://127.0.0.1:18441", headless: true },
-  webServer: {
-    command: ".scratch/parallax",
-    cwd: repo,
-    url: "http://127.0.0.1:18441",
-    reuseExistingServer: !process.env.CI,
-  },
+  webServer: [
+    {
+      command: ".scratch/parallax",
+      cwd: repo,
+      url: "http://127.0.0.1:18441",
+      reuseExistingServer: !process.env.CI,
+    },
+    {
+      command: "node scripts/serve-storybook.mjs",
+      cwd: repo,
+      url: "http://127.0.0.1:18443/iframe.html",
+      reuseExistingServer: !process.env.CI,
+    },
+  ],
 })
