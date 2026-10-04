@@ -1,0 +1,24 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.26.8'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: make check
+      - run: npm run build-storybook --prefix frontend
+      - run: npm exec --prefix frontend -- playwright install --with-deps chromium
+      - name: Browser proof
+        run: npm exec --prefix frontend -- playwright test --config frontend/playwright.config.ts

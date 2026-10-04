@@ -1,0 +1,2530 @@
+[
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "cn",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "notifyError",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "notifySuccess",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Pill",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "LiveDot",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Callout",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CopyableId",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ConfirmDialog",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DetailDialog",
+    "category": "runtime-export",
+    "coverage": "Parallax composition"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DetailSection",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "FormDialog",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "JsonViewer",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MetaList",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MetaItem",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Metric",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ProgressBar",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AppShell",
+    "category": "runtime-export",
+    "coverage": "Parallax composition"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "OverlaySidebar",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "OverlaySidebarProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DetailPageLayout",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "OverflowMenu",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "OverflowAction",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CollapsibleSection",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Combobox",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ComboboxItem",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CopyButton",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "EmptyState",
+    "category": "runtime-export",
+    "coverage": "Parallax composition"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "EmptyStateVariant",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "JsonModal",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PayloadActions",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PayloadSummary",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "JsonModalProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PayloadActionsProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PayloadSummaryProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SearchInput",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TransferList",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TransferListItem",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "safeParseObject",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "scalarStr",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "IconComponent",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ROW_INTERACTIVE_ATTR",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ROW_INTERACTIVE_SELECTOR",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "rowInteractiveProps",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TONES",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TONE_CLASSES",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TONE_FILL_CLASSES",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ACCENT_TEXT_CLASSES",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ACCENT_BORDER_L_CLASSES",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Tone",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Accent",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "alignClass",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "compareBy",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ColumnDef",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SortDir",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SortState",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "useCopy",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "UseCopyResult",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "useArrowNav",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModeToggle",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModeToggleProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ThemePicker",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ThemePickerProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "useControllableState",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "UseControllableStateParams",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SetControllableState",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AlertDialog",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AlertDialogAction",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AlertDialogCancel",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AlertDialogContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AlertDialogDescription",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AlertDialogFooter",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AlertDialogHeader",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AlertDialogMedia",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AlertDialogOverlay",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AlertDialogPortal",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AlertDialogTitle",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AlertDialogTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Badge",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "badgeVariants",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Button",
+    "category": "runtime-export",
+    "coverage": "Parallax composition"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "buttonVariants",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ButtonGroup",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ButtonGroupSeparator",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ButtonGroupText",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "buttonGroupVariants",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Collapsible",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CollapsibleTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CollapsibleContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Card",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CardHeader",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CardFooter",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CardTitle",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CardAction",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CardDescription",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CardContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Checkbox",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Command",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CommandDialog",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CommandInput",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CommandList",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CommandEmpty",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CommandGroup",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CommandItem",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CommandShortcut",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CommandSeparator",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Dialog",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DialogClose",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DialogContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DialogDescription",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DialogFooter",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DialogHeader",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DialogOverlay",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DialogPortal",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DialogTitle",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DialogTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DropdownMenu",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DropdownMenuPortal",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DropdownMenuTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DropdownMenuContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DropdownMenuGroup",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DropdownMenuLabel",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DropdownMenuItem",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DropdownMenuCheckboxItem",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DropdownMenuRadioGroup",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DropdownMenuRadioItem",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DropdownMenuSeparator",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DropdownMenuShortcut",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DropdownMenuSub",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DropdownMenuSubTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DropdownMenuSubContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "HoverCard",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "HoverCardTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "HoverCardContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Input",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InputGroup",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InputGroupAddon",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InputGroupButton",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InputGroupText",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InputGroupInput",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InputGroupTextarea",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Label",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Popover",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PopoverContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PopoverDescription",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PopoverHeader",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PopoverTitle",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PopoverTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ScrollArea",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ScrollBar",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Select",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SelectContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SelectGroup",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SelectItem",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SelectLabel",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SelectScrollDownButton",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SelectScrollUpButton",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SelectSeparator",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SelectTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SelectValue",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Separator",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Sheet",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SheetTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SheetClose",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SheetContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SheetHeader",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SheetFooter",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SheetTitle",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SheetDescription",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Skeleton",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Toaster",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Switch",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Table",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TableHeader",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TableBody",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TableFooter",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TableHead",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TableRow",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TableCell",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TableCaption",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Tabs",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TabsList",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TabsTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TabsContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "tabsListVariants",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Textarea",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Tooltip",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TooltipTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TooltipContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TooltipProvider",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PageHeader",
+    "category": "runtime-export",
+    "coverage": "Parallax composition"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "NavRail",
+    "category": "runtime-export",
+    "coverage": "Parallax composition"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "NavRailItem",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "StatusBadge",
+    "category": "runtime-export",
+    "coverage": "Parallax composition"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PriorityBadge",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SummaryCards",
+    "category": "runtime-export",
+    "coverage": "Parallax composition"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SummaryCard",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SettingsField",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SettingsGrid",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SettingsNotice",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SettingsPanel",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SettingsStatusPill",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SettingsFieldProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SettingsGridProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SettingsNoticeProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SettingsPanelProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SettingsStatusPillProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ThemeSwitcher",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "STATUS_KEYS",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "STATUS_TONES",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DEFAULT_STATUS_TONE",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "statusTone",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "StatusKey",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "StatusTone",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "THEME_STORAGE_KEY",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DEFAULT_THEME",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "THEME_OPTIONS",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "isThemeName",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "resolveTheme",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "readStoredTheme",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "persistTheme",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "applyTheme",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "getInitialTheme",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ThemeName",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DASHBOARD_DEPRECATED_TOKENS",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "PageHeader",
+    "category": "runtime-export",
+    "coverage": "Parallax composition"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "NavRail",
+    "category": "runtime-export",
+    "coverage": "Parallax composition"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "NavRailItem",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "StatusBadge",
+    "category": "runtime-export",
+    "coverage": "Parallax composition"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "PriorityBadge",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "SummaryCards",
+    "category": "runtime-export",
+    "coverage": "Parallax composition"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "SummaryCard",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "SettingsField",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "SettingsGrid",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "SettingsNotice",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "SettingsPanel",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "SettingsStatusPill",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "SettingsFieldProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "SettingsGridProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "SettingsNoticeProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "SettingsPanelProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "SettingsStatusPillProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "ThemeSwitcher",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "STATUS_KEYS",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "STATUS_TONES",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "DEFAULT_STATUS_TONE",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "statusTone",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "StatusKey",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "StatusTone",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "THEME_STORAGE_KEY",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "DEFAULT_THEME",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "THEME_OPTIONS",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "isThemeName",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "resolveTheme",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "readStoredTheme",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "persistTheme",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "applyTheme",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "getInitialTheme",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "ThemeName",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "DASHBOARD_DEPRECATED_TOKENS",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./layout",
+    "name": "ListPageLayout",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./layout",
+    "name": "DetailHeader",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./layout",
+    "name": "TabStrip",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./layout",
+    "name": "OperationsTablePage",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./layout",
+    "name": "TabStripItem",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./data",
+    "name": "FilterBar",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./data",
+    "name": "FilterChipGroup",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./data",
+    "name": "FilterCycleToggle",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./data",
+    "name": "FilterEntityCombobox",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./data",
+    "name": "CycleOption",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./data",
+    "name": "FilterChip",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./data",
+    "name": "FilterEntityComboboxItem",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./data",
+    "name": "DataTable",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./data",
+    "name": "DataTableRow",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./data",
+    "name": "TableDensity",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./data",
+    "name": "useArrowNav",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./data",
+    "name": "ArrowNavOptions",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./data",
+    "name": "useListNavigation",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./data",
+    "name": "ListNavigationOptions",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "Sparkbars",
+    "category": "runtime-export",
+    "coverage": "Parallax composition"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "SparkbarsProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "SignalBars",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "SignalBarsProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "BarList",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "BarListItem",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "BarListProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "CompositionBars",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "CompositionBarsProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "DonutChart",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "DonutChartProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "DonutSegment",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "BarMeter",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "BarMeterProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "BarMeterRow",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "ActivityHeatmap",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "ActivityHeatmapProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "HourlyPulse",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "HourlyPulseProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "RecentList",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "RecentListProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "Panel",
+    "category": "runtime-export",
+    "coverage": "Parallax composition"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "PanelProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "Kpi",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "KpiProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "KpiGrid",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "KpiGridProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "MiniTrend",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "MiniTrendProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "IntelligenceRow",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./widgets",
+    "name": "IntelligenceRowProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./charts",
+    "name": "TimeSeriesChart",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./charts",
+    "name": "TimeSeriesChartProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./charts",
+    "name": "TimeSeriesSeries",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./charts",
+    "name": "TimestampSampleChart",
+    "category": "runtime-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./charts",
+    "name": "TimestampSampleChartProps",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./charts",
+    "name": "TimestampSample",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./charts",
+    "name": "SampleUnit",
+    "category": "type-export",
+    "coverage": "unreviewed"
+  }
+]

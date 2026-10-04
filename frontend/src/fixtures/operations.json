@@ -1,0 +1,294 @@
+{
+  "sessions": [
+    {
+      "id": "SESSION-001",
+      "runId": "RUN-001",
+      "owner": "Adaline"
+    },
+    {
+      "id": "SESSION-002",
+      "runId": "RUN-002",
+      "owner": "Ashtyn"
+    },
+    {
+      "id": "SESSION-003",
+      "runId": "RUN-003",
+      "owner": "Della"
+    },
+    {
+      "id": "SESSION-004",
+      "runId": "RUN-004",
+      "owner": "Barry"
+    },
+    {
+      "id": "SESSION-005",
+      "runId": "RUN-005",
+      "owner": "Amber"
+    },
+    {
+      "id": "SESSION-006",
+      "runId": "RUN-006",
+      "owner": "Estelle"
+    },
+    {
+      "id": "SESSION-007",
+      "runId": "RUN-007",
+      "owner": "Karley"
+    },
+    {
+      "id": "SESSION-008",
+      "runId": "RUN-008",
+      "owner": "Rocky"
+    }
+  ],
+  "traces": [
+    {
+      "id": "TRACE-001",
+      "runId": "RUN-001",
+      "started": "2026-10-04T14:10:00Z",
+      "spans": ["context.admit", "fixture.review", "outcome.running"]
+    },
+    {
+      "id": "TRACE-002",
+      "runId": "RUN-002",
+      "started": "2026-10-04T14:12:00Z",
+      "spans": ["context.admit", "fixture.review", "outcome.done"]
+    },
+    {
+      "id": "TRACE-003",
+      "runId": "RUN-003",
+      "started": "2026-10-04T14:14:00Z",
+      "spans": ["context.admit", "fixture.review", "outcome.blocked"]
+    },
+    {
+      "id": "TRACE-004",
+      "runId": "RUN-004",
+      "started": "2026-10-04T14:16:00Z",
+      "spans": ["context.admit", "fixture.review", "outcome.done"]
+    },
+    {
+      "id": "TRACE-005",
+      "runId": "RUN-005",
+      "started": "2026-10-04T14:18:00Z",
+      "spans": ["context.admit", "fixture.review", "outcome.queued"]
+    },
+    {
+      "id": "TRACE-006",
+      "runId": "RUN-006",
+      "started": "2026-10-04T14:20:00Z",
+      "spans": ["context.admit", "fixture.review", "outcome.running"]
+    },
+    {
+      "id": "TRACE-007",
+      "runId": "RUN-007",
+      "started": "2026-10-04T14:22:00Z",
+      "spans": ["context.admit", "fixture.review", "outcome.failed"]
+    },
+    {
+      "id": "TRACE-008",
+      "runId": "RUN-008",
+      "started": "2026-10-04T14:24:00Z",
+      "spans": ["context.admit", "fixture.review", "outcome.done"]
+    }
+  ],
+  "usage": [
+    {
+      "id": "USAGE-001",
+      "runId": "RUN-001",
+      "tokens": 7791,
+      "cost": 0.015581999999999999
+    },
+    {
+      "id": "USAGE-002",
+      "runId": "RUN-002",
+      "tokens": 5451,
+      "cost": 0.010902
+    },
+    {
+      "id": "USAGE-003",
+      "runId": "RUN-003",
+      "tokens": 3812,
+      "cost": 0.007624
+    },
+    {
+      "id": "USAGE-004",
+      "runId": "RUN-004",
+      "tokens": 3646,
+      "cost": 0.007292
+    },
+    {
+      "id": "USAGE-005",
+      "runId": "RUN-005",
+      "tokens": 6014,
+      "cost": 0.012027999999999999
+    },
+    {
+      "id": "USAGE-006",
+      "runId": "RUN-006",
+      "tokens": 3335,
+      "cost": 0.00667
+    },
+    {
+      "id": "USAGE-007",
+      "runId": "RUN-007",
+      "tokens": 4156,
+      "cost": 0.008312
+    },
+    {
+      "id": "USAGE-008",
+      "runId": "RUN-008",
+      "tokens": 11467,
+      "cost": 0.022934
+    }
+  ],
+  "version": "operations/v1",
+  "generator": "parallax/v1",
+  "seed": 4421,
+  "clock": "2026-10-04T14:30:00Z",
+  "tasks": [
+    {
+      "id": "TASK-001",
+      "runId": "RUN-001",
+      "sessionId": "SESSION-001",
+      "traceId": "TRACE-001",
+      "usageId": "USAGE-001",
+      "title": "Review gateway permission boundaries",
+      "owner": "Adaline",
+      "status": "running",
+      "tokens": 7791,
+      "cost": 0.015581999999999999,
+      "started": "2026-10-04T14:10:00Z",
+      "logs": [
+        "Fixture context admitted",
+        "Reviewing controlled presentation input",
+        "Scripted outcome: running"
+      ]
+    },
+    {
+      "id": "TASK-002",
+      "runId": "RUN-002",
+      "sessionId": "SESSION-002",
+      "traceId": "TRACE-002",
+      "usageId": "USAGE-002",
+      "title": "Build deterministic fixture contracts",
+      "owner": "Ashtyn",
+      "status": "done",
+      "tokens": 5451,
+      "cost": 0.010902,
+      "started": "2026-10-04T14:12:00Z",
+      "logs": [
+        "Fixture context admitted",
+        "Reviewing controlled presentation input",
+        "Scripted outcome: done"
+      ]
+    },
+    {
+      "id": "TASK-003",
+      "runId": "RUN-003",
+      "sessionId": "SESSION-003",
+      "traceId": "TRACE-003",
+      "usageId": "USAGE-003",
+      "title": "Inspect telemetry sampling drift",
+      "owner": "Della",
+      "status": "blocked",
+      "tokens": 3812,
+      "cost": 0.007624,
+      "started": "2026-10-04T14:14:00Z",
+      "logs": [
+        "Fixture context admitted",
+        "Reviewing controlled presentation input",
+        "Scripted outcome: blocked"
+      ]
+    },
+    {
+      "id": "TASK-004",
+      "runId": "RUN-004",
+      "sessionId": "SESSION-004",
+      "traceId": "TRACE-004",
+      "usageId": "USAGE-004",
+      "title": "Validate plugin bundle admission",
+      "owner": "Barry",
+      "status": "done",
+      "tokens": 3646,
+      "cost": 0.007292,
+      "started": "2026-10-04T14:16:00Z",
+      "logs": [
+        "Fixture context admitted",
+        "Reviewing controlled presentation input",
+        "Scripted outcome: done"
+      ]
+    },
+    {
+      "id": "TASK-005",
+      "runId": "RUN-005",
+      "sessionId": "SESSION-005",
+      "traceId": "TRACE-005",
+      "usageId": "USAGE-005",
+      "title": "Reconcile deployment readiness",
+      "owner": "Amber",
+      "status": "queued",
+      "tokens": 6014,
+      "cost": 0.012027999999999999,
+      "started": "2026-10-04T14:18:00Z",
+      "logs": [
+        "Fixture context admitted",
+        "Reviewing controlled presentation input",
+        "Scripted outcome: queued"
+      ]
+    },
+    {
+      "id": "TASK-006",
+      "runId": "RUN-006",
+      "sessionId": "SESSION-006",
+      "traceId": "TRACE-006",
+      "usageId": "USAGE-006",
+      "title": "Document account role provenance",
+      "owner": "Estelle",
+      "status": "running",
+      "tokens": 3335,
+      "cost": 0.00667,
+      "started": "2026-10-04T14:20:00Z",
+      "logs": [
+        "Fixture context admitted",
+        "Reviewing controlled presentation input",
+        "Scripted outcome: running"
+      ]
+    },
+    {
+      "id": "TASK-007",
+      "runId": "RUN-007",
+      "sessionId": "SESSION-007",
+      "traceId": "TRACE-007",
+      "usageId": "USAGE-007",
+      "title": "Audit workflow retry thresholds",
+      "owner": "Karley",
+      "status": "failed",
+      "tokens": 4156,
+      "cost": 0.008312,
+      "started": "2026-10-04T14:22:00Z",
+      "logs": [
+        "Fixture context admitted",
+        "Reviewing controlled presentation input",
+        "Scripted outcome: failed"
+      ]
+    },
+    {
+      "id": "TASK-008",
+      "runId": "RUN-008",
+      "sessionId": "SESSION-008",
+      "traceId": "TRACE-008",
+      "usageId": "USAGE-008",
+      "title": "Capture responsive dashboard evidence",
+      "owner": "Rocky",
+      "status": "done",
+      "tokens": 11467,
+      "cost": 0.022934,
+      "started": "2026-10-04T14:24:00Z",
+      "logs": [
+        "Fixture context admitted",
+        "Reviewing controlled presentation input",
+        "Scripted outcome: done"
+      ]
+    }
+  ]
+}

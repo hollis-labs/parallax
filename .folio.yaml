@@ -1,0 +1,97 @@
+folio_version: "0.1"
+generated_at: 2026-10-04T20:26:11.122775753Z
+generator: folio/0.1.0
+presets:
+  - id: app-dashboard
+    version: 2.0.0
+    source: bundled
+    resolved_path: bundled:presets/app-dashboard
+inputs:
+  base_path: /
+  description: Fixture-only GUI laboratory on Chimera
+  design_kit_version: 0.4.0
+  github_owner: hollis-labs
+  go_packages: ./...
+  go_version: 1.26.6
+  go_webui_version: v0.1.0
+  project_name: parallax
+computed:
+  app_title: Parallax
+  module_path: github.com/hollis-labs/parallax
+  year: "2026"
+files:
+  .github/workflows/ci.yml:
+    preset: app-dashboard
+    digest_at_gen: sha256:f15b4dceefbbcd30acc706c4304393a339bc9c5ea7ac84b0e1af69ca9fce5600
+  .gitignore:
+    preset: app-dashboard
+    digest_at_gen: sha256:6b008572df52855431a02954bb9cb5636497d4186f4df24bc1d912aa71fe0f64
+  .golangci.yml:
+    preset: app-dashboard
+    digest_at_gen: sha256:d5e0ecf5001a7035c0194ef13be8b2e6255ccf829fc51c3eedd13d71763cdfa9
+  LICENSE:
+    preset: app-dashboard
+    digest_at_gen: sha256:1986445efff599a321ae0f93151d161a8810d3035ddf8adc45832e1788c90c47
+  Makefile:
+    preset: app-dashboard
+    digest_at_gen: sha256:b40f4ddb126c8b5da35698d7d1b5d2574cd48da2f1633e2af7a8b2a9d017cd11
+  README.md:
+    preset: app-dashboard
+    digest_at_gen: sha256:42935eb47ef9658ce99ddff3e31ca1f303dcf12f61b8183289e736ff68d58965
+  cmd/parallax/main.go:
+    preset: app-dashboard
+    digest_at_gen: sha256:e5192cd805fda92b3b69804faebb18a63c417153cb41973f4fbbb255f20d00a5
+  frontend/biome.json:
+    preset: app-dashboard
+    digest_at_gen: sha256:09db2498b070e1cade5cab46c122eac2f52e8b397d13d958ce6d9b3799eb77c3
+  frontend/eslint.config.js:
+    preset: app-dashboard
+    digest_at_gen: sha256:8f386c3503452c2b03ee3e7481b32585a70c5ad15d6affec8158e723cbbd108b
+  frontend/index.html:
+    preset: app-dashboard
+    digest_at_gen: sha256:f874a6223a29c7f42bdadf18629f8215ce63b1e6dc111f5ee7ee7a5206d7dbf2
+  frontend/package.json:
+    preset: app-dashboard
+    digest_at_gen: sha256:108d30266596bdb36ff5f54dd239789434a3ff83d3ecd7e5ce8104f1ff974c96
+  frontend/src/App.tsx:
+    preset: app-dashboard
+    digest_at_gen: sha256:139fc93cce3fdba65722154fec8d481bfd9d34929ffb552ce8bc2c2136a926e9
+  frontend/src/api/client.ts:
+    preset: app-dashboard
+    digest_at_gen: sha256:fb92ad9c1f9f6e91467c34091edfcdf5cbcc3ab5c49bb132f0f78185fa8d1a98
+  frontend/src/api/context.tsx:
+    preset: app-dashboard
+    digest_at_gen: sha256:4e8e5771dc74e0e077d177c1c5d71b5defb1dd43970a9d8fbf412151058b9a86
+  frontend/src/index.css:
+    preset: app-dashboard
+    digest_at_gen: sha256:0767f5c567d4d124c5e05cd0d231f5271bbb42ddc2bb09390d8259a993556858
+  frontend/src/main.tsx:
+    preset: app-dashboard
+    digest_at_gen: sha256:22fc175b049cf2812510ca064f01273f62dc3b3ac995e6982184e9e82b94727e
+  frontend/src/pages/dashboard.tsx:
+    preset: app-dashboard
+    digest_at_gen: sha256:8a4988256f90f530950f9c9e9815c01377819cbaf96f2b489c832e06311d5bdc
+  frontend/tsconfig.json:
+    preset: app-dashboard
+    digest_at_gen: sha256:cedfb706483b4f605f648289e499c031cc92d2ce22755ec282bdc0dff9a4b42c
+  frontend/vite.config.ts:
+    preset: app-dashboard
+    digest_at_gen: sha256:b9cc08fca1d3ade13d0d423fc8632e131fb56c74818606e4ec27166f3cfc6714
+  go.mod:
+    preset: app-dashboard
+    digest_at_gen: sha256:2637bfe243f112545dd45b350ad52324826d1bb91fc97ed048f26e4c8366ff44
+  internal/webui/dist/.gitkeep:
+    preset: app-dashboard
+    digest_at_gen: sha256:b071f7f9b5cb72296d0e5030c17497ca641fbfdd7d413fd30fa85b74eb2c59cb
+  internal/webui/embed.go:
+    preset: app-dashboard
+    digest_at_gen: sha256:c7bab2ad9495b24e94a6c3b5985490e2a4cf29cfafacd18ed568133d49f3e60c
+  lefthook.yml:
+    preset: app-dashboard
+    digest_at_gen: sha256:fb1981be77c7a05632ae72617591236438c836716feb8fce49f46c6272c257c8
+sync_history:
+  - at: 2026-10-04T20:26:11.122775753Z
+    operation: init
+    presets:
+      - id: app-dashboard
+        version: 2.0.0
