@@ -6,18 +6,18 @@ export default defineConfig({
   testDir: "./tests",
   outputDir: `${repo}.scratch/test-results`,
   reporter: [["list"]],
-  use: { baseURL: "http://127.0.0.1:18441", headless: true },
+  use: { baseURL: "http://127.0.0.1:18541", headless: true },
   webServer: [
     {
-      command: ".scratch/parallax",
+      command: "LISTEN_ADDR=127.0.0.1:18541 .scratch/parallax",
       cwd: repo,
-      url: "http://127.0.0.1:18441",
+      url: "http://127.0.0.1:18541",
       reuseExistingServer: !process.env.CI,
     },
     {
-      command: "node scripts/serve-storybook.mjs",
+      command: "STORYBOOK_PORT=18542 node scripts/serve-storybook.mjs",
       cwd: repo,
-      url: "http://127.0.0.1:18443/iframe.html",
+      url: "http://127.0.0.1:18542/iframe.html",
       reuseExistingServer: !process.env.CI,
     },
   ],

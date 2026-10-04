@@ -1,4 +1,214 @@
 {
+  "version": "operations/v2",
+  "generator": "parallax/v2",
+  "profile": "records-8",
+  "seed": 4421,
+  "observedSince": "2026-10-03T14:30:00Z",
+  "clock": "2026-10-04T14:30:00Z",
+  "tasks": [
+    {
+      "id": "TASK-001",
+      "runId": "RUN-001",
+      "sessionId": "SESSION-001",
+      "traceId": "TRACE-001",
+      "usageId": "USAGE-001",
+      "title": "Review gateway permission boundaries",
+      "owner": "Adaline",
+      "status": "running",
+      "tokens": 7791,
+      "cost": 0.015581999999999999,
+      "started": "2026-10-04T14:10:00Z",
+      "narrative": "Review remains active after the first fixture inspection."
+    },
+    {
+      "id": "TASK-002",
+      "runId": "RUN-002",
+      "sessionId": "SESSION-002",
+      "traceId": "TRACE-002",
+      "usageId": "USAGE-002",
+      "title": "Build deterministic fixture contracts",
+      "owner": "Ashtyn",
+      "status": "done",
+      "tokens": 5451,
+      "cost": 0.010902,
+      "started": "2026-10-04T14:12:00Z",
+      "narrative": "Fixture review completed and evidence recorded."
+    },
+    {
+      "id": "TASK-003",
+      "runId": "RUN-003",
+      "sessionId": "SESSION-003",
+      "traceId": "TRACE-003",
+      "usageId": "USAGE-003",
+      "title": "Inspect telemetry sampling drift",
+      "owner": "Della",
+      "status": "blocked",
+      "tokens": 3812,
+      "cost": 0.007624,
+      "started": "2026-10-04T14:14:00Z",
+      "narrative": "Previous run failed; task is blocked awaiting missing telemetry evidence."
+    },
+    {
+      "id": "TASK-004",
+      "runId": "RUN-004",
+      "sessionId": "SESSION-004",
+      "traceId": "TRACE-004",
+      "usageId": "USAGE-004",
+      "title": "Validate plugin bundle admission",
+      "owner": "Barry",
+      "status": "done",
+      "tokens": 3646,
+      "cost": 0.007292,
+      "started": "2026-10-04T14:16:00Z",
+      "narrative": "Fixture review completed and evidence recorded."
+    },
+    {
+      "id": "TASK-005",
+      "runId": "RUN-005",
+      "sessionId": "SESSION-005",
+      "traceId": "TRACE-005",
+      "usageId": "USAGE-005",
+      "title": "Reconcile deployment readiness",
+      "owner": "Amber",
+      "status": "queued",
+      "tokens": 6014,
+      "cost": 0.012027999999999999,
+      "started": "2026-10-04T14:18:00Z",
+      "narrative": "Previous run completed; a follow-up readiness review is queued."
+    },
+    {
+      "id": "TASK-006",
+      "runId": "RUN-006",
+      "sessionId": "SESSION-006",
+      "traceId": "TRACE-006",
+      "usageId": "USAGE-006",
+      "title": "Document account role provenance",
+      "owner": "Estelle",
+      "status": "running",
+      "tokens": 3335,
+      "cost": 0.00667,
+      "started": "2026-10-04T14:20:00Z",
+      "narrative": "Review remains active after the first fixture inspection."
+    },
+    {
+      "id": "TASK-007",
+      "runId": "RUN-007",
+      "sessionId": "SESSION-007",
+      "traceId": "TRACE-007",
+      "usageId": "USAGE-007",
+      "title": "Audit workflow retry thresholds",
+      "owner": "Karley",
+      "status": "failed",
+      "tokens": 4156,
+      "cost": 0.008312,
+      "started": "2026-10-04T14:22:00Z",
+      "narrative": "Scripted fixture inspection refused: required evidence is unavailable."
+    },
+    {
+      "id": "TASK-008",
+      "runId": "RUN-008",
+      "sessionId": "SESSION-008",
+      "traceId": "TRACE-008",
+      "usageId": "USAGE-008",
+      "title": "Capture responsive dashboard evidence",
+      "owner": "Rocky",
+      "status": "done",
+      "tokens": 11467,
+      "cost": 0.022934,
+      "started": "2026-10-04T14:24:00Z",
+      "narrative": "Fixture review completed and evidence recorded."
+    }
+  ],
+  "runs": [
+    {
+      "id": "RUN-001",
+      "taskId": "TASK-001",
+      "sessionId": "SESSION-001",
+      "traceId": "TRACE-001",
+      "usageId": "USAGE-001",
+      "status": "running",
+      "started": "2026-10-04T14:10:00Z",
+      "finished": null,
+      "outcome": "Review remains active after the first fixture inspection."
+    },
+    {
+      "id": "RUN-002",
+      "taskId": "TASK-002",
+      "sessionId": "SESSION-002",
+      "traceId": "TRACE-002",
+      "usageId": "USAGE-002",
+      "status": "done",
+      "started": "2026-10-04T14:12:00Z",
+      "finished": "2026-10-04T14:13:30Z",
+      "outcome": "Fixture review completed and evidence recorded."
+    },
+    {
+      "id": "RUN-003",
+      "taskId": "TASK-003",
+      "sessionId": "SESSION-003",
+      "traceId": "TRACE-003",
+      "usageId": "USAGE-003",
+      "status": "failed",
+      "started": "2026-10-04T14:14:00Z",
+      "finished": "2026-10-04T14:15:30Z",
+      "outcome": "Scripted fixture inspection refused: required evidence is unavailable."
+    },
+    {
+      "id": "RUN-004",
+      "taskId": "TASK-004",
+      "sessionId": "SESSION-004",
+      "traceId": "TRACE-004",
+      "usageId": "USAGE-004",
+      "status": "done",
+      "started": "2026-10-04T14:16:00Z",
+      "finished": "2026-10-04T14:17:30Z",
+      "outcome": "Fixture review completed and evidence recorded."
+    },
+    {
+      "id": "RUN-005",
+      "taskId": "TASK-005",
+      "sessionId": "SESSION-005",
+      "traceId": "TRACE-005",
+      "usageId": "USAGE-005",
+      "status": "done",
+      "started": "2026-10-04T14:18:00Z",
+      "finished": "2026-10-04T14:19:30Z",
+      "outcome": "Fixture review completed and evidence recorded."
+    },
+    {
+      "id": "RUN-006",
+      "taskId": "TASK-006",
+      "sessionId": "SESSION-006",
+      "traceId": "TRACE-006",
+      "usageId": "USAGE-006",
+      "status": "running",
+      "started": "2026-10-04T14:20:00Z",
+      "finished": null,
+      "outcome": "Review remains active after the first fixture inspection."
+    },
+    {
+      "id": "RUN-007",
+      "taskId": "TASK-007",
+      "sessionId": "SESSION-007",
+      "traceId": "TRACE-007",
+      "usageId": "USAGE-007",
+      "status": "failed",
+      "started": "2026-10-04T14:22:00Z",
+      "finished": "2026-10-04T14:23:30Z",
+      "outcome": "Scripted fixture inspection refused: required evidence is unavailable."
+    },
+    {
+      "id": "RUN-008",
+      "taskId": "TASK-008",
+      "sessionId": "SESSION-008",
+      "traceId": "TRACE-008",
+      "usageId": "USAGE-008",
+      "status": "done",
+      "started": "2026-10-04T14:24:00Z",
+      "finished": "2026-10-04T14:25:30Z",
+      "outcome": "Fixture review completed and evidence recorded."
+    }
+  ],
   "sessions": [
     {
       "id": "SESSION-001",
@@ -41,54 +251,704 @@
       "owner": "Rocky"
     }
   ],
+  "messages": [
+    {
+      "id": "MSG-REQUEST-001",
+      "sessionId": "SESSION-001",
+      "runId": "RUN-001",
+      "role": "user",
+      "content": "Review the bundled evidence for: Review gateway permission boundaries",
+      "time": "2026-10-04T14:10:00Z"
+    },
+    {
+      "id": "MSG-RESULT-001",
+      "sessionId": "SESSION-001",
+      "runId": "RUN-001",
+      "role": "assistant",
+      "content": "Review remains active after the first fixture inspection.",
+      "time": "2026-10-04T14:11:30Z"
+    },
+    {
+      "id": "MSG-REQUEST-002",
+      "sessionId": "SESSION-002",
+      "runId": "RUN-002",
+      "role": "user",
+      "content": "Review the bundled evidence for: Build deterministic fixture contracts",
+      "time": "2026-10-04T14:12:00Z"
+    },
+    {
+      "id": "MSG-RESULT-002",
+      "sessionId": "SESSION-002",
+      "runId": "RUN-002",
+      "role": "assistant",
+      "content": "Fixture review completed and evidence recorded.",
+      "time": "2026-10-04T14:13:30Z"
+    },
+    {
+      "id": "MSG-REQUEST-003",
+      "sessionId": "SESSION-003",
+      "runId": "RUN-003",
+      "role": "user",
+      "content": "Review the bundled evidence for: Inspect telemetry sampling drift",
+      "time": "2026-10-04T14:14:00Z"
+    },
+    {
+      "id": "MSG-RESULT-003",
+      "sessionId": "SESSION-003",
+      "runId": "RUN-003",
+      "role": "assistant",
+      "content": "Scripted fixture inspection refused: required evidence is unavailable.",
+      "time": "2026-10-04T14:15:30Z"
+    },
+    {
+      "id": "MSG-REQUEST-004",
+      "sessionId": "SESSION-004",
+      "runId": "RUN-004",
+      "role": "user",
+      "content": "Review the bundled evidence for: Validate plugin bundle admission",
+      "time": "2026-10-04T14:16:00Z"
+    },
+    {
+      "id": "MSG-RESULT-004",
+      "sessionId": "SESSION-004",
+      "runId": "RUN-004",
+      "role": "assistant",
+      "content": "Fixture review completed and evidence recorded.",
+      "time": "2026-10-04T14:17:30Z"
+    },
+    {
+      "id": "MSG-REQUEST-005",
+      "sessionId": "SESSION-005",
+      "runId": "RUN-005",
+      "role": "user",
+      "content": "Review the bundled evidence for: Reconcile deployment readiness",
+      "time": "2026-10-04T14:18:00Z"
+    },
+    {
+      "id": "MSG-RESULT-005",
+      "sessionId": "SESSION-005",
+      "runId": "RUN-005",
+      "role": "assistant",
+      "content": "Fixture review completed and evidence recorded.",
+      "time": "2026-10-04T14:19:30Z"
+    },
+    {
+      "id": "MSG-REQUEST-006",
+      "sessionId": "SESSION-006",
+      "runId": "RUN-006",
+      "role": "user",
+      "content": "Review the bundled evidence for: Document account role provenance",
+      "time": "2026-10-04T14:20:00Z"
+    },
+    {
+      "id": "MSG-RESULT-006",
+      "sessionId": "SESSION-006",
+      "runId": "RUN-006",
+      "role": "assistant",
+      "content": "Review remains active after the first fixture inspection.",
+      "time": "2026-10-04T14:21:30Z"
+    },
+    {
+      "id": "MSG-REQUEST-007",
+      "sessionId": "SESSION-007",
+      "runId": "RUN-007",
+      "role": "user",
+      "content": "Review the bundled evidence for: Audit workflow retry thresholds",
+      "time": "2026-10-04T14:22:00Z"
+    },
+    {
+      "id": "MSG-RESULT-007",
+      "sessionId": "SESSION-007",
+      "runId": "RUN-007",
+      "role": "assistant",
+      "content": "Scripted fixture inspection refused: required evidence is unavailable.",
+      "time": "2026-10-04T14:23:30Z"
+    },
+    {
+      "id": "MSG-REQUEST-008",
+      "sessionId": "SESSION-008",
+      "runId": "RUN-008",
+      "role": "user",
+      "content": "Review the bundled evidence for: Capture responsive dashboard evidence",
+      "time": "2026-10-04T14:24:00Z"
+    },
+    {
+      "id": "MSG-RESULT-008",
+      "sessionId": "SESSION-008",
+      "runId": "RUN-008",
+      "role": "assistant",
+      "content": "Fixture review completed and evidence recorded.",
+      "time": "2026-10-04T14:25:30Z"
+    }
+  ],
+  "toolCalls": [
+    {
+      "id": "TOOL-001",
+      "runId": "RUN-001",
+      "traceId": "TRACE-001",
+      "spanId": "SPAN-TOOL-001",
+      "name": "fixture.inspect",
+      "status": "done",
+      "started": "2026-10-04T14:10:15Z",
+      "finished": "2026-10-04T14:11:15Z",
+      "input": "Bundled evidence / TASK-001",
+      "output": "Review remains active after the first fixture inspection."
+    },
+    {
+      "id": "TOOL-002",
+      "runId": "RUN-002",
+      "traceId": "TRACE-002",
+      "spanId": "SPAN-TOOL-002",
+      "name": "fixture.inspect",
+      "status": "done",
+      "started": "2026-10-04T14:12:15Z",
+      "finished": "2026-10-04T14:13:15Z",
+      "input": "Bundled evidence / TASK-002",
+      "output": "Fixture review completed and evidence recorded."
+    },
+    {
+      "id": "TOOL-003",
+      "runId": "RUN-003",
+      "traceId": "TRACE-003",
+      "spanId": "SPAN-TOOL-003",
+      "name": "fixture.inspect",
+      "status": "failed",
+      "started": "2026-10-04T14:14:15Z",
+      "finished": "2026-10-04T14:15:15Z",
+      "input": "Bundled evidence / TASK-003",
+      "output": "Scripted fixture inspection refused: required evidence is unavailable."
+    },
+    {
+      "id": "TOOL-004",
+      "runId": "RUN-004",
+      "traceId": "TRACE-004",
+      "spanId": "SPAN-TOOL-004",
+      "name": "fixture.inspect",
+      "status": "done",
+      "started": "2026-10-04T14:16:15Z",
+      "finished": "2026-10-04T14:17:15Z",
+      "input": "Bundled evidence / TASK-004",
+      "output": "Fixture review completed and evidence recorded."
+    },
+    {
+      "id": "TOOL-005",
+      "runId": "RUN-005",
+      "traceId": "TRACE-005",
+      "spanId": "SPAN-TOOL-005",
+      "name": "fixture.inspect",
+      "status": "done",
+      "started": "2026-10-04T14:18:15Z",
+      "finished": "2026-10-04T14:19:15Z",
+      "input": "Bundled evidence / TASK-005",
+      "output": "Fixture review completed and evidence recorded."
+    },
+    {
+      "id": "TOOL-006",
+      "runId": "RUN-006",
+      "traceId": "TRACE-006",
+      "spanId": "SPAN-TOOL-006",
+      "name": "fixture.inspect",
+      "status": "done",
+      "started": "2026-10-04T14:20:15Z",
+      "finished": "2026-10-04T14:21:15Z",
+      "input": "Bundled evidence / TASK-006",
+      "output": "Review remains active after the first fixture inspection."
+    },
+    {
+      "id": "TOOL-007",
+      "runId": "RUN-007",
+      "traceId": "TRACE-007",
+      "spanId": "SPAN-TOOL-007",
+      "name": "fixture.inspect",
+      "status": "failed",
+      "started": "2026-10-04T14:22:15Z",
+      "finished": "2026-10-04T14:23:15Z",
+      "input": "Bundled evidence / TASK-007",
+      "output": "Scripted fixture inspection refused: required evidence is unavailable."
+    },
+    {
+      "id": "TOOL-008",
+      "runId": "RUN-008",
+      "traceId": "TRACE-008",
+      "spanId": "SPAN-TOOL-008",
+      "name": "fixture.inspect",
+      "status": "done",
+      "started": "2026-10-04T14:24:15Z",
+      "finished": "2026-10-04T14:25:15Z",
+      "input": "Bundled evidence / TASK-008",
+      "output": "Fixture review completed and evidence recorded."
+    }
+  ],
+  "logs": [
+    {
+      "id": "LOG-START-001",
+      "runId": "RUN-001",
+      "traceId": "TRACE-001",
+      "spanId": "SPAN-ROOT-001",
+      "level": "info",
+      "message": "Bundled context admitted",
+      "time": "2026-10-04T14:10:00Z"
+    },
+    {
+      "id": "LOG-OUTCOME-001",
+      "runId": "RUN-001",
+      "traceId": "TRACE-001",
+      "spanId": "SPAN-TOOL-001",
+      "level": "info",
+      "message": "Review remains active after the first fixture inspection.",
+      "time": "2026-10-04T14:11:15Z"
+    },
+    {
+      "id": "LOG-START-002",
+      "runId": "RUN-002",
+      "traceId": "TRACE-002",
+      "spanId": "SPAN-ROOT-002",
+      "level": "info",
+      "message": "Bundled context admitted",
+      "time": "2026-10-04T14:12:00Z"
+    },
+    {
+      "id": "LOG-OUTCOME-002",
+      "runId": "RUN-002",
+      "traceId": "TRACE-002",
+      "spanId": "SPAN-TOOL-002",
+      "level": "info",
+      "message": "Fixture review completed and evidence recorded.",
+      "time": "2026-10-04T14:13:15Z"
+    },
+    {
+      "id": "LOG-START-003",
+      "runId": "RUN-003",
+      "traceId": "TRACE-003",
+      "spanId": "SPAN-ROOT-003",
+      "level": "info",
+      "message": "Bundled context admitted",
+      "time": "2026-10-04T14:14:00Z"
+    },
+    {
+      "id": "LOG-OUTCOME-003",
+      "runId": "RUN-003",
+      "traceId": "TRACE-003",
+      "spanId": "SPAN-TOOL-003",
+      "level": "error",
+      "message": "Scripted fixture inspection refused: required evidence is unavailable.",
+      "time": "2026-10-04T14:15:15Z"
+    },
+    {
+      "id": "LOG-START-004",
+      "runId": "RUN-004",
+      "traceId": "TRACE-004",
+      "spanId": "SPAN-ROOT-004",
+      "level": "info",
+      "message": "Bundled context admitted",
+      "time": "2026-10-04T14:16:00Z"
+    },
+    {
+      "id": "LOG-OUTCOME-004",
+      "runId": "RUN-004",
+      "traceId": "TRACE-004",
+      "spanId": "SPAN-TOOL-004",
+      "level": "info",
+      "message": "Fixture review completed and evidence recorded.",
+      "time": "2026-10-04T14:17:15Z"
+    },
+    {
+      "id": "LOG-START-005",
+      "runId": "RUN-005",
+      "traceId": "TRACE-005",
+      "spanId": "SPAN-ROOT-005",
+      "level": "info",
+      "message": "Bundled context admitted",
+      "time": "2026-10-04T14:18:00Z"
+    },
+    {
+      "id": "LOG-OUTCOME-005",
+      "runId": "RUN-005",
+      "traceId": "TRACE-005",
+      "spanId": "SPAN-TOOL-005",
+      "level": "info",
+      "message": "Fixture review completed and evidence recorded.",
+      "time": "2026-10-04T14:19:15Z"
+    },
+    {
+      "id": "LOG-START-006",
+      "runId": "RUN-006",
+      "traceId": "TRACE-006",
+      "spanId": "SPAN-ROOT-006",
+      "level": "info",
+      "message": "Bundled context admitted",
+      "time": "2026-10-04T14:20:00Z"
+    },
+    {
+      "id": "LOG-OUTCOME-006",
+      "runId": "RUN-006",
+      "traceId": "TRACE-006",
+      "spanId": "SPAN-TOOL-006",
+      "level": "info",
+      "message": "Review remains active after the first fixture inspection.",
+      "time": "2026-10-04T14:21:15Z"
+    },
+    {
+      "id": "LOG-START-007",
+      "runId": "RUN-007",
+      "traceId": "TRACE-007",
+      "spanId": "SPAN-ROOT-007",
+      "level": "info",
+      "message": "Bundled context admitted",
+      "time": "2026-10-04T14:22:00Z"
+    },
+    {
+      "id": "LOG-OUTCOME-007",
+      "runId": "RUN-007",
+      "traceId": "TRACE-007",
+      "spanId": "SPAN-TOOL-007",
+      "level": "error",
+      "message": "Scripted fixture inspection refused: required evidence is unavailable.",
+      "time": "2026-10-04T14:23:15Z"
+    },
+    {
+      "id": "LOG-START-008",
+      "runId": "RUN-008",
+      "traceId": "TRACE-008",
+      "spanId": "SPAN-ROOT-008",
+      "level": "info",
+      "message": "Bundled context admitted",
+      "time": "2026-10-04T14:24:00Z"
+    },
+    {
+      "id": "LOG-OUTCOME-008",
+      "runId": "RUN-008",
+      "traceId": "TRACE-008",
+      "spanId": "SPAN-TOOL-008",
+      "level": "info",
+      "message": "Fixture review completed and evidence recorded.",
+      "time": "2026-10-04T14:25:15Z"
+    }
+  ],
   "traces": [
     {
       "id": "TRACE-001",
       "runId": "RUN-001",
       "started": "2026-10-04T14:10:00Z",
-      "spans": ["context.admit", "fixture.review", "outcome.running"]
+      "spanIds": ["SPAN-ROOT-001", "SPAN-TOOL-001"]
     },
     {
       "id": "TRACE-002",
       "runId": "RUN-002",
       "started": "2026-10-04T14:12:00Z",
-      "spans": ["context.admit", "fixture.review", "outcome.done"]
+      "spanIds": ["SPAN-ROOT-002", "SPAN-TOOL-002"]
     },
     {
       "id": "TRACE-003",
       "runId": "RUN-003",
       "started": "2026-10-04T14:14:00Z",
-      "spans": ["context.admit", "fixture.review", "outcome.blocked"]
+      "spanIds": ["SPAN-ROOT-003", "SPAN-TOOL-003"]
     },
     {
       "id": "TRACE-004",
       "runId": "RUN-004",
       "started": "2026-10-04T14:16:00Z",
-      "spans": ["context.admit", "fixture.review", "outcome.done"]
+      "spanIds": ["SPAN-ROOT-004", "SPAN-TOOL-004"]
     },
     {
       "id": "TRACE-005",
       "runId": "RUN-005",
       "started": "2026-10-04T14:18:00Z",
-      "spans": ["context.admit", "fixture.review", "outcome.queued"]
+      "spanIds": ["SPAN-ROOT-005", "SPAN-TOOL-005"]
     },
     {
       "id": "TRACE-006",
       "runId": "RUN-006",
       "started": "2026-10-04T14:20:00Z",
-      "spans": ["context.admit", "fixture.review", "outcome.running"]
+      "spanIds": ["SPAN-ROOT-006", "SPAN-TOOL-006"]
     },
     {
       "id": "TRACE-007",
       "runId": "RUN-007",
       "started": "2026-10-04T14:22:00Z",
-      "spans": ["context.admit", "fixture.review", "outcome.failed"]
+      "spanIds": ["SPAN-ROOT-007", "SPAN-TOOL-007"]
     },
     {
       "id": "TRACE-008",
       "runId": "RUN-008",
       "started": "2026-10-04T14:24:00Z",
-      "spans": ["context.admit", "fixture.review", "outcome.done"]
+      "spanIds": ["SPAN-ROOT-008", "SPAN-TOOL-008"]
+    }
+  ],
+  "spans": [
+    {
+      "id": "SPAN-ROOT-001",
+      "traceId": "TRACE-001",
+      "parentId": null,
+      "name": "review.session",
+      "status": "running",
+      "started": "2026-10-04T14:10:00Z",
+      "finished": null
+    },
+    {
+      "id": "SPAN-TOOL-001",
+      "traceId": "TRACE-001",
+      "parentId": "SPAN-ROOT-001",
+      "name": "fixture.inspect",
+      "status": "done",
+      "started": "2026-10-04T14:10:15Z",
+      "finished": "2026-10-04T14:11:15Z"
+    },
+    {
+      "id": "SPAN-ROOT-002",
+      "traceId": "TRACE-002",
+      "parentId": null,
+      "name": "review.session",
+      "status": "done",
+      "started": "2026-10-04T14:12:00Z",
+      "finished": "2026-10-04T14:13:30Z"
+    },
+    {
+      "id": "SPAN-TOOL-002",
+      "traceId": "TRACE-002",
+      "parentId": "SPAN-ROOT-002",
+      "name": "fixture.inspect",
+      "status": "done",
+      "started": "2026-10-04T14:12:15Z",
+      "finished": "2026-10-04T14:13:15Z"
+    },
+    {
+      "id": "SPAN-ROOT-003",
+      "traceId": "TRACE-003",
+      "parentId": null,
+      "name": "review.session",
+      "status": "failed",
+      "started": "2026-10-04T14:14:00Z",
+      "finished": "2026-10-04T14:15:30Z"
+    },
+    {
+      "id": "SPAN-TOOL-003",
+      "traceId": "TRACE-003",
+      "parentId": "SPAN-ROOT-003",
+      "name": "fixture.inspect",
+      "status": "failed",
+      "started": "2026-10-04T14:14:15Z",
+      "finished": "2026-10-04T14:15:15Z"
+    },
+    {
+      "id": "SPAN-ROOT-004",
+      "traceId": "TRACE-004",
+      "parentId": null,
+      "name": "review.session",
+      "status": "done",
+      "started": "2026-10-04T14:16:00Z",
+      "finished": "2026-10-04T14:17:30Z"
+    },
+    {
+      "id": "SPAN-TOOL-004",
+      "traceId": "TRACE-004",
+      "parentId": "SPAN-ROOT-004",
+      "name": "fixture.inspect",
+      "status": "done",
+      "started": "2026-10-04T14:16:15Z",
+      "finished": "2026-10-04T14:17:15Z"
+    },
+    {
+      "id": "SPAN-ROOT-005",
+      "traceId": "TRACE-005",
+      "parentId": null,
+      "name": "review.session",
+      "status": "done",
+      "started": "2026-10-04T14:18:00Z",
+      "finished": "2026-10-04T14:19:30Z"
+    },
+    {
+      "id": "SPAN-TOOL-005",
+      "traceId": "TRACE-005",
+      "parentId": "SPAN-ROOT-005",
+      "name": "fixture.inspect",
+      "status": "done",
+      "started": "2026-10-04T14:18:15Z",
+      "finished": "2026-10-04T14:19:15Z"
+    },
+    {
+      "id": "SPAN-ROOT-006",
+      "traceId": "TRACE-006",
+      "parentId": null,
+      "name": "review.session",
+      "status": "running",
+      "started": "2026-10-04T14:20:00Z",
+      "finished": null
+    },
+    {
+      "id": "SPAN-TOOL-006",
+      "traceId": "TRACE-006",
+      "parentId": "SPAN-ROOT-006",
+      "name": "fixture.inspect",
+      "status": "done",
+      "started": "2026-10-04T14:20:15Z",
+      "finished": "2026-10-04T14:21:15Z"
+    },
+    {
+      "id": "SPAN-ROOT-007",
+      "traceId": "TRACE-007",
+      "parentId": null,
+      "name": "review.session",
+      "status": "failed",
+      "started": "2026-10-04T14:22:00Z",
+      "finished": "2026-10-04T14:23:30Z"
+    },
+    {
+      "id": "SPAN-TOOL-007",
+      "traceId": "TRACE-007",
+      "parentId": "SPAN-ROOT-007",
+      "name": "fixture.inspect",
+      "status": "failed",
+      "started": "2026-10-04T14:22:15Z",
+      "finished": "2026-10-04T14:23:15Z"
+    },
+    {
+      "id": "SPAN-ROOT-008",
+      "traceId": "TRACE-008",
+      "parentId": null,
+      "name": "review.session",
+      "status": "done",
+      "started": "2026-10-04T14:24:00Z",
+      "finished": "2026-10-04T14:25:30Z"
+    },
+    {
+      "id": "SPAN-TOOL-008",
+      "traceId": "TRACE-008",
+      "parentId": "SPAN-ROOT-008",
+      "name": "fixture.inspect",
+      "status": "done",
+      "started": "2026-10-04T14:24:15Z",
+      "finished": "2026-10-04T14:25:15Z"
+    }
+  ],
+  "events": [
+    {
+      "id": "EVENT-START-001",
+      "taskId": "TASK-001",
+      "runId": "RUN-001",
+      "type": "run.started",
+      "time": "2026-10-04T14:10:00Z",
+      "description": "Fixture run admitted"
+    },
+    {
+      "id": "EVENT-OBSERVED-001",
+      "taskId": "TASK-001",
+      "runId": "RUN-001",
+      "type": "task.running",
+      "time": "2026-10-04T14:11:35Z",
+      "description": "Review remains active after the first fixture inspection."
+    },
+    {
+      "id": "EVENT-START-002",
+      "taskId": "TASK-002",
+      "runId": "RUN-002",
+      "type": "run.started",
+      "time": "2026-10-04T14:12:00Z",
+      "description": "Fixture run admitted"
+    },
+    {
+      "id": "EVENT-OBSERVED-002",
+      "taskId": "TASK-002",
+      "runId": "RUN-002",
+      "type": "task.done",
+      "time": "2026-10-04T14:13:35Z",
+      "description": "Fixture review completed and evidence recorded."
+    },
+    {
+      "id": "EVENT-START-003",
+      "taskId": "TASK-003",
+      "runId": "RUN-003",
+      "type": "run.started",
+      "time": "2026-10-04T14:14:00Z",
+      "description": "Fixture run admitted"
+    },
+    {
+      "id": "EVENT-OBSERVED-003",
+      "taskId": "TASK-003",
+      "runId": "RUN-003",
+      "type": "task.blocked",
+      "time": "2026-10-04T14:15:35Z",
+      "description": "Previous run failed; task is blocked awaiting missing telemetry evidence."
+    },
+    {
+      "id": "EVENT-START-004",
+      "taskId": "TASK-004",
+      "runId": "RUN-004",
+      "type": "run.started",
+      "time": "2026-10-04T14:16:00Z",
+      "description": "Fixture run admitted"
+    },
+    {
+      "id": "EVENT-OBSERVED-004",
+      "taskId": "TASK-004",
+      "runId": "RUN-004",
+      "type": "task.done",
+      "time": "2026-10-04T14:17:35Z",
+      "description": "Fixture review completed and evidence recorded."
+    },
+    {
+      "id": "EVENT-START-005",
+      "taskId": "TASK-005",
+      "runId": "RUN-005",
+      "type": "run.started",
+      "time": "2026-10-04T14:18:00Z",
+      "description": "Fixture run admitted"
+    },
+    {
+      "id": "EVENT-OBSERVED-005",
+      "taskId": "TASK-005",
+      "runId": "RUN-005",
+      "type": "task.queued",
+      "time": "2026-10-04T14:19:35Z",
+      "description": "Previous run completed; a follow-up readiness review is queued."
+    },
+    {
+      "id": "EVENT-START-006",
+      "taskId": "TASK-006",
+      "runId": "RUN-006",
+      "type": "run.started",
+      "time": "2026-10-04T14:20:00Z",
+      "description": "Fixture run admitted"
+    },
+    {
+      "id": "EVENT-OBSERVED-006",
+      "taskId": "TASK-006",
+      "runId": "RUN-006",
+      "type": "task.running",
+      "time": "2026-10-04T14:21:35Z",
+      "description": "Review remains active after the first fixture inspection."
+    },
+    {
+      "id": "EVENT-START-007",
+      "taskId": "TASK-007",
+      "runId": "RUN-007",
+      "type": "run.started",
+      "time": "2026-10-04T14:22:00Z",
+      "description": "Fixture run admitted"
+    },
+    {
+      "id": "EVENT-OBSERVED-007",
+      "taskId": "TASK-007",
+      "runId": "RUN-007",
+      "type": "task.failed",
+      "time": "2026-10-04T14:23:35Z",
+      "description": "Scripted fixture inspection refused: required evidence is unavailable."
+    },
+    {
+      "id": "EVENT-START-008",
+      "taskId": "TASK-008",
+      "runId": "RUN-008",
+      "type": "run.started",
+      "time": "2026-10-04T14:24:00Z",
+      "description": "Fixture run admitted"
+    },
+    {
+      "id": "EVENT-OBSERVED-008",
+      "taskId": "TASK-008",
+      "runId": "RUN-008",
+      "type": "task.done",
+      "time": "2026-10-04T14:25:35Z",
+      "description": "Fixture review completed and evidence recorded."
     }
   ],
   "usage": [
@@ -96,199 +956,73 @@
       "id": "USAGE-001",
       "runId": "RUN-001",
       "tokens": 7791,
-      "cost": 0.015581999999999999
+      "inputTokens": 5843,
+      "outputTokens": 1948,
+      "cost": 0.015581999999999999,
+      "time": "2026-10-04T14:11:15Z"
     },
     {
       "id": "USAGE-002",
       "runId": "RUN-002",
       "tokens": 5451,
-      "cost": 0.010902
+      "inputTokens": 4088,
+      "outputTokens": 1363,
+      "cost": 0.010902,
+      "time": "2026-10-04T14:13:15Z"
     },
     {
       "id": "USAGE-003",
       "runId": "RUN-003",
       "tokens": 3812,
-      "cost": 0.007624
+      "inputTokens": 2859,
+      "outputTokens": 953,
+      "cost": 0.007624,
+      "time": "2026-10-04T14:15:15Z"
     },
     {
       "id": "USAGE-004",
       "runId": "RUN-004",
       "tokens": 3646,
-      "cost": 0.007292
+      "inputTokens": 2734,
+      "outputTokens": 912,
+      "cost": 0.007292,
+      "time": "2026-10-04T14:17:15Z"
     },
     {
       "id": "USAGE-005",
       "runId": "RUN-005",
       "tokens": 6014,
-      "cost": 0.012027999999999999
+      "inputTokens": 4510,
+      "outputTokens": 1504,
+      "cost": 0.012027999999999999,
+      "time": "2026-10-04T14:19:15Z"
     },
     {
       "id": "USAGE-006",
       "runId": "RUN-006",
       "tokens": 3335,
-      "cost": 0.00667
+      "inputTokens": 2501,
+      "outputTokens": 834,
+      "cost": 0.00667,
+      "time": "2026-10-04T14:21:15Z"
     },
     {
       "id": "USAGE-007",
       "runId": "RUN-007",
       "tokens": 4156,
-      "cost": 0.008312
+      "inputTokens": 3117,
+      "outputTokens": 1039,
+      "cost": 0.008312,
+      "time": "2026-10-04T14:23:15Z"
     },
     {
       "id": "USAGE-008",
       "runId": "RUN-008",
       "tokens": 11467,
-      "cost": 0.022934
-    }
-  ],
-  "version": "operations/v1",
-  "generator": "parallax/v1",
-  "seed": 4421,
-  "clock": "2026-10-04T14:30:00Z",
-  "tasks": [
-    {
-      "id": "TASK-001",
-      "runId": "RUN-001",
-      "sessionId": "SESSION-001",
-      "traceId": "TRACE-001",
-      "usageId": "USAGE-001",
-      "title": "Review gateway permission boundaries",
-      "owner": "Adaline",
-      "status": "running",
-      "tokens": 7791,
-      "cost": 0.015581999999999999,
-      "started": "2026-10-04T14:10:00Z",
-      "logs": [
-        "Fixture context admitted",
-        "Reviewing controlled presentation input",
-        "Scripted outcome: running"
-      ]
-    },
-    {
-      "id": "TASK-002",
-      "runId": "RUN-002",
-      "sessionId": "SESSION-002",
-      "traceId": "TRACE-002",
-      "usageId": "USAGE-002",
-      "title": "Build deterministic fixture contracts",
-      "owner": "Ashtyn",
-      "status": "done",
-      "tokens": 5451,
-      "cost": 0.010902,
-      "started": "2026-10-04T14:12:00Z",
-      "logs": [
-        "Fixture context admitted",
-        "Reviewing controlled presentation input",
-        "Scripted outcome: done"
-      ]
-    },
-    {
-      "id": "TASK-003",
-      "runId": "RUN-003",
-      "sessionId": "SESSION-003",
-      "traceId": "TRACE-003",
-      "usageId": "USAGE-003",
-      "title": "Inspect telemetry sampling drift",
-      "owner": "Della",
-      "status": "blocked",
-      "tokens": 3812,
-      "cost": 0.007624,
-      "started": "2026-10-04T14:14:00Z",
-      "logs": [
-        "Fixture context admitted",
-        "Reviewing controlled presentation input",
-        "Scripted outcome: blocked"
-      ]
-    },
-    {
-      "id": "TASK-004",
-      "runId": "RUN-004",
-      "sessionId": "SESSION-004",
-      "traceId": "TRACE-004",
-      "usageId": "USAGE-004",
-      "title": "Validate plugin bundle admission",
-      "owner": "Barry",
-      "status": "done",
-      "tokens": 3646,
-      "cost": 0.007292,
-      "started": "2026-10-04T14:16:00Z",
-      "logs": [
-        "Fixture context admitted",
-        "Reviewing controlled presentation input",
-        "Scripted outcome: done"
-      ]
-    },
-    {
-      "id": "TASK-005",
-      "runId": "RUN-005",
-      "sessionId": "SESSION-005",
-      "traceId": "TRACE-005",
-      "usageId": "USAGE-005",
-      "title": "Reconcile deployment readiness",
-      "owner": "Amber",
-      "status": "queued",
-      "tokens": 6014,
-      "cost": 0.012027999999999999,
-      "started": "2026-10-04T14:18:00Z",
-      "logs": [
-        "Fixture context admitted",
-        "Reviewing controlled presentation input",
-        "Scripted outcome: queued"
-      ]
-    },
-    {
-      "id": "TASK-006",
-      "runId": "RUN-006",
-      "sessionId": "SESSION-006",
-      "traceId": "TRACE-006",
-      "usageId": "USAGE-006",
-      "title": "Document account role provenance",
-      "owner": "Estelle",
-      "status": "running",
-      "tokens": 3335,
-      "cost": 0.00667,
-      "started": "2026-10-04T14:20:00Z",
-      "logs": [
-        "Fixture context admitted",
-        "Reviewing controlled presentation input",
-        "Scripted outcome: running"
-      ]
-    },
-    {
-      "id": "TASK-007",
-      "runId": "RUN-007",
-      "sessionId": "SESSION-007",
-      "traceId": "TRACE-007",
-      "usageId": "USAGE-007",
-      "title": "Audit workflow retry thresholds",
-      "owner": "Karley",
-      "status": "failed",
-      "tokens": 4156,
-      "cost": 0.008312,
-      "started": "2026-10-04T14:22:00Z",
-      "logs": [
-        "Fixture context admitted",
-        "Reviewing controlled presentation input",
-        "Scripted outcome: failed"
-      ]
-    },
-    {
-      "id": "TASK-008",
-      "runId": "RUN-008",
-      "sessionId": "SESSION-008",
-      "traceId": "TRACE-008",
-      "usageId": "USAGE-008",
-      "title": "Capture responsive dashboard evidence",
-      "owner": "Rocky",
-      "status": "done",
-      "tokens": 11467,
+      "inputTokens": 8600,
+      "outputTokens": 2867,
       "cost": 0.022934,
-      "started": "2026-10-04T14:24:00Z",
-      "logs": [
-        "Fixture context admitted",
-        "Reviewing controlled presentation input",
-        "Scripted outcome: done"
-      ]
+      "time": "2026-10-04T14:25:15Z"
     }
   ]
 }

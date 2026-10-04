@@ -37,18 +37,23 @@ func TestFixtureJoins(t *testing.T) {
 	}
 }
 func TestBundledFixtureFreshness(t *testing.T) {
-	b, err := os.ReadFile("../../frontend/src/fixtures/operations.json")
-	if err != nil {
-		t.Fatal(err)
-	}
-	var bundled Scenario
-	if err = json.Unmarshal(b, &bundled); err != nil {
-		t.Fatal(err)
-	}
-	a, _ := json.Marshal(Generate())
-	c, _ := json.Marshal(bundled)
-	if string(a) != string(c) {
-		t.Fatal("bundled JSON differs from generator: run make fixtures")
+	for _, profile := range []struct {
+		file  string
+		count int
+	}{{"operations.json", 8}, {"operations-large.json", 80}} {
+		b, err := os.ReadFile("../../frontend/src/fixtures/" + profile.file)
+		if err != nil {
+			t.Fatal(err)
+		}
+		var bundled Scenario
+		if err = json.Unmarshal(b, &bundled); err != nil {
+			t.Fatal(err)
+		}
+		a, _ := json.Marshal(GenerateProfile(profile.count))
+		c, _ := json.Marshal(bundled)
+		if string(a) != string(c) {
+			t.Fatal("bundled JSON differs from generator: run make fixtures")
+		}
 	}
 }
 func TestLargeProfile(t *testing.T) {
@@ -64,5 +69,35 @@ func TestLargeProfile(t *testing.T) {
 			t.Fatal("incoherent large profile")
 		}
 		ids[task.RunID] = true
+	}
+}
+func TestCompleteOperationsGraph(t *testing.T) {
+	for _, count := range []int{8, 80, 1000} {
+		s := GenerateProfile(count)
+		if err := Validate(s); err != nil {
+			t.Fatalf("profile%d: %v", count, err)
+		}
+		a, _ := json.Marshal(s)
+		b, _ := json.Marshal(GenerateProfile(count))
+		if string(a) != string(b) {
+			t.Fatal("nondeterministic graph")
+		}
+	}
+}
+func TestGraphRejectsBrokenLinksAndFuture(t *testing.T) {
+	s := Generate()
+	s.ToolCalls[0].SpanID = "missing"
+	if Validate(s) == nil {
+		t.Fatal("missing span accepted")
+	}
+	s = Generate()
+	s.Messages[0].Time = "2027-01-01T00:00:00Z"
+	if Validate(s) == nil {
+		t.Fatal("future message accepted")
+	}
+	s = Generate()
+	s.Usage[0].OutputTokens++
+	if Validate(s) == nil {
+		t.Fatal("numeric mismatch accepted")
 	}
 }

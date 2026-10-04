@@ -2,7 +2,15 @@ import { Panel } from "@hollis-labs/kit-dashboard/widgets"
 import { Activity, Gauge } from "lucide-react"
 
 import { activityBuckets, type Observation } from "./timeBuckets"
-export function FixedActivity({ records, clock }: { records: Observation[]; clock: string }) {
+export function FixedActivity({
+  records,
+  clock,
+  showCalendar = true,
+}: {
+  records: Observation[]
+  clock: string
+  showCalendar?: boolean
+}) {
   const { hours: bins, days } = activityBuckets(records, clock)
   return (
     <div className="fixed-activity">
@@ -28,22 +36,24 @@ export function FixedActivity({ records, clock }: { records: Observation[]; cloc
           </p>
         </div>
       </Panel>
-      <Panel title="Activity calendar" icon={<Activity className="size-4" />} meta="28 days">
-        <div className="example-body">
-          <div className="calendar" role="img" aria-label="Fixed-clock daily run counts">
-            {days.map((d) => (
-              <div
-                className={d.count ? "calendar-cell observed" : "calendar-cell"}
-                key={d.date}
-                title={`${d.date}: ${d.count} runs`}
-              >
-                {d.count || "·"}
-              </div>
-            ))}
+      {showCalendar && (
+        <Panel title="Activity calendar" icon={<Activity className="size-4" />} meta="28 days">
+          <div className="example-body">
+            <div className="calendar" role="img" aria-label="Fixed-clock daily run counts">
+              {days.map((d) => (
+                <div
+                  className={d.count ? "calendar-cell observed" : "calendar-cell"}
+                  key={d.date}
+                  title={`${d.date}: ${d.count} runs`}
+                >
+                  {d.count || "·"}
+                </div>
+              ))}
+            </div>
+            <p className="muted">{records.length} correlated fixture observations</p>
           </div>
-          <p className="muted">{records.length} correlated fixture observations</p>
-        </div>
-      </Panel>
+        </Panel>
+      )}
     </div>
   )
 }

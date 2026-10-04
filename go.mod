@@ -4,7 +4,7 @@ go 1.26.6
 
 require (
 	github.com/brianvoe/gofakeit/v7 v7.17.1
-	github.com/hollis-labs/chimera v0.0.0-20261004205355-30ff18630813
+	github.com/hollis-labs/chimera v0.0.0-20261004221620-c6485d234afe
 	github.com/hollis-labs/plugin-sdk v0.6.2-0.20261004032349-e4d8eef24b04
 )
 

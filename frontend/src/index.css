@@ -317,3 +317,80 @@ dd {
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 }
+.calendar-weeks {
+  display: grid;
+  grid-template-columns: repeat(16, minmax(0, 1fr));
+  gap: var(--spacing);
+}
+.calendar-week {
+  display: grid;
+  gap: var(--spacing);
+}
+.missing {
+  color: var(--color-fg-faint);
+  background: var(--color-bg);
+  border-style: dashed;
+}
+.day-series {
+  display: grid;
+  grid-template-columns: repeat(14, minmax(0, 1fr));
+  gap: var(--spacing);
+}
+.day-cell {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 2);
+  border: 1px solid var(--color-border);
+  padding: calc(var(--spacing) * 2);
+  min-width: 0;
+  font-size: var(--text-xs);
+}
+.day-cell strong {
+  overflow-wrap: anywhere;
+  font-family: var(--font-mono);
+}
+.tool-record {
+  display: grid;
+  gap: calc(var(--spacing) * 2);
+  padding: calc(var(--spacing) * 3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+.selection-band {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--spacing) * 3);
+  padding: calc(var(--spacing) * 3);
+  border: 1px solid var(--color-primary);
+  background: var(--color-bg-elevated);
+}
+.narrow .day-series,
+.tablet .day-series {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+@media (max-width: 48rem) {
+  .day-series {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+  .calendar-cell {
+    font-size: var(--text-caption);
+    padding: var(--spacing) 0;
+  }
+}
+
+.series-chart {
+  display: block;
+  width: 100%;
+  max-height: calc(var(--spacing) * 40);
+}
+.chart-bar {
+  fill: var(--color-accent);
+}
+.chart-gap {
+  fill: var(--color-fg-muted);
+  font-family: var(--font-mono);
+}
+.chart-baseline {
+  stroke: var(--color-border);
+}

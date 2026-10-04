@@ -18,8 +18,8 @@ func TestRealRegistryAndReviewedBundle(t *testing.T) {
 	if err := json.Unmarshal(w.Body.Bytes(), &r); err != nil {
 		t.Fatal(err)
 	}
-	if len(r.Contributions) != 2 {
-		t.Fatal("widget/panel missing")
+	if len(r.Contributions) != 4 || len(r.Contributions["slot"]) != 3 {
+		t.Fatal("widget/panel/presentation actions missing")
 	}
 	w = httptest.NewRecorder()
 	d.ServeHTTP(w, httptest.NewRequest("GET", r.Plugins["ops"].BundleURL, nil))

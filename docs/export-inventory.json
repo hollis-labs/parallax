@@ -2229,7 +2229,7 @@
     "entry": "./widgets",
     "name": "Sparkbars",
     "category": "runtime-export",
-    "coverage": "Parallax composition"
+    "coverage": "unreviewed"
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2261,7 +2261,7 @@
     "entry": "./widgets",
     "name": "BarList",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "Parallax composition"
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2285,7 +2285,7 @@
     "entry": "./widgets",
     "name": "CompositionBars",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "Parallax composition"
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2325,7 +2325,7 @@
     "entry": "./widgets",
     "name": "BarMeter",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "Parallax composition"
   },
   {
     "package": "@hollis-labs/kit-dashboard",
