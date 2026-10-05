@@ -105,7 +105,7 @@ test("built Storybook uses the same controlled fixed-clock records", async ({ pa
     "http://127.0.0.1:18542/iframe.html?id=operations-fixed-activity--populated&viewMode=story",
   )
   await expect(page.getByText("24-hour execution pulse")).toBeVisible()
-  await expect(page.getByText("8 observations")).toBeVisible()
+  await expect(page.getByText("8 recorded starts")).toBeVisible()
   await expect(page.getByText("Window ends 14:30 UTC")).toBeVisible()
 })
 

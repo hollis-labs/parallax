@@ -90,7 +90,7 @@ export function Comparison({
       open={open && !!detail}
       onOpenChange={setOpen}
       title="Comparison run detail"
-      description="Full fixed-clock snapshot; no business effects."
+      description={`Evidence through ${model.cutoff}; no business effects.`}
       trigger={
         <Button size="sm" disabled={!detail}>
           Open detail drawer

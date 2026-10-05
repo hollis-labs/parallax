@@ -1,6 +1,5 @@
-import fixture from "../fixtures/operations.json" with { type: "json" }
-import history from "../fixtures/operations-large.json" with { type: "json" }
-export type Dataset = typeof fixture
+import { projectDataset, type ResourceOverride, sourceDataset } from "../playback/model"
+export type Dataset = ReturnType<typeof projectDataset>
 export type Task = Dataset["tasks"][number]
 export type TaskView = Omit<Task, "owner"> & { owner: string | null }
 export const scenarios = [
@@ -29,19 +28,22 @@ export type ResourceState =
 export function normalizeScenario(value: string): ScenarioName {
   return scenarios.find((s) => s === value) ?? "populated"
 }
-export function operationsModel(name: string, query = "") {
+export function operationsModel(
+  name: string,
+  query = "",
+  review: { cutoff?: string; override?: ResourceOverride } = {},
+) {
   const scenario = normalizeScenario(name),
-    dataset: Dataset = scenario === "large" || scenario === "sparse" ? history : fixture
-  const resource: ResourceState = [
-    "loading",
-    "error",
-    "unavailable",
-    "permission-denied",
-    "degraded",
-    "empty",
-  ].includes(scenario)
-    ? (scenario as ResourceState)
-    : "ready"
+    source = sourceDataset(scenario),
+    dataset: Dataset = projectDataset(source, review.cutoff ?? source.clock)
+  const resource: ResourceState =
+    review.override && review.override !== "scenario"
+      ? review.override
+      : ["loading", "error", "unavailable", "permission-denied", "degraded", "empty"].includes(
+            scenario,
+          )
+        ? (scenario as ResourceState)
+        : "ready"
   const allTasks: TaskView[] = dataset.tasks.map((t, i) => ({
     ...t,
     owner: scenario === "missing-metadata" ? null : t.owner,
@@ -65,6 +67,8 @@ export function operationsModel(name: string, query = "") {
   return {
     scenario,
     dataset,
+    referenceClock: source.clock,
+    cutoff: dataset.clock,
     resource,
     accessible,
     allTasks,
@@ -75,8 +79,12 @@ export function operationsModel(name: string, query = "") {
       count: accessible ? tasks.length : null,
       done: accessible ? tasks.filter((t) => t.status === "done").length : null,
       active: accessible ? runs.filter((r) => r.status === "running").length : null,
-      tokens: accessible ? usage.reduce((s, u) => s + u.tokens, 0) : null,
-      cost: accessible ? usage.reduce((s, u) => s + u.cost, 0) : null,
+      tokens:
+        accessible && (!runs.length || usage.length)
+          ? usage.reduce((s, u) => s + u.tokens, 0)
+          : null,
+      cost:
+        accessible && (!runs.length || usage.length) ? usage.reduce((s, u) => s + u.cost, 0) : null,
     },
   }
 }
@@ -88,6 +96,7 @@ export function runDetail(model: OperationsModel, taskId: string | null) {
     run = d.runs.find((r) => r.id === task.runId)
   if (!run) return null
   return {
+    cutoff: model.cutoff,
     task,
     run,
     session: d.sessions.find((s) => s.id === run.sessionId),

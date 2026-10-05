@@ -21,11 +21,21 @@ const diagnosticSchema = {
 }
 export function EvidenceViews({ model }: { model: InspectionModel }) {
   const observe = (id: string) => model.observations[id]
+  if (model.outOfCoverage)
+    return (
+      <EmptyState
+        variant="empty"
+        title="Observation coverage unavailable"
+        description="Selected cutoff lies outside this fixture observation window. No chart or health receipt is available."
+      />
+    )
   return (
     <>
       <p className="muted">
         Resource timestamps are last successful authored fixture receipts. Refresh does not change
-        them. Source: operations/v2 records; no live telemetry or provider probing.
+        them. At earlier cutoffs, series and counts are retrospective projections of recorded
+        evidence; future health/diagnostic receipts are withheld. Source: operations/v2 records; no
+        live telemetry or provider probing.
       </p>
       <div className="admin-columns">
         <HealthSummary
@@ -57,7 +67,7 @@ export function EvidenceViews({ model }: { model: InspectionModel }) {
               value: model.tokens,
               unit: "count",
               kind: "counter",
-              observation: observe("stats"),
+              observation: model.projections.stats,
             },
             {
               id: "runs",
@@ -65,7 +75,7 @@ export function EvidenceViews({ model }: { model: InspectionModel }) {
               value: model.accessible ? model.runs.length : null,
               unit: "count",
               kind: "gauge",
-              observation: observe("stats"),
+              observation: model.projections.stats,
             },
           ]}
         />
@@ -78,7 +88,7 @@ export function EvidenceViews({ model }: { model: InspectionModel }) {
         requested={{ from: model.artifact.from, to: model.cutoff, limit: 16 }}
         bounds={{ maxPoints: 16, maxWindowSeconds: 86400 }}
         truncated={model.state === "truncated"}
-        observation={observe("token-series")}
+        observation={model.projections.token}
       />
       <SampleSeriesView
         label="Recorded run durations"
@@ -88,7 +98,7 @@ export function EvidenceViews({ model }: { model: InspectionModel }) {
         requested={{ from: model.artifact.from, to: model.cutoff, limit: 16 }}
         bounds={{ maxPoints: 16, maxWindowSeconds: 86400 }}
         truncated={false}
-        observation={observe("duration-series")}
+        observation={model.projections.duration}
       />
       <DiagnosticPanel
         label="Bounded failure diagnostics"
@@ -108,7 +118,7 @@ export function LogList({
   onSelect: (runId: string, spanId: string) => void
 }) {
   return (
-    <ObservationStatus label="Recorded log search" observation={model.observations.diagnostics}>
+    <ObservationStatus label="Recorded log search" observation={model.projections.logs}>
       {model.logs.length ? (
         <div className="inspection-records">
           {model.logs.map((log) => (
@@ -156,10 +166,7 @@ export function TraceInspection({
 }) {
   const detail = traceDetail(model, runId, spanId)
   return (
-    <ObservationStatus
-      label="Recorded trace inspection"
-      observation={model.observations.diagnostics}
-    >
+    <ObservationStatus label="Recorded trace inspection" observation={model.projections.runs}>
       <label>
         Trace run
         <select aria-label="Trace run" value={runId ?? ""} onChange={(e) => onRun(e.target.value)}>
@@ -176,7 +183,9 @@ export function TraceInspection({
               {detail.trace?.id} · {detail.run.id} · {detail.session?.id}
             </strong>
             <Button onClick={() => onInspect(detail.run.taskId)}>
-              Inspect related run (full snapshot)
+              {model.cutoff === model.artifact.clock
+                ? "Inspect related run (full snapshot)"
+                : "Inspect related run (current cutoff)"}
             </Button>
           </div>
           <div className="admin-columns">
@@ -265,7 +274,7 @@ export function UsageInspection({
   onSelect: (runId: string) => void
 }) {
   return (
-    <ObservationStatus label="Recorded usage inspection" observation={model.observations.stats}>
+    <ObservationStatus label="Recorded usage inspection" observation={model.projections.usage}>
       <div className="notice">
         Cost is an authored USD fixture estimate from the same usage records. Provider/model
         attribution is unavailable; this is not billed usage. Tokens are counts, not throughput.

@@ -178,6 +178,7 @@ export function ActivityView({
           <FixedActivity
             records={model.runs.map((r) => ({ ...r, tokens: 0 }))}
             clock={model.dataset.clock}
+            observedSince={model.dataset.observedSince}
             showCalendar={false}
           />
           <RunList model={model} onSelect={onSelect} query={query} onQuery={onQuery} />
@@ -379,6 +380,7 @@ export function RunDetailBody({
 }) {
   return (
     <div className="example-body">
+      <p className="muted">Evidence through {detail.cutoff} · fixed recorded frame</p>
       <h3>{detail.task.title}</h3>
       <p>{detail.task.narrative}</p>
       <dl>
@@ -400,8 +402,9 @@ export function RunDetailBody({
         </dd>
         <dt>Usage</dt>
         <dd>
-          {detail.usage?.id ?? "Unavailable"} · {detail.usage?.tokens.toLocaleString()} tokens · $
-          {detail.usage?.cost.toFixed(3)}
+          {detail.usage
+            ? `${detail.usage.id} · ${detail.usage.tokens.toLocaleString()} tokens · $${detail.usage.cost.toFixed(3)}`
+            : "Usage not observed through this cutoff"}
         </dd>
       </dl>
       <h3>Session messages</h3>
@@ -421,10 +424,10 @@ export function RunDetailBody({
           </strong>
           <StatusBadge status={t.status} />
           <p className="muted">
-            {t.started.slice(11, 19)}–{t.finished.slice(11, 19)} UTC · {t.spanId}
+            {t.started.slice(11, 19)}–{t.finished?.slice(11, 19) ?? "not observed"} UTC · {t.spanId}
           </p>
           <p>Input: {t.input}</p>
-          <p>Fixture output: {t.output}</p>
+          <p>Fixture output: {t.output ?? "Not observed through this cutoff"}</p>
           <Button variant="outline" onClick={() => onIntent("Run tool", t.id)}>
             Inspect tool intent
           </Button>

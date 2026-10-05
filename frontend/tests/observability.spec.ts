@@ -112,7 +112,7 @@ test("manual timeline hides future terminal outcomes and retires held refresh", 
   expect(detail?.tools[0].status).toBe("running")
   expect(detail?.tools[0].output).toBeNull()
   expect(detail?.usage).toBeUndefined()
-  expect(before.health).toBe("healthy")
+  expect(before.health).toBe("unknown")
   const after = traceDetail(
     inspectionModel("normal", "", "all", "2026-10-04T14:15:30Z"),
     "RUN-003",

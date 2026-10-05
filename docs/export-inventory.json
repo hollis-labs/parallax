@@ -756,6 +756,7 @@
       "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Operations.stories.tsx",
       "frontend/src/operations/Views.tsx",
+      "frontend/src/playback/Controls.tsx",
       "frontend/src/voice/Lab.tsx"
     ]
   },

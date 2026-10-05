@@ -6,6 +6,7 @@ import type {
 } from "@hollis-labs/kit-observe"
 import artifact from "../fixtures/observations.json" with { type: "json" }
 import operations from "../fixtures/operations.json" with { type: "json" }
+import { projectDataset } from "../playback/model"
 export const observationFixture = artifact
 export const inspectionStates = [
   "normal",
@@ -33,10 +34,15 @@ export const timelineTimes = [
     artifact.clock,
   ]),
 ].sort()
-export function resourceObservation(id: string, state: InspectionState): ObservationState {
+export function resourceObservation(
+  id: string,
+  state: InspectionState,
+  cutoff = artifact.clock,
+): ObservationState {
   const evidence = artifact.resources.find((r) => r.id === id)
   if (!evidence) throw new Error("Undeclared fixture resource")
-  const noEvidence = ["loading", "error", "missing", "denied"].includes(state)
+  const noEvidence =
+    ["loading", "error", "missing", "denied"].includes(state) || evidence.observedAt > cutoff
   return {
     phase:
       state === "loading" || state === "refresh"
@@ -45,7 +51,7 @@ export function resourceObservation(id: string, state: InspectionState): Observa
           ? "error"
           : "ready",
     observedAt: noEvidence ? undefined : evidence.observedAt,
-    nowMs: Date.parse(artifact.clock) + (state === "stale" ? 300000 : 0),
+    nowMs: Date.parse(cutoff) + (state === "stale" ? 300000 : 0),
     staleAfterMs: evidence.staleAfterMs,
     ...(state === "error" || state === "refresh-error"
       ? { error: "Scripted observation read failure; no request was made" }
@@ -83,26 +89,18 @@ export function inspectionModel(
   level = "all",
   cutoff = artifact.clock,
   overrides: Record<string, InspectionState> = {},
+  allowOutsideCoverage = false,
+  sourceProfile = operations.profile,
 ) {
-  const accessible = !["loading", "error", "missing", "denied"].includes(state),
+  const sourceCompatible = sourceProfile === operations.profile
+  const outOfCoverage = !sourceCompatible || cutoff < artifact.from || cutoff > artifact.clock
+  const accessible = !outOfCoverage && !["loading", "error", "missing", "denied"].includes(state),
     empty = state === "empty"
   const time = Date.parse(cutoff)
-  if (
-    !Number.isFinite(time) ||
-    time < Date.parse(artifact.from) ||
-    time > Date.parse(artifact.clock)
-  )
+  if (!Number.isFinite(time) || (!allowOutsideCoverage && outOfCoverage))
     throw new Error("Invalid bounded review cutoff")
-  const runs =
-    accessible && !empty
-      ? operations.runs
-          .filter((r) => r.started <= cutoff)
-          .map((r) => ({
-            ...r,
-            status: r.finished && r.finished <= cutoff ? r.status : "running",
-            finished: r.finished && r.finished <= cutoff ? r.finished : null,
-          }))
-      : []
+  const projected = accessible ? projectDataset(operations, cutoff) : null
+  const runs = !empty ? (projected?.runs ?? []) : []
   const runIds = new Set(runs.map((r) => r.id)),
     usage =
       accessible && !empty
@@ -139,7 +137,7 @@ export function inspectionModel(
   const data: DiagnosticValue =
     state === "invalid-diagnostic"
       ? { fixture: true, operationsVersion: operations.version, failedRunIds: ["RUN-NOT-FOUND"] }
-      : !accessible
+      : !accessible || artifact.resources.find((r) => r.id === "diagnostics")!.observedAt > cutoff
         ? null
         : {
             fixture: true,
@@ -147,16 +145,65 @@ export function inspectionModel(
             failedRunIds: runs.filter((r) => r.status === "failed").map((r) => r.id),
           }
   const health: HealthStatus =
-    !accessible || state === "unknown" || empty
+    !accessible ||
+    state === "unknown" ||
+    empty ||
+    artifact.resources.find((r) => r.id === "health")!.observedAt > cutoff
       ? "unknown"
       : state === "degraded" || runs.some((r) => r.status === "failed")
         ? "degraded"
         : "healthy"
+  const derived = (at: string | undefined, resource: string): ObservationState => {
+    const receipt = resourceObservation(
+      resource,
+      outOfCoverage ? "missing" : (overrides[resource] ?? state),
+      cutoff,
+    )
+    if (cutoff === artifact.clock) return receipt
+    return { ...receipt, observedAt: accessible ? at : undefined }
+  }
+  const visibleLogs = operations.logs.filter((l) => l.time <= cutoff)
+  const projections = {
+    logs: derived(
+      visibleLogs
+        .map((l) => l.time)
+        .sort()
+        .at(-1),
+      "diagnostics",
+    ),
+    runs: derived(
+      runs
+        .map((r) => r.started)
+        .sort()
+        .at(-1),
+      "diagnostics",
+    ),
+    usage: derived(usage.at(-1)?.time, "stats"),
+    stats: derived(
+      [...runs.map((r) => r.started), ...usage.map((u) => u.time)].sort().at(-1),
+      "stats",
+    ),
+    token: derived(series.at(-1)?.at, "token-series"),
+    duration: derived(
+      runs
+        .map((r) => r.finished)
+        .filter((t): t is string => !!t)
+        .sort()
+        .at(-1),
+      "duration-series",
+    ),
+  }
   return {
+    projections,
     observations: Object.fromEntries(
-      artifact.resources.map((r) => [r.id, resourceObservation(r.id, overrides[r.id] ?? state)]),
+      artifact.resources.map((r) => [
+        r.id,
+        resourceObservation(r.id, outOfCoverage ? "missing" : (overrides[r.id] ?? state), cutoff),
+      ]),
     ),
     state,
+    outOfCoverage,
+    sourceCompatible,
     accessible,
     empty,
     cutoff,
@@ -167,7 +214,13 @@ export function inspectionModel(
     duration,
     health,
     diagnostic: data,
-    validation: validateDiagnostic(data),
+    validation:
+      data === null
+        ? {
+            state: "unsupported" as const,
+            messages: ["Diagnostic receipt not observed through this cutoff"],
+          }
+        : validateDiagnostic(data),
     tokens: accessible ? usage.reduce((s, u) => s + u.tokens, 0) : null,
     cost: accessible ? usage.reduce((s, u) => s + u.cost, 0) : null,
     dataset: operations,

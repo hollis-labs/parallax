@@ -1,6 +1,7 @@
 import { Button } from "@hollis-labs/design-components"
 import { useEffect, useRef, useState } from "react"
 import { createAdminPresentationSession } from "../chimera/admin-session"
+import type { ResourceOverride } from "../playback/model"
 import { type InspectionState, inspectionModel, inspectionStates, timelineTimes } from "./model"
 import { EvidenceViews, LogList, TraceInspection, UsageInspection } from "./Views"
 export function ObservationLab({
@@ -8,17 +9,26 @@ export function ObservationLab({
   onReset,
   initialState = "normal",
   initialView = "Evidence",
+  externalReview,
 }: {
   onInspect: (taskId: string) => void
   onReset: () => void
   initialState?: InspectionState
   initialView?: string
+  externalReview?: {
+    sourceProfile: string
+    signal?: AbortSignal
+    cutoff: string
+    epoch: number
+    override: ResourceOverride
+    onSeek: (cutoff: string) => void
+  }
 }) {
   const [state, setState] = useState<InspectionState>(initialState),
     [view, setView] = useState(initialView),
     [query, setQuery] = useState(""),
     [level, setLevel] = useState("all"),
-    [position, setPosition] = useState(timelineTimes.length - 1),
+    [localPosition, setLocalPosition] = useState(timelineTimes.length - 1),
     [runId, setRun] = useState<string | null>(null),
     [spanId, setSpan] = useState<string | null>(null)
   const session = useRef<ReturnType<typeof createAdminPresentationSession> | null>(null),
@@ -63,7 +73,55 @@ export function ObservationLab({
     setResources({})
     onReset()
   }
-  const model = inspectionModel(state, query, level, timelineTimes[position], resources)
+  const position = externalReview
+    ? Math.max(
+        0,
+        timelineTimes.reduce((last, t, index) => (t <= externalReview.cutoff ? index : last), -1),
+      )
+    : localPosition
+  function setPosition(next: number) {
+    setLocalPosition(next)
+    externalReview?.onSeek(timelineTimes[next])
+  }
+  const externalKey = externalReview
+    ? `${externalReview.sourceProfile}/${externalReview.cutoff}/${externalReview.epoch}/${externalReview.override}`
+    : "standalone"
+  useEffect(() => {
+    epoch.current++
+    session.current?.reset("observations/v1", externalKey)
+    setRun(null)
+    setSpan(null)
+    setRefreshNote("")
+    setResources({})
+  }, [externalKey])
+  const effectiveState =
+    externalReview?.override && externalReview.override !== "scenario"
+      ? externalReview.override === "unavailable"
+        ? "missing"
+        : externalReview.override
+      : state
+  const retirementSignal = externalReview?.signal
+  useEffect(() => {
+    const cancel = () => {
+      epoch.current++
+      session.current?.reset("observations/v1", `retired/${epoch.current}`)
+      setRefreshNote("")
+      setResources({})
+      setRun(null)
+      setSpan(null)
+    }
+    retirementSignal?.addEventListener("abort", cancel, { once: true })
+    return () => retirementSignal?.removeEventListener("abort", cancel)
+  }, [retirementSignal])
+  const model = inspectionModel(
+    effectiveState,
+    query,
+    level,
+    externalReview?.cutoff ?? timelineTimes[position],
+    resources,
+    !!externalReview,
+    externalReview?.sourceProfile,
+  )
   return (
     <section className="administration-lab observation-lab" aria-label="Observation fixture lab">
       <div className="communication-controls">
@@ -84,6 +142,12 @@ export function ObservationLab({
           {model.artifact.seed} · snapshot clock {model.artifact.clock}
         </span>
       </div>
+      {model.outOfCoverage && (
+        <p role="status">
+          Observation fixture unavailable for this source/cutoff: coverage {model.artifact.from}–
+          {model.artifact.clock}; no historical receipt is synthesized.
+        </p>
+      )}
       {state === "stale" && (
         <p className="muted">
           Freshness review clock: {new Date(model.observations.health.nowMs).toISOString()} · fixed

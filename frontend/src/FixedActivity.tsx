@@ -6,10 +6,12 @@ export function FixedActivity({
   records,
   clock,
   showCalendar = true,
+  observedSince,
 }: {
   records: Observation[]
   clock: string
   showCalendar?: boolean
+  observedSince?: string
 }) {
   const { hours: bins, days } = activityBuckets(records, clock)
   return (
@@ -17,22 +19,31 @@ export function FixedActivity({
       <Panel
         title="24-hour execution pulse"
         icon={<Gauge className="size-4" />}
-        meta={`${bins.reduce((s, b) => s + b.count, 0)} observations`}
+        meta={`${bins.reduce((s, b) => s + b.count, 0)} recorded starts`}
       >
         <div className="example-body">
           <div className="pulse" role="img" aria-label="Fixed-clock hourly run counts">
             {bins.map((b) => (
               <div
                 key={b.label}
-                title={`${b.label} UTC: ${b.count} runs`}
-                className={b.count ? "pulse-cell observed" : "pulse-cell"}
+                title={`${b.label} UTC: ${observedSince && b.from < Date.parse(observedSince) ? "unavailable full-hour coverage" : `${b.count} runs`}`}
+                className={
+                  observedSince && b.from < Date.parse(observedSince)
+                    ? "pulse-cell"
+                    : b.count
+                      ? "pulse-cell observed"
+                      : "pulse-cell"
+                }
               >
-                <span>{b.count || "·"}</span>
+                <span>
+                  {observedSince && b.from < Date.parse(observedSince) ? "—" : b.count || "·"}
+                </span>
               </div>
             ))}
           </div>
           <p className="muted">
             Window ends {clock.slice(11, 16)} UTC · counts derive from run start times
+            {observedSince && " · — means full-hour coverage is unavailable"}
           </p>
         </div>
       </Panel>

@@ -6,6 +6,8 @@ export function activityBuckets(records: Observation[], clock: string) {
     const from = now - (24 - i) * hour,
       to = from + hour
     return {
+      from,
+      to,
       label: new Date(to).toISOString().slice(11, 16),
       count: records.filter((r) => Date.parse(r.started) > from && Date.parse(r.started) <= to)
         .length,

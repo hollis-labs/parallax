@@ -8,18 +8,7 @@ import {
   usePluginSlots,
   WidgetRenderer,
 } from "@hollis-labs/plugin-host-ui/react"
-import {
-  Activity,
-  Compass,
-  Gauge,
-  Layers,
-  Mail,
-  MessageSquare,
-  Play,
-  RotateCcw,
-  Users,
-  X,
-} from "lucide-react"
+import { Activity, Compass, Gauge, Layers, Mail, MessageSquare, Users, X } from "lucide-react"
 import { lazy, Suspense, useEffect, useRef, useState, useSyncExternalStore } from "react"
 import { AccountLab } from "./administration/Account"
 import { AdminLab } from "./administration/Admin"
@@ -37,6 +26,8 @@ import {
   RunInspection,
   UsageView,
 } from "./operations/Views"
+import { PlaybackControls } from "./playback/Controls"
+import { usePlayback } from "./playback/usePlayback"
 
 const VoiceLab = lazy(() => import("./voice/Lab"))
 const DeveloperLab = lazy(() => import("./developer/Lab"))
@@ -193,8 +184,6 @@ export function App() {
     [theme, setTheme] = useState(params.get("theme") ?? "p4-white"),
     [mode, setMode] = useState(params.get("mode") ?? "dark"),
     [viewport, setViewport] = useState(params.get("viewport") ?? "full"),
-    [tick, setTick] = useState(0),
-    [playing, setPlaying] = useState(false),
     [selectedId, setSelectedId] = useState<string | null>(null),
     [detailOpen, setDetailOpen] = useState(false),
     [query, setQuery] = useState(""),
@@ -233,20 +222,29 @@ export function App() {
     applyTheme(theme as Parameters<typeof applyTheme>[0])
     document.documentElement.setAttribute("data-mode", mode)
   }, [theme, mode])
-  useEffect(() => {
-    if (!playing) return
-    const timer = setInterval(() => setTick((t) => Math.min(t + 1, 6)), 1000)
-    return () => clearInterval(timer)
-  }, [playing])
-  useEffect(() => {
-    if (tick === 6) setPlaying(false)
-  }, [tick])
   const isVoice = page === "Voice"
   const isDeveloper = page === "Developer"
   const isObservation = page === "Observability"
   const isAdministration = page === "Administration" || page === "Account"
   const isCommunication = ["Contacts", "Messages", "Chat"].includes(page)
-  const model = operationsModel(scenario, query),
+  const review = usePlayback(scenario, undefined, () => {
+    pluginHost?.resetContext({ ...pluginHost.context.getSnapshot(), retiredFrame: true })
+    setIntent("")
+    setDraft("")
+  })
+  const isPlaybackView = [
+    "Activity",
+    "Mission Control",
+    "Usage",
+    "Examples",
+    "Layouts",
+    "Observability",
+  ].includes(page)
+  const model = operationsModel(
+      scenario,
+      query,
+      isPlaybackView ? { cutoff: review.cutoff, override: review.override } : {},
+    ),
     detail = runDetail(model, selectedId)
   const count = model.stats.count,
     done = model.stats.done
@@ -257,7 +255,9 @@ export function App() {
       scenario,
       query,
       resource: model.resource,
-      contextId: `${model.dataset.version}/${model.dataset.profile}/${scenario}`,
+      cutoff: model.cutoff,
+      playbackEpoch: review.epoch,
+      contextId: `${model.dataset.version}/${model.dataset.profile}/${scenario}/${model.cutoff}/${review.override}`,
     })
   }, [
     pluginHost,
@@ -268,6 +268,9 @@ export function App() {
     model.resource,
     model.dataset.version,
     model.dataset.profile,
+    model.cutoff,
+    review.epoch,
+    review.override,
   ])
   const changeScenario = (value: string) => {
     setScenario(normalizeScenario(value))
@@ -276,8 +279,7 @@ export function App() {
     setIntent("")
     setDraft("")
     setQuery("")
-    setTick(0)
-    setPlaying(false)
+    review.snapshot()
   }
   useEffect(() => {
     history.replaceState(
@@ -296,7 +298,25 @@ export function App() {
     window.addEventListener("keydown", close)
     return () => window.removeEventListener("keydown", close)
   }, [])
-  const clock = new Date(Date.parse(model.dataset.clock) + tick * 60000).toISOString().slice(11, 19)
+  const selectionVisible =
+    !!selectedId && model.allTasks.some((t) => t.id === selectedId) && model.accessible
+  const playbackContext = `${model.cutoff}/${review.epoch}/${review.override}`
+  const retiredContext = useRef("")
+  useEffect(() => {
+    if (!selectionVisible) {
+      setSelectedId(null)
+      setDetailOpen(false)
+    }
+    if (retiredContext.current !== playbackContext) {
+      retiredContext.current = playbackContext
+      setIntent("")
+      setDraft("")
+    }
+  }, [playbackContext, selectionVisible])
+  useEffect(() => {
+    if (!isPlaybackView && review.playing) review.seek(review.index)
+  }, [isPlaybackView, review.playing, review.seek, review.index])
+  const clock = model.dataset.clock.slice(11, 19)
   const emit = (action: string, id: string) =>
     setIntent(
       `${action} → ${id}. ${scenario === "degraded" ? "Scripted refusal: capacity review required." : "Simulated intent captured; fixture records unchanged."} ${clock} UTC`,
@@ -427,25 +447,27 @@ export function App() {
               </select>
             </label>
             <span className="clock">{clock} UTC</span>
-            <Button
-              size="sm"
-              variant="ghost"
-              aria-label="Preview clock"
-              onClick={() => setPlaying(!playing)}
-            >
-              <Play className="size-4" />
-            </Button>
-            <Button
-              size="sm"
-              variant="ghost"
-              aria-label="Reset clock"
-              onClick={() => {
-                setTick(0)
-                setPlaying(false)
-              }}
-            >
-              <RotateCcw className="size-4" />
-            </Button>
+            {isPlaybackView ? (
+              <details className="playback-review">
+                <summary>Fixture timeline review</summary>
+                <PlaybackControls
+                  review={{
+                    ...review,
+                    reset: () => {
+                      review.reset()
+                      setSelectedId(null)
+                      setQuery("")
+                      setDetailOpen(false)
+                    },
+                  }}
+                />
+              </details>
+            ) : (
+              <p className="snapshot-scope">
+                Full-snapshot review · {model.referenceClock}; other families are not reconstructed
+                by operation playback.
+              </p>
+            )}
           </div>
         </div>
       }
@@ -538,7 +560,19 @@ export function App() {
                     <DeveloperLab key={scenario} onInspect={select} onIntent={setIntent} />
                   </Suspense>
                 ) : page === "Observability" ? (
-                  <ObservationLab key={scenario} onInspect={select} onReset={() => setIntent("")} />
+                  <ObservationLab
+                    key={scenario}
+                    onInspect={select}
+                    onReset={() => setIntent("")}
+                    externalReview={{
+                      sourceProfile: review.source.profile,
+                      signal: review.signal,
+                      cutoff: review.cutoff,
+                      epoch: review.epoch,
+                      override: review.override,
+                      onSeek: (cutoff) => review.seek(review.frames.indexOf(cutoff)),
+                    }}
+                  />
                 ) : page === "Administration" ? (
                   <AdminLab key={scenario} onIntent={emit} onReset={() => setIntent("")} />
                 ) : page === "Account" ? (

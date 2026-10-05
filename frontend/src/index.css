@@ -677,3 +677,42 @@ dd {
   width: 100%;
   align-self: center;
 }
+.playback-review,
+.snapshot-scope {
+  border-bottom: 1px solid var(--color-border);
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
+  font-size: var(--text-xs);
+}
+.playback-controls {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 2);
+  padding-block: calc(var(--spacing) * 2);
+}
+.playback-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: calc(var(--spacing) * 2);
+}
+.playback-actions label,
+.playback-seek {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+}
+.playback-seek input {
+  flex: 1;
+  min-width: 0;
+  accent-color: var(--color-primary);
+}
+.playback-controls p {
+  overflow-wrap: anywhere;
+}
+.review-controls .playback-review {
+  border: 0;
+  padding: 0;
+}
+.review-controls .playback-review[open] {
+  flex-basis: 100%;
+}
