@@ -1,3 +1,7 @@
+@import "@hollis-labs/kit-admin/source.css";
+@import "@hollis-labs/kit-settings/source.css";
+@import "@hollis-labs/kit-observe/source.css";
+@import "@hollis-labs/kit-account/source.css";
 @import "tailwindcss";
 @import "@hollis-labs/kit-dashboard/theme.css";
 @import "@hollis-labs/design-app-runtime/shell-reset.css";
@@ -508,4 +512,27 @@ dd {
   .communication-controls {
     flex-direction: column;
   }
+}
+
+.admin-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(var(--spacing) * 4);
+  min-width: 0;
+}
+.admin-columns > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 700px) {
+  .admin-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.administration-lab {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 4);
+  min-width: 0;
 }

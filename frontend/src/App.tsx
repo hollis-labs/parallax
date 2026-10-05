@@ -21,6 +21,8 @@ import {
   X,
 } from "lucide-react"
 import { useEffect, useRef, useState, useSyncExternalStore } from "react"
+import { AccountLab } from "./administration/Account"
+import { AdminLab } from "./administration/Admin"
 import { createOperationsExample } from "./chimera/example"
 import { CommunicationLab } from "./communications/CommunicationLab"
 import { normalizeScenario, operationsModel, runDetail } from "./operations/model"
@@ -223,6 +225,7 @@ export function App() {
   useEffect(() => {
     if (tick === 6) setPlaying(false)
   }, [tick])
+  const isAdministration = page === "Administration" || page === "Account"
   const isCommunication = ["Contacts", "Messages", "Chat"].includes(page)
   const model = operationsModel(scenario, query),
     detail = runDetail(model, selectedId)
@@ -305,6 +308,8 @@ export function App() {
             "Contacts",
             "Messages",
             "Chat",
+            "Administration",
+            "Account",
             "Examples",
           ].map((name, i) => ({
             key: name,
@@ -317,6 +322,8 @@ export function App() {
               <Mail key="e" className="size-4" />,
               <MessageSquare key="f" className="size-4" />,
               <Layers key="g" className="size-4" />,
+              <Users key="h" className="size-4" />,
+              <Layers key="i" className="size-4" />,
             ][i],
             active: page === name,
             onSelect: () => {
@@ -411,11 +418,21 @@ export function App() {
           <div className="page-title">
             <div>
               <p className="eyebrow">
-                {isCommunication ? "COMMUNICATIONS" : "OPERATIONS"} / DESIGN LAB
+                {isAdministration
+                  ? page.toUpperCase()
+                  : isCommunication
+                    ? "COMMUNICATIONS"
+                    : "OPERATIONS"}{" "}
+                / DESIGN LAB
               </p>
               <h1>{page}</h1>
               <p className="muted">
-                October 4, 2026 · deterministic seed {model.dataset.seed} · {model.dataset.profile}
+                October 4, 2026 · deterministic seed {model.dataset.seed} ·{" "}
+                {isAdministration
+                  ? "bundled administration/account fixture"
+                  : isCommunication
+                    ? "bundled communications fixture"
+                    : model.dataset.profile}
               </p>
             </div>
             <span className="fixture-tag">FIXTURE ONLY</span>
@@ -450,8 +467,12 @@ export function App() {
             <ResourceNotice model={model} />
           ) : (
             <>
-              {!isCommunication && <OperationsSummary model={model} />}
-              {isCommunication ? (
+              {!isCommunication && !isAdministration && <OperationsSummary model={model} />}
+              {page === "Administration" ? (
+                <AdminLab key={scenario} onIntent={emit} onReset={() => setIntent("")} />
+              ) : page === "Account" ? (
+                <AccountLab key={scenario} onIntent={emit} onReset={() => setIntent("")} />
+              ) : isCommunication ? (
                 <CommunicationLab
                   key={scenario}
                   view={page}

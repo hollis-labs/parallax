@@ -7,6 +7,7 @@ prepare:
 	mkdir -p $(TMPDIR) $(GOCACHE) $(GOMODCACHE)
 fixtures: prepare
 	go run ./cmd/fixtures
+	cd frontend && ./node_modules/.bin/biome format --write src/fixtures
 build: prepare
 	cd frontend && npm ci && npm run build
 	go build -o .scratch/parallax ./cmd/parallax

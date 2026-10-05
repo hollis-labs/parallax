@@ -248,6 +248,7 @@
     "category": "runtime-export",
     "coverage": "controlled composition import",
     "sources": [
+      "frontend/src/administration/Account.tsx",
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/CommunicationLab.tsx",
       "frontend/src/communications/Messaging.tsx",
@@ -733,6 +734,8 @@
     "coverage": "controlled composition import",
     "sources": [
       "frontend/src/App.tsx",
+      "frontend/src/administration/Account.tsx",
+      "frontend/src/administration/Admin.tsx",
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/CommunicationLab.tsx",
       "frontend/src/communications/Messaging.tsx",
@@ -2740,6 +2743,7 @@
     "sources": [
       "frontend/src/App.tsx",
       "frontend/src/FixedActivity.tsx",
+      "frontend/src/administration/Account.tsx",
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/Messaging.tsx",
       "frontend/src/operations/Views.tsx"
@@ -6443,6 +6447,864 @@
     "entry": ".",
     "name": "parseEntry",
     "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminContent",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/administration/Admin.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminNavigation",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminShell",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "adminManifestProblem",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "adminPages",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminContentProps",
+    "category": "type-export",
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/administration/Admin.tsx",
+      "frontend/src/administration/type-contract.ts"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminDeclaration",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminObservationDeclaration",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminSettingsDeclaration",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminStatDeclaration",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminSeriesDeclaration",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminDiagnosticDeclaration",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminManifest",
+    "category": "type-export",
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/administration/Admin.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminPage",
+    "category": "type-export",
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/administration/Admin.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminTarget",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminDestination",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminSelection",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminDiscovery",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminSettingsRead",
+    "category": "type-export",
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/administration/Admin.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminObservations",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": "./charts",
+    "name": "renderAdminSeries",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsGroupForm",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsRenderer",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsGroupFormProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsRendererProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "inspectSettingsGroup",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "evaluateSettings",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "settingsPath",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "snapshotProblem",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsScalar",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsGroup",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsValue",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsValues",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsEdit",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsDraft",
+    "category": "type-export",
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/administration/Admin.tsx",
+      "frontend/src/administration/type-contract.ts"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsChanges",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsError",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsValidation",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsState",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "FieldSchema",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "Field",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "GroupProfile",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsProvenanceRenderer",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "settingsMetadataProblem",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsMetadataValue",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsApplyProjection",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsProvenanceState",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsProvenanceRendererProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsWizard",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsWizardProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "settingsWizardGroups",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "settingsWizardEvaluation",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsWizardIntent",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsWizardCheck",
+    "category": "type-export",
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/administration/Admin.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-settings",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "SettingsWizardResult",
+    "category": "type-export",
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/administration/Admin.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": ".",
+    "name": "ObservationStatus",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": ".",
+    "name": "ObservationStatusProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": ".",
+    "name": "HealthSummary",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": ".",
+    "name": "HealthSummaryProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": ".",
+    "name": "HealthCheck",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": ".",
+    "name": "StatCollection",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": ".",
+    "name": "StatCollectionProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": ".",
+    "name": "StatObservation",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": ".",
+    "name": "DiagnosticPanel",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": ".",
+    "name": "DiagnosticPanelProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": ".",
+    "name": "ObservationState",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": ".",
+    "name": "HealthStatus",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": ".",
+    "name": "ObservationUnit",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": ".",
+    "name": "ObservationKind",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": ".",
+    "name": "DiagnosticValue",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": ".",
+    "name": "DiagnosticValidation",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": "./charts",
+    "name": "SampleSeriesView",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": "./charts",
+    "name": "SampleSeriesViewProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": "./charts",
+    "name": "SampleSeriesPoint",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AccountProfile",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/administration/Account.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AccountProfileProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AccountProfileValue",
+    "category": "type-export",
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/administration/type-contract.ts"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AccountPreferences",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/administration/Account.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AccountPreferencesProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "WhoamiBadge",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/administration/Account.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AccountIdentity",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "WhoamiBadgeProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "ApiTokenManager",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/administration/Account.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "ApiTokenDraft",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "ApiTokenManagerProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "ApiTokenRecord",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "ApiTokenScope",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "NewTokenDisclosure",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "NewTokenDisclosureProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "ConnectedAccounts",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/administration/Account.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "ConnectedAccount",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "ConnectedAccountsProps",
+    "category": "type-export",
     "coverage": "unreviewed",
     "sources": []
   }

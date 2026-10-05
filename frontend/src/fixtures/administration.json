@@ -1,0 +1,103 @@
+{
+  "version": "administration/v1",
+  "clock": "2026-10-04T14:30:00Z",
+  "seed": 4421,
+  "currentUserId": "USER-001",
+  "users": [
+    {
+      "id": "USER-001",
+      "contactId": "CONTACT-001",
+      "name": "Adaline Rivera",
+      "email": "reviewer1@example.invalid",
+      "state": "identified",
+      "roleIds": ["ROLE-REVIEWER"]
+    },
+    {
+      "id": "USER-002",
+      "contactId": "CONTACT-002",
+      "name": "Ashtyn Rivera",
+      "email": "reviewer2@example.invalid",
+      "state": "identified",
+      "roleIds": ["ROLE-OBSERVER"]
+    },
+    {
+      "id": "USER-003",
+      "contactId": "CONTACT-003",
+      "name": "Della Rivera",
+      "email": "reviewer3@example.invalid",
+      "state": "locked",
+      "roleIds": ["ROLE-OBSERVER"]
+    }
+  ],
+  "roles": [
+    {
+      "id": "ROLE-REVIEWER",
+      "label": "Fixture reviewer",
+      "permissionIds": ["PERMISSION-READ", "PERMISSION-DRAFT", "PERMISSION-REVIEW"]
+    },
+    {
+      "id": "ROLE-OBSERVER",
+      "label": "Fixture observer",
+      "permissionIds": ["PERMISSION-READ"]
+    }
+  ],
+  "permissions": [
+    {
+      "id": "PERMISSION-READ",
+      "label": "Inspect records",
+      "description": "Fixture records may be presented; this label performs no authorization."
+    },
+    {
+      "id": "PERMISSION-DRAFT",
+      "label": "Draft preferences",
+      "description": "Local drafts may be reviewed without saving."
+    },
+    {
+      "id": "PERMISSION-REVIEW",
+      "label": "Review intents",
+      "description": "Inspect a proposed action without executing it."
+    }
+  ],
+  "settings": [
+    {
+      "key": "workspace_label",
+      "label": "Workspace label",
+      "value": "Fixture review lab",
+      "source": "default",
+      "sourceLabel": "Bundled default",
+      "editable": true,
+      "pending": false,
+      "reason": ""
+    },
+    {
+      "key": "transport",
+      "label": "Message transport",
+      "value": "disabled",
+      "source": "env",
+      "sourceLabel": "Fixture environment declaration",
+      "editable": false,
+      "pending": false,
+      "reason": "Locked by the fixture environment; no live transport exists."
+    },
+    {
+      "key": "review_window",
+      "label": "Review window",
+      "value": "14 days",
+      "source": "file",
+      "sourceLabel": "Bundled review.toml",
+      "editable": true,
+      "pending": false,
+      "reason": ""
+    },
+    {
+      "key": "density",
+      "label": "Directory density",
+      "value": "comfortable",
+      "source": "override",
+      "sourceLabel": "Authored local override",
+      "editable": true,
+      "pending": true,
+      "reason": ""
+    }
+  ]
+}
