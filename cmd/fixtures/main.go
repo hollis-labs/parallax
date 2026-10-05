@@ -6,6 +6,9 @@ import (
 )
 
 func main() {
+	if err := scenarios.WriteDeveloper("frontend/src/fixtures/developer.json"); err != nil {
+		log.Fatal(err)
+	}
 	if err := scenarios.WriteObservations("frontend/src/fixtures/observations.json"); err != nil {
 		log.Fatal(err)
 	}

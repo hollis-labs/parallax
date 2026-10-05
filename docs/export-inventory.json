@@ -740,6 +740,7 @@
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/CommunicationLab.tsx",
       "frontend/src/communications/Messaging.tsx",
+      "frontend/src/developer/Lab.tsx",
       "frontend/src/observability/Lab.tsx",
       "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Operations.stories.tsx",
@@ -2750,6 +2751,7 @@
       "frontend/src/administration/Account.tsx",
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/Messaging.tsx",
+      "frontend/src/developer/Lab.tsx",
       "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Views.tsx"
     ]
@@ -7328,6 +7330,1840 @@
     "entry": ".",
     "name": "ConnectedAccountsProps",
     "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CodeBlockContainer",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CodeBlockHeader",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CodeBlockTitle",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CodeBlockFilename",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CodeBlockActions",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CodeBlockContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CodeBlock",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CodeBlockCopyButton",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CodeBlockLanguageSelectorTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CodeBlockLanguageSelectorContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CodeBlockProps",
+    "category": "type-export",
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/developer/type-contract.ts"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CodeBlockCopyButtonProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CodeBlockLanguageSelector",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CodeBlockLanguageSelectorValue",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CodeBlockLanguageSelectorItem",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "Snippet",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "SnippetAddon",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "SnippetText",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "SnippetInput",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "SnippetCopyButton",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "SnippetProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "SnippetCopyButtonProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "HighlightToken",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "HighlightResult",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "HighlightTheme",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CodeHighlighter",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "FileTree",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "FileTreeIcon",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "FileTreeName",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "FileTreeFolder",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "FileTreeFile",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "FileTreeActions",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "FileTreeProps",
+    "category": "type-export",
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/developer/type-contract.ts"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "FileTreeIconProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "FileTreeNameProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "FileTreeFolderProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "FileTreeFileProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "FileTreeActionsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTrace",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTraceHeader",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTraceError",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTraceErrorType",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTraceErrorMessage",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTraceActions",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTraceCopyButton",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTraceExpandButton",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTraceContent",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTraceFrames",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTraceProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTraceHeaderProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTraceErrorProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTraceErrorTypeProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTraceErrorMessageProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTraceActionsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTraceCopyButtonProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTraceExpandButtonProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTraceContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "StackTraceFramesProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestStatus",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestResultsSummary",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestResultsHeaderProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestResultsHeader",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestResultsDurationProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestResultsDuration",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestResultsSummaryProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestResultsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestResults",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestResultsProgressProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestResultsProgress",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestResultsContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestResultsContent",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestSuiteProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestSuite",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestSuiteNameProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestSuiteName",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestSuiteStatsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestSuiteStats",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestSuiteContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestSuiteContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestNameProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestName",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestDurationProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestDuration",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestStatusProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "Test",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestErrorProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestError",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestErrorMessageProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestErrorMessage",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestErrorStackProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TestErrorStack",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitHeader",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitAuthorAvatar",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitTimestamp",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitActions",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitCopyButton",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "Commit",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitHeaderProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitHashProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitHash",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitMessageProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitMessage",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitMetadataProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitMetadata",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitSeparatorProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitSeparator",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitInfoProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitInfo",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitAuthorProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitAuthor",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitAuthorAvatarProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitTimestampProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitActionsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitCopyButtonProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitContent",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitFilesProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitFiles",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitFileProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitFile",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitFileInfoProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitFileInfo",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitFileStatusProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitFileStatus",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitFileIconProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitFileIcon",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitFilePathProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitFilePath",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitFileChangesProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitFileChanges",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitFileAdditionsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitFileAdditions",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitFileDeletionsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "CommitFileDeletions",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AgentToolDefinition",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AgentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "Agent",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AgentHeaderProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AgentHeader",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AgentContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AgentContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AgentInstructionsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AgentInstructions",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AgentToolsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AgentTools",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AgentToolProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AgentTool",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AgentOutputProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AgentOutput",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./highlight",
+    "name": "createCodeTheme",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./highlight",
+    "name": "createCodeHighlighter",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./highlight",
+    "name": "CodeHighlighter",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./highlight",
+    "name": "HighlightResult",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./terminal",
+    "name": "TerminalCopyButton",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./terminal",
+    "name": "DEFAULT_MAX_CHARS",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./terminal",
+    "name": "TerminalHeaderProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./terminal",
+    "name": "TerminalHeader",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Output.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./terminal",
+    "name": "TerminalTitleProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./terminal",
+    "name": "TerminalTitle",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Output.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./terminal",
+    "name": "TerminalStatusProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./terminal",
+    "name": "TerminalStatus",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./terminal",
+    "name": "TerminalActionsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./terminal",
+    "name": "TerminalActions",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./terminal",
+    "name": "TerminalCopyButtonProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./terminal",
+    "name": "TerminalClearButtonProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./terminal",
+    "name": "TerminalClearButton",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./terminal",
+    "name": "TerminalContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./terminal",
+    "name": "TerminalContent",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Output.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./terminal",
+    "name": "TerminalProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-code",
+    "version": "0.0.0",
+    "entry": "./terminal",
+    "name": "Terminal",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Output.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "Canvas",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Workflow.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "CanvasProps",
+    "category": "type-export",
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/developer/type-contract.ts"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "NodeProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "Node",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Workflow.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "NodeHeaderProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "NodeHeader",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Workflow.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "NodeTitleProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "NodeTitle",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Workflow.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "NodeDescriptionProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "NodeDescription",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Workflow.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "NodeActionProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "NodeAction",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "NodeContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "NodeContent",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Workflow.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "NodeFooterProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "NodeFooter",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "Edge",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "Connection",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "ControlsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "Controls",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Workflow.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "PanelProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "Panel",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/developer/Workflow.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "ToolbarProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-workflow",
+    "version": "0.0.0",
+    "entry": "./canvas",
+    "name": "Toolbar",
+    "category": "runtime-export",
     "coverage": "unreviewed",
     "sources": []
   }

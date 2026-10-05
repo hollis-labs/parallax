@@ -20,7 +20,7 @@ import {
   Users,
   X,
 } from "lucide-react"
-import { useEffect, useRef, useState, useSyncExternalStore } from "react"
+import { lazy, Suspense, useEffect, useRef, useState, useSyncExternalStore } from "react"
 import { AccountLab } from "./administration/Account"
 import { AdminLab } from "./administration/Admin"
 import { createOperationsExample } from "./chimera/example"
@@ -35,6 +35,8 @@ import {
   RunInspection,
   UsageView,
 } from "./operations/Views"
+
+const DeveloperLab = lazy(() => import("./developer/Lab"))
 
 type Host = ReturnType<typeof createOperationsExample>
 type PluginStatus = "loading" | "ready" | "error" | "unloaded"
@@ -226,6 +228,7 @@ export function App() {
   useEffect(() => {
     if (tick === 6) setPlaying(false)
   }, [tick])
+  const isDeveloper = page === "Developer"
   const isObservation = page === "Observability"
   const isAdministration = page === "Administration" || page === "Account"
   const isCommunication = ["Contacts", "Messages", "Chat"].includes(page)
@@ -313,6 +316,7 @@ export function App() {
             "Administration",
             "Account",
             "Observability",
+            "Developer",
             "Examples",
           ].map((name, i) => ({
             key: name,
@@ -328,6 +332,7 @@ export function App() {
               <Users key="h" className="size-4" />,
               <Activity key="i" className="size-4" />,
               <Layers key="j" className="size-4" />,
+              <Layers key="k" className="size-4" />,
             ][i],
             active: page === name,
             onSelect: () => {
@@ -422,7 +427,7 @@ export function App() {
           <div className="page-title">
             <div>
               <p className="eyebrow">
-                {isAdministration || isObservation
+                {isAdministration || isObservation || isDeveloper
                   ? page.toUpperCase()
                   : isCommunication
                     ? "COMMUNICATIONS"
@@ -432,13 +437,15 @@ export function App() {
               <h1>{page}</h1>
               <p className="muted">
                 October 4, 2026 · deterministic seed {model.dataset.seed} ·{" "}
-                {isObservation
-                  ? "bundled observation fixture"
-                  : isAdministration
-                    ? "bundled administration/account fixture"
-                    : isCommunication
-                      ? "bundled communications fixture"
-                      : model.dataset.profile}
+                {isDeveloper
+                  ? "bundled developer/workflow fixture"
+                  : isObservation
+                    ? "bundled observation fixture"
+                    : isAdministration
+                      ? "bundled administration/account fixture"
+                      : isCommunication
+                        ? "bundled communications fixture"
+                        : model.dataset.profile}
               </p>
             </div>
             <span className="fixture-tag">FIXTURE ONLY</span>
@@ -473,10 +480,14 @@ export function App() {
             <ResourceNotice model={model} />
           ) : (
             <>
-              {!isCommunication && !isAdministration && !isObservation && (
+              {!isCommunication && !isAdministration && !isObservation && !isDeveloper && (
                 <OperationsSummary model={model} />
               )}
-              {page === "Observability" ? (
+              {isDeveloper ? (
+                <Suspense fallback={<p role="status">Loading developer presentation…</p>}>
+                  <DeveloperLab key={scenario} onInspect={select} onIntent={setIntent} />
+                </Suspense>
+              ) : page === "Observability" ? (
                 <ObservationLab key={scenario} onInspect={select} onReset={() => setIntent("")} />
               ) : page === "Administration" ? (
                 <AdminLab key={scenario} onIntent={emit} onReset={() => setIntent("")} />

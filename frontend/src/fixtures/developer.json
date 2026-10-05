@@ -1,0 +1,86 @@
+{
+  "version": "developer/v1",
+  "generator": "parallax/v6",
+  "operationsVersion": "operations/v2",
+  "seed": 4421,
+  "clock": "2026-10-04T14:30:00Z",
+  "recordedAt": "2026-10-04T14:15:15Z",
+  "commitHash": "f17e4421aabbccddeeff00112233445566778899",
+  "files": [
+    {
+      "id": "FILE-001",
+      "path": "src/review.ts",
+      "language": "typescript",
+      "before": "export const mode = 'apply'\n",
+      "after": "export const mode = 'inspect'\n",
+      "runId": "RUN-003",
+      "toolId": "TOOL-003"
+    },
+    {
+      "id": "FILE-002",
+      "path": "fixtures/outcome.json",
+      "language": "json",
+      "before": "{\"fixture\": true, \"outcome\": \"pending\"}\n",
+      "after": "{\"fixture\": true, \"outcome\": \"refused\"}\n",
+      "runId": "RUN-003",
+      "toolId": "TOOL-003"
+    },
+    {
+      "id": "FILE-003",
+      "path": "README.md",
+      "language": "text",
+      "before": "# Review fixture\n",
+      "after": "# Review fixture\nNo command executes here.\n",
+      "runId": "RUN-003",
+      "toolId": "TOOL-003"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "NODE-001",
+      "label": "Run review",
+      "kind": "run",
+      "runId": "RUN-003",
+      "spanId": "SPAN-ROOT-003",
+      "toolId": "",
+      "x": 0,
+      "y": 100
+    },
+    {
+      "id": "NODE-002",
+      "label": "Inspect recorded tool",
+      "kind": "tool",
+      "runId": "RUN-003",
+      "spanId": "SPAN-TOOL-003",
+      "toolId": "TOOL-003",
+      "x": 480,
+      "y": 100
+    },
+    {
+      "id": "NODE-003",
+      "label": "Review recorded result",
+      "kind": "result",
+      "runId": "RUN-003",
+      "spanId": "",
+      "toolId": "",
+      "x": 960,
+      "y": 100
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-001",
+      "source": "NODE-001",
+      "target": "NODE-002",
+      "label": "Authored inspection order"
+    },
+    {
+      "id": "EDGE-002",
+      "source": "NODE-002",
+      "target": "NODE-003",
+      "label": "Recorded outcome; no execution"
+    }
+  ],
+  "stack": "FixtureRefusal: review requires explicit context\n    at review (src/review.ts:1:1)\n    at authoredFixture (fixtures/outcome.json:1:1)\n    unknown frame remains text",
+  "terminal": "\u001b[36mRecorded fixture output\u001b[0m\nRUN-003 / TOOL-003\n\u001b[31mREFUSED: no business action was executed\u001b[0m\n\u003cscript\u003einert fixture text\u003c/script\u003e\nhttps://example.invalid/not-a-link\n"
+}

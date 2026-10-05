@@ -8,6 +8,8 @@
 @import "@hollis-labs/design-components/source.css";
 @import "@hollis-labs/kit-dashboard/source.css";
 @import "@hollis-labs/kit-chat/source.css";
+@source "../node_modules/@hollis-labs/kit-code/dist/**/*.js";
+@source "../node_modules/@hollis-labs/kit-workflow/dist/**/*.js";
 :root {
   --lab-narrow: 24.375rem;
   --lab-tablet: 48rem;

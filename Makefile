@@ -19,6 +19,7 @@ check: prepare
 	go vet ./cmd/... ./internal/...
 	cd frontend && npm run typecheck && npm run lint && npm run build
 	node scripts/check-design-css.mjs
+	node scripts/check-optional-imports.mjs
 	go build -o .scratch/parallax ./cmd/parallax
 ui-dev:
 	cd frontend && npm run dev -- --host 127.0.0.1

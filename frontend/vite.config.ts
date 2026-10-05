@@ -36,6 +36,7 @@ export default defineConfig({
     }),
   ],
   build: {
+    manifest: true,
     outDir: "../internal/webui/dist",
     emptyOutDir: true,
   },

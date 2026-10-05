@@ -1,0 +1,33 @@
+@import "@hollis-labs/kit-code/source.css";
+.developer-lab {
+  min-width: 0;
+}
+.developer-lab textarea {
+  display: block;
+  width: 100%;
+  min-height: calc(var(--spacing) * 24);
+  padding: calc(var(--spacing) * 3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-mono);
+}
+.developer-lab pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.developer-lab [role="log"] {
+  max-height: none;
+  overflow: visible;
+}
+.workflow-viewport {
+  height: calc(var(--spacing) * 110);
+  min-width: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+}
+.developer-lab .react-flow__node {
+  overflow-wrap: anywhere;
+}
