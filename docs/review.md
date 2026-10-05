@@ -13,7 +13,7 @@ Known upstream adaptation targets:
 - Folio preset root mount produced `//`; application wiring corrects `/` and consumes Chimera.
 - plugin-host-ui candidate is unpublished. Exact archive/version/digest and MIT provenance are recorded in third_party.
 
-Remaining scope: comprehensive Storybook coverage, all independent kits, long-running scripted event playback (current control is clock preview), shell/layout comparison families, admin/account/messaging/developer/voice compositions, sandboxed-frame plugin proof, remote snapshot imports, Sigil generation and generic seeder extraction. Generic Examples drafts/settings only demonstrate transient intent behavior; they do not satisfy those kit-specific backlog tasks.
+Remaining scope: comprehensive Storybook coverage, all independent kits, long-running scripted event playback (current control is clock preview), shell/layout comparison families, admin/account/developer/voice compositions, sandboxed-frame plugin proof, remote snapshot imports, Sigil generation and generic seeder extraction. Generic Examples drafts/settings only demonstrate transient intent behavior; they do not satisfy those kit-specific backlog tasks.
 
 Validated baseline: Go race tests include deterministic generation, referential equality, bundled-fixture freshness and real registry/bundle digest. Chromium uses a freshly built embedded binary launched by Playwright (CI=true), not a previously running dev server. Browser artifact paths resolve under the repository scratch directory.
 
@@ -28,6 +28,8 @@ Upstream routing: clock-injected widgets and proven visual primitives belong in 
 | @hollis-labs/design-components | 0.4.0 |
 | @hollis-labs/design-tokens | 0.4.0 |
 | @hollis-labs/kit-dashboard | 0.4.0 |
+| @hollis-labs/kit-chat | 0.4.0 |
+| @hollis-labs/design-bindings | 0.1.0 |
 | @hollis-labs/kit-settings | 0.2.0 |
 | @hollis-labs/plugin-host-ui | file:../third_party/hollis-labs-plugin-host-ui-0.1.0.tgz |
 | @hollis-labs/plugin-registry | 0.2.0 |
@@ -79,3 +81,21 @@ Build standalone files with `STORYBOOK_DISABLE_TELEMETRY=1 npm run build-storybo
 Fresh browser proof uses app port 18541 and static Storybook port 18542, independent of the frozen live review on 18441. Screenshots include desktop/light mode, narrow long labels, Mission Control, Usage and narrow detail under `.scratch/test-results`. The root-managed review service and exposure binary are untouched.
 
 Validated v2 checks: `make check` (Go race/vet, TypeScript, Biome, design lint, production build, 26 app CSS variables resolving in built CSS), standalone Storybook build, and 13 Chromium checks with fresh owned servers. The story index contains 13 stories; adopted package export inventory contains 316 declaration names and 16 used entry occurrences. The latter is public-entry usage evidence, not component behavior completeness. Navigation resets page scroll to the top while retaining the selected record; narrow modal capture disables entrance animation to document the final rendered surface.
+
+## Communications and chat checkpoint
+
+`communications/v1` is generated in Go alongside operations/v2 at seed 4421 and the same reference clock. Three fictional contacts, three channel-specific conversations, six inbound/outbound messages, three inline text attachments, three chat sessions, plans, queues and paired interactive cards join real operation run/session/tool IDs. Successful, failed and queued delivery narratives are explicit. Graph validation and freshness tests cover relationship identity, attachment ownership, timestamps and negative dangling/wrong-owner cases. Historical records never imply a live transport or model session.
+
+Contacts directory/detail and email/SMS/Tether-style inboxes are app-owned compositions using current shared primitives. No dedicated `kit-contacts` or `kit-messaging` packages exist in the reviewed source portfolio or npm registry. Long messages, attachment inspection, empty inbox, failed delivery, missing contact metadata and denied send have controlled fixture presentations. Filters, selection and drafts stay transient. Changing conversation/channel/delivery context resets draft and attachment state; inaccessible resources remove transcript and attachment content.
+
+Released `@hollis-labs/kit-chat@0.4.0` supplies ChatStream, ChatInput, ConfirmationCard, PromptCard, CardBoundary/CardMiss, Reasoning, Tool, Plan, Queue, Attachments, Sources and ArtifactCard. Both card kinds pass the same host-owned `design-bindings@0.1.0` table/resolution seam before rendering reviewed statically imported components. Fixture wire kinds are explicitly Parallax-owned, not a production server envelope contract. Unknown wire kinds use the actual unclassified CardMiss result; pending/refused/error/unknown response states use shared prior-response classification and lock input. Manual stream chunks have no timer, model or tool execution; changing session/state/scenario clears preview, drafts, answers and intents. Load-older history exposes the same operations message records.
+
+ChatStream's shared MessageScroller viewport is adapted to natural document flow with overflow visible, disabled auto-scroll/prepend preservation and token-styled host overrides. The AppShell page-scroll remains the sole scrolling owner, verified at 390px. This is an inspector composition rather than an independent full-height chat viewport. Reasoning is explicitly authored fixture rationale, citations identify local provenance without external URLs, attachments expose inline read-only text and artifact downloads are absent.
+
+The released chat source registration is `@hollis-labs/kit-chat/source.css`. All new app CSS uses contract tokens; built CSS resolves 27 referenced app variables. TypeScript allows the published bindings package's explicit TS extension imports under noEmit. No upstream source changes or new packed candidates were needed. Complete chat mixed-license text is preserved as a public static asset in `frontend/public/kit-chat-LICENSE.txt`; it includes MIT terms, Vercel AI Elements attribution and Apache-2.0 terms. No upstream license is reduced to MIT.
+
+Communications/Controlled review adds 16 stories: Contacts, Messages, Empty inbox, Delivery failure, Denied send, Missing metadata, Long messages, Chat, Streaming, Pending card, Refused card, Response error, Unknown wire, Unknown response, Failed tool and Unavailable. These use the same generated artifact/model/components as the app, require no Go/API/plugin server and reset transient state when controlled args change. There are 29 stories total. Existing operations/plugin widget/panel/gateway proofs remain intact.
+
+Validation: make check; standalone Storybook build with telemetry disabled; 17 fresh-server Chromium checks, including contact-to-conversation keyboard navigation, attachment focus restoration, no non-GET business requests, drafts/card classification/manual stream reset, denied content removal, portable stories without API requests and sole narrow page scroll ownership. Screenshot evidence includes desktop contacts/inbox/chat and scrolled card/tool surfaces plus narrow inbox/cards, under ignored .scratch/test-results.
+
+Export inventory now enumerates 702 declaration names across four adopted packages with 54 exact public-entry imports, recording actual source locations and distinguishing typed imports from compositions. This is import/provenance evidence, not exhaustive behavior coverage. Broad developer/voice/account fixture families, all-kit stories, comprehensive export interactions and sandboxed plugin adoption remain open. Provider/model attribution and operation-reference fidelity remain the earlier documented gaps.

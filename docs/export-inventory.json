@@ -5,7 +5,8 @@
     "entry": ".",
     "name": "cn",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -13,7 +14,8 @@
     "entry": ".",
     "name": "notifyError",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -21,7 +23,8 @@
     "entry": ".",
     "name": "notifySuccess",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -29,7 +32,8 @@
     "entry": ".",
     "name": "Pill",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -37,7 +41,8 @@
     "entry": ".",
     "name": "LiveDot",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -45,7 +50,8 @@
     "entry": ".",
     "name": "Callout",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -53,7 +59,8 @@
     "entry": ".",
     "name": "CopyableId",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -61,7 +68,8 @@
     "entry": ".",
     "name": "ConfirmDialog",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -69,7 +77,13 @@
     "entry": ".",
     "name": "DetailDialog",
     "category": "runtime-export",
-    "coverage": "Parallax composition"
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/App.tsx",
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/communications/Messaging.tsx",
+      "frontend/src/operations/Views.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -77,7 +91,8 @@
     "entry": ".",
     "name": "DetailSection",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -85,7 +100,8 @@
     "entry": ".",
     "name": "FormDialog",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -93,7 +109,8 @@
     "entry": ".",
     "name": "JsonViewer",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -101,7 +118,8 @@
     "entry": ".",
     "name": "MetaList",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -109,7 +127,8 @@
     "entry": ".",
     "name": "MetaItem",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -117,7 +136,8 @@
     "entry": ".",
     "name": "Metric",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -125,7 +145,8 @@
     "entry": ".",
     "name": "ProgressBar",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -133,7 +154,10 @@
     "entry": ".",
     "name": "AppShell",
     "category": "runtime-export",
-    "coverage": "Parallax composition"
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/App.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -141,7 +165,8 @@
     "entry": ".",
     "name": "OverlaySidebar",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -149,7 +174,8 @@
     "entry": ".",
     "name": "OverlaySidebarProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -157,7 +183,8 @@
     "entry": ".",
     "name": "DetailPageLayout",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -165,7 +192,8 @@
     "entry": ".",
     "name": "OverflowMenu",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -173,7 +201,8 @@
     "entry": ".",
     "name": "OverflowAction",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -181,7 +210,8 @@
     "entry": ".",
     "name": "CollapsibleSection",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -189,7 +219,8 @@
     "entry": ".",
     "name": "Combobox",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -197,7 +228,8 @@
     "entry": ".",
     "name": "ComboboxItem",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -205,7 +237,8 @@
     "entry": ".",
     "name": "CopyButton",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -213,7 +246,15 @@
     "entry": ".",
     "name": "EmptyState",
     "category": "runtime-export",
-    "coverage": "Parallax composition"
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/communications/CommunicationLab.tsx",
+      "frontend/src/communications/Messaging.tsx",
+      "frontend/src/operations/Operations.stories.tsx",
+      "frontend/src/operations/Views.tsx",
+      "frontend/src/pages/dashboard.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -221,7 +262,8 @@
     "entry": ".",
     "name": "EmptyStateVariant",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -229,7 +271,8 @@
     "entry": ".",
     "name": "JsonModal",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -237,7 +280,8 @@
     "entry": ".",
     "name": "PayloadActions",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -245,7 +289,8 @@
     "entry": ".",
     "name": "PayloadSummary",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -253,7 +298,8 @@
     "entry": ".",
     "name": "JsonModalProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -261,7 +307,8 @@
     "entry": ".",
     "name": "PayloadActionsProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -269,7 +316,8 @@
     "entry": ".",
     "name": "PayloadSummaryProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -277,7 +325,8 @@
     "entry": ".",
     "name": "SearchInput",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -285,7 +334,8 @@
     "entry": ".",
     "name": "TransferList",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -293,7 +343,8 @@
     "entry": ".",
     "name": "TransferListItem",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -301,7 +352,8 @@
     "entry": ".",
     "name": "safeParseObject",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -309,7 +361,8 @@
     "entry": ".",
     "name": "scalarStr",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -317,7 +370,8 @@
     "entry": ".",
     "name": "IconComponent",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -325,7 +379,8 @@
     "entry": ".",
     "name": "ROW_INTERACTIVE_ATTR",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -333,7 +388,8 @@
     "entry": ".",
     "name": "ROW_INTERACTIVE_SELECTOR",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -341,7 +397,8 @@
     "entry": ".",
     "name": "rowInteractiveProps",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -349,7 +406,8 @@
     "entry": ".",
     "name": "TONES",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -357,7 +415,8 @@
     "entry": ".",
     "name": "TONE_CLASSES",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -365,7 +424,8 @@
     "entry": ".",
     "name": "TONE_FILL_CLASSES",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -373,7 +433,8 @@
     "entry": ".",
     "name": "ACCENT_TEXT_CLASSES",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -381,7 +442,8 @@
     "entry": ".",
     "name": "ACCENT_BORDER_L_CLASSES",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -389,7 +451,8 @@
     "entry": ".",
     "name": "Tone",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -397,7 +460,8 @@
     "entry": ".",
     "name": "Accent",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -405,7 +469,8 @@
     "entry": ".",
     "name": "alignClass",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -413,7 +478,8 @@
     "entry": ".",
     "name": "compareBy",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -421,7 +487,8 @@
     "entry": ".",
     "name": "ColumnDef",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -429,7 +496,8 @@
     "entry": ".",
     "name": "SortDir",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -437,7 +505,8 @@
     "entry": ".",
     "name": "SortState",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -445,7 +514,8 @@
     "entry": ".",
     "name": "useCopy",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -453,7 +523,8 @@
     "entry": ".",
     "name": "UseCopyResult",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -461,7 +532,8 @@
     "entry": ".",
     "name": "useArrowNav",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -469,7 +541,8 @@
     "entry": ".",
     "name": "ModeToggle",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -477,7 +550,8 @@
     "entry": ".",
     "name": "ModeToggleProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -485,7 +559,8 @@
     "entry": ".",
     "name": "ThemePicker",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -493,7 +568,8 @@
     "entry": ".",
     "name": "ThemePickerProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -501,7 +577,8 @@
     "entry": ".",
     "name": "useControllableState",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -509,7 +586,8 @@
     "entry": ".",
     "name": "UseControllableStateParams",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -517,7 +595,8 @@
     "entry": ".",
     "name": "SetControllableState",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -525,7 +604,8 @@
     "entry": ".",
     "name": "AlertDialog",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -533,7 +613,8 @@
     "entry": ".",
     "name": "AlertDialogAction",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -541,7 +622,8 @@
     "entry": ".",
     "name": "AlertDialogCancel",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -549,7 +631,8 @@
     "entry": ".",
     "name": "AlertDialogContent",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -557,7 +640,8 @@
     "entry": ".",
     "name": "AlertDialogDescription",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -565,7 +649,8 @@
     "entry": ".",
     "name": "AlertDialogFooter",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -573,7 +658,8 @@
     "entry": ".",
     "name": "AlertDialogHeader",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -581,7 +667,8 @@
     "entry": ".",
     "name": "AlertDialogMedia",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -589,7 +676,8 @@
     "entry": ".",
     "name": "AlertDialogOverlay",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -597,7 +685,8 @@
     "entry": ".",
     "name": "AlertDialogPortal",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -605,7 +694,8 @@
     "entry": ".",
     "name": "AlertDialogTitle",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -613,7 +703,8 @@
     "entry": ".",
     "name": "AlertDialogTrigger",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -621,7 +712,8 @@
     "entry": ".",
     "name": "Badge",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -629,7 +721,8 @@
     "entry": ".",
     "name": "badgeVariants",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -637,7 +730,15 @@
     "entry": ".",
     "name": "Button",
     "category": "runtime-export",
-    "coverage": "Parallax composition"
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/App.tsx",
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/communications/CommunicationLab.tsx",
+      "frontend/src/communications/Messaging.tsx",
+      "frontend/src/operations/Operations.stories.tsx",
+      "frontend/src/operations/Views.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -645,7 +746,8 @@
     "entry": ".",
     "name": "buttonVariants",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -653,7 +755,8 @@
     "entry": ".",
     "name": "ButtonGroup",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -661,7 +764,8 @@
     "entry": ".",
     "name": "ButtonGroupSeparator",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -669,7 +773,8 @@
     "entry": ".",
     "name": "ButtonGroupText",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -677,7 +782,8 @@
     "entry": ".",
     "name": "buttonGroupVariants",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -685,7 +791,8 @@
     "entry": ".",
     "name": "Collapsible",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -693,7 +800,8 @@
     "entry": ".",
     "name": "CollapsibleTrigger",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -701,7 +809,8 @@
     "entry": ".",
     "name": "CollapsibleContent",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -709,7 +818,8 @@
     "entry": ".",
     "name": "Card",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -717,7 +827,8 @@
     "entry": ".",
     "name": "CardHeader",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -725,7 +836,8 @@
     "entry": ".",
     "name": "CardFooter",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -733,7 +845,8 @@
     "entry": ".",
     "name": "CardTitle",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -741,7 +854,8 @@
     "entry": ".",
     "name": "CardAction",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -749,7 +863,8 @@
     "entry": ".",
     "name": "CardDescription",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -757,7 +872,8 @@
     "entry": ".",
     "name": "CardContent",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -765,7 +881,8 @@
     "entry": ".",
     "name": "Checkbox",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -773,7 +890,8 @@
     "entry": ".",
     "name": "Command",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -781,7 +899,8 @@
     "entry": ".",
     "name": "CommandDialog",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -789,7 +908,8 @@
     "entry": ".",
     "name": "CommandInput",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -797,7 +917,8 @@
     "entry": ".",
     "name": "CommandList",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -805,7 +926,8 @@
     "entry": ".",
     "name": "CommandEmpty",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -813,7 +935,8 @@
     "entry": ".",
     "name": "CommandGroup",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -821,7 +944,8 @@
     "entry": ".",
     "name": "CommandItem",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -829,7 +953,8 @@
     "entry": ".",
     "name": "CommandShortcut",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -837,7 +962,8 @@
     "entry": ".",
     "name": "CommandSeparator",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -845,7 +971,8 @@
     "entry": ".",
     "name": "Dialog",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -853,7 +980,8 @@
     "entry": ".",
     "name": "DialogClose",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -861,7 +989,8 @@
     "entry": ".",
     "name": "DialogContent",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -869,7 +998,8 @@
     "entry": ".",
     "name": "DialogDescription",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -877,7 +1007,8 @@
     "entry": ".",
     "name": "DialogFooter",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -885,7 +1016,8 @@
     "entry": ".",
     "name": "DialogHeader",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -893,7 +1025,8 @@
     "entry": ".",
     "name": "DialogOverlay",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -901,7 +1034,8 @@
     "entry": ".",
     "name": "DialogPortal",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -909,7 +1043,8 @@
     "entry": ".",
     "name": "DialogTitle",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -917,7 +1052,8 @@
     "entry": ".",
     "name": "DialogTrigger",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -925,7 +1061,8 @@
     "entry": ".",
     "name": "DropdownMenu",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -933,7 +1070,8 @@
     "entry": ".",
     "name": "DropdownMenuPortal",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -941,7 +1079,8 @@
     "entry": ".",
     "name": "DropdownMenuTrigger",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -949,7 +1088,8 @@
     "entry": ".",
     "name": "DropdownMenuContent",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -957,7 +1097,8 @@
     "entry": ".",
     "name": "DropdownMenuGroup",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -965,7 +1106,8 @@
     "entry": ".",
     "name": "DropdownMenuLabel",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -973,7 +1115,8 @@
     "entry": ".",
     "name": "DropdownMenuItem",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -981,7 +1124,8 @@
     "entry": ".",
     "name": "DropdownMenuCheckboxItem",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -989,7 +1133,8 @@
     "entry": ".",
     "name": "DropdownMenuRadioGroup",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -997,7 +1142,8 @@
     "entry": ".",
     "name": "DropdownMenuRadioItem",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1005,7 +1151,8 @@
     "entry": ".",
     "name": "DropdownMenuSeparator",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1013,7 +1160,8 @@
     "entry": ".",
     "name": "DropdownMenuShortcut",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1021,7 +1169,8 @@
     "entry": ".",
     "name": "DropdownMenuSub",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1029,7 +1178,8 @@
     "entry": ".",
     "name": "DropdownMenuSubTrigger",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1037,7 +1187,8 @@
     "entry": ".",
     "name": "DropdownMenuSubContent",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1045,7 +1196,8 @@
     "entry": ".",
     "name": "HoverCard",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1053,7 +1205,8 @@
     "entry": ".",
     "name": "HoverCardTrigger",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1061,7 +1214,8 @@
     "entry": ".",
     "name": "HoverCardContent",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1069,7 +1223,8 @@
     "entry": ".",
     "name": "Input",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1077,7 +1232,8 @@
     "entry": ".",
     "name": "InputGroup",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1085,7 +1241,8 @@
     "entry": ".",
     "name": "InputGroupAddon",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1093,7 +1250,8 @@
     "entry": ".",
     "name": "InputGroupButton",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1101,7 +1259,8 @@
     "entry": ".",
     "name": "InputGroupText",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1109,7 +1268,8 @@
     "entry": ".",
     "name": "InputGroupInput",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1117,7 +1277,8 @@
     "entry": ".",
     "name": "InputGroupTextarea",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1125,7 +1286,8 @@
     "entry": ".",
     "name": "Label",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1133,7 +1295,8 @@
     "entry": ".",
     "name": "Popover",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1141,7 +1304,8 @@
     "entry": ".",
     "name": "PopoverContent",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1149,7 +1313,8 @@
     "entry": ".",
     "name": "PopoverDescription",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1157,7 +1322,8 @@
     "entry": ".",
     "name": "PopoverHeader",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1165,7 +1331,8 @@
     "entry": ".",
     "name": "PopoverTitle",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1173,7 +1340,8 @@
     "entry": ".",
     "name": "PopoverTrigger",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1181,7 +1349,8 @@
     "entry": ".",
     "name": "ScrollArea",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1189,7 +1358,8 @@
     "entry": ".",
     "name": "ScrollBar",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1197,7 +1367,8 @@
     "entry": ".",
     "name": "Select",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1205,7 +1376,8 @@
     "entry": ".",
     "name": "SelectContent",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1213,7 +1385,8 @@
     "entry": ".",
     "name": "SelectGroup",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1221,7 +1394,8 @@
     "entry": ".",
     "name": "SelectItem",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1229,7 +1403,8 @@
     "entry": ".",
     "name": "SelectLabel",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1237,7 +1412,8 @@
     "entry": ".",
     "name": "SelectScrollDownButton",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1245,7 +1421,8 @@
     "entry": ".",
     "name": "SelectScrollUpButton",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1253,7 +1430,8 @@
     "entry": ".",
     "name": "SelectSeparator",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1261,7 +1439,8 @@
     "entry": ".",
     "name": "SelectTrigger",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1269,7 +1448,8 @@
     "entry": ".",
     "name": "SelectValue",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1277,7 +1457,8 @@
     "entry": ".",
     "name": "Separator",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1285,7 +1466,8 @@
     "entry": ".",
     "name": "Sheet",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1293,7 +1475,8 @@
     "entry": ".",
     "name": "SheetTrigger",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1301,7 +1484,8 @@
     "entry": ".",
     "name": "SheetClose",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1309,7 +1493,8 @@
     "entry": ".",
     "name": "SheetContent",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1317,7 +1502,8 @@
     "entry": ".",
     "name": "SheetHeader",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1325,7 +1511,8 @@
     "entry": ".",
     "name": "SheetFooter",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1333,7 +1520,8 @@
     "entry": ".",
     "name": "SheetTitle",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1341,7 +1529,8 @@
     "entry": ".",
     "name": "SheetDescription",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1349,7 +1538,8 @@
     "entry": ".",
     "name": "Skeleton",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1357,7 +1547,8 @@
     "entry": ".",
     "name": "Toaster",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1365,7 +1556,8 @@
     "entry": ".",
     "name": "Switch",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1373,7 +1565,8 @@
     "entry": ".",
     "name": "Table",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1381,7 +1574,8 @@
     "entry": ".",
     "name": "TableHeader",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1389,7 +1583,8 @@
     "entry": ".",
     "name": "TableBody",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1397,7 +1592,8 @@
     "entry": ".",
     "name": "TableFooter",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1405,7 +1601,8 @@
     "entry": ".",
     "name": "TableHead",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1413,7 +1610,8 @@
     "entry": ".",
     "name": "TableRow",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1421,7 +1619,8 @@
     "entry": ".",
     "name": "TableCell",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1429,7 +1628,8 @@
     "entry": ".",
     "name": "TableCaption",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1437,7 +1637,8 @@
     "entry": ".",
     "name": "Tabs",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1445,7 +1646,8 @@
     "entry": ".",
     "name": "TabsList",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1453,7 +1655,8 @@
     "entry": ".",
     "name": "TabsTrigger",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1461,7 +1664,8 @@
     "entry": ".",
     "name": "TabsContent",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1469,7 +1673,8 @@
     "entry": ".",
     "name": "tabsListVariants",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1477,7 +1682,8 @@
     "entry": ".",
     "name": "Textarea",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1485,7 +1691,8 @@
     "entry": ".",
     "name": "Tooltip",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1493,7 +1700,8 @@
     "entry": ".",
     "name": "TooltipTrigger",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1501,7 +1709,8 @@
     "entry": ".",
     "name": "TooltipContent",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1509,7 +1718,8 @@
     "entry": ".",
     "name": "TooltipProvider",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1517,7 +1727,10 @@
     "entry": ".",
     "name": "PageHeader",
     "category": "runtime-export",
-    "coverage": "Parallax composition"
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/App.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1525,7 +1738,10 @@
     "entry": ".",
     "name": "NavRail",
     "category": "runtime-export",
-    "coverage": "Parallax composition"
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/App.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1533,7 +1749,8 @@
     "entry": ".",
     "name": "NavRailItem",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1541,7 +1758,12 @@
     "entry": ".",
     "name": "StatusBadge",
     "category": "runtime-export",
-    "coverage": "Parallax composition"
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Messaging.tsx",
+      "frontend/src/operations/Operations.stories.tsx",
+      "frontend/src/operations/Views.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1549,7 +1771,8 @@
     "entry": ".",
     "name": "PriorityBadge",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1557,7 +1780,11 @@
     "entry": ".",
     "name": "SummaryCards",
     "category": "runtime-export",
-    "coverage": "Parallax composition"
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/operations/Views.tsx",
+      "frontend/src/pages/dashboard.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1565,7 +1792,8 @@
     "entry": ".",
     "name": "SummaryCard",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1573,7 +1801,8 @@
     "entry": ".",
     "name": "SettingsField",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1581,7 +1810,8 @@
     "entry": ".",
     "name": "SettingsGrid",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1589,7 +1819,8 @@
     "entry": ".",
     "name": "SettingsNotice",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1597,7 +1828,8 @@
     "entry": ".",
     "name": "SettingsPanel",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1605,7 +1837,8 @@
     "entry": ".",
     "name": "SettingsStatusPill",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1613,7 +1846,8 @@
     "entry": ".",
     "name": "SettingsFieldProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1621,7 +1855,8 @@
     "entry": ".",
     "name": "SettingsGridProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1629,7 +1864,8 @@
     "entry": ".",
     "name": "SettingsNoticeProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1637,7 +1873,8 @@
     "entry": ".",
     "name": "SettingsPanelProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1645,7 +1882,8 @@
     "entry": ".",
     "name": "SettingsStatusPillProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1653,7 +1891,8 @@
     "entry": ".",
     "name": "ThemeSwitcher",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1661,7 +1900,8 @@
     "entry": ".",
     "name": "STATUS_KEYS",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1669,7 +1909,8 @@
     "entry": ".",
     "name": "STATUS_TONES",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1677,7 +1918,8 @@
     "entry": ".",
     "name": "DEFAULT_STATUS_TONE",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1685,7 +1927,8 @@
     "entry": ".",
     "name": "statusTone",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1693,7 +1936,8 @@
     "entry": ".",
     "name": "StatusKey",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1701,7 +1945,8 @@
     "entry": ".",
     "name": "StatusTone",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1709,7 +1954,8 @@
     "entry": ".",
     "name": "THEME_STORAGE_KEY",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1717,7 +1963,8 @@
     "entry": ".",
     "name": "DEFAULT_THEME",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1725,7 +1972,8 @@
     "entry": ".",
     "name": "THEME_OPTIONS",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1733,7 +1981,8 @@
     "entry": ".",
     "name": "isThemeName",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1741,7 +1990,8 @@
     "entry": ".",
     "name": "resolveTheme",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1749,7 +1999,8 @@
     "entry": ".",
     "name": "readStoredTheme",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1757,7 +2008,8 @@
     "entry": ".",
     "name": "persistTheme",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1765,7 +2017,10 @@
     "entry": ".",
     "name": "applyTheme",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/App.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1773,7 +2028,8 @@
     "entry": ".",
     "name": "getInitialTheme",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1781,7 +2037,8 @@
     "entry": ".",
     "name": "ThemeName",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1789,7 +2046,8 @@
     "entry": ".",
     "name": "DASHBOARD_DEPRECATED_TOKENS",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1797,7 +2055,8 @@
     "entry": "./ui",
     "name": "PageHeader",
     "category": "runtime-export",
-    "coverage": "Parallax composition"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1805,7 +2064,8 @@
     "entry": "./ui",
     "name": "NavRail",
     "category": "runtime-export",
-    "coverage": "Parallax composition"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1813,7 +2073,8 @@
     "entry": "./ui",
     "name": "NavRailItem",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1821,7 +2082,8 @@
     "entry": "./ui",
     "name": "StatusBadge",
     "category": "runtime-export",
-    "coverage": "Parallax composition"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1829,7 +2091,8 @@
     "entry": "./ui",
     "name": "PriorityBadge",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1837,7 +2100,8 @@
     "entry": "./ui",
     "name": "SummaryCards",
     "category": "runtime-export",
-    "coverage": "Parallax composition"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1845,7 +2109,8 @@
     "entry": "./ui",
     "name": "SummaryCard",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1853,7 +2118,8 @@
     "entry": "./ui",
     "name": "SettingsField",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1861,7 +2127,8 @@
     "entry": "./ui",
     "name": "SettingsGrid",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1869,7 +2136,8 @@
     "entry": "./ui",
     "name": "SettingsNotice",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1877,7 +2145,8 @@
     "entry": "./ui",
     "name": "SettingsPanel",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1885,7 +2154,8 @@
     "entry": "./ui",
     "name": "SettingsStatusPill",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1893,7 +2163,8 @@
     "entry": "./ui",
     "name": "SettingsFieldProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1901,7 +2172,8 @@
     "entry": "./ui",
     "name": "SettingsGridProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1909,7 +2181,8 @@
     "entry": "./ui",
     "name": "SettingsNoticeProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1917,7 +2190,8 @@
     "entry": "./ui",
     "name": "SettingsPanelProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1925,7 +2199,8 @@
     "entry": "./ui",
     "name": "SettingsStatusPillProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1933,7 +2208,8 @@
     "entry": "./ui",
     "name": "ThemeSwitcher",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1941,7 +2217,8 @@
     "entry": "./ui",
     "name": "STATUS_KEYS",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1949,7 +2226,8 @@
     "entry": "./ui",
     "name": "STATUS_TONES",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1957,7 +2235,8 @@
     "entry": "./ui",
     "name": "DEFAULT_STATUS_TONE",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1965,7 +2244,8 @@
     "entry": "./ui",
     "name": "statusTone",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1973,7 +2253,8 @@
     "entry": "./ui",
     "name": "StatusKey",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1981,7 +2262,8 @@
     "entry": "./ui",
     "name": "StatusTone",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1989,7 +2271,8 @@
     "entry": "./ui",
     "name": "THEME_STORAGE_KEY",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -1997,7 +2280,8 @@
     "entry": "./ui",
     "name": "DEFAULT_THEME",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2005,7 +2289,8 @@
     "entry": "./ui",
     "name": "THEME_OPTIONS",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2013,7 +2298,8 @@
     "entry": "./ui",
     "name": "isThemeName",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2021,7 +2307,8 @@
     "entry": "./ui",
     "name": "resolveTheme",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2029,7 +2316,8 @@
     "entry": "./ui",
     "name": "readStoredTheme",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2037,7 +2325,8 @@
     "entry": "./ui",
     "name": "persistTheme",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2045,7 +2334,8 @@
     "entry": "./ui",
     "name": "applyTheme",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2053,7 +2343,8 @@
     "entry": "./ui",
     "name": "getInitialTheme",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2061,7 +2352,8 @@
     "entry": "./ui",
     "name": "ThemeName",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2069,7 +2361,8 @@
     "entry": "./ui",
     "name": "DASHBOARD_DEPRECATED_TOKENS",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2077,7 +2370,8 @@
     "entry": "./layout",
     "name": "ListPageLayout",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2085,7 +2379,8 @@
     "entry": "./layout",
     "name": "DetailHeader",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2093,7 +2388,8 @@
     "entry": "./layout",
     "name": "TabStrip",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2101,7 +2397,8 @@
     "entry": "./layout",
     "name": "OperationsTablePage",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2109,7 +2406,8 @@
     "entry": "./layout",
     "name": "TabStripItem",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2117,7 +2415,8 @@
     "entry": "./data",
     "name": "FilterBar",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2125,7 +2424,8 @@
     "entry": "./data",
     "name": "FilterChipGroup",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2133,7 +2433,8 @@
     "entry": "./data",
     "name": "FilterCycleToggle",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2141,7 +2442,8 @@
     "entry": "./data",
     "name": "FilterEntityCombobox",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2149,7 +2451,8 @@
     "entry": "./data",
     "name": "CycleOption",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2157,7 +2460,8 @@
     "entry": "./data",
     "name": "FilterChip",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2165,7 +2469,8 @@
     "entry": "./data",
     "name": "FilterEntityComboboxItem",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2173,7 +2478,8 @@
     "entry": "./data",
     "name": "DataTable",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2181,7 +2487,8 @@
     "entry": "./data",
     "name": "DataTableRow",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2189,7 +2496,8 @@
     "entry": "./data",
     "name": "TableDensity",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2197,7 +2505,8 @@
     "entry": "./data",
     "name": "useArrowNav",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2205,7 +2514,8 @@
     "entry": "./data",
     "name": "ArrowNavOptions",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2213,7 +2523,8 @@
     "entry": "./data",
     "name": "useListNavigation",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2221,7 +2532,8 @@
     "entry": "./data",
     "name": "ListNavigationOptions",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2229,7 +2541,8 @@
     "entry": "./widgets",
     "name": "Sparkbars",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2237,7 +2550,8 @@
     "entry": "./widgets",
     "name": "SparkbarsProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2245,7 +2559,8 @@
     "entry": "./widgets",
     "name": "SignalBars",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2253,7 +2568,8 @@
     "entry": "./widgets",
     "name": "SignalBarsProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2261,7 +2577,10 @@
     "entry": "./widgets",
     "name": "BarList",
     "category": "runtime-export",
-    "coverage": "Parallax composition"
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/operations/Views.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2269,7 +2588,8 @@
     "entry": "./widgets",
     "name": "BarListItem",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2277,7 +2597,8 @@
     "entry": "./widgets",
     "name": "BarListProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2285,7 +2606,10 @@
     "entry": "./widgets",
     "name": "CompositionBars",
     "category": "runtime-export",
-    "coverage": "Parallax composition"
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/operations/Views.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2293,7 +2617,8 @@
     "entry": "./widgets",
     "name": "CompositionBarsProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2301,7 +2626,8 @@
     "entry": "./widgets",
     "name": "DonutChart",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2309,7 +2635,8 @@
     "entry": "./widgets",
     "name": "DonutChartProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2317,7 +2644,8 @@
     "entry": "./widgets",
     "name": "DonutSegment",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2325,7 +2653,10 @@
     "entry": "./widgets",
     "name": "BarMeter",
     "category": "runtime-export",
-    "coverage": "Parallax composition"
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/operations/Views.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2333,7 +2664,8 @@
     "entry": "./widgets",
     "name": "BarMeterProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2341,7 +2673,8 @@
     "entry": "./widgets",
     "name": "BarMeterRow",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2349,7 +2682,8 @@
     "entry": "./widgets",
     "name": "ActivityHeatmap",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2357,7 +2691,8 @@
     "entry": "./widgets",
     "name": "ActivityHeatmapProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2365,7 +2700,8 @@
     "entry": "./widgets",
     "name": "HourlyPulse",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2373,7 +2709,8 @@
     "entry": "./widgets",
     "name": "HourlyPulseProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2381,7 +2718,8 @@
     "entry": "./widgets",
     "name": "RecentList",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2389,7 +2727,8 @@
     "entry": "./widgets",
     "name": "RecentListProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2397,7 +2736,14 @@
     "entry": "./widgets",
     "name": "Panel",
     "category": "runtime-export",
-    "coverage": "Parallax composition"
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/App.tsx",
+      "frontend/src/FixedActivity.tsx",
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/communications/Messaging.tsx",
+      "frontend/src/operations/Views.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2405,7 +2751,8 @@
     "entry": "./widgets",
     "name": "PanelProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2413,7 +2760,8 @@
     "entry": "./widgets",
     "name": "Kpi",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2421,7 +2769,8 @@
     "entry": "./widgets",
     "name": "KpiProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2429,7 +2778,8 @@
     "entry": "./widgets",
     "name": "KpiGrid",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2437,7 +2787,8 @@
     "entry": "./widgets",
     "name": "KpiGridProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2445,7 +2796,8 @@
     "entry": "./widgets",
     "name": "MiniTrend",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2453,7 +2805,8 @@
     "entry": "./widgets",
     "name": "MiniTrendProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2461,7 +2814,8 @@
     "entry": "./widgets",
     "name": "IntelligenceRow",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2469,7 +2823,8 @@
     "entry": "./widgets",
     "name": "IntelligenceRowProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2477,7 +2832,8 @@
     "entry": "./charts",
     "name": "TimeSeriesChart",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2485,7 +2841,8 @@
     "entry": "./charts",
     "name": "TimeSeriesChartProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2493,7 +2850,8 @@
     "entry": "./charts",
     "name": "TimeSeriesSeries",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2501,7 +2859,8 @@
     "entry": "./charts",
     "name": "TimestampSampleChart",
     "category": "runtime-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2509,7 +2868,8 @@
     "entry": "./charts",
     "name": "TimestampSampleChartProps",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2517,7 +2877,8 @@
     "entry": "./charts",
     "name": "TimestampSample",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2525,6 +2886,3564 @@
     "entry": "./charts",
     "name": "SampleUnit",
     "category": "type-export",
-    "coverage": "unreviewed"
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChatInput",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/communications/Messaging.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChatInputProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChatStream",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChatStreamProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ArtifactCard",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DocumentCard",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PromptCard",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CardBoundary",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CardFallbackDeclined",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CardMiss",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ConfirmationCard",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DiffCard",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Envelope",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "EnvelopeBody",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "EnvelopeFooter",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "EnvelopeHeader",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "EnvelopeSection",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InfoCard",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ListCard",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MetricCard",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ProgressCard",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TableCard",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TimelineCard",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ArtifactCardProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DocumentCardProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PromptCardProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CardBoundaryProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CardFallbackDeclinedProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CardMissProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ConfirmationAction",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ConfirmationCardProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DiffCardProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DiffSide",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "EnvelopeBodyProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "EnvelopeFooterProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "EnvelopeHeaderProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "EnvelopeProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "EnvelopeSectionProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InfoCardProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ListCardItem",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ListCardProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MetricCardProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MetricTrend",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ProgressCardProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ProgressStep",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TableCardProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TableColumn",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TimelineCardProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TimelineEvent",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TimelineStatus",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "acceptsInput",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "classifyPriorResponse",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CardAnswer",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CardDecision",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CardOutcome",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CardResponder",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PriorResponseState",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "useStallDetector",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "useChatHistory",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChatHistoryCursor",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChatHistoryPage",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChatHistoryRequest",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "UseChatHistoryOptions",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "applyReference",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "detectSuggestion",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "filterSuggestions",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "removeSuggestion",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ActiveSuggestion",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChatTrigger",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CommandTrigger",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ReferenceTrigger",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SuggestionItem",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChatCardItem",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChatItem",
+    "category": "type-export",
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChatMarkerItem",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChatMessageItem",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChatRole",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChatStreamStatus",
+    "category": "type-export",
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Reasoning",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ReasoningTrigger",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ReasoningContent",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ReasoningProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ReasoningTriggerProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ReasoningContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChainOfThought",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChainOfThoughtHeader",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChainOfThoughtStep",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChainOfThoughtSearchResults",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChainOfThoughtSearchResult",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChainOfThoughtContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChainOfThoughtImage",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChainOfThoughtProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChainOfThoughtHeaderProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChainOfThoughtStepProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChainOfThoughtSearchResultsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChainOfThoughtSearchResultProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChainOfThoughtContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChainOfThoughtImageProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Sources",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SourcesTrigger",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SourcesContent",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Source",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SourcesProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SourcesTriggerProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SourcesContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SourceProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Plan",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PlanHeader",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PlanTitle",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PlanDescription",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PlanAction",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PlanContent",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PlanFooter",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PlanTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PlanProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PlanHeaderProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PlanTitleProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PlanDescriptionProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PlanActionProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PlanContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PlanFooterProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PlanTriggerProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Shimmer",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "TextShimmerProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MessageActions",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MessageAction",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MessageBranch",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MessageBranchContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MessageBranchSelector",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MessageBranchPrevious",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MessageBranchNext",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MessageBranchPage",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MessageActionsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MessageActionProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MessageBranchProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MessageBranchContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MessageBranchSelectorProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MessageBranchPreviousProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MessageBranchNextProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "MessageBranchPageProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Attachments",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Messaging.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Attachment",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Messaging.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentPreview",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentInfo",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Messaging.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentRemove",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentEmpty",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentHoverCard",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentHoverCardTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentHoverCardContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentData",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentMediaCategory",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentVariant",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentPreviewProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentInfoProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentRemoveProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentEmptyProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentHoverCardProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentHoverCardTriggerProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentHoverCardContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentDropzone",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PromptInputActionAddAttachments",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentDropzoneProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AttachmentRejection",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "PromptInputActionAddAttachmentsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "getMediaCategory",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "getAttachmentLabel",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelector",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorDialog",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorInput",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorList",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorEmpty",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorGroup",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorItem",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorShortcut",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorSeparator",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorLogo",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorLogoGroup",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorName",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorTriggerProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorDialogProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorInputProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorListProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorEmptyProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorGroupProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorItemProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorShortcutProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorSeparatorProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorLogoProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorLogoGroupProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ModelSelectorNameProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Tool",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ToolHeader",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ToolContent",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ToolInput",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ToolOutput",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ToolState",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ToolProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ToolHeaderProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ToolContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ToolInputProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ToolOutputProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ConfirmationTitle",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ConfirmationRequest",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ConfirmationAccepted",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ConfirmationRejected",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ConfirmationTitleProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ConfirmationRequestProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ConfirmationAcceptedProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ConfirmationRejectedProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueItem",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueItemIndicator",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueItemContent",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueItemDescription",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueItemActions",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueItemAction",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueItemAttachment",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueItemImage",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueItemFile",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueList",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueSection",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueSectionTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueSectionLabel",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueSectionContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Queue",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/Chat.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueMessagePart",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueMessage",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueTodo",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueItemProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueItemIndicatorProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueItemContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueItemDescriptionProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueItemActionsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueItemActionProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueItemAttachmentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueItemImageProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueItemFileProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueListProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueSectionProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueSectionTriggerProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueSectionLabelProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueSectionContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QueueProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "OpenIn",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "OpenInTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "OpenInContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "OpenInItem",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "OpenInGroup",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "OpenInLabel",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "OpenInSeparator",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "OpenInProvider",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "OpenInProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "OpenInTriggerProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "OpenInContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "OpenInItemProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "OpenInGroupProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "OpenInLabelProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "OpenInSeparatorProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Suggestions",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Suggestion",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SuggestionsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SuggestionProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Context",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextContentHeader",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextContentBody",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextContentFooter",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextInputUsage",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextOutputUsage",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextReasoningUsage",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextCacheUsage",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextUsage",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextCost",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextTriggerProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextContentHeaderProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextContentBodyProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextContentFooterProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextInputUsageProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextOutputUsageProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextReasoningUsageProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ContextCacheUsageProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Question",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QuestionPrompt",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QuestionDescription",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QuestionOptions",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QuestionOption",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QuestionInput",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QuestionActions",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QuestionSubmit",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QuestionValue",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QuestionResponse",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QuestionSelectionMode",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QuestionProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QuestionPromptProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QuestionDescriptionProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QuestionOptionsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QuestionOptionProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QuestionInputProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QuestionActionsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "QuestionSubmitProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Image",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ImageProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitation",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationText",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCard",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCardTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCardBody",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCarousel",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCarouselContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCarouselItem",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCarouselHeader",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCarouselIndex",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCarouselPrev",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCarouselNext",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationSource",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationQuote",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationTextProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCardProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCardTriggerProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCardBodyProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCarouselProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCarouselContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCarouselItemProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCarouselHeaderProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCarouselIndexProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCarouselPrevProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationCarouselNextProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationSourceProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "InlineCitationQuoteProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "Artifact",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ArtifactHeader",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ArtifactTitle",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ArtifactDescription",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ArtifactClose",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ArtifactActions",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ArtifactAction",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ArtifactContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ArtifactProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ArtifactHeaderProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ArtifactTitleProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ArtifactDescriptionProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ArtifactCloseProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ArtifactActionsProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ArtifactActionProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ArtifactContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": "./markdown",
+    "name": "ChatMarkdown",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": "./markdown",
+    "name": "ChatMarkdownProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": "./markdown",
+    "name": "StreamdownProps",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": "./markdown",
+    "name": "ChatMarkdownNode",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "PayloadBinding",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "FallbackBinding",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "BindingState",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "BindingRequest",
+    "category": "type-export",
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/communications/bindings.ts"
+    ]
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "Binding",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "RendererClass",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "TrustClass",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "Isolation",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "TrustProfile",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "TRUST_PROFILES",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "trustProfileFor",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "isolationFor",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "trustClassPermits",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "HostDecision",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "HostPolicy",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ResolverConfig",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "BindingTableSpec",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "BindingTable",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "defineBindingTable",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/bindings.ts"
+    ]
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "constantTrust",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/bindings.ts"
+    ]
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "MissCode",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "Drawable",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "Miss",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "Resolution",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ParsedEntry",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "resolve",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/communications/bindings.ts"
+    ]
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "safeFallbackOf",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "parseEntry",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
   }
 ]

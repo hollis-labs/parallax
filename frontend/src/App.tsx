@@ -8,9 +8,21 @@ import {
   usePluginSlots,
   WidgetRenderer,
 } from "@hollis-labs/plugin-host-ui/react"
-import { Activity, Compass, Gauge, Layers, Play, RotateCcw, X } from "lucide-react"
+import {
+  Activity,
+  Compass,
+  Gauge,
+  Layers,
+  Mail,
+  MessageSquare,
+  Play,
+  RotateCcw,
+  Users,
+  X,
+} from "lucide-react"
 import { useEffect, useRef, useState, useSyncExternalStore } from "react"
 import { createOperationsExample } from "./chimera/example"
+import { CommunicationLab } from "./communications/CommunicationLab"
 import { normalizeScenario, operationsModel, runDetail } from "./operations/model"
 import {
   ActivityView,
@@ -211,6 +223,7 @@ export function App() {
   useEffect(() => {
     if (tick === 6) setPlaying(false)
   }, [tick])
+  const isCommunication = ["Contacts", "Messages", "Chat"].includes(page)
   const model = operationsModel(scenario, query),
     detail = runDetail(model, selectedId)
   const count = model.stats.count,
@@ -285,14 +298,25 @@ export function App() {
         <NavRail
           logo={<Layers className="size-5" />}
           logoLabel="Parallax"
-          items={["Activity", "Mission Control", "Usage", "Examples"].map((name, i) => ({
+          items={[
+            "Activity",
+            "Mission Control",
+            "Usage",
+            "Contacts",
+            "Messages",
+            "Chat",
+            "Examples",
+          ].map((name, i) => ({
             key: name,
             label: name,
             icon: [
               <Activity key="a" className="size-4" />,
               <Compass key="b" className="size-4" />,
               <Gauge key="c" className="size-4" />,
-              <Layers key="d" className="size-4" />,
+              <Users key="d" className="size-4" />,
+              <Mail key="e" className="size-4" />,
+              <MessageSquare key="f" className="size-4" />,
+              <Layers key="g" className="size-4" />,
             ][i],
             active: page === name,
             onSelect: () => {
@@ -386,7 +410,9 @@ export function App() {
         <div className={`review-surface ${viewport}`}>
           <div className="page-title">
             <div>
-              <p className="eyebrow">OPERATIONS / DESIGN LAB</p>
+              <p className="eyebrow">
+                {isCommunication ? "COMMUNICATIONS" : "OPERATIONS"} / DESIGN LAB
+              </p>
               <h1>{page}</h1>
               <p className="muted">
                 October 4, 2026 · deterministic seed {model.dataset.seed} · {model.dataset.profile}
@@ -424,8 +450,17 @@ export function App() {
             <ResourceNotice model={model} />
           ) : (
             <>
-              <OperationsSummary model={model} />
-              {page === "Activity" ? (
+              {!isCommunication && <OperationsSummary model={model} />}
+              {isCommunication ? (
+                <CommunicationLab
+                  key={scenario}
+                  view={page}
+                  scenario={scenario}
+                  onViewChange={setPage}
+                  onIntent={emit}
+                  onReset={() => setIntent("")}
+                />
+              ) : page === "Activity" ? (
                 <ActivityView
                   model={model}
                   onSelect={select}

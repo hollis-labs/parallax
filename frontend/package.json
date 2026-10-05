@@ -17,8 +17,10 @@
   "dependencies": {
     "@base-ui/react": "1.8.0",
     "@hollis-labs/design-app-runtime": "0.4.0",
+    "@hollis-labs/design-bindings": "0.1.0",
     "@hollis-labs/design-components": "0.4.0",
     "@hollis-labs/design-tokens": "0.4.0",
+    "@hollis-labs/kit-chat": "0.4.0",
     "@hollis-labs/kit-dashboard": "0.4.0",
     "@hollis-labs/kit-settings": "0.2.0",
     "@hollis-labs/plugin-host-ui": "file:../third_party/hollis-labs-plugin-host-ui-0.1.0.tgz",

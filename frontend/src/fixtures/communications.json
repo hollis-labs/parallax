@@ -1,0 +1,274 @@
+{
+  "cards": [
+    {
+      "id": "CARD-CONFIRM-001",
+      "chatId": "CHAT-001",
+      "kind": "parallax.confirmation/v1",
+      "title": "Review fixture handoff",
+      "body": "Inspect a proposed handoff. Answering only records a local intent; it does not approve or continue a run."
+    },
+    {
+      "id": "CARD-PROMPT-001",
+      "chatId": "CHAT-001",
+      "kind": "parallax.prompt/v1",
+      "title": "Local evidence note",
+      "body": "Draft a note for this recorded review. No response is transported or saved."
+    },
+    {
+      "id": "CARD-CONFIRM-002",
+      "chatId": "CHAT-002",
+      "kind": "parallax.confirmation/v1",
+      "title": "Review fixture handoff",
+      "body": "Inspect a proposed handoff. Answering only records a local intent; it does not approve or continue a run."
+    },
+    {
+      "id": "CARD-PROMPT-002",
+      "chatId": "CHAT-002",
+      "kind": "parallax.prompt/v1",
+      "title": "Local evidence note",
+      "body": "Draft a note for this recorded review. No response is transported or saved."
+    },
+    {
+      "id": "CARD-CONFIRM-003",
+      "chatId": "CHAT-003",
+      "kind": "parallax.confirmation/v1",
+      "title": "Review fixture handoff",
+      "body": "Inspect a proposed handoff. Answering only records a local intent; it does not approve or continue a run."
+    },
+    {
+      "id": "CARD-PROMPT-003",
+      "chatId": "CHAT-003",
+      "kind": "parallax.prompt/v1",
+      "title": "Local evidence note",
+      "body": "Draft a note for this recorded review. No response is transported or saved."
+    }
+  ],
+  "version": "communications/v1",
+  "generator": "parallax/v3",
+  "seed": 4421,
+  "clock": "2026-10-04T14:30:00Z",
+  "operationsVersion": "operations/v2",
+  "contacts": [
+    {
+      "id": "CONTACT-001",
+      "name": "Adaline Rivera",
+      "role": "Operations reviewer",
+      "email": "reviewer1@example.invalid",
+      "phone": "+1 202 555 0110",
+      "notes": "Fictitious presentation contact. No directory or account service is connected."
+    },
+    {
+      "id": "CONTACT-002",
+      "name": "Ashtyn Rivera",
+      "role": "Fixture engineer",
+      "email": "reviewer2@example.invalid",
+      "phone": "+1 202 555 0111",
+      "notes": "Fictitious presentation contact. No directory or account service is connected."
+    },
+    {
+      "id": "CONTACT-003",
+      "name": "Della Rivera",
+      "role": "Telemetry analyst",
+      "email": "reviewer3@example.invalid",
+      "phone": "+1 202 555 0112",
+      "notes": "Fictitious presentation contact. No directory or account service is connected."
+    }
+  ],
+  "conversations": [
+    {
+      "id": "CONVERSATION-001",
+      "contactId": "CONTACT-001",
+      "channel": "email",
+      "subject": "Gateway review evidence",
+      "runId": "RUN-001"
+    },
+    {
+      "id": "CONVERSATION-002",
+      "contactId": "CONTACT-002",
+      "channel": "SMS",
+      "subject": "Fixture contract handoff",
+      "runId": "RUN-002"
+    },
+    {
+      "id": "CONVERSATION-003",
+      "contactId": "CONTACT-003",
+      "channel": "Tether",
+      "subject": "Telemetry sampling follow-up",
+      "runId": "RUN-003"
+    }
+  ],
+  "messages": [
+    {
+      "id": "MESSAGE-IN-001",
+      "conversationId": "CONVERSATION-001",
+      "contactId": "CONTACT-001",
+      "direction": "inbound",
+      "body": "Please review the local evidence for Review gateway permission boundaries. The attached note is a bundled fixture, not a live delivery.",
+      "time": "2026-10-04T14:10:00Z",
+      "delivery": "received",
+      "attachmentIds": ["ATTACHMENT-001"]
+    },
+    {
+      "id": "MESSAGE-OUT-001",
+      "conversationId": "CONVERSATION-001",
+      "contactId": "CONTACT-001",
+      "direction": "outbound",
+      "body": "Review remains active after the first fixture inspection. The review remains an offline presentation; no task state was changed.",
+      "time": "2026-10-04T14:11:30Z",
+      "delivery": "delivered",
+      "attachmentIds": []
+    },
+    {
+      "id": "MESSAGE-IN-002",
+      "conversationId": "CONVERSATION-002",
+      "contactId": "CONTACT-002",
+      "direction": "inbound",
+      "body": "Please review the local evidence for Build deterministic fixture contracts. The attached note is a bundled fixture, not a live delivery.",
+      "time": "2026-10-04T14:12:00Z",
+      "delivery": "received",
+      "attachmentIds": ["ATTACHMENT-002"]
+    },
+    {
+      "id": "MESSAGE-OUT-002",
+      "conversationId": "CONVERSATION-002",
+      "contactId": "CONTACT-002",
+      "direction": "outbound",
+      "body": "Fixture review completed and evidence recorded. The review remains an offline presentation; no task state was changed.",
+      "time": "2026-10-04T14:13:30Z",
+      "delivery": "failed",
+      "attachmentIds": []
+    },
+    {
+      "id": "MESSAGE-IN-003",
+      "conversationId": "CONVERSATION-003",
+      "contactId": "CONTACT-003",
+      "direction": "inbound",
+      "body": "Please review the local evidence for Inspect telemetry sampling drift. The attached note is a bundled fixture, not a live delivery.",
+      "time": "2026-10-04T14:14:00Z",
+      "delivery": "received",
+      "attachmentIds": ["ATTACHMENT-003"]
+    },
+    {
+      "id": "MESSAGE-OUT-003",
+      "conversationId": "CONVERSATION-003",
+      "contactId": "CONTACT-003",
+      "direction": "outbound",
+      "body": "Previous run failed; task is blocked awaiting missing telemetry evidence. The review remains an offline presentation; no task state was changed.",
+      "time": "2026-10-04T14:15:30Z",
+      "delivery": "queued",
+      "attachmentIds": []
+    }
+  ],
+  "attachments": [
+    {
+      "id": "ATTACHMENT-001",
+      "name": "run-001-evidence.txt",
+      "mediaType": "text/plain",
+      "content": "Review remains active after the first fixture inspection.\nLinked tool: TOOL-001\nReview remains active after the first fixture inspection.",
+      "runId": "RUN-001"
+    },
+    {
+      "id": "ATTACHMENT-002",
+      "name": "run-002-evidence.txt",
+      "mediaType": "text/plain",
+      "content": "Fixture review completed and evidence recorded.\nLinked tool: TOOL-002\nFixture review completed and evidence recorded.",
+      "runId": "RUN-002"
+    },
+    {
+      "id": "ATTACHMENT-003",
+      "name": "run-003-evidence.txt",
+      "mediaType": "text/plain",
+      "content": "Previous run failed; task is blocked awaiting missing telemetry evidence.\nLinked tool: TOOL-003\nScripted fixture inspection refused: required evidence is unavailable.",
+      "runId": "RUN-003"
+    }
+  ],
+  "chatSessions": [
+    {
+      "id": "CHAT-001",
+      "sessionId": "SESSION-001",
+      "runId": "RUN-001",
+      "contactId": "CONTACT-001",
+      "title": "Review gateway permission boundaries",
+      "reasoning": "Authored review rationale: compare the bundled context and recorded fixture outcome. This is demonstration text, not hidden model reasoning.",
+      "planId": "PLAN-001",
+      "queueId": "QUEUE-001",
+      "attachmentId": "ATTACHMENT-001"
+    },
+    {
+      "id": "CHAT-002",
+      "sessionId": "SESSION-002",
+      "runId": "RUN-002",
+      "contactId": "CONTACT-002",
+      "title": "Build deterministic fixture contracts",
+      "reasoning": "Authored review rationale: compare the bundled context and recorded fixture outcome. This is demonstration text, not hidden model reasoning.",
+      "planId": "PLAN-002",
+      "queueId": "QUEUE-002",
+      "attachmentId": "ATTACHMENT-002"
+    },
+    {
+      "id": "CHAT-003",
+      "sessionId": "SESSION-003",
+      "runId": "RUN-003",
+      "contactId": "CONTACT-003",
+      "title": "Inspect telemetry sampling drift",
+      "reasoning": "Authored review rationale: compare the bundled context and recorded fixture outcome. This is demonstration text, not hidden model reasoning.",
+      "planId": "PLAN-003",
+      "queueId": "QUEUE-003",
+      "attachmentId": "ATTACHMENT-003"
+    }
+  ],
+  "plans": [
+    {
+      "id": "PLAN-001",
+      "runId": "RUN-001",
+      "steps": [
+        "Inspect bundled context",
+        "Review recorded tool outcome",
+        "Document local evidence"
+      ]
+    },
+    {
+      "id": "PLAN-002",
+      "runId": "RUN-002",
+      "steps": [
+        "Inspect bundled context",
+        "Review recorded tool outcome",
+        "Document local evidence"
+      ]
+    },
+    {
+      "id": "PLAN-003",
+      "runId": "RUN-003",
+      "steps": [
+        "Inspect bundled context",
+        "Review recorded tool outcome",
+        "Document local evidence"
+      ]
+    }
+  ],
+  "queues": [
+    {
+      "id": "QUEUE-001",
+      "runId": "RUN-001",
+      "status": "pending",
+      "title": "Review evidence for TASK-001"
+    },
+    {
+      "id": "QUEUE-002",
+      "runId": "RUN-002",
+      "status": "completed",
+      "title": "Review evidence for TASK-002"
+    },
+    {
+      "id": "QUEUE-003",
+      "runId": "RUN-003",
+      "status": "pending",
+      "title": "Review evidence for TASK-003"
+    }
+  ],
+  "streamChunks": [
+    "Reviewing the bundled context. ",
+    "The fixture inspection is complete. ",
+    "No tool or provider was contacted."
+  ]
+}

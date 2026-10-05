@@ -12,4 +12,7 @@ func main() {
 	if err := scenarios.WriteProfile("frontend/src/fixtures/operations-large.json", 80); err != nil {
 		log.Fatal(err)
 	}
+	if err := scenarios.WriteCommunications("frontend/src/fixtures/communications.json"); err != nil {
+		log.Fatal(err)
+	}
 }
