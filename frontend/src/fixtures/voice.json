@@ -1,0 +1,94 @@
+{
+  "version": "voice/v1",
+  "generator": "parallax/v7",
+  "operationsVersion": "operations/v2",
+  "communicationsVersion": "communications/v1",
+  "seed": 4421,
+  "clock": "2026-10-04T14:30:00Z",
+  "source": "Original Parallax generated mono PCM triangle tones (MIT); authored timed review text is not speech transcription.",
+  "clips": [
+    {
+      "id": "AUDIO-001",
+      "title": "Completed review tone",
+      "chatId": "CHAT-002",
+      "runId": "RUN-002",
+      "sessionId": "SESSION-002",
+      "toolId": "TOOL-002",
+      "spanId": "SPAN-TOOL-002",
+      "recordedAt": "2026-10-04T14:13:15Z",
+      "asset": "/media/review-tone-001.wav",
+      "sha256": "2f6d56622ac77f911d522d5cd6f9f81936689f2079a617524e7337491d8ba597",
+      "durationSeconds": 8,
+      "sampleRate": 8000,
+      "periodFrames": 80,
+      "mediaKind": "synthetic-tone-not-speech",
+      "license": "MIT",
+      "segments": [
+        {
+          "text": "Authored review text: inspect the bundled context.",
+          "startSecond": 0,
+          "endSecond": 2
+        },
+        {
+          "text": "This timing accompanies a generated tone, not recognized speech.",
+          "startSecond": 2,
+          "endSecond": 4
+        },
+        {
+          "text": "Related evidence: RUN-002 and TOOL-002.",
+          "startSecond": 4,
+          "endSecond": 6
+        },
+        {
+          "text": "No recording, provider call or saved response occurs.",
+          "startSecond": 6,
+          "endSecond": 8
+        }
+      ]
+    },
+    {
+      "id": "AUDIO-002",
+      "title": "Refused review tone",
+      "chatId": "CHAT-003",
+      "runId": "RUN-003",
+      "sessionId": "SESSION-003",
+      "toolId": "TOOL-003",
+      "spanId": "SPAN-TOOL-003",
+      "recordedAt": "2026-10-04T14:15:15Z",
+      "asset": "/media/review-tone-002.wav",
+      "sha256": "fbe7ad1b545ac5534bb3ab3833174a0aafefb582401a64f6483dd7cc6dddcc60",
+      "durationSeconds": 10,
+      "sampleRate": 8000,
+      "periodFrames": 40,
+      "mediaKind": "synthetic-tone-not-speech",
+      "license": "MIT",
+      "segments": [
+        {
+          "text": "Authored review text: inspect the bundled context.",
+          "startSecond": 0,
+          "endSecond": 2
+        },
+        {
+          "text": "This timing accompanies a generated tone, not recognized speech.",
+          "startSecond": 2,
+          "endSecond": 4
+        },
+        {
+          "text": "Related evidence: RUN-003 and TOOL-003.",
+          "startSecond": 4,
+          "endSecond": 6
+        },
+        {
+          "text": "No recording, provider call or saved response occurs.",
+          "startSecond": 6,
+          "endSecond": 8
+        },
+        {
+          "text": "The recorded refusal remains a fixture outcome.",
+          "startSecond": 8,
+          "endSecond": 10
+        }
+      ]
+    }
+  ]
+}

@@ -744,7 +744,8 @@
       "frontend/src/observability/Lab.tsx",
       "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Operations.stories.tsx",
-      "frontend/src/operations/Views.tsx"
+      "frontend/src/operations/Views.tsx",
+      "frontend/src/voice/Lab.tsx"
     ]
   },
   {
@@ -2753,7 +2754,8 @@
       "frontend/src/communications/Messaging.tsx",
       "frontend/src/developer/Lab.tsx",
       "frontend/src/observability/Views.tsx",
-      "frontend/src/operations/Views.tsx"
+      "frontend/src/operations/Views.tsx",
+      "frontend/src/voice/Lab.tsx"
     ]
   },
   {
@@ -9166,5 +9168,867 @@
     "category": "runtime-export",
     "coverage": "unreviewed",
     "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "MicSelector",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "MicSelectorContent",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "MicSelectorEmpty",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "MicSelectorInput",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "MicSelectorItem",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "MicSelectorLabel",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "MicSelectorList",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "MicSelectorTrigger",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "MicSelectorValue",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "MicSelectorContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "MicSelectorEmptyProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "MicSelectorInputProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "MicSelectorItemProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "MicSelectorLabelProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "MicSelectorListProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "MicSelectorProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "MicSelectorTriggerProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "MicSelectorValueProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "SpeechInput",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "SpeechInputAvailability",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "SpeechInputError",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "SpeechInputErrorCode",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "SpeechInputProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "useAudioDevices",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "Transcription",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TranscriptionSegment",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TranscriptionProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TranscriptionSegmentData",
+    "category": "type-export",
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/voice/type-contract.ts"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "TranscriptionSegmentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelector",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorAccent",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorAge",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorAttributes",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorBullet",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorContent",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorDescription",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorDialog",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorEmpty",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorGender",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorGroup",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorInput",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorItem",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorList",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorName",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorPreview",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorSeparator",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorShortcut",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorTrigger",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Lab.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorAccentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorAgeProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorAttributesProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorBulletProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorContentProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorDescriptionProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorDialogProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorEmptyProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorGenderProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorGroupProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorInputProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorItemProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorListProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorNameProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorPreviewProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorProps",
+    "category": "type-export",
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/voice/type-contract.ts"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorSeparatorProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorShortcutProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "VoiceSelectorTriggerProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "useVoiceSelector",
+    "category": "runtime-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayer",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Player.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerElementProps",
+    "category": "type-export",
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/voice/type-contract.ts"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerElement",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Player.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerControlBarProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerControlBar",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Player.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerPlayButtonProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerPlayButton",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Player.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerSeekBackwardButtonProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerSeekBackwardButton",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Player.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerSeekForwardButtonProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerSeekForwardButton",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Player.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerTimeDisplayProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerTimeDisplay",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Player.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerTimeRangeProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerTimeRange",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Player.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerDurationDisplayProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerDurationDisplay",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Player.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerMuteButtonProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerMuteButton",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Player.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerVolumeRangeProps",
+    "category": "type-export",
+    "coverage": "unreviewed",
+    "sources": []
+  },
+  {
+    "package": "@hollis-labs/kit-voice",
+    "version": "0.0.0",
+    "entry": "./audio-player",
+    "name": "AudioPlayerVolumeRange",
+    "category": "runtime-export",
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/voice/Player.tsx"
+    ]
   }
 ]

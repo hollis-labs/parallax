@@ -1,0 +1,50 @@
+.voice-input-review,
+.voice-review-actions {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 3);
+  flex-wrap: wrap;
+}
+.voice-lab textarea {
+  display: block;
+  width: 100%;
+  min-height: calc(var(--spacing) * 24);
+  padding: calc(var(--spacing) * 3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-bg);
+  color: var(--color-fg);
+}
+.voice-player-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--spacing) * 2);
+  max-width: 100%;
+}
+.voice-lab media-controller {
+  display: block;
+  width: 100%;
+}
+.voice-lab [data-slot="audio-player-time-range"] {
+  min-width: 0;
+}
+.voice-lab [data-slot="transcription"] {
+  overflow-wrap: anywhere;
+}
+.voice-lab [data-slot="transcription"] button {
+  color: var(--color-fg-muted);
+  opacity: 1;
+}
+.voice-lab [data-slot="transcription"] button[data-active="true"] {
+  color: var(--color-fg);
+  text-decoration: underline;
+  text-underline-offset: calc(var(--spacing) * 1);
+}
+.voice-lab [data-slot="transcription"] button:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+.voice-player-controls [data-slot="button-group"] {
+  flex-wrap: wrap;
+  max-width: 100%;
+}

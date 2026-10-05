@@ -1,7 +1,7 @@
 import ts from '../frontend/node_modules/typescript/lib/typescript.js'
 import fs from 'node:fs'
 import path from 'node:path'
-const packages=['design-components','kit-dashboard','kit-chat','design-bindings','kit-admin','kit-settings','kit-observe','kit-account','kit-code','kit-workflow']
+const packages=['design-components','kit-dashboard','kit-chat','design-bindings','kit-admin','kit-settings','kit-observe','kit-account','kit-code','kit-workflow','kit-voice']
 const imports=new Map()
 function scan(directory){for(const item of fs.readdirSync(directory,{withFileTypes:true})){const file=path.join(directory,item.name);if(item.isDirectory())scan(file);else if(/\.tsx?$/.test(file)){const source=ts.createSourceFile(file,fs.readFileSync(file,'utf8'),ts.ScriptTarget.Latest,true);for(const statement of source.statements){if(!ts.isImportDeclaration(statement)||!ts.isStringLiteral(statement.moduleSpecifier))continue;const specifier=statement.moduleSpecifier.text;if(!specifier.startsWith('@hollis-labs/'))continue;const names=statement.importClause?.namedBindings;if(names&&ts.isNamedImports(names)){for(const name of names.elements){const key=specifier+'#'+(name.propertyName?.text??name.name.text),files=imports.get(key)??[];files.push(file);imports.set(key,files)}}}}}}
 scan('frontend/src')

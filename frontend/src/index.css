@@ -8,6 +8,7 @@
 @import "@hollis-labs/design-components/source.css";
 @import "@hollis-labs/kit-dashboard/source.css";
 @import "@hollis-labs/kit-chat/source.css";
+@import "@hollis-labs/kit-voice/source.css";
 @source "../node_modules/@hollis-labs/kit-code/dist/**/*.js";
 @source "../node_modules/@hollis-labs/kit-workflow/dist/**/*.js";
 :root {

@@ -36,6 +36,7 @@ import {
   UsageView,
 } from "./operations/Views"
 
+const VoiceLab = lazy(() => import("./voice/Lab"))
 const DeveloperLab = lazy(() => import("./developer/Lab"))
 
 type Host = ReturnType<typeof createOperationsExample>
@@ -228,6 +229,7 @@ export function App() {
   useEffect(() => {
     if (tick === 6) setPlaying(false)
   }, [tick])
+  const isVoice = page === "Voice"
   const isDeveloper = page === "Developer"
   const isObservation = page === "Observability"
   const isAdministration = page === "Administration" || page === "Account"
@@ -317,6 +319,7 @@ export function App() {
             "Account",
             "Observability",
             "Developer",
+            "Voice",
             "Examples",
           ].map((name, i) => ({
             key: name,
@@ -333,6 +336,7 @@ export function App() {
               <Activity key="i" className="size-4" />,
               <Layers key="j" className="size-4" />,
               <Layers key="k" className="size-4" />,
+              <MessageSquare key="l" className="size-4" />,
             ][i],
             active: page === name,
             onSelect: () => {
@@ -427,7 +431,7 @@ export function App() {
           <div className="page-title">
             <div>
               <p className="eyebrow">
-                {isAdministration || isObservation || isDeveloper
+                {isAdministration || isObservation || isDeveloper || isVoice
                   ? page.toUpperCase()
                   : isCommunication
                     ? "COMMUNICATIONS"
@@ -437,15 +441,17 @@ export function App() {
               <h1>{page}</h1>
               <p className="muted">
                 October 4, 2026 · deterministic seed {model.dataset.seed} ·{" "}
-                {isDeveloper
-                  ? "bundled developer/workflow fixture"
-                  : isObservation
-                    ? "bundled observation fixture"
-                    : isAdministration
-                      ? "bundled administration/account fixture"
-                      : isCommunication
-                        ? "bundled communications fixture"
-                        : model.dataset.profile}
+                {isVoice
+                  ? "bundled original voice/media fixture"
+                  : isDeveloper
+                    ? "bundled developer/workflow fixture"
+                    : isObservation
+                      ? "bundled observation fixture"
+                      : isAdministration
+                        ? "bundled administration/account fixture"
+                        : isCommunication
+                          ? "bundled communications fixture"
+                          : model.dataset.profile}
               </p>
             </div>
             <span className="fixture-tag">FIXTURE ONLY</span>
@@ -480,10 +486,16 @@ export function App() {
             <ResourceNotice model={model} />
           ) : (
             <>
-              {!isCommunication && !isAdministration && !isObservation && !isDeveloper && (
-                <OperationsSummary model={model} />
-              )}
-              {isDeveloper ? (
+              {!isCommunication &&
+                !isAdministration &&
+                !isObservation &&
+                !isDeveloper &&
+                !isVoice && <OperationsSummary model={model} />}
+              {isVoice ? (
+                <Suspense fallback={<p role="status">Loading voice presentation…</p>}>
+                  <VoiceLab key={scenario} onInspect={select} onIntent={setIntent} />
+                </Suspense>
+              ) : isDeveloper ? (
                 <Suspense fallback={<p role="status">Loading developer presentation…</p>}>
                   <DeveloperLab key={scenario} onInspect={select} onIntent={setIntent} />
                 </Suspense>

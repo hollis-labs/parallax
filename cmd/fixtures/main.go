@@ -6,6 +6,9 @@ import (
 )
 
 func main() {
+	if err := scenarios.WriteVoice("frontend/src/fixtures/voice.json", "frontend/public/media"); err != nil {
+		log.Fatal(err)
+	}
 	if err := scenarios.WriteDeveloper("frontend/src/fixtures/developer.json"); err != nil {
 		log.Fatal(err)
 	}
