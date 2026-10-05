@@ -1,5 +1,5 @@
 import { AppShell, Button, DetailDialog } from "@hollis-labs/design-components"
-import { applyTheme, NavRail, PageHeader } from "@hollis-labs/kit-dashboard"
+import { applyTheme, PageHeader } from "@hollis-labs/kit-dashboard"
 import { Panel } from "@hollis-labs/kit-dashboard/widgets"
 import {
   PluginHostProvider,
@@ -25,6 +25,8 @@ import { AccountLab } from "./administration/Account"
 import { AdminLab } from "./administration/Admin"
 import { createOperationsExample } from "./chimera/example"
 import { CommunicationLab } from "./communications/CommunicationLab"
+import { Comparison, type Layout, layouts } from "./layouts/Comparison"
+import { Navigation, type NavigationMode } from "./layouts/Navigation"
 import { ObservationLab } from "./observability/Lab"
 import { normalizeScenario, operationsModel, runDetail } from "./operations/model"
 import {
@@ -177,6 +179,16 @@ export function App() {
   const pageScroll = useRef<HTMLDivElement>(null)
 
   const [page, setPage] = useState(params.get("view") ?? "Activity"),
+    [layout, setLayout] = useState<Layout>(
+      layouts.find((x) => x === params.get("layout")) ?? "list",
+    ),
+    [navigation, setNavigation] = useState<NavigationMode>(
+      params.get("navigation") === "header"
+        ? "header"
+        : params.get("navigation") === "drawer"
+          ? "drawer"
+          : "rail",
+    ),
     [scenario, setScenario] = useState(normalizeScenario(params.get("scenario") ?? "populated")),
     [theme, setTheme] = useState(params.get("theme") ?? "p4-white"),
     [mode, setMode] = useState(params.get("mode") ?? "dark"),
@@ -271,9 +283,9 @@ export function App() {
     history.replaceState(
       null,
       "",
-      `?${new URLSearchParams({ view: page, scenario, theme, mode, viewport })}`,
+      `?${new URLSearchParams({ view: page, scenario, theme, mode, viewport, layout, navigation })}`,
     )
-  }, [page, scenario, theme, mode, viewport])
+  }, [page, scenario, theme, mode, viewport, layout, navigation])
   useEffect(() => {
     const close = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -302,54 +314,66 @@ export function App() {
   ) : (
     <p className="p-4 text-sm text-fg-muted">Loading reviewed contribution…</p>
   )
+  const navigationItems = [
+    "Activity",
+    "Mission Control",
+    "Usage",
+    "Contacts",
+    "Messages",
+    "Chat",
+    "Administration",
+    "Account",
+    "Observability",
+    "Developer",
+    "Voice",
+    "Examples",
+    "Layouts",
+  ].map((name, i) => ({
+    key: name,
+    label: name,
+    icon: [
+      <Activity key="a" className="size-4" />,
+      <Compass key="b" className="size-4" />,
+      <Gauge key="c" className="size-4" />,
+      <Users key="d" className="size-4" />,
+      <Mail key="e" className="size-4" />,
+      <MessageSquare key="f" className="size-4" />,
+      <Layers key="g" className="size-4" />,
+      <Users key="h" className="size-4" />,
+      <Activity key="i" className="size-4" />,
+      <Layers key="j" className="size-4" />,
+      <Layers key="k" className="size-4" />,
+      <MessageSquare key="l" className="size-4" />,
+      <Layers key="m" className="size-4" />,
+    ][i],
+    active: page === name,
+    onSelect: () => {
+      setPage(name)
+      setDetailOpen(false)
+    },
+  }))
   const shell = (
     <AppShell
-      nav={
-        <NavRail
-          logo={<Layers className="size-5" />}
-          logoLabel="Parallax"
-          items={[
-            "Activity",
-            "Mission Control",
-            "Usage",
-            "Contacts",
-            "Messages",
-            "Chat",
-            "Administration",
-            "Account",
-            "Observability",
-            "Developer",
-            "Voice",
-            "Examples",
-          ].map((name, i) => ({
-            key: name,
-            label: name,
-            icon: [
-              <Activity key="a" className="size-4" />,
-              <Compass key="b" className="size-4" />,
-              <Gauge key="c" className="size-4" />,
-              <Users key="d" className="size-4" />,
-              <Mail key="e" className="size-4" />,
-              <MessageSquare key="f" className="size-4" />,
-              <Layers key="g" className="size-4" />,
-              <Users key="h" className="size-4" />,
-              <Activity key="i" className="size-4" />,
-              <Layers key="j" className="size-4" />,
-              <Layers key="k" className="size-4" />,
-              <MessageSquare key="l" className="size-4" />,
-            ][i],
-            active: page === name,
-            onSelect: () => {
-              setPage(name)
-              setDetailOpen(false)
-            },
-          }))}
-        />
-      }
+      nav={navigation === "rail" ? <Navigation mode="rail" items={navigationItems} /> : undefined}
       header={
         <div>
           <PageHeader title="Parallax" />
+          {navigation !== "rail" && <Navigation mode={navigation} items={navigationItems} />}
           <div className="review-controls">
+            {page === "Layouts" && (
+              <label>
+                Navigation
+                <select
+                  aria-label="Navigation variant"
+                  value={navigation}
+                  onChange={(e) => setNavigation(e.target.value as NavigationMode)}
+                >
+                  <option>rail</option>
+                  <option>header</option>
+                  <option>drawer</option>
+                </select>
+              </label>
+            )}
             <label>
               Scenario
               <select
@@ -426,148 +450,163 @@ export function App() {
         </div>
       }
     >
-      <div ref={pageScroll} className="page-scroll" data-testid="page-scroll">
-        <div className={`review-surface ${viewport}`}>
-          <div className="page-title">
-            <div>
-              <p className="eyebrow">
-                {isAdministration || isObservation || isDeveloper || isVoice
-                  ? page.toUpperCase()
-                  : isCommunication
-                    ? "COMMUNICATIONS"
-                    : "OPERATIONS"}{" "}
-                / DESIGN LAB
-              </p>
-              <h1>{page}</h1>
-              <p className="muted">
-                October 4, 2026 · deterministic seed {model.dataset.seed} ·{" "}
-                {isVoice
-                  ? "bundled original voice/media fixture"
-                  : isDeveloper
-                    ? "bundled developer/workflow fixture"
-                    : isObservation
-                      ? "bundled observation fixture"
-                      : isAdministration
-                        ? "bundled administration/account fixture"
-                        : isCommunication
-                          ? "bundled communications fixture"
-                          : model.dataset.profile}
-              </p>
+      {page === "Layouts" ? (
+        <Comparison
+          model={model}
+          selection={selectedId}
+          onSelect={setSelectedId}
+          query={query}
+          onQuery={setQuery}
+          layout={layout}
+          onLayout={setLayout}
+          scrollRef={pageScroll}
+          contribution={plugin}
+          viewport={viewport}
+        />
+      ) : (
+        <div ref={pageScroll} className="page-scroll" data-testid="page-scroll">
+          <div className={`review-surface ${viewport}`}>
+            <div className="page-title">
+              <div>
+                <p className="eyebrow">
+                  {isAdministration || isObservation || isDeveloper || isVoice
+                    ? page.toUpperCase()
+                    : isCommunication
+                      ? "COMMUNICATIONS"
+                      : "OPERATIONS"}{" "}
+                  / DESIGN LAB
+                </p>
+                <h1>{page}</h1>
+                <p className="muted">
+                  October 4, 2026 · deterministic seed {model.dataset.seed} ·{" "}
+                  {isVoice
+                    ? "bundled original voice/media fixture"
+                    : isDeveloper
+                      ? "bundled developer/workflow fixture"
+                      : isObservation
+                        ? "bundled observation fixture"
+                        : isAdministration
+                          ? "bundled administration/account fixture"
+                          : isCommunication
+                            ? "bundled communications fixture"
+                            : model.dataset.profile}
+                </p>
+              </div>
+              <span className="fixture-tag">FIXTURE ONLY</span>
             </div>
-            <span className="fixture-tag">FIXTURE ONLY</span>
+            {detail && (
+              <section className="selection-band" aria-label="Selected run">
+                <strong>
+                  {detail.task.id} / {detail.run.id}
+                </strong>
+                <span className="muted">Selection stays across views</span>
+                <Button size="sm" onClick={() => setDetailOpen(true)}>
+                  Inspect selected run
+                </Button>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  onClick={() => {
+                    setSelectedId(null)
+                    setDetailOpen(false)
+                  }}
+                >
+                  Clear selection
+                </Button>
+              </section>
+            )}
+            {model.resource === "degraded" && (
+              <div role="status" className="notice">
+                Telemetry delayed. Last known fixture observations remain available.
+              </div>
+            )}
+            {!model.accessible ? (
+              <ResourceNotice model={model} />
+            ) : (
+              <>
+                {!isCommunication &&
+                  !isAdministration &&
+                  !isObservation &&
+                  !isDeveloper &&
+                  !isVoice && <OperationsSummary model={model} />}
+                {isVoice ? (
+                  <Suspense fallback={<p role="status">Loading voice presentation…</p>}>
+                    <VoiceLab key={scenario} onInspect={select} onIntent={setIntent} />
+                  </Suspense>
+                ) : isDeveloper ? (
+                  <Suspense fallback={<p role="status">Loading developer presentation…</p>}>
+                    <DeveloperLab key={scenario} onInspect={select} onIntent={setIntent} />
+                  </Suspense>
+                ) : page === "Observability" ? (
+                  <ObservationLab key={scenario} onInspect={select} onReset={() => setIntent("")} />
+                ) : page === "Administration" ? (
+                  <AdminLab key={scenario} onIntent={emit} onReset={() => setIntent("")} />
+                ) : page === "Account" ? (
+                  <AccountLab key={scenario} onIntent={emit} onReset={() => setIntent("")} />
+                ) : isCommunication ? (
+                  <CommunicationLab
+                    key={scenario}
+                    view={page}
+                    scenario={scenario}
+                    onViewChange={setPage}
+                    onIntent={emit}
+                    onReset={() => setIntent("")}
+                  />
+                ) : page === "Activity" ? (
+                  <ActivityView
+                    model={model}
+                    onSelect={select}
+                    query={query}
+                    onQuery={setQuery}
+                    plugin={plugin}
+                  />
+                ) : page === "Mission Control" ? (
+                  <MissionView model={model} onSelect={select} />
+                ) : page === "Usage" ? (
+                  <UsageView model={model} onSelect={select} query={query} onQuery={setQuery} />
+                ) : (
+                  <Panel title="Transient message draft" icon={<Layers className="size-4" />}>
+                    <div className="example-body">
+                      <p className="muted">Fixture conversation with the operations review team.</p>
+                      <Button onClick={() => emit("Run fixture", "plan-fixture-01")}>
+                        Inspect run intent
+                      </Button>
+                      <Button onClick={() => emit("Approve review", "review-fixture-01")}>
+                        Inspect approve intent
+                      </Button>
+                      <label>
+                        Draft
+                        <textarea
+                          aria-label="Message draft"
+                          value={draft}
+                          onChange={(e) => setDraft(e.target.value)}
+                          placeholder="Write a local review note…"
+                        />
+                      </label>
+                      <Button
+                        disabled={!draft.trim()}
+                        onClick={() => emit("Send message", "conversation-fixture-01")}
+                      >
+                        Inspect send intent
+                      </Button>
+                      <Button
+                        variant="outline"
+                        onClick={() => emit("Save settings", "settings-fixture-01")}
+                      >
+                        Inspect save intent
+                      </Button>
+                    </div>
+                  </Panel>
+                )}
+              </>
+            )}
+            <footer className="muted">
+              {model.dataset.version} · {model.dataset.generator} · Fixed clock · Actions inspected
+              locally
+            </footer>
           </div>
-          {detail && (
-            <section className="selection-band" aria-label="Selected run">
-              <strong>
-                {detail.task.id} / {detail.run.id}
-              </strong>
-              <span className="muted">Selection stays across views</span>
-              <Button size="sm" onClick={() => setDetailOpen(true)}>
-                Inspect selected run
-              </Button>
-              <Button
-                size="sm"
-                variant="ghost"
-                onClick={() => {
-                  setSelectedId(null)
-                  setDetailOpen(false)
-                }}
-              >
-                Clear selection
-              </Button>
-            </section>
-          )}
-          {model.resource === "degraded" && (
-            <div role="status" className="notice">
-              Telemetry delayed. Last known fixture observations remain available.
-            </div>
-          )}
-          {!model.accessible ? (
-            <ResourceNotice model={model} />
-          ) : (
-            <>
-              {!isCommunication &&
-                !isAdministration &&
-                !isObservation &&
-                !isDeveloper &&
-                !isVoice && <OperationsSummary model={model} />}
-              {isVoice ? (
-                <Suspense fallback={<p role="status">Loading voice presentation…</p>}>
-                  <VoiceLab key={scenario} onInspect={select} onIntent={setIntent} />
-                </Suspense>
-              ) : isDeveloper ? (
-                <Suspense fallback={<p role="status">Loading developer presentation…</p>}>
-                  <DeveloperLab key={scenario} onInspect={select} onIntent={setIntent} />
-                </Suspense>
-              ) : page === "Observability" ? (
-                <ObservationLab key={scenario} onInspect={select} onReset={() => setIntent("")} />
-              ) : page === "Administration" ? (
-                <AdminLab key={scenario} onIntent={emit} onReset={() => setIntent("")} />
-              ) : page === "Account" ? (
-                <AccountLab key={scenario} onIntent={emit} onReset={() => setIntent("")} />
-              ) : isCommunication ? (
-                <CommunicationLab
-                  key={scenario}
-                  view={page}
-                  scenario={scenario}
-                  onViewChange={setPage}
-                  onIntent={emit}
-                  onReset={() => setIntent("")}
-                />
-              ) : page === "Activity" ? (
-                <ActivityView
-                  model={model}
-                  onSelect={select}
-                  query={query}
-                  onQuery={setQuery}
-                  plugin={plugin}
-                />
-              ) : page === "Mission Control" ? (
-                <MissionView model={model} onSelect={select} />
-              ) : page === "Usage" ? (
-                <UsageView model={model} onSelect={select} query={query} onQuery={setQuery} />
-              ) : (
-                <Panel title="Transient message draft" icon={<Layers className="size-4" />}>
-                  <div className="example-body">
-                    <p className="muted">Fixture conversation with the operations review team.</p>
-                    <Button onClick={() => emit("Run fixture", "plan-fixture-01")}>
-                      Inspect run intent
-                    </Button>
-                    <Button onClick={() => emit("Approve review", "review-fixture-01")}>
-                      Inspect approve intent
-                    </Button>
-                    <label>
-                      Draft
-                      <textarea
-                        aria-label="Message draft"
-                        value={draft}
-                        onChange={(e) => setDraft(e.target.value)}
-                        placeholder="Write a local review note…"
-                      />
-                    </label>
-                    <Button
-                      disabled={!draft.trim()}
-                      onClick={() => emit("Send message", "conversation-fixture-01")}
-                    >
-                      Inspect send intent
-                    </Button>
-                    <Button
-                      variant="outline"
-                      onClick={() => emit("Save settings", "settings-fixture-01")}
-                    >
-                      Inspect save intent
-                    </Button>
-                  </div>
-                </Panel>
-              )}
-            </>
-          )}
-          <footer className="muted">
-            {model.dataset.version} · {model.dataset.generator} · Fixed clock · Actions inspected
-            locally
-          </footer>
         </div>
-      </div>
+      )}
       <RunInspection
         detail={detail}
         open={detailOpen}

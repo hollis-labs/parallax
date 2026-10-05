@@ -156,7 +156,8 @@
     "category": "runtime-export",
     "coverage": "controlled composition import",
     "sources": [
-      "frontend/src/App.tsx"
+      "frontend/src/App.tsx",
+      "frontend/src/layouts/Comparison.stories.tsx"
     ]
   },
   {
@@ -165,8 +166,11 @@
     "entry": ".",
     "name": "OverlaySidebar",
     "category": "runtime-export",
-    "coverage": "unreviewed",
-    "sources": []
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/layouts/Comparison.tsx",
+      "frontend/src/layouts/Navigation.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -183,8 +187,10 @@
     "entry": ".",
     "name": "DetailPageLayout",
     "category": "runtime-export",
-    "coverage": "unreviewed",
-    "sources": []
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/layouts/Comparison.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -489,8 +495,10 @@
     "entry": ".",
     "name": "ColumnDef",
     "category": "type-export",
-    "coverage": "unreviewed",
-    "sources": []
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/layouts/Comparison.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -741,6 +749,9 @@
       "frontend/src/communications/CommunicationLab.tsx",
       "frontend/src/communications/Messaging.tsx",
       "frontend/src/developer/Lab.tsx",
+      "frontend/src/layouts/Comparison.stories.tsx",
+      "frontend/src/layouts/Comparison.tsx",
+      "frontend/src/layouts/Navigation.tsx",
       "frontend/src/observability/Lab.tsx",
       "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Operations.stories.tsx",
@@ -1748,7 +1759,7 @@
     "category": "runtime-export",
     "coverage": "controlled composition import",
     "sources": [
-      "frontend/src/App.tsx"
+      "frontend/src/layouts/Navigation.tsx"
     ]
   },
   {
@@ -1769,6 +1780,7 @@
     "coverage": "controlled composition import",
     "sources": [
       "frontend/src/communications/Messaging.tsx",
+      "frontend/src/layouts/Comparison.tsx",
       "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Operations.stories.tsx",
       "frontend/src/operations/Views.tsx"
@@ -2379,8 +2391,10 @@
     "entry": "./layout",
     "name": "ListPageLayout",
     "category": "runtime-export",
-    "coverage": "unreviewed",
-    "sources": []
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/layouts/Comparison.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2388,8 +2402,10 @@
     "entry": "./layout",
     "name": "DetailHeader",
     "category": "runtime-export",
-    "coverage": "unreviewed",
-    "sources": []
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/layouts/Comparison.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2397,8 +2413,10 @@
     "entry": "./layout",
     "name": "TabStrip",
     "category": "runtime-export",
-    "coverage": "unreviewed",
-    "sources": []
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/layouts/Comparison.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -2487,8 +2505,10 @@
     "entry": "./data",
     "name": "DataTable",
     "category": "runtime-export",
-    "coverage": "unreviewed",
-    "sources": []
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/layouts/Comparison.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
