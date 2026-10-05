@@ -1,0 +1,123 @@
+{
+  "version": "observations/v1",
+  "generator": "parallax/v5",
+  "operationsVersion": "operations/v2",
+  "seed": 4421,
+  "clock": "2026-10-04T14:30:00Z",
+  "from": "2026-10-04T14:10:00Z",
+  "to": "2026-10-04T14:30:00Z",
+  "resources": [
+    {
+      "id": "health",
+      "label": "Fixture health",
+      "observedAt": "2026-10-04T14:29:00Z",
+      "staleAfterMs": 120000,
+      "source": "Authored bundled fixture receipt; no live telemetry collector"
+    },
+    {
+      "id": "stats",
+      "label": "Fixture stats",
+      "observedAt": "2026-10-04T14:29:10Z",
+      "staleAfterMs": 120000,
+      "source": "Authored bundled fixture receipt; no live telemetry collector"
+    },
+    {
+      "id": "token-series",
+      "label": "Fixture token-series",
+      "observedAt": "2026-10-04T14:29:20Z",
+      "staleAfterMs": 120000,
+      "source": "Authored bundled fixture receipt; no live telemetry collector"
+    },
+    {
+      "id": "duration-series",
+      "label": "Fixture duration-series",
+      "observedAt": "2026-10-04T14:29:30Z",
+      "staleAfterMs": 120000,
+      "source": "Authored bundled fixture receipt; no live telemetry collector"
+    },
+    {
+      "id": "diagnostics",
+      "label": "Fixture diagnostics",
+      "observedAt": "2026-10-04T14:29:40Z",
+      "staleAfterMs": 120000,
+      "source": "Authored bundled fixture receipt; no live telemetry collector"
+    }
+  ],
+  "tokenSamples": [
+    {
+      "at": "2026-10-04T14:10:00Z",
+      "value": 0
+    },
+    {
+      "at": "2026-10-04T14:11:15Z",
+      "value": 7791
+    },
+    {
+      "at": "2026-10-04T14:13:15Z",
+      "value": 13242
+    },
+    {
+      "at": "2026-10-04T14:15:15Z",
+      "value": 17054
+    },
+    {
+      "at": "2026-10-04T14:17:15Z",
+      "value": 20700
+    },
+    {
+      "at": "2026-10-04T14:19:15Z",
+      "value": 26714
+    },
+    {
+      "at": "2026-10-04T14:21:15Z",
+      "value": 30049
+    },
+    {
+      "at": "2026-10-04T14:23:15Z",
+      "value": 34205
+    },
+    {
+      "at": "2026-10-04T14:25:15Z",
+      "value": 45672
+    }
+  ],
+  "durationSamples": [
+    {
+      "at": "2026-10-04T14:10:00Z",
+      "value": null
+    },
+    {
+      "at": "2026-10-04T14:12:00Z",
+      "value": 90
+    },
+    {
+      "at": "2026-10-04T14:14:00Z",
+      "value": 90
+    },
+    {
+      "at": "2026-10-04T14:16:00Z",
+      "value": 90
+    },
+    {
+      "at": "2026-10-04T14:18:00Z",
+      "value": 90
+    },
+    {
+      "at": "2026-10-04T14:20:00Z",
+      "value": null
+    },
+    {
+      "at": "2026-10-04T14:22:00Z",
+      "value": 90
+    },
+    {
+      "at": "2026-10-04T14:24:00Z",
+      "value": 90
+    }
+  ],
+  "diagnostic": {
+    "fixture": true,
+    "operationsVersion": "operations/v2",
+    "failedRunIds": ["RUN-003", "RUN-007"]
+  }
+}

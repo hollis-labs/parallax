@@ -252,6 +252,7 @@
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/CommunicationLab.tsx",
       "frontend/src/communications/Messaging.tsx",
+      "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Operations.stories.tsx",
       "frontend/src/operations/Views.tsx",
       "frontend/src/pages/dashboard.tsx"
@@ -739,6 +740,8 @@
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/CommunicationLab.tsx",
       "frontend/src/communications/Messaging.tsx",
+      "frontend/src/observability/Lab.tsx",
+      "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Operations.stories.tsx",
       "frontend/src/operations/Views.tsx"
     ]
@@ -1764,6 +1767,7 @@
     "coverage": "controlled composition import",
     "sources": [
       "frontend/src/communications/Messaging.tsx",
+      "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Operations.stories.tsx",
       "frontend/src/operations/Views.tsx"
     ]
@@ -2746,6 +2750,7 @@
       "frontend/src/administration/Account.tsx",
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/Messaging.tsx",
+      "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Views.tsx"
     ]
   },
@@ -6969,8 +6974,10 @@
     "entry": ".",
     "name": "ObservationStatus",
     "category": "runtime-export",
-    "coverage": "unreviewed",
-    "sources": []
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/observability/Views.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-observe",
@@ -6987,8 +6994,10 @@
     "entry": ".",
     "name": "HealthSummary",
     "category": "runtime-export",
-    "coverage": "unreviewed",
-    "sources": []
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/observability/Views.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-observe",
@@ -7014,8 +7023,10 @@
     "entry": ".",
     "name": "StatCollection",
     "category": "runtime-export",
-    "coverage": "unreviewed",
-    "sources": []
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/observability/Views.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-observe",
@@ -7041,8 +7052,10 @@
     "entry": ".",
     "name": "DiagnosticPanel",
     "category": "runtime-export",
-    "coverage": "unreviewed",
-    "sources": []
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/observability/Views.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-observe",
@@ -7059,8 +7072,10 @@
     "entry": ".",
     "name": "ObservationState",
     "category": "type-export",
-    "coverage": "unreviewed",
-    "sources": []
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/observability/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-observe",
@@ -7068,8 +7083,10 @@
     "entry": ".",
     "name": "HealthStatus",
     "category": "type-export",
-    "coverage": "unreviewed",
-    "sources": []
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/observability/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-observe",
@@ -7095,8 +7112,10 @@
     "entry": ".",
     "name": "DiagnosticValue",
     "category": "type-export",
-    "coverage": "unreviewed",
-    "sources": []
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/observability/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-observe",
@@ -7104,8 +7123,10 @@
     "entry": ".",
     "name": "DiagnosticValidation",
     "category": "type-export",
-    "coverage": "unreviewed",
-    "sources": []
+    "coverage": "typed adapter import",
+    "sources": [
+      "frontend/src/observability/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-observe",
@@ -7113,8 +7134,10 @@
     "entry": "./charts",
     "name": "SampleSeriesView",
     "category": "runtime-export",
-    "coverage": "unreviewed",
-    "sources": []
+    "coverage": "controlled composition import",
+    "sources": [
+      "frontend/src/observability/Views.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-observe",

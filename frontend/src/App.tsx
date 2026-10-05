@@ -25,6 +25,7 @@ import { AccountLab } from "./administration/Account"
 import { AdminLab } from "./administration/Admin"
 import { createOperationsExample } from "./chimera/example"
 import { CommunicationLab } from "./communications/CommunicationLab"
+import { ObservationLab } from "./observability/Lab"
 import { normalizeScenario, operationsModel, runDetail } from "./operations/model"
 import {
   ActivityView,
@@ -225,6 +226,7 @@ export function App() {
   useEffect(() => {
     if (tick === 6) setPlaying(false)
   }, [tick])
+  const isObservation = page === "Observability"
   const isAdministration = page === "Administration" || page === "Account"
   const isCommunication = ["Contacts", "Messages", "Chat"].includes(page)
   const model = operationsModel(scenario, query),
@@ -310,6 +312,7 @@ export function App() {
             "Chat",
             "Administration",
             "Account",
+            "Observability",
             "Examples",
           ].map((name, i) => ({
             key: name,
@@ -323,7 +326,8 @@ export function App() {
               <MessageSquare key="f" className="size-4" />,
               <Layers key="g" className="size-4" />,
               <Users key="h" className="size-4" />,
-              <Layers key="i" className="size-4" />,
+              <Activity key="i" className="size-4" />,
+              <Layers key="j" className="size-4" />,
             ][i],
             active: page === name,
             onSelect: () => {
@@ -418,7 +422,7 @@ export function App() {
           <div className="page-title">
             <div>
               <p className="eyebrow">
-                {isAdministration
+                {isAdministration || isObservation
                   ? page.toUpperCase()
                   : isCommunication
                     ? "COMMUNICATIONS"
@@ -428,11 +432,13 @@ export function App() {
               <h1>{page}</h1>
               <p className="muted">
                 October 4, 2026 · deterministic seed {model.dataset.seed} ·{" "}
-                {isAdministration
-                  ? "bundled administration/account fixture"
-                  : isCommunication
-                    ? "bundled communications fixture"
-                    : model.dataset.profile}
+                {isObservation
+                  ? "bundled observation fixture"
+                  : isAdministration
+                    ? "bundled administration/account fixture"
+                    : isCommunication
+                      ? "bundled communications fixture"
+                      : model.dataset.profile}
               </p>
             </div>
             <span className="fixture-tag">FIXTURE ONLY</span>
@@ -467,8 +473,12 @@ export function App() {
             <ResourceNotice model={model} />
           ) : (
             <>
-              {!isCommunication && !isAdministration && <OperationsSummary model={model} />}
-              {page === "Administration" ? (
+              {!isCommunication && !isAdministration && !isObservation && (
+                <OperationsSummary model={model} />
+              )}
+              {page === "Observability" ? (
+                <ObservationLab key={scenario} onInspect={select} onReset={() => setIntent("")} />
+              ) : page === "Administration" ? (
                 <AdminLab key={scenario} onIntent={emit} onReset={() => setIntent("")} />
               ) : page === "Account" ? (
                 <AccountLab key={scenario} onIntent={emit} onReset={() => setIntent("")} />
