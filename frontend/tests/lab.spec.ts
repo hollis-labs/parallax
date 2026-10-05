@@ -171,15 +171,15 @@ test("plugin registry failure has explicit unavailable UI while embedded records
   await expect(page.getByRole("button", { name: /Review gateway permission/ })).toBeVisible()
 })
 test("controlled model distinguishes sparse and inaccessible windows and task/run lifecycles", async () => {
-  const { operationsModel, daySeries, dayCoverage, runDetail } = await import(
+  const { operationsModel, daySeries, dayObservation, runDetail } = await import(
     "../src/operations/model"
   )
   const large = operationsModel("large"),
     days = daySeries(large)
-  expect(days.every((d) => (d.count !== null) === dayCoverage(large, d.date))).toBeTruthy()
+  expect(days.every((d) => (d.count !== null) === dayObservation(large, d.date).known)).toBeTruthy()
   const partial = structuredClone(large)
   partial.dataset.observedSince = "2026-09-22T12:00:00Z"
-  expect(daySeries(partial).find((d) => d.date === "2026-09-22")?.count).toBeNull()
+  expect(daySeries(partial).find((d) => d.date === "2026-09-22")?.partial).toBeTruthy()
   for (const state of ["unavailable", "permission-denied", "error", "loading"]) {
     const m = operationsModel(state)
     expect(m.stats.count).toBeNull()
@@ -232,6 +232,7 @@ test("historical trend compositions show numeric variation and survive narrow re
   await page.goto("/?scenario=large&view=Mission+Control&mode=light")
   await expect(page.getByText("14-day run volume", { exact: true })).toBeVisible()
   const chart = page.getByRole("img", { name: "14-day run volume with coverage gaps" })
+  await expect(chart).toBeVisible()
   const heights = await chart
     .locator("rect")
     .evaluateAll((rects) => rects.map((rect) => rect.getAttribute("height")))

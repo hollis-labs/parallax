@@ -1,0 +1,125 @@
+{
+  "sourceCommit": "dbcf4fa7f5bcfe83686d227b39ddf9426cea4fe5",
+  "catalogue": [
+    {
+      "package": "@hollis-labs/design-app-runtime",
+      "sourceVersion": "0.4.0",
+      "private": false,
+      "license": "MIT",
+      "sourcePath": "packages/design-app-runtime/package.json",
+      "scope": "supporting runtime/styles/tooling"
+    },
+    {
+      "package": "@hollis-labs/design-bindings",
+      "sourceVersion": "0.1.0",
+      "private": false,
+      "license": "MIT",
+      "sourcePath": "packages/design-bindings/package.json",
+      "scope": "supporting runtime/styles/tooling"
+    },
+    {
+      "package": "@hollis-labs/design-components",
+      "sourceVersion": "0.4.0",
+      "private": false,
+      "license": "MIT",
+      "sourcePath": "packages/design-components/package.json",
+      "scope": "base visual/type/utility exports"
+    },
+    {
+      "package": "@hollis-labs/design-tokens",
+      "sourceVersion": "0.4.0",
+      "private": false,
+      "license": "MIT",
+      "sourcePath": "packages/design-tokens/package.json",
+      "scope": "supporting runtime/styles/tooling"
+    },
+    {
+      "package": "@hollis-labs/eslint-config-design",
+      "sourceVersion": "0.4.0",
+      "private": false,
+      "license": "MIT",
+      "sourcePath": "packages/eslint-config-design/package.json",
+      "scope": "supporting runtime/styles/tooling"
+    },
+    {
+      "package": "@hollis-labs/kit-account",
+      "sourceVersion": "0.0.0",
+      "private": true,
+      "license": "MIT",
+      "sourcePath": "packages/kit-account/package.json",
+      "scope": "kit visual/type/utility exports"
+    },
+    {
+      "package": "@hollis-labs/kit-admin",
+      "sourceVersion": "0.1.0",
+      "private": false,
+      "license": "MIT",
+      "sourcePath": "packages/kit-admin/package.json",
+      "scope": "kit visual/type/utility exports"
+    },
+    {
+      "package": "@hollis-labs/kit-chat",
+      "sourceVersion": "0.4.0",
+      "private": false,
+      "license": "MIT AND Apache-2.0",
+      "sourcePath": "packages/kit-chat/package.json",
+      "scope": "kit visual/type/utility exports"
+    },
+    {
+      "package": "@hollis-labs/kit-code",
+      "sourceVersion": "0.0.0",
+      "private": true,
+      "license": "MIT AND Apache-2.0",
+      "sourcePath": "packages/kit-code/package.json",
+      "scope": "kit visual/type/utility exports"
+    },
+    {
+      "package": "@hollis-labs/kit-dashboard",
+      "sourceVersion": "0.4.0",
+      "private": false,
+      "license": "MIT",
+      "sourcePath": "packages/kit-dashboard/package.json",
+      "scope": "kit visual/type/utility exports"
+    },
+    {
+      "package": "@hollis-labs/kit-observe",
+      "sourceVersion": "0.1.1",
+      "private": false,
+      "license": "MIT",
+      "sourcePath": "packages/kit-observe/package.json",
+      "scope": "kit visual/type/utility exports"
+    },
+    {
+      "package": "@hollis-labs/kit-settings",
+      "sourceVersion": "0.2.0",
+      "private": false,
+      "license": "MIT",
+      "sourcePath": "packages/kit-settings/package.json",
+      "scope": "kit visual/type/utility exports"
+    },
+    {
+      "package": "@hollis-labs/kit-voice",
+      "sourceVersion": "0.0.0",
+      "private": true,
+      "license": "MIT AND Apache-2.0",
+      "sourcePath": "packages/kit-voice/package.json",
+      "scope": "kit visual/type/utility exports"
+    },
+    {
+      "package": "@hollis-labs/kit-workflow",
+      "sourceVersion": "0.0.0",
+      "private": true,
+      "license": "MIT AND Apache-2.0",
+      "sourcePath": "packages/kit-workflow/package.json",
+      "scope": "kit visual/type/utility exports"
+    },
+    {
+      "package": "@hollis-labs/plugin-host-ui",
+      "sourceVersion": "0.1.0",
+      "private": true,
+      "license": "MIT",
+      "sourcePath": "packages/plugin-host-ui/package.json",
+      "scope": "base visual/type/utility exports"
+    }
+  ]
+}

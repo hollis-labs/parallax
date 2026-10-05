@@ -19,6 +19,8 @@ jobs:
           node-version: '24'
       - run: make check
       - run: npm run build-storybook --prefix frontend
+      - name: Actionable export inventory freshness and evidence pointers
+        run: node scripts/coverage.mjs --check
       - run: npm exec --prefix frontend -- playwright install --with-deps chromium
       - name: Browser proof
         run: npm exec --prefix frontend -- playwright test --config frontend/playwright.config.ts

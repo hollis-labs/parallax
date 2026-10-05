@@ -23,8 +23,11 @@ check: prepare
 	go build -o .scratch/parallax ./cmd/parallax
 ui-dev:
 	cd frontend && npm run dev -- --host 127.0.0.1
+coverage-check:
+	node scripts/coverage.mjs --check
 storybook:
 	cd frontend && npm run storybook
 browser: check
 	STORYBOOK_DISABLE_TELEMETRY=1 npm run build-storybook --prefix frontend
+	node scripts/coverage.mjs --check
 	CI=true npm exec --prefix frontend -- playwright test --config frontend/playwright.config.ts

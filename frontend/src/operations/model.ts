@@ -123,16 +123,73 @@ export function daySeries(model: OperationsModel) {
   const clock = Date.parse(model.dataset.clock)
   return Array.from({ length: 14 }, (_, i) => {
     const date = new Date(clock - (13 - i) * 86400000).toISOString().slice(0, 10),
-      known = dayCoverage(model, date)
+      coverage = dayObservation(model, date),
+      known = coverage.known
     const runs = model.runs.filter(
-        (r) => r.started.startsWith(date) && Date.parse(r.started) <= clock,
+        (r) =>
+          r.started.startsWith(date) &&
+          Date.parse(r.started) >= coverage.from &&
+          Date.parse(r.started) <= clock,
       ),
-      usage = model.usage.filter((u) => u.time.startsWith(date) && Date.parse(u.time) <= clock)
+      usage = model.usage.filter(
+        (u) =>
+          u.time.startsWith(date) &&
+          Date.parse(u.time) >= coverage.from &&
+          Date.parse(u.time) <= clock,
+      )
     return {
       date,
+      partial: coverage.partial,
       count: known ? runs.length : null,
-      tokens: known ? usage.reduce((s, u) => s + u.tokens, 0) : null,
-      cost: known ? usage.reduce((s, u) => s + u.cost, 0) : null,
+      tokens:
+        known && (!model.runs.length || model.usage.length)
+          ? usage.reduce((s, u) => s + u.tokens, 0)
+          : null,
+      inputTokens:
+        known && (!model.runs.length || model.usage.length)
+          ? usage.reduce((s, u) => s + u.inputTokens, 0)
+          : null,
+      outputTokens:
+        known && (!model.runs.length || model.usage.length)
+          ? usage.reduce((s, u) => s + u.outputTokens, 0)
+          : null,
+      cost:
+        known && (!model.runs.length || model.usage.length)
+          ? usage.reduce((s, u) => s + u.cost, 0)
+          : null,
     }
+  })
+}
+
+/** Intersect the authored coverage interval, never invent whole-day observation.
+ * First/current days are explicitly partial; sparse rollups remain unknown. */
+export function dayObservation(model: OperationsModel, date: string) {
+  const start = Date.parse(`${date}T00:00:00Z`),
+    end = start + 86400000,
+    since = Date.parse(model.dataset.observedSince),
+    clock = Date.parse(model.cutoff),
+    from = Math.max(start, since),
+    through = Math.min(end, clock),
+    sparse = model.scenario === "sparse" && new Date(start).getUTCDate() % 3 === 0,
+    known = model.accessible && from <= through && start <= clock && end > since && !sparse
+  return { known, partial: known && (from > start || through < end), from, through }
+}
+export function calendarSeries(model: OperationsModel) {
+  const now = Date.parse(model.cutoff),
+    date = new Date(now),
+    sunday =
+      Date.parse(`${date.toISOString().slice(0, 10)}T00:00:00Z`) - date.getUTCDay() * 86400000
+  return Array.from({ length: 112 }, (_, i) => {
+    const day = new Date(sunday - 105 * 86400000 + i * 86400000).toISOString().slice(0, 10),
+      coverage = dayObservation(model, day),
+      count = coverage.known
+        ? model.runs.filter(
+            (r) =>
+              r.started.startsWith(day) &&
+              Date.parse(r.started) >= coverage.from &&
+              Date.parse(r.started) <= coverage.through,
+          ).length
+        : null
+    return { day, count, ...coverage }
   })
 }

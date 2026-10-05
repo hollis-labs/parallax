@@ -328,7 +328,7 @@ dd {
 }
 .calendar-weeks {
   display: grid;
-  grid-template-columns: repeat(16, minmax(0, 1fr));
+  grid-template-columns: repeat(16, calc(var(--spacing) * 3));
   gap: var(--spacing);
 }
 .calendar-week {
@@ -715,4 +715,75 @@ dd {
 }
 .review-controls .playback-review[open] {
   flex-basis: 100%;
+}
+
+.activity-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: calc(var(--spacing) * 5);
+  align-items: start;
+}
+.calendar-weeks .calendar-intensity,
+.calendar-legend .calendar-intensity {
+  --activity-weight: 20%;
+  background: color-mix(in srgb, var(--color-success) var(--activity-weight), var(--color-surface));
+  color: var(--color-fg);
+}
+.receipt-breakdown {
+  width: 100%;
+  font-size: var(--text-sm);
+  border-collapse: collapse;
+}
+.receipt-breakdown th,
+.receipt-breakdown td {
+  padding: var(--spacing);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+.receipt-breakdown caption {
+  text-align: left;
+  color: var(--color-fg-secondary);
+  margin-block: calc(var(--spacing) * 3);
+}
+.narrow .activity-pair,
+.tablet .activity-pair {
+  grid-template-columns: 1fr;
+}
+@media (max-width: 48rem) {
+  .activity-pair {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calendar-weeks .heatmap-cell,
+.calendar-legend .heatmap-cell {
+  display: inline-block;
+  width: calc(var(--spacing) * 3);
+  height: calc(var(--spacing) * 3);
+  padding: 0;
+  border-radius: var(--radius-sm);
+}
+.heatmap-cell {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+.heatmap-gap {
+  background: color-mix(in srgb, var(--color-fg-faint) 15%, var(--color-surface));
+  border: 0;
+}
+.activity-pair .fixed-activity {
+  grid-template-columns: 1fr;
+}
+.calendar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--spacing) * 3);
+  margin-block: calc(var(--spacing) * 3);
+  font-size: var(--text-xs);
+  color: var(--color-fg-secondary);
+}
+.calendar-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing);
 }

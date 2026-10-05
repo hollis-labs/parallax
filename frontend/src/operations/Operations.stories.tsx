@@ -15,14 +15,16 @@ import {
 function OperationsState({
   scenario = "large",
   view = "Activity",
+  cutoff,
 }: {
   scenario?: string
   view?: string
+  cutoff?: string
 }) {
   const [selection, setSelection] = useState<string | null>(null),
     [query, setQuery] = useState(""),
     [intent, setIntent] = useState("")
-  const model = operationsModel(scenario, query),
+  const model = operationsModel(scenario, query, { cutoff }),
     detail = runDetail(model, selection)
   return (
     <div className="review-surface">
@@ -57,11 +59,20 @@ function OperationsState({
 function OperationsStory({
   scenario = "large",
   view = "Activity",
+  cutoff,
 }: {
   scenario?: string
   view?: string
+  cutoff?: string
 }) {
-  return <OperationsState key={normalizeScenario(scenario)} scenario={scenario} view={view} />
+  return (
+    <OperationsState
+      key={normalizeScenario(scenario)}
+      scenario={scenario}
+      view={view}
+      cutoff={cutoff}
+    />
+  )
 }
 const meta = {
   title: "Operations/Controlled views",
@@ -101,6 +112,13 @@ export const MissingMetadata: StoryObj<typeof meta> = { args: { scenario: "missi
 export const LongLabels: StoryObj<typeof meta> = { args: { scenario: "long-labels" } }
 export const Empty: StoryObj<typeof meta> = { args: { scenario: "empty" } }
 export const Failure: StoryObj<typeof meta> = { args: { scenario: "error" } }
+export const PartialCurrentDay: StoryObj<typeof meta> = { args: { scenario: "populated" } }
+export const BeforeFirstReceipt: StoryObj<typeof meta> = {
+  args: { scenario: "populated", view: "Mission Control", cutoff: "2026-10-04T14:10:01Z" },
+}
+export const SparseReceiptUsage: StoryObj<typeof meta> = {
+  args: { scenario: "sparse", view: "Usage" },
+}
 export function Primitives() {
   const [intent, setIntent] = useState("")
   return (

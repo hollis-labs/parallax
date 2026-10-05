@@ -1,0 +1,305 @@
+{
+  "version": 1,
+  "meaning": "Reviewed = bounded named behavior evidence; partial = import plus family evidence only; deferred = actionable not adopted; unsupported = specific API/policy gap. Types/utilities use nonvisual review, not hollow stories.",
+  "families": [
+    {
+      "package": "@hollis-labs/design-components",
+      "evidence": {
+        "pages": [
+          "frontend/src/App.tsx"
+        ],
+        "checks": [
+          "frontend/tests/lab.spec.ts"
+        ],
+        "stories": [
+          "frontend/src/operations/Operations.stories.tsx"
+        ],
+        "storyIds": [
+          "operations-controlled-views--primitives"
+        ]
+      }
+    },
+    {
+      "package": "@hollis-labs/kit-dashboard",
+      "evidence": {
+        "pages": [
+          "frontend/src/operations/Views.tsx"
+        ],
+        "checks": [
+          "frontend/tests/lab.spec.ts"
+        ],
+        "stories": [
+          "frontend/src/operations/Operations.stories.tsx"
+        ],
+        "storyIds": [
+          "operations-controlled-views--mission-control"
+        ]
+      }
+    },
+    {
+      "package": "@hollis-labs/kit-chat",
+      "evidence": {
+        "pages": [
+          "frontend/src/communications/Chat.tsx"
+        ],
+        "checks": [
+          "frontend/tests/communications.spec.ts"
+        ],
+        "stories": [
+          "frontend/src/communications/Communications.stories.tsx"
+        ]
+      }
+    },
+    {
+      "package": "@hollis-labs/design-bindings",
+      "evidence": {
+        "pages": [
+          "frontend/src/communications/model.ts"
+        ],
+        "checks": [
+          "frontend/tests/communications.spec.ts"
+        ]
+      }
+    },
+    {
+      "package": "@hollis-labs/kit-admin",
+      "evidence": {
+        "pages": [
+          "frontend/src/administration/Admin.tsx"
+        ],
+        "checks": [
+          "frontend/tests/administration.spec.ts"
+        ],
+        "stories": [
+          "frontend/src/administration/Administration.stories.tsx"
+        ]
+      }
+    },
+    {
+      "package": "@hollis-labs/kit-settings",
+      "evidence": {
+        "pages": [
+          "frontend/src/administration/Admin.tsx"
+        ],
+        "checks": [
+          "frontend/tests/administration.spec.ts"
+        ],
+        "stories": [
+          "frontend/src/administration/Administration.stories.tsx"
+        ]
+      }
+    },
+    {
+      "package": "@hollis-labs/kit-observe",
+      "evidence": {
+        "pages": [
+          "frontend/src/observability/Views.tsx"
+        ],
+        "checks": [
+          "frontend/tests/observability.spec.ts"
+        ],
+        "stories": [
+          "frontend/src/observability/Observability.stories.tsx"
+        ]
+      }
+    },
+    {
+      "package": "@hollis-labs/kit-account",
+      "evidence": {
+        "pages": [
+          "frontend/src/administration/Account.tsx"
+        ],
+        "checks": [
+          "frontend/tests/administration.spec.ts"
+        ],
+        "stories": [
+          "frontend/src/administration/Administration.stories.tsx"
+        ]
+      }
+    },
+    {
+      "package": "@hollis-labs/kit-code",
+      "evidence": {
+        "pages": [
+          "frontend/src/developer/Lab.tsx"
+        ],
+        "checks": [
+          "frontend/tests/developer.spec.ts"
+        ],
+        "stories": [
+          "frontend/src/developer/Developer.stories.tsx"
+        ]
+      }
+    },
+    {
+      "package": "@hollis-labs/kit-workflow",
+      "evidence": {
+        "pages": [
+          "frontend/src/developer/Workflow.tsx"
+        ],
+        "checks": [
+          "frontend/tests/developer.spec.ts"
+        ],
+        "stories": [
+          "frontend/src/developer/Developer.stories.tsx"
+        ]
+      }
+    },
+    {
+      "package": "@hollis-labs/kit-voice",
+      "evidence": {
+        "pages": [
+          "frontend/src/voice/Lab.tsx"
+        ],
+        "checks": [
+          "frontend/tests/voice.spec.ts"
+        ],
+        "stories": [
+          "frontend/src/voice/Voice.stories.tsx"
+        ]
+      }
+    },
+    {
+      "package": "@hollis-labs/plugin-host-ui",
+      "evidence": {
+        "pages": [
+          "frontend/src/chimera/example.ts"
+        ],
+        "checks": [
+          "frontend/tests/lab.spec.ts"
+        ]
+      }
+    },
+    {
+      "package": "@hollis-labs/design-app-runtime",
+      "evidence": {
+        "pages": [
+          "frontend/src/App.tsx"
+        ],
+        "checks": [
+          "frontend/tests/layouts.spec.ts"
+        ]
+      }
+    }
+  ],
+  "exceptions": [
+    {
+      "package": "@hollis-labs/design-components",
+      "names": [
+        "Button",
+        "DetailDialog",
+        "AppShell",
+        "OverlaySidebar",
+        "DetailPageLayout"
+      ],
+      "disposition": "reviewed",
+      "reason": "Representative controlled host compositions with scenario reset, narrow layout, scroll ownership and keyboard/focus checks; does not claim every prop permutation.",
+      "nextAction": "Keep representative checks; track new independent variants separately.",
+      "evidence": {
+        "pages": [
+          "frontend/src/App.tsx",
+          "frontend/src/layouts/Comparison.tsx"
+        ],
+        "stories": [
+          "frontend/src/layouts/Comparison.stories.tsx"
+        ],
+        "checks": [
+          "frontend/tests/layouts.spec.ts",
+          "frontend/tests/lab.spec.ts"
+        ]
+      }
+    },
+    {
+      "package": "@hollis-labs/kit-dashboard",
+      "names": [
+        "SummaryCards",
+        "StatusBadge",
+        "Panel",
+        "CompositionBars",
+        "BarList",
+        "BarMeter",
+        "ListPageLayout",
+        "DataTable",
+        "NavRail"
+      ],
+      "disposition": "reviewed",
+      "reason": "Representative deterministic operations compositions and admitted-receipt/sample checks. Exact sample chart UTC table complements its time-of-day axis.",
+      "nextAction": "Preserve fixed-clock/cutoff checks; full Torque parity remains separate partial acceptance.",
+      "evidence": {
+        "pages": [
+          "frontend/src/operations/Views.tsx"
+        ],
+        "checks": [
+          "frontend/tests/lab.spec.ts",
+          "frontend/tests/layouts.spec.ts",
+          "frontend/tests/dashboard.spec.ts"
+        ],
+        "stories": [
+          "frontend/src/operations/Operations.stories.tsx",
+          "frontend/src/layouts/Comparison.stories.tsx"
+        ],
+        "storyIds": [
+          "operations-controlled-views--mission-control"
+        ]
+      }
+    },
+    {
+      "package": "@hollis-labs/kit-dashboard",
+      "names": [
+        "ActivityHeatmap",
+        "HourlyPulse",
+        "TimeSeriesChart"
+      ],
+      "disposition": "unsupported",
+      "reason": "Current public APIs read ambient new Date() and do not accept fixed-clock/null coverage; unsuitable for this lab deterministic missing-observation contract. App adapters are labelled run-start adaptations, not shared parity.",
+      "nextAction": "Upstream read-only contract gap: reassess a release with injected reference clock and nullable coverage before adoption.",
+      "evidence": {
+        "pages": [
+          "frontend/src/operations/Views.tsx",
+          "frontend/src/FixedActivity.tsx"
+        ],
+        "checks": [
+          "frontend/tests/dashboard.spec.ts"
+        ]
+      }
+    },
+    {
+      "package": "@hollis-labs/kit-voice",
+      "names": [
+        "MicSelector",
+        "useAudioDevices"
+      ],
+      "disposition": "unsupported",
+      "reason": "Device enumeration/capture permissions are outside fixture-only review policy; component cannot consume controlled fixture devices.",
+      "nextAction": "Reassess a controlled device contract; do not mount live hooks.",
+      "evidence": {
+        "pages": [
+          "frontend/src/voice/Lab.tsx"
+        ],
+        "checks": [
+          "frontend/tests/voice.spec.ts"
+        ]
+      }
+    },
+    {
+      "package": "@hollis-labs/kit-dashboard",
+      "names": [
+        "TimestampSampleChart"
+      ],
+      "disposition": "reviewed",
+      "reason": "Actual timestamp/null/zero sample rendering exercised through released kit-observe SampleSeriesView; daily aggregate formatter/time-of-day axis is unsuitable for reference rollups and remains unadopted there.",
+      "nextAction": "Preserve exact observation sample checks; reassess configurable date formatter before daily-rollup adoption.",
+      "evidence": {
+        "pages": [
+          "frontend/src/observability/Views.tsx"
+        ],
+        "stories": [
+          "frontend/src/observability/Observability.stories.tsx"
+        ],
+        "checks": [
+          "frontend/tests/observability.spec.ts"
+        ]
+      }
+    }
+  ]
+}

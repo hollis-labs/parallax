@@ -26,9 +26,9 @@ export function FixedActivity({
             {bins.map((b) => (
               <div
                 key={b.label}
-                title={`${b.label} UTC: ${observedSince && b.from < Date.parse(observedSince) ? "unavailable full-hour coverage" : `${b.count} runs`}`}
+                title={`${b.label} UTC: ${observedSince && b.to < Date.parse(observedSince) ? "unavailable full-hour coverage" : `${b.count} recorded run starts${observedSince && b.from < Date.parse(observedSince) ? " · partial hour" : ""}`}`}
                 className={
-                  observedSince && b.from < Date.parse(observedSince)
+                  observedSince && b.to < Date.parse(observedSince)
                     ? "pulse-cell"
                     : b.count
                       ? "pulse-cell observed"
@@ -36,14 +36,16 @@ export function FixedActivity({
                 }
               >
                 <span>
-                  {observedSince && b.from < Date.parse(observedSince) ? "—" : b.count || "·"}
+                  {observedSince && b.to < Date.parse(observedSince)
+                    ? "—"
+                    : `${b.count || "·"}${observedSince && b.from < Date.parse(observedSince) ? "*" : ""}`}
                 </span>
               </div>
             ))}
           </div>
           <p className="muted">
             Window ends {clock.slice(11, 16)} UTC · counts derive from run start times
-            {observedSince && " · — means full-hour coverage is unavailable"}
+            {observedSince && " · * partial observed hour; — unavailable; · observed zero"}
           </p>
         </div>
       </Panel>

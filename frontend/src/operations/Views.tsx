@@ -4,7 +4,7 @@ import { BarList, BarMeter, CompositionBars, Panel } from "@hollis-labs/kit-dash
 import { Activity, Compass, Gauge, Layers } from "lucide-react"
 import { FixedActivity } from "../FixedActivity"
 import type { OperationsModel, RunDetail } from "./model"
-import { dayCoverage, daySeries } from "./model"
+import { calendarSeries, daySeries } from "./model"
 
 export function ResourceNotice({ model }: { model: OperationsModel }) {
   return (
@@ -30,9 +30,9 @@ export function OperationsSummary({ model }: { model: OperationsModel }) {
       cards={[
         { label: "Tasks observed", value: s.count ?? "Unavailable" },
         { label: "Active runs", value: s.active ?? "Unavailable" },
-        { label: "Tokens consumed", value: s.tokens?.toLocaleString() ?? "Unavailable" },
+        { label: "Recorded receipt tokens", value: s.tokens?.toLocaleString() ?? "Unavailable" },
         {
-          label: "Estimated cost",
+          label: "Recorded receipt cost",
           value: s.cost === null ? "Unavailable" : `$${s.cost.toFixed(3)}`,
         },
       ]}
@@ -99,21 +99,9 @@ export function RunList({
   )
 }
 export function ActivityCalendar({ model }: { model: OperationsModel }) {
-  const now = Date.parse(model.dataset.clock),
-    date = new Date(now),
-    sunday = now - date.getUTCDay() * 86400000
-  const weeks = Array.from({ length: 16 }, (_, w) =>
-    Array.from({ length: 7 }, (_, d) => {
-      const day = new Date(sunday - (15 - w) * 7 * 86400000 + d * 86400000)
-          .toISOString()
-          .slice(0, 10),
-        known = dayCoverage(model, day)
-      return {
-        day,
-        count: known ? model.runs.filter((r) => r.started.startsWith(day)).length : null,
-      }
-    }),
-  )
+  const cells = calendarSeries(model),
+    maximum = Math.max(1, ...cells.map((c) => c.count ?? 0)),
+    weeks = Array.from({ length: 16 }, (_, w) => cells.slice(w * 7, w * 7 + 7))
   return (
     <Panel
       title="16-week activity calendar"
@@ -124,7 +112,7 @@ export function ActivityCalendar({ model }: { model: OperationsModel }) {
         <div
           className="calendar-weeks"
           role="img"
-          aria-label="16-week run activity with explicit coverage gaps"
+          aria-label="16-week run-start intensity with explicit coverage gaps"
         >
           {weeks.map((week) => (
             <div className="calendar-week" key={week[0].day}>
@@ -132,26 +120,74 @@ export function ActivityCalendar({ model }: { model: OperationsModel }) {
                 <div
                   className={
                     c.count === null
-                      ? "calendar-cell missing"
+                      ? "calendar-cell heatmap-cell heatmap-gap"
                       : c.count
-                        ? "calendar-cell observed"
-                        : "calendar-cell"
+                        ? "calendar-cell heatmap-cell observed calendar-intensity"
+                        : "calendar-cell heatmap-cell"
                   }
+                  style={
+                    c.count
+                      ? ({
+                          "--activity-weight": `${Math.round(20 + (c.count / maximum) * 65)}%`,
+                        } as React.CSSProperties)
+                      : undefined
+                  }
+                  data-count={c.count ?? "unavailable"}
+                  data-partial={c.partial}
                   key={c.day}
-                  title={`${c.day}: ${c.count === null ? "unavailable day coverage" : `${c.count} runs`}`}
+                  title={`${c.day}: ${c.count === null ? "unavailable day coverage" : `${c.count} recorded run starts${c.partial ? " · partial day" : ""}`}`}
                 >
-                  {c.count === null ? "—" : c.count || "·"}
+                  <span className="sr-only">
+                    {c.day}:{" "}
+                    {c.count === null
+                      ? "unavailable"
+                      : `${c.count} recorded starts${c.partial ? ", partial day" : ""}`}
+                  </span>
                 </div>
               ))}
             </div>
           ))}
         </div>
+        <div className="calendar-legend">
+          <span>
+            <i className="heatmap-cell heatmap-gap" /> Unavailable
+          </span>
+          <span>
+            <i className="heatmap-cell" /> Observed zero
+          </span>
+          <span>
+            <i className="heatmap-cell calendar-intensity" /> Recorded starts · lighter → fewer
+          </span>
+        </div>
+        <details>
+          <summary>Exact calendar dates, counts and coverage</summary>
+          <table className="receipt-breakdown">
+            <caption>Run-start evidence at the selected fixed UTC cutoff</caption>
+            <thead>
+              <tr>
+                <th scope="col">UTC date</th>
+                <th scope="col">Starts</th>
+                <th scope="col">Coverage</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cells.map((c) => (
+                <tr key={c.day}>
+                  <th scope="row">{c.day}</th>
+                  <td>{c.count === null ? "Unavailable" : `${c.count}${c.partial ? "*" : ""}`}</td>
+                  <td>
+                    {c.count === null ? "Unavailable" : c.partial ? "Partial day" : "Full day"}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </details>
         <p className="muted">
-          Full UTC-day coverage starts after{" "}
-          {model.dataset.observedSince.replace("T", " ").slice(0, 16)} UTC. Current day ends at the
-          fixed clock; gaps mean unavailable observations.
-          {model.scenario === "sparse" &&
-            " Sparse masks every third daily rollup while individual records remain inspectable."}
+          Run starts only · intensity normalized to visible covered dates (maximum {maximum}). * =
+          partial UTC day within {model.dataset.observedSince} → {model.cutoff}. — = unavailable; ·
+          = observed zero. Future dates have no evidence.
+          {model.scenario === "sparse" && " Sparse masks every third daily rollup."}
         </p>
       </div>
     </Panel>
@@ -173,22 +209,20 @@ export function ActivityView({
   return (
     <>
       <ActivityCalendar model={model} />
-      <div className="dashboard-grid">
-        <div className="side-panels">
-          <FixedActivity
-            records={model.runs.map((r) => ({ ...r, tokens: 0 }))}
-            clock={model.dataset.clock}
-            observedSince={model.dataset.observedSince}
-            showCalendar={false}
-          />
-          <RunList model={model} onSelect={onSelect} query={query} onQuery={onQuery} />
-        </div>
-        {plugin && (
-          <Panel title="Chimera contribution" icon={<Layers className="size-4" />}>
-            {plugin}
-          </Panel>
-        )}
+      <div className="activity-pair">
+        <FixedActivity
+          records={model.runs.map((r) => ({ ...r, tokens: 0 }))}
+          clock={model.dataset.clock}
+          observedSince={model.dataset.observedSince}
+          showCalendar={false}
+        />
+        <RunList model={model} onSelect={onSelect} query={query} onQuery={onQuery} />
       </div>
+      {plugin && (
+        <Panel title="Chimera contribution" icon={<Layers className="size-4" />}>
+          {plugin}
+        </Panel>
+      )}
     </>
   )
 }
@@ -210,20 +244,56 @@ export function MissionView({
       <div className="dashboard-grid">
         <div className="side-panels">
           <SeriesPanel title="14-day run volume" field="count" model={model} />
-          <Panel title="Run status distribution" icon={<Compass className="size-4" />}>
+          <Panel
+            title="Run status distribution"
+            icon={<Compass className="size-4" />}
+            meta={`${model.runs.length} admitted runs · entire filtered graph`}
+          >
             <div className="example-body">
               <CompositionBars items={items} />
               <BarList items={items} />
             </div>
           </Panel>
-          <Panel title="Token throughput" icon={<Gauge className="size-4" />}>
+          <Panel
+            title="Token throughput"
+            icon={<Gauge className="size-4" />}
+            meta={`${model.usage.length} recorded receipts`}
+          >
             <div className="example-body">
               <BarMeter
                 rows={series
                   .filter((d) => d.tokens !== null)
                   .map((d) => ({ key: d.date, label: d.date, value: d.tokens ?? 0 }))}
-                title="Tokens by observed UTC day"
+                title="Recorded receipt tokens by UTC day"
               />
+              <table className="receipt-breakdown">
+                <caption>
+                  Input / output tokens from admitted usage receipts · UTC receipt date
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Input</th>
+                    <th scope="col">Output</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {series.map((d) => (
+                    <tr key={d.date}>
+                      <th scope="row">
+                        {d.date}
+                        {d.partial ? "*" : ""}
+                      </th>
+                      <td>{d.inputTokens?.toLocaleString() ?? "—"}</td>
+                      <td>{d.outputTokens?.toLocaleString() ?? "—"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p className="muted">
+                Recorded receipts only, not complete consumption or a per-second rate. * partial
+                day; — no admitted receipt or unavailable coverage.
+              </p>
               {series.some((d) => d.tokens === null) && (
                 <p className="muted">
                   Unobserved days omitted from numeric bars; gaps are shown in the run window.
@@ -312,7 +382,10 @@ export function SeriesPanel({
         <div className="day-series">
           {series.map((d) => (
             <div className={d[field] === null ? "day-cell missing" : "day-cell"} key={d.date}>
-              <span className="muted">{d.date.slice(5)}</span>
+              <span className="muted">
+                {d.date.slice(5)}
+                {d.partial ? "*" : ""}
+              </span>
               <strong>
                 {d[field] === null
                   ? "—"
@@ -325,7 +398,8 @@ export function SeriesPanel({
         </div>
         <p className="muted">
           Window ending {model.dataset.clock.slice(0, 10)}. — = unavailable; totals include only
-          observed fixture records.
+          admitted fixture records. * = partial UTC day. Token/cost values are recorded receipt
+          totals, not complete consumption.
         </p>
       </div>
     </Panel>
@@ -354,7 +428,7 @@ export function UsageView({
                 label: `${u.runId} · $${u.cost.toFixed(3)}`,
                 value: u.tokens,
               }))}
-              title="Observed tokens / cost"
+              title="Recorded receipt tokens / cost"
             />
           </div>
         </Panel>
