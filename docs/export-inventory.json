@@ -126,6 +126,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/evidence/Inspector.tsx",
       "frontend/src/primitives/Gallery.tsx",
       "frontend/src/primitives/model.ts"
     ]
@@ -209,6 +210,7 @@
       "frontend/src/App.tsx",
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/Messaging.tsx",
+      "frontend/src/evidence/Inspector.tsx",
       "frontend/src/operations/Views.tsx"
     ]
   },
@@ -247,6 +249,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/evidence/Inspector.tsx",
       "frontend/src/primitives/Gallery.tsx"
     ]
   },
@@ -296,11 +299,39 @@
     "name": "JsonViewer",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded pinned0.4 controlled Evidence inspector with actual recorded graph payload/metadata, syntax/summary contract checks, debounced keyboard search, modal scope and source/selection/reset retirement. Exact state/API gaps documented; not exhaustive prop coverage.",
+    "nextAction": "Preserve shared app/portable behavior checks; remaining independent exports and variants retain separate inventory actions.",
+    "evidence": {
+      "pages": [
+        "frontend/src/evidence/Inspector.tsx",
+        "frontend/src/evidence/model.ts",
+        "docs/evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/evidence.spec.ts",
+        "frontend/src/evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "evidence-controlled-inspector--recorded",
+        "evidence-controlled-inspector--nested",
+        "evidence-controlled-inspector--long-content",
+        "evidence-controlled-inspector--empty",
+        "evidence-controlled-inspector--loading",
+        "evidence-controlled-inspector--denied",
+        "evidence-controlled-inspector--read-failure",
+        "evidence-controlled-inspector--unknown",
+        "evidence-controlled-inspector--malformed-raw",
+        "evidence-controlled-inspector--same-scenario-replacement"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/evidence/Inspector.tsx",
+      "frontend/src/evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -309,11 +340,39 @@
     "name": "MetaList",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded pinned0.4 controlled Evidence inspector with actual recorded graph payload/metadata, syntax/summary contract checks, debounced keyboard search, modal scope and source/selection/reset retirement. Exact state/API gaps documented; not exhaustive prop coverage.",
+    "nextAction": "Preserve shared app/portable behavior checks; remaining independent exports and variants retain separate inventory actions.",
+    "evidence": {
+      "pages": [
+        "frontend/src/evidence/Inspector.tsx",
+        "frontend/src/evidence/model.ts",
+        "docs/evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/evidence.spec.ts",
+        "frontend/src/evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "evidence-controlled-inspector--recorded",
+        "evidence-controlled-inspector--nested",
+        "evidence-controlled-inspector--long-content",
+        "evidence-controlled-inspector--empty",
+        "evidence-controlled-inspector--loading",
+        "evidence-controlled-inspector--denied",
+        "evidence-controlled-inspector--read-failure",
+        "evidence-controlled-inspector--unknown",
+        "evidence-controlled-inspector--malformed-raw",
+        "evidence-controlled-inspector--same-scenario-replacement"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/evidence/Inspector.tsx",
+      "frontend/src/evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -625,9 +684,18 @@
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
+    "reason": "Valid public components include inseparable clipboard actions under pinned0.4; this inspector policy permits no clipboard effects. JsonModal has no action-disable/override prop. Actual DetailDialog+JsonViewer composition does not count as adoption; no hiding/interception used.",
+    "nextAction": "Reassess a controlled no-copy contract or a separately authorized clipboard review; do not invoke effects in this fixture-only slice.",
+    "evidence": {
+      "pages": [
+        "docs/evidence-review.md",
+        "frontend/src/evidence/Inspector.tsx"
+      ],
+      "checks": [
+        "frontend/src/evidence/contracts.ts",
+        "frontend/tests/evidence.spec.ts"
+      ]
+    },
     "importEvidence": []
   },
   {
@@ -686,10 +754,21 @@
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "reason": "Valid public components include inseparable clipboard actions under pinned0.4; this inspector policy permits no clipboard effects. JsonModal has no action-disable/override prop. Actual DetailDialog+JsonViewer composition does not count as adoption; no hiding/interception used.",
+    "nextAction": "Reassess a controlled no-copy contract or a separately authorized clipboard review; do not invoke effects in this fixture-only slice.",
+    "evidence": {
+      "pages": [
+        "docs/evidence-review.md",
+        "frontend/src/evidence/Inspector.tsx"
+      ],
+      "checks": [
+        "frontend/src/evidence/contracts.ts",
+        "frontend/tests/evidence.spec.ts"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -699,9 +778,18 @@
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
+    "reason": "Valid public components include inseparable clipboard actions under pinned0.4; this inspector policy permits no clipboard effects. JsonModal has no action-disable/override prop. Actual DetailDialog+JsonViewer composition does not count as adoption; no hiding/interception used.",
+    "nextAction": "Reassess a controlled no-copy contract or a separately authorized clipboard review; do not invoke effects in this fixture-only slice.",
+    "evidence": {
+      "pages": [
+        "docs/evidence-review.md",
+        "frontend/src/evidence/Inspector.tsx"
+      ],
+      "checks": [
+        "frontend/src/evidence/contracts.ts",
+        "frontend/tests/evidence.spec.ts"
+      ]
+    },
     "importEvidence": []
   },
   {
@@ -711,11 +799,39 @@
     "name": "PayloadSummary",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded pinned0.4 controlled Evidence inspector with actual recorded graph payload/metadata, syntax/summary contract checks, debounced keyboard search, modal scope and source/selection/reset retirement. Exact state/API gaps documented; not exhaustive prop coverage.",
+    "nextAction": "Preserve shared app/portable behavior checks; remaining independent exports and variants retain separate inventory actions.",
+    "evidence": {
+      "pages": [
+        "frontend/src/evidence/Inspector.tsx",
+        "frontend/src/evidence/model.ts",
+        "docs/evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/evidence.spec.ts",
+        "frontend/src/evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "evidence-controlled-inspector--recorded",
+        "evidence-controlled-inspector--nested",
+        "evidence-controlled-inspector--long-content",
+        "evidence-controlled-inspector--empty",
+        "evidence-controlled-inspector--loading",
+        "evidence-controlled-inspector--denied",
+        "evidence-controlled-inspector--read-failure",
+        "evidence-controlled-inspector--unknown",
+        "evidence-controlled-inspector--malformed-raw",
+        "evidence-controlled-inspector--same-scenario-replacement"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/evidence/Inspector.tsx",
+      "frontend/src/evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -763,11 +879,39 @@
     "name": "SearchInput",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded pinned0.4 controlled Evidence inspector with actual recorded graph payload/metadata, syntax/summary contract checks, debounced keyboard search, modal scope and source/selection/reset retirement. Exact state/API gaps documented; not exhaustive prop coverage.",
+    "nextAction": "Preserve shared app/portable behavior checks; remaining independent exports and variants retain separate inventory actions.",
+    "evidence": {
+      "pages": [
+        "frontend/src/evidence/Inspector.tsx",
+        "frontend/src/evidence/model.ts",
+        "docs/evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/evidence.spec.ts",
+        "frontend/src/evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "evidence-controlled-inspector--recorded",
+        "evidence-controlled-inspector--nested",
+        "evidence-controlled-inspector--long-content",
+        "evidence-controlled-inspector--empty",
+        "evidence-controlled-inspector--loading",
+        "evidence-controlled-inspector--denied",
+        "evidence-controlled-inspector--read-failure",
+        "evidence-controlled-inspector--unknown",
+        "evidence-controlled-inspector--malformed-raw",
+        "evidence-controlled-inspector--same-scenario-replacement"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/evidence/Inspector.tsx",
+      "frontend/src/evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1387,6 +1531,8 @@
       "frontend/src/communications/CommunicationLab.tsx",
       "frontend/src/communications/Messaging.tsx",
       "frontend/src/developer/Lab.tsx",
+      "frontend/src/evidence/Evidence.stories.tsx",
+      "frontend/src/evidence/Inspector.tsx",
       "frontend/src/layouts/Comparison.stories.tsx",
       "frontend/src/layouts/Comparison.tsx",
       "frontend/src/layouts/Navigation.tsx",
@@ -4553,6 +4699,7 @@
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/Messaging.tsx",
       "frontend/src/developer/Lab.tsx",
+      "frontend/src/evidence/Inspector.tsx",
       "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Views.tsx",
       "frontend/src/primitives/Gallery.tsx",

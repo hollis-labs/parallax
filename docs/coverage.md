@@ -13,7 +13,7 @@ The pinned catalogue records all fifteen packages at design-kit commit `dbcf4fa7
 
 | Package | Visual | Types | Nonvisual/value | Reviewed | Partial | Deferred | Unsupported |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| @hollis-labs/design-components | 147 | 20 | 22 | 14 | 2 | 173 | 0 |
+| @hollis-labs/design-components | 147 | 20 | 22 | 18 | 2 | 169 | 0 |
 | @hollis-labs/kit-dashboard | 48 | 49 | 30 | 13 | 4 | 107 | 3 |
 | @hollis-labs/kit-chat | 147 | 195 | 16 | 0 | 37 | 321 | 0 |
 | @hollis-labs/design-bindings | 0 | 19 | 9 | 0 | 4 | 24 | 0 |
@@ -41,3 +41,5 @@ Concrete deferred/gap families:
 This inventory satisfies tracking rather than exhaustive implementation: broad presentation contracts/fixture families and exact Torque reference fidelity remain partial wherever recorded acceptance gaps persist. New adoption must update dispositions and concrete evidence before changing a review claim.
 
 The eleventh bounded batch adds nine reviewed design-components dispositions (27 reviewed declarations overall, 179 exact imports). [Controlled primitives](primitives-review.md) documents actual supported appearances, native form/dialog host admission policies and representative rendered/keyboard/reset evidence. The remaining 1,120 deferred declarations still have explicit next actions; this batch does not close all independent behavior.
+
+The twelfth bounded batch adds JsonViewer/PayloadSummary/MetaList/SearchInput (31 reviewed declarations overall; 184 exact imports). [Evidence payload inspection](evidence-review.md) points to actual app/portable state and callback proofs. JsonModal/PayloadActions/CopyButton stay deferred because the current no-clipboard review policy cannot disable their built-in effects through published props. Remaining 1,116 deferred declarations retain explicit next actions.

@@ -14,6 +14,7 @@ import { AccountLab } from "./administration/Account"
 import { AdminLab } from "./administration/Admin"
 import { createOperationsExample } from "./chimera/example"
 import { CommunicationLab } from "./communications/CommunicationLab"
+import { EvidenceInspector } from "./evidence/Inspector"
 import { Comparison, type Layout, layouts } from "./layouts/Comparison"
 import { Navigation, type NavigationMode } from "./layouts/Navigation"
 import { ObservationLab } from "./observability/Lab"
@@ -223,6 +224,7 @@ export function App() {
     applyTheme(theme as Parameters<typeof applyTheme>[0])
     document.documentElement.setAttribute("data-mode", mode)
   }, [theme, mode])
+  const isEvidence = page === "Evidence"
   const isPrimitives = page === "Primitives"
   const isVoice = page === "Voice"
   const isDeveloper = page === "Developer"
@@ -350,6 +352,7 @@ export function App() {
     "Voice",
     "Examples",
     "Primitives",
+    "Evidence",
     "Layouts",
   ].map((name, i) => ({
     key: name,
@@ -369,6 +372,7 @@ export function App() {
       <MessageSquare key="l" className="size-4" />,
       <Layers key="m" className="size-4" />,
       <Layers key="n" className="size-4" />,
+      <Layers key="o" className="size-4" />,
     ][i],
     active: page === name,
     onSelect: () => {
@@ -495,7 +499,12 @@ export function App() {
             <div className="page-title">
               <div>
                 <p className="eyebrow">
-                  {isAdministration || isObservation || isDeveloper || isVoice || isPrimitives
+                  {isAdministration ||
+                  isObservation ||
+                  isDeveloper ||
+                  isVoice ||
+                  isPrimitives ||
+                  isEvidence
                     ? page.toUpperCase()
                     : isCommunication
                       ? "COMMUNICATIONS"
@@ -555,8 +564,11 @@ export function App() {
                   !isObservation &&
                   !isDeveloper &&
                   !isVoice &&
-                  !isPrimitives && <OperationsSummary model={model} />}
-                {isPrimitives ? (
+                  !isPrimitives &&
+                  !isEvidence && <OperationsSummary model={model} />}
+                {isEvidence ? (
+                  <EvidenceInspector key={scenario} model={operationsModel(scenario)} />
+                ) : isPrimitives ? (
                   <PrimitiveGallery
                     key={scenario}
                     model={operationsModel(scenario)}
