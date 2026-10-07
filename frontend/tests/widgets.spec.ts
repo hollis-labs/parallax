@@ -276,6 +276,9 @@ test("narrow dark long list and portable fixed-prefix widgets preserve bounds an
   await expect(page.getByTestId("widget-cutoff")).toHaveText("2026-10-04T14:14:15Z")
   await expect(page.getByTestId("widget-spark").locator('[aria-hidden="true"]>div')).toHaveCount(2)
   await expect(page.getByRole("table").locator("tbody tr").nth(1)).toContainText("Partial")
+  await page.getByLabel("Widget state").selectOption("gapped")
+  await expect(page.getByTestId("widget-spark").locator('[aria-hidden="true"]>div')).toHaveCount(2)
+  await expect(page.getByText(/future gaps do not erase the covered leading prefix/)).toBeVisible()
   await page.goto(
     "http://127.0.0.1:18542/iframe.html?id=widgets-recorded-review--before-window&viewMode=story",
   )

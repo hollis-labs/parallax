@@ -206,7 +206,7 @@ function GalleryInstance({
                 : state === "observed-zero"
                   ? "Real last-five-minute source interval with zero admitted run starts when covered; future interval remains unavailable."
                   : state === "gapped"
-                    ? "Authored missing-observation appearance at bucket3; numeric-only widgets withheld rather than compressing an interior gap."
+                    ? "Authored missing-observation appearance at bucket3. Numeric-only widgets never compress an admitted interior gap; future gaps do not erase the covered leading prefix."
                     : "Only admitted run-start/finish evidence is counted. Task completion is a separate event; no finish observed does not mean running."}
         </Callout>
       </div>
