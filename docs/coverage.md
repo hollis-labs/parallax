@@ -13,8 +13,8 @@ The pinned catalogue records all fifteen packages at design-kit commit `dbcf4fa7
 
 | Package | Visual | Types | Nonvisual/value | Reviewed | Partial | Deferred | Unsupported |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| @hollis-labs/design-components | 147 | 20 | 22 | 18 | 2 | 169 | 0 |
-| @hollis-labs/kit-dashboard | 48 | 49 | 30 | 13 | 4 | 107 | 3 |
+| @hollis-labs/design-components | 147 | 20 | 22 | 19 | 2 | 168 | 0 |
+| @hollis-labs/kit-dashboard | 48 | 49 | 30 | 18 | 5 | 101 | 3 |
 | @hollis-labs/kit-chat | 147 | 195 | 16 | 0 | 37 | 321 | 0 |
 | @hollis-labs/design-bindings | 0 | 19 | 9 | 0 | 4 | 24 | 0 |
 | @hollis-labs/kit-admin | 3 | 15 | 3 | 0 | 5 | 16 | 0 |
@@ -31,7 +31,7 @@ The complete machine-readable rows, not this summary, are the actionable export 
 
 Concrete deferred/gap families:
 
-- Dashboard ActivityHeatmap/HourlyPulse/TimeSeriesChart read ambient dates and cannot preserve injected-clock/null-coverage semantics. App run-start/calendar/pulse and USD charts are labelled adaptations. Donut/Kpi/spark widgets remain separately deferred; generic composition import does not imply those exports were exercised.
+- Dashboard ActivityHeatmap/HourlyPulse/TimeSeriesChart read ambient dates and cannot preserve injected-clock/null-coverage semantics. App run-start/calendar/pulse and USD charts are labelled adaptations. Kpi and other independent widgets remain separately deferred; the thirteenth bounded batch below reviews five named compact exports with their own actual evidence.
 - Code highlighting remains unadopted: `createCodeHighlighter` requires opt-in Shiki; review deterministic language/theme/error contracts and optional-loading before adoption. The app diff is an app-owned line composition. Remaining code subcomponents require their own bounded stories; inert ANSI output does not prove editor/execution behavior.
 - Workflow graph authoring/connection/edit gestures remain deferred; the reviewed app uses immutable fixture nodes/edges, controlled selection/viewport and keyboard inspection. Remaining toolbar/node/action primitives are tracked independently.
 - Voice MicSelector/useAudioDevices are unsupported under the fixture-only permission policy; nested selector preview remains deferred because of its upstream option semantics. Local AudioPlayer and timed authored transcript have actual playback/reset proof. Persona/Rive/video are not current public kit-voice exports and are future-family ideas, not missing export rows.
@@ -43,3 +43,5 @@ This inventory satisfies tracking rather than exhaustive implementation: broad p
 The eleventh bounded batch adds nine reviewed design-components dispositions (27 reviewed declarations overall, 179 exact imports). [Controlled primitives](primitives-review.md) documents actual supported appearances, native form/dialog host admission policies and representative rendered/keyboard/reset evidence. The remaining 1,120 deferred declarations still have explicit next actions; this batch does not close all independent behavior.
 
 The twelfth bounded batch adds JsonViewer/PayloadSummary/MetaList/SearchInput (31 reviewed declarations overall; 184 exact imports). [Evidence payload inspection](evidence-review.md) points to actual app/portable state and callback proofs. JsonModal/PayloadActions/CopyButton stay deferred because the current no-clipboard review policy cannot disable their built-in effects through published props. Remaining 1,116 deferred declarations retain explicit next actions.
+
+The thirteenth bounded batch adds Sparkbars/SignalBars/DonutChart/MiniTrend/RecentList and Metric (37 reviewed declarations overall;191 exact imports). [Compact widget review](widgets-review.md) documents admitted operation-prefix counts, aligned partitions, real normalized geometry/paint, explicit scale floor and denominator, elapsed-second units, accessible UTC tables and native record inspection/retirement. Remaining1,109 deferred declarations retain actionable next steps; types/imports and other widget variants are not silently reviewed.

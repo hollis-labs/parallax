@@ -128,7 +128,8 @@
     "importEvidence": [
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/primitives/Gallery.tsx",
-      "frontend/src/primitives/model.ts"
+      "frontend/src/primitives/model.ts",
+      "frontend/src/widgets/Gallery.tsx"
     ]
   },
   {
@@ -211,7 +212,8 @@
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/Messaging.tsx",
       "frontend/src/evidence/Inspector.tsx",
-      "frontend/src/operations/Views.tsx"
+      "frontend/src/operations/Views.tsx",
+      "frontend/src/widgets/Gallery.tsx"
     ]
   },
   {
@@ -330,7 +332,8 @@
     },
     "importEvidence": [
       "frontend/src/evidence/Inspector.tsx",
-      "frontend/src/evidence/contracts.ts"
+      "frontend/src/evidence/contracts.ts",
+      "frontend/src/widgets/Gallery.tsx"
     ]
   },
   {
@@ -371,7 +374,8 @@
     },
     "importEvidence": [
       "frontend/src/evidence/Inspector.tsx",
-      "frontend/src/evidence/contracts.ts"
+      "frontend/src/evidence/contracts.ts",
+      "frontend/src/widgets/Gallery.tsx"
     ]
   },
   {
@@ -394,11 +398,40 @@
     "name": "Metric",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded pinned0.4 Widgets presentation with actual admitted operation-prefix UTC buckets, null/zero/partial semantics, finite aligned run-count partitions, real normalized paint/geometry, explicit scale-floor/denominator and elapsed-second labels, recent native keyboard detail/source/cutoff retirement. Supported states documented; not exhaustive prop coverage.",
+    "nextAction": "Preserve these app/portable contract checks; review remaining independent variants separately.",
+    "evidence": {
+      "pages": [
+        "frontend/src/widgets/Gallery.tsx",
+        "frontend/src/widgets/model.ts",
+        "docs/widgets-review.md"
+      ],
+      "checks": [
+        "frontend/tests/widgets.spec.ts",
+        "frontend/src/widgets/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/widgets/Widgets.stories.tsx"
+      ],
+      "storyIds": [
+        "widgets-recorded-review--recorded",
+        "widgets-recorded-review--empty",
+        "widgets-recorded-review--observed-zero",
+        "widgets-recorded-review--loading",
+        "widgets-recorded-review--read-failure",
+        "widgets-recorded-review--denied",
+        "widgets-recorded-review--gapped",
+        "widgets-recorded-review--unknown",
+        "widgets-recorded-review--long-content",
+        "widgets-recorded-review--partial-prefix",
+        "widgets-recorded-review--before-window"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/widgets/Gallery.tsx",
+      "frontend/src/widgets/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1542,7 +1575,8 @@
       "frontend/src/operations/Views.tsx",
       "frontend/src/playback/Controls.tsx",
       "frontend/src/primitives/Gallery.tsx",
-      "frontend/src/voice/Lab.tsx"
+      "frontend/src/voice/Lab.tsx",
+      "frontend/src/widgets/Gallery.tsx"
     ]
   },
   {
@@ -4329,11 +4363,40 @@
     "name": "Sparkbars",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded pinned0.4 Widgets presentation with actual admitted operation-prefix UTC buckets, null/zero/partial semantics, finite aligned run-count partitions, real normalized paint/geometry, explicit scale-floor/denominator and elapsed-second labels, recent native keyboard detail/source/cutoff retirement. Supported states documented; not exhaustive prop coverage.",
+    "nextAction": "Preserve these app/portable contract checks; review remaining independent variants separately.",
+    "evidence": {
+      "pages": [
+        "frontend/src/widgets/Gallery.tsx",
+        "frontend/src/widgets/model.ts",
+        "docs/widgets-review.md"
+      ],
+      "checks": [
+        "frontend/tests/widgets.spec.ts",
+        "frontend/src/widgets/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/widgets/Widgets.stories.tsx"
+      ],
+      "storyIds": [
+        "widgets-recorded-review--recorded",
+        "widgets-recorded-review--empty",
+        "widgets-recorded-review--observed-zero",
+        "widgets-recorded-review--loading",
+        "widgets-recorded-review--read-failure",
+        "widgets-recorded-review--denied",
+        "widgets-recorded-review--gapped",
+        "widgets-recorded-review--unknown",
+        "widgets-recorded-review--long-content",
+        "widgets-recorded-review--partial-prefix",
+        "widgets-recorded-review--before-window"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/widgets/Gallery.tsx",
+      "frontend/src/widgets/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -4355,11 +4418,40 @@
     "name": "SignalBars",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded pinned0.4 Widgets presentation with actual admitted operation-prefix UTC buckets, null/zero/partial semantics, finite aligned run-count partitions, real normalized paint/geometry, explicit scale-floor/denominator and elapsed-second labels, recent native keyboard detail/source/cutoff retirement. Supported states documented; not exhaustive prop coverage.",
+    "nextAction": "Preserve these app/portable contract checks; review remaining independent variants separately.",
+    "evidence": {
+      "pages": [
+        "frontend/src/widgets/Gallery.tsx",
+        "frontend/src/widgets/model.ts",
+        "docs/widgets-review.md"
+      ],
+      "checks": [
+        "frontend/tests/widgets.spec.ts",
+        "frontend/src/widgets/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/widgets/Widgets.stories.tsx"
+      ],
+      "storyIds": [
+        "widgets-recorded-review--recorded",
+        "widgets-recorded-review--empty",
+        "widgets-recorded-review--observed-zero",
+        "widgets-recorded-review--loading",
+        "widgets-recorded-review--read-failure",
+        "widgets-recorded-review--denied",
+        "widgets-recorded-review--gapped",
+        "widgets-recorded-review--unknown",
+        "widgets-recorded-review--long-content",
+        "widgets-recorded-review--partial-prefix",
+        "widgets-recorded-review--before-window"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/widgets/Gallery.tsx",
+      "frontend/src/widgets/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -4482,11 +4574,40 @@
     "name": "DonutChart",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded pinned0.4 Widgets presentation with actual admitted operation-prefix UTC buckets, null/zero/partial semantics, finite aligned run-count partitions, real normalized paint/geometry, explicit scale-floor/denominator and elapsed-second labels, recent native keyboard detail/source/cutoff retirement. Supported states documented; not exhaustive prop coverage.",
+    "nextAction": "Preserve these app/portable contract checks; review remaining independent variants separately.",
+    "evidence": {
+      "pages": [
+        "frontend/src/widgets/Gallery.tsx",
+        "frontend/src/widgets/model.ts",
+        "docs/widgets-review.md"
+      ],
+      "checks": [
+        "frontend/tests/widgets.spec.ts",
+        "frontend/src/widgets/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/widgets/Widgets.stories.tsx"
+      ],
+      "storyIds": [
+        "widgets-recorded-review--recorded",
+        "widgets-recorded-review--empty",
+        "widgets-recorded-review--observed-zero",
+        "widgets-recorded-review--loading",
+        "widgets-recorded-review--read-failure",
+        "widgets-recorded-review--denied",
+        "widgets-recorded-review--gapped",
+        "widgets-recorded-review--unknown",
+        "widgets-recorded-review--long-content",
+        "widgets-recorded-review--partial-prefix",
+        "widgets-recorded-review--before-window"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/widgets/Gallery.tsx",
+      "frontend/src/widgets/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -4508,11 +4629,26 @@
     "name": "DonutSegment",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/operations/Views.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--mission-control"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/widgets/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -4646,11 +4782,40 @@
     "name": "RecentList",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded pinned0.4 Widgets presentation with actual admitted operation-prefix UTC buckets, null/zero/partial semantics, finite aligned run-count partitions, real normalized paint/geometry, explicit scale-floor/denominator and elapsed-second labels, recent native keyboard detail/source/cutoff retirement. Supported states documented; not exhaustive prop coverage.",
+    "nextAction": "Preserve these app/portable contract checks; review remaining independent variants separately.",
+    "evidence": {
+      "pages": [
+        "frontend/src/widgets/Gallery.tsx",
+        "frontend/src/widgets/model.ts",
+        "docs/widgets-review.md"
+      ],
+      "checks": [
+        "frontend/tests/widgets.spec.ts",
+        "frontend/src/widgets/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/widgets/Widgets.stories.tsx"
+      ],
+      "storyIds": [
+        "widgets-recorded-review--recorded",
+        "widgets-recorded-review--empty",
+        "widgets-recorded-review--observed-zero",
+        "widgets-recorded-review--loading",
+        "widgets-recorded-review--read-failure",
+        "widgets-recorded-review--denied",
+        "widgets-recorded-review--gapped",
+        "widgets-recorded-review--unknown",
+        "widgets-recorded-review--long-content",
+        "widgets-recorded-review--partial-prefix",
+        "widgets-recorded-review--before-window"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/widgets/Gallery.tsx",
+      "frontend/src/widgets/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -4703,7 +4868,8 @@
       "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Views.tsx",
       "frontend/src/primitives/Gallery.tsx",
-      "frontend/src/voice/Lab.tsx"
+      "frontend/src/voice/Lab.tsx",
+      "frontend/src/widgets/Gallery.tsx"
     ]
   },
   {
@@ -4778,11 +4944,40 @@
     "name": "MiniTrend",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded pinned0.4 Widgets presentation with actual admitted operation-prefix UTC buckets, null/zero/partial semantics, finite aligned run-count partitions, real normalized paint/geometry, explicit scale-floor/denominator and elapsed-second labels, recent native keyboard detail/source/cutoff retirement. Supported states documented; not exhaustive prop coverage.",
+    "nextAction": "Preserve these app/portable contract checks; review remaining independent variants separately.",
+    "evidence": {
+      "pages": [
+        "frontend/src/widgets/Gallery.tsx",
+        "frontend/src/widgets/model.ts",
+        "docs/widgets-review.md"
+      ],
+      "checks": [
+        "frontend/tests/widgets.spec.ts",
+        "frontend/src/widgets/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/widgets/Widgets.stories.tsx"
+      ],
+      "storyIds": [
+        "widgets-recorded-review--recorded",
+        "widgets-recorded-review--empty",
+        "widgets-recorded-review--observed-zero",
+        "widgets-recorded-review--loading",
+        "widgets-recorded-review--read-failure",
+        "widgets-recorded-review--denied",
+        "widgets-recorded-review--gapped",
+        "widgets-recorded-review--unknown",
+        "widgets-recorded-review--long-content",
+        "widgets-recorded-review--partial-prefix",
+        "widgets-recorded-review--before-window"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/widgets/Gallery.tsx",
+      "frontend/src/widgets/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",

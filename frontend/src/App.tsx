@@ -30,6 +30,7 @@ import {
 import { PlaybackControls } from "./playback/Controls"
 import { usePlayback } from "./playback/usePlayback"
 import { PrimitiveGallery } from "./primitives/Gallery"
+import { WidgetGallery } from "./widgets/Gallery"
 
 const VoiceLab = lazy(() => import("./voice/Lab"))
 const DeveloperLab = lazy(() => import("./developer/Lab"))
@@ -224,6 +225,7 @@ export function App() {
     applyTheme(theme as Parameters<typeof applyTheme>[0])
     document.documentElement.setAttribute("data-mode", mode)
   }, [theme, mode])
+  const isWidgets = page === "Widgets"
   const isEvidence = page === "Evidence"
   const isPrimitives = page === "Primitives"
   const isVoice = page === "Voice"
@@ -243,6 +245,7 @@ export function App() {
     "Examples",
     "Layouts",
     "Observability",
+    "Widgets",
   ].includes(page)
   const model = operationsModel(
       scenario,
@@ -353,6 +356,7 @@ export function App() {
     "Examples",
     "Primitives",
     "Evidence",
+    "Widgets",
     "Layouts",
   ].map((name, i) => ({
     key: name,
@@ -373,6 +377,7 @@ export function App() {
       <Layers key="m" className="size-4" />,
       <Layers key="n" className="size-4" />,
       <Layers key="o" className="size-4" />,
+      <Layers key="p" className="size-4" />,
     ][i],
     active: page === name,
     onSelect: () => {
@@ -565,8 +570,17 @@ export function App() {
                   !isDeveloper &&
                   !isVoice &&
                   !isPrimitives &&
-                  !isEvidence && <OperationsSummary model={model} />}
-                {isEvidence ? (
+                  !isEvidence &&
+                  !isWidgets && <OperationsSummary model={model} />}
+                {isWidgets ? (
+                  <WidgetGallery
+                    key={scenario}
+                    model={operationsModel(scenario, "", {
+                      cutoff: review.cutoff,
+                      override: review.override,
+                    })}
+                  />
+                ) : isEvidence ? (
                   <EvidenceInspector key={scenario} model={operationsModel(scenario)} />
                 ) : isPrimitives ? (
                   <PrimitiveGallery

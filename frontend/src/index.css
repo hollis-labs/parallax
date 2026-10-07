@@ -912,3 +912,90 @@ dd {
     max-width: 100%;
   }
 }
+
+.widgets-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(var(--spacing) * 5);
+  align-items: start;
+}
+.widgets-stack {
+  grid-template-columns: 1fr;
+}
+.widget-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(var(--spacing) * 4);
+  padding-block: calc(var(--spacing) * 4);
+}
+.widget-gallery {
+  --widget-bucket-count: 8;
+}
+.widgets-spark-host {
+  width: calc(var(--spacing) * var(--widget-bucket-count) * 1.5 - 1px);
+  max-width: 100%;
+}
+.widgets-mini-host {
+  max-width: 100%;
+}
+.widgets-mini-host > div > div:last-child {
+  width: calc(var(--spacing) * (var(--widget-bucket-count) * 1.375 + 1.5));
+  max-width: 100%;
+}
+.widgets-mini-host > div > div:first-child {
+  height: auto;
+  flex-wrap: wrap;
+}
+.widgets-signal-host {
+  max-width: 100%;
+}
+.widgets-signal-host > div > div:last-child {
+  width: calc(var(--spacing) * (var(--widget-bucket-count) * 3.5 + 3.75));
+  max-width: 100%;
+}
+.widgets-signal-host > div > div:first-child {
+  height: auto;
+  flex-wrap: wrap;
+  padding-block: calc(var(--spacing) * 2);
+}
+.widgets-signal-host > div > div:first-child > span:last-child {
+  flex-wrap: wrap;
+}
+.widget-recent-row {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 2);
+  padding-block: calc(var(--spacing) * 3);
+  overflow-wrap: anywhere;
+}
+.widget-gallery li button:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+.widget-bucket-evidence {
+  margin-block: calc(var(--spacing) * 5);
+}
+.widget-table-scroll {
+  overflow-x: auto;
+}
+.widget-gallery table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.widget-gallery th,
+.widget-gallery td {
+  padding: calc(var(--spacing) * 3);
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+.narrow .widgets-grid,
+.tablet .widgets-grid {
+  grid-template-columns: 1fr;
+}
+@media (max-width: 48rem) {
+  .widgets-grid,
+  .widget-metrics {
+    grid-template-columns: 1fr;
+  }
+}

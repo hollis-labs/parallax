@@ -400,6 +400,82 @@
           "frontend/tests/evidence.spec.ts"
         ]
       }
+    },
+    {
+      "package": "@hollis-labs/kit-dashboard",
+      "names": [
+        "Sparkbars",
+        "SignalBars",
+        "DonutChart",
+        "MiniTrend",
+        "RecentList"
+      ],
+      "disposition": "reviewed",
+      "reason": "Bounded pinned0.4 Widgets presentation with actual admitted operation-prefix UTC buckets, null/zero/partial semantics, finite aligned run-count partitions, real normalized paint/geometry, explicit scale-floor/denominator and elapsed-second labels, recent native keyboard detail/source/cutoff retirement. Supported states documented; not exhaustive prop coverage.",
+      "nextAction": "Preserve these app/portable contract checks; review remaining independent variants separately.",
+      "evidence": {
+        "pages": [
+          "frontend/src/widgets/Gallery.tsx",
+          "frontend/src/widgets/model.ts",
+          "docs/widgets-review.md"
+        ],
+        "checks": [
+          "frontend/tests/widgets.spec.ts",
+          "frontend/src/widgets/contracts.ts"
+        ],
+        "stories": [
+          "frontend/src/widgets/Widgets.stories.tsx"
+        ],
+        "storyIds": [
+          "widgets-recorded-review--recorded",
+          "widgets-recorded-review--empty",
+          "widgets-recorded-review--observed-zero",
+          "widgets-recorded-review--loading",
+          "widgets-recorded-review--read-failure",
+          "widgets-recorded-review--denied",
+          "widgets-recorded-review--gapped",
+          "widgets-recorded-review--unknown",
+          "widgets-recorded-review--long-content",
+          "widgets-recorded-review--partial-prefix",
+          "widgets-recorded-review--before-window"
+        ]
+      }
+    },
+    {
+      "package": "@hollis-labs/design-components",
+      "names": [
+        "Metric"
+      ],
+      "disposition": "reviewed",
+      "reason": "Bounded pinned0.4 Widgets presentation with actual admitted operation-prefix UTC buckets, null/zero/partial semantics, finite aligned run-count partitions, real normalized paint/geometry, explicit scale-floor/denominator and elapsed-second labels, recent native keyboard detail/source/cutoff retirement. Supported states documented; not exhaustive prop coverage.",
+      "nextAction": "Preserve these app/portable contract checks; review remaining independent variants separately.",
+      "evidence": {
+        "pages": [
+          "frontend/src/widgets/Gallery.tsx",
+          "frontend/src/widgets/model.ts",
+          "docs/widgets-review.md"
+        ],
+        "checks": [
+          "frontend/tests/widgets.spec.ts",
+          "frontend/src/widgets/contracts.ts"
+        ],
+        "stories": [
+          "frontend/src/widgets/Widgets.stories.tsx"
+        ],
+        "storyIds": [
+          "widgets-recorded-review--recorded",
+          "widgets-recorded-review--empty",
+          "widgets-recorded-review--observed-zero",
+          "widgets-recorded-review--loading",
+          "widgets-recorded-review--read-failure",
+          "widgets-recorded-review--denied",
+          "widgets-recorded-review--gapped",
+          "widgets-recorded-review--unknown",
+          "widgets-recorded-review--long-content",
+          "widgets-recorded-review--partial-prefix",
+          "widgets-recorded-review--before-window"
+        ]
+      }
     }
   ]
 }
