@@ -129,6 +129,7 @@
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/primitives/Gallery.tsx",
       "frontend/src/primitives/model.ts",
+      "frontend/src/settings-review/Review.tsx",
       "frontend/src/widgets/Gallery.tsx"
     ]
   },
@@ -213,6 +214,7 @@
       "frontend/src/communications/Messaging.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/operations/Views.tsx",
+      "frontend/src/settings-review/Review.tsx",
       "frontend/src/widgets/Gallery.tsx"
     ]
   },
@@ -333,6 +335,7 @@
     "importEvidence": [
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/evidence/contracts.ts",
+      "frontend/src/settings-review/Review.tsx",
       "frontend/src/widgets/Gallery.tsx"
     ]
   },
@@ -375,6 +378,7 @@
     "importEvidence": [
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/evidence/contracts.ts",
+      "frontend/src/settings-review/Review.tsx",
       "frontend/src/widgets/Gallery.tsx"
     ]
   },
@@ -1575,6 +1579,7 @@
       "frontend/src/operations/Views.tsx",
       "frontend/src/playback/Controls.tsx",
       "frontend/src/primitives/Gallery.tsx",
+      "frontend/src/settings-review/Review.tsx",
       "frontend/src/voice/Lab.tsx",
       "frontend/src/widgets/Gallery.tsx"
     ]
@@ -10967,11 +10972,45 @@
     "name": "SettingsGroupForm",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded pinned0.2 Settings Review modes and supported field/schema/provenance/wizard states. Actual zero/false/incomplete numeric/ARIA/native-submit guards, allowed unset without application, readonly secret presence, unknown metadata/profile failures, optional effect omission, mandatory guarded local plan inspection and source/draft/step/mode/reset/StrictMode lifetime proof. Not exhaustive manifest or field permutations.",
+    "nextAction": "Preserve app/portable/development checks; remaining independent settings exports and schema/assistive-technology permutations require separate bounded review.",
+    "evidence": {
+      "pages": [
+        "frontend/src/settings-review/Review.tsx",
+        "frontend/src/settings-review/model.ts",
+        "docs/settings-review.md"
+      ],
+      "checks": [
+        "frontend/tests/settings-review.spec.ts",
+        "frontend/src/settings-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/settings-review/SettingsReview.stories.tsx"
+      ],
+      "storyIds": [
+        "settings-controlled-field-review--provenance",
+        "settings-controlled-field-review--single-group",
+        "settings-controlled-field-review--grouped",
+        "settings-controlled-field-review--wizard",
+        "settings-controlled-field-review--empty",
+        "settings-controlled-field-review--loading",
+        "settings-controlled-field-review--read-failure",
+        "settings-controlled-field-review--denied",
+        "settings-controlled-field-review--locked",
+        "settings-controlled-field-review--long-content",
+        "settings-controlled-field-review--unknown-metadata",
+        "settings-controlled-field-review--unsupported-schema",
+        "settings-controlled-field-review--unknown-field",
+        "settings-controlled-field-review--invalid-number",
+        "settings-controlled-field-review--busy",
+        "settings-controlled-field-review--not-set"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/settings-review/Review.tsx",
+      "frontend/src/settings-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-settings",
@@ -10980,11 +11019,45 @@
     "name": "SettingsRenderer",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded pinned0.2 Settings Review modes and supported field/schema/provenance/wizard states. Actual zero/false/incomplete numeric/ARIA/native-submit guards, allowed unset without application, readonly secret presence, unknown metadata/profile failures, optional effect omission, mandatory guarded local plan inspection and source/draft/step/mode/reset/StrictMode lifetime proof. Not exhaustive manifest or field permutations.",
+    "nextAction": "Preserve app/portable/development checks; remaining independent settings exports and schema/assistive-technology permutations require separate bounded review.",
+    "evidence": {
+      "pages": [
+        "frontend/src/settings-review/Review.tsx",
+        "frontend/src/settings-review/model.ts",
+        "docs/settings-review.md"
+      ],
+      "checks": [
+        "frontend/tests/settings-review.spec.ts",
+        "frontend/src/settings-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/settings-review/SettingsReview.stories.tsx"
+      ],
+      "storyIds": [
+        "settings-controlled-field-review--provenance",
+        "settings-controlled-field-review--single-group",
+        "settings-controlled-field-review--grouped",
+        "settings-controlled-field-review--wizard",
+        "settings-controlled-field-review--empty",
+        "settings-controlled-field-review--loading",
+        "settings-controlled-field-review--read-failure",
+        "settings-controlled-field-review--denied",
+        "settings-controlled-field-review--locked",
+        "settings-controlled-field-review--long-content",
+        "settings-controlled-field-review--unknown-metadata",
+        "settings-controlled-field-review--unsupported-schema",
+        "settings-controlled-field-review--unknown-field",
+        "settings-controlled-field-review--invalid-number",
+        "settings-controlled-field-review--busy",
+        "settings-controlled-field-review--not-set"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/settings-review/Review.tsx",
+      "frontend/src/settings-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-settings",
@@ -11019,11 +11092,24 @@
     "name": "inspectSettingsGroup",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/settings-review/Review.tsx",
+      "frontend/src/settings-review/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-settings",
@@ -11032,11 +11118,23 @@
     "name": "evaluateSettings",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/settings-review/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-settings",
@@ -11058,11 +11156,23 @@
     "name": "snapshotProblem",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/settings-review/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-settings",
@@ -11084,11 +11194,23 @@
     "name": "SettingsGroup",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/settings-review/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-settings",
@@ -11152,7 +11274,10 @@
     },
     "importEvidence": [
       "frontend/src/administration/Admin.tsx",
-      "frontend/src/administration/type-contract.ts"
+      "frontend/src/administration/type-contract.ts",
+      "frontend/src/settings-review/Review.tsx",
+      "frontend/src/settings-review/contracts.ts",
+      "frontend/src/settings-review/model.ts"
     ]
   },
   {
@@ -11253,11 +11378,45 @@
     "name": "SettingsProvenanceRenderer",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded pinned0.2 Settings Review modes and supported field/schema/provenance/wizard states. Actual zero/false/incomplete numeric/ARIA/native-submit guards, allowed unset without application, readonly secret presence, unknown metadata/profile failures, optional effect omission, mandatory guarded local plan inspection and source/draft/step/mode/reset/StrictMode lifetime proof. Not exhaustive manifest or field permutations.",
+    "nextAction": "Preserve app/portable/development checks; remaining independent settings exports and schema/assistive-technology permutations require separate bounded review.",
+    "evidence": {
+      "pages": [
+        "frontend/src/settings-review/Review.tsx",
+        "frontend/src/settings-review/model.ts",
+        "docs/settings-review.md"
+      ],
+      "checks": [
+        "frontend/tests/settings-review.spec.ts",
+        "frontend/src/settings-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/settings-review/SettingsReview.stories.tsx"
+      ],
+      "storyIds": [
+        "settings-controlled-field-review--provenance",
+        "settings-controlled-field-review--single-group",
+        "settings-controlled-field-review--grouped",
+        "settings-controlled-field-review--wizard",
+        "settings-controlled-field-review--empty",
+        "settings-controlled-field-review--loading",
+        "settings-controlled-field-review--read-failure",
+        "settings-controlled-field-review--denied",
+        "settings-controlled-field-review--locked",
+        "settings-controlled-field-review--long-content",
+        "settings-controlled-field-review--unknown-metadata",
+        "settings-controlled-field-review--unsupported-schema",
+        "settings-controlled-field-review--unknown-field",
+        "settings-controlled-field-review--invalid-number",
+        "settings-controlled-field-review--busy",
+        "settings-controlled-field-review--not-set"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/settings-review/Review.tsx",
+      "frontend/src/settings-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-settings",
@@ -11266,11 +11425,23 @@
     "name": "settingsMetadataProblem",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/settings-review/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-settings",
@@ -11305,11 +11476,23 @@
     "name": "SettingsProvenanceState",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/settings-review/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-settings",
@@ -11331,11 +11514,45 @@
     "name": "SettingsWizard",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded pinned0.2 Settings Review modes and supported field/schema/provenance/wizard states. Actual zero/false/incomplete numeric/ARIA/native-submit guards, allowed unset without application, readonly secret presence, unknown metadata/profile failures, optional effect omission, mandatory guarded local plan inspection and source/draft/step/mode/reset/StrictMode lifetime proof. Not exhaustive manifest or field permutations.",
+    "nextAction": "Preserve app/portable/development checks; remaining independent settings exports and schema/assistive-technology permutations require separate bounded review.",
+    "evidence": {
+      "pages": [
+        "frontend/src/settings-review/Review.tsx",
+        "frontend/src/settings-review/model.ts",
+        "docs/settings-review.md"
+      ],
+      "checks": [
+        "frontend/tests/settings-review.spec.ts",
+        "frontend/src/settings-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/settings-review/SettingsReview.stories.tsx"
+      ],
+      "storyIds": [
+        "settings-controlled-field-review--provenance",
+        "settings-controlled-field-review--single-group",
+        "settings-controlled-field-review--grouped",
+        "settings-controlled-field-review--wizard",
+        "settings-controlled-field-review--empty",
+        "settings-controlled-field-review--loading",
+        "settings-controlled-field-review--read-failure",
+        "settings-controlled-field-review--denied",
+        "settings-controlled-field-review--locked",
+        "settings-controlled-field-review--long-content",
+        "settings-controlled-field-review--unknown-metadata",
+        "settings-controlled-field-review--unsupported-schema",
+        "settings-controlled-field-review--unknown-field",
+        "settings-controlled-field-review--invalid-number",
+        "settings-controlled-field-review--busy",
+        "settings-controlled-field-review--not-set"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/settings-review/Review.tsx",
+      "frontend/src/settings-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-settings",
@@ -11357,11 +11574,23 @@
     "name": "settingsWizardGroups",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/settings-review/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-settings",
@@ -11370,11 +11599,23 @@
     "name": "settingsWizardEvaluation",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/settings-review/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-settings",
@@ -11383,11 +11624,23 @@
     "name": "SettingsWizardIntent",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/settings-review/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-settings",

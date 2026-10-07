@@ -18,7 +18,7 @@ The pinned catalogue records all fifteen packages at design-kit commit `dbcf4fa7
 | @hollis-labs/kit-chat | 147 | 195 | 16 | 0 | 37 | 321 | 0 |
 | @hollis-labs/design-bindings | 0 | 19 | 9 | 0 | 4 | 24 | 0 |
 | @hollis-labs/kit-admin | 3 | 15 | 3 | 0 | 5 | 16 | 0 |
-| @hollis-labs/kit-settings | 4 | 23 | 7 | 0 | 3 | 31 | 0 |
+| @hollis-labs/kit-settings | 4 | 23 | 7 | 4 | 12 | 18 | 0 |
 | @hollis-labs/kit-observe | 5 | 14 | 0 | 0 | 9 | 10 | 0 |
 | @hollis-labs/kit-account | 6 | 12 | 0 | 0 | 6 | 12 | 0 |
 | @hollis-labs/kit-code | 88 | 81 | 3 | 0 | 26 | 146 | 0 |
@@ -45,3 +45,5 @@ The eleventh bounded batch adds nine reviewed design-components dispositions (27
 The twelfth bounded batch adds JsonViewer/PayloadSummary/MetaList/SearchInput (31 reviewed declarations overall; 184 exact imports). [Evidence payload inspection](evidence-review.md) points to actual app/portable state and callback proofs. JsonModal/PayloadActions/CopyButton stay deferred because the current no-clipboard review policy cannot disable their built-in effects through published props. Remaining 1,116 deferred declarations retain explicit next actions.
 
 The thirteenth bounded batch adds Sparkbars/SignalBars/DonutChart/MiniTrend/RecentList and Metric (37 reviewed declarations overall;191 exact imports). [Compact widget review](widgets-review.md) documents admitted operation-prefix counts, aligned partitions, real normalized geometry/paint, explicit scale floor and denominator, elapsed-second units, accessible UTC tables and native record inspection/retirement. Remaining1,109 deferred declarations retain actionable next steps; types/imports and other widget variants are not silently reviewed.
+
+The fourteenth bounded batch independently reviews SettingsGroupForm/SettingsRenderer/SettingsProvenanceRenderer/SettingsWizard at existing0.2.0 (41 reviewed declarations overall;204 exact imports). [Settings field review](settings-review.md) records supported scalar/schema/provenance/wizard states and genuine callback omissions, local plan gates, source/draft/reset/StrictMode lifetime and rendered field/dialog proof. Nine newly imported types/model utilities remain partial;1,096 deferred declarations still have independent next steps.

@@ -999,3 +999,68 @@ dd {
     grid-template-columns: 1fr;
   }
 }
+
+.settings-review {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 4);
+}
+.settings-group-choice {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: calc(var(--spacing) * 2);
+}
+.settings-inspection-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(var(--spacing) * 2);
+  border-top: 1px solid var(--color-border);
+  padding-top: calc(var(--spacing) * 3);
+}
+.settings-wizard {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 4);
+}
+.settings-plan-body {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 4);
+  padding: calc(var(--spacing) * 4);
+  overflow-wrap: anywhere;
+}
+.settings-review section,
+.settings-review form {
+  overflow-wrap: anywhere;
+}
+
+.settings-plan-body dl {
+  grid-template-columns: minmax(0, 1fr);
+  gap: calc(var(--spacing) * 3);
+}
+.settings-plan-body dl > div,
+.settings-plan-body dd {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.settings-plan-footer {
+  width: 100%;
+  min-width: 0;
+  justify-content: flex-end;
+}
+
+.settings-plan-dialog {
+  width: min(var(--lab-tablet), calc(100vw - var(--spacing) * 8));
+}
+.settings-plan-dialog > div:has(> .settings-plan-footer) {
+  height: auto;
+  min-height: calc(var(--spacing) * 14);
+  padding-block: calc(var(--spacing) * 3);
+}
+.settings-plan-footer {
+  margin: 0;
+}

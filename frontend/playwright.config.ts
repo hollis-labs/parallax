@@ -9,6 +9,13 @@ export default defineConfig({
   use: { baseURL: "http://127.0.0.1:18541", headless: true },
   webServer: [
     {
+      command:
+        "PARALLAX_PROXY_URL=http://127.0.0.1:18541 npm run dev -- --host 127.0.0.1 --port 18545 --strictPort",
+      cwd: `${repo}frontend`,
+      url: "http://127.0.0.1:18545",
+      reuseExistingServer: !process.env.CI,
+    },
+    {
       command: "LISTEN_ADDR=127.0.0.1:18541 .scratch/parallax",
       cwd: repo,
       url: "http://127.0.0.1:18541",

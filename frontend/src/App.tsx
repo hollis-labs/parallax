@@ -30,6 +30,7 @@ import {
 import { PlaybackControls } from "./playback/Controls"
 import { usePlayback } from "./playback/usePlayback"
 import { PrimitiveGallery } from "./primitives/Gallery"
+import { SettingsReview } from "./settings-review/Review"
 import { WidgetGallery } from "./widgets/Gallery"
 
 const VoiceLab = lazy(() => import("./voice/Lab"))
@@ -231,7 +232,8 @@ export function App() {
   const isVoice = page === "Voice"
   const isDeveloper = page === "Developer"
   const isObservation = page === "Observability"
-  const isAdministration = page === "Administration" || page === "Account"
+  const isSettingsReview = page === "Settings Review"
+  const isAdministration = page === "Administration" || page === "Account" || isSettingsReview
   const isCommunication = ["Contacts", "Messages", "Chat"].includes(page)
   const review = usePlayback(scenario, undefined, () => {
     pluginHost?.resetContext({ ...pluginHost.context.getSnapshot(), retiredFrame: true })
@@ -350,6 +352,7 @@ export function App() {
     "Chat",
     "Administration",
     "Account",
+    "Settings Review",
     "Observability",
     "Developer",
     "Voice",
@@ -370,6 +373,7 @@ export function App() {
       <MessageSquare key="f" className="size-4" />,
       <Layers key="g" className="size-4" />,
       <Users key="h" className="size-4" />,
+      <Layers key="settings-review" className="size-4" />,
       <Activity key="i" className="size-4" />,
       <Layers key="j" className="size-4" />,
       <Layers key="k" className="size-4" />,
@@ -572,7 +576,9 @@ export function App() {
                   !isPrimitives &&
                   !isEvidence &&
                   !isWidgets && <OperationsSummary model={model} />}
-                {isWidgets ? (
+                {isSettingsReview ? (
+                  <SettingsReview key={scenario} context={scenario} />
+                ) : isWidgets ? (
                   <WidgetGallery
                     key={scenario}
                     model={operationsModel(scenario, "", {

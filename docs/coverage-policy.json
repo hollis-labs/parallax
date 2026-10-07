@@ -476,6 +476,50 @@
           "widgets-recorded-review--before-window"
         ]
       }
+    },
+    {
+      "package": "@hollis-labs/kit-settings",
+      "names": [
+        "SettingsGroupForm",
+        "SettingsRenderer",
+        "SettingsProvenanceRenderer",
+        "SettingsWizard"
+      ],
+      "disposition": "reviewed",
+      "reason": "Independent bounded pinned0.2 Settings Review modes and supported field/schema/provenance/wizard states. Actual zero/false/incomplete numeric/ARIA/native-submit guards, allowed unset without application, readonly secret presence, unknown metadata/profile failures, optional effect omission, mandatory guarded local plan inspection and source/draft/step/mode/reset/StrictMode lifetime proof. Not exhaustive manifest or field permutations.",
+      "nextAction": "Preserve app/portable/development checks; remaining independent settings exports and schema/assistive-technology permutations require separate bounded review.",
+      "evidence": {
+        "pages": [
+          "frontend/src/settings-review/Review.tsx",
+          "frontend/src/settings-review/model.ts",
+          "docs/settings-review.md"
+        ],
+        "checks": [
+          "frontend/tests/settings-review.spec.ts",
+          "frontend/src/settings-review/contracts.ts"
+        ],
+        "stories": [
+          "frontend/src/settings-review/SettingsReview.stories.tsx"
+        ],
+        "storyIds": [
+          "settings-controlled-field-review--provenance",
+          "settings-controlled-field-review--single-group",
+          "settings-controlled-field-review--grouped",
+          "settings-controlled-field-review--wizard",
+          "settings-controlled-field-review--empty",
+          "settings-controlled-field-review--loading",
+          "settings-controlled-field-review--read-failure",
+          "settings-controlled-field-review--denied",
+          "settings-controlled-field-review--locked",
+          "settings-controlled-field-review--long-content",
+          "settings-controlled-field-review--unknown-metadata",
+          "settings-controlled-field-review--unsupported-schema",
+          "settings-controlled-field-review--unknown-field",
+          "settings-controlled-field-review--invalid-number",
+          "settings-controlled-field-review--busy",
+          "settings-controlled-field-review--not-set"
+        ]
+      }
     }
   ]
 }
