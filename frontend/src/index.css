@@ -1,3 +1,4 @@
+@import "@hollis-labs/design-components/keyframes.css";
 @import "@hollis-labs/kit-admin/source.css";
 @import "@hollis-labs/kit-settings/source.css";
 @import "@hollis-labs/kit-observe/source.css";
@@ -786,4 +787,63 @@ dd {
   display: inline-flex;
   align-items: center;
   gap: var(--spacing);
+}
+
+.primitive-gallery {
+  display: grid;
+  gap: calc(var(--spacing) * 4);
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(var(--spacing) * 5);
+}
+.gallery-controls,
+.gallery-pills,
+.gallery-action-row,
+.gallery-dialog-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--spacing) * 3);
+  margin-block: calc(var(--spacing) * 3);
+}
+.gallery-controls label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+}
+.primitive-gallery dl {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+  gap: calc(var(--spacing) * 2);
+}
+.primitive-gallery dd {
+  overflow-wrap: anywhere;
+}
+.primitive-gallery [aria-label="Gallery recorded task"] {
+  max-width: 100%;
+  height: auto;
+  min-height: calc(var(--spacing) * 7);
+}
+.primitive-gallery [aria-label="Gallery recorded task"] > span {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+.narrow .gallery-grid,
+.tablet .gallery-grid {
+  grid-template-columns: 1fr;
+}
+@media (max-width: 48rem) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .primitive-gallery [role="progressbar"] > div {
+    animation: none !important;
+    transition: none !important;
+  }
 }

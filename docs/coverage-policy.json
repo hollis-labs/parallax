@@ -300,6 +300,47 @@
           "frontend/tests/observability.spec.ts"
         ]
       }
+    },
+    {
+      "package": "@hollis-labs/design-components",
+      "names": [
+        "Pill",
+        "Callout",
+        "ProgressBar",
+        "OverflowMenu",
+        "CollapsibleSection",
+        "Combobox",
+        "ConfirmDialog",
+        "DetailSection",
+        "FormDialog"
+      ],
+      "disposition": "reviewed",
+      "reason": "Bounded pinned 0.4.0 controlled gallery: rendered tone/clamp/animation evidence, policy-gated states, real joins, native submission admission, keyboard/dialog focus and draft/source retirement. Not every prop permutation; API gaps documented.",
+      "nextAction": "Preserve named checks; review remaining independent visual exports in separately bounded slices.",
+      "evidence": {
+        "pages": [
+          "frontend/src/primitives/Gallery.tsx",
+          "frontend/src/primitives/model.ts",
+          "docs/primitives-review.md"
+        ],
+        "checks": [
+          "frontend/tests/primitives.spec.ts",
+          "frontend/src/primitives/contracts.ts"
+        ],
+        "stories": [
+          "frontend/src/primitives/Primitives.stories.tsx"
+        ],
+        "storyIds": [
+          "primitives-controlled-gallery--recorded",
+          "primitives-controlled-gallery--empty",
+          "primitives-controlled-gallery--loading",
+          "primitives-controlled-gallery--read-failure",
+          "primitives-controlled-gallery--denied",
+          "primitives-controlled-gallery--locked",
+          "primitives-controlled-gallery--long-content",
+          "primitives-controlled-gallery--unknown"
+        ]
+      }
     }
   ]
 }

@@ -45,11 +45,38 @@
     "name": "Pill",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded pinned 0.4.0 controlled gallery: rendered tone/clamp/animation evidence, policy-gated states, real joins, native submission admission, keyboard/dialog focus and draft/source retirement. Not every prop permutation; API gaps documented.",
+    "nextAction": "Preserve named checks; review remaining independent visual exports in separately bounded slices.",
+    "evidence": {
+      "pages": [
+        "frontend/src/primitives/Gallery.tsx",
+        "frontend/src/primitives/model.ts",
+        "docs/primitives-review.md"
+      ],
+      "checks": [
+        "frontend/tests/primitives.spec.ts",
+        "frontend/src/primitives/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/primitives/Primitives.stories.tsx"
+      ],
+      "storyIds": [
+        "primitives-controlled-gallery--recorded",
+        "primitives-controlled-gallery--empty",
+        "primitives-controlled-gallery--loading",
+        "primitives-controlled-gallery--read-failure",
+        "primitives-controlled-gallery--denied",
+        "primitives-controlled-gallery--locked",
+        "primitives-controlled-gallery--long-content",
+        "primitives-controlled-gallery--unknown"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/primitives/Gallery.tsx",
+      "frontend/src/primitives/contracts.ts",
+      "frontend/src/primitives/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -71,11 +98,37 @@
     "name": "Callout",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded pinned 0.4.0 controlled gallery: rendered tone/clamp/animation evidence, policy-gated states, real joins, native submission admission, keyboard/dialog focus and draft/source retirement. Not every prop permutation; API gaps documented.",
+    "nextAction": "Preserve named checks; review remaining independent visual exports in separately bounded slices.",
+    "evidence": {
+      "pages": [
+        "frontend/src/primitives/Gallery.tsx",
+        "frontend/src/primitives/model.ts",
+        "docs/primitives-review.md"
+      ],
+      "checks": [
+        "frontend/tests/primitives.spec.ts",
+        "frontend/src/primitives/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/primitives/Primitives.stories.tsx"
+      ],
+      "storyIds": [
+        "primitives-controlled-gallery--recorded",
+        "primitives-controlled-gallery--empty",
+        "primitives-controlled-gallery--loading",
+        "primitives-controlled-gallery--read-failure",
+        "primitives-controlled-gallery--denied",
+        "primitives-controlled-gallery--locked",
+        "primitives-controlled-gallery--long-content",
+        "primitives-controlled-gallery--unknown"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/primitives/Gallery.tsx",
+      "frontend/src/primitives/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -97,11 +150,37 @@
     "name": "ConfirmDialog",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded pinned 0.4.0 controlled gallery: rendered tone/clamp/animation evidence, policy-gated states, real joins, native submission admission, keyboard/dialog focus and draft/source retirement. Not every prop permutation; API gaps documented.",
+    "nextAction": "Preserve named checks; review remaining independent visual exports in separately bounded slices.",
+    "evidence": {
+      "pages": [
+        "frontend/src/primitives/Gallery.tsx",
+        "frontend/src/primitives/model.ts",
+        "docs/primitives-review.md"
+      ],
+      "checks": [
+        "frontend/tests/primitives.spec.ts",
+        "frontend/src/primitives/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/primitives/Primitives.stories.tsx"
+      ],
+      "storyIds": [
+        "primitives-controlled-gallery--recorded",
+        "primitives-controlled-gallery--empty",
+        "primitives-controlled-gallery--loading",
+        "primitives-controlled-gallery--read-failure",
+        "primitives-controlled-gallery--denied",
+        "primitives-controlled-gallery--locked",
+        "primitives-controlled-gallery--long-content",
+        "primitives-controlled-gallery--unknown"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/primitives/Gallery.tsx",
+      "frontend/src/primitives/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -140,11 +219,36 @@
     "name": "DetailSection",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded pinned 0.4.0 controlled gallery: rendered tone/clamp/animation evidence, policy-gated states, real joins, native submission admission, keyboard/dialog focus and draft/source retirement. Not every prop permutation; API gaps documented.",
+    "nextAction": "Preserve named checks; review remaining independent visual exports in separately bounded slices.",
+    "evidence": {
+      "pages": [
+        "frontend/src/primitives/Gallery.tsx",
+        "frontend/src/primitives/model.ts",
+        "docs/primitives-review.md"
+      ],
+      "checks": [
+        "frontend/tests/primitives.spec.ts",
+        "frontend/src/primitives/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/primitives/Primitives.stories.tsx"
+      ],
+      "storyIds": [
+        "primitives-controlled-gallery--recorded",
+        "primitives-controlled-gallery--empty",
+        "primitives-controlled-gallery--loading",
+        "primitives-controlled-gallery--read-failure",
+        "primitives-controlled-gallery--denied",
+        "primitives-controlled-gallery--locked",
+        "primitives-controlled-gallery--long-content",
+        "primitives-controlled-gallery--unknown"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/primitives/Gallery.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -153,11 +257,37 @@
     "name": "FormDialog",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded pinned 0.4.0 controlled gallery: rendered tone/clamp/animation evidence, policy-gated states, real joins, native submission admission, keyboard/dialog focus and draft/source retirement. Not every prop permutation; API gaps documented.",
+    "nextAction": "Preserve named checks; review remaining independent visual exports in separately bounded slices.",
+    "evidence": {
+      "pages": [
+        "frontend/src/primitives/Gallery.tsx",
+        "frontend/src/primitives/model.ts",
+        "docs/primitives-review.md"
+      ],
+      "checks": [
+        "frontend/tests/primitives.spec.ts",
+        "frontend/src/primitives/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/primitives/Primitives.stories.tsx"
+      ],
+      "storyIds": [
+        "primitives-controlled-gallery--recorded",
+        "primitives-controlled-gallery--empty",
+        "primitives-controlled-gallery--loading",
+        "primitives-controlled-gallery--read-failure",
+        "primitives-controlled-gallery--denied",
+        "primitives-controlled-gallery--locked",
+        "primitives-controlled-gallery--long-content",
+        "primitives-controlled-gallery--unknown"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/primitives/Gallery.tsx",
+      "frontend/src/primitives/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -218,11 +348,37 @@
     "name": "ProgressBar",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded pinned 0.4.0 controlled gallery: rendered tone/clamp/animation evidence, policy-gated states, real joins, native submission admission, keyboard/dialog focus and draft/source retirement. Not every prop permutation; API gaps documented.",
+    "nextAction": "Preserve named checks; review remaining independent visual exports in separately bounded slices.",
+    "evidence": {
+      "pages": [
+        "frontend/src/primitives/Gallery.tsx",
+        "frontend/src/primitives/model.ts",
+        "docs/primitives-review.md"
+      ],
+      "checks": [
+        "frontend/tests/primitives.spec.ts",
+        "frontend/src/primitives/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/primitives/Primitives.stories.tsx"
+      ],
+      "storyIds": [
+        "primitives-controlled-gallery--recorded",
+        "primitives-controlled-gallery--empty",
+        "primitives-controlled-gallery--loading",
+        "primitives-controlled-gallery--read-failure",
+        "primitives-controlled-gallery--denied",
+        "primitives-controlled-gallery--locked",
+        "primitives-controlled-gallery--long-content",
+        "primitives-controlled-gallery--unknown"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/primitives/Gallery.tsx",
+      "frontend/src/primitives/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -327,11 +483,36 @@
     "name": "OverflowMenu",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded pinned 0.4.0 controlled gallery: rendered tone/clamp/animation evidence, policy-gated states, real joins, native submission admission, keyboard/dialog focus and draft/source retirement. Not every prop permutation; API gaps documented.",
+    "nextAction": "Preserve named checks; review remaining independent visual exports in separately bounded slices.",
+    "evidence": {
+      "pages": [
+        "frontend/src/primitives/Gallery.tsx",
+        "frontend/src/primitives/model.ts",
+        "docs/primitives-review.md"
+      ],
+      "checks": [
+        "frontend/tests/primitives.spec.ts",
+        "frontend/src/primitives/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/primitives/Primitives.stories.tsx"
+      ],
+      "storyIds": [
+        "primitives-controlled-gallery--recorded",
+        "primitives-controlled-gallery--empty",
+        "primitives-controlled-gallery--loading",
+        "primitives-controlled-gallery--read-failure",
+        "primitives-controlled-gallery--denied",
+        "primitives-controlled-gallery--locked",
+        "primitives-controlled-gallery--long-content",
+        "primitives-controlled-gallery--unknown"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/primitives/Gallery.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -353,11 +534,36 @@
     "name": "CollapsibleSection",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded pinned 0.4.0 controlled gallery: rendered tone/clamp/animation evidence, policy-gated states, real joins, native submission admission, keyboard/dialog focus and draft/source retirement. Not every prop permutation; API gaps documented.",
+    "nextAction": "Preserve named checks; review remaining independent visual exports in separately bounded slices.",
+    "evidence": {
+      "pages": [
+        "frontend/src/primitives/Gallery.tsx",
+        "frontend/src/primitives/model.ts",
+        "docs/primitives-review.md"
+      ],
+      "checks": [
+        "frontend/tests/primitives.spec.ts",
+        "frontend/src/primitives/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/primitives/Primitives.stories.tsx"
+      ],
+      "storyIds": [
+        "primitives-controlled-gallery--recorded",
+        "primitives-controlled-gallery--empty",
+        "primitives-controlled-gallery--loading",
+        "primitives-controlled-gallery--read-failure",
+        "primitives-controlled-gallery--denied",
+        "primitives-controlled-gallery--locked",
+        "primitives-controlled-gallery--long-content",
+        "primitives-controlled-gallery--unknown"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/primitives/Gallery.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -366,11 +572,37 @@
     "name": "Combobox",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded pinned 0.4.0 controlled gallery: rendered tone/clamp/animation evidence, policy-gated states, real joins, native submission admission, keyboard/dialog focus and draft/source retirement. Not every prop permutation; API gaps documented.",
+    "nextAction": "Preserve named checks; review remaining independent visual exports in separately bounded slices.",
+    "evidence": {
+      "pages": [
+        "frontend/src/primitives/Gallery.tsx",
+        "frontend/src/primitives/model.ts",
+        "docs/primitives-review.md"
+      ],
+      "checks": [
+        "frontend/tests/primitives.spec.ts",
+        "frontend/src/primitives/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/primitives/Primitives.stories.tsx"
+      ],
+      "storyIds": [
+        "primitives-controlled-gallery--recorded",
+        "primitives-controlled-gallery--empty",
+        "primitives-controlled-gallery--loading",
+        "primitives-controlled-gallery--read-failure",
+        "primitives-controlled-gallery--denied",
+        "primitives-controlled-gallery--locked",
+        "primitives-controlled-gallery--long-content",
+        "primitives-controlled-gallery--unknown"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/primitives/Gallery.tsx",
+      "frontend/src/primitives/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1163,6 +1395,7 @@
       "frontend/src/operations/Operations.stories.tsx",
       "frontend/src/operations/Views.tsx",
       "frontend/src/playback/Controls.tsx",
+      "frontend/src/primitives/Gallery.tsx",
       "frontend/src/voice/Lab.tsx"
     ]
   },
@@ -4322,6 +4555,7 @@
       "frontend/src/developer/Lab.tsx",
       "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Views.tsx",
+      "frontend/src/primitives/Gallery.tsx",
       "frontend/src/voice/Lab.tsx"
     ]
   },

@@ -28,6 +28,7 @@ import {
 } from "./operations/Views"
 import { PlaybackControls } from "./playback/Controls"
 import { usePlayback } from "./playback/usePlayback"
+import { PrimitiveGallery } from "./primitives/Gallery"
 
 const VoiceLab = lazy(() => import("./voice/Lab"))
 const DeveloperLab = lazy(() => import("./developer/Lab"))
@@ -222,6 +223,7 @@ export function App() {
     applyTheme(theme as Parameters<typeof applyTheme>[0])
     document.documentElement.setAttribute("data-mode", mode)
   }, [theme, mode])
+  const isPrimitives = page === "Primitives"
   const isVoice = page === "Voice"
   const isDeveloper = page === "Developer"
   const isObservation = page === "Observability"
@@ -347,6 +349,7 @@ export function App() {
     "Developer",
     "Voice",
     "Examples",
+    "Primitives",
     "Layouts",
   ].map((name, i) => ({
     key: name,
@@ -365,6 +368,7 @@ export function App() {
       <Layers key="k" className="size-4" />,
       <MessageSquare key="l" className="size-4" />,
       <Layers key="m" className="size-4" />,
+      <Layers key="n" className="size-4" />,
     ][i],
     active: page === name,
     onSelect: () => {
@@ -491,7 +495,7 @@ export function App() {
             <div className="page-title">
               <div>
                 <p className="eyebrow">
-                  {isAdministration || isObservation || isDeveloper || isVoice
+                  {isAdministration || isObservation || isDeveloper || isVoice || isPrimitives
                     ? page.toUpperCase()
                     : isCommunication
                       ? "COMMUNICATIONS"
@@ -550,8 +554,17 @@ export function App() {
                   !isAdministration &&
                   !isObservation &&
                   !isDeveloper &&
-                  !isVoice && <OperationsSummary model={model} />}
-                {isVoice ? (
+                  !isVoice &&
+                  !isPrimitives && <OperationsSummary model={model} />}
+                {isPrimitives ? (
+                  <PrimitiveGallery
+                    key={scenario}
+                    model={operationsModel(scenario)}
+                    onInspect={select}
+                    onIntent={setIntent}
+                    onReset={() => setIntent("")}
+                  />
+                ) : isVoice ? (
                   <Suspense fallback={<p role="status">Loading voice presentation…</p>}>
                     <VoiceLab key={scenario} onInspect={select} onIntent={setIntent} />
                   </Suspense>
