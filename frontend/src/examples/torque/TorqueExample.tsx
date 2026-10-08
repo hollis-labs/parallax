@@ -6,15 +6,14 @@ import { ResourceNotice, RunDetailBody } from "../../operations/Views"
 import { OpsDashboard } from "../../ops-dashboard/Dashboard"
 import { resourceOverrides, sourceDataset, timelineFrames } from "../../playback/model"
 import { RunExplorer } from "../../run-explorer/Explorer"
+import { exampleContext, torqueDefinition } from "../contracts"
+import { FixtureContracts } from "../FixtureContracts"
 import { type TorqueState, torqueHref } from "./routes"
 import "./torque.css"
 
-const destinations = [
-  { route: "dashboard", label: "Dashboard" },
-  { route: "tasks", label: "Tasks" },
-  { route: "runs", label: "Runs" },
-  { route: "about", label: "About" },
-] as const
+const destinations = torqueDefinition.destinations
+  .filter((d) => d.id !== "task")
+  .map((d) => ({ route: d.id, label: d.label }))
 export function TorqueExample({
   state,
   onChange,
@@ -30,13 +29,15 @@ export function TorqueExample({
     }),
     detail = runDetail(model, state.selected),
     artifact = sourceDataset(state.scenario),
-    frames = timelineFrames(artifact)
+    frames = timelineFrames(artifact),
+    context = exampleContext(torqueDefinition, artifact, state.cutoff, frames)
   const [navOpen, setNavOpen] = useState(false),
     [reviewOpen, setReviewOpen] = useState(false),
     [inspection, setInspection] = useState(false),
     [intent, setIntent] = useState(""),
     [, fresh] = useState(0)
   const source = JSON.stringify([
+      context.source,
       state.scenario,
       state.cutoff,
       state.query,
@@ -204,10 +205,10 @@ export function TorqueExample({
       <Button
         onClick={() =>
           change({
-            query: "",
-            selected: null,
+            query: torqueDefinition.reset.query,
+            selected: torqueDefinition.reset.selected,
             cutoff: sourceDataset(state.scenario).clock,
-            override: "scenario",
+            override: torqueDefinition.reset.override,
           })
         }
       >
@@ -381,10 +382,11 @@ export function TorqueExample({
                 <dt>Seed</dt>
                 <dd>{model.dataset.seed}</dd>
                 <dt>Reference</dt>
-                <dd>{artifact.clock}</dd>
+                <dd>{context.referenceClock ?? "Unknown"}</dd>
                 <dt>Cutoff</dt>
                 <dd>{model.cutoff}</dd>
               </dl>
+              <FixtureContracts />
               {contributions ?? <p>Portable composition: plugin delivery is not mounted.</p>}
             </section>
           )}

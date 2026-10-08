@@ -6,6 +6,9 @@ import (
 )
 
 func main() {
+	if err := scenarios.WriteFamilyContracts("frontend/src/fixtures/family-contracts.json"); err != nil {
+		log.Fatal(err)
+	}
 	if err := scenarios.WriteVoice("frontend/src/fixtures/voice.json", "frontend/public/media"); err != nil {
 		log.Fatal(err)
 	}

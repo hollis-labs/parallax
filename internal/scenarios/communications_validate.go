@@ -7,7 +7,7 @@ import (
 
 // ValidateCommunications verifies cross-family joins and the declared fixed clock.
 func ValidateCommunications(s Communications, ops Scenario) error {
-	if s.Version == "" || s.Generator == "" || s.Seed != ops.Seed || s.Clock != ops.Clock || s.OperationsVersion != ops.Version {
+	if s.Version != "communications/v1" || s.Generator != "parallax/v3" || s.Seed != ops.Seed || s.Clock != ops.Clock || s.OperationsVersion != ops.Version {
 		return fmt.Errorf("communications identity mismatch")
 	}
 	clock, _ := time.Parse(time.RFC3339, s.Clock)

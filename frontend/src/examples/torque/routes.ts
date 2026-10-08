@@ -5,7 +5,8 @@ import {
   sourceDataset,
   timelineFrames,
 } from "../../playback/model"
-export const torqueRoutes = ["dashboard", "tasks", "runs", "task", "about"] as const
+import { torqueDefinition } from "../contracts"
+export const torqueRoutes = torqueDefinition.destinations.map((d) => d.id)
 export type TorqueRoute = (typeof torqueRoutes)[number]
 export type TorqueState = {
   route: TorqueRoute
@@ -29,7 +30,8 @@ export function initialTorqueState(params: URLSearchParams): TorqueState {
         : params.get("tab") === "Mission Control"
           ? "Mission Control"
           : "Activity",
-    route: torqueRoutes.find((r) => r === params.get("screen")) ?? "dashboard",
+    route:
+      torqueRoutes.find((r) => r === params.get("screen")) ?? torqueDefinition.defaultDestination,
     scenario,
     cutoff: raw && frames.includes(raw) ? raw : frames[frames.length - 1],
     query: params.get("query") ?? "",
@@ -45,7 +47,7 @@ export function initialTorqueState(params: URLSearchParams): TorqueState {
 export function torqueHref(state: TorqueState, patch: Partial<TorqueState> = {}) {
   const s = { ...state, ...patch },
     p = new URLSearchParams({
-      example: "torque",
+      [torqueDefinition.entry.parameter]: torqueDefinition.entry.value,
       screen: s.route,
       tab: s.tab,
       scenario: s.scenario,

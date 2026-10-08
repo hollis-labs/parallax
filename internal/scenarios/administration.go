@@ -36,8 +36,9 @@ type ReviewSetting struct {
 }
 type Administration struct {
 	Version       string             `json:"version"`
+	Generator     string             `json:"generator"`
 	Clock         string             `json:"clock"`
-	Seed          uint64              `json:"seed"`
+	Seed          uint64             `json:"seed"`
 	CurrentUserID string             `json:"currentUserId"`
 	Users         []ReviewUser       `json:"users"`
 	Roles         []ReviewRole       `json:"roles"`
@@ -47,7 +48,7 @@ type Administration struct {
 
 func GenerateAdministration() Administration {
 	c := GenerateCommunications()
-	a := Administration{Version: "administration/v1", Clock: c.Clock, Seed: c.Seed, CurrentUserID: "USER-001"}
+	a := Administration{Version: "administration/v1", Generator: "parallax/v4", Clock: c.Clock, Seed: c.Seed, CurrentUserID: "USER-001"}
 	a.Permissions = []ReviewPermission{{"PERMISSION-READ", "Inspect records", "Fixture records may be presented; this label performs no authorization."}, {"PERMISSION-DRAFT", "Draft preferences", "Local drafts may be reviewed without saving."}, {"PERMISSION-REVIEW", "Review intents", "Inspect a proposed action without executing it."}}
 	a.Roles = []ReviewRole{{"ROLE-REVIEWER", "Fixture reviewer", []string{"PERMISSION-READ", "PERMISSION-DRAFT", "PERMISSION-REVIEW"}}, {"ROLE-OBSERVER", "Fixture observer", []string{"PERMISSION-READ"}}}
 	for i, contact := range c.Contacts {
@@ -66,7 +67,7 @@ func GenerateAdministration() Administration {
 }
 func ValidateAdministration(a Administration) error {
 	c := GenerateCommunications()
-	if a.Version != "administration/v1" || a.Clock != c.Clock || a.Seed != c.Seed {
+	if a.Version != "administration/v1" || a.Generator != "parallax/v4" || a.Clock != c.Clock || a.Seed != c.Seed {
 		return fmt.Errorf("artifact identity mismatch")
 	}
 	contacts := map[string]bool{}

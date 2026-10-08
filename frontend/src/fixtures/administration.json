@@ -1,5 +1,6 @@
 {
   "version": "administration/v1",
+  "generator": "parallax/v4",
   "clock": "2026-10-04T14:30:00Z",
   "seed": 4421,
   "currentUserId": "USER-001",

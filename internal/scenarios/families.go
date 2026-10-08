@@ -1,0 +1,60 @@
+package scenarios
+
+import (
+	"encoding/json"
+	"os"
+)
+
+// Family contracts describe these six supplied artifacts, not a record ORM.
+type FamilyProfile struct {
+	Label      string         `json:"label"`
+	LabelKind  string         `json:"labelKind"`
+	Artifact   string         `json:"artifact"`
+	Counts     map[string]int `json:"counts"`
+	From       string         `json:"from,omitempty"`
+	To         string         `json:"to,omitempty"`
+	RecordedAt string         `json:"recordedAt,omitempty"`
+}
+type FamilyContract struct {
+	ID             string          `json:"id"`
+	Version        string          `json:"version"`
+	Generator      string          `json:"generator"`
+	Seed           uint64          `json:"seed"`
+	ReferenceClock string          `json:"referenceClock"`
+	Policy         string          `json:"policy"`
+	Projections    []string        `json:"projections"`
+	Profiles       []FamilyProfile `json:"profiles"`
+	Joins          []string        `json:"joins"`
+	UnknownPolicy  string          `json:"unknownPolicy"`
+	ResourcePolicy string          `json:"resourcePolicy"`
+	Validators     []string        `json:"validators"`
+	Adapters       []string        `json:"adapters"`
+	Remaining      []string        `json:"remaining"`
+}
+type FamilyManifest struct {
+	Version  string           `json:"version"`
+	Families []FamilyContract `json:"families"`
+}
+
+func GenerateFamilyContracts() FamilyManifest {
+	o, c, a, b, d, v := Generate(), GenerateCommunications(), GenerateAdministration(), GenerateObservations(), GenerateDeveloper(), GenerateVoice()
+	op := func(s Scenario, path string) FamilyProfile {
+		return FamilyProfile{Label: s.Profile, LabelKind: "artifact profile", Artifact: path, From: s.ObservedSince, To: s.Clock, Counts: map[string]int{"tasks": len(s.Tasks), "runs": len(s.Runs), "sessions": len(s.Sessions), "messages": len(s.Messages), "toolCalls": len(s.ToolCalls), "logs": len(s.Logs), "traces": len(s.Traces), "spans": len(s.Spans), "events": len(s.Events), "usage": len(s.Usage)}}
+	}
+	return FamilyManifest{Version: "fixture-contracts/v1", Families: []FamilyContract{
+		{ID: "operations", Version: o.Version, Generator: o.Generator, Seed: o.Seed, ReferenceClock: o.Clock, Policy: "recorded prefix", Projections: []string{"prefix", "snapshot"}, Profiles: []FamilyProfile{op(o, "frontend/src/fixtures/operations.json"), op(GenerateProfile(80), "frontend/src/fixtures/operations-large.json")}, Joins: []string{"task.runId → run.id; run.sessionId/traceId/usageId → matching session/trace/receipt", "messages/tools/logs/events/usage → same run; spans → trace and bounded parent"}, UnknownPolicy: "Missing receipt is unknown; recorded zero requires supplied evidence. Future status/output/duration/usage is withheld.", ResourcePolicy: "Local source/query/resource projection: successful empty is 0; loading/error/unavailable/permission-denied withhold records.", Validators: []string{"internal/scenarios/validate.go", "internal/scenarios/scenarios_test.go"}, Adapters: []string{"frontend/src/operations/model.ts", "frontend/src/playback/model.ts", "frontend/src/operations/Operations.stories.tsx", "frontend/src/chimera/example.ts"}, Remaining: []string{"Torque task-update/run-start reference profile and coverage (CW-20261008-0048)", "Exact reference dashboard presentations (CW-20261008-0049/0050)"}},
+		{ID: "communications", Version: c.Version, Generator: c.Generator, Seed: c.Seed, ReferenceClock: c.Clock, Policy: "independent full snapshot", Projections: []string{"snapshot"}, Profiles: []FamilyProfile{{Label: "bundled contacts and chat", LabelKind: "declared review label; not artifact history", Artifact: "frontend/src/fixtures/communications.json", Counts: map[string]int{"contacts": len(c.Contacts), "conversations": len(c.Conversations), "messages": len(c.Messages), "attachments": len(c.Attachments), "chatSessions": len(c.ChatSessions), "cards": len(c.Cards), "plans": len(c.Plans), "queues": len(c.Queues), "streamChunks": len(c.StreamChunks)}}}, Joins: []string{"conversation/contact and message/attachment → declared run", "chat → operations/v2 records-8 run/session plus contact/attachment/plan/queue"}, UnknownPolicy: "Missing owner/metadata and unknown card wire/prior values remain explicit; authored manual stream is not a committed message.", ResourcePolicy: "Presentation-only empty/loading/error/denied/locked states; no sending, transport or authorization.", Validators: []string{"internal/scenarios/communications_validate.go", "internal/scenarios/communications_test.go"}, Adapters: []string{"frontend/src/communications/model.ts", "frontend/src/communications/Communications.stories.tsx"}, Remaining: []string{"Coherent whole-chat transcript/history pack (CW-20261008-0051)", "Contacts/messages whole screens (CW-20261008-0053)", "No timestamped metadata contract for prefix reconstruction"}},
+		{ID: "administration", Version: a.Version, Generator: a.Generator, Seed: a.Seed, ReferenceClock: a.Clock, Policy: "independent full snapshot", Projections: []string{"snapshot"}, Profiles: []FamilyProfile{{Label: "bundled fictional directory and settings", LabelKind: "declared review label; not artifact history", Artifact: "frontend/src/fixtures/administration.json", Counts: map[string]int{"users": len(a.Users), "roles": len(a.Roles), "permissions": len(a.Permissions), "settings": len(a.Settings)}}}, Joins: []string{"user.contactId → communications/v1 contact; user.roleIds → roles", "role.permissionIds → permissions; currentUserId → user"}, UnknownPolicy: "Unassigned roleIds=[] gives known 0; missing references are Unknown in labelled authored review specimens. Identity/role labels do not authorize.", ResourcePolicy: "Settings source/lock/pending metadata and controlled readonly/unknown/denied states; drafts never save or evaluate auth.", Validators: []string{"internal/scenarios/administration.go", "internal/scenarios/administration_test.go"}, Adapters: []string{"frontend/src/administration/model.ts", "frontend/src/administration/Administration.stories.tsx"}, Remaining: []string{"Whole administration screens (CW-20261008-0054)", "No preferences/token/provider runtime records; current metadata specimens are separately authored"}},
+		{ID: "observations", Version: b.Version, Generator: b.Generator, Seed: b.Seed, ReferenceClock: b.Clock, Policy: "bounded receipts and retrospective samples", Projections: []string{"prefix", "snapshot"}, Profiles: []FamilyProfile{{Label: "five supplied resources", LabelKind: "declared review label; not artifact history", Artifact: "frontend/src/fixtures/observations.json", From: b.From, To: b.To, Counts: map[string]int{"resources": len(b.Resources), "tokenSamples": len(b.TokenSamples), "durationSamples": len(b.DurationSamples)}}}, Joins: []string{"operations/v2 records-8 usage/durations → exact ordered UTC samples", "diagnostic failedRunIds → supplied failed runs; observedAt is each resource's last successful receipt"}, UnknownPolicy: "0 differs from null gaps/nonfinite values; future receipt content is withheld, derived samples retain their own timestamps.", ResourcePolicy: "Retained loading/error preserves original observedAt; incompatible profile or out-of-window prefix is unavailable. No refreshed receipt is invented.", Validators: []string{"internal/scenarios/observations.go", "internal/scenarios/observations_test.go"}, Adapters: []string{"frontend/src/observability/model.ts", "frontend/src/observation-review/model.ts", "frontend/src/observability/Observability.stories.tsx"}, Remaining: []string{"No real collectors or provider attribution", "Valid DiagnosticPanel copy action excluded by view-only policy"}},
+		{ID: "developer", Version: d.Version, Generator: d.Generator, Seed: d.Seed, ReferenceClock: d.Clock, Policy: "recorded-at evidence plus authored proposals", Projections: []string{"prefix", "snapshot"}, Profiles: []FamilyProfile{{Label: "three files and three-node graph", LabelKind: "declared review label; not artifact history", Artifact: "frontend/src/fixtures/developer.json", RecordedAt: d.RecordedAt, Counts: map[string]int{"files": len(d.Files), "nodes": len(d.Nodes), "edges": len(d.Edges)}}}, Joins: []string{"files/nodes → operations/v2 records-8 RUN-003/TOOL-003/declared spans", "edges → supplied node IDs; recordedAt → TOOL-003 finish evidence"}, UnknownPolicy: "Unknown stack frames stay raw. Before/proposal files and authored test ledger never impersonate executed CI or saved files.", ResourcePolicy: "Compatible prefix gates observed evidence at recordedAt; original developer view is an explicitly independent full snapshot.", Validators: []string{"internal/scenarios/developer.go", "internal/scenarios/developer_test.go"}, Adapters: []string{"frontend/src/developer/model.ts", "frontend/src/developer-evidence/model.ts", "frontend/src/developer/Developer.stories.tsx"}, Remaining: []string{"Whole developer workspace composition (CW-20261008-0055)", "No execution/editor saving or production repository history"}},
+		{ID: "voice", Version: v.Version, Generator: v.Generator, Seed: v.Seed, ReferenceClock: v.Clock, Policy: "independent synthetic-media snapshot", Projections: []string{"snapshot"}, Profiles: []FamilyProfile{{Label: "two original local tone clips", LabelKind: "declared review label; not artifact history", Artifact: "frontend/src/fixtures/voice.json", Counts: map[string]int{"clips": len(v.Clips)}}}, Joins: []string{"clip → communications/v1 chat and operations/v2 records-8 run/session/tool/span", "recordedAt → supplied tool finish; transcript segments → bounded local media seconds"}, UnknownPolicy: "Timed review text is authored and is not speech transcription. Unsupported media kinds are withheld.", ResourcePolicy: "Local playback/seek only; no devices, mic/camera permissions, provider capture or streaming service.", Validators: []string{"internal/scenarios/voice.go", "internal/scenarios/voice_test.go"}, Adapters: []string{"frontend/src/voice/model.ts", "frontend/src/voice/Voice.stories.tsx"}, Remaining: []string{"No recorded speech/video/capture family; no such capability is needed for current app milestones"}},
+	}}
+}
+
+func WriteFamilyContracts(path string) error {
+	b, e := json.MarshalIndent(GenerateFamilyContracts(), "", "  ")
+	if e != nil {
+		return e
+	}
+	return os.WriteFile(path, append(b, '\n'), 0644)
+}

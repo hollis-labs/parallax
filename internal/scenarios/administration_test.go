@@ -36,3 +36,11 @@ func TestAdministrationRejectsWrongRelationships(t *testing.T) {
 		}
 	}
 }
+
+func TestAdministrationRejectsUnknownGenerator(t *testing.T) {
+	a := GenerateAdministration()
+	a.Generator = "parallax/future"
+	if ValidateAdministration(a) == nil {
+		t.Fatal("accepted unsupported generator")
+	}
+}

@@ -4,6 +4,8 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react"
 import { Contributions } from "../../App"
 import { createOperationsExample } from "../../chimera/example"
 import { operationsModel } from "../../operations/model"
+import { sourceDataset, timelineFrames } from "../../playback/model"
+import { exampleContext, torqueDefinition } from "../contracts"
 import { admitTorqueState, initialTorqueState, type TorqueState, torqueHref } from "./routes"
 import { TorqueExample } from "./TorqueExample"
 export function StandaloneTorqueExample() {
@@ -59,10 +61,16 @@ export function StandaloneTorqueExample() {
     cutoff: state.cutoff,
     override: state.override,
   })
+  const artifact = sourceDataset(state.scenario),
+    context = exampleContext(torqueDefinition, artifact, state.cutoff, timelineFrames(artifact))
   useLayoutEffect(() => {
     host?.resetContext({
       fixture: true,
-      example: "torque",
+      example: torqueDefinition.id,
+      fixtureSource: context.source,
+      referenceClock: context.referenceClock,
+      datasetVersion: artifact.version,
+      profile: context.profile,
       view: state.route,
       scenario: state.scenario,
       query: state.query,
@@ -72,7 +80,17 @@ export function StandaloneTorqueExample() {
       done: model.stats.done,
       contextId: JSON.stringify(state),
     })
-  }, [host, state, model.resource, model.stats.count, model.stats.done])
+  }, [
+    host,
+    state,
+    context.source,
+    context.referenceClock,
+    context.profile,
+    artifact.version,
+    model.resource,
+    model.stats.count,
+    model.stats.done,
+  ])
   useEffect(() => {
     applyTheme(state.theme as Parameters<typeof applyTheme>[0])
     document.documentElement.dataset.mode = state.mode

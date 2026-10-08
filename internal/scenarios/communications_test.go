@@ -72,6 +72,8 @@ func TestCommunicationsRejectsBrokenRelationships(t *testing.T) {
 		name   string
 		mutate func(*Communications)
 	}{
+		{"unsupported schema", func(s *Communications) { s.Version = "communications/future" }},
+		{"unsupported generator", func(s *Communications) { s.Generator = "parallax/future" }},
 		{"missing contact", func(s *Communications) { s.Conversations[0].ContactID = "missing" }},
 		{"wrong attachment run", func(s *Communications) { s.Attachments[0].RunID = "RUN-002" }},
 		{"missing plan", func(s *Communications) { s.ChatSessions[0].PlanID = "missing" }},
