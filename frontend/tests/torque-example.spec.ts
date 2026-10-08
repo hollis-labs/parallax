@@ -12,6 +12,9 @@ test("standalone app native routes reload and browser back retain admitted selec
     page.getByRole("heading", { name: "Task and run inspection", exact: true }),
   ).toBeVisible()
   await expect(page.locator(".torque-page")).toContainText("TASK-003 / RUN-003")
+  await nav(page).getByRole("link", { name: "About", exact: true }).click()
+  await expect(page.locator('dt:text-is("Reference") + dd')).toHaveText("2026-10-04T14:30:00Z")
+  await expect(page.locator('dt:text-is("Cutoff") + dd')).toHaveText("2026-10-04T14:15:15Z")
   await nav(page).getByRole("link", { name: "Tasks", exact: true }).click()
   await expect(page).toHaveURL(/screen=tasks/)
   await expect(page).toHaveURL(/selected=TASK-003/)

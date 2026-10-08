@@ -29,7 +29,8 @@ export function TorqueExample({
       override: state.override,
     }),
     detail = runDetail(model, state.selected),
-    frames = timelineFrames(sourceDataset(state.scenario))
+    artifact = sourceDataset(state.scenario),
+    frames = timelineFrames(artifact)
   const [navOpen, setNavOpen] = useState(false),
     [reviewOpen, setReviewOpen] = useState(false),
     [inspection, setInspection] = useState(false),
@@ -380,7 +381,7 @@ export function TorqueExample({
                 <dt>Seed</dt>
                 <dd>{model.dataset.seed}</dd>
                 <dt>Reference</dt>
-                <dd>{model.dataset.clock}</dd>
+                <dd>{artifact.clock}</dd>
                 <dt>Cutoff</dt>
                 <dd>{model.cutoff}</dd>
               </dl>
