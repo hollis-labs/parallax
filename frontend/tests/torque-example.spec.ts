@@ -113,6 +113,7 @@ test("history roundtrips and StrictMode native first interaction retire captured
   await expect(page.getByRole("dialog", { name: "Torque navigation", exact: true })).toBeVisible()
   await expect(page).toHaveURL(/screen=tasks/)
   await page.keyboard.press("Escape")
+  await expect(page.getByRole("dialog", { name: "Torque navigation", exact: true })).toHaveCount(0)
   await page.setViewportSize({ width: 1280, height: 720 })
   await nav(page).getByRole("link", { name: "About", exact: true }).click()
   await expect(page.getByRole("heading", { name: "About this example", exact: true })).toBeVisible()
