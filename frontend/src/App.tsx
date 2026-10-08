@@ -40,6 +40,7 @@ import { SettingsReview } from "./settings-review/Review"
 import { WidgetGallery } from "./widgets/Gallery"
 
 const VoiceLab = lazy(() => import("./voice/Lab"))
+const UsageEvidence = lazy(() => import("./usage-evidence/Review"))
 const ConversationEvidence = lazy(() => import("./conversation-evidence/Review"))
 const WorkflowReview = lazy(() => import("./workflow-review/Review"))
 const DeveloperEvidence = lazy(() => import("./developer-evidence/Review"))
@@ -266,6 +267,7 @@ export function App() {
     isSettingsReview ||
     isAccountReview ||
     isAdminReview
+  const isUsageEvidence = page === "Usage Evidence"
   const isConversationEvidence = page === "Conversation Evidence"
   const isConversationReview = page === "Conversation Review"
   const isCommunication = [
@@ -290,6 +292,7 @@ export function App() {
     "Developer Evidence",
     "Workflow Review",
     "Conversation Evidence",
+    "Usage Evidence",
     "Observability",
     "Widgets",
   ].includes(page)
@@ -413,6 +416,7 @@ export function App() {
     "Developer Evidence",
     "Workflow Review",
     "Conversation Evidence",
+    "Usage Evidence",
   ].map((name, i) => ({
     key: name,
     label: name,
@@ -442,6 +446,7 @@ export function App() {
       <Layers key="developer-evidence" className="size-4" />,
       <Layers key="workflow-review" className="size-4" />,
       <MessageSquare key="conversation-evidence" className="size-4" />,
+      <Gauge key="usage-evidence" className="size-4" />,
     ][i],
     active: page === name,
     onSelect: () => {
@@ -581,7 +586,8 @@ export function App() {
                   isDeveloper ||
                   isVoice ||
                   isPrimitives ||
-                  isEvidence
+                  isEvidence ||
+                  isUsageEvidence
                     ? page.toUpperCase()
                     : isCommunication
                       ? "COMMUNICATIONS"
@@ -637,6 +643,7 @@ export function App() {
             ) : (
               <>
                 {!isCommunication &&
+                  !isUsageEvidence &&
                   !isAdministration &&
                   !isObservation &&
                   !isDeveloper &&
@@ -648,6 +655,16 @@ export function App() {
                   <AdminReview key={scenario} context={scenario} />
                 ) : isObservationReview ? (
                   <ObservationReview key={scenario} context={scenario} />
+                ) : isUsageEvidence ? (
+                  <Suspense fallback={<p>Loading usage evidence…</p>}>
+                    <UsageEvidence
+                      operations={operationsModel(scenario, "", {
+                        cutoff: review.cutoff,
+                        override: review.override,
+                      })}
+                      epoch={review.epoch}
+                    />
+                  </Suspense>
                 ) : isConversationEvidence ? (
                   <Suspense fallback={<p>Loading conversation evidence…</p>}>
                     <ConversationEvidence

@@ -793,6 +793,7 @@
       "frontend/src/operations/Views.tsx",
       "frontend/src/pages/dashboard.tsx",
       "frontend/src/run-explorer/Explorer.tsx",
+      "frontend/src/usage-evidence/Review.tsx",
       "frontend/src/workflow-review/Review.tsx"
     ]
   },
@@ -1629,6 +1630,7 @@
       "frontend/src/primitives/Gallery.tsx",
       "frontend/src/run-explorer/Explorer.tsx",
       "frontend/src/settings-review/Review.tsx",
+      "frontend/src/usage-evidence/Review.tsx",
       "frontend/src/voice/Lab.tsx",
       "frontend/src/widgets/Gallery.tsx",
       "frontend/src/workflow-review/Review.tsx"
@@ -2421,11 +2423,26 @@
     "name": "Label",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/usage-evidence/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2538,11 +2555,26 @@
     "name": "Select",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/usage-evidence/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2551,11 +2583,26 @@
     "name": "SelectContent",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/usage-evidence/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2577,11 +2624,26 @@
     "name": "SelectItem",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/usage-evidence/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2642,11 +2704,26 @@
     "name": "SelectTrigger",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/usage-evidence/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2655,11 +2732,26 @@
     "name": "SelectValue",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/usage-evidence/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -9773,11 +9865,49 @@
     "name": "Context",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded usage receipt and readonly Artifact review: current admitted joins, unknown capacity and absent amounts, distinct authored finite/invalid/clamped capacity, exact USD, native popup/scroll/focus and held lease/StrictMode/source/cutoff/API-free evidence.",
+    "nextAction": "Unproven prop permutations and supporting helpers/types remain partial/deferred; no occupancy/provider/collection/business claims.",
+    "evidence": {
+      "pages": [
+        "frontend/src/usage-evidence/Review.tsx",
+        "frontend/src/usage-evidence/model.ts",
+        "docs/usage-evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/usage-evidence.spec.ts",
+        "frontend/src/usage-evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/usage-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-usage-evidence--recorded",
+        "chat-usage-evidence--empty",
+        "chat-usage-evidence--loading",
+        "chat-usage-evidence--read-failure",
+        "chat-usage-evidence--denied",
+        "chat-usage-evidence--locked",
+        "chat-usage-evidence--long-content",
+        "chat-usage-evidence--before-receipt",
+        "chat-usage-evidence--at-receipt",
+        "chat-usage-evidence--incompatible-source",
+        "chat-usage-evidence--zero-capacity-use",
+        "chat-usage-evidence--finite-capacity",
+        "chat-usage-evidence--over-budget",
+        "chat-usage-evidence--negative",
+        "chat-usage-evidence--not-finite",
+        "chat-usage-evidence--infinite-value",
+        "chat-usage-evidence--zero-max",
+        "chat-usage-evidence--global-read-failure",
+        "chat-usage-evidence--global-loading",
+        "chat-usage-evidence--global-denied"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/usage-evidence/Review.tsx",
+      "frontend/src/usage-evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -9786,11 +9916,49 @@
     "name": "ContextTrigger",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded usage receipt and readonly Artifact review: current admitted joins, unknown capacity and absent amounts, distinct authored finite/invalid/clamped capacity, exact USD, native popup/scroll/focus and held lease/StrictMode/source/cutoff/API-free evidence.",
+    "nextAction": "Unproven prop permutations and supporting helpers/types remain partial/deferred; no occupancy/provider/collection/business claims.",
+    "evidence": {
+      "pages": [
+        "frontend/src/usage-evidence/Review.tsx",
+        "frontend/src/usage-evidence/model.ts",
+        "docs/usage-evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/usage-evidence.spec.ts",
+        "frontend/src/usage-evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/usage-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-usage-evidence--recorded",
+        "chat-usage-evidence--empty",
+        "chat-usage-evidence--loading",
+        "chat-usage-evidence--read-failure",
+        "chat-usage-evidence--denied",
+        "chat-usage-evidence--locked",
+        "chat-usage-evidence--long-content",
+        "chat-usage-evidence--before-receipt",
+        "chat-usage-evidence--at-receipt",
+        "chat-usage-evidence--incompatible-source",
+        "chat-usage-evidence--zero-capacity-use",
+        "chat-usage-evidence--finite-capacity",
+        "chat-usage-evidence--over-budget",
+        "chat-usage-evidence--negative",
+        "chat-usage-evidence--not-finite",
+        "chat-usage-evidence--infinite-value",
+        "chat-usage-evidence--zero-max",
+        "chat-usage-evidence--global-read-failure",
+        "chat-usage-evidence--global-loading",
+        "chat-usage-evidence--global-denied"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/usage-evidence/Review.tsx",
+      "frontend/src/usage-evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -9799,11 +9967,49 @@
     "name": "ContextContent",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded usage receipt and readonly Artifact review: current admitted joins, unknown capacity and absent amounts, distinct authored finite/invalid/clamped capacity, exact USD, native popup/scroll/focus and held lease/StrictMode/source/cutoff/API-free evidence.",
+    "nextAction": "Unproven prop permutations and supporting helpers/types remain partial/deferred; no occupancy/provider/collection/business claims.",
+    "evidence": {
+      "pages": [
+        "frontend/src/usage-evidence/Review.tsx",
+        "frontend/src/usage-evidence/model.ts",
+        "docs/usage-evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/usage-evidence.spec.ts",
+        "frontend/src/usage-evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/usage-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-usage-evidence--recorded",
+        "chat-usage-evidence--empty",
+        "chat-usage-evidence--loading",
+        "chat-usage-evidence--read-failure",
+        "chat-usage-evidence--denied",
+        "chat-usage-evidence--locked",
+        "chat-usage-evidence--long-content",
+        "chat-usage-evidence--before-receipt",
+        "chat-usage-evidence--at-receipt",
+        "chat-usage-evidence--incompatible-source",
+        "chat-usage-evidence--zero-capacity-use",
+        "chat-usage-evidence--finite-capacity",
+        "chat-usage-evidence--over-budget",
+        "chat-usage-evidence--negative",
+        "chat-usage-evidence--not-finite",
+        "chat-usage-evidence--infinite-value",
+        "chat-usage-evidence--zero-max",
+        "chat-usage-evidence--global-read-failure",
+        "chat-usage-evidence--global-loading",
+        "chat-usage-evidence--global-denied"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/usage-evidence/Review.tsx",
+      "frontend/src/usage-evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -9812,11 +10018,49 @@
     "name": "ContextContentHeader",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded usage receipt and readonly Artifact review: current admitted joins, unknown capacity and absent amounts, distinct authored finite/invalid/clamped capacity, exact USD, native popup/scroll/focus and held lease/StrictMode/source/cutoff/API-free evidence.",
+    "nextAction": "Unproven prop permutations and supporting helpers/types remain partial/deferred; no occupancy/provider/collection/business claims.",
+    "evidence": {
+      "pages": [
+        "frontend/src/usage-evidence/Review.tsx",
+        "frontend/src/usage-evidence/model.ts",
+        "docs/usage-evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/usage-evidence.spec.ts",
+        "frontend/src/usage-evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/usage-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-usage-evidence--recorded",
+        "chat-usage-evidence--empty",
+        "chat-usage-evidence--loading",
+        "chat-usage-evidence--read-failure",
+        "chat-usage-evidence--denied",
+        "chat-usage-evidence--locked",
+        "chat-usage-evidence--long-content",
+        "chat-usage-evidence--before-receipt",
+        "chat-usage-evidence--at-receipt",
+        "chat-usage-evidence--incompatible-source",
+        "chat-usage-evidence--zero-capacity-use",
+        "chat-usage-evidence--finite-capacity",
+        "chat-usage-evidence--over-budget",
+        "chat-usage-evidence--negative",
+        "chat-usage-evidence--not-finite",
+        "chat-usage-evidence--infinite-value",
+        "chat-usage-evidence--zero-max",
+        "chat-usage-evidence--global-read-failure",
+        "chat-usage-evidence--global-loading",
+        "chat-usage-evidence--global-denied"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/usage-evidence/Review.tsx",
+      "frontend/src/usage-evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -9851,11 +10095,49 @@
     "name": "ContextInputUsage",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded usage receipt and readonly Artifact review: current admitted joins, unknown capacity and absent amounts, distinct authored finite/invalid/clamped capacity, exact USD, native popup/scroll/focus and held lease/StrictMode/source/cutoff/API-free evidence.",
+    "nextAction": "Unproven prop permutations and supporting helpers/types remain partial/deferred; no occupancy/provider/collection/business claims.",
+    "evidence": {
+      "pages": [
+        "frontend/src/usage-evidence/Review.tsx",
+        "frontend/src/usage-evidence/model.ts",
+        "docs/usage-evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/usage-evidence.spec.ts",
+        "frontend/src/usage-evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/usage-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-usage-evidence--recorded",
+        "chat-usage-evidence--empty",
+        "chat-usage-evidence--loading",
+        "chat-usage-evidence--read-failure",
+        "chat-usage-evidence--denied",
+        "chat-usage-evidence--locked",
+        "chat-usage-evidence--long-content",
+        "chat-usage-evidence--before-receipt",
+        "chat-usage-evidence--at-receipt",
+        "chat-usage-evidence--incompatible-source",
+        "chat-usage-evidence--zero-capacity-use",
+        "chat-usage-evidence--finite-capacity",
+        "chat-usage-evidence--over-budget",
+        "chat-usage-evidence--negative",
+        "chat-usage-evidence--not-finite",
+        "chat-usage-evidence--infinite-value",
+        "chat-usage-evidence--zero-max",
+        "chat-usage-evidence--global-read-failure",
+        "chat-usage-evidence--global-loading",
+        "chat-usage-evidence--global-denied"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/usage-evidence/Review.tsx",
+      "frontend/src/usage-evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -9864,11 +10146,49 @@
     "name": "ContextOutputUsage",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded usage receipt and readonly Artifact review: current admitted joins, unknown capacity and absent amounts, distinct authored finite/invalid/clamped capacity, exact USD, native popup/scroll/focus and held lease/StrictMode/source/cutoff/API-free evidence.",
+    "nextAction": "Unproven prop permutations and supporting helpers/types remain partial/deferred; no occupancy/provider/collection/business claims.",
+    "evidence": {
+      "pages": [
+        "frontend/src/usage-evidence/Review.tsx",
+        "frontend/src/usage-evidence/model.ts",
+        "docs/usage-evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/usage-evidence.spec.ts",
+        "frontend/src/usage-evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/usage-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-usage-evidence--recorded",
+        "chat-usage-evidence--empty",
+        "chat-usage-evidence--loading",
+        "chat-usage-evidence--read-failure",
+        "chat-usage-evidence--denied",
+        "chat-usage-evidence--locked",
+        "chat-usage-evidence--long-content",
+        "chat-usage-evidence--before-receipt",
+        "chat-usage-evidence--at-receipt",
+        "chat-usage-evidence--incompatible-source",
+        "chat-usage-evidence--zero-capacity-use",
+        "chat-usage-evidence--finite-capacity",
+        "chat-usage-evidence--over-budget",
+        "chat-usage-evidence--negative",
+        "chat-usage-evidence--not-finite",
+        "chat-usage-evidence--infinite-value",
+        "chat-usage-evidence--zero-max",
+        "chat-usage-evidence--global-read-failure",
+        "chat-usage-evidence--global-loading",
+        "chat-usage-evidence--global-denied"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/usage-evidence/Review.tsx",
+      "frontend/src/usage-evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -9877,11 +10197,49 @@
     "name": "ContextReasoningUsage",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded usage receipt and readonly Artifact review: current admitted joins, unknown capacity and absent amounts, distinct authored finite/invalid/clamped capacity, exact USD, native popup/scroll/focus and held lease/StrictMode/source/cutoff/API-free evidence.",
+    "nextAction": "Unproven prop permutations and supporting helpers/types remain partial/deferred; no occupancy/provider/collection/business claims.",
+    "evidence": {
+      "pages": [
+        "frontend/src/usage-evidence/Review.tsx",
+        "frontend/src/usage-evidence/model.ts",
+        "docs/usage-evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/usage-evidence.spec.ts",
+        "frontend/src/usage-evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/usage-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-usage-evidence--recorded",
+        "chat-usage-evidence--empty",
+        "chat-usage-evidence--loading",
+        "chat-usage-evidence--read-failure",
+        "chat-usage-evidence--denied",
+        "chat-usage-evidence--locked",
+        "chat-usage-evidence--long-content",
+        "chat-usage-evidence--before-receipt",
+        "chat-usage-evidence--at-receipt",
+        "chat-usage-evidence--incompatible-source",
+        "chat-usage-evidence--zero-capacity-use",
+        "chat-usage-evidence--finite-capacity",
+        "chat-usage-evidence--over-budget",
+        "chat-usage-evidence--negative",
+        "chat-usage-evidence--not-finite",
+        "chat-usage-evidence--infinite-value",
+        "chat-usage-evidence--zero-max",
+        "chat-usage-evidence--global-read-failure",
+        "chat-usage-evidence--global-loading",
+        "chat-usage-evidence--global-denied"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/usage-evidence/Review.tsx",
+      "frontend/src/usage-evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -9890,11 +10248,49 @@
     "name": "ContextCacheUsage",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded usage receipt and readonly Artifact review: current admitted joins, unknown capacity and absent amounts, distinct authored finite/invalid/clamped capacity, exact USD, native popup/scroll/focus and held lease/StrictMode/source/cutoff/API-free evidence.",
+    "nextAction": "Unproven prop permutations and supporting helpers/types remain partial/deferred; no occupancy/provider/collection/business claims.",
+    "evidence": {
+      "pages": [
+        "frontend/src/usage-evidence/Review.tsx",
+        "frontend/src/usage-evidence/model.ts",
+        "docs/usage-evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/usage-evidence.spec.ts",
+        "frontend/src/usage-evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/usage-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-usage-evidence--recorded",
+        "chat-usage-evidence--empty",
+        "chat-usage-evidence--loading",
+        "chat-usage-evidence--read-failure",
+        "chat-usage-evidence--denied",
+        "chat-usage-evidence--locked",
+        "chat-usage-evidence--long-content",
+        "chat-usage-evidence--before-receipt",
+        "chat-usage-evidence--at-receipt",
+        "chat-usage-evidence--incompatible-source",
+        "chat-usage-evidence--zero-capacity-use",
+        "chat-usage-evidence--finite-capacity",
+        "chat-usage-evidence--over-budget",
+        "chat-usage-evidence--negative",
+        "chat-usage-evidence--not-finite",
+        "chat-usage-evidence--infinite-value",
+        "chat-usage-evidence--zero-max",
+        "chat-usage-evidence--global-read-failure",
+        "chat-usage-evidence--global-loading",
+        "chat-usage-evidence--global-denied"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/usage-evidence/Review.tsx",
+      "frontend/src/usage-evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -10696,11 +11092,49 @@
     "name": "Artifact",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded usage receipt and readonly Artifact review: current admitted joins, unknown capacity and absent amounts, distinct authored finite/invalid/clamped capacity, exact USD, native popup/scroll/focus and held lease/StrictMode/source/cutoff/API-free evidence.",
+    "nextAction": "Unproven prop permutations and supporting helpers/types remain partial/deferred; no occupancy/provider/collection/business claims.",
+    "evidence": {
+      "pages": [
+        "frontend/src/usage-evidence/Review.tsx",
+        "frontend/src/usage-evidence/model.ts",
+        "docs/usage-evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/usage-evidence.spec.ts",
+        "frontend/src/usage-evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/usage-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-usage-evidence--recorded",
+        "chat-usage-evidence--empty",
+        "chat-usage-evidence--loading",
+        "chat-usage-evidence--read-failure",
+        "chat-usage-evidence--denied",
+        "chat-usage-evidence--locked",
+        "chat-usage-evidence--long-content",
+        "chat-usage-evidence--before-receipt",
+        "chat-usage-evidence--at-receipt",
+        "chat-usage-evidence--incompatible-source",
+        "chat-usage-evidence--zero-capacity-use",
+        "chat-usage-evidence--finite-capacity",
+        "chat-usage-evidence--over-budget",
+        "chat-usage-evidence--negative",
+        "chat-usage-evidence--not-finite",
+        "chat-usage-evidence--infinite-value",
+        "chat-usage-evidence--zero-max",
+        "chat-usage-evidence--global-read-failure",
+        "chat-usage-evidence--global-loading",
+        "chat-usage-evidence--global-denied"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/usage-evidence/Review.tsx",
+      "frontend/src/usage-evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -10748,11 +11182,49 @@
     "name": "ArtifactClose",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded usage receipt and readonly Artifact review: current admitted joins, unknown capacity and absent amounts, distinct authored finite/invalid/clamped capacity, exact USD, native popup/scroll/focus and held lease/StrictMode/source/cutoff/API-free evidence.",
+    "nextAction": "Unproven prop permutations and supporting helpers/types remain partial/deferred; no occupancy/provider/collection/business claims.",
+    "evidence": {
+      "pages": [
+        "frontend/src/usage-evidence/Review.tsx",
+        "frontend/src/usage-evidence/model.ts",
+        "docs/usage-evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/usage-evidence.spec.ts",
+        "frontend/src/usage-evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/usage-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-usage-evidence--recorded",
+        "chat-usage-evidence--empty",
+        "chat-usage-evidence--loading",
+        "chat-usage-evidence--read-failure",
+        "chat-usage-evidence--denied",
+        "chat-usage-evidence--locked",
+        "chat-usage-evidence--long-content",
+        "chat-usage-evidence--before-receipt",
+        "chat-usage-evidence--at-receipt",
+        "chat-usage-evidence--incompatible-source",
+        "chat-usage-evidence--zero-capacity-use",
+        "chat-usage-evidence--finite-capacity",
+        "chat-usage-evidence--over-budget",
+        "chat-usage-evidence--negative",
+        "chat-usage-evidence--not-finite",
+        "chat-usage-evidence--infinite-value",
+        "chat-usage-evidence--zero-max",
+        "chat-usage-evidence--global-read-failure",
+        "chat-usage-evidence--global-loading",
+        "chat-usage-evidence--global-denied"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/usage-evidence/Review.tsx",
+      "frontend/src/usage-evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -10774,11 +11246,49 @@
     "name": "ArtifactAction",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded usage receipt and readonly Artifact review: current admitted joins, unknown capacity and absent amounts, distinct authored finite/invalid/clamped capacity, exact USD, native popup/scroll/focus and held lease/StrictMode/source/cutoff/API-free evidence.",
+    "nextAction": "Unproven prop permutations and supporting helpers/types remain partial/deferred; no occupancy/provider/collection/business claims.",
+    "evidence": {
+      "pages": [
+        "frontend/src/usage-evidence/Review.tsx",
+        "frontend/src/usage-evidence/model.ts",
+        "docs/usage-evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/usage-evidence.spec.ts",
+        "frontend/src/usage-evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/usage-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-usage-evidence--recorded",
+        "chat-usage-evidence--empty",
+        "chat-usage-evidence--loading",
+        "chat-usage-evidence--read-failure",
+        "chat-usage-evidence--denied",
+        "chat-usage-evidence--locked",
+        "chat-usage-evidence--long-content",
+        "chat-usage-evidence--before-receipt",
+        "chat-usage-evidence--at-receipt",
+        "chat-usage-evidence--incompatible-source",
+        "chat-usage-evidence--zero-capacity-use",
+        "chat-usage-evidence--finite-capacity",
+        "chat-usage-evidence--over-budget",
+        "chat-usage-evidence--negative",
+        "chat-usage-evidence--not-finite",
+        "chat-usage-evidence--infinite-value",
+        "chat-usage-evidence--zero-max",
+        "chat-usage-evidence--global-read-failure",
+        "chat-usage-evidence--global-loading",
+        "chat-usage-evidence--global-denied"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/usage-evidence/Review.tsx",
+      "frontend/src/usage-evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -10787,11 +11297,49 @@
     "name": "ArtifactContent",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded usage receipt and readonly Artifact review: current admitted joins, unknown capacity and absent amounts, distinct authored finite/invalid/clamped capacity, exact USD, native popup/scroll/focus and held lease/StrictMode/source/cutoff/API-free evidence.",
+    "nextAction": "Unproven prop permutations and supporting helpers/types remain partial/deferred; no occupancy/provider/collection/business claims.",
+    "evidence": {
+      "pages": [
+        "frontend/src/usage-evidence/Review.tsx",
+        "frontend/src/usage-evidence/model.ts",
+        "docs/usage-evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/usage-evidence.spec.ts",
+        "frontend/src/usage-evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/usage-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-usage-evidence--recorded",
+        "chat-usage-evidence--empty",
+        "chat-usage-evidence--loading",
+        "chat-usage-evidence--read-failure",
+        "chat-usage-evidence--denied",
+        "chat-usage-evidence--locked",
+        "chat-usage-evidence--long-content",
+        "chat-usage-evidence--before-receipt",
+        "chat-usage-evidence--at-receipt",
+        "chat-usage-evidence--incompatible-source",
+        "chat-usage-evidence--zero-capacity-use",
+        "chat-usage-evidence--finite-capacity",
+        "chat-usage-evidence--over-budget",
+        "chat-usage-evidence--negative",
+        "chat-usage-evidence--not-finite",
+        "chat-usage-evidence--infinite-value",
+        "chat-usage-evidence--zero-max",
+        "chat-usage-evidence--global-read-failure",
+        "chat-usage-evidence--global-loading",
+        "chat-usage-evidence--global-denied"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/usage-evidence/Review.tsx",
+      "frontend/src/usage-evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",

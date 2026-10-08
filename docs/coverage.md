@@ -13,9 +13,9 @@ The pinned catalogue records all fifteen packages at design-kit commit `dbcf4fa7
 
 | Package | Visual | Types | Nonvisual/value | Reviewed | Partial | Deferred | Unsupported |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| @hollis-labs/design-components | 147 | 20 | 22 | 19 | 3 | 167 | 0 |
+| @hollis-labs/design-components | 147 | 20 | 22 | 19 | 9 | 161 | 0 |
 | @hollis-labs/kit-dashboard | 48 | 49 | 30 | 23 | 6 | 95 | 3 |
-| @hollis-labs/kit-chat | 147 | 195 | 16 | 16 | 27 | 315 | 0 |
+| @hollis-labs/kit-chat | 147 | 195 | 16 | 28 | 27 | 303 | 0 |
 | @hollis-labs/design-bindings | 0 | 19 | 9 | 0 | 4 | 24 | 0 |
 | @hollis-labs/kit-admin | 3 | 15 | 3 | 3 | 9 | 9 | 0 |
 | @hollis-labs/kit-settings | 4 | 23 | 7 | 4 | 12 | 18 | 0 |
@@ -65,3 +65,5 @@ The twentieth bounded batch independently reviews ten existing private code-cand
 The twenty-first bounded batch reviews seven exact workflow/canvas names in [Workflow Review](workflow-review.md), including both decorative Edge namespace variants under one public row. Actual node slots, selected toolbar/panel, immutable graph navigation, bounded validation specimens and reduced-motion/token geometry have independent pointers. Totals79 reviewed/186 partial/1038 deferred/5 unsupported,262 exact imports. Existing NodeDescription/Panel advance from partial; other supporting helpers remain partial.
 
 The twenty-second bounded batch independently reviews twelve released chat names in [Conversation Evidence](conversation-evidence-review.md): five Tool exports, three Reasoning exports and four Sources exports. Current projected tool/message evidence, explicitly authored explanations/specimens, withheld unfinished output and snapshot-gated metadata have native disclosure, literal text, keyboard, narrow and portable evidence. Totals91 reviewed/174 partial/1038 deferred/5 unsupported,262 exact imports. Twelve prior partial runtime rows advance; supporting helpers and types retain their dispositions. Nineteen new portable states bring the standalone catalogue to299 stories.
+
+The twenty-third bounded batch reviews twelve existing released Context/Artifact names in [Usage Evidence](usage-evidence-review.md). Admitted receipt joins, missing capacity/parts, separate authored finite/invalid/clamped specimens, exact USD, actual native popup/focus/readonly scroll and held inspection lifetimes have explicit app/story/check pointers. Totals103 reviewed/180 partial/1020 deferred/5 unsupported with280 exact imports. Twelve deferred chat runtime rows advance; six newly adopted base Label/Select/SelectContent/SelectItem/SelectTrigger/SelectValue rows remain supporting partial. Twenty portable states bring the standalone catalogue to319 stories.
