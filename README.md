@@ -82,3 +82,5 @@ The [Evidence States review](docs/evidence-states.md) presents current-prefix re
 The [Torque Activity reference](docs/torque-activity-reference.md) at `?example=torque&profile=torque-16w` provides the fixed-UTC task-update/run-start calendar, reference age-bin pulse and twelve admitted recent runs; Mission/Usage remain separate adaptations.
 
 Standalone Torque Mission/Usage reference: [semantics and transformation matrix](docs/torque-mission-usage-reference.md).
+
+The independently versioned [chat snapshot companion](docs/chat-example-fixtures.md) supplies finite authored history and original message/source references for the next whole-chat screen. Existing Chat and API-free pack stories share its read-only model.

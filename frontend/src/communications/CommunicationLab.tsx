@@ -1,5 +1,6 @@
 import { Button, EmptyState } from "@hollis-labs/design-components"
 import { useState } from "react"
+import { ChatPackReview } from "../examples/chat/PackReview"
 import { ChatView } from "./Chat"
 import { ContactsView, type Intent, MessagesView } from "./Messaging"
 import { type ChatState, communicationsModel } from "./model"
@@ -83,15 +84,28 @@ export function CommunicationLab({
           onReset={onReset}
         />
       ) : (
-        <ChatView
-          model={model}
-          selected={chatId}
-          onSelect={setChatId}
-          onIntent={onIntent}
-          onReset={onReset}
-          initialState={initialChatState}
-        />
+        <>
+          <ChatPackDisclosure key={scenario} scenario={scenario} />
+          <ChatView
+            model={model}
+            selected={chatId}
+            onSelect={setChatId}
+            onIntent={onIntent}
+            onReset={onReset}
+            initialState={initialChatState}
+          />
+        </>
       )}
     </>
+  )
+}
+
+function ChatPackDisclosure({ scenario }: { scenario: string }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <details onToggle={(e) => setOpen(e.currentTarget.open)}>
+      <summary>Inspect whole-chat fixture pack</summary>
+      {open && <ChatPackReview initialState={scenario === "empty" ? "empty" : "recorded"} />}
+    </details>
   )
 }

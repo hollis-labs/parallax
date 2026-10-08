@@ -118,6 +118,17 @@
             "queues": 3,
             "streamChunks": 3
           }
+        },
+        {
+          "label": "full-snapshot chat companion",
+          "labelKind": "snapshot companion; authored history is not recorded history",
+          "artifact": "frontend/src/fixtures/chat-example.json",
+          "counts": {
+            "sessions": 4,
+            "sources": 18
+          },
+          "version": "chat-example/v1",
+          "generator": "parallax/v9"
         }
       ],
       "joins": [
@@ -128,14 +139,19 @@
       "resourcePolicy": "Presentation-only empty/loading/error/denied/locked states; no sending, transport or authorization.",
       "validators": [
         "internal/scenarios/communications_validate.go",
-        "internal/scenarios/communications_test.go"
+        "internal/scenarios/communications_test.go",
+        "internal/scenarios/chat_example.go",
+        "internal/scenarios/chat_example_test.go"
       ],
       "adapters": [
         "frontend/src/communications/model.ts",
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/chat/model.ts",
+        "frontend/src/examples/chat/PackReview.tsx",
+        "frontend/src/examples/chat/Pack.stories.tsx"
       ],
       "remaining": [
-        "Coherent whole-chat transcript/history pack (CW-20261008-0051)",
+        "Complete chat shell/transcript/history presentation (CW-20261008-0052)",
         "Contacts/messages whole screens (CW-20261008-0053)",
         "No timestamped metadata contract for prefix reconstruction"
       ]

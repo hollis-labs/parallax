@@ -1,0 +1,879 @@
+{
+  "version": "chat-example/v1",
+  "generator": "parallax/v9",
+  "seed": 4421,
+  "clock": "2026-10-04T14:30:00Z",
+  "projection": "snapshot",
+  "operations": {
+    "version": "operations/v2",
+    "generator": "parallax/v2",
+    "profile": "records-8",
+    "seed": 4421,
+    "clock": "2026-10-04T14:30:00Z"
+  },
+  "communications": {
+    "version": "communications/v1",
+    "generator": "parallax/v3",
+    "seed": 4421,
+    "clock": "2026-10-04T14:30:00Z"
+  },
+  "sessions": [
+    {
+      "id": "CHAT-001",
+      "chatId": "CHAT-001",
+      "title": "Review gateway permission boundaries",
+      "kind": "recorded context with authored history",
+      "group": "Bundled review sessions",
+      "turns": [
+        {
+          "order": 0,
+          "id": "AUTHORED-CHAT-001-01",
+          "kind": "authored",
+          "role": "user",
+          "text": "Which run is linked to this review?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 1,
+          "id": "AUTHORED-CHAT-001-02",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "The supplied context links CHAT-001 to RUN-001 and SESSION-001.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 2,
+          "id": "AUTHORED-CHAT-001-03",
+          "kind": "authored",
+          "role": "user",
+          "text": "Is the latest supplied result a live response?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 3,
+          "id": "AUTHORED-CHAT-001-04",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "The result below references the original operations fixture. It is not a new model response.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 4,
+          "id": "AUTHORED-CHAT-001-05",
+          "kind": "authored",
+          "role": "user",
+          "text": "Where does the tool evidence come from?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 5,
+          "id": "AUTHORED-CHAT-001-06",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "The linked tool, trace and span are bundled records; inspection never executes them.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 6,
+          "id": "AUTHORED-CHAT-001-07",
+          "kind": "authored",
+          "role": "user",
+          "text": "Can I inspect the source attachment?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 7,
+          "id": "AUTHORED-CHAT-001-08",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "The text attachment is available as a declared local source, with its original run relationship.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 8,
+          "id": "AUTHORED-CHAT-001-09",
+          "kind": "authored",
+          "role": "user",
+          "text": "What does an absent value mean?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 9,
+          "id": "AUTHORED-CHAT-001-10",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "Absent means no supplied value. It must not be converted into observed zero.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 10,
+          "id": "AUTHORED-CHAT-001-11",
+          "kind": "authored",
+          "role": "user",
+          "text": "How should zero and null be interpreted?\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\n",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 11,
+          "id": "AUTHORED-CHAT-001-12",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "Zero is a literal value; null remains a distinct supplied value in the authored text specimen.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 12,
+          "id": "AUTHORED-CHAT-001-13",
+          "kind": "authored",
+          "role": "user",
+          "text": "Does this card have a recorded response?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 13,
+          "id": "AUTHORED-CHAT-001-14",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "No recorded prior response is supplied. The card appearance annotation is authored separately.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 14,
+          "id": "AUTHORED-CHAT-001-15",
+          "kind": "authored",
+          "role": "user",
+          "text": "Is the queue status an authorization?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 15,
+          "id": "AUTHORED-CHAT-001-16",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "The queue is snapshot metadata. It does not grant access or continue work.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 16,
+          "id": "AUTHORED-CHAT-001-17",
+          "kind": "authored",
+          "role": "user",
+          "text": "What is the plan intended to demonstrate?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 17,
+          "id": "AUTHORED-CHAT-001-18",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "The plan lists supplied review steps without performing them.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 18,
+          "id": "AUTHORED-CHAT-001-19",
+          "kind": "authored",
+          "role": "user",
+          "text": "Can older history be fetched from a provider?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 19,
+          "id": "AUTHORED-CHAT-001-20",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "Older rows are finite authored history already in this pack; there is no provider fetch.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 20,
+          "id": "AUTHORED-CHAT-001-21",
+          "kind": "authored",
+          "role": "user",
+          "text": "How will a local draft be handled?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 21,
+          "id": "AUTHORED-CHAT-001-22",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "A draft may form a local inspection candidate. It is never appended to the recorded transcript.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 22,
+          "id": "AUTHORED-CHAT-001-23",
+          "kind": "authored",
+          "role": "user",
+          "text": "What remains outside this review?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 23,
+          "id": "AUTHORED-CHAT-001-24",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "Sending, approval, uploads, saves and provider execution remain unavailable.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 24,
+          "id": "MSG-REQUEST-001",
+          "kind": "recorded reference",
+          "messageId": "MSG-REQUEST-001",
+          "provenance": "Exact operations/v2 records-8 message reference."
+        },
+        {
+          "order": 25,
+          "id": "MSG-RESULT-001",
+          "kind": "recorded reference",
+          "messageId": "MSG-RESULT-001",
+          "provenance": "Exact operations/v2 records-8 message reference."
+        }
+      ],
+      "initialCount": 6,
+      "historyPageSize": 6,
+      "sourceIds": [
+        "SOURCE-CHAT-001-attachment",
+        "SOURCE-CHAT-001-tool",
+        "SOURCE-CHAT-001-trace",
+        "SOURCE-CHAT-001-plan",
+        "SOURCE-CHAT-001-queue",
+        "SOURCE-CHAT-001-literal"
+      ],
+      "cards": [
+        {
+          "cardId": "CARD-CONFIRM-001",
+          "prior": null,
+          "actionIds": ["inspect", "dismiss"],
+          "provenance": "Authored prior appearance; no recorded card response or timestamp."
+        },
+        {
+          "cardId": "CARD-PROMPT-001",
+          "prior": null,
+          "actionIds": ["inspect", "dismiss"],
+          "questionId": "review-note",
+          "provenance": "Authored prior appearance; no recorded card response or timestamp."
+        }
+      ],
+      "previewChunks": [
+        "Authored preview: comparing the supplied context. ",
+        "Only local review text is being revealed. ",
+        "This remains uncommitted; no model or tool was contacted."
+      ]
+    },
+    {
+      "id": "CHAT-002",
+      "chatId": "CHAT-002",
+      "title": "Build deterministic fixture contracts",
+      "kind": "recorded context with authored history",
+      "group": "Bundled review sessions",
+      "turns": [
+        {
+          "order": 0,
+          "id": "AUTHORED-CHAT-002-01",
+          "kind": "authored",
+          "role": "user",
+          "text": "Which run is linked to this review?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 1,
+          "id": "AUTHORED-CHAT-002-02",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "The supplied context links CHAT-002 to RUN-002 and SESSION-002.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 2,
+          "id": "AUTHORED-CHAT-002-03",
+          "kind": "authored",
+          "role": "user",
+          "text": "Is the latest supplied result a live response?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 3,
+          "id": "AUTHORED-CHAT-002-04",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "The result below references the original operations fixture. It is not a new model response.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 4,
+          "id": "AUTHORED-CHAT-002-05",
+          "kind": "authored",
+          "role": "user",
+          "text": "Where does the tool evidence come from?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 5,
+          "id": "AUTHORED-CHAT-002-06",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "The linked tool, trace and span are bundled records; inspection never executes them.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 6,
+          "id": "AUTHORED-CHAT-002-07",
+          "kind": "authored",
+          "role": "user",
+          "text": "Can I inspect the source attachment?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 7,
+          "id": "AUTHORED-CHAT-002-08",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "The text attachment is available as a declared local source, with its original run relationship.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 8,
+          "id": "AUTHORED-CHAT-002-09",
+          "kind": "authored",
+          "role": "user",
+          "text": "What does an absent value mean?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 9,
+          "id": "AUTHORED-CHAT-002-10",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "Absent means no supplied value. It must not be converted into observed zero.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 10,
+          "id": "AUTHORED-CHAT-002-11",
+          "kind": "authored",
+          "role": "user",
+          "text": "How should zero and null be interpreted?\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\n",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 11,
+          "id": "AUTHORED-CHAT-002-12",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "Zero is a literal value; null remains a distinct supplied value in the authored text specimen.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 12,
+          "id": "AUTHORED-CHAT-002-13",
+          "kind": "authored",
+          "role": "user",
+          "text": "Does this card have a recorded response?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 13,
+          "id": "AUTHORED-CHAT-002-14",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "No recorded prior response is supplied. The card appearance annotation is authored separately.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 14,
+          "id": "AUTHORED-CHAT-002-15",
+          "kind": "authored",
+          "role": "user",
+          "text": "Is the queue status an authorization?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 15,
+          "id": "AUTHORED-CHAT-002-16",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "The queue is snapshot metadata. It does not grant access or continue work.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 16,
+          "id": "AUTHORED-CHAT-002-17",
+          "kind": "authored",
+          "role": "user",
+          "text": "What is the plan intended to demonstrate?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 17,
+          "id": "AUTHORED-CHAT-002-18",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "The plan lists supplied review steps without performing them.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 18,
+          "id": "AUTHORED-CHAT-002-19",
+          "kind": "authored",
+          "role": "user",
+          "text": "Can older history be fetched from a provider?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 19,
+          "id": "AUTHORED-CHAT-002-20",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "Older rows are finite authored history already in this pack; there is no provider fetch.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 20,
+          "id": "AUTHORED-CHAT-002-21",
+          "kind": "authored",
+          "role": "user",
+          "text": "How will a local draft be handled?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 21,
+          "id": "AUTHORED-CHAT-002-22",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "A draft may form a local inspection candidate. It is never appended to the recorded transcript.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 22,
+          "id": "AUTHORED-CHAT-002-23",
+          "kind": "authored",
+          "role": "user",
+          "text": "What remains outside this review?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 23,
+          "id": "AUTHORED-CHAT-002-24",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "Sending, approval, uploads, saves and provider execution remain unavailable.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 24,
+          "id": "MSG-REQUEST-002",
+          "kind": "recorded reference",
+          "messageId": "MSG-REQUEST-002",
+          "provenance": "Exact operations/v2 records-8 message reference."
+        },
+        {
+          "order": 25,
+          "id": "MSG-RESULT-002",
+          "kind": "recorded reference",
+          "messageId": "MSG-RESULT-002",
+          "provenance": "Exact operations/v2 records-8 message reference."
+        }
+      ],
+      "initialCount": 6,
+      "historyPageSize": 6,
+      "sourceIds": [
+        "SOURCE-CHAT-002-attachment",
+        "SOURCE-CHAT-002-tool",
+        "SOURCE-CHAT-002-trace",
+        "SOURCE-CHAT-002-plan",
+        "SOURCE-CHAT-002-queue",
+        "SOURCE-CHAT-002-literal"
+      ],
+      "cards": [
+        {
+          "cardId": "CARD-CONFIRM-002",
+          "prior": null,
+          "actionIds": ["inspect", "dismiss"],
+          "provenance": "Authored prior appearance; no recorded card response or timestamp."
+        },
+        {
+          "cardId": "CARD-PROMPT-002",
+          "prior": null,
+          "actionIds": ["inspect", "dismiss"],
+          "questionId": "review-note",
+          "provenance": "Authored prior appearance; no recorded card response or timestamp."
+        }
+      ],
+      "previewChunks": [
+        "Authored preview: comparing the supplied context. ",
+        "Only local review text is being revealed. ",
+        "This remains uncommitted; no model or tool was contacted."
+      ]
+    },
+    {
+      "id": "CHAT-003",
+      "chatId": "CHAT-003",
+      "title": "Inspect telemetry sampling drift",
+      "kind": "recorded context with authored history",
+      "group": "Bundled review sessions",
+      "turns": [
+        {
+          "order": 0,
+          "id": "AUTHORED-CHAT-003-01",
+          "kind": "authored",
+          "role": "user",
+          "text": "Which run is linked to this review?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 1,
+          "id": "AUTHORED-CHAT-003-02",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "The supplied context links CHAT-003 to RUN-003 and SESSION-003.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 2,
+          "id": "AUTHORED-CHAT-003-03",
+          "kind": "authored",
+          "role": "user",
+          "text": "Is the latest supplied result a live response?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 3,
+          "id": "AUTHORED-CHAT-003-04",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "The result below references the original operations fixture. It is not a new model response.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 4,
+          "id": "AUTHORED-CHAT-003-05",
+          "kind": "authored",
+          "role": "user",
+          "text": "Where does the tool evidence come from?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 5,
+          "id": "AUTHORED-CHAT-003-06",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "The linked tool, trace and span are bundled records; inspection never executes them.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 6,
+          "id": "AUTHORED-CHAT-003-07",
+          "kind": "authored",
+          "role": "user",
+          "text": "Can I inspect the source attachment?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 7,
+          "id": "AUTHORED-CHAT-003-08",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "The text attachment is available as a declared local source, with its original run relationship.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 8,
+          "id": "AUTHORED-CHAT-003-09",
+          "kind": "authored",
+          "role": "user",
+          "text": "What does an absent value mean?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 9,
+          "id": "AUTHORED-CHAT-003-10",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "Absent means no supplied value. It must not be converted into observed zero.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 10,
+          "id": "AUTHORED-CHAT-003-11",
+          "kind": "authored",
+          "role": "user",
+          "text": "How should zero and null be interpreted?\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\nLong authored context: compare zero, null and absent fields without claiming an observed outcome.\n",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 11,
+          "id": "AUTHORED-CHAT-003-12",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "Zero is a literal value; null remains a distinct supplied value in the authored text specimen.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 12,
+          "id": "AUTHORED-CHAT-003-13",
+          "kind": "authored",
+          "role": "user",
+          "text": "Does this card have a recorded response?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 13,
+          "id": "AUTHORED-CHAT-003-14",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "No recorded prior response is supplied. The card appearance annotation is authored separately.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 14,
+          "id": "AUTHORED-CHAT-003-15",
+          "kind": "authored",
+          "role": "user",
+          "text": "Is the queue status an authorization?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 15,
+          "id": "AUTHORED-CHAT-003-16",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "The queue is snapshot metadata. It does not grant access or continue work.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 16,
+          "id": "AUTHORED-CHAT-003-17",
+          "kind": "authored",
+          "role": "user",
+          "text": "What is the plan intended to demonstrate?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 17,
+          "id": "AUTHORED-CHAT-003-18",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "The plan lists supplied review steps without performing them.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 18,
+          "id": "AUTHORED-CHAT-003-19",
+          "kind": "authored",
+          "role": "user",
+          "text": "Can older history be fetched from a provider?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 19,
+          "id": "AUTHORED-CHAT-003-20",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "Older rows are finite authored history already in this pack; there is no provider fetch.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 20,
+          "id": "AUTHORED-CHAT-003-21",
+          "kind": "authored",
+          "role": "user",
+          "text": "How will a local draft be handled?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 21,
+          "id": "AUTHORED-CHAT-003-22",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "A draft may form a local inspection candidate. It is never appended to the recorded transcript.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 22,
+          "id": "AUTHORED-CHAT-003-23",
+          "kind": "authored",
+          "role": "user",
+          "text": "What remains outside this review?",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 23,
+          "id": "AUTHORED-CHAT-003-24",
+          "kind": "authored",
+          "role": "assistant",
+          "text": "Sending, approval, uploads, saves and provider execution remain unavailable.",
+          "provenance": "Untimed authored history specimen; ordered for review only."
+        },
+        {
+          "order": 24,
+          "id": "MSG-REQUEST-003",
+          "kind": "recorded reference",
+          "messageId": "MSG-REQUEST-003",
+          "provenance": "Exact operations/v2 records-8 message reference."
+        },
+        {
+          "order": 25,
+          "id": "MSG-RESULT-003",
+          "kind": "recorded reference",
+          "messageId": "MSG-RESULT-003",
+          "provenance": "Exact operations/v2 records-8 message reference."
+        }
+      ],
+      "initialCount": 6,
+      "historyPageSize": 6,
+      "sourceIds": [
+        "SOURCE-CHAT-003-attachment",
+        "SOURCE-CHAT-003-tool",
+        "SOURCE-CHAT-003-trace",
+        "SOURCE-CHAT-003-plan",
+        "SOURCE-CHAT-003-queue",
+        "SOURCE-CHAT-003-literal"
+      ],
+      "cards": [
+        {
+          "cardId": "CARD-CONFIRM-003",
+          "prior": null,
+          "actionIds": ["inspect", "dismiss"],
+          "provenance": "Authored prior appearance; no recorded card response or timestamp."
+        },
+        {
+          "cardId": "CARD-PROMPT-003",
+          "prior": null,
+          "actionIds": ["inspect", "dismiss"],
+          "questionId": "review-note",
+          "provenance": "Authored prior appearance; no recorded card response or timestamp."
+        }
+      ],
+      "previewChunks": [
+        "Authored preview: comparing the supplied context. ",
+        "Only local review text is being revealed. ",
+        "This remains uncommitted; no model or tool was contacted."
+      ]
+    },
+    {
+      "id": "CHAT-AUTHORED-EMPTY",
+      "title": "Empty review session",
+      "kind": "authored empty",
+      "group": "Authored specimens",
+      "turns": [],
+      "initialCount": 0,
+      "historyPageSize": 6,
+      "sourceIds": [],
+      "cards": [],
+      "previewChunks": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "SOURCE-CHAT-001-attachment",
+      "kind": "attachment",
+      "referenceId": "ATTACHMENT-001",
+      "provenance": "Supplied linked snapshot metadata; no separate metadata timestamp."
+    },
+    {
+      "id": "SOURCE-CHAT-001-tool",
+      "kind": "tool",
+      "referenceId": "TOOL-001",
+      "provenance": "Supplied linked snapshot metadata; no separate metadata timestamp."
+    },
+    {
+      "id": "SOURCE-CHAT-001-trace",
+      "kind": "trace",
+      "referenceId": "TRACE-001",
+      "provenance": "Supplied linked snapshot metadata; no separate metadata timestamp."
+    },
+    {
+      "id": "SOURCE-CHAT-001-plan",
+      "kind": "plan",
+      "referenceId": "PLAN-001",
+      "provenance": "Supplied linked snapshot metadata; no separate metadata timestamp."
+    },
+    {
+      "id": "SOURCE-CHAT-001-queue",
+      "kind": "queue",
+      "referenceId": "QUEUE-001",
+      "provenance": "Supplied linked snapshot metadata; no separate metadata timestamp."
+    },
+    {
+      "id": "SOURCE-CHAT-001-literal",
+      "kind": "authored text",
+      "text": "Literal \u003cscript\u003eneverExecute()\u003c/script\u003e https://example.invalid\n{\"count\":0,\"value\":null}\nAbsent field: no supplied value.",
+      "provenance": "Authored escaped text specimen; no URL action or retrieval."
+    },
+    {
+      "id": "SOURCE-CHAT-002-attachment",
+      "kind": "attachment",
+      "referenceId": "ATTACHMENT-002",
+      "provenance": "Supplied linked snapshot metadata; no separate metadata timestamp."
+    },
+    {
+      "id": "SOURCE-CHAT-002-tool",
+      "kind": "tool",
+      "referenceId": "TOOL-002",
+      "provenance": "Supplied linked snapshot metadata; no separate metadata timestamp."
+    },
+    {
+      "id": "SOURCE-CHAT-002-trace",
+      "kind": "trace",
+      "referenceId": "TRACE-002",
+      "provenance": "Supplied linked snapshot metadata; no separate metadata timestamp."
+    },
+    {
+      "id": "SOURCE-CHAT-002-plan",
+      "kind": "plan",
+      "referenceId": "PLAN-002",
+      "provenance": "Supplied linked snapshot metadata; no separate metadata timestamp."
+    },
+    {
+      "id": "SOURCE-CHAT-002-queue",
+      "kind": "queue",
+      "referenceId": "QUEUE-002",
+      "provenance": "Supplied linked snapshot metadata; no separate metadata timestamp."
+    },
+    {
+      "id": "SOURCE-CHAT-002-literal",
+      "kind": "authored text",
+      "text": "Literal \u003cscript\u003eneverExecute()\u003c/script\u003e https://example.invalid\n{\"count\":0,\"value\":null}\nAbsent field: no supplied value.",
+      "provenance": "Authored escaped text specimen; no URL action or retrieval."
+    },
+    {
+      "id": "SOURCE-CHAT-003-attachment",
+      "kind": "attachment",
+      "referenceId": "ATTACHMENT-003",
+      "provenance": "Supplied linked snapshot metadata; no separate metadata timestamp."
+    },
+    {
+      "id": "SOURCE-CHAT-003-tool",
+      "kind": "tool",
+      "referenceId": "TOOL-003",
+      "provenance": "Supplied linked snapshot metadata; no separate metadata timestamp."
+    },
+    {
+      "id": "SOURCE-CHAT-003-trace",
+      "kind": "trace",
+      "referenceId": "TRACE-003",
+      "provenance": "Supplied linked snapshot metadata; no separate metadata timestamp."
+    },
+    {
+      "id": "SOURCE-CHAT-003-plan",
+      "kind": "plan",
+      "referenceId": "PLAN-003",
+      "provenance": "Supplied linked snapshot metadata; no separate metadata timestamp."
+    },
+    {
+      "id": "SOURCE-CHAT-003-queue",
+      "kind": "queue",
+      "referenceId": "QUEUE-003",
+      "provenance": "Supplied linked snapshot metadata; no separate metadata timestamp."
+    },
+    {
+      "id": "SOURCE-CHAT-003-literal",
+      "kind": "authored text",
+      "text": "Literal \u003cscript\u003eneverExecute()\u003c/script\u003e https://example.invalid\n{\"count\":0,\"value\":null}\nAbsent field: no supplied value.",
+      "provenance": "Authored escaped text specimen; no URL action or retrieval."
+    }
+  ]
+}
