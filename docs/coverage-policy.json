@@ -1226,6 +1226,40 @@
           "review-appearance--long-label"
         ]
       }
+    },
+    {
+      "package": "@hollis-labs/design-components",
+      "names": [
+        "Tooltip",
+        "TooltipTrigger",
+        "TooltipContent",
+        "TooltipProvider",
+        "Skeleton",
+        "Separator"
+      ],
+      "entries": [
+        "."
+      ],
+      "disposition": "reviewed",
+      "reason": "Bounded supplemental source-help tooltip, passive declared-loading Skeleton and default horizontal Separator in current-prefix Evidence States.",
+      "nextAction": "Other positioning/orientation/aliases and implicit Arrow remain independently deferred.",
+      "evidence": {
+        "pages": [
+          "frontend/src/evidence-states/Review.tsx",
+          "docs/evidence-states.md"
+        ],
+        "stories": [
+          "frontend/src/evidence-states/Review.stories.tsx"
+        ],
+        "checks": [
+          "frontend/tests/evidence-states.spec.ts"
+        ],
+        "storyIds": [
+          "review-evidence-states--ready",
+          "review-evidence-states--loading",
+          "review-evidence-states--long"
+        ]
+      }
     }
   ]
 }

@@ -3392,11 +3392,29 @@
     "name": "Separator",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded supplemental source-help tooltip, passive declared-loading Skeleton and default horizontal Separator in current-prefix Evidence States.",
+    "nextAction": "Other positioning/orientation/aliases and implicit Arrow remain independently deferred.",
+    "evidence": {
+      "pages": [
+        "frontend/src/evidence-states/Review.tsx",
+        "docs/evidence-states.md"
+      ],
+      "stories": [
+        "frontend/src/evidence-states/Review.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/evidence-states.spec.ts"
+      ],
+      "storyIds": [
+        "review-evidence-states--ready",
+        "review-evidence-states--loading",
+        "review-evidence-states--long"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/evidence-states/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -3509,11 +3527,29 @@
     "name": "Skeleton",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded supplemental source-help tooltip, passive declared-loading Skeleton and default horizontal Separator in current-prefix Evidence States.",
+    "nextAction": "Other positioning/orientation/aliases and implicit Arrow remain independently deferred.",
+    "evidence": {
+      "pages": [
+        "frontend/src/evidence-states/Review.tsx",
+        "docs/evidence-states.md"
+      ],
+      "stories": [
+        "frontend/src/evidence-states/Review.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/evidence-states.spec.ts"
+      ],
+      "storyIds": [
+        "review-evidence-states--ready",
+        "review-evidence-states--loading",
+        "review-evidence-states--long"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/evidence-states/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -4100,11 +4136,29 @@
     "name": "Tooltip",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded supplemental source-help tooltip, passive declared-loading Skeleton and default horizontal Separator in current-prefix Evidence States.",
+    "nextAction": "Other positioning/orientation/aliases and implicit Arrow remain independently deferred.",
+    "evidence": {
+      "pages": [
+        "frontend/src/evidence-states/Review.tsx",
+        "docs/evidence-states.md"
+      ],
+      "stories": [
+        "frontend/src/evidence-states/Review.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/evidence-states.spec.ts"
+      ],
+      "storyIds": [
+        "review-evidence-states--ready",
+        "review-evidence-states--loading",
+        "review-evidence-states--long"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/evidence-states/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -4113,11 +4167,29 @@
     "name": "TooltipTrigger",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded supplemental source-help tooltip, passive declared-loading Skeleton and default horizontal Separator in current-prefix Evidence States.",
+    "nextAction": "Other positioning/orientation/aliases and implicit Arrow remain independently deferred.",
+    "evidence": {
+      "pages": [
+        "frontend/src/evidence-states/Review.tsx",
+        "docs/evidence-states.md"
+      ],
+      "stories": [
+        "frontend/src/evidence-states/Review.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/evidence-states.spec.ts"
+      ],
+      "storyIds": [
+        "review-evidence-states--ready",
+        "review-evidence-states--loading",
+        "review-evidence-states--long"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/evidence-states/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -4126,11 +4198,29 @@
     "name": "TooltipContent",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded supplemental source-help tooltip, passive declared-loading Skeleton and default horizontal Separator in current-prefix Evidence States.",
+    "nextAction": "Other positioning/orientation/aliases and implicit Arrow remain independently deferred.",
+    "evidence": {
+      "pages": [
+        "frontend/src/evidence-states/Review.tsx",
+        "docs/evidence-states.md"
+      ],
+      "stories": [
+        "frontend/src/evidence-states/Review.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/evidence-states.spec.ts"
+      ],
+      "storyIds": [
+        "review-evidence-states--ready",
+        "review-evidence-states--loading",
+        "review-evidence-states--long"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/evidence-states/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -4139,11 +4229,29 @@
     "name": "TooltipProvider",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded supplemental source-help tooltip, passive declared-loading Skeleton and default horizontal Separator in current-prefix Evidence States.",
+    "nextAction": "Other positioning/orientation/aliases and implicit Arrow remain independently deferred.",
+    "evidence": {
+      "pages": [
+        "frontend/src/evidence-states/Review.tsx",
+        "docs/evidence-states.md"
+      ],
+      "stories": [
+        "frontend/src/evidence-states/Review.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/evidence-states.spec.ts"
+      ],
+      "storyIds": [
+        "review-evidence-states--ready",
+        "review-evidence-states--loading",
+        "review-evidence-states--long"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/evidence-states/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",

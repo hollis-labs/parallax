@@ -22,6 +22,7 @@ import { ConversationReview } from "./conversation-review/Review"
 import { DirectoryReview } from "./directory-review/Review"
 import { EventLedger } from "./event-ledger/Ledger"
 import { EvidenceInspector } from "./evidence/Inspector"
+import { EvidenceStates } from "./evidence-states/Review"
 import { Comparison, type Layout, layouts } from "./layouts/Comparison"
 import { Navigation, type NavigationMode } from "./layouts/Navigation"
 import { ObservationLab } from "./observability/Lab"
@@ -262,6 +263,7 @@ export function App() {
     document.documentElement.setAttribute("data-mode", mode)
   }, [theme, mode])
   const isOpsDashboard = page === "Ops Dashboard"
+  const isEvidenceStates = page === "Evidence States"
   const isAppearance = page === "Appearance Review"
   const isLedger = page === "Event Ledger"
   const isWorkbench = page === workbenchEntry.id
@@ -618,11 +620,17 @@ export function App() {
               </div>
             )}
             {routeNotice && <p role="status">{routeNotice}</p>}
-            {!model.accessible && !isWorkbench && !isOpsDashboard && !isLedger && !isAppearance ? (
+            {!model.accessible &&
+            !isWorkbench &&
+            !isOpsDashboard &&
+            !isLedger &&
+            !isAppearance &&
+            !isEvidenceStates ? (
               <ResourceNotice model={model} />
             ) : (
               <>
-                {!isAppearance &&
+                {!isEvidenceStates &&
+                  !isAppearance &&
                   !isOpsDashboard &&
                   !isLedger &&
                   !isWorkbench &&
@@ -635,7 +643,9 @@ export function App() {
                   !isPrimitives &&
                   !isEvidence &&
                   !isWidgets && <OperationsSummary model={model} />}
-                {isAppearance ? (
+                {isEvidenceStates ? (
+                  <EvidenceStates operations={model} operationsQuery={query} />
+                ) : isAppearance ? (
                   <AppearanceReview operations={model} operationsQuery={query} />
                 ) : isLedger ? (
                   <EventLedger operations={model} operationsQuery={query} onInspectRun={select} />

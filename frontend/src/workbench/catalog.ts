@@ -42,6 +42,17 @@ export const destinations: readonly Definition[] = [
     playback: true,
   },
   {
+    id: "Evidence States",
+    group: "Evidence",
+    icon: "Activity",
+    source: "Current admitted operations prefix",
+    scope:
+      "Resource appearances, visible current evidence companion and supplemental native source help.",
+    gap: "No new receipts or measured progress; implicit tooltip arrow remains unreviewed.",
+    story: "review-evidence-states--ready",
+    playback: true,
+  },
+  {
     id: "Event Ledger",
     group: "Evidence",
     icon: "Activity",

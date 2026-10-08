@@ -74,3 +74,5 @@ Directory Review presents immutable administration/v1 fictional users/roles/perm
 Ops Dashboard unifies existing Activity/Mission Control/Usage under current-prefix native tabs with task summary and a distinct exact metric companion; individual routes remain. [Reference gaps and bounded evidence](docs/ops-dashboard-review.md).
 
 [Appearance Review](docs/appearance-review.md) compares four installed palettes on an isolated readonly specimen with local mode/annotation/density controls and an exact semantic token companion; preferences are never persisted.
+
+The [Evidence States review](docs/evidence-states.md) presents current-prefix resource appearances and nonessential native source help.
