@@ -2082,11 +2082,37 @@
     "name": "Command",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded inline native Workbench switcher: finite registry substring filter, first pointer/untouched Enter, native keyboard/IME/disabled/no-match/group/list scroll, current source/query/consumer/StrictMode retirement and narrow/API-free rendering. Initial cmdk active-descendant relation gap is documented.",
+    "nextAction": "CommandDialog and untested prop/accessibility permutations remain deferred; supporting utilities/types retain existing dispositions.",
+    "evidence": {
+      "pages": [
+        "frontend/src/workbench/Switcher.tsx",
+        "frontend/src/workbench/switcher.css",
+        "docs/keyboard-switcher-review.md"
+      ],
+      "checks": [
+        "frontend/tests/switcher.spec.ts",
+        "frontend/src/workbench/switcher-contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/workbench/Switcher.stories.tsx"
+      ],
+      "storyIds": [
+        "workbench-keyboard-switcher--recorded",
+        "workbench-keyboard-switcher--operations",
+        "workbench-keyboard-switcher--administration",
+        "workbench-keyboard-switcher--no-match",
+        "workbench-keyboard-switcher--withdrawn",
+        "workbench-keyboard-switcher--long-literal",
+        "workbench-keyboard-switcher--unavailable",
+        "workbench-keyboard-switcher--earlier-prefix"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/workbench/Switcher.tsx",
+      "frontend/src/workbench/switcher-contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2108,11 +2134,37 @@
     "name": "CommandInput",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded inline native Workbench switcher: finite registry substring filter, first pointer/untouched Enter, native keyboard/IME/disabled/no-match/group/list scroll, current source/query/consumer/StrictMode retirement and narrow/API-free rendering. Initial cmdk active-descendant relation gap is documented.",
+    "nextAction": "CommandDialog and untested prop/accessibility permutations remain deferred; supporting utilities/types retain existing dispositions.",
+    "evidence": {
+      "pages": [
+        "frontend/src/workbench/Switcher.tsx",
+        "frontend/src/workbench/switcher.css",
+        "docs/keyboard-switcher-review.md"
+      ],
+      "checks": [
+        "frontend/tests/switcher.spec.ts",
+        "frontend/src/workbench/switcher-contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/workbench/Switcher.stories.tsx"
+      ],
+      "storyIds": [
+        "workbench-keyboard-switcher--recorded",
+        "workbench-keyboard-switcher--operations",
+        "workbench-keyboard-switcher--administration",
+        "workbench-keyboard-switcher--no-match",
+        "workbench-keyboard-switcher--withdrawn",
+        "workbench-keyboard-switcher--long-literal",
+        "workbench-keyboard-switcher--unavailable",
+        "workbench-keyboard-switcher--earlier-prefix"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/workbench/Switcher.tsx",
+      "frontend/src/workbench/switcher-contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2121,11 +2173,36 @@
     "name": "CommandList",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded inline native Workbench switcher: finite registry substring filter, first pointer/untouched Enter, native keyboard/IME/disabled/no-match/group/list scroll, current source/query/consumer/StrictMode retirement and narrow/API-free rendering. Initial cmdk active-descendant relation gap is documented.",
+    "nextAction": "CommandDialog and untested prop/accessibility permutations remain deferred; supporting utilities/types retain existing dispositions.",
+    "evidence": {
+      "pages": [
+        "frontend/src/workbench/Switcher.tsx",
+        "frontend/src/workbench/switcher.css",
+        "docs/keyboard-switcher-review.md"
+      ],
+      "checks": [
+        "frontend/tests/switcher.spec.ts",
+        "frontend/src/workbench/switcher-contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/workbench/Switcher.stories.tsx"
+      ],
+      "storyIds": [
+        "workbench-keyboard-switcher--recorded",
+        "workbench-keyboard-switcher--operations",
+        "workbench-keyboard-switcher--administration",
+        "workbench-keyboard-switcher--no-match",
+        "workbench-keyboard-switcher--withdrawn",
+        "workbench-keyboard-switcher--long-literal",
+        "workbench-keyboard-switcher--unavailable",
+        "workbench-keyboard-switcher--earlier-prefix"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/workbench/Switcher.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2134,11 +2211,36 @@
     "name": "CommandEmpty",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded inline native Workbench switcher: finite registry substring filter, first pointer/untouched Enter, native keyboard/IME/disabled/no-match/group/list scroll, current source/query/consumer/StrictMode retirement and narrow/API-free rendering. Initial cmdk active-descendant relation gap is documented.",
+    "nextAction": "CommandDialog and untested prop/accessibility permutations remain deferred; supporting utilities/types retain existing dispositions.",
+    "evidence": {
+      "pages": [
+        "frontend/src/workbench/Switcher.tsx",
+        "frontend/src/workbench/switcher.css",
+        "docs/keyboard-switcher-review.md"
+      ],
+      "checks": [
+        "frontend/tests/switcher.spec.ts",
+        "frontend/src/workbench/switcher-contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/workbench/Switcher.stories.tsx"
+      ],
+      "storyIds": [
+        "workbench-keyboard-switcher--recorded",
+        "workbench-keyboard-switcher--operations",
+        "workbench-keyboard-switcher--administration",
+        "workbench-keyboard-switcher--no-match",
+        "workbench-keyboard-switcher--withdrawn",
+        "workbench-keyboard-switcher--long-literal",
+        "workbench-keyboard-switcher--unavailable",
+        "workbench-keyboard-switcher--earlier-prefix"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/workbench/Switcher.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2147,11 +2249,36 @@
     "name": "CommandGroup",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded inline native Workbench switcher: finite registry substring filter, first pointer/untouched Enter, native keyboard/IME/disabled/no-match/group/list scroll, current source/query/consumer/StrictMode retirement and narrow/API-free rendering. Initial cmdk active-descendant relation gap is documented.",
+    "nextAction": "CommandDialog and untested prop/accessibility permutations remain deferred; supporting utilities/types retain existing dispositions.",
+    "evidence": {
+      "pages": [
+        "frontend/src/workbench/Switcher.tsx",
+        "frontend/src/workbench/switcher.css",
+        "docs/keyboard-switcher-review.md"
+      ],
+      "checks": [
+        "frontend/tests/switcher.spec.ts",
+        "frontend/src/workbench/switcher-contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/workbench/Switcher.stories.tsx"
+      ],
+      "storyIds": [
+        "workbench-keyboard-switcher--recorded",
+        "workbench-keyboard-switcher--operations",
+        "workbench-keyboard-switcher--administration",
+        "workbench-keyboard-switcher--no-match",
+        "workbench-keyboard-switcher--withdrawn",
+        "workbench-keyboard-switcher--long-literal",
+        "workbench-keyboard-switcher--unavailable",
+        "workbench-keyboard-switcher--earlier-prefix"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/workbench/Switcher.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2160,11 +2287,37 @@
     "name": "CommandItem",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded inline native Workbench switcher: finite registry substring filter, first pointer/untouched Enter, native keyboard/IME/disabled/no-match/group/list scroll, current source/query/consumer/StrictMode retirement and narrow/API-free rendering. Initial cmdk active-descendant relation gap is documented.",
+    "nextAction": "CommandDialog and untested prop/accessibility permutations remain deferred; supporting utilities/types retain existing dispositions.",
+    "evidence": {
+      "pages": [
+        "frontend/src/workbench/Switcher.tsx",
+        "frontend/src/workbench/switcher.css",
+        "docs/keyboard-switcher-review.md"
+      ],
+      "checks": [
+        "frontend/tests/switcher.spec.ts",
+        "frontend/src/workbench/switcher-contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/workbench/Switcher.stories.tsx"
+      ],
+      "storyIds": [
+        "workbench-keyboard-switcher--recorded",
+        "workbench-keyboard-switcher--operations",
+        "workbench-keyboard-switcher--administration",
+        "workbench-keyboard-switcher--no-match",
+        "workbench-keyboard-switcher--withdrawn",
+        "workbench-keyboard-switcher--long-literal",
+        "workbench-keyboard-switcher--unavailable",
+        "workbench-keyboard-switcher--earlier-prefix"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/workbench/Switcher.tsx",
+      "frontend/src/workbench/switcher-contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2173,11 +2326,36 @@
     "name": "CommandShortcut",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded inline native Workbench switcher: finite registry substring filter, first pointer/untouched Enter, native keyboard/IME/disabled/no-match/group/list scroll, current source/query/consumer/StrictMode retirement and narrow/API-free rendering. Initial cmdk active-descendant relation gap is documented.",
+    "nextAction": "CommandDialog and untested prop/accessibility permutations remain deferred; supporting utilities/types retain existing dispositions.",
+    "evidence": {
+      "pages": [
+        "frontend/src/workbench/Switcher.tsx",
+        "frontend/src/workbench/switcher.css",
+        "docs/keyboard-switcher-review.md"
+      ],
+      "checks": [
+        "frontend/tests/switcher.spec.ts",
+        "frontend/src/workbench/switcher-contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/workbench/Switcher.stories.tsx"
+      ],
+      "storyIds": [
+        "workbench-keyboard-switcher--recorded",
+        "workbench-keyboard-switcher--operations",
+        "workbench-keyboard-switcher--administration",
+        "workbench-keyboard-switcher--no-match",
+        "workbench-keyboard-switcher--withdrawn",
+        "workbench-keyboard-switcher--long-literal",
+        "workbench-keyboard-switcher--unavailable",
+        "workbench-keyboard-switcher--earlier-prefix"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/workbench/Switcher.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2186,11 +2364,36 @@
     "name": "CommandSeparator",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded inline native Workbench switcher: finite registry substring filter, first pointer/untouched Enter, native keyboard/IME/disabled/no-match/group/list scroll, current source/query/consumer/StrictMode retirement and narrow/API-free rendering. Initial cmdk active-descendant relation gap is documented.",
+    "nextAction": "CommandDialog and untested prop/accessibility permutations remain deferred; supporting utilities/types retain existing dispositions.",
+    "evidence": {
+      "pages": [
+        "frontend/src/workbench/Switcher.tsx",
+        "frontend/src/workbench/switcher.css",
+        "docs/keyboard-switcher-review.md"
+      ],
+      "checks": [
+        "frontend/tests/switcher.spec.ts",
+        "frontend/src/workbench/switcher-contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/workbench/Switcher.stories.tsx"
+      ],
+      "storyIds": [
+        "workbench-keyboard-switcher--recorded",
+        "workbench-keyboard-switcher--operations",
+        "workbench-keyboard-switcher--administration",
+        "workbench-keyboard-switcher--no-match",
+        "workbench-keyboard-switcher--withdrawn",
+        "workbench-keyboard-switcher--long-literal",
+        "workbench-keyboard-switcher--unavailable",
+        "workbench-keyboard-switcher--earlier-prefix"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/workbench/Switcher.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",

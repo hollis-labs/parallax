@@ -8,6 +8,7 @@ import {
   storyDestination,
   viewIcon,
 } from "./catalog"
+import { KeyboardSwitcher } from "./Switcher"
 import "./workbench.css"
 export function ReviewWorkbench({
   cutoff,
@@ -55,7 +56,8 @@ function Instance({
 }) {
   const [query, setQuery] = useState(initialQuery),
     [group, setGroup] = useState(initialGroup),
-    [revision, setRevision] = useState(0)
+    [revision, setRevision] = useState(0),
+    [switcher, setSwitcher] = useState(false)
   const current = useRef({ alive: false, lease: 0 }),
     [, refresh] = useState(0)
   useLayoutEffect(() => {
@@ -90,11 +92,32 @@ function Instance({
   return (
     <section aria-label="Review destination catalogue" className="workbench">
       <p>
-        Explore 26 supplied views. Workbench entry pauses playback; current projected cutoff{" "}
-        <time>{cutoff}</time> is retained.{" "}
+        Explore {destinations.length} supplied views. Workbench entry pauses playback; current
+        projected cutoff <time>{cutoff}</time> is retained.{" "}
         {selected ? `Current selected record: ${selected}.` : "No current record selected."} Reload
         restores the known view/settings at its snapshot; cutoff and selection are not serialized.
       </p>
+      <Button
+        aria-expanded={switcher}
+        onClick={() => {
+          if (admitted()) {
+            current.current.lease++
+            setSwitcher(!switcher)
+          }
+        }}
+      >
+        {switcher ? "Hide keyboard view switcher" : "Show keyboard view switcher"}
+      </Button>
+      {switcher && (
+        <KeyboardSwitcher
+          key={`${group}/${query}/${revision}`}
+          source={`${cutoff}/${lease}`}
+          group={group}
+          onNavigate={(id) => {
+            if (admitted() && destinations.some((d) => d.id === id)) onNavigate(id)
+          }}
+        />
+      )}
       <div className="workbench-controls">
         <SearchInput
           key={revision}
