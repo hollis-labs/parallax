@@ -116,6 +116,11 @@ export function chatPackDetail(model: ChatPackModel, id: string) {
   const history = turns.filter((t) => t.role === "user").map((t) => t.text)
   return {
     session,
+    cards: communications.cards.filter(
+      (card) =>
+        card.chatId === chat?.id &&
+        session.cards.some((annotation) => annotation.cardId === card.id),
+    ),
     chat,
     run,
     turns,

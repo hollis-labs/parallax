@@ -400,6 +400,10 @@ export function App() {
     <p className="p-4 text-sm text-fg-muted">Loading reviewed contribution…</p>
   )
   function navigate(name: string) {
+    if (name === "Chat Example") {
+      location.assign(`/?${new URLSearchParams({ example: "chat", theme, mode })}`)
+      return
+    }
     if (name === "Torque Example") {
       location.assign(
         `/?${new URLSearchParams({ example: "torque", scenario, cutoff: review.cutoff, query, theme, mode, resource: review.override, ...(selectedId ? { selected: selectedId } : {}) })}`,

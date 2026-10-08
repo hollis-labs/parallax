@@ -221,6 +221,7 @@
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/event-ledger/Ledger.tsx",
       "frontend/src/evidence/Inspector.tsx",
+      "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/observation-review/Review.tsx",
       "frontend/src/operations/Views.tsx",
@@ -349,6 +350,7 @@
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/evidence/contracts.ts",
+      "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/observation-review/Review.tsx",
       "frontend/src/settings-review/Review.tsx",
       "frontend/src/widgets/Gallery.tsx"
@@ -520,6 +522,7 @@
     },
     "importEvidence": [
       "frontend/src/App.tsx",
+      "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/layouts/Comparison.stories.tsx",
       "frontend/src/run-explorer/Explorer.stories.tsx"
@@ -549,6 +552,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/layouts/Comparison.tsx",
       "frontend/src/layouts/Navigation.tsx"
@@ -1709,6 +1713,7 @@
       "frontend/src/event-ledger/Ledger.tsx",
       "frontend/src/evidence/Evidence.stories.tsx",
       "frontend/src/evidence/Inspector.tsx",
+      "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/torque/Mission.tsx",
       "frontend/src/examples/torque/ReferenceEvidence.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
@@ -4786,6 +4791,8 @@
     },
     "importEvidence": [
       "frontend/src/App.tsx",
+      "frontend/src/examples/chat/Chat.stories.tsx",
+      "frontend/src/examples/chat/Standalone.tsx",
       "frontend/src/examples/torque/Standalone.tsx",
       "frontend/src/examples/torque/Torque.stories.tsx"
     ]
@@ -6724,7 +6731,8 @@
     "importEvidence": [
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/Messaging.tsx",
-      "frontend/src/conversation-review/Review.tsx"
+      "frontend/src/conversation-review/Review.tsx",
+      "frontend/src/examples/chat/ChatExample.tsx"
     ]
   },
   {
@@ -6802,7 +6810,8 @@
     },
     "importEvidence": [
       "frontend/src/communications/Chat.tsx",
-      "frontend/src/conversation-review/Review.tsx"
+      "frontend/src/conversation-review/Review.tsx",
+      "frontend/src/examples/chat/ChatExample.tsx"
     ]
   },
   {
@@ -6918,7 +6927,8 @@
     },
     "importEvidence": [
       "frontend/src/communications/Chat.tsx",
-      "frontend/src/conversation-review/Review.tsx"
+      "frontend/src/conversation-review/Review.tsx",
+      "frontend/src/examples/chat/ChatExample.tsx"
     ]
   },
   {
@@ -7034,7 +7044,8 @@
     },
     "importEvidence": [
       "frontend/src/communications/Chat.tsx",
-      "frontend/src/conversation-review/Review.tsx"
+      "frontend/src/conversation-review/Review.tsx",
+      "frontend/src/examples/chat/ChatExample.tsx"
     ]
   },
   {
@@ -7603,7 +7614,8 @@
     },
     "importEvidence": [
       "frontend/src/conversation-review/Review.tsx",
-      "frontend/src/conversation-review/model.ts"
+      "frontend/src/conversation-review/model.ts",
+      "frontend/src/examples/chat/ChatExample.tsx"
     ]
   },
   {
@@ -7629,7 +7641,8 @@
     },
     "importEvidence": [
       "frontend/src/communications/Chat.tsx",
-      "frontend/src/conversation-review/model.ts"
+      "frontend/src/conversation-review/model.ts",
+      "frontend/src/examples/chat/ChatExample.tsx"
     ]
   },
   {
@@ -7682,7 +7695,8 @@
     "importEvidence": [
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/conversation-review/contracts.ts",
-      "frontend/src/conversation-review/model.ts"
+      "frontend/src/conversation-review/model.ts",
+      "frontend/src/examples/chat/ChatExample.tsx"
     ]
   },
   {
@@ -7942,7 +7956,8 @@
     },
     "importEvidence": [
       "frontend/src/communications/Chat.tsx",
-      "frontend/src/conversation-review/Review.tsx"
+      "frontend/src/conversation-review/Review.tsx",
+      "frontend/src/examples/chat/ChatExample.tsx"
     ]
   },
   {
@@ -8007,7 +8022,8 @@
     },
     "importEvidence": [
       "frontend/src/communications/Chat.tsx",
-      "frontend/src/conversation-review/Review.tsx"
+      "frontend/src/conversation-review/Review.tsx",
+      "frontend/src/examples/chat/ChatExample.tsx"
     ]
   },
   {

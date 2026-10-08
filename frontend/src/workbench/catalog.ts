@@ -43,6 +43,16 @@ export const destinations: readonly Definition[] = [
     playback: true,
   },
   {
+    id: "Chat Example",
+    group: "App Examples",
+    icon: "MessageSquare",
+    source: "Independent full snapshot chat companion",
+    scope:
+      "Connected sessions, supplied transcript, local draft and contextual evidence inspection.",
+    gap: "Untimed authored history is separate from recorded messages; no message transport or persistence.",
+    story: "app-examples-chat--conversation",
+  },
+  {
     id: "Appearance Review",
     group: "Administration",
     icon: "Layers",

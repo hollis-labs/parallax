@@ -148,10 +148,12 @@
         "frontend/src/communications/Communications.stories.tsx",
         "frontend/src/examples/chat/model.ts",
         "frontend/src/examples/chat/PackReview.tsx",
-        "frontend/src/examples/chat/Pack.stories.tsx"
+        "frontend/src/examples/chat/Pack.stories.tsx",
+        "frontend/src/examples/chat/ChatExample.tsx",
+        "frontend/src/examples/chat/Chat.stories.tsx",
+        "frontend/tests/chat-example.spec.ts"
       ],
       "remaining": [
-        "Complete chat shell/transcript/history presentation (CW-20261008-0052)",
         "Contacts/messages whole screens (CW-20261008-0053)",
         "No timestamped metadata contract for prefix reconstruction"
       ]

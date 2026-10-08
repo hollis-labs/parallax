@@ -84,3 +84,5 @@ The [Torque Activity reference](docs/torque-activity-reference.md) at `?example=
 Standalone Torque Mission/Usage reference: [semantics and transformation matrix](docs/torque-mission-usage-reference.md).
 
 The independently versioned [chat snapshot companion](docs/chat-example-fixtures.md) supplies finite authored history and original message/source references for the next whole-chat screen. Existing Chat and API-free pack stories share its read-only model.
+
+The standalone [Chat Example](docs/chat-example.md) is available at `/?example=chat` and from Workbench. It uses the independent fixed-clock chat companion, a bounded transcript and pinned local-draft composer, with optional evidence/review sheets. Fullscreen portable stories reuse the same composition without APIs; submissions inspect local candidates and never append or send messages.
