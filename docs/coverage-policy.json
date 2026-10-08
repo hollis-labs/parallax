@@ -723,6 +723,47 @@
           "admin-controlled-admin-review--read-only-settings"
         ]
       }
+    },
+    {
+      "package": "@hollis-labs/kit-dashboard",
+      "names": [
+        "OperationsTablePage",
+        "FilterBar",
+        "FilterChipGroup",
+        "FilterCycleToggle",
+        "FilterEntityCombobox"
+      ],
+      "disposition": "reviewed",
+      "reason": "Independent bounded pinned0.4 run explorer: actual page/table scroll ownership, supported native filters, exact admitted receipts, reveal/check/sort reset and keyboard/modal/source boundaries; local inspection only.",
+      "nextAction": "Additional prop permutations, remote loading and entity authoring remain outside this bounded review; supporting types/helpers stay partial.",
+      "evidence": {
+        "pages": [
+          "frontend/src/run-explorer/Explorer.tsx",
+          "frontend/src/run-explorer/model.ts",
+          "docs/run-explorer.md"
+        ],
+        "checks": [
+          "frontend/tests/run-explorer.spec.ts",
+          "frontend/src/run-explorer/contracts.ts"
+        ],
+        "stories": [
+          "frontend/src/run-explorer/Explorer.stories.tsx"
+        ],
+        "storyIds": [
+          "operations-run-explorer--recorded",
+          "operations-run-explorer--incremental-eighty",
+          "operations-run-explorer--before-receipt",
+          "operations-run-explorer--empty",
+          "operations-run-explorer--loading",
+          "operations-run-explorer--resource-error",
+          "operations-run-explorer--denied",
+          "operations-run-explorer--unavailable",
+          "operations-run-explorer--long-labels",
+          "operations-run-explorer--owner-unavailable",
+          "operations-run-explorer--direct-filter-bar",
+          "operations-run-explorer--direct-filter-bar-empty"
+        ]
+      }
     }
   ]
 }

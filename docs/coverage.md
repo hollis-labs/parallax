@@ -13,8 +13,8 @@ The pinned catalogue records all fifteen packages at design-kit commit `dbcf4fa7
 
 | Package | Visual | Types | Nonvisual/value | Reviewed | Partial | Deferred | Unsupported |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| @hollis-labs/design-components | 147 | 20 | 22 | 19 | 2 | 168 | 0 |
-| @hollis-labs/kit-dashboard | 48 | 49 | 30 | 18 | 5 | 101 | 3 |
+| @hollis-labs/design-components | 147 | 20 | 22 | 19 | 3 | 167 | 0 |
+| @hollis-labs/kit-dashboard | 48 | 49 | 30 | 23 | 6 | 95 | 3 |
 | @hollis-labs/kit-chat | 147 | 195 | 16 | 4 | 39 | 315 | 0 |
 | @hollis-labs/design-bindings | 0 | 19 | 9 | 0 | 4 | 24 | 0 |
 | @hollis-labs/kit-admin | 3 | 15 | 3 | 3 | 9 | 9 | 0 |
@@ -57,3 +57,5 @@ The seventeenth bounded batch independently reviews four released kit-observe0.1
 
 
 The eighteenth bounded batch independently reviews released kit-admin0.1.0 AdminNavigation/AdminContent/AdminShell over fixed declarations, read-only snapshots and guarded local/same-origin destinations. Twenty-six portable shared compositions include a real full-height standalone shell with local-only destinations. Total57 reviewed179 partial1067 deferred5 unsupported233 exact imports. Only three named runtime dispositions are promoted; five newly imported helper/type rows remain supporting partial. Existing nested settings/observe/chart claims are unchanged, and valid DiagnosticPanel remains unmounted in this new composition. See [admin review](admin-review.md).
+
+Run Explorer adds exactly five independently reviewed runtime exports from kit-dashboard0.4.0. SortState and TableDensity are supporting partial imports; nested DataTable/SearchInput remain their existing dispositions. The complete inventory is62 reviewed/181 partial/1060 deferred/5 unsupported over1308 declarations, with240 exact imports. Twelve shared portable states complement real sequential native filtering, actual observer/UTC-order evidence and source/modal retirement; [bounded review](run-explorer.md) records limitations.

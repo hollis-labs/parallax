@@ -35,6 +35,7 @@ import {
 import { PlaybackControls } from "./playback/Controls"
 import { usePlayback } from "./playback/usePlayback"
 import { PrimitiveGallery } from "./primitives/Gallery"
+import { RunExplorer } from "./run-explorer/Explorer"
 import { SettingsReview } from "./settings-review/Review"
 import { WidgetGallery } from "./widgets/Gallery"
 
@@ -273,6 +274,7 @@ export function App() {
     "Usage",
     "Examples",
     "Layouts",
+    "Run Explorer",
     "Observability",
     "Widgets",
   ].includes(page)
@@ -392,6 +394,7 @@ export function App() {
     "Evidence",
     "Widgets",
     "Layouts",
+    "Run Explorer",
   ].map((name, i) => ({
     key: name,
     label: name,
@@ -417,6 +420,7 @@ export function App() {
       <Layers key="n" className="size-4" />,
       <Layers key="o" className="size-4" />,
       <Layers key="p" className="size-4" />,
+      <Layers key="run-explorer" className="size-4" />,
     ][i],
     active: page === name,
     onSelect: () => {
@@ -524,7 +528,15 @@ export function App() {
         </div>
       }
     >
-      {page === "Layouts" ? (
+      {page === "Run Explorer" ? (
+        <RunExplorer
+          epoch={review.epoch}
+          model={operationsModel(scenario, "", {
+            cutoff: review.cutoff,
+            override: review.override,
+          })}
+        />
+      ) : page === "Layouts" ? (
         <Comparison
           model={model}
           selection={selectedId}

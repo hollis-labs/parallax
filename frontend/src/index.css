@@ -1166,3 +1166,49 @@ dd {
   max-height: 35dvh;
   overflow: auto;
 }
+
+.run-explorer-page {
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.explorer-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+  font-size: var(--text-xs);
+  color: var(--color-fg-secondary);
+}
+.explorer-footer details {
+  flex-basis: 100%;
+}
+.explorer-footer details span {
+  display: block;
+}
+.explorer-title {
+  display: block;
+  max-width: 24rem;
+  overflow-wrap: anywhere;
+}
+.explorer-direct-results {
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 2);
+  padding: calc(var(--spacing) * 4);
+}
+.run-explorer-page select {
+  color: var(--color-fg);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+}
+
+.run-explorer-page table {
+  min-width: 64rem;
+}
+.explorer-title {
+  white-space: normal;
+}

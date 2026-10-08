@@ -222,6 +222,7 @@
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/observation-review/Review.tsx",
       "frontend/src/operations/Views.tsx",
+      "frontend/src/run-explorer/Explorer.tsx",
       "frontend/src/settings-review/Review.tsx",
       "frontend/src/widgets/Gallery.tsx"
     ]
@@ -517,7 +518,8 @@
     },
     "importEvidence": [
       "frontend/src/App.tsx",
-      "frontend/src/layouts/Comparison.stories.tsx"
+      "frontend/src/layouts/Comparison.stories.tsx",
+      "frontend/src/run-explorer/Explorer.stories.tsx"
     ]
   },
   {
@@ -787,7 +789,8 @@
       "frontend/src/observation-review/Review.tsx",
       "frontend/src/operations/Operations.stories.tsx",
       "frontend/src/operations/Views.tsx",
-      "frontend/src/pages/dashboard.tsx"
+      "frontend/src/pages/dashboard.tsx",
+      "frontend/src/run-explorer/Explorer.tsx"
     ]
   },
   {
@@ -1216,7 +1219,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/layouts/Comparison.tsx"
+      "frontend/src/layouts/Comparison.tsx",
+      "frontend/src/run-explorer/Explorer.tsx"
     ]
   },
   {
@@ -1239,11 +1243,26 @@
     "name": "SortState",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/run-explorer/Explorer.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1603,6 +1622,7 @@
       "frontend/src/operations/Views.tsx",
       "frontend/src/playback/Controls.tsx",
       "frontend/src/primitives/Gallery.tsx",
+      "frontend/src/run-explorer/Explorer.tsx",
       "frontend/src/settings-review/Review.tsx",
       "frontend/src/voice/Lab.tsx",
       "frontend/src/widgets/Gallery.tsx"
@@ -3129,7 +3149,8 @@
       "frontend/src/layouts/Comparison.tsx",
       "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Operations.stories.tsx",
-      "frontend/src/operations/Views.tsx"
+      "frontend/src/operations/Views.tsx",
+      "frontend/src/run-explorer/Explorer.tsx"
     ]
   },
   {
@@ -4166,11 +4187,41 @@
     "name": "OperationsTablePage",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded pinned0.4 run explorer: actual page/table scroll ownership, supported native filters, exact admitted receipts, reveal/check/sort reset and keyboard/modal/source boundaries; local inspection only.",
+    "nextAction": "Additional prop permutations, remote loading and entity authoring remain outside this bounded review; supporting types/helpers stay partial.",
+    "evidence": {
+      "pages": [
+        "frontend/src/run-explorer/Explorer.tsx",
+        "frontend/src/run-explorer/model.ts",
+        "docs/run-explorer.md"
+      ],
+      "checks": [
+        "frontend/tests/run-explorer.spec.ts",
+        "frontend/src/run-explorer/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/run-explorer/Explorer.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-run-explorer--recorded",
+        "operations-run-explorer--incremental-eighty",
+        "operations-run-explorer--before-receipt",
+        "operations-run-explorer--empty",
+        "operations-run-explorer--loading",
+        "operations-run-explorer--resource-error",
+        "operations-run-explorer--denied",
+        "operations-run-explorer--unavailable",
+        "operations-run-explorer--long-labels",
+        "operations-run-explorer--owner-unavailable",
+        "operations-run-explorer--direct-filter-bar",
+        "operations-run-explorer--direct-filter-bar-empty"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/run-explorer/Explorer.tsx",
+      "frontend/src/run-explorer/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -4192,11 +4243,41 @@
     "name": "FilterBar",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded pinned0.4 run explorer: actual page/table scroll ownership, supported native filters, exact admitted receipts, reveal/check/sort reset and keyboard/modal/source boundaries; local inspection only.",
+    "nextAction": "Additional prop permutations, remote loading and entity authoring remain outside this bounded review; supporting types/helpers stay partial.",
+    "evidence": {
+      "pages": [
+        "frontend/src/run-explorer/Explorer.tsx",
+        "frontend/src/run-explorer/model.ts",
+        "docs/run-explorer.md"
+      ],
+      "checks": [
+        "frontend/tests/run-explorer.spec.ts",
+        "frontend/src/run-explorer/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/run-explorer/Explorer.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-run-explorer--recorded",
+        "operations-run-explorer--incremental-eighty",
+        "operations-run-explorer--before-receipt",
+        "operations-run-explorer--empty",
+        "operations-run-explorer--loading",
+        "operations-run-explorer--resource-error",
+        "operations-run-explorer--denied",
+        "operations-run-explorer--unavailable",
+        "operations-run-explorer--long-labels",
+        "operations-run-explorer--owner-unavailable",
+        "operations-run-explorer--direct-filter-bar",
+        "operations-run-explorer--direct-filter-bar-empty"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/run-explorer/Explorer.tsx",
+      "frontend/src/run-explorer/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -4205,11 +4286,41 @@
     "name": "FilterChipGroup",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded pinned0.4 run explorer: actual page/table scroll ownership, supported native filters, exact admitted receipts, reveal/check/sort reset and keyboard/modal/source boundaries; local inspection only.",
+    "nextAction": "Additional prop permutations, remote loading and entity authoring remain outside this bounded review; supporting types/helpers stay partial.",
+    "evidence": {
+      "pages": [
+        "frontend/src/run-explorer/Explorer.tsx",
+        "frontend/src/run-explorer/model.ts",
+        "docs/run-explorer.md"
+      ],
+      "checks": [
+        "frontend/tests/run-explorer.spec.ts",
+        "frontend/src/run-explorer/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/run-explorer/Explorer.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-run-explorer--recorded",
+        "operations-run-explorer--incremental-eighty",
+        "operations-run-explorer--before-receipt",
+        "operations-run-explorer--empty",
+        "operations-run-explorer--loading",
+        "operations-run-explorer--resource-error",
+        "operations-run-explorer--denied",
+        "operations-run-explorer--unavailable",
+        "operations-run-explorer--long-labels",
+        "operations-run-explorer--owner-unavailable",
+        "operations-run-explorer--direct-filter-bar",
+        "operations-run-explorer--direct-filter-bar-empty"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/run-explorer/Explorer.tsx",
+      "frontend/src/run-explorer/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -4218,11 +4329,41 @@
     "name": "FilterCycleToggle",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded pinned0.4 run explorer: actual page/table scroll ownership, supported native filters, exact admitted receipts, reveal/check/sort reset and keyboard/modal/source boundaries; local inspection only.",
+    "nextAction": "Additional prop permutations, remote loading and entity authoring remain outside this bounded review; supporting types/helpers stay partial.",
+    "evidence": {
+      "pages": [
+        "frontend/src/run-explorer/Explorer.tsx",
+        "frontend/src/run-explorer/model.ts",
+        "docs/run-explorer.md"
+      ],
+      "checks": [
+        "frontend/tests/run-explorer.spec.ts",
+        "frontend/src/run-explorer/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/run-explorer/Explorer.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-run-explorer--recorded",
+        "operations-run-explorer--incremental-eighty",
+        "operations-run-explorer--before-receipt",
+        "operations-run-explorer--empty",
+        "operations-run-explorer--loading",
+        "operations-run-explorer--resource-error",
+        "operations-run-explorer--denied",
+        "operations-run-explorer--unavailable",
+        "operations-run-explorer--long-labels",
+        "operations-run-explorer--owner-unavailable",
+        "operations-run-explorer--direct-filter-bar",
+        "operations-run-explorer--direct-filter-bar-empty"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/run-explorer/Explorer.tsx",
+      "frontend/src/run-explorer/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -4231,11 +4372,41 @@
     "name": "FilterEntityCombobox",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded pinned0.4 run explorer: actual page/table scroll ownership, supported native filters, exact admitted receipts, reveal/check/sort reset and keyboard/modal/source boundaries; local inspection only.",
+    "nextAction": "Additional prop permutations, remote loading and entity authoring remain outside this bounded review; supporting types/helpers stay partial.",
+    "evidence": {
+      "pages": [
+        "frontend/src/run-explorer/Explorer.tsx",
+        "frontend/src/run-explorer/model.ts",
+        "docs/run-explorer.md"
+      ],
+      "checks": [
+        "frontend/tests/run-explorer.spec.ts",
+        "frontend/src/run-explorer/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/run-explorer/Explorer.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-run-explorer--recorded",
+        "operations-run-explorer--incremental-eighty",
+        "operations-run-explorer--before-receipt",
+        "operations-run-explorer--empty",
+        "operations-run-explorer--loading",
+        "operations-run-explorer--resource-error",
+        "operations-run-explorer--denied",
+        "operations-run-explorer--unavailable",
+        "operations-run-explorer--long-labels",
+        "operations-run-explorer--owner-unavailable",
+        "operations-run-explorer--direct-filter-bar",
+        "operations-run-explorer--direct-filter-bar-empty"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/run-explorer/Explorer.tsx",
+      "frontend/src/run-explorer/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -4327,11 +4498,26 @@
     "name": "TableDensity",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/operations/Views.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--mission-control"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/run-explorer/Explorer.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
