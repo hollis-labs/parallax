@@ -30,6 +30,12 @@ export function FixtureContracts() {
                 <p>
                   {p.label} · {p.labelKind}
                 </p>
+                {"version" in p && (
+                  <p>
+                    Profile identity: {String(p.version)} /{" "}
+                    {"generator" in p ? String(p.generator) : f.generator}
+                  </p>
+                )}
                 {"from" in p && (
                   <p>
                     Supplied coverage: {String(p.from)} → {"to" in p ? String(p.to) : "Unknown"}

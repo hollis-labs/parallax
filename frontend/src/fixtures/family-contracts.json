@@ -47,6 +47,27 @@
           },
           "from": "2026-09-20T14:30:00Z",
           "to": "2026-10-04T14:30:00Z"
+        },
+        {
+          "label": "torque-16w",
+          "labelKind": "artifact profile",
+          "artifact": "frontend/src/fixtures/operations-torque.json",
+          "counts": {
+            "events": 289,
+            "logs": 192,
+            "messages": 192,
+            "runs": 96,
+            "sessions": 96,
+            "spans": 192,
+            "tasks": 96,
+            "toolCalls": 96,
+            "traces": 96,
+            "usage": 96
+          },
+          "from": "2026-06-28T00:00:00Z",
+          "to": "2026-10-04T14:30:00Z",
+          "version": "operations/v2",
+          "generator": "parallax/v8"
         }
       ],
       "joins": [
@@ -55,15 +76,21 @@
       ],
       "unknownPolicy": "Missing receipt is unknown; recorded zero requires supplied evidence. Future status/output/duration/usage is withheld.",
       "resourcePolicy": "Local source/query/resource projection: successful empty is 0; loading/error/unavailable/permission-denied withhold records.",
-      "validators": ["internal/scenarios/validate.go", "internal/scenarios/scenarios_test.go"],
+      "validators": [
+        "internal/scenarios/validate.go",
+        "internal/scenarios/scenarios_test.go",
+        "internal/scenarios/torque.go",
+        "internal/scenarios/torque_test.go"
+      ],
       "adapters": [
         "frontend/src/operations/model.ts",
         "frontend/src/playback/model.ts",
         "frontend/src/operations/Operations.stories.tsx",
-        "frontend/src/chimera/example.ts"
+        "frontend/src/chimera/example.ts",
+        "frontend/src/examples/torque/reference.ts"
       ],
       "remaining": [
-        "Torque task-update/run-start reference profile and coverage (CW-20261008-0048)",
+        "Torque reference pack is separately versioned; exact presentations remain CW-20261008-0049/0050",
         "Exact reference dashboard presentations (CW-20261008-0049/0050)"
       ]
     },

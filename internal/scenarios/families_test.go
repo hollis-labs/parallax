@@ -36,7 +36,14 @@ func TestFamilyManifestMatchesArtifactsAndPointers(t *testing.T) {
 			if e = json.Unmarshal(raw, &identity); e != nil {
 				t.Fatal(e)
 			}
-			if identity.Version != f.Version || identity.Generator != f.Generator || identity.Clock != f.ReferenceClock || identity.Seed != f.Seed {
+			version, generator := f.Version, f.Generator
+			if p.Version != "" {
+				version = p.Version
+			}
+			if p.Generator != "" {
+				generator = p.Generator
+			}
+			if identity.Version != version || identity.Generator != generator || identity.Clock != f.ReferenceClock || identity.Seed != f.Seed {
 				t.Fatalf("%s metadata disagrees with supplied artifact", f.ID)
 			}
 			var records map[string]json.RawMessage

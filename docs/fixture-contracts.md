@@ -4,7 +4,7 @@ The generated [family manifest](../frontend/src/fixtures/family-contracts.json) 
 
 | Family | Dataset / generator | Supplied profiles | Evidence boundary |
 |---|---|---|---|
-| Operations | operations/v2 / parallax/v2 | Persisted records-8 and records-80 | Exact recorded event prefix, or explicitly labelled full snapshot |
+| Operations | operations/v2 / parallax/v2 | Persisted records-8 and records-80; separately selected torque-16w/parallax-v8 override | Exact recorded event prefix, or explicitly labelled full snapshot |
 | Communications | communications/v1 / parallax/v3 | Declared contacts/chat review label; no persisted profile history | Independent full snapshot; metadata is unavailable before its own clock in prefix-aware evidence views |
 | Administration | administration/v1 / parallax/v4 | Declared fictional directory/settings review label | Independent full snapshot; roles and permissions are metadata, not authorization |
 | Observations | observations/v1 / parallax/v5 | Declared five-resource review label | Bounded resource receipts at observedAt; retrospective samples at their own exact UTC timestamps |
@@ -25,7 +25,7 @@ Torque About exposes the same six-family matrix with native relationship/coverag
 
 ## Concrete remaining fixture work (0119)
 
-- CW-20261008-0048: a versioned Torque reference profile with effective task updates, recorded run-start buffer, useful historical spread and explicit observation coverage. Current records-8/80 remain useful review packs.
+- The separately versioned [Torque reference pack](torque-reference-profile.md) supplies effective task updates, a recorded start buffer and explicit coverage. Exact Activity/Mission/Usage rendering remains CW-20261008-0049/0050; current records-8/80 remain unchanged review packs.
 - CW-20261008-0051: a coherent whole-chat session/history pack, including timestamped communication metadata if prefix reconstruction is needed. Current manual stream chunks are authored previews, not committed history.
 - CW-20261008-0053/0054/0055: complete messages, administration and developer workspace compositions using declared family boundaries; app screens do not create saved preferences, provider connections, authentication decisions, execution or repository history.
 - No generic workflow executor, developer backend, voice capture, real speech/video, provider attribution or live observation collector is supplied. Current readonly graphs/files/media and resource appearances explicitly cover presentation only.

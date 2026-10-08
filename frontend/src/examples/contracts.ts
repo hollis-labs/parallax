@@ -65,8 +65,9 @@ export function exampleContext(
   const compatible =
     !!family &&
     !!profile &&
-    family.version === artifact.version &&
-    family.generator === artifact.generator &&
+    (profile && "version" in profile ? profile.version : family.version) === artifact.version &&
+    (profile && "generator" in profile ? profile.generator : family.generator) ===
+      artifact.generator &&
     family.seed === artifact.seed &&
     family.referenceClock === artifact.clock
   const projectionSupported = family?.projections.includes(definition.projection) ?? false

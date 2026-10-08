@@ -1,16 +1,19 @@
 import { applyTheme } from "@hollis-labs/kit-dashboard"
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import { useEffect, useState } from "react"
+import type { TorqueProfile } from "./reference"
 import { admitTorqueState, initialTorqueState, type TorqueRoute } from "./routes"
 import { TorqueExample } from "./TorqueExample"
 
 function Portable({
   screen = "dashboard",
+  profile = "legacy",
   scenario = "populated",
   cutoff,
   selected,
 }: {
   screen?: TorqueRoute
+  profile?: TorqueProfile
   scenario?: string
   cutoff?: string
   selected?: string
@@ -19,6 +22,7 @@ function Portable({
     initialTorqueState(
       new URLSearchParams({
         screen,
+        profile,
         scenario,
         ...(cutoff ? { cutoff } : {}),
         ...(selected ? { selected } : {}),
@@ -63,3 +67,13 @@ export const Loading: Story = { args: { scenario: "loading" } }
 export const Denied: Story = { args: { scenario: "permission-denied" } }
 export const Prefix: Story = { args: { cutoff: "2026-10-04T14:15:15Z", selected: "TASK-003" } }
 export const LongTasks: Story = { args: { screen: "tasks", scenario: "long-labels" } }
+export const ReferenceProfile: Story = { args: { screen: "about", profile: "torque-16w" } }
+export const ReferencePrefix: Story = {
+  args: { screen: "about", profile: "torque-16w", cutoff: "2026-10-04T13:00:00Z" },
+}
+export const ReferenceEmpty: Story = {
+  args: { screen: "about", profile: "torque-16w", scenario: "empty" },
+}
+export const ReferenceSparse: Story = {
+  args: { screen: "about", profile: "torque-16w", scenario: "sparse" },
+}

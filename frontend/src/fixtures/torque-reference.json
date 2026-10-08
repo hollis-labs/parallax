@@ -1,0 +1,1451 @@
+{
+  "version": "torque-reference/v1",
+  "generator": "parallax/v8",
+  "profile": "torque-16w",
+  "seed": 4421,
+  "clock": "2026-10-04T14:30:00Z",
+  "operationsVersion": "operations/v2",
+  "operationsGenerator": "parallax/v8",
+  "calendar": {
+    "from": "2026-06-28T00:00:00Z",
+    "to": "2026-10-04T14:30:00Z"
+  },
+  "pulse": {
+    "from": "2026-10-03T14:30:00Z",
+    "to": "2026-10-04T14:30:00Z"
+  },
+  "charts": {
+    "from": "2026-09-21T00:00:00Z",
+    "to": "2026-10-04T14:30:00Z"
+  },
+  "startBufferLimit": 500,
+  "recentLimit": 12,
+  "taskUpdates": [
+    {
+      "eventId": "TASK-ADMITTED-RUN-068",
+      "taskId": "TASK-068",
+      "runId": "RUN-068",
+      "time": "2026-07-08T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-068",
+      "taskId": "TASK-068",
+      "runId": "RUN-068",
+      "time": "2026-07-08T12:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-038",
+      "taskId": "TASK-038",
+      "runId": "RUN-038",
+      "time": "2026-07-08T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-038",
+      "taskId": "TASK-038",
+      "runId": "RUN-038",
+      "time": "2026-07-08T14:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-067",
+      "taskId": "TASK-067",
+      "runId": "RUN-067",
+      "time": "2026-07-11T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-067",
+      "taskId": "TASK-067",
+      "runId": "RUN-067",
+      "time": "2026-07-11T12:31:35Z",
+      "status": "blocked"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-037",
+      "taskId": "TASK-037",
+      "runId": "RUN-037",
+      "time": "2026-07-11T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-037",
+      "taskId": "TASK-037",
+      "runId": "RUN-037",
+      "time": "2026-07-11T14:31:35Z",
+      "status": "queued"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-096",
+      "taskId": "TASK-096",
+      "runId": "RUN-096",
+      "time": "2026-07-14T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-096",
+      "taskId": "TASK-096",
+      "runId": "RUN-096",
+      "time": "2026-07-14T10:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-066",
+      "taskId": "TASK-066",
+      "runId": "RUN-066",
+      "time": "2026-07-14T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-066",
+      "taskId": "TASK-066",
+      "runId": "RUN-066",
+      "time": "2026-07-14T12:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-036",
+      "taskId": "TASK-036",
+      "runId": "RUN-036",
+      "time": "2026-07-14T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-036",
+      "taskId": "TASK-036",
+      "runId": "RUN-036",
+      "time": "2026-07-14T14:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-095",
+      "taskId": "TASK-095",
+      "runId": "RUN-095",
+      "time": "2026-07-17T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-095",
+      "taskId": "TASK-095",
+      "runId": "RUN-095",
+      "time": "2026-07-17T10:31:35Z",
+      "status": "failed"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-065",
+      "taskId": "TASK-065",
+      "runId": "RUN-065",
+      "time": "2026-07-17T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-065",
+      "taskId": "TASK-065",
+      "runId": "RUN-065",
+      "time": "2026-07-17T12:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-035",
+      "taskId": "TASK-035",
+      "runId": "RUN-035",
+      "time": "2026-07-17T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-035",
+      "taskId": "TASK-035",
+      "runId": "RUN-035",
+      "time": "2026-07-17T14:31:35Z",
+      "status": "blocked"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-094",
+      "taskId": "TASK-094",
+      "runId": "RUN-094",
+      "time": "2026-07-20T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-094",
+      "taskId": "TASK-094",
+      "runId": "RUN-094",
+      "time": "2026-07-20T10:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-064",
+      "taskId": "TASK-064",
+      "runId": "RUN-064",
+      "time": "2026-07-20T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-064",
+      "taskId": "TASK-064",
+      "runId": "RUN-064",
+      "time": "2026-07-20T12:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-034",
+      "taskId": "TASK-034",
+      "runId": "RUN-034",
+      "time": "2026-07-20T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-034",
+      "taskId": "TASK-034",
+      "runId": "RUN-034",
+      "time": "2026-07-20T14:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-093",
+      "taskId": "TASK-093",
+      "runId": "RUN-093",
+      "time": "2026-07-23T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-093",
+      "taskId": "TASK-093",
+      "runId": "RUN-093",
+      "time": "2026-07-23T10:31:35Z",
+      "status": "queued"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-063",
+      "taskId": "TASK-063",
+      "runId": "RUN-063",
+      "time": "2026-07-23T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-063",
+      "taskId": "TASK-063",
+      "runId": "RUN-063",
+      "time": "2026-07-23T12:31:35Z",
+      "status": "failed"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-033",
+      "taskId": "TASK-033",
+      "runId": "RUN-033",
+      "time": "2026-07-23T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-033",
+      "taskId": "TASK-033",
+      "runId": "RUN-033",
+      "time": "2026-07-23T14:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-092",
+      "taskId": "TASK-092",
+      "runId": "RUN-092",
+      "time": "2026-07-26T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-092",
+      "taskId": "TASK-092",
+      "runId": "RUN-092",
+      "time": "2026-07-26T10:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-062",
+      "taskId": "TASK-062",
+      "runId": "RUN-062",
+      "time": "2026-07-26T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-062",
+      "taskId": "TASK-062",
+      "runId": "RUN-062",
+      "time": "2026-07-26T12:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-032",
+      "taskId": "TASK-032",
+      "runId": "RUN-032",
+      "time": "2026-07-26T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-032",
+      "taskId": "TASK-032",
+      "runId": "RUN-032",
+      "time": "2026-07-26T14:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-091",
+      "taskId": "TASK-091",
+      "runId": "RUN-091",
+      "time": "2026-07-29T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-091",
+      "taskId": "TASK-091",
+      "runId": "RUN-091",
+      "time": "2026-07-29T10:31:35Z",
+      "status": "blocked"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-061",
+      "taskId": "TASK-061",
+      "runId": "RUN-061",
+      "time": "2026-07-29T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-061",
+      "taskId": "TASK-061",
+      "runId": "RUN-061",
+      "time": "2026-07-29T12:31:35Z",
+      "status": "queued"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-031",
+      "taskId": "TASK-031",
+      "runId": "RUN-031",
+      "time": "2026-07-29T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-031",
+      "taskId": "TASK-031",
+      "runId": "RUN-031",
+      "time": "2026-07-29T14:31:35Z",
+      "status": "failed"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-090",
+      "taskId": "TASK-090",
+      "runId": "RUN-090",
+      "time": "2026-08-01T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-090",
+      "taskId": "TASK-090",
+      "runId": "RUN-090",
+      "time": "2026-08-01T10:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-060",
+      "taskId": "TASK-060",
+      "runId": "RUN-060",
+      "time": "2026-08-01T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-060",
+      "taskId": "TASK-060",
+      "runId": "RUN-060",
+      "time": "2026-08-01T12:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-030",
+      "taskId": "TASK-030",
+      "runId": "RUN-030",
+      "time": "2026-08-01T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-030",
+      "taskId": "TASK-030",
+      "runId": "RUN-030",
+      "time": "2026-08-01T14:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-089",
+      "taskId": "TASK-089",
+      "runId": "RUN-089",
+      "time": "2026-08-04T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-089",
+      "taskId": "TASK-089",
+      "runId": "RUN-089",
+      "time": "2026-08-04T10:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-059",
+      "taskId": "TASK-059",
+      "runId": "RUN-059",
+      "time": "2026-08-04T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-059",
+      "taskId": "TASK-059",
+      "runId": "RUN-059",
+      "time": "2026-08-04T12:31:35Z",
+      "status": "blocked"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-029",
+      "taskId": "TASK-029",
+      "runId": "RUN-029",
+      "time": "2026-08-04T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-029",
+      "taskId": "TASK-029",
+      "runId": "RUN-029",
+      "time": "2026-08-04T14:31:35Z",
+      "status": "queued"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-088",
+      "taskId": "TASK-088",
+      "runId": "RUN-088",
+      "time": "2026-08-07T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-088",
+      "taskId": "TASK-088",
+      "runId": "RUN-088",
+      "time": "2026-08-07T10:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-058",
+      "taskId": "TASK-058",
+      "runId": "RUN-058",
+      "time": "2026-08-07T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-058",
+      "taskId": "TASK-058",
+      "runId": "RUN-058",
+      "time": "2026-08-07T12:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-028",
+      "taskId": "TASK-028",
+      "runId": "RUN-028",
+      "time": "2026-08-07T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-028",
+      "taskId": "TASK-028",
+      "runId": "RUN-028",
+      "time": "2026-08-07T14:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-087",
+      "taskId": "TASK-087",
+      "runId": "RUN-087",
+      "time": "2026-08-10T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-087",
+      "taskId": "TASK-087",
+      "runId": "RUN-087",
+      "time": "2026-08-10T10:31:35Z",
+      "status": "failed"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-057",
+      "taskId": "TASK-057",
+      "runId": "RUN-057",
+      "time": "2026-08-10T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-057",
+      "taskId": "TASK-057",
+      "runId": "RUN-057",
+      "time": "2026-08-10T12:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-027",
+      "taskId": "TASK-027",
+      "runId": "RUN-027",
+      "time": "2026-08-10T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-027",
+      "taskId": "TASK-027",
+      "runId": "RUN-027",
+      "time": "2026-08-10T14:31:35Z",
+      "status": "blocked"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-086",
+      "taskId": "TASK-086",
+      "runId": "RUN-086",
+      "time": "2026-08-13T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-086",
+      "taskId": "TASK-086",
+      "runId": "RUN-086",
+      "time": "2026-08-13T10:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-056",
+      "taskId": "TASK-056",
+      "runId": "RUN-056",
+      "time": "2026-08-13T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-056",
+      "taskId": "TASK-056",
+      "runId": "RUN-056",
+      "time": "2026-08-13T12:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-026",
+      "taskId": "TASK-026",
+      "runId": "RUN-026",
+      "time": "2026-08-13T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-026",
+      "taskId": "TASK-026",
+      "runId": "RUN-026",
+      "time": "2026-08-13T14:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-085",
+      "taskId": "TASK-085",
+      "runId": "RUN-085",
+      "time": "2026-08-16T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-085",
+      "taskId": "TASK-085",
+      "runId": "RUN-085",
+      "time": "2026-08-16T10:31:35Z",
+      "status": "queued"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-055",
+      "taskId": "TASK-055",
+      "runId": "RUN-055",
+      "time": "2026-08-16T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-055",
+      "taskId": "TASK-055",
+      "runId": "RUN-055",
+      "time": "2026-08-16T12:31:35Z",
+      "status": "failed"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-025",
+      "taskId": "TASK-025",
+      "runId": "RUN-025",
+      "time": "2026-08-16T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-025",
+      "taskId": "TASK-025",
+      "runId": "RUN-025",
+      "time": "2026-08-16T14:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-084",
+      "taskId": "TASK-084",
+      "runId": "RUN-084",
+      "time": "2026-08-19T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-084",
+      "taskId": "TASK-084",
+      "runId": "RUN-084",
+      "time": "2026-08-19T10:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-054",
+      "taskId": "TASK-054",
+      "runId": "RUN-054",
+      "time": "2026-08-19T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-054",
+      "taskId": "TASK-054",
+      "runId": "RUN-054",
+      "time": "2026-08-19T12:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-024",
+      "taskId": "TASK-024",
+      "runId": "RUN-024",
+      "time": "2026-08-19T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-024",
+      "taskId": "TASK-024",
+      "runId": "RUN-024",
+      "time": "2026-08-19T14:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-083",
+      "taskId": "TASK-083",
+      "runId": "RUN-083",
+      "time": "2026-08-22T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-083",
+      "taskId": "TASK-083",
+      "runId": "RUN-083",
+      "time": "2026-08-22T10:31:35Z",
+      "status": "blocked"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-053",
+      "taskId": "TASK-053",
+      "runId": "RUN-053",
+      "time": "2026-08-22T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-053",
+      "taskId": "TASK-053",
+      "runId": "RUN-053",
+      "time": "2026-08-22T12:31:35Z",
+      "status": "queued"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-023",
+      "taskId": "TASK-023",
+      "runId": "RUN-023",
+      "time": "2026-08-22T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-023",
+      "taskId": "TASK-023",
+      "runId": "RUN-023",
+      "time": "2026-08-22T14:31:35Z",
+      "status": "failed"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-082",
+      "taskId": "TASK-082",
+      "runId": "RUN-082",
+      "time": "2026-08-25T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-082",
+      "taskId": "TASK-082",
+      "runId": "RUN-082",
+      "time": "2026-08-25T10:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-052",
+      "taskId": "TASK-052",
+      "runId": "RUN-052",
+      "time": "2026-08-25T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-052",
+      "taskId": "TASK-052",
+      "runId": "RUN-052",
+      "time": "2026-08-25T12:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-022",
+      "taskId": "TASK-022",
+      "runId": "RUN-022",
+      "time": "2026-08-25T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-022",
+      "taskId": "TASK-022",
+      "runId": "RUN-022",
+      "time": "2026-08-25T14:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-081",
+      "taskId": "TASK-081",
+      "runId": "RUN-081",
+      "time": "2026-08-28T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-081",
+      "taskId": "TASK-081",
+      "runId": "RUN-081",
+      "time": "2026-08-28T10:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-051",
+      "taskId": "TASK-051",
+      "runId": "RUN-051",
+      "time": "2026-08-28T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-051",
+      "taskId": "TASK-051",
+      "runId": "RUN-051",
+      "time": "2026-08-28T12:31:35Z",
+      "status": "blocked"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-021",
+      "taskId": "TASK-021",
+      "runId": "RUN-021",
+      "time": "2026-08-28T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-021",
+      "taskId": "TASK-021",
+      "runId": "RUN-021",
+      "time": "2026-08-28T14:31:35Z",
+      "status": "queued"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-080",
+      "taskId": "TASK-080",
+      "runId": "RUN-080",
+      "time": "2026-08-31T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-080",
+      "taskId": "TASK-080",
+      "runId": "RUN-080",
+      "time": "2026-08-31T10:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-050",
+      "taskId": "TASK-050",
+      "runId": "RUN-050",
+      "time": "2026-08-31T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-050",
+      "taskId": "TASK-050",
+      "runId": "RUN-050",
+      "time": "2026-08-31T12:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-020",
+      "taskId": "TASK-020",
+      "runId": "RUN-020",
+      "time": "2026-08-31T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-020",
+      "taskId": "TASK-020",
+      "runId": "RUN-020",
+      "time": "2026-08-31T14:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-079",
+      "taskId": "TASK-079",
+      "runId": "RUN-079",
+      "time": "2026-09-03T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-079",
+      "taskId": "TASK-079",
+      "runId": "RUN-079",
+      "time": "2026-09-03T10:31:35Z",
+      "status": "failed"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-049",
+      "taskId": "TASK-049",
+      "runId": "RUN-049",
+      "time": "2026-09-03T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-049",
+      "taskId": "TASK-049",
+      "runId": "RUN-049",
+      "time": "2026-09-03T12:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-019",
+      "taskId": "TASK-019",
+      "runId": "RUN-019",
+      "time": "2026-09-03T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-019",
+      "taskId": "TASK-019",
+      "runId": "RUN-019",
+      "time": "2026-09-03T14:31:35Z",
+      "status": "blocked"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-078",
+      "taskId": "TASK-078",
+      "runId": "RUN-078",
+      "time": "2026-09-06T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-078",
+      "taskId": "TASK-078",
+      "runId": "RUN-078",
+      "time": "2026-09-06T10:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-048",
+      "taskId": "TASK-048",
+      "runId": "RUN-048",
+      "time": "2026-09-06T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-048",
+      "taskId": "TASK-048",
+      "runId": "RUN-048",
+      "time": "2026-09-06T12:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-018",
+      "taskId": "TASK-018",
+      "runId": "RUN-018",
+      "time": "2026-09-06T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-018",
+      "taskId": "TASK-018",
+      "runId": "RUN-018",
+      "time": "2026-09-06T14:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-077",
+      "taskId": "TASK-077",
+      "runId": "RUN-077",
+      "time": "2026-09-09T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-077",
+      "taskId": "TASK-077",
+      "runId": "RUN-077",
+      "time": "2026-09-09T10:31:35Z",
+      "status": "queued"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-047",
+      "taskId": "TASK-047",
+      "runId": "RUN-047",
+      "time": "2026-09-09T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-047",
+      "taskId": "TASK-047",
+      "runId": "RUN-047",
+      "time": "2026-09-09T12:31:35Z",
+      "status": "failed"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-017",
+      "taskId": "TASK-017",
+      "runId": "RUN-017",
+      "time": "2026-09-09T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-017",
+      "taskId": "TASK-017",
+      "runId": "RUN-017",
+      "time": "2026-09-09T14:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-076",
+      "taskId": "TASK-076",
+      "runId": "RUN-076",
+      "time": "2026-09-12T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-076",
+      "taskId": "TASK-076",
+      "runId": "RUN-076",
+      "time": "2026-09-12T10:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-046",
+      "taskId": "TASK-046",
+      "runId": "RUN-046",
+      "time": "2026-09-12T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-046",
+      "taskId": "TASK-046",
+      "runId": "RUN-046",
+      "time": "2026-09-12T12:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-016",
+      "taskId": "TASK-016",
+      "runId": "RUN-016",
+      "time": "2026-09-12T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-016",
+      "taskId": "TASK-016",
+      "runId": "RUN-016",
+      "time": "2026-09-12T14:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-075",
+      "taskId": "TASK-075",
+      "runId": "RUN-075",
+      "time": "2026-09-15T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-075",
+      "taskId": "TASK-075",
+      "runId": "RUN-075",
+      "time": "2026-09-15T10:31:35Z",
+      "status": "blocked"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-045",
+      "taskId": "TASK-045",
+      "runId": "RUN-045",
+      "time": "2026-09-15T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-045",
+      "taskId": "TASK-045",
+      "runId": "RUN-045",
+      "time": "2026-09-15T12:31:35Z",
+      "status": "queued"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-015",
+      "taskId": "TASK-015",
+      "runId": "RUN-015",
+      "time": "2026-09-15T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-015",
+      "taskId": "TASK-015",
+      "runId": "RUN-015",
+      "time": "2026-09-15T14:31:35Z",
+      "status": "failed"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-074",
+      "taskId": "TASK-074",
+      "runId": "RUN-074",
+      "time": "2026-09-18T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-074",
+      "taskId": "TASK-074",
+      "runId": "RUN-074",
+      "time": "2026-09-18T10:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-044",
+      "taskId": "TASK-044",
+      "runId": "RUN-044",
+      "time": "2026-09-18T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-044",
+      "taskId": "TASK-044",
+      "runId": "RUN-044",
+      "time": "2026-09-18T12:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-014",
+      "taskId": "TASK-014",
+      "runId": "RUN-014",
+      "time": "2026-09-18T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-014",
+      "taskId": "TASK-014",
+      "runId": "RUN-014",
+      "time": "2026-09-18T14:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-073",
+      "taskId": "TASK-073",
+      "runId": "RUN-073",
+      "time": "2026-09-21T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-073",
+      "taskId": "TASK-073",
+      "runId": "RUN-073",
+      "time": "2026-09-21T10:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-043",
+      "taskId": "TASK-043",
+      "runId": "RUN-043",
+      "time": "2026-09-21T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-043",
+      "taskId": "TASK-043",
+      "runId": "RUN-043",
+      "time": "2026-09-21T12:31:35Z",
+      "status": "blocked"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-013",
+      "taskId": "TASK-013",
+      "runId": "RUN-013",
+      "time": "2026-09-21T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-013",
+      "taskId": "TASK-013",
+      "runId": "RUN-013",
+      "time": "2026-09-21T14:31:35Z",
+      "status": "queued"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-072",
+      "taskId": "TASK-072",
+      "runId": "RUN-072",
+      "time": "2026-09-24T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-072",
+      "taskId": "TASK-072",
+      "runId": "RUN-072",
+      "time": "2026-09-24T10:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-042",
+      "taskId": "TASK-042",
+      "runId": "RUN-042",
+      "time": "2026-09-24T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-042",
+      "taskId": "TASK-042",
+      "runId": "RUN-042",
+      "time": "2026-09-24T12:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-012",
+      "taskId": "TASK-012",
+      "runId": "RUN-012",
+      "time": "2026-09-24T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-012",
+      "taskId": "TASK-012",
+      "runId": "RUN-012",
+      "time": "2026-09-24T14:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-071",
+      "taskId": "TASK-071",
+      "runId": "RUN-071",
+      "time": "2026-09-27T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-071",
+      "taskId": "TASK-071",
+      "runId": "RUN-071",
+      "time": "2026-09-27T10:31:35Z",
+      "status": "failed"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-041",
+      "taskId": "TASK-041",
+      "runId": "RUN-041",
+      "time": "2026-09-27T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-041",
+      "taskId": "TASK-041",
+      "runId": "RUN-041",
+      "time": "2026-09-27T12:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-011",
+      "taskId": "TASK-011",
+      "runId": "RUN-011",
+      "time": "2026-09-27T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-011",
+      "taskId": "TASK-011",
+      "runId": "RUN-011",
+      "time": "2026-09-27T14:31:35Z",
+      "status": "blocked"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-070",
+      "taskId": "TASK-070",
+      "runId": "RUN-070",
+      "time": "2026-09-30T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-070",
+      "taskId": "TASK-070",
+      "runId": "RUN-070",
+      "time": "2026-09-30T10:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-040",
+      "taskId": "TASK-040",
+      "runId": "RUN-040",
+      "time": "2026-09-30T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-040",
+      "taskId": "TASK-040",
+      "runId": "RUN-040",
+      "time": "2026-09-30T12:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-010",
+      "taskId": "TASK-010",
+      "runId": "RUN-010",
+      "time": "2026-09-30T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-010",
+      "taskId": "TASK-010",
+      "runId": "RUN-010",
+      "time": "2026-09-30T14:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-069",
+      "taskId": "TASK-069",
+      "runId": "RUN-069",
+      "time": "2026-10-03T10:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-069",
+      "taskId": "TASK-069",
+      "runId": "RUN-069",
+      "time": "2026-10-03T10:31:35Z",
+      "status": "queued"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-039",
+      "taskId": "TASK-039",
+      "runId": "RUN-039",
+      "time": "2026-10-03T12:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-039",
+      "taskId": "TASK-039",
+      "runId": "RUN-039",
+      "time": "2026-10-03T12:31:35Z",
+      "status": "failed"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-009",
+      "taskId": "TASK-009",
+      "runId": "RUN-009",
+      "time": "2026-10-03T14:30:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-009",
+      "taskId": "TASK-009",
+      "runId": "RUN-009",
+      "time": "2026-10-03T14:31:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-REVIEW-009",
+      "taskId": "TASK-009",
+      "runId": "RUN-009",
+      "time": "2026-10-04T13:30:00Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-001",
+      "taskId": "TASK-001",
+      "runId": "RUN-001",
+      "time": "2026-10-04T14:10:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-001",
+      "taskId": "TASK-001",
+      "runId": "RUN-001",
+      "time": "2026-10-04T14:11:35Z",
+      "status": "running"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-002",
+      "taskId": "TASK-002",
+      "runId": "RUN-002",
+      "time": "2026-10-04T14:12:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-002",
+      "taskId": "TASK-002",
+      "runId": "RUN-002",
+      "time": "2026-10-04T14:13:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-003",
+      "taskId": "TASK-003",
+      "runId": "RUN-003",
+      "time": "2026-10-04T14:14:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-003",
+      "taskId": "TASK-003",
+      "runId": "RUN-003",
+      "time": "2026-10-04T14:15:35Z",
+      "status": "blocked"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-004",
+      "taskId": "TASK-004",
+      "runId": "RUN-004",
+      "time": "2026-10-04T14:16:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-004",
+      "taskId": "TASK-004",
+      "runId": "RUN-004",
+      "time": "2026-10-04T14:17:35Z",
+      "status": "done"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-005",
+      "taskId": "TASK-005",
+      "runId": "RUN-005",
+      "time": "2026-10-04T14:18:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-005",
+      "taskId": "TASK-005",
+      "runId": "RUN-005",
+      "time": "2026-10-04T14:19:35Z",
+      "status": "queued"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-006",
+      "taskId": "TASK-006",
+      "runId": "RUN-006",
+      "time": "2026-10-04T14:20:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-006",
+      "taskId": "TASK-006",
+      "runId": "RUN-006",
+      "time": "2026-10-04T14:21:35Z",
+      "status": "running"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-007",
+      "taskId": "TASK-007",
+      "runId": "RUN-007",
+      "time": "2026-10-04T14:22:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-007",
+      "taskId": "TASK-007",
+      "runId": "RUN-007",
+      "time": "2026-10-04T14:23:35Z",
+      "status": "failed"
+    },
+    {
+      "eventId": "TASK-ADMITTED-RUN-008",
+      "taskId": "TASK-008",
+      "runId": "RUN-008",
+      "time": "2026-10-04T14:24:05Z",
+      "status": "running"
+    },
+    {
+      "eventId": "EVENT-OBSERVED-008",
+      "taskId": "TASK-008",
+      "runId": "RUN-008",
+      "time": "2026-10-04T14:25:35Z",
+      "status": "done"
+    }
+  ],
+  "recordedStarts": [
+    {
+      "id": "EVENT-START-009",
+      "taskId": "TASK-009",
+      "runId": "RUN-009",
+      "type": "run.started",
+      "time": "2026-10-03T14:30:00Z",
+      "description": "Fixture run admitted"
+    },
+    {
+      "id": "EVENT-START-001",
+      "taskId": "TASK-001",
+      "runId": "RUN-001",
+      "type": "run.started",
+      "time": "2026-10-04T14:10:00Z",
+      "description": "Fixture run admitted"
+    },
+    {
+      "id": "EVENT-START-002",
+      "taskId": "TASK-002",
+      "runId": "RUN-002",
+      "type": "run.started",
+      "time": "2026-10-04T14:12:00Z",
+      "description": "Fixture run admitted"
+    },
+    {
+      "id": "EVENT-START-003",
+      "taskId": "TASK-003",
+      "runId": "RUN-003",
+      "type": "run.started",
+      "time": "2026-10-04T14:14:00Z",
+      "description": "Fixture run admitted"
+    },
+    {
+      "id": "EVENT-START-004",
+      "taskId": "TASK-004",
+      "runId": "RUN-004",
+      "type": "run.started",
+      "time": "2026-10-04T14:16:00Z",
+      "description": "Fixture run admitted"
+    },
+    {
+      "id": "EVENT-START-005",
+      "taskId": "TASK-005",
+      "runId": "RUN-005",
+      "type": "run.started",
+      "time": "2026-10-04T14:18:00Z",
+      "description": "Fixture run admitted"
+    },
+    {
+      "id": "EVENT-START-006",
+      "taskId": "TASK-006",
+      "runId": "RUN-006",
+      "type": "run.started",
+      "time": "2026-10-04T14:20:00Z",
+      "description": "Fixture run admitted"
+    },
+    {
+      "id": "EVENT-START-007",
+      "taskId": "TASK-007",
+      "runId": "RUN-007",
+      "type": "run.started",
+      "time": "2026-10-04T14:22:00Z",
+      "description": "Fixture run admitted"
+    },
+    {
+      "id": "EVENT-START-008",
+      "taskId": "TASK-008",
+      "runId": "RUN-008",
+      "type": "run.started",
+      "time": "2026-10-04T14:24:00Z",
+      "description": "Fixture run admitted"
+    }
+  ],
+  "attribution": "Unavailable: no provider/model attribution was recorded"
+}

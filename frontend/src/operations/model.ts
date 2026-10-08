@@ -1,4 +1,9 @@
-import { projectDataset, type ResourceOverride, sourceDataset } from "../playback/model"
+import {
+  type FixtureDataset,
+  projectDataset,
+  type ResourceOverride,
+  sourceDataset,
+} from "../playback/model"
 export type Dataset = ReturnType<typeof projectDataset>
 export type Task = Dataset["tasks"][number]
 export type TaskView = Omit<Task, "owner"> & { owner: string | null }
@@ -31,10 +36,10 @@ export function normalizeScenario(value: string): ScenarioName {
 export function operationsModel(
   name: string,
   query = "",
-  review: { cutoff?: string; override?: ResourceOverride } = {},
+  review: { cutoff?: string; override?: ResourceOverride; source?: FixtureDataset } = {},
 ) {
   const scenario = normalizeScenario(name),
-    source = sourceDataset(scenario),
+    source = review.source ?? sourceDataset(scenario),
     dataset: Dataset = projectDataset(source, review.cutoff ?? source.clock)
   const resource: ResourceState =
     review.override && review.override !== "scenario"
@@ -66,6 +71,7 @@ export function operationsModel(
     usage = dataset.usage.filter((u) => runIds.has(u.runId))
   return {
     scenario,
+    query,
     dataset,
     referenceClock: source.clock,
     cutoff: dataset.clock,

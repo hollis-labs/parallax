@@ -4,10 +4,12 @@ import { type ReactNode, useLayoutEffect, useRef, useState } from "react"
 import { operationsModel, runDetail, scenarios } from "../../operations/model"
 import { ResourceNotice, RunDetailBody } from "../../operations/Views"
 import { OpsDashboard } from "../../ops-dashboard/Dashboard"
-import { resourceOverrides, sourceDataset, timelineFrames } from "../../playback/model"
+import { resourceOverrides, timelineFrames } from "../../playback/model"
 import { RunExplorer } from "../../run-explorer/Explorer"
 import { exampleContext, torqueDefinition } from "../contracts"
 import { FixtureContracts } from "../FixtureContracts"
+import { TorqueReferenceEvidence } from "./ReferenceEvidence"
+import { torqueProfiles, torqueReferenceModel, torqueSource } from "./reference"
 import { type TorqueState, torqueHref } from "./routes"
 import "./torque.css"
 
@@ -23,14 +25,16 @@ export function TorqueExample({
   onChange: (patch: Partial<TorqueState>, replace?: boolean) => void
   contributions?: ReactNode
 }) {
+  const artifact = torqueSource(state.scenario, state.profile)
   const model = operationsModel(state.scenario, state.query, {
+      source: artifact,
       cutoff: state.cutoff,
       override: state.override,
     }),
     detail = runDetail(model, state.selected),
-    artifact = sourceDataset(state.scenario),
     frames = timelineFrames(artifact),
-    context = exampleContext(torqueDefinition, artifact, state.cutoff, frames)
+    context = exampleContext(torqueDefinition, artifact, state.cutoff, frames),
+    reference = torqueReferenceModel(model)
   const [navOpen, setNavOpen] = useState(false),
     [reviewOpen, setReviewOpen] = useState(false),
     [inspection, setInspection] = useState(false),
@@ -38,6 +42,8 @@ export function TorqueExample({
     [, fresh] = useState(0)
   const source = JSON.stringify([
       context.source,
+      reference.source,
+      state.profile,
       state.scenario,
       state.cutoff,
       state.query,
@@ -129,6 +135,21 @@ export function TorqueExample({
       : (destinations.find((d) => d.route === state.route)?.label ?? "Dashboard")
   const review = (
     <div className="torque-review-controls">
+      <label>
+        Fixture profile
+        <select
+          aria-label="Torque fixture profile"
+          value={state.profile}
+          onChange={(e) => {
+            const p = torqueProfiles.find((p) => p === e.target.value)
+            if (p)
+              change({ profile: p, cutoff: torqueSource(state.scenario, p).clock, selected: null })
+          }}
+        >
+          <option value="legacy">Legacy operations review</option>
+          <option value="torque-16w">Torque 16-week reference</option>
+        </select>
+      </label>
       <p>Local fixture review; no live collection or business effects.</p>
       <label>
         Scenario
@@ -140,7 +161,7 @@ export function TorqueExample({
             if (next)
               change({
                 scenario: next,
-                cutoff: sourceDataset(next).clock,
+                cutoff: torqueSource(next, state.profile).clock,
                 selected: null,
                 query: "",
                 override: "scenario",
@@ -207,7 +228,7 @@ export function TorqueExample({
           change({
             query: torqueDefinition.reset.query,
             selected: torqueDefinition.reset.selected,
-            cutoff: sourceDataset(state.scenario).clock,
+            cutoff: artifact.clock,
             override: torqueDefinition.reset.override,
           })
         }
@@ -364,7 +385,7 @@ export function TorqueExample({
               )}
             </section>
           ) : (
-            <section>
+            <section className="torque-about">
               <h1>About this example</h1>
               <p>
                 One standalone application shell, using operations/v2 fixed fixtures and current
@@ -386,6 +407,7 @@ export function TorqueExample({
                 <dt>Cutoff</dt>
                 <dd>{model.cutoff}</dd>
               </dl>
+              <TorqueReferenceEvidence model={model} onSelect={select} />
               <FixtureContracts />
               {contributions ?? <p>Portable composition: plugin delivery is not mounted.</p>}
             </section>

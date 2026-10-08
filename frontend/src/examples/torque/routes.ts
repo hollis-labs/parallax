@@ -1,16 +1,13 @@
 import { normalizeScenario, operationsModel } from "../../operations/model"
-import {
-  type ResourceOverride,
-  resourceOverrides,
-  sourceDataset,
-  timelineFrames,
-} from "../../playback/model"
+import { type ResourceOverride, resourceOverrides, timelineFrames } from "../../playback/model"
 import { torqueDefinition } from "../contracts"
+import { type TorqueProfile, torqueProfiles, torqueSource } from "./reference"
 export const torqueRoutes = torqueDefinition.destinations.map((d) => d.id)
 export type TorqueRoute = (typeof torqueRoutes)[number]
 export type TorqueState = {
   route: TorqueRoute
   tab: "Activity" | "Mission Control" | "Usage"
+  profile: TorqueProfile
   scenario: string
   cutoff: string
   query: string
@@ -21,7 +18,8 @@ export type TorqueState = {
 }
 export function initialTorqueState(params: URLSearchParams): TorqueState {
   const scenario = normalizeScenario(params.get("scenario") ?? "populated"),
-    frames = timelineFrames(sourceDataset(scenario)),
+    profile = torqueProfiles.find((p) => p === params.get("profile")) ?? "legacy",
+    frames = timelineFrames(torqueSource(scenario, profile)),
     raw = params.get("cutoff")
   return admitTorqueState({
     tab:
@@ -33,6 +31,7 @@ export function initialTorqueState(params: URLSearchParams): TorqueState {
     route:
       torqueRoutes.find((r) => r === params.get("screen")) ?? torqueDefinition.defaultDestination,
     scenario,
+    profile,
     cutoff: raw && frames.includes(raw) ? raw : frames[frames.length - 1],
     query: params.get("query") ?? "",
     selected: params.get("selected"),
@@ -51,6 +50,7 @@ export function torqueHref(state: TorqueState, patch: Partial<TorqueState> = {})
       screen: s.route,
       tab: s.tab,
       scenario: s.scenario,
+      profile: s.profile,
       cutoff: s.cutoff,
       theme: s.theme,
       mode: s.mode,
@@ -63,6 +63,7 @@ export function torqueHref(state: TorqueState, patch: Partial<TorqueState> = {})
 
 export function admitTorqueState(state: TorqueState): TorqueState {
   const model = operationsModel(state.scenario, state.query, {
+    source: torqueSource(state.scenario, state.profile),
     cutoff: state.cutoff,
     override: state.override,
   })

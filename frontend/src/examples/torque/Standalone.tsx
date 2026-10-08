@@ -4,8 +4,9 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react"
 import { Contributions } from "../../App"
 import { createOperationsExample } from "../../chimera/example"
 import { operationsModel } from "../../operations/model"
-import { sourceDataset, timelineFrames } from "../../playback/model"
+import { timelineFrames } from "../../playback/model"
 import { exampleContext, torqueDefinition } from "../contracts"
+import { torqueReferenceModel, torqueSource } from "./reference"
 import { admitTorqueState, initialTorqueState, type TorqueState, torqueHref } from "./routes"
 import { TorqueExample } from "./TorqueExample"
 export function StandaloneTorqueExample() {
@@ -57,17 +58,24 @@ export function StandaloneTorqueExample() {
       void current.dispose()
     }
   }, [])
+  const artifact = torqueSource(state.scenario, state.profile)
   const model = operationsModel(state.scenario, state.query, {
+    source: artifact,
     cutoff: state.cutoff,
     override: state.override,
   })
-  const artifact = sourceDataset(state.scenario),
-    context = exampleContext(torqueDefinition, artifact, state.cutoff, timelineFrames(artifact))
+  const context = exampleContext(
+      torqueDefinition,
+      artifact,
+      state.cutoff,
+      timelineFrames(artifact),
+    ),
+    reference = torqueReferenceModel(model)
   useLayoutEffect(() => {
     host?.resetContext({
       fixture: true,
       example: torqueDefinition.id,
-      fixtureSource: context.source,
+      fixtureSource: reference.compatible ? reference.source : context.source,
       referenceClock: context.referenceClock,
       datasetVersion: artifact.version,
       profile: context.profile,
@@ -83,6 +91,8 @@ export function StandaloneTorqueExample() {
   }, [
     host,
     state,
+    reference.compatible,
+    reference.source,
     context.source,
     context.referenceClock,
     context.profile,
