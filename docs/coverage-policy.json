@@ -1139,6 +1139,53 @@
           "workbench-keyboard-switcher--earlier-prefix"
         ]
       }
+    },
+    {
+      "package": "@hollis-labs/design-components",
+      "entries": [
+        "."
+      ],
+      "names": [
+        "Table",
+        "TableHeader",
+        "TableBody",
+        "TableFooter",
+        "TableHead",
+        "TableRow",
+        "TableCell",
+        "TableCaption",
+        "ScrollArea"
+      ],
+      "disposition": "reviewed",
+      "reason": "Independent bounded native Event Ledger: current admitted UTC rows, exact semantic caption/headers/body/footer, recorded versus authored/zero/Unknown counts, native vertical viewport keyboard and implicit thumb, finite current callback/held outcome retirement and responsive escaped inspection.",
+      "nextAction": "ScrollBar, supporting helpers/types and untested orientations/props remain deferred/partial; no independent bar or horizontal-scroll claim.",
+      "evidence": {
+        "pages": [
+          "frontend/src/event-ledger/Ledger.tsx",
+          "frontend/src/event-ledger/model.ts",
+          "frontend/src/event-ledger/ledger.css",
+          "docs/event-ledger-review.md"
+        ],
+        "checks": [
+          "frontend/tests/event-ledger.spec.ts",
+          "frontend/src/event-ledger/contracts.ts"
+        ],
+        "stories": [
+          "frontend/src/event-ledger/Ledger.stories.tsx"
+        ],
+        "storyIds": [
+          "evidence-event-ledger--recorded",
+          "evidence-event-ledger--historical",
+          "evidence-event-ledger--earlier-prefix",
+          "evidence-event-ledger--empty",
+          "evidence-event-ledger--loading",
+          "evidence-event-ledger--read-failure",
+          "evidence-event-ledger--denied",
+          "evidence-event-ledger--missing",
+          "evidence-event-ledger--unknown",
+          "evidence-event-ledger--long-literal"
+        ]
+      }
     }
   ]
 }

@@ -32,6 +32,17 @@ export const destinations: readonly Definition[] = [
     playback: true,
   },
   {
+    id: "Event Ledger",
+    group: "Evidence",
+    icon: "Activity",
+    source: "Recorded operations event/log prefix",
+    scope:
+      "Admitted supplied UTC events/logs with native semantic table and bounded review scroll.",
+    gap: "No live telemetry or inferred events; absent foreign references stay unknown.",
+    story: "evidence-event-ledger--recorded",
+    playback: true,
+  },
+  {
     id: "Directory Review",
     group: "Administration",
     icon: "Users",

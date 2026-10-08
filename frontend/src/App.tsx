@@ -19,6 +19,7 @@ import { createOperationsExample } from "./chimera/example"
 import { CommunicationLab } from "./communications/CommunicationLab"
 import { ConversationReview } from "./conversation-review/Review"
 import { DirectoryReview } from "./directory-review/Review"
+import { EventLedger } from "./event-ledger/Ledger"
 import { EvidenceInspector } from "./evidence/Inspector"
 import { Comparison, type Layout, layouts } from "./layouts/Comparison"
 import { Navigation, type NavigationMode } from "./layouts/Navigation"
@@ -260,6 +261,7 @@ export function App() {
     document.documentElement.setAttribute("data-mode", mode)
   }, [theme, mode])
   const isOpsDashboard = page === "Ops Dashboard"
+  const isLedger = page === "Event Ledger"
   const isWorkbench = page === workbenchEntry.id
   const isWidgets = page === "Widgets"
   const isEvidence = page === "Evidence"
@@ -614,11 +616,12 @@ export function App() {
               </div>
             )}
             {routeNotice && <p role="status">{routeNotice}</p>}
-            {!model.accessible && !isWorkbench && !isOpsDashboard ? (
+            {!model.accessible && !isWorkbench && !isOpsDashboard && !isLedger ? (
               <ResourceNotice model={model} />
             ) : (
               <>
                 {!isOpsDashboard &&
+                  !isLedger &&
                   !isWorkbench &&
                   !isCommunication &&
                   !isUsageEvidence &&
@@ -629,7 +632,9 @@ export function App() {
                   !isPrimitives &&
                   !isEvidence &&
                   !isWidgets && <OperationsSummary model={model} />}
-                {isWorkbench ? (
+                {isLedger ? (
+                  <EventLedger operations={model} operationsQuery={query} onInspectRun={select} />
+                ) : isWorkbench ? (
                   <ReviewWorkbench
                     cutoff={model.cutoff}
                     selected={detail ? `${detail.task.id} / ${detail.run.id}` : null}

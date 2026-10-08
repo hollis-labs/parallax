@@ -219,6 +219,7 @@
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/Messaging.tsx",
       "frontend/src/conversation-review/Review.tsx",
+      "frontend/src/event-ledger/Ledger.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/observation-review/Review.tsx",
       "frontend/src/operations/Views.tsx",
@@ -1648,6 +1649,7 @@
       "frontend/src/developer/Lab.tsx",
       "frontend/src/developer-evidence/Review.tsx",
       "frontend/src/directory-review/Review.tsx",
+      "frontend/src/event-ledger/Ledger.tsx",
       "frontend/src/evidence/Evidence.stories.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/layouts/Comparison.stories.tsx",
@@ -3049,11 +3051,40 @@
     "name": "ScrollArea",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded native Event Ledger: current admitted UTC rows, exact semantic caption/headers/body/footer, recorded versus authored/zero/Unknown counts, native vertical viewport keyboard and implicit thumb, finite current callback/held outcome retirement and responsive escaped inspection.",
+    "nextAction": "ScrollBar, supporting helpers/types and untested orientations/props remain deferred/partial; no independent bar or horizontal-scroll claim.",
+    "evidence": {
+      "pages": [
+        "frontend/src/event-ledger/Ledger.tsx",
+        "frontend/src/event-ledger/model.ts",
+        "frontend/src/event-ledger/ledger.css",
+        "docs/event-ledger-review.md"
+      ],
+      "checks": [
+        "frontend/tests/event-ledger.spec.ts",
+        "frontend/src/event-ledger/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/event-ledger/Ledger.stories.tsx"
+      ],
+      "storyIds": [
+        "evidence-event-ledger--recorded",
+        "evidence-event-ledger--historical",
+        "evidence-event-ledger--earlier-prefix",
+        "evidence-event-ledger--empty",
+        "evidence-event-ledger--loading",
+        "evidence-event-ledger--read-failure",
+        "evidence-event-ledger--denied",
+        "evidence-event-ledger--missing",
+        "evidence-event-ledger--unknown",
+        "evidence-event-ledger--long-literal"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/event-ledger/Ledger.tsx",
+      "frontend/src/event-ledger/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -3436,11 +3467,39 @@
     "name": "Table",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded native Event Ledger: current admitted UTC rows, exact semantic caption/headers/body/footer, recorded versus authored/zero/Unknown counts, native vertical viewport keyboard and implicit thumb, finite current callback/held outcome retirement and responsive escaped inspection.",
+    "nextAction": "ScrollBar, supporting helpers/types and untested orientations/props remain deferred/partial; no independent bar or horizontal-scroll claim.",
+    "evidence": {
+      "pages": [
+        "frontend/src/event-ledger/Ledger.tsx",
+        "frontend/src/event-ledger/model.ts",
+        "frontend/src/event-ledger/ledger.css",
+        "docs/event-ledger-review.md"
+      ],
+      "checks": [
+        "frontend/tests/event-ledger.spec.ts",
+        "frontend/src/event-ledger/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/event-ledger/Ledger.stories.tsx"
+      ],
+      "storyIds": [
+        "evidence-event-ledger--recorded",
+        "evidence-event-ledger--historical",
+        "evidence-event-ledger--earlier-prefix",
+        "evidence-event-ledger--empty",
+        "evidence-event-ledger--loading",
+        "evidence-event-ledger--read-failure",
+        "evidence-event-ledger--denied",
+        "evidence-event-ledger--missing",
+        "evidence-event-ledger--unknown",
+        "evidence-event-ledger--long-literal"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/event-ledger/Ledger.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -3449,11 +3508,39 @@
     "name": "TableHeader",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded native Event Ledger: current admitted UTC rows, exact semantic caption/headers/body/footer, recorded versus authored/zero/Unknown counts, native vertical viewport keyboard and implicit thumb, finite current callback/held outcome retirement and responsive escaped inspection.",
+    "nextAction": "ScrollBar, supporting helpers/types and untested orientations/props remain deferred/partial; no independent bar or horizontal-scroll claim.",
+    "evidence": {
+      "pages": [
+        "frontend/src/event-ledger/Ledger.tsx",
+        "frontend/src/event-ledger/model.ts",
+        "frontend/src/event-ledger/ledger.css",
+        "docs/event-ledger-review.md"
+      ],
+      "checks": [
+        "frontend/tests/event-ledger.spec.ts",
+        "frontend/src/event-ledger/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/event-ledger/Ledger.stories.tsx"
+      ],
+      "storyIds": [
+        "evidence-event-ledger--recorded",
+        "evidence-event-ledger--historical",
+        "evidence-event-ledger--earlier-prefix",
+        "evidence-event-ledger--empty",
+        "evidence-event-ledger--loading",
+        "evidence-event-ledger--read-failure",
+        "evidence-event-ledger--denied",
+        "evidence-event-ledger--missing",
+        "evidence-event-ledger--unknown",
+        "evidence-event-ledger--long-literal"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/event-ledger/Ledger.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -3462,11 +3549,39 @@
     "name": "TableBody",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded native Event Ledger: current admitted UTC rows, exact semantic caption/headers/body/footer, recorded versus authored/zero/Unknown counts, native vertical viewport keyboard and implicit thumb, finite current callback/held outcome retirement and responsive escaped inspection.",
+    "nextAction": "ScrollBar, supporting helpers/types and untested orientations/props remain deferred/partial; no independent bar or horizontal-scroll claim.",
+    "evidence": {
+      "pages": [
+        "frontend/src/event-ledger/Ledger.tsx",
+        "frontend/src/event-ledger/model.ts",
+        "frontend/src/event-ledger/ledger.css",
+        "docs/event-ledger-review.md"
+      ],
+      "checks": [
+        "frontend/tests/event-ledger.spec.ts",
+        "frontend/src/event-ledger/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/event-ledger/Ledger.stories.tsx"
+      ],
+      "storyIds": [
+        "evidence-event-ledger--recorded",
+        "evidence-event-ledger--historical",
+        "evidence-event-ledger--earlier-prefix",
+        "evidence-event-ledger--empty",
+        "evidence-event-ledger--loading",
+        "evidence-event-ledger--read-failure",
+        "evidence-event-ledger--denied",
+        "evidence-event-ledger--missing",
+        "evidence-event-ledger--unknown",
+        "evidence-event-ledger--long-literal"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/event-ledger/Ledger.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -3475,11 +3590,39 @@
     "name": "TableFooter",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded native Event Ledger: current admitted UTC rows, exact semantic caption/headers/body/footer, recorded versus authored/zero/Unknown counts, native vertical viewport keyboard and implicit thumb, finite current callback/held outcome retirement and responsive escaped inspection.",
+    "nextAction": "ScrollBar, supporting helpers/types and untested orientations/props remain deferred/partial; no independent bar or horizontal-scroll claim.",
+    "evidence": {
+      "pages": [
+        "frontend/src/event-ledger/Ledger.tsx",
+        "frontend/src/event-ledger/model.ts",
+        "frontend/src/event-ledger/ledger.css",
+        "docs/event-ledger-review.md"
+      ],
+      "checks": [
+        "frontend/tests/event-ledger.spec.ts",
+        "frontend/src/event-ledger/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/event-ledger/Ledger.stories.tsx"
+      ],
+      "storyIds": [
+        "evidence-event-ledger--recorded",
+        "evidence-event-ledger--historical",
+        "evidence-event-ledger--earlier-prefix",
+        "evidence-event-ledger--empty",
+        "evidence-event-ledger--loading",
+        "evidence-event-ledger--read-failure",
+        "evidence-event-ledger--denied",
+        "evidence-event-ledger--missing",
+        "evidence-event-ledger--unknown",
+        "evidence-event-ledger--long-literal"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/event-ledger/Ledger.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -3488,11 +3631,40 @@
     "name": "TableHead",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded native Event Ledger: current admitted UTC rows, exact semantic caption/headers/body/footer, recorded versus authored/zero/Unknown counts, native vertical viewport keyboard and implicit thumb, finite current callback/held outcome retirement and responsive escaped inspection.",
+    "nextAction": "ScrollBar, supporting helpers/types and untested orientations/props remain deferred/partial; no independent bar or horizontal-scroll claim.",
+    "evidence": {
+      "pages": [
+        "frontend/src/event-ledger/Ledger.tsx",
+        "frontend/src/event-ledger/model.ts",
+        "frontend/src/event-ledger/ledger.css",
+        "docs/event-ledger-review.md"
+      ],
+      "checks": [
+        "frontend/tests/event-ledger.spec.ts",
+        "frontend/src/event-ledger/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/event-ledger/Ledger.stories.tsx"
+      ],
+      "storyIds": [
+        "evidence-event-ledger--recorded",
+        "evidence-event-ledger--historical",
+        "evidence-event-ledger--earlier-prefix",
+        "evidence-event-ledger--empty",
+        "evidence-event-ledger--loading",
+        "evidence-event-ledger--read-failure",
+        "evidence-event-ledger--denied",
+        "evidence-event-ledger--missing",
+        "evidence-event-ledger--unknown",
+        "evidence-event-ledger--long-literal"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/event-ledger/Ledger.tsx",
+      "frontend/src/event-ledger/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -3501,11 +3673,39 @@
     "name": "TableRow",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded native Event Ledger: current admitted UTC rows, exact semantic caption/headers/body/footer, recorded versus authored/zero/Unknown counts, native vertical viewport keyboard and implicit thumb, finite current callback/held outcome retirement and responsive escaped inspection.",
+    "nextAction": "ScrollBar, supporting helpers/types and untested orientations/props remain deferred/partial; no independent bar or horizontal-scroll claim.",
+    "evidence": {
+      "pages": [
+        "frontend/src/event-ledger/Ledger.tsx",
+        "frontend/src/event-ledger/model.ts",
+        "frontend/src/event-ledger/ledger.css",
+        "docs/event-ledger-review.md"
+      ],
+      "checks": [
+        "frontend/tests/event-ledger.spec.ts",
+        "frontend/src/event-ledger/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/event-ledger/Ledger.stories.tsx"
+      ],
+      "storyIds": [
+        "evidence-event-ledger--recorded",
+        "evidence-event-ledger--historical",
+        "evidence-event-ledger--earlier-prefix",
+        "evidence-event-ledger--empty",
+        "evidence-event-ledger--loading",
+        "evidence-event-ledger--read-failure",
+        "evidence-event-ledger--denied",
+        "evidence-event-ledger--missing",
+        "evidence-event-ledger--unknown",
+        "evidence-event-ledger--long-literal"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/event-ledger/Ledger.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -3514,11 +3714,40 @@
     "name": "TableCell",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded native Event Ledger: current admitted UTC rows, exact semantic caption/headers/body/footer, recorded versus authored/zero/Unknown counts, native vertical viewport keyboard and implicit thumb, finite current callback/held outcome retirement and responsive escaped inspection.",
+    "nextAction": "ScrollBar, supporting helpers/types and untested orientations/props remain deferred/partial; no independent bar or horizontal-scroll claim.",
+    "evidence": {
+      "pages": [
+        "frontend/src/event-ledger/Ledger.tsx",
+        "frontend/src/event-ledger/model.ts",
+        "frontend/src/event-ledger/ledger.css",
+        "docs/event-ledger-review.md"
+      ],
+      "checks": [
+        "frontend/tests/event-ledger.spec.ts",
+        "frontend/src/event-ledger/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/event-ledger/Ledger.stories.tsx"
+      ],
+      "storyIds": [
+        "evidence-event-ledger--recorded",
+        "evidence-event-ledger--historical",
+        "evidence-event-ledger--earlier-prefix",
+        "evidence-event-ledger--empty",
+        "evidence-event-ledger--loading",
+        "evidence-event-ledger--read-failure",
+        "evidence-event-ledger--denied",
+        "evidence-event-ledger--missing",
+        "evidence-event-ledger--unknown",
+        "evidence-event-ledger--long-literal"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/event-ledger/Ledger.tsx",
+      "frontend/src/event-ledger/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -3527,11 +3756,39 @@
     "name": "TableCaption",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded native Event Ledger: current admitted UTC rows, exact semantic caption/headers/body/footer, recorded versus authored/zero/Unknown counts, native vertical viewport keyboard and implicit thumb, finite current callback/held outcome retirement and responsive escaped inspection.",
+    "nextAction": "ScrollBar, supporting helpers/types and untested orientations/props remain deferred/partial; no independent bar or horizontal-scroll claim.",
+    "evidence": {
+      "pages": [
+        "frontend/src/event-ledger/Ledger.tsx",
+        "frontend/src/event-ledger/model.ts",
+        "frontend/src/event-ledger/ledger.css",
+        "docs/event-ledger-review.md"
+      ],
+      "checks": [
+        "frontend/tests/event-ledger.spec.ts",
+        "frontend/src/event-ledger/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/event-ledger/Ledger.stories.tsx"
+      ],
+      "storyIds": [
+        "evidence-event-ledger--recorded",
+        "evidence-event-ledger--historical",
+        "evidence-event-ledger--earlier-prefix",
+        "evidence-event-ledger--empty",
+        "evidence-event-ledger--loading",
+        "evidence-event-ledger--read-failure",
+        "evidence-event-ledger--denied",
+        "evidence-event-ledger--missing",
+        "evidence-event-ledger--unknown",
+        "evidence-event-ledger--long-literal"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/event-ledger/Ledger.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",

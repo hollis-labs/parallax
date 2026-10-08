@@ -60,3 +60,8 @@
 .keyboard-switcher [cmdk-item][aria-selected="false"] {
   background: transparent;
 }
+
+.keyboard-switcher [cmdk-item] > .switcher-unavailable-hint {
+  flex-shrink: 0;
+  white-space: nowrap;
+}

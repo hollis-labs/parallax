@@ -162,7 +162,7 @@ function Instance({
                 <CommandGroup heading="Authored withdrawal specimen">
                   <CommandItem value="authored-withdrawn" disabled>
                     <span>Withdrawn review specimen · unavailable, not a real destination</span>
-                    <span>Unavailable</span>
+                    <span className="switcher-unavailable-hint">Unavailable</span>
                   </CommandItem>
                 </CommandGroup>
               </>
