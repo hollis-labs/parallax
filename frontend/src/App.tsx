@@ -8,7 +8,7 @@ import {
   usePluginSlots,
   WidgetRenderer,
 } from "@hollis-labs/plugin-host-ui/react"
-import { Activity, Compass, Gauge, Layers, Mail, MessageSquare, Users, X } from "lucide-react"
+import { Layers, X } from "lucide-react"
 import { lazy, Suspense, useEffect, useRef, useState, useSyncExternalStore } from "react"
 import { AccountReview } from "./account-review/Review"
 import { adminAppearances } from "./admin-review/model"
@@ -38,6 +38,8 @@ import { PrimitiveGallery } from "./primitives/Gallery"
 import { RunExplorer } from "./run-explorer/Explorer"
 import { SettingsReview } from "./settings-review/Review"
 import { WidgetGallery } from "./widgets/Gallery"
+import { destinations, normalizeView, viewIcon, workbenchEntry } from "./workbench/catalog"
+import { ReviewWorkbench } from "./workbench/Workbench"
 
 const VoiceLab = lazy(() => import("./voice/Lab"))
 const UsageEvidence = lazy(() => import("./usage-evidence/Review"))
@@ -182,6 +184,7 @@ function Contributions({
 export function App() {
   const params = new URLSearchParams(location.search)
   const pageScroll = useRef<HTMLDivElement>(null)
+  const navigateRef = useRef<(name: string) => void>(() => {})
   const initialAdminQuery = useRef(
     Object.fromEntries(
       [...params].filter(([key, value]) =>
@@ -196,7 +199,12 @@ export function App() {
     ),
   )
 
-  const [page, setPage] = useState(params.get("view") ?? "Activity"),
+  const [page, setPage] = useState(normalizeView(params.get("view"))),
+    [routeNotice, setRouteNotice] = useState(
+      params.get("view") && normalizeView(params.get("view")) !== params.get("view")
+        ? `Unknown requested view ${params.get("view")}; showing Activity.`
+        : "",
+    ),
     [layout, setLayout] = useState<Layout>(
       layouts.find((x) => x === params.get("layout")) ?? "list",
     ),
@@ -228,7 +236,7 @@ export function App() {
   useEffect(() => {
     const abort = new AbortController()
     const host = createOperationsExample((route) =>
-      setPage(route === "usage" ? "Usage" : "Activity"),
+      navigateRef.current(route === "usage" ? "Usage" : "Activity"),
     )
     setPluginHost(host)
     setPluginStatus("loading")
@@ -249,6 +257,7 @@ export function App() {
     applyTheme(theme as Parameters<typeof applyTheme>[0])
     document.documentElement.setAttribute("data-mode", mode)
   }, [theme, mode])
+  const isWorkbench = page === workbenchEntry.id
   const isWidgets = page === "Widgets"
   const isEvidence = page === "Evidence"
   const isPrimitives = page === "Primitives"
@@ -282,20 +291,7 @@ export function App() {
     setIntent("")
     setDraft("")
   })
-  const isPlaybackView = [
-    "Activity",
-    "Mission Control",
-    "Usage",
-    "Examples",
-    "Layouts",
-    "Run Explorer",
-    "Developer Evidence",
-    "Workflow Review",
-    "Conversation Evidence",
-    "Usage Evidence",
-    "Observability",
-    "Widgets",
-  ].includes(page)
+  const isPlaybackView = isWorkbench || !!destinations.find((d) => d.id === page)?.playback
   const model = operationsModel(
       scenario,
       query,
@@ -308,6 +304,7 @@ export function App() {
     pluginHost?.resetContext({
       count,
       done,
+      view: page,
       scenario,
       query,
       resource: model.resource,
@@ -317,6 +314,7 @@ export function App() {
     })
   }, [
     pluginHost,
+    page,
     count,
     done,
     scenario,
@@ -390,76 +388,45 @@ export function App() {
   ) : (
     <p className="p-4 text-sm text-fg-muted">Loading reviewed contribution…</p>
   )
-  const navigationItems = [
-    "Activity",
-    "Mission Control",
-    "Usage",
-    "Contacts",
-    "Messages",
-    "Chat",
-    "Conversation Review",
-    "Administration",
-    "Account",
-    "Settings Review",
-    "Account Review",
-    "Observability",
-    "Observation Review",
-    "Admin Review",
-    "Developer",
-    "Voice",
-    "Examples",
-    "Primitives",
-    "Evidence",
-    "Widgets",
-    "Layouts",
-    "Run Explorer",
-    "Developer Evidence",
-    "Workflow Review",
-    "Conversation Evidence",
-    "Usage Evidence",
-  ].map((name, i) => ({
-    key: name,
-    label: name,
-    icon: [
-      <Activity key="a" className="size-4" />,
-      <Compass key="b" className="size-4" />,
-      <Gauge key="c" className="size-4" />,
-      <Users key="d" className="size-4" />,
-      <Mail key="e" className="size-4" />,
-      <MessageSquare key="f" className="size-4" />,
-      <MessageSquare key="conversation-review" className="size-4" />,
-      <Layers key="g" className="size-4" />,
-      <Users key="h" className="size-4" />,
-      <Layers key="settings-review" className="size-4" />,
-      <Users key="account-review" className="size-4" />,
-      <Activity key="i" className="size-4" />,
-      <Activity key="observation-review" className="size-4" />,
-      <Layers key="admin-review" className="size-4" />,
-      <Layers key="j" className="size-4" />,
-      <Layers key="k" className="size-4" />,
-      <MessageSquare key="l" className="size-4" />,
-      <Layers key="m" className="size-4" />,
-      <Layers key="n" className="size-4" />,
-      <Layers key="o" className="size-4" />,
-      <Layers key="p" className="size-4" />,
-      <Layers key="run-explorer" className="size-4" />,
-      <Layers key="developer-evidence" className="size-4" />,
-      <Layers key="workflow-review" className="size-4" />,
-      <MessageSquare key="conversation-evidence" className="size-4" />,
-      <Gauge key="usage-evidence" className="size-4" />,
-    ][i],
-    active: page === name,
-    onSelect: () => {
-      setPage(name)
-      setDetailOpen(false)
-    },
-  }))
+  function navigate(name: string) {
+    if (normalizeView(name) !== name || name === page) return
+    if (name === workbenchEntry.id) review.seek(review.index)
+    pluginHost?.resetContext({
+      ...pluginHost.context.getSnapshot(),
+      retiredView: page,
+      nextView: name,
+    })
+    setPage(name)
+    setRouteNotice("")
+    setDetailOpen(false)
+  }
+  navigateRef.current = navigate
+  const navigationItems = [workbenchEntry, ...destinations].map((entry) => {
+    const Icon = viewIcon(entry.icon)
+    return {
+      key: entry.id,
+      label: entry.id,
+      icon: <Icon className="size-4" />,
+      active: page === entry.id,
+      onSelect: () => navigate(entry.id),
+    }
+  })
   const shell = (
     <AppShell
       nav={navigation === "rail" ? <Navigation mode="rail" items={navigationItems} /> : undefined}
       header={
         <div>
-          <PageHeader title="Parallax" />
+          <div className="workbench-header-entry">
+            <PageHeader title="Parallax" />
+            <Button
+              size="sm"
+              variant="outline"
+              aria-label="Open Review Workbench"
+              onClick={() => navigate(workbenchEntry.id)}
+            >
+              Review Workbench
+            </Button>
+          </div>
           {navigation !== "rail" && <Navigation mode={navigation} items={navigationItems} />}
           <div className="review-controls">
             {page === "Layouts" && (
@@ -587,7 +554,8 @@ export function App() {
                   isVoice ||
                   isPrimitives ||
                   isEvidence ||
-                  isUsageEvidence
+                  isUsageEvidence ||
+                  isWorkbench
                     ? page.toUpperCase()
                     : isCommunication
                       ? "COMMUNICATIONS"
@@ -597,17 +565,19 @@ export function App() {
                 <h1>{page}</h1>
                 <p className="muted">
                   October 4, 2026 · deterministic seed {model.dataset.seed} ·{" "}
-                  {isVoice
-                    ? "bundled original voice/media fixture"
-                    : isDeveloper
-                      ? "bundled developer/workflow fixture"
-                      : isObservation
-                        ? "bundled observation fixture"
-                        : isAdministration
-                          ? "bundled administration/account fixture"
-                          : isCommunication
-                            ? "bundled communications fixture"
-                            : model.dataset.profile}
+                  {isWorkbench
+                    ? "declared review catalogue · current operations context"
+                    : isVoice
+                      ? "bundled original voice/media fixture"
+                      : isDeveloper
+                        ? "bundled developer/workflow fixture"
+                        : isObservation
+                          ? "bundled observation fixture"
+                          : isAdministration
+                            ? "bundled administration/account fixture"
+                            : isCommunication
+                              ? "bundled communications fixture"
+                              : model.dataset.profile}
                 </p>
               </div>
               <span className="fixture-tag">FIXTURE ONLY</span>
@@ -638,11 +608,13 @@ export function App() {
                 Telemetry delayed. Last known fixture observations remain available.
               </div>
             )}
-            {!model.accessible ? (
+            {routeNotice && <p role="status">{routeNotice}</p>}
+            {!model.accessible && !isWorkbench ? (
               <ResourceNotice model={model} />
             ) : (
               <>
-                {!isCommunication &&
+                {!isWorkbench &&
+                  !isCommunication &&
                   !isUsageEvidence &&
                   !isAdministration &&
                   !isObservation &&
@@ -651,7 +623,15 @@ export function App() {
                   !isPrimitives &&
                   !isEvidence &&
                   !isWidgets && <OperationsSummary model={model} />}
-                {isAdminReview ? (
+                {isWorkbench ? (
+                  <ReviewWorkbench
+                    cutoff={model.cutoff}
+                    selected={detail ? `${detail.task.id} / ${detail.run.id}` : null}
+                    source={`${model.dataset.version}/${model.dataset.profile}/${scenario}/${model.resource}/${model.cutoff}/${review.epoch}`}
+                    host={location.host}
+                    onNavigate={navigate}
+                  />
+                ) : isAdminReview ? (
                   <AdminReview key={scenario} context={scenario} />
                 ) : isObservationReview ? (
                   <ObservationReview key={scenario} context={scenario} />
@@ -750,7 +730,7 @@ export function App() {
                     key={scenario}
                     view={page}
                     scenario={scenario}
-                    onViewChange={setPage}
+                    onViewChange={navigate}
                     onIntent={emit}
                     onReset={() => setIntent("")}
                   />

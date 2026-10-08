@@ -974,7 +974,8 @@
     },
     "importEvidence": [
       "frontend/src/evidence/Inspector.tsx",
-      "frontend/src/evidence/contracts.ts"
+      "frontend/src/evidence/contracts.ts",
+      "frontend/src/workbench/Workbench.tsx"
     ]
   },
   {
@@ -1633,6 +1634,7 @@
       "frontend/src/usage-evidence/Review.tsx",
       "frontend/src/voice/Lab.tsx",
       "frontend/src/widgets/Gallery.tsx",
+      "frontend/src/workbench/Workbench.tsx",
       "frontend/src/workflow-review/Review.tsx"
     ]
   },
