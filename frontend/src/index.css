@@ -1071,3 +1071,25 @@ dd {
   min-width: 0;
   gap: calc(var(--spacing) * 4);
 }
+
+.conversation-review {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: calc(var(--spacing) * 4);
+}
+.conversation-stream {
+  height: calc(var(--spacing) * 96);
+  flex: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: var(--color-bg-elevated);
+}
+.conversation-viewport {
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+.conversation-long {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}

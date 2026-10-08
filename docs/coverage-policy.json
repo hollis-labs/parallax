@@ -565,6 +565,56 @@
           "account-controlled-account-review--metadata-error"
         ]
       }
+    },
+    {
+      "package": "@hollis-labs/kit-chat",
+      "names": [
+        "ChatInput",
+        "ChatStream",
+        "ConfirmationCard",
+        "PromptCard"
+      ],
+      "disposition": "reviewed",
+      "reason": "Independent bounded released0.4 conversation review: native Enter/Shift+Enter/IME, prop-only finite history, busy editable composer/Stop/manual uncommitted stream, actual raw prior classification, current prompt/action/note candidate guards and source/session/prior/draft/step/StrictMode retirement, bounded transcript/modal scroll and no sending/prior mutation. Not exhaustive renderer/card behavior.",
+      "nextAction": "Preserve portable/native/lifetime checks; optional markdown/suggestions/attachments and remaining independent chat exports stay separate deferred/partial reviews.",
+      "evidence": {
+        "pages": [
+          "frontend/src/conversation-review/Review.tsx",
+          "frontend/src/conversation-review/model.ts",
+          "docs/conversation-review.md"
+        ],
+        "checks": [
+          "frontend/tests/conversation-review.spec.ts",
+          "frontend/src/conversation-review/contracts.ts"
+        ],
+        "stories": [
+          "frontend/src/conversation-review/ConversationReview.stories.tsx"
+        ],
+        "storyIds": [
+          "conversation-controlled-conversation-review--transcript",
+          "conversation-controlled-conversation-review--prompt",
+          "conversation-controlled-conversation-review--partial",
+          "conversation-controlled-conversation-review--handling",
+          "conversation-controlled-conversation-review--submitted",
+          "conversation-controlled-conversation-review--submitted-prompt",
+          "conversation-controlled-conversation-review--canceled",
+          "conversation-controlled-conversation-review--cancelled",
+          "conversation-controlled-conversation-review--failed",
+          "conversation-controlled-conversation-review--unknown-prior",
+          "conversation-controlled-conversation-review--literal-open",
+          "conversation-controlled-conversation-review--literal-pending",
+          "conversation-controlled-conversation-review--empty",
+          "conversation-controlled-conversation-review--loading",
+          "conversation-controlled-conversation-review--streaming",
+          "conversation-controlled-conversation-review--stalled",
+          "conversation-controlled-conversation-review--stream-error",
+          "conversation-controlled-conversation-review--denied",
+          "conversation-controlled-conversation-review--locked",
+          "conversation-controlled-conversation-review--long-content",
+          "conversation-controlled-conversation-review--history-error",
+          "conversation-controlled-conversation-review--history-loading"
+        ]
+      }
     }
   ]
 }

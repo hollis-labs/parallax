@@ -127,6 +127,7 @@
     },
     "importEvidence": [
       "frontend/src/account-review/Review.tsx",
+      "frontend/src/conversation-review/Review.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/primitives/Gallery.tsx",
       "frontend/src/primitives/model.ts",
@@ -214,6 +215,7 @@
       "frontend/src/account-review/Review.tsx",
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/Messaging.tsx",
+      "frontend/src/conversation-review/Review.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/operations/Views.tsx",
       "frontend/src/settings-review/Review.tsx",
@@ -336,6 +338,7 @@
     },
     "importEvidence": [
       "frontend/src/account-review/Review.tsx",
+      "frontend/src/conversation-review/Review.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/evidence/contracts.ts",
       "frontend/src/settings-review/Review.tsx",
@@ -380,6 +383,7 @@
     },
     "importEvidence": [
       "frontend/src/account-review/Review.tsx",
+      "frontend/src/conversation-review/Review.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/evidence/contracts.ts",
       "frontend/src/settings-review/Review.tsx",
@@ -769,6 +773,7 @@
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/CommunicationLab.tsx",
       "frontend/src/communications/Messaging.tsx",
+      "frontend/src/conversation-review/Review.tsx",
       "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Operations.stories.tsx",
       "frontend/src/operations/Views.tsx",
@@ -1573,6 +1578,7 @@
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/CommunicationLab.tsx",
       "frontend/src/communications/Messaging.tsx",
+      "frontend/src/conversation-review/Review.tsx",
       "frontend/src/developer/Lab.tsx",
       "frontend/src/evidence/Evidence.stories.tsx",
       "frontend/src/evidence/Inspector.tsx",
@@ -5145,23 +5151,51 @@
     "name": "ChatInput",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded released0.4 conversation review: native Enter/Shift+Enter/IME, prop-only finite history, busy editable composer/Stop/manual uncommitted stream, actual raw prior classification, current prompt/action/note candidate guards and source/session/prior/draft/step/StrictMode retirement, bounded transcript/modal scroll and no sending/prior mutation. Not exhaustive renderer/card behavior.",
+    "nextAction": "Preserve portable/native/lifetime checks; optional markdown/suggestions/attachments and remaining independent chat exports stay separate deferred/partial reviews.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/conversation-review/Review.tsx",
+        "frontend/src/conversation-review/model.ts",
+        "docs/conversation-review.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/conversation-review.spec.ts",
+        "frontend/src/conversation-review/contracts.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/conversation-review/ConversationReview.stories.tsx"
+      ],
+      "storyIds": [
+        "conversation-controlled-conversation-review--transcript",
+        "conversation-controlled-conversation-review--prompt",
+        "conversation-controlled-conversation-review--partial",
+        "conversation-controlled-conversation-review--handling",
+        "conversation-controlled-conversation-review--submitted",
+        "conversation-controlled-conversation-review--submitted-prompt",
+        "conversation-controlled-conversation-review--canceled",
+        "conversation-controlled-conversation-review--cancelled",
+        "conversation-controlled-conversation-review--failed",
+        "conversation-controlled-conversation-review--unknown-prior",
+        "conversation-controlled-conversation-review--literal-open",
+        "conversation-controlled-conversation-review--literal-pending",
+        "conversation-controlled-conversation-review--empty",
+        "conversation-controlled-conversation-review--loading",
+        "conversation-controlled-conversation-review--streaming",
+        "conversation-controlled-conversation-review--stalled",
+        "conversation-controlled-conversation-review--stream-error",
+        "conversation-controlled-conversation-review--denied",
+        "conversation-controlled-conversation-review--locked",
+        "conversation-controlled-conversation-review--long-content",
+        "conversation-controlled-conversation-review--history-error",
+        "conversation-controlled-conversation-review--history-loading"
       ]
     },
     "importEvidence": [
       "frontend/src/communications/Chat.tsx",
-      "frontend/src/communications/Messaging.tsx"
+      "frontend/src/communications/Messaging.tsx",
+      "frontend/src/conversation-review/Review.tsx"
     ]
   },
   {
@@ -5171,11 +5205,23 @@
     "name": "ChatInputProps",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/communications/Chat.tsx"
+      ],
+      "checks": [
+        "frontend/tests/communications.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/communications/Communications.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/conversation-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -5183,6 +5229,59 @@
     "entry": ".",
     "name": "ChatStream",
     "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "reviewed",
+    "reason": "Independent bounded released0.4 conversation review: native Enter/Shift+Enter/IME, prop-only finite history, busy editable composer/Stop/manual uncommitted stream, actual raw prior classification, current prompt/action/note candidate guards and source/session/prior/draft/step/StrictMode retirement, bounded transcript/modal scroll and no sending/prior mutation. Not exhaustive renderer/card behavior.",
+    "nextAction": "Preserve portable/native/lifetime checks; optional markdown/suggestions/attachments and remaining independent chat exports stay separate deferred/partial reviews.",
+    "evidence": {
+      "pages": [
+        "frontend/src/conversation-review/Review.tsx",
+        "frontend/src/conversation-review/model.ts",
+        "docs/conversation-review.md"
+      ],
+      "checks": [
+        "frontend/tests/conversation-review.spec.ts",
+        "frontend/src/conversation-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/conversation-review/ConversationReview.stories.tsx"
+      ],
+      "storyIds": [
+        "conversation-controlled-conversation-review--transcript",
+        "conversation-controlled-conversation-review--prompt",
+        "conversation-controlled-conversation-review--partial",
+        "conversation-controlled-conversation-review--handling",
+        "conversation-controlled-conversation-review--submitted",
+        "conversation-controlled-conversation-review--submitted-prompt",
+        "conversation-controlled-conversation-review--canceled",
+        "conversation-controlled-conversation-review--cancelled",
+        "conversation-controlled-conversation-review--failed",
+        "conversation-controlled-conversation-review--unknown-prior",
+        "conversation-controlled-conversation-review--literal-open",
+        "conversation-controlled-conversation-review--literal-pending",
+        "conversation-controlled-conversation-review--empty",
+        "conversation-controlled-conversation-review--loading",
+        "conversation-controlled-conversation-review--streaming",
+        "conversation-controlled-conversation-review--stalled",
+        "conversation-controlled-conversation-review--stream-error",
+        "conversation-controlled-conversation-review--denied",
+        "conversation-controlled-conversation-review--locked",
+        "conversation-controlled-conversation-review--long-content",
+        "conversation-controlled-conversation-review--history-error",
+        "conversation-controlled-conversation-review--history-loading"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/conversation-review/Review.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ChatStreamProps",
+    "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "partial",
     "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
@@ -5199,21 +5298,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/conversation-review/contracts.ts"
     ]
-  },
-  {
-    "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
-    "entry": ".",
-    "name": "ChatStreamProps",
-    "category": "type-export",
-    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -5260,22 +5346,50 @@
     "name": "PromptCard",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded released0.4 conversation review: native Enter/Shift+Enter/IME, prop-only finite history, busy editable composer/Stop/manual uncommitted stream, actual raw prior classification, current prompt/action/note candidate guards and source/session/prior/draft/step/StrictMode retirement, bounded transcript/modal scroll and no sending/prior mutation. Not exhaustive renderer/card behavior.",
+    "nextAction": "Preserve portable/native/lifetime checks; optional markdown/suggestions/attachments and remaining independent chat exports stay separate deferred/partial reviews.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/conversation-review/Review.tsx",
+        "frontend/src/conversation-review/model.ts",
+        "docs/conversation-review.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/conversation-review.spec.ts",
+        "frontend/src/conversation-review/contracts.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/conversation-review/ConversationReview.stories.tsx"
+      ],
+      "storyIds": [
+        "conversation-controlled-conversation-review--transcript",
+        "conversation-controlled-conversation-review--prompt",
+        "conversation-controlled-conversation-review--partial",
+        "conversation-controlled-conversation-review--handling",
+        "conversation-controlled-conversation-review--submitted",
+        "conversation-controlled-conversation-review--submitted-prompt",
+        "conversation-controlled-conversation-review--canceled",
+        "conversation-controlled-conversation-review--cancelled",
+        "conversation-controlled-conversation-review--failed",
+        "conversation-controlled-conversation-review--unknown-prior",
+        "conversation-controlled-conversation-review--literal-open",
+        "conversation-controlled-conversation-review--literal-pending",
+        "conversation-controlled-conversation-review--empty",
+        "conversation-controlled-conversation-review--loading",
+        "conversation-controlled-conversation-review--streaming",
+        "conversation-controlled-conversation-review--stalled",
+        "conversation-controlled-conversation-review--stream-error",
+        "conversation-controlled-conversation-review--denied",
+        "conversation-controlled-conversation-review--locked",
+        "conversation-controlled-conversation-review--long-content",
+        "conversation-controlled-conversation-review--history-error",
+        "conversation-controlled-conversation-review--history-loading"
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/conversation-review/Review.tsx"
     ]
   },
   {
@@ -5348,22 +5462,50 @@
     "name": "ConfirmationCard",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded released0.4 conversation review: native Enter/Shift+Enter/IME, prop-only finite history, busy editable composer/Stop/manual uncommitted stream, actual raw prior classification, current prompt/action/note candidate guards and source/session/prior/draft/step/StrictMode retirement, bounded transcript/modal scroll and no sending/prior mutation. Not exhaustive renderer/card behavior.",
+    "nextAction": "Preserve portable/native/lifetime checks; optional markdown/suggestions/attachments and remaining independent chat exports stay separate deferred/partial reviews.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/conversation-review/Review.tsx",
+        "frontend/src/conversation-review/model.ts",
+        "docs/conversation-review.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/conversation-review.spec.ts",
+        "frontend/src/conversation-review/contracts.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/conversation-review/ConversationReview.stories.tsx"
+      ],
+      "storyIds": [
+        "conversation-controlled-conversation-review--transcript",
+        "conversation-controlled-conversation-review--prompt",
+        "conversation-controlled-conversation-review--partial",
+        "conversation-controlled-conversation-review--handling",
+        "conversation-controlled-conversation-review--submitted",
+        "conversation-controlled-conversation-review--submitted-prompt",
+        "conversation-controlled-conversation-review--canceled",
+        "conversation-controlled-conversation-review--cancelled",
+        "conversation-controlled-conversation-review--failed",
+        "conversation-controlled-conversation-review--unknown-prior",
+        "conversation-controlled-conversation-review--literal-open",
+        "conversation-controlled-conversation-review--literal-pending",
+        "conversation-controlled-conversation-review--empty",
+        "conversation-controlled-conversation-review--loading",
+        "conversation-controlled-conversation-review--streaming",
+        "conversation-controlled-conversation-review--stalled",
+        "conversation-controlled-conversation-review--stream-error",
+        "conversation-controlled-conversation-review--denied",
+        "conversation-controlled-conversation-review--locked",
+        "conversation-controlled-conversation-review--long-content",
+        "conversation-controlled-conversation-review--history-error",
+        "conversation-controlled-conversation-review--history-loading"
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/conversation-review/Review.tsx"
     ]
   },
   {
@@ -5567,11 +5709,23 @@
     "name": "PromptCardProps",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/communications/Chat.tsx"
+      ],
+      "checks": [
+        "frontend/tests/communications.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/communications/Communications.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/conversation-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -5632,11 +5786,23 @@
     "name": "ConfirmationCardProps",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/communications/Chat.tsx"
+      ],
+      "checks": [
+        "frontend/tests/communications.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/communications/Communications.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/conversation-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -5892,11 +6058,24 @@
     "name": "acceptsInput",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/communications/Chat.tsx"
+      ],
+      "checks": [
+        "frontend/tests/communications.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/communications/Communications.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/conversation-review/Review.tsx",
+      "frontend/src/conversation-review/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -5920,7 +6099,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/conversation-review/model.ts"
     ]
   },
   {
@@ -5956,11 +6136,25 @@
     "name": "CardOutcome",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/communications/Chat.tsx"
+      ],
+      "checks": [
+        "frontend/tests/communications.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/communications/Communications.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/conversation-review/Review.tsx",
+      "frontend/src/conversation-review/contracts.ts",
+      "frontend/src/conversation-review/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -6218,7 +6412,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/conversation-review/Review.tsx"
     ]
   },
   {
@@ -6282,7 +6477,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/conversation-review/Review.tsx"
     ]
   },
   {

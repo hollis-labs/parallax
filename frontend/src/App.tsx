@@ -15,6 +15,7 @@ import { AccountLab } from "./administration/Account"
 import { AdminLab } from "./administration/Admin"
 import { createOperationsExample } from "./chimera/example"
 import { CommunicationLab } from "./communications/CommunicationLab"
+import { ConversationReview } from "./conversation-review/Review"
 import { EvidenceInspector } from "./evidence/Inspector"
 import { Comparison, type Layout, layouts } from "./layouts/Comparison"
 import { Navigation, type NavigationMode } from "./layouts/Navigation"
@@ -237,7 +238,8 @@ export function App() {
   const isSettingsReview = page === "Settings Review"
   const isAdministration =
     page === "Administration" || page === "Account" || isSettingsReview || isAccountReview
-  const isCommunication = ["Contacts", "Messages", "Chat"].includes(page)
+  const isConversationReview = page === "Conversation Review"
+  const isCommunication = ["Contacts", "Messages", "Chat", "Conversation Review"].includes(page)
   const review = usePlayback(scenario, undefined, () => {
     pluginHost?.resetContext({ ...pluginHost.context.getSnapshot(), retiredFrame: true })
     setIntent("")
@@ -353,6 +355,7 @@ export function App() {
     "Contacts",
     "Messages",
     "Chat",
+    "Conversation Review",
     "Administration",
     "Account",
     "Settings Review",
@@ -375,6 +378,7 @@ export function App() {
       <Users key="d" className="size-4" />,
       <Mail key="e" className="size-4" />,
       <MessageSquare key="f" className="size-4" />,
+      <MessageSquare key="conversation-review" className="size-4" />,
       <Layers key="g" className="size-4" />,
       <Users key="h" className="size-4" />,
       <Layers key="settings-review" className="size-4" />,
@@ -581,7 +585,9 @@ export function App() {
                   !isPrimitives &&
                   !isEvidence &&
                   !isWidgets && <OperationsSummary model={model} />}
-                {isAccountReview ? (
+                {isConversationReview ? (
+                  <ConversationReview key={scenario} context={scenario} />
+                ) : isAccountReview ? (
                   <AccountReview key={scenario} context={scenario} />
                 ) : isSettingsReview ? (
                   <SettingsReview key={scenario} context={scenario} />

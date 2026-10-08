@@ -15,7 +15,7 @@ The pinned catalogue records all fifteen packages at design-kit commit `dbcf4fa7
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | @hollis-labs/design-components | 147 | 20 | 22 | 19 | 2 | 168 | 0 |
 | @hollis-labs/kit-dashboard | 48 | 49 | 30 | 18 | 5 | 101 | 3 |
-| @hollis-labs/kit-chat | 147 | 195 | 16 | 0 | 37 | 321 | 0 |
+| @hollis-labs/kit-chat | 147 | 195 | 16 | 4 | 39 | 315 | 0 |
 | @hollis-labs/design-bindings | 0 | 19 | 9 | 0 | 4 | 24 | 0 |
 | @hollis-labs/kit-admin | 3 | 15 | 3 | 0 | 5 | 16 | 0 |
 | @hollis-labs/kit-settings | 4 | 23 | 7 | 4 | 12 | 18 | 0 |
@@ -49,3 +49,5 @@ The thirteenth bounded batch adds Sparkbars/SignalBars/DonutChart/MiniTrend/Rece
 The fourteenth bounded batch independently reviews SettingsGroupForm/SettingsRenderer/SettingsProvenanceRenderer/SettingsWizard at existing0.2.0 (41 reviewed declarations overall;204 exact imports). [Settings field review](settings-review.md) records supported scalar/schema/provenance/wizard states and genuine callback omissions, local plan gates, source/draft/reset/StrictMode lifetime and rendered field/dialog proof. Nine newly imported types/model utilities remain partial;1,096 deferred declarations still have independent next steps.
 
 The fifteenth bounded batch independently reviews five existing private kit-account0.0.0 exports in the Account Review route and sixteen portable stories. Actual native/current validity, metadata-only intent policy, immutable fictional identity, known/unknown status/empty/loading/error/read-only/busy boundaries and source/draft/target/StrictMode retirement have concrete page/check/story pointers. Total46 reviewed/171 partial/1086 deferred/5 unsupported;214 exact imports. AccountIdentity/ProfileValue/TokenDraft/Record/Scope/ConnectedAccount imports remain partial types, not additional component reviews. NewTokenDisclosure stays deferred under no-credential policy. See [account review](account-review.md).
+
+The sixteenth bounded batch reviews four released kit-chat0.4.0 runtime exports ChatInput/ChatStream/ConfirmationCard/PromptCard with actual native composer/history/IME, uncommitted manual preview/Stop, exact prior classification, current card candidate guards and source/session/prior/StrictMode lifetime evidence. Twenty-two portable stories reuse the shared Conversation Review composition without APIs. Total50 reviewed173 partial1080 deferred5 unsupported220 exact imports. Only four independent runtime claims; remaining helper/type/CardBoundary/CardMiss and optional renderer coverage remains partial/deferred. See [conversation review](conversation-review.md).
