@@ -787,6 +787,7 @@
       "frontend/src/conversation-evidence/Review.tsx",
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/developer-evidence/Review.tsx",
+      "frontend/src/directory-review/Review.tsx",
       "frontend/src/observability/Views.tsx",
       "frontend/src/observation-review/Review.tsx",
       "frontend/src/operations/Operations.stories.tsx",
@@ -1562,11 +1563,40 @@
     "name": "Badge",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded immutable administration directory/profile: semantic Card slots, horizontal native Tabs focus/activation, metadata Badge variants and controlled provenance Popover, actual snapshot joins/zero-vs-unknown/currentness/StrictMode/held outcomes/narrow/API-free proof.",
+    "nextAction": "Untested sizes/orientations/variants and helper/prop permutations remain partial/deferred; no authorization or identity evaluation.",
+    "evidence": {
+      "pages": [
+        "frontend/src/directory-review/Review.tsx",
+        "frontend/src/directory-review/model.ts",
+        "docs/directory-review.md"
+      ],
+      "checks": [
+        "frontend/tests/directory.spec.ts",
+        "frontend/src/directory-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/directory-review/Directory.stories.tsx"
+      ],
+      "storyIds": [
+        "administration-directory-review--recorded",
+        "administration-directory-review--empty",
+        "administration-directory-review--loading",
+        "administration-directory-review--failed",
+        "administration-directory-review--denied",
+        "administration-directory-review--unknown",
+        "administration-directory-review--missing-relationship",
+        "administration-directory-review--locked",
+        "administration-directory-review--long",
+        "administration-directory-review--replacement",
+        "administration-directory-review--unassigned"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/directory-review/Review.tsx",
+      "frontend/src/directory-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1617,6 +1647,7 @@
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/developer/Lab.tsx",
       "frontend/src/developer-evidence/Review.tsx",
+      "frontend/src/directory-review/Review.tsx",
       "frontend/src/evidence/Evidence.stories.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/layouts/Comparison.stories.tsx",
@@ -1749,11 +1780,40 @@
     "name": "Card",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded immutable administration directory/profile: semantic Card slots, horizontal native Tabs focus/activation, metadata Badge variants and controlled provenance Popover, actual snapshot joins/zero-vs-unknown/currentness/StrictMode/held outcomes/narrow/API-free proof.",
+    "nextAction": "Untested sizes/orientations/variants and helper/prop permutations remain partial/deferred; no authorization or identity evaluation.",
+    "evidence": {
+      "pages": [
+        "frontend/src/directory-review/Review.tsx",
+        "frontend/src/directory-review/model.ts",
+        "docs/directory-review.md"
+      ],
+      "checks": [
+        "frontend/tests/directory.spec.ts",
+        "frontend/src/directory-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/directory-review/Directory.stories.tsx"
+      ],
+      "storyIds": [
+        "administration-directory-review--recorded",
+        "administration-directory-review--empty",
+        "administration-directory-review--loading",
+        "administration-directory-review--failed",
+        "administration-directory-review--denied",
+        "administration-directory-review--unknown",
+        "administration-directory-review--missing-relationship",
+        "administration-directory-review--locked",
+        "administration-directory-review--long",
+        "administration-directory-review--replacement",
+        "administration-directory-review--unassigned"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/directory-review/Review.tsx",
+      "frontend/src/directory-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1762,11 +1822,39 @@
     "name": "CardHeader",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded immutable administration directory/profile: semantic Card slots, horizontal native Tabs focus/activation, metadata Badge variants and controlled provenance Popover, actual snapshot joins/zero-vs-unknown/currentness/StrictMode/held outcomes/narrow/API-free proof.",
+    "nextAction": "Untested sizes/orientations/variants and helper/prop permutations remain partial/deferred; no authorization or identity evaluation.",
+    "evidence": {
+      "pages": [
+        "frontend/src/directory-review/Review.tsx",
+        "frontend/src/directory-review/model.ts",
+        "docs/directory-review.md"
+      ],
+      "checks": [
+        "frontend/tests/directory.spec.ts",
+        "frontend/src/directory-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/directory-review/Directory.stories.tsx"
+      ],
+      "storyIds": [
+        "administration-directory-review--recorded",
+        "administration-directory-review--empty",
+        "administration-directory-review--loading",
+        "administration-directory-review--failed",
+        "administration-directory-review--denied",
+        "administration-directory-review--unknown",
+        "administration-directory-review--missing-relationship",
+        "administration-directory-review--locked",
+        "administration-directory-review--long",
+        "administration-directory-review--replacement",
+        "administration-directory-review--unassigned"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/directory-review/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1775,11 +1863,39 @@
     "name": "CardFooter",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded immutable administration directory/profile: semantic Card slots, horizontal native Tabs focus/activation, metadata Badge variants and controlled provenance Popover, actual snapshot joins/zero-vs-unknown/currentness/StrictMode/held outcomes/narrow/API-free proof.",
+    "nextAction": "Untested sizes/orientations/variants and helper/prop permutations remain partial/deferred; no authorization or identity evaluation.",
+    "evidence": {
+      "pages": [
+        "frontend/src/directory-review/Review.tsx",
+        "frontend/src/directory-review/model.ts",
+        "docs/directory-review.md"
+      ],
+      "checks": [
+        "frontend/tests/directory.spec.ts",
+        "frontend/src/directory-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/directory-review/Directory.stories.tsx"
+      ],
+      "storyIds": [
+        "administration-directory-review--recorded",
+        "administration-directory-review--empty",
+        "administration-directory-review--loading",
+        "administration-directory-review--failed",
+        "administration-directory-review--denied",
+        "administration-directory-review--unknown",
+        "administration-directory-review--missing-relationship",
+        "administration-directory-review--locked",
+        "administration-directory-review--long",
+        "administration-directory-review--replacement",
+        "administration-directory-review--unassigned"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/directory-review/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1788,11 +1904,39 @@
     "name": "CardTitle",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded immutable administration directory/profile: semantic Card slots, horizontal native Tabs focus/activation, metadata Badge variants and controlled provenance Popover, actual snapshot joins/zero-vs-unknown/currentness/StrictMode/held outcomes/narrow/API-free proof.",
+    "nextAction": "Untested sizes/orientations/variants and helper/prop permutations remain partial/deferred; no authorization or identity evaluation.",
+    "evidence": {
+      "pages": [
+        "frontend/src/directory-review/Review.tsx",
+        "frontend/src/directory-review/model.ts",
+        "docs/directory-review.md"
+      ],
+      "checks": [
+        "frontend/tests/directory.spec.ts",
+        "frontend/src/directory-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/directory-review/Directory.stories.tsx"
+      ],
+      "storyIds": [
+        "administration-directory-review--recorded",
+        "administration-directory-review--empty",
+        "administration-directory-review--loading",
+        "administration-directory-review--failed",
+        "administration-directory-review--denied",
+        "administration-directory-review--unknown",
+        "administration-directory-review--missing-relationship",
+        "administration-directory-review--locked",
+        "administration-directory-review--long",
+        "administration-directory-review--replacement",
+        "administration-directory-review--unassigned"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/directory-review/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1801,11 +1945,39 @@
     "name": "CardAction",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded immutable administration directory/profile: semantic Card slots, horizontal native Tabs focus/activation, metadata Badge variants and controlled provenance Popover, actual snapshot joins/zero-vs-unknown/currentness/StrictMode/held outcomes/narrow/API-free proof.",
+    "nextAction": "Untested sizes/orientations/variants and helper/prop permutations remain partial/deferred; no authorization or identity evaluation.",
+    "evidence": {
+      "pages": [
+        "frontend/src/directory-review/Review.tsx",
+        "frontend/src/directory-review/model.ts",
+        "docs/directory-review.md"
+      ],
+      "checks": [
+        "frontend/tests/directory.spec.ts",
+        "frontend/src/directory-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/directory-review/Directory.stories.tsx"
+      ],
+      "storyIds": [
+        "administration-directory-review--recorded",
+        "administration-directory-review--empty",
+        "administration-directory-review--loading",
+        "administration-directory-review--failed",
+        "administration-directory-review--denied",
+        "administration-directory-review--unknown",
+        "administration-directory-review--missing-relationship",
+        "administration-directory-review--locked",
+        "administration-directory-review--long",
+        "administration-directory-review--replacement",
+        "administration-directory-review--unassigned"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/directory-review/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1814,11 +1986,39 @@
     "name": "CardDescription",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded immutable administration directory/profile: semantic Card slots, horizontal native Tabs focus/activation, metadata Badge variants and controlled provenance Popover, actual snapshot joins/zero-vs-unknown/currentness/StrictMode/held outcomes/narrow/API-free proof.",
+    "nextAction": "Untested sizes/orientations/variants and helper/prop permutations remain partial/deferred; no authorization or identity evaluation.",
+    "evidence": {
+      "pages": [
+        "frontend/src/directory-review/Review.tsx",
+        "frontend/src/directory-review/model.ts",
+        "docs/directory-review.md"
+      ],
+      "checks": [
+        "frontend/tests/directory.spec.ts",
+        "frontend/src/directory-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/directory-review/Directory.stories.tsx"
+      ],
+      "storyIds": [
+        "administration-directory-review--recorded",
+        "administration-directory-review--empty",
+        "administration-directory-review--loading",
+        "administration-directory-review--failed",
+        "administration-directory-review--denied",
+        "administration-directory-review--unknown",
+        "administration-directory-review--missing-relationship",
+        "administration-directory-review--locked",
+        "administration-directory-review--long",
+        "administration-directory-review--replacement",
+        "administration-directory-review--unassigned"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/directory-review/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -1827,11 +2027,39 @@
     "name": "CardContent",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded immutable administration directory/profile: semantic Card slots, horizontal native Tabs focus/activation, metadata Badge variants and controlled provenance Popover, actual snapshot joins/zero-vs-unknown/currentness/StrictMode/held outcomes/narrow/API-free proof.",
+    "nextAction": "Untested sizes/orientations/variants and helper/prop permutations remain partial/deferred; no authorization or identity evaluation.",
+    "evidence": {
+      "pages": [
+        "frontend/src/directory-review/Review.tsx",
+        "frontend/src/directory-review/model.ts",
+        "docs/directory-review.md"
+      ],
+      "checks": [
+        "frontend/tests/directory.spec.ts",
+        "frontend/src/directory-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/directory-review/Directory.stories.tsx"
+      ],
+      "storyIds": [
+        "administration-directory-review--recorded",
+        "administration-directory-review--empty",
+        "administration-directory-review--loading",
+        "administration-directory-review--failed",
+        "administration-directory-review--denied",
+        "administration-directory-review--unknown",
+        "administration-directory-review--missing-relationship",
+        "administration-directory-review--locked",
+        "administration-directory-review--long",
+        "administration-directory-review--replacement",
+        "administration-directory-review--unassigned"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/directory-review/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2443,6 +2671,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/directory-review/Review.tsx",
       "frontend/src/usage-evidence/Review.tsx"
     ]
   },
@@ -2453,11 +2682,40 @@
     "name": "Popover",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded immutable administration directory/profile: semantic Card slots, horizontal native Tabs focus/activation, metadata Badge variants and controlled provenance Popover, actual snapshot joins/zero-vs-unknown/currentness/StrictMode/held outcomes/narrow/API-free proof.",
+    "nextAction": "Untested sizes/orientations/variants and helper/prop permutations remain partial/deferred; no authorization or identity evaluation.",
+    "evidence": {
+      "pages": [
+        "frontend/src/directory-review/Review.tsx",
+        "frontend/src/directory-review/model.ts",
+        "docs/directory-review.md"
+      ],
+      "checks": [
+        "frontend/tests/directory.spec.ts",
+        "frontend/src/directory-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/directory-review/Directory.stories.tsx"
+      ],
+      "storyIds": [
+        "administration-directory-review--recorded",
+        "administration-directory-review--empty",
+        "administration-directory-review--loading",
+        "administration-directory-review--failed",
+        "administration-directory-review--denied",
+        "administration-directory-review--unknown",
+        "administration-directory-review--missing-relationship",
+        "administration-directory-review--locked",
+        "administration-directory-review--long",
+        "administration-directory-review--replacement",
+        "administration-directory-review--unassigned"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/directory-review/Review.tsx",
+      "frontend/src/directory-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2466,11 +2724,39 @@
     "name": "PopoverContent",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded immutable administration directory/profile: semantic Card slots, horizontal native Tabs focus/activation, metadata Badge variants and controlled provenance Popover, actual snapshot joins/zero-vs-unknown/currentness/StrictMode/held outcomes/narrow/API-free proof.",
+    "nextAction": "Untested sizes/orientations/variants and helper/prop permutations remain partial/deferred; no authorization or identity evaluation.",
+    "evidence": {
+      "pages": [
+        "frontend/src/directory-review/Review.tsx",
+        "frontend/src/directory-review/model.ts",
+        "docs/directory-review.md"
+      ],
+      "checks": [
+        "frontend/tests/directory.spec.ts",
+        "frontend/src/directory-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/directory-review/Directory.stories.tsx"
+      ],
+      "storyIds": [
+        "administration-directory-review--recorded",
+        "administration-directory-review--empty",
+        "administration-directory-review--loading",
+        "administration-directory-review--failed",
+        "administration-directory-review--denied",
+        "administration-directory-review--unknown",
+        "administration-directory-review--missing-relationship",
+        "administration-directory-review--locked",
+        "administration-directory-review--long",
+        "administration-directory-review--replacement",
+        "administration-directory-review--unassigned"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/directory-review/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2518,11 +2804,39 @@
     "name": "PopoverTrigger",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded immutable administration directory/profile: semantic Card slots, horizontal native Tabs focus/activation, metadata Badge variants and controlled provenance Popover, actual snapshot joins/zero-vs-unknown/currentness/StrictMode/held outcomes/narrow/API-free proof.",
+    "nextAction": "Untested sizes/orientations/variants and helper/prop permutations remain partial/deferred; no authorization or identity evaluation.",
+    "evidence": {
+      "pages": [
+        "frontend/src/directory-review/Review.tsx",
+        "frontend/src/directory-review/model.ts",
+        "docs/directory-review.md"
+      ],
+      "checks": [
+        "frontend/tests/directory.spec.ts",
+        "frontend/src/directory-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/directory-review/Directory.stories.tsx"
+      ],
+      "storyIds": [
+        "administration-directory-review--recorded",
+        "administration-directory-review--empty",
+        "administration-directory-review--loading",
+        "administration-directory-review--failed",
+        "administration-directory-review--denied",
+        "administration-directory-review--unknown",
+        "administration-directory-review--missing-relationship",
+        "administration-directory-review--locked",
+        "administration-directory-review--long",
+        "administration-directory-review--replacement",
+        "administration-directory-review--unassigned"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/directory-review/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -3022,11 +3336,40 @@
     "name": "Tabs",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded immutable administration directory/profile: semantic Card slots, horizontal native Tabs focus/activation, metadata Badge variants and controlled provenance Popover, actual snapshot joins/zero-vs-unknown/currentness/StrictMode/held outcomes/narrow/API-free proof.",
+    "nextAction": "Untested sizes/orientations/variants and helper/prop permutations remain partial/deferred; no authorization or identity evaluation.",
+    "evidence": {
+      "pages": [
+        "frontend/src/directory-review/Review.tsx",
+        "frontend/src/directory-review/model.ts",
+        "docs/directory-review.md"
+      ],
+      "checks": [
+        "frontend/tests/directory.spec.ts",
+        "frontend/src/directory-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/directory-review/Directory.stories.tsx"
+      ],
+      "storyIds": [
+        "administration-directory-review--recorded",
+        "administration-directory-review--empty",
+        "administration-directory-review--loading",
+        "administration-directory-review--failed",
+        "administration-directory-review--denied",
+        "administration-directory-review--unknown",
+        "administration-directory-review--missing-relationship",
+        "administration-directory-review--locked",
+        "administration-directory-review--long",
+        "administration-directory-review--replacement",
+        "administration-directory-review--unassigned"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/directory-review/Review.tsx",
+      "frontend/src/directory-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -3035,11 +3378,39 @@
     "name": "TabsList",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded immutable administration directory/profile: semantic Card slots, horizontal native Tabs focus/activation, metadata Badge variants and controlled provenance Popover, actual snapshot joins/zero-vs-unknown/currentness/StrictMode/held outcomes/narrow/API-free proof.",
+    "nextAction": "Untested sizes/orientations/variants and helper/prop permutations remain partial/deferred; no authorization or identity evaluation.",
+    "evidence": {
+      "pages": [
+        "frontend/src/directory-review/Review.tsx",
+        "frontend/src/directory-review/model.ts",
+        "docs/directory-review.md"
+      ],
+      "checks": [
+        "frontend/tests/directory.spec.ts",
+        "frontend/src/directory-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/directory-review/Directory.stories.tsx"
+      ],
+      "storyIds": [
+        "administration-directory-review--recorded",
+        "administration-directory-review--empty",
+        "administration-directory-review--loading",
+        "administration-directory-review--failed",
+        "administration-directory-review--denied",
+        "administration-directory-review--unknown",
+        "administration-directory-review--missing-relationship",
+        "administration-directory-review--locked",
+        "administration-directory-review--long",
+        "administration-directory-review--replacement",
+        "administration-directory-review--unassigned"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/directory-review/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -3048,11 +3419,39 @@
     "name": "TabsTrigger",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded immutable administration directory/profile: semantic Card slots, horizontal native Tabs focus/activation, metadata Badge variants and controlled provenance Popover, actual snapshot joins/zero-vs-unknown/currentness/StrictMode/held outcomes/narrow/API-free proof.",
+    "nextAction": "Untested sizes/orientations/variants and helper/prop permutations remain partial/deferred; no authorization or identity evaluation.",
+    "evidence": {
+      "pages": [
+        "frontend/src/directory-review/Review.tsx",
+        "frontend/src/directory-review/model.ts",
+        "docs/directory-review.md"
+      ],
+      "checks": [
+        "frontend/tests/directory.spec.ts",
+        "frontend/src/directory-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/directory-review/Directory.stories.tsx"
+      ],
+      "storyIds": [
+        "administration-directory-review--recorded",
+        "administration-directory-review--empty",
+        "administration-directory-review--loading",
+        "administration-directory-review--failed",
+        "administration-directory-review--denied",
+        "administration-directory-review--unknown",
+        "administration-directory-review--missing-relationship",
+        "administration-directory-review--locked",
+        "administration-directory-review--long",
+        "administration-directory-review--replacement",
+        "administration-directory-review--unassigned"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/directory-review/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -3061,11 +3460,39 @@
     "name": "TabsContent",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded immutable administration directory/profile: semantic Card slots, horizontal native Tabs focus/activation, metadata Badge variants and controlled provenance Popover, actual snapshot joins/zero-vs-unknown/currentness/StrictMode/held outcomes/narrow/API-free proof.",
+    "nextAction": "Untested sizes/orientations/variants and helper/prop permutations remain partial/deferred; no authorization or identity evaluation.",
+    "evidence": {
+      "pages": [
+        "frontend/src/directory-review/Review.tsx",
+        "frontend/src/directory-review/model.ts",
+        "docs/directory-review.md"
+      ],
+      "checks": [
+        "frontend/tests/directory.spec.ts",
+        "frontend/src/directory-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/directory-review/Directory.stories.tsx"
+      ],
+      "storyIds": [
+        "administration-directory-review--recorded",
+        "administration-directory-review--empty",
+        "administration-directory-review--loading",
+        "administration-directory-review--failed",
+        "administration-directory-review--denied",
+        "administration-directory-review--unknown",
+        "administration-directory-review--missing-relationship",
+        "administration-directory-review--locked",
+        "administration-directory-review--long",
+        "administration-directory-review--replacement",
+        "administration-directory-review--unassigned"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/directory-review/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",

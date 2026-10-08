@@ -964,6 +964,56 @@
           "chat-usage-evidence--global-denied"
         ]
       }
+    },
+    {
+      "package": "@hollis-labs/design-components",
+      "names": [
+        "Card",
+        "CardHeader",
+        "CardFooter",
+        "CardTitle",
+        "CardAction",
+        "CardDescription",
+        "CardContent",
+        "Tabs",
+        "TabsList",
+        "TabsTrigger",
+        "TabsContent",
+        "Badge",
+        "Popover",
+        "PopoverTrigger",
+        "PopoverContent"
+      ],
+      "disposition": "reviewed",
+      "reason": "Independent bounded immutable administration directory/profile: semantic Card slots, horizontal native Tabs focus/activation, metadata Badge variants and controlled provenance Popover, actual snapshot joins/zero-vs-unknown/currentness/StrictMode/held outcomes/narrow/API-free proof.",
+      "nextAction": "Untested sizes/orientations/variants and helper/prop permutations remain partial/deferred; no authorization or identity evaluation.",
+      "evidence": {
+        "pages": [
+          "frontend/src/directory-review/Review.tsx",
+          "frontend/src/directory-review/model.ts",
+          "docs/directory-review.md"
+        ],
+        "checks": [
+          "frontend/tests/directory.spec.ts",
+          "frontend/src/directory-review/contracts.ts"
+        ],
+        "stories": [
+          "frontend/src/directory-review/Directory.stories.tsx"
+        ],
+        "storyIds": [
+          "administration-directory-review--recorded",
+          "administration-directory-review--empty",
+          "administration-directory-review--loading",
+          "administration-directory-review--failed",
+          "administration-directory-review--denied",
+          "administration-directory-review--unknown",
+          "administration-directory-review--missing-relationship",
+          "administration-directory-review--locked",
+          "administration-directory-review--long",
+          "administration-directory-review--replacement",
+          "administration-directory-review--unassigned"
+        ]
+      }
     }
   ]
 }

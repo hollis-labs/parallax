@@ -18,6 +18,7 @@ import { AdminLab } from "./administration/Admin"
 import { createOperationsExample } from "./chimera/example"
 import { CommunicationLab } from "./communications/CommunicationLab"
 import { ConversationReview } from "./conversation-review/Review"
+import { DirectoryReview } from "./directory-review/Review"
 import { EvidenceInspector } from "./evidence/Inspector"
 import { Comparison, type Layout, layouts } from "./layouts/Comparison"
 import { Navigation, type NavigationMode } from "./layouts/Navigation"
@@ -267,6 +268,7 @@ export function App() {
   const isDeveloper = page === "Developer" || isDeveloperEvidence || isWorkflowReview
   const isObservationReview = page === "Observation Review"
   const isObservation = page === "Observability" || isObservationReview
+  const isDirectoryReview = page === "Directory Review"
   const isAccountReview = page === "Account Review"
   const isSettingsReview = page === "Settings Review"
   const isAdminReview = page === "Admin Review"
@@ -274,6 +276,7 @@ export function App() {
     page === "Administration" ||
     page === "Account" ||
     isSettingsReview ||
+    isDirectoryReview ||
     isAccountReview ||
     isAdminReview
   const isUsageEvidence = page === "Usage Evidence"
@@ -657,6 +660,8 @@ export function App() {
                   </Suspense>
                 ) : isConversationReview ? (
                   <ConversationReview key={scenario} context={scenario} />
+                ) : isDirectoryReview ? (
+                  <DirectoryReview key={scenario} context={scenario} />
                 ) : isAccountReview ? (
                   <AccountReview key={scenario} context={scenario} />
                 ) : isSettingsReview ? (

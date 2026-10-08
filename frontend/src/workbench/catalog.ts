@@ -22,6 +22,16 @@ type Definition = {
 }
 export const destinations: readonly Definition[] = [
   {
+    id: "Directory Review",
+    group: "Administration",
+    icon: "Users",
+    source: "Independent administration/v1 snapshot",
+    scope:
+      "Readonly fictional users, roles and permission metadata with profile tabs and provenance.",
+    gap: "No identity assurance or authorization; unresolved references are unknown, not zero.",
+    story: "administration-directory-review--recorded",
+  },
+  {
     id: "Activity",
     group: "Operations",
     icon: "Activity",
