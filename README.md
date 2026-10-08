@@ -72,3 +72,5 @@ Usage Evidence reviews current admitted operations receipts through actual Conte
 Directory Review presents immutable administration/v1 fictional users/roles/permission metadata in a snapshot-clock profile view, with native tabs and provenance popup. No authorization or edits; see [scope and evidence](docs/directory-review.md).
 
 Ops Dashboard unifies existing Activity/Mission Control/Usage under current-prefix native tabs with task summary and a distinct exact metric companion; individual routes remain. [Reference gaps and bounded evidence](docs/ops-dashboard-review.md).
+
+[Appearance Review](docs/appearance-review.md) compares four installed palettes on an isolated readonly specimen with local mode/annotation/density controls and an exact semantic token companion; preferences are never persisted.

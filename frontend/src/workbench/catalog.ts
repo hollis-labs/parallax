@@ -32,6 +32,16 @@ export const destinations: readonly Definition[] = [
     playback: true,
   },
   {
+    id: "Appearance Review",
+    group: "Administration",
+    icon: "Layers",
+    source: "Current operations context; isolated authored token specimen",
+    scope: "Local palette/mode and annotation/density controls with exact semantic companion.",
+    gap: "No persistence or universal nested dark-utility isolation; unavailable palette withheld.",
+    story: "review-appearance--light",
+    playback: true,
+  },
+  {
     id: "Event Ledger",
     group: "Evidence",
     icon: "Activity",

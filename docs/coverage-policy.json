@@ -1186,6 +1186,46 @@
           "evidence-event-ledger--long-literal"
         ]
       }
+    },
+    {
+      "package": "@hollis-labs/design-components",
+      "names": [
+        "ThemePicker",
+        "ModeToggle",
+        "Checkbox",
+        "Switch"
+      ],
+      "entries": [
+        "."
+      ],
+      "disposition": "reviewed",
+      "reason": "Bounded current-scope controlled Appearance Review: native palette/mode/boolean interactions, installed scoped semantic paint, system listener lifetime and exact companion; supported default states only.",
+      "nextAction": "Review other variants/disabled/indeterminate and alias entry contracts independently; do not infer persisted preferences or universal nested dark utility isolation.",
+      "evidence": {
+        "pages": [
+          "frontend/src/appearance-review/Review.tsx",
+          "docs/appearance-review.md"
+        ],
+        "stories": [
+          "frontend/src/appearance-review/Review.stories.tsx"
+        ],
+        "checks": [
+          "frontend/tests/appearance.spec.ts",
+          "frontend/src/appearance-review/contracts.ts"
+        ],
+        "storyIds": [
+          "review-appearance--light",
+          "review-appearance--dark",
+          "review-appearance--system",
+          "review-appearance--phosphor",
+          "review-appearance--amber",
+          "review-appearance--high-contrast",
+          "review-appearance--unknown-palette",
+          "review-appearance--unavailable",
+          "review-appearance--denied",
+          "review-appearance--long-label"
+        ]
+      }
     }
   ]
 }

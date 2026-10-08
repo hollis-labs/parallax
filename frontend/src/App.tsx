@@ -15,6 +15,7 @@ import { adminAppearances } from "./admin-review/model"
 import { AdminReview } from "./admin-review/Review"
 import { AccountLab } from "./administration/Account"
 import { AdminLab } from "./administration/Admin"
+import { AppearanceReview } from "./appearance-review/Review"
 import { createOperationsExample } from "./chimera/example"
 import { CommunicationLab } from "./communications/CommunicationLab"
 import { ConversationReview } from "./conversation-review/Review"
@@ -261,6 +262,7 @@ export function App() {
     document.documentElement.setAttribute("data-mode", mode)
   }, [theme, mode])
   const isOpsDashboard = page === "Ops Dashboard"
+  const isAppearance = page === "Appearance Review"
   const isLedger = page === "Event Ledger"
   const isWorkbench = page === workbenchEntry.id
   const isWidgets = page === "Widgets"
@@ -616,11 +618,12 @@ export function App() {
               </div>
             )}
             {routeNotice && <p role="status">{routeNotice}</p>}
-            {!model.accessible && !isWorkbench && !isOpsDashboard && !isLedger ? (
+            {!model.accessible && !isWorkbench && !isOpsDashboard && !isLedger && !isAppearance ? (
               <ResourceNotice model={model} />
             ) : (
               <>
-                {!isOpsDashboard &&
+                {!isAppearance &&
+                  !isOpsDashboard &&
                   !isLedger &&
                   !isWorkbench &&
                   !isCommunication &&
@@ -632,7 +635,9 @@ export function App() {
                   !isPrimitives &&
                   !isEvidence &&
                   !isWidgets && <OperationsSummary model={model} />}
-                {isLedger ? (
+                {isAppearance ? (
+                  <AppearanceReview operations={model} operationsQuery={query} />
+                ) : isLedger ? (
                   <EventLedger operations={model} operationsQuery={query} onInspectRun={select} />
                 ) : isWorkbench ? (
                   <ReviewWorkbench
