@@ -304,19 +304,19 @@
   border: 1px solid var(--color-border);
 }
 .torque-calendar-cell[data-level="1"] {
-  background: color-mix(in srgb, var(--color-dash-status-doing) 35%, var(--color-bg-elevated));
+  background: color-mix(in srgb, var(--color-primary) 35%, var(--color-bg-elevated));
   border-color: transparent;
 }
 .torque-calendar-cell[data-level="2"] {
-  background: color-mix(in srgb, var(--color-dash-status-doing) 65%, var(--color-bg-elevated));
+  background: color-mix(in srgb, var(--color-primary) 65%, var(--color-bg-elevated));
   border-color: transparent;
 }
 .torque-calendar-cell[data-level="3"] {
-  background: color-mix(in srgb, var(--color-dash-status-done) 75%, var(--color-bg-elevated));
+  background: color-mix(in srgb, var(--color-success) 75%, var(--color-bg-elevated));
   border-color: transparent;
 }
 .torque-calendar-cell[data-level="4"] {
-  background: var(--color-dash-status-done);
+  background: var(--color-success);
   border-color: transparent;
 }
 .torque-calendar-cell[data-level="unknown"] {
@@ -360,7 +360,7 @@
 .torque-pulse-bin i {
   display: block;
   width: 100%;
-  background: var(--color-dash-status-doing);
+  background: var(--color-primary);
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
 }
 .torque-pulse-bin[data-count="unknown"] i {
@@ -419,4 +419,129 @@
     grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
     align-items: start;
   }
+}
+.torque-mission {
+  --torque-series-input: color-mix(in srgb, var(--color-primary) 50%, var(--color-bg-elevated));
+  display: grid;
+  gap: calc(var(--spacing) * 4);
+  min-width: 0;
+}
+.torque-mission-columns,
+.torque-mission-main,
+.torque-mission-top {
+  display: grid;
+  gap: calc(var(--spacing) * 4);
+  min-width: 0;
+  align-items: start;
+}
+.torque-mission h2 {
+  margin: 0 0 calc(var(--spacing) * 3);
+  font-size: var(--text-sm);
+}
+.torque-mission svg {
+  display: block;
+  width: 100%;
+  max-height: 180px;
+  overflow: visible;
+}
+.torque-mission .torque-cost {
+  max-height: 160px;
+}
+.torque-mission svg text {
+  fill: var(--color-fg-secondary);
+  font-size: 11px;
+}
+.torque-mission [data-slot="card-content"] {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.torque-mission p {
+  font-size: var(--text-xs);
+  color: var(--color-fg-secondary);
+}
+.torque-chart-legend {
+  display: flex;
+  gap: calc(var(--spacing) * 4);
+  font-size: var(--text-xs);
+}
+.torque-chart-legend span:first-child {
+  color: var(--color-primary);
+}
+.torque-chart-legend span:last-child {
+  color: var(--color-success);
+}
+.torque-chart-table {
+  max-height: 300px;
+  width: 100%;
+  overflow: auto;
+  margin-top: calc(var(--spacing) * 3);
+  border: 1px solid var(--color-border);
+}
+.torque-chart-table:focus-visible {
+  outline: 2px solid var(--color-fg);
+  outline-offset: 2px;
+}
+.torque-chart-table table {
+  width: 960px;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: var(--text-xs);
+}
+.torque-chart-table th,
+.torque-chart-table td {
+  padding: calc(var(--spacing) * 2);
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.torque-chart-inspect {
+  height: auto;
+  min-height: 32px;
+  white-space: normal;
+  max-width: 100%;
+  margin-top: calc(var(--spacing) * 2);
+}
+.torque-chart-totals {
+  margin-top: calc(var(--spacing) * 4);
+}
+@media (min-width: 1024px) {
+  .torque-mission-top {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+  }
+}
+@media (min-width: 1280px) {
+  .torque-mission-columns {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+  }
+}
+
+.torque-mission .torque-volume,
+.torque-mission .torque-token {
+  height: 160px;
+  max-height: none;
+}
+.torque-mission .torque-cost {
+  height: 140px;
+  max-height: none;
+}
+
+.torque-chart-legend span::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: calc(var(--spacing) * 2);
+  background: var(--color-success);
+}
+.torque-chart-legend span:first-child::before {
+  background: color-mix(in srgb, var(--color-primary) 50%, var(--color-bg-elevated));
+}
+
+.torque-chart-axis {
+  display: flex;
+  justify-content: space-between;
+  gap: calc(var(--spacing) * 2);
+  font-size: var(--text-xs);
+  color: var(--color-fg-secondary);
 }

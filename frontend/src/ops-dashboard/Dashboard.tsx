@@ -19,6 +19,8 @@ export function OpsDashboard({
   controlledTab,
   longHeader = false,
   referenceActivity,
+  referenceMission,
+  referenceUsage,
 }: {
   model: OperationsModel
   query: string
@@ -30,6 +32,8 @@ export function OpsDashboard({
   initialTab?: DashboardTab
   longHeader?: boolean
   referenceActivity?: ReactNode
+  referenceMission?: ReactNode
+  referenceUsage?: ReactNode
 }) {
   const [localTab, setTab] = useState<DashboardTab>(initialTab),
     [, freshLifetime] = useState(0)
@@ -123,21 +127,23 @@ export function OpsDashboard({
         </TabsContent>
         <TabsContent value="Mission Control">
           {model.accessible ? (
-            <MissionView model={model} onSelect={choose} />
+            (referenceMission ?? <MissionView model={model} onSelect={choose} />)
           ) : (
             <ResourceNotice model={model} />
           )}
         </TabsContent>
         <TabsContent value="Usage">
           {model.accessible ? (
-            <UsageView
-              model={model}
-              query={query}
-              onQuery={(q) => {
-                if (admitted()) onQuery(q)
-              }}
-              onSelect={choose}
-            />
+            (referenceUsage ?? (
+              <UsageView
+                model={model}
+                query={query}
+                onQuery={(q) => {
+                  if (admitted()) onQuery(q)
+                }}
+                onSelect={choose}
+              />
+            ))
           ) : (
             <ResourceNotice model={model} />
           )}

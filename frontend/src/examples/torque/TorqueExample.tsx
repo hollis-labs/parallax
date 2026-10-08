@@ -9,6 +9,7 @@ import { RunExplorer } from "../../run-explorer/Explorer"
 import { exampleContext, torqueDefinition } from "../contracts"
 import { FixtureContracts } from "../FixtureContracts"
 import { TorqueActivity } from "./Activity"
+import { TorqueMission } from "./Mission"
 import { TorqueReferenceEvidence } from "./ReferenceEvidence"
 import { torqueProfiles, torqueReferenceModel, torqueSource } from "./reference"
 import { type TorqueState, torqueHref } from "./routes"
@@ -332,6 +333,16 @@ export function TorqueExample({
                 </p>
               )}
               <OpsDashboard
+                referenceMission={
+                  state.profile === "torque-16w" ? (
+                    <TorqueMission model={model} onSelect={select} />
+                  ) : undefined
+                }
+                referenceUsage={
+                  state.profile === "torque-16w" ? (
+                    <TorqueMission model={model} onSelect={select} usage />
+                  ) : undefined
+                }
                 model={model}
                 referenceActivity={
                   state.profile === "torque-16w" ? (

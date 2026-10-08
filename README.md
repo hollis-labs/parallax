@@ -80,3 +80,5 @@ Ops Dashboard unifies existing Activity/Mission Control/Usage under current-pref
 The [Evidence States review](docs/evidence-states.md) presents current-prefix resource appearances and nonessential native source help.
 
 The [Torque Activity reference](docs/torque-activity-reference.md) at `?example=torque&profile=torque-16w` provides the fixed-UTC task-update/run-start calendar, reference age-bin pulse and twelve admitted recent runs; Mission/Usage remain separate adaptations.
+
+Standalone Torque Mission/Usage reference: [semantics and transformation matrix](docs/torque-mission-usage-reference.md).

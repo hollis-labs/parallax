@@ -11,17 +11,20 @@ function Portable({
   scenario = "populated",
   cutoff,
   selected,
+  tab = "Activity",
 }: {
   screen?: TorqueRoute
   profile?: TorqueProfile
   scenario?: string
   cutoff?: string
   selected?: string
+  tab?: "Activity" | "Mission Control" | "Usage"
 }) {
   const [state, setState] = useState(() =>
     initialTorqueState(
       new URLSearchParams({
         screen,
+        tab,
         profile,
         scenario,
         ...(cutoff ? { cutoff } : {}),
@@ -95,3 +98,42 @@ export const ActivityDenied: Story = {
   args: { profile: "torque-16w", scenario: "permission-denied" },
 }
 export const ActivityLong: Story = { args: { profile: "torque-16w", scenario: "long-labels" } }
+
+export const MissionReference: Story = { args: { profile: "torque-16w", tab: "Mission Control" } }
+export const MissionEmpty: Story = {
+  args: { profile: "torque-16w", tab: "Mission Control", scenario: "empty" },
+}
+export const MissionLoading: Story = {
+  args: { profile: "torque-16w", tab: "Mission Control", scenario: "loading" },
+}
+export const MissionDegraded: Story = {
+  args: { profile: "torque-16w", tab: "Mission Control", scenario: "degraded" },
+}
+export const MissionSparse: Story = {
+  args: { profile: "torque-16w", tab: "Mission Control", scenario: "sparse" },
+}
+export const MissionUnknown: Story = {
+  args: { profile: "torque-16w", tab: "Mission Control", scenario: "unknown-status" },
+}
+export const MissionDenied: Story = {
+  args: { profile: "torque-16w", tab: "Mission Control", scenario: "permission-denied" },
+}
+export const UsageReference: Story = { args: { profile: "torque-16w", tab: "Usage" } }
+export const UsageEmpty: Story = {
+  args: { profile: "torque-16w", tab: "Usage", scenario: "empty" },
+}
+export const UsageLoading: Story = {
+  args: { profile: "torque-16w", tab: "Usage", scenario: "loading" },
+}
+export const UsageDegraded: Story = {
+  args: { profile: "torque-16w", tab: "Usage", scenario: "degraded" },
+}
+export const UsageSparse: Story = {
+  args: { profile: "torque-16w", tab: "Usage", scenario: "sparse" },
+}
+export const UsageUnknown: Story = {
+  args: { profile: "torque-16w", tab: "Usage", scenario: "unknown-status" },
+}
+export const UsageDenied: Story = {
+  args: { profile: "torque-16w", tab: "Usage", scenario: "permission-denied" },
+}

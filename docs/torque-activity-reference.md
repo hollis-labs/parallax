@@ -1,6 +1,6 @@
 # Standalone Torque Activity reference
 
-The reference entry is `?example=torque&profile=torque-16w`. The legacy dashboard also offers **Open Torque Activity reference**. Both use the existing standalone app shell, routes, admitted selection, review drawer and original source clock. The ordinary lab Activity view is unchanged. Mission Control and Usage remain adaptations pending CW-20261008-0050.
+The reference entry is `?example=torque&profile=torque-16w`. The legacy dashboard also offers **Open Torque Activity reference**. Both use the existing standalone app shell, routes, admitted selection, review drawer and original source clock. The ordinary lab Activity view is unchanged. Mission Control and Usage use the companion [fixed UTC reference composition](torque-mission-usage-reference.md); ordinary legacy-profile views remain adaptations.
 
 Pinned comparison: Torque `1f1a8c8c82e1bd4db042e63544a1470c7cdcdf01`, `apps/gui/src/pages/DashboardPage.tsx` (`ActivityTabLayout`) and `apps/gui/src/components/widgets/{activity-heatmap,pulse-24h,recent-runs}.tsx`. Installed public presentation contracts are kit-dashboard 0.4.0 and design-components 0.4.0. The app imports their actual header, summary, tabs, Card and RecentList contracts. The installed heatmap/pulse require ambient clocks and cannot express missing coverage; app-owned UTC renderers consume the accepted versioned reference operands instead. No shared implementation is copied or clock mocked.
 
