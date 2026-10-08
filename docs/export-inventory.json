@@ -1709,6 +1709,7 @@
       "frontend/src/event-ledger/Ledger.tsx",
       "frontend/src/evidence/Evidence.stories.tsx",
       "frontend/src/evidence/Inspector.tsx",
+      "frontend/src/examples/torque/ReferenceEvidence.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/layouts/Comparison.stories.tsx",
       "frontend/src/layouts/Comparison.tsx",
