@@ -785,6 +785,7 @@
       "frontend/src/communications/CommunicationLab.tsx",
       "frontend/src/communications/Messaging.tsx",
       "frontend/src/conversation-review/Review.tsx",
+      "frontend/src/developer-evidence/Review.tsx",
       "frontend/src/observability/Views.tsx",
       "frontend/src/observation-review/Review.tsx",
       "frontend/src/operations/Operations.stories.tsx",
@@ -1610,6 +1611,7 @@
       "frontend/src/communications/Messaging.tsx",
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/developer/Lab.tsx",
+      "frontend/src/developer-evidence/Review.tsx",
       "frontend/src/evidence/Evidence.stories.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/layouts/Comparison.stories.tsx",
@@ -13979,22 +13981,42 @@
     "name": "StackTrace",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded existing licensed private candidate: authored finite test ledger and actual progress/status/error/disclosures, unchanged raw stack with declared bounded file navigation, fictional supplied commit/files and exact recorded playback joins; readonly local inspection only.",
+    "nextAction": "Additional prop variants, nested helpers, parser utilities and execution/editor/highlight remain separate partial or deferred reviews.",
     "evidence": {
       "pages": [
-        "frontend/src/developer/Lab.tsx"
+        "frontend/src/developer-evidence/Review.tsx",
+        "frontend/src/developer-evidence/model.ts",
+        "docs/developer-evidence-review.md"
       ],
       "checks": [
-        "frontend/tests/developer.spec.ts"
+        "frontend/tests/developer-evidence.spec.ts",
+        "frontend/src/developer-evidence/contracts.ts"
       ],
       "stories": [
-        "frontend/src/developer/Developer.stories.tsx"
+        "frontend/src/developer-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "developer-independent-evidence--recorded",
+        "developer-independent-evidence--empty",
+        "developer-independent-evidence--loading",
+        "developer-independent-evidence--read-failure",
+        "developer-independent-evidence--denied",
+        "developer-independent-evidence--locked",
+        "developer-independent-evidence--long-content",
+        "developer-independent-evidence--unknown-raw-frame",
+        "developer-independent-evidence--passive-running",
+        "developer-independent-evidence--missing-duration",
+        "developer-independent-evidence--before-evidence",
+        "developer-independent-evidence--evidence-before-run-finish",
+        "developer-independent-evidence--incompatible-source"
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Lab.tsx"
+      "frontend/src/developer/Lab.tsx",
+      "frontend/src/developer-evidence/Review.tsx",
+      "frontend/src/developer-evidence/contracts.ts"
     ]
   },
   {
@@ -14019,7 +14041,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Lab.tsx"
+      "frontend/src/developer/Lab.tsx",
+      "frontend/src/developer-evidence/Review.tsx"
     ]
   },
   {
@@ -14122,7 +14145,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Lab.tsx"
+      "frontend/src/developer/Lab.tsx",
+      "frontend/src/developer-evidence/Review.tsx"
     ]
   },
   {
@@ -14132,22 +14156,42 @@
     "name": "StackTraceFrames",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded existing licensed private candidate: authored finite test ledger and actual progress/status/error/disclosures, unchanged raw stack with declared bounded file navigation, fictional supplied commit/files and exact recorded playback joins; readonly local inspection only.",
+    "nextAction": "Additional prop variants, nested helpers, parser utilities and execution/editor/highlight remain separate partial or deferred reviews.",
     "evidence": {
       "pages": [
-        "frontend/src/developer/Lab.tsx"
+        "frontend/src/developer-evidence/Review.tsx",
+        "frontend/src/developer-evidence/model.ts",
+        "docs/developer-evidence-review.md"
       ],
       "checks": [
-        "frontend/tests/developer.spec.ts"
+        "frontend/tests/developer-evidence.spec.ts",
+        "frontend/src/developer-evidence/contracts.ts"
       ],
       "stories": [
-        "frontend/src/developer/Developer.stories.tsx"
+        "frontend/src/developer-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "developer-independent-evidence--recorded",
+        "developer-independent-evidence--empty",
+        "developer-independent-evidence--loading",
+        "developer-independent-evidence--read-failure",
+        "developer-independent-evidence--denied",
+        "developer-independent-evidence--locked",
+        "developer-independent-evidence--long-content",
+        "developer-independent-evidence--unknown-raw-frame",
+        "developer-independent-evidence--passive-running",
+        "developer-independent-evidence--missing-duration",
+        "developer-independent-evidence--before-evidence",
+        "developer-independent-evidence--evidence-before-run-finish",
+        "developer-independent-evidence--incompatible-source"
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Lab.tsx"
+      "frontend/src/developer/Lab.tsx",
+      "frontend/src/developer-evidence/Review.tsx",
+      "frontend/src/developer-evidence/contracts.ts"
     ]
   },
   {
@@ -14315,7 +14359,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Lab.tsx"
+      "frontend/src/developer/Lab.tsx",
+      "frontend/src/developer-evidence/Review.tsx"
     ]
   },
   {
@@ -14338,11 +14383,23 @@
     "name": "TestResultsHeader",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/developer/Lab.tsx"
+      ],
+      "checks": [
+        "frontend/tests/developer.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/developer/Developer.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/developer-evidence/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-code",
@@ -14364,11 +14421,23 @@
     "name": "TestResultsDuration",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/developer/Lab.tsx"
+      ],
+      "checks": [
+        "frontend/tests/developer.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/developer/Developer.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/developer-evidence/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-code",
@@ -14403,22 +14472,42 @@
     "name": "TestResults",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded existing licensed private candidate: authored finite test ledger and actual progress/status/error/disclosures, unchanged raw stack with declared bounded file navigation, fictional supplied commit/files and exact recorded playback joins; readonly local inspection only.",
+    "nextAction": "Additional prop variants, nested helpers, parser utilities and execution/editor/highlight remain separate partial or deferred reviews.",
     "evidence": {
       "pages": [
-        "frontend/src/developer/Lab.tsx"
+        "frontend/src/developer-evidence/Review.tsx",
+        "frontend/src/developer-evidence/model.ts",
+        "docs/developer-evidence-review.md"
       ],
       "checks": [
-        "frontend/tests/developer.spec.ts"
+        "frontend/tests/developer-evidence.spec.ts",
+        "frontend/src/developer-evidence/contracts.ts"
       ],
       "stories": [
-        "frontend/src/developer/Developer.stories.tsx"
+        "frontend/src/developer-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "developer-independent-evidence--recorded",
+        "developer-independent-evidence--empty",
+        "developer-independent-evidence--loading",
+        "developer-independent-evidence--read-failure",
+        "developer-independent-evidence--denied",
+        "developer-independent-evidence--locked",
+        "developer-independent-evidence--long-content",
+        "developer-independent-evidence--unknown-raw-frame",
+        "developer-independent-evidence--passive-running",
+        "developer-independent-evidence--missing-duration",
+        "developer-independent-evidence--before-evidence",
+        "developer-independent-evidence--evidence-before-run-finish",
+        "developer-independent-evidence--incompatible-source"
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Lab.tsx"
+      "frontend/src/developer/Lab.tsx",
+      "frontend/src/developer-evidence/Review.tsx",
+      "frontend/src/developer-evidence/contracts.ts"
     ]
   },
   {
@@ -14441,11 +14530,42 @@
     "name": "TestResultsProgress",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded existing licensed private candidate: authored finite test ledger and actual progress/status/error/disclosures, unchanged raw stack with declared bounded file navigation, fictional supplied commit/files and exact recorded playback joins; readonly local inspection only.",
+    "nextAction": "Additional prop variants, nested helpers, parser utilities and execution/editor/highlight remain separate partial or deferred reviews.",
+    "evidence": {
+      "pages": [
+        "frontend/src/developer-evidence/Review.tsx",
+        "frontend/src/developer-evidence/model.ts",
+        "docs/developer-evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/developer-evidence.spec.ts",
+        "frontend/src/developer-evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/developer-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "developer-independent-evidence--recorded",
+        "developer-independent-evidence--empty",
+        "developer-independent-evidence--loading",
+        "developer-independent-evidence--read-failure",
+        "developer-independent-evidence--denied",
+        "developer-independent-evidence--locked",
+        "developer-independent-evidence--long-content",
+        "developer-independent-evidence--unknown-raw-frame",
+        "developer-independent-evidence--passive-running",
+        "developer-independent-evidence--missing-duration",
+        "developer-independent-evidence--before-evidence",
+        "developer-independent-evidence--evidence-before-run-finish",
+        "developer-independent-evidence--incompatible-source"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/developer-evidence/Review.tsx",
+      "frontend/src/developer-evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-code",
@@ -14482,7 +14602,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Lab.tsx"
+      "frontend/src/developer/Lab.tsx",
+      "frontend/src/developer-evidence/Review.tsx"
     ]
   },
   {
@@ -14505,11 +14626,42 @@
     "name": "TestSuite",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded existing licensed private candidate: authored finite test ledger and actual progress/status/error/disclosures, unchanged raw stack with declared bounded file navigation, fictional supplied commit/files and exact recorded playback joins; readonly local inspection only.",
+    "nextAction": "Additional prop variants, nested helpers, parser utilities and execution/editor/highlight remain separate partial or deferred reviews.",
+    "evidence": {
+      "pages": [
+        "frontend/src/developer-evidence/Review.tsx",
+        "frontend/src/developer-evidence/model.ts",
+        "docs/developer-evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/developer-evidence.spec.ts",
+        "frontend/src/developer-evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/developer-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "developer-independent-evidence--recorded",
+        "developer-independent-evidence--empty",
+        "developer-independent-evidence--loading",
+        "developer-independent-evidence--read-failure",
+        "developer-independent-evidence--denied",
+        "developer-independent-evidence--locked",
+        "developer-independent-evidence--long-content",
+        "developer-independent-evidence--unknown-raw-frame",
+        "developer-independent-evidence--passive-running",
+        "developer-independent-evidence--missing-duration",
+        "developer-independent-evidence--before-evidence",
+        "developer-independent-evidence--evidence-before-run-finish",
+        "developer-independent-evidence--incompatible-source"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/developer-evidence/Review.tsx",
+      "frontend/src/developer-evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-code",
@@ -14531,11 +14683,23 @@
     "name": "TestSuiteName",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/developer/Lab.tsx"
+      ],
+      "checks": [
+        "frontend/tests/developer.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/developer/Developer.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/developer-evidence/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-code",
@@ -14583,11 +14747,23 @@
     "name": "TestSuiteContent",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/developer/Lab.tsx"
+      ],
+      "checks": [
+        "frontend/tests/developer.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/developer/Developer.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/developer-evidence/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-code",
@@ -14674,22 +14850,42 @@
     "name": "Test",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded existing licensed private candidate: authored finite test ledger and actual progress/status/error/disclosures, unchanged raw stack with declared bounded file navigation, fictional supplied commit/files and exact recorded playback joins; readonly local inspection only.",
+    "nextAction": "Additional prop variants, nested helpers, parser utilities and execution/editor/highlight remain separate partial or deferred reviews.",
     "evidence": {
       "pages": [
-        "frontend/src/developer/Lab.tsx"
+        "frontend/src/developer-evidence/Review.tsx",
+        "frontend/src/developer-evidence/model.ts",
+        "docs/developer-evidence-review.md"
       ],
       "checks": [
-        "frontend/tests/developer.spec.ts"
+        "frontend/tests/developer-evidence.spec.ts",
+        "frontend/src/developer-evidence/contracts.ts"
       ],
       "stories": [
-        "frontend/src/developer/Developer.stories.tsx"
+        "frontend/src/developer-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "developer-independent-evidence--recorded",
+        "developer-independent-evidence--empty",
+        "developer-independent-evidence--loading",
+        "developer-independent-evidence--read-failure",
+        "developer-independent-evidence--denied",
+        "developer-independent-evidence--locked",
+        "developer-independent-evidence--long-content",
+        "developer-independent-evidence--unknown-raw-frame",
+        "developer-independent-evidence--passive-running",
+        "developer-independent-evidence--missing-duration",
+        "developer-independent-evidence--before-evidence",
+        "developer-independent-evidence--evidence-before-run-finish",
+        "developer-independent-evidence--incompatible-source"
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Lab.tsx"
+      "frontend/src/developer/Lab.tsx",
+      "frontend/src/developer-evidence/Review.tsx",
+      "frontend/src/developer-evidence/contracts.ts"
     ]
   },
   {
@@ -14712,11 +14908,42 @@
     "name": "TestError",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded existing licensed private candidate: authored finite test ledger and actual progress/status/error/disclosures, unchanged raw stack with declared bounded file navigation, fictional supplied commit/files and exact recorded playback joins; readonly local inspection only.",
+    "nextAction": "Additional prop variants, nested helpers, parser utilities and execution/editor/highlight remain separate partial or deferred reviews.",
+    "evidence": {
+      "pages": [
+        "frontend/src/developer-evidence/Review.tsx",
+        "frontend/src/developer-evidence/model.ts",
+        "docs/developer-evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/developer-evidence.spec.ts",
+        "frontend/src/developer-evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/developer-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "developer-independent-evidence--recorded",
+        "developer-independent-evidence--empty",
+        "developer-independent-evidence--loading",
+        "developer-independent-evidence--read-failure",
+        "developer-independent-evidence--denied",
+        "developer-independent-evidence--locked",
+        "developer-independent-evidence--long-content",
+        "developer-independent-evidence--unknown-raw-frame",
+        "developer-independent-evidence--passive-running",
+        "developer-independent-evidence--missing-duration",
+        "developer-independent-evidence--before-evidence",
+        "developer-independent-evidence--evidence-before-run-finish",
+        "developer-independent-evidence--incompatible-source"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/developer-evidence/Review.tsx",
+      "frontend/src/developer-evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-code",
@@ -14738,11 +14965,23 @@
     "name": "TestErrorMessage",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/developer/Lab.tsx"
+      ],
+      "checks": [
+        "frontend/tests/developer.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/developer/Developer.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/developer-evidence/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-code",
@@ -14764,11 +15003,23 @@
     "name": "TestErrorStack",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/developer/Lab.tsx"
+      ],
+      "checks": [
+        "frontend/tests/developer.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/developer/Developer.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/developer-evidence/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-code",
@@ -14792,7 +15043,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Lab.tsx"
+      "frontend/src/developer/Lab.tsx",
+      "frontend/src/developer-evidence/Review.tsx"
     ]
   },
   {
@@ -14879,22 +15131,42 @@
     "name": "Commit",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded existing licensed private candidate: authored finite test ledger and actual progress/status/error/disclosures, unchanged raw stack with declared bounded file navigation, fictional supplied commit/files and exact recorded playback joins; readonly local inspection only.",
+    "nextAction": "Additional prop variants, nested helpers, parser utilities and execution/editor/highlight remain separate partial or deferred reviews.",
     "evidence": {
       "pages": [
-        "frontend/src/developer/Lab.tsx"
+        "frontend/src/developer-evidence/Review.tsx",
+        "frontend/src/developer-evidence/model.ts",
+        "docs/developer-evidence-review.md"
       ],
       "checks": [
-        "frontend/tests/developer.spec.ts"
+        "frontend/tests/developer-evidence.spec.ts",
+        "frontend/src/developer-evidence/contracts.ts"
       ],
       "stories": [
-        "frontend/src/developer/Developer.stories.tsx"
+        "frontend/src/developer-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "developer-independent-evidence--recorded",
+        "developer-independent-evidence--empty",
+        "developer-independent-evidence--loading",
+        "developer-independent-evidence--read-failure",
+        "developer-independent-evidence--denied",
+        "developer-independent-evidence--locked",
+        "developer-independent-evidence--long-content",
+        "developer-independent-evidence--unknown-raw-frame",
+        "developer-independent-evidence--passive-running",
+        "developer-independent-evidence--missing-duration",
+        "developer-independent-evidence--before-evidence",
+        "developer-independent-evidence--evidence-before-run-finish",
+        "developer-independent-evidence--incompatible-source"
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Lab.tsx"
+      "frontend/src/developer/Lab.tsx",
+      "frontend/src/developer-evidence/Review.tsx",
+      "frontend/src/developer-evidence/contracts.ts"
     ]
   },
   {
@@ -14945,7 +15217,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Lab.tsx"
+      "frontend/src/developer/Lab.tsx",
+      "frontend/src/developer-evidence/Review.tsx"
     ]
   },
   {
@@ -14983,7 +15256,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Lab.tsx"
+      "frontend/src/developer/Lab.tsx",
+      "frontend/src/developer-evidence/Review.tsx"
     ]
   },
   {
@@ -15177,7 +15451,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Lab.tsx"
+      "frontend/src/developer/Lab.tsx",
+      "frontend/src/developer-evidence/Review.tsx"
     ]
   },
   {
@@ -15200,11 +15475,42 @@
     "name": "CommitFiles",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded existing licensed private candidate: authored finite test ledger and actual progress/status/error/disclosures, unchanged raw stack with declared bounded file navigation, fictional supplied commit/files and exact recorded playback joins; readonly local inspection only.",
+    "nextAction": "Additional prop variants, nested helpers, parser utilities and execution/editor/highlight remain separate partial or deferred reviews.",
+    "evidence": {
+      "pages": [
+        "frontend/src/developer-evidence/Review.tsx",
+        "frontend/src/developer-evidence/model.ts",
+        "docs/developer-evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/developer-evidence.spec.ts",
+        "frontend/src/developer-evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/developer-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "developer-independent-evidence--recorded",
+        "developer-independent-evidence--empty",
+        "developer-independent-evidence--loading",
+        "developer-independent-evidence--read-failure",
+        "developer-independent-evidence--denied",
+        "developer-independent-evidence--locked",
+        "developer-independent-evidence--long-content",
+        "developer-independent-evidence--unknown-raw-frame",
+        "developer-independent-evidence--passive-running",
+        "developer-independent-evidence--missing-duration",
+        "developer-independent-evidence--before-evidence",
+        "developer-independent-evidence--evidence-before-run-finish",
+        "developer-independent-evidence--incompatible-source"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/developer-evidence/Review.tsx",
+      "frontend/src/developer-evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-code",
@@ -15226,11 +15532,42 @@
     "name": "CommitFile",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded existing licensed private candidate: authored finite test ledger and actual progress/status/error/disclosures, unchanged raw stack with declared bounded file navigation, fictional supplied commit/files and exact recorded playback joins; readonly local inspection only.",
+    "nextAction": "Additional prop variants, nested helpers, parser utilities and execution/editor/highlight remain separate partial or deferred reviews.",
+    "evidence": {
+      "pages": [
+        "frontend/src/developer-evidence/Review.tsx",
+        "frontend/src/developer-evidence/model.ts",
+        "docs/developer-evidence-review.md"
+      ],
+      "checks": [
+        "frontend/tests/developer-evidence.spec.ts",
+        "frontend/src/developer-evidence/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/developer-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "developer-independent-evidence--recorded",
+        "developer-independent-evidence--empty",
+        "developer-independent-evidence--loading",
+        "developer-independent-evidence--read-failure",
+        "developer-independent-evidence--denied",
+        "developer-independent-evidence--locked",
+        "developer-independent-evidence--long-content",
+        "developer-independent-evidence--unknown-raw-frame",
+        "developer-independent-evidence--passive-running",
+        "developer-independent-evidence--missing-duration",
+        "developer-independent-evidence--before-evidence",
+        "developer-independent-evidence--evidence-before-run-finish",
+        "developer-independent-evidence--incompatible-source"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/developer-evidence/Review.tsx",
+      "frontend/src/developer-evidence/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-code",
@@ -15252,11 +15589,23 @@
     "name": "CommitFileInfo",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/developer/Lab.tsx"
+      ],
+      "checks": [
+        "frontend/tests/developer.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/developer/Developer.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/developer-evidence/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-code",
@@ -15278,11 +15627,23 @@
     "name": "CommitFileStatus",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/developer/Lab.tsx"
+      ],
+      "checks": [
+        "frontend/tests/developer.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/developer/Developer.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/developer-evidence/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-code",
@@ -15330,11 +15691,23 @@
     "name": "CommitFilePath",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/developer/Lab.tsx"
+      ],
+      "checks": [
+        "frontend/tests/developer.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/developer/Developer.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/developer-evidence/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-code",
@@ -15356,11 +15729,23 @@
     "name": "CommitFileChanges",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/developer/Lab.tsx"
+      ],
+      "checks": [
+        "frontend/tests/developer.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/developer/Developer.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/developer-evidence/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-code",
@@ -15382,11 +15767,23 @@
     "name": "CommitFileAdditions",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/developer/Lab.tsx"
+      ],
+      "checks": [
+        "frontend/tests/developer.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/developer/Developer.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/developer-evidence/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-code",
@@ -15408,11 +15805,23 @@
     "name": "CommitFileDeletions",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/developer/Lab.tsx"
+      ],
+      "checks": [
+        "frontend/tests/developer.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/developer/Developer.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/developer-evidence/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-code",

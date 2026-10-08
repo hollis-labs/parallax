@@ -1,0 +1,47 @@
+@import "@hollis-labs/kit-code/source.css";
+.developer-evidence {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 4);
+}
+.evidence-review-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--spacing) * 3);
+}
+.developer-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(var(--spacing) * 5);
+}
+.developer-evidence-grid > section {
+  min-width: 0;
+}
+.developer-evidence pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.developer-case-meta,
+.developer-commit-caption {
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+  color: var(--color-fg-secondary);
+  font-size: var(--text-xs);
+  overflow-wrap: anywhere;
+}
+.developer-file-evidence {
+  padding: calc(var(--spacing) * 4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+}
+.developer-evidence button {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 48rem) {
+  .developer-evidence-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

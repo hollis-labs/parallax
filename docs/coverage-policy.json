@@ -764,6 +764,53 @@
           "operations-run-explorer--direct-filter-bar-empty"
         ]
       }
+    },
+    {
+      "package": "@hollis-labs/kit-code",
+      "names": [
+        "TestResults",
+        "TestResultsProgress",
+        "TestSuite",
+        "Test",
+        "TestError",
+        "StackTrace",
+        "StackTraceFrames",
+        "Commit",
+        "CommitFiles",
+        "CommitFile"
+      ],
+      "disposition": "reviewed",
+      "reason": "Independent bounded existing licensed private candidate: authored finite test ledger and actual progress/status/error/disclosures, unchanged raw stack with declared bounded file navigation, fictional supplied commit/files and exact recorded playback joins; readonly local inspection only.",
+      "nextAction": "Additional prop variants, nested helpers, parser utilities and execution/editor/highlight remain separate partial or deferred reviews.",
+      "evidence": {
+        "pages": [
+          "frontend/src/developer-evidence/Review.tsx",
+          "frontend/src/developer-evidence/model.ts",
+          "docs/developer-evidence-review.md"
+        ],
+        "checks": [
+          "frontend/tests/developer-evidence.spec.ts",
+          "frontend/src/developer-evidence/contracts.ts"
+        ],
+        "stories": [
+          "frontend/src/developer-evidence/Evidence.stories.tsx"
+        ],
+        "storyIds": [
+          "developer-independent-evidence--recorded",
+          "developer-independent-evidence--empty",
+          "developer-independent-evidence--loading",
+          "developer-independent-evidence--read-failure",
+          "developer-independent-evidence--denied",
+          "developer-independent-evidence--locked",
+          "developer-independent-evidence--long-content",
+          "developer-independent-evidence--unknown-raw-frame",
+          "developer-independent-evidence--passive-running",
+          "developer-independent-evidence--missing-duration",
+          "developer-independent-evidence--before-evidence",
+          "developer-independent-evidence--evidence-before-run-finish",
+          "developer-independent-evidence--incompatible-source"
+        ]
+      }
     }
   ]
 }

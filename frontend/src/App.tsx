@@ -40,6 +40,7 @@ import { SettingsReview } from "./settings-review/Review"
 import { WidgetGallery } from "./widgets/Gallery"
 
 const VoiceLab = lazy(() => import("./voice/Lab"))
+const DeveloperEvidence = lazy(() => import("./developer-evidence/Review"))
 const DeveloperLab = lazy(() => import("./developer/Lab"))
 
 type Host = ReturnType<typeof createOperationsExample>
@@ -249,7 +250,8 @@ export function App() {
   const isEvidence = page === "Evidence"
   const isPrimitives = page === "Primitives"
   const isVoice = page === "Voice"
-  const isDeveloper = page === "Developer"
+  const isDeveloperEvidence = page === "Developer Evidence"
+  const isDeveloper = page === "Developer" || isDeveloperEvidence
   const isObservationReview = page === "Observation Review"
   const isObservation = page === "Observability" || isObservationReview
   const isAccountReview = page === "Account Review"
@@ -275,6 +277,7 @@ export function App() {
     "Examples",
     "Layouts",
     "Run Explorer",
+    "Developer Evidence",
     "Observability",
     "Widgets",
   ].includes(page)
@@ -395,6 +398,7 @@ export function App() {
     "Widgets",
     "Layouts",
     "Run Explorer",
+    "Developer Evidence",
   ].map((name, i) => ({
     key: name,
     label: name,
@@ -421,6 +425,7 @@ export function App() {
       <Layers key="o" className="size-4" />,
       <Layers key="p" className="size-4" />,
       <Layers key="run-explorer" className="size-4" />,
+      <Layers key="developer-evidence" className="size-4" />,
     ][i],
     active: page === name,
     onSelect: () => {
@@ -654,6 +659,16 @@ export function App() {
                 ) : isVoice ? (
                   <Suspense fallback={<p role="status">Loading voice presentation…</p>}>
                     <VoiceLab key={scenario} onInspect={select} onIntent={setIntent} />
+                  </Suspense>
+                ) : isDeveloperEvidence ? (
+                  <Suspense fallback={<p>Loading developer evidence presentation…</p>}>
+                    <DeveloperEvidence
+                      operations={operationsModel(scenario, "", {
+                        cutoff: review.cutoff,
+                        override: review.override,
+                      })}
+                      epoch={review.epoch}
+                    />
                   </Suspense>
                 ) : isDeveloper ? (
                   <Suspense fallback={<p role="status">Loading developer presentation…</p>}>
