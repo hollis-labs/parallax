@@ -10,6 +10,7 @@ import {
 } from "@hollis-labs/plugin-host-ui/react"
 import { Activity, Compass, Gauge, Layers, Mail, MessageSquare, Users, X } from "lucide-react"
 import { lazy, Suspense, useEffect, useRef, useState, useSyncExternalStore } from "react"
+import { AccountReview } from "./account-review/Review"
 import { AccountLab } from "./administration/Account"
 import { AdminLab } from "./administration/Admin"
 import { createOperationsExample } from "./chimera/example"
@@ -232,8 +233,10 @@ export function App() {
   const isVoice = page === "Voice"
   const isDeveloper = page === "Developer"
   const isObservation = page === "Observability"
+  const isAccountReview = page === "Account Review"
   const isSettingsReview = page === "Settings Review"
-  const isAdministration = page === "Administration" || page === "Account" || isSettingsReview
+  const isAdministration =
+    page === "Administration" || page === "Account" || isSettingsReview || isAccountReview
   const isCommunication = ["Contacts", "Messages", "Chat"].includes(page)
   const review = usePlayback(scenario, undefined, () => {
     pluginHost?.resetContext({ ...pluginHost.context.getSnapshot(), retiredFrame: true })
@@ -353,6 +356,7 @@ export function App() {
     "Administration",
     "Account",
     "Settings Review",
+    "Account Review",
     "Observability",
     "Developer",
     "Voice",
@@ -374,6 +378,7 @@ export function App() {
       <Layers key="g" className="size-4" />,
       <Users key="h" className="size-4" />,
       <Layers key="settings-review" className="size-4" />,
+      <Users key="account-review" className="size-4" />,
       <Activity key="i" className="size-4" />,
       <Layers key="j" className="size-4" />,
       <Layers key="k" className="size-4" />,
@@ -576,7 +581,9 @@ export function App() {
                   !isPrimitives &&
                   !isEvidence &&
                   !isWidgets && <OperationsSummary model={model} />}
-                {isSettingsReview ? (
+                {isAccountReview ? (
+                  <AccountReview key={scenario} context={scenario} />
+                ) : isSettingsReview ? (
                   <SettingsReview key={scenario} context={scenario} />
                 ) : isWidgets ? (
                   <WidgetGallery

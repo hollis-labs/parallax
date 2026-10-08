@@ -520,6 +520,51 @@
           "settings-controlled-field-review--not-set"
         ]
       }
+    },
+    {
+      "package": "@hollis-labs/kit-account",
+      "names": [
+        "AccountProfile",
+        "AccountPreferences",
+        "WhoamiBadge",
+        "ApiTokenManager",
+        "ConnectedAccounts"
+      ],
+      "disposition": "reviewed",
+      "reason": "Independent bounded private0.0 candidate account review: native/current email and scope validity, immutable fictional identity and authored metadata, current target confirmation/local held intent, genuine unknown/loading/error/empty/read-only/busy appearances, StrictMode and source/draft/principal/state/reset/unmount lifetime. No credential disclosure or business effects; not exhaustive account behavior.",
+      "nextAction": "Preserve reviewed local intent/portable checks; NewTokenDisclosure and external credentials/providers remain deferred by policy.",
+      "evidence": {
+        "pages": [
+          "frontend/src/account-review/Review.tsx",
+          "frontend/src/account-review/model.ts",
+          "docs/account-review.md"
+        ],
+        "checks": [
+          "frontend/tests/account-review.spec.ts",
+          "frontend/src/account-review/contracts.ts"
+        ],
+        "stories": [
+          "frontend/src/account-review/AccountReview.stories.tsx"
+        ],
+        "storyIds": [
+          "account-controlled-account-review--profile",
+          "account-controlled-account-review--metadata",
+          "account-controlled-account-review--empty",
+          "account-controlled-account-review--loading-identity",
+          "account-controlled-account-review--identity-error",
+          "account-controlled-account-review--denied",
+          "account-controlled-account-review--read-only",
+          "account-controlled-account-review--long-content",
+          "account-controlled-account-review--unknown-identity",
+          "account-controlled-account-review--unknown-status",
+          "account-controlled-account-review--busy",
+          "account-controlled-account-review--busy-metadata",
+          "account-controlled-account-review--invalid-profile",
+          "account-controlled-account-review--unavailable-scope",
+          "account-controlled-account-review--metadata-loading",
+          "account-controlled-account-review--metadata-error"
+        ]
+      }
     }
   ]
 }

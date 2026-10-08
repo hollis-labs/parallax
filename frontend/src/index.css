@@ -1064,3 +1064,10 @@ dd {
 .settings-plan-footer {
   margin: 0;
 }
+
+.account-review {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: calc(var(--spacing) * 4);
+}

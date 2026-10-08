@@ -20,7 +20,7 @@ The pinned catalogue records all fifteen packages at design-kit commit `dbcf4fa7
 | @hollis-labs/kit-admin | 3 | 15 | 3 | 0 | 5 | 16 | 0 |
 | @hollis-labs/kit-settings | 4 | 23 | 7 | 4 | 12 | 18 | 0 |
 | @hollis-labs/kit-observe | 5 | 14 | 0 | 0 | 9 | 10 | 0 |
-| @hollis-labs/kit-account | 6 | 12 | 0 | 0 | 6 | 12 | 0 |
+| @hollis-labs/kit-account | 6 | 12 | 0 | 5 | 11 | 2 | 0 |
 | @hollis-labs/kit-code | 88 | 81 | 3 | 0 | 26 | 146 | 0 |
 | @hollis-labs/kit-workflow | 12 | 11 | 1 | 0 | 9 | 15 | 0 |
 | @hollis-labs/kit-voice | 42 | 46 | 2 | 0 | 26 | 62 | 2 |
@@ -47,3 +47,5 @@ The twelfth bounded batch adds JsonViewer/PayloadSummary/MetaList/SearchInput (3
 The thirteenth bounded batch adds Sparkbars/SignalBars/DonutChart/MiniTrend/RecentList and Metric (37 reviewed declarations overall;191 exact imports). [Compact widget review](widgets-review.md) documents admitted operation-prefix counts, aligned partitions, real normalized geometry/paint, explicit scale floor and denominator, elapsed-second units, accessible UTC tables and native record inspection/retirement. Remaining1,109 deferred declarations retain actionable next steps; types/imports and other widget variants are not silently reviewed.
 
 The fourteenth bounded batch independently reviews SettingsGroupForm/SettingsRenderer/SettingsProvenanceRenderer/SettingsWizard at existing0.2.0 (41 reviewed declarations overall;204 exact imports). [Settings field review](settings-review.md) records supported scalar/schema/provenance/wizard states and genuine callback omissions, local plan gates, source/draft/reset/StrictMode lifetime and rendered field/dialog proof. Nine newly imported types/model utilities remain partial;1,096 deferred declarations still have independent next steps.
+
+The fifteenth bounded batch independently reviews five existing private kit-account0.0.0 exports in the Account Review route and sixteen portable stories. Actual native/current validity, metadata-only intent policy, immutable fictional identity, known/unknown status/empty/loading/error/read-only/busy boundaries and source/draft/target/StrictMode retirement have concrete page/check/story pointers. Total46 reviewed/171 partial/1086 deferred/5 unsupported;214 exact imports. AccountIdentity/ProfileValue/TokenDraft/Record/Scope/ConnectedAccount imports remain partial types, not additional component reviews. NewTokenDisclosure stays deferred under no-credential policy. See [account review](account-review.md).

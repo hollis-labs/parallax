@@ -126,6 +126,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/account-review/Review.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/primitives/Gallery.tsx",
       "frontend/src/primitives/model.ts",
@@ -210,6 +211,7 @@
     },
     "importEvidence": [
       "frontend/src/App.tsx",
+      "frontend/src/account-review/Review.tsx",
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/Messaging.tsx",
       "frontend/src/evidence/Inspector.tsx",
@@ -333,6 +335,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/account-review/Review.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/evidence/contracts.ts",
       "frontend/src/settings-review/Review.tsx",
@@ -376,6 +379,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/account-review/Review.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/evidence/contracts.ts",
       "frontend/src/settings-review/Review.tsx",
@@ -760,6 +764,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/account-review/Review.tsx",
       "frontend/src/administration/Account.tsx",
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/CommunicationLab.tsx",
@@ -1562,6 +1567,7 @@
     },
     "importEvidence": [
       "frontend/src/App.tsx",
+      "frontend/src/account-review/Review.tsx",
       "frontend/src/administration/Account.tsx",
       "frontend/src/administration/Admin.tsx",
       "frontend/src/communications/Chat.tsx",
@@ -12054,6 +12060,53 @@
     "name": "AccountProfile",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "reviewed",
+    "reason": "Independent bounded private0.0 candidate account review: native/current email and scope validity, immutable fictional identity and authored metadata, current target confirmation/local held intent, genuine unknown/loading/error/empty/read-only/busy appearances, StrictMode and source/draft/principal/state/reset/unmount lifetime. No credential disclosure or business effects; not exhaustive account behavior.",
+    "nextAction": "Preserve reviewed local intent/portable checks; NewTokenDisclosure and external credentials/providers remain deferred by policy.",
+    "evidence": {
+      "pages": [
+        "frontend/src/account-review/Review.tsx",
+        "frontend/src/account-review/model.ts",
+        "docs/account-review.md"
+      ],
+      "checks": [
+        "frontend/tests/account-review.spec.ts",
+        "frontend/src/account-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/account-review/AccountReview.stories.tsx"
+      ],
+      "storyIds": [
+        "account-controlled-account-review--profile",
+        "account-controlled-account-review--metadata",
+        "account-controlled-account-review--empty",
+        "account-controlled-account-review--loading-identity",
+        "account-controlled-account-review--identity-error",
+        "account-controlled-account-review--denied",
+        "account-controlled-account-review--read-only",
+        "account-controlled-account-review--long-content",
+        "account-controlled-account-review--unknown-identity",
+        "account-controlled-account-review--unknown-status",
+        "account-controlled-account-review--busy",
+        "account-controlled-account-review--busy-metadata",
+        "account-controlled-account-review--invalid-profile",
+        "account-controlled-account-review--unavailable-scope",
+        "account-controlled-account-review--metadata-loading",
+        "account-controlled-account-review--metadata-error"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/account-review/Review.tsx",
+      "frontend/src/administration/Account.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "AccountProfileProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "partial",
     "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
@@ -12069,21 +12122,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/administration/Account.tsx"
+      "frontend/src/account-review/contracts.ts"
     ]
-  },
-  {
-    "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
-    "entry": ".",
-    "name": "AccountProfileProps",
-    "category": "type-export",
-    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
   },
   {
     "package": "@hollis-labs/kit-account",
@@ -12107,6 +12147,8 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/account-review/Review.tsx",
+      "frontend/src/account-review/model.ts",
       "frontend/src/administration/type-contract.ts"
     ]
   },
@@ -12117,21 +12159,43 @@
     "name": "AccountPreferences",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded private0.0 candidate account review: native/current email and scope validity, immutable fictional identity and authored metadata, current target confirmation/local held intent, genuine unknown/loading/error/empty/read-only/busy appearances, StrictMode and source/draft/principal/state/reset/unmount lifetime. No credential disclosure or business effects; not exhaustive account behavior.",
+    "nextAction": "Preserve reviewed local intent/portable checks; NewTokenDisclosure and external credentials/providers remain deferred by policy.",
     "evidence": {
       "pages": [
-        "frontend/src/administration/Account.tsx"
+        "frontend/src/account-review/Review.tsx",
+        "frontend/src/account-review/model.ts",
+        "docs/account-review.md"
       ],
       "checks": [
-        "frontend/tests/administration.spec.ts"
+        "frontend/tests/account-review.spec.ts",
+        "frontend/src/account-review/contracts.ts"
       ],
       "stories": [
-        "frontend/src/administration/Administration.stories.tsx"
+        "frontend/src/account-review/AccountReview.stories.tsx"
+      ],
+      "storyIds": [
+        "account-controlled-account-review--profile",
+        "account-controlled-account-review--metadata",
+        "account-controlled-account-review--empty",
+        "account-controlled-account-review--loading-identity",
+        "account-controlled-account-review--identity-error",
+        "account-controlled-account-review--denied",
+        "account-controlled-account-review--read-only",
+        "account-controlled-account-review--long-content",
+        "account-controlled-account-review--unknown-identity",
+        "account-controlled-account-review--unknown-status",
+        "account-controlled-account-review--busy",
+        "account-controlled-account-review--busy-metadata",
+        "account-controlled-account-review--invalid-profile",
+        "account-controlled-account-review--unavailable-scope",
+        "account-controlled-account-review--metadata-loading",
+        "account-controlled-account-review--metadata-error"
       ]
     },
     "importEvidence": [
+      "frontend/src/account-review/Review.tsx",
       "frontend/src/administration/Account.tsx"
     ]
   },
@@ -12142,19 +12206,6 @@
     "name": "AccountPreferencesProps",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
-  },
-  {
-    "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
-    "entry": ".",
-    "name": "WhoamiBadge",
-    "category": "visual-component",
-    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "partial",
     "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
@@ -12170,6 +12221,53 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/account-review/contracts.ts"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "WhoamiBadge",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "reviewed",
+    "reason": "Independent bounded private0.0 candidate account review: native/current email and scope validity, immutable fictional identity and authored metadata, current target confirmation/local held intent, genuine unknown/loading/error/empty/read-only/busy appearances, StrictMode and source/draft/principal/state/reset/unmount lifetime. No credential disclosure or business effects; not exhaustive account behavior.",
+    "nextAction": "Preserve reviewed local intent/portable checks; NewTokenDisclosure and external credentials/providers remain deferred by policy.",
+    "evidence": {
+      "pages": [
+        "frontend/src/account-review/Review.tsx",
+        "frontend/src/account-review/model.ts",
+        "docs/account-review.md"
+      ],
+      "checks": [
+        "frontend/tests/account-review.spec.ts",
+        "frontend/src/account-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/account-review/AccountReview.stories.tsx"
+      ],
+      "storyIds": [
+        "account-controlled-account-review--profile",
+        "account-controlled-account-review--metadata",
+        "account-controlled-account-review--empty",
+        "account-controlled-account-review--loading-identity",
+        "account-controlled-account-review--identity-error",
+        "account-controlled-account-review--denied",
+        "account-controlled-account-review--read-only",
+        "account-controlled-account-review--long-content",
+        "account-controlled-account-review--unknown-identity",
+        "account-controlled-account-review--unknown-status",
+        "account-controlled-account-review--busy",
+        "account-controlled-account-review--busy-metadata",
+        "account-controlled-account-review--invalid-profile",
+        "account-controlled-account-review--unavailable-scope",
+        "account-controlled-account-review--metadata-loading",
+        "account-controlled-account-review--metadata-error"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/account-review/Review.tsx",
       "frontend/src/administration/Account.tsx"
     ]
   },
@@ -12180,11 +12278,23 @@
     "name": "AccountIdentity",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Account.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/account-review/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-account",
@@ -12192,19 +12302,6 @@
     "entry": ".",
     "name": "WhoamiBadgeProps",
     "category": "type-export",
-    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
-  },
-  {
-    "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
-    "entry": ".",
-    "name": "ApiTokenManager",
-    "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "partial",
     "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
@@ -12221,6 +12318,53 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/account-review/contracts.ts"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "ApiTokenManager",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "reviewed",
+    "reason": "Independent bounded private0.0 candidate account review: native/current email and scope validity, immutable fictional identity and authored metadata, current target confirmation/local held intent, genuine unknown/loading/error/empty/read-only/busy appearances, StrictMode and source/draft/principal/state/reset/unmount lifetime. No credential disclosure or business effects; not exhaustive account behavior.",
+    "nextAction": "Preserve reviewed local intent/portable checks; NewTokenDisclosure and external credentials/providers remain deferred by policy.",
+    "evidence": {
+      "pages": [
+        "frontend/src/account-review/Review.tsx",
+        "frontend/src/account-review/model.ts",
+        "docs/account-review.md"
+      ],
+      "checks": [
+        "frontend/tests/account-review.spec.ts",
+        "frontend/src/account-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/account-review/AccountReview.stories.tsx"
+      ],
+      "storyIds": [
+        "account-controlled-account-review--profile",
+        "account-controlled-account-review--metadata",
+        "account-controlled-account-review--empty",
+        "account-controlled-account-review--loading-identity",
+        "account-controlled-account-review--identity-error",
+        "account-controlled-account-review--denied",
+        "account-controlled-account-review--read-only",
+        "account-controlled-account-review--long-content",
+        "account-controlled-account-review--unknown-identity",
+        "account-controlled-account-review--unknown-status",
+        "account-controlled-account-review--busy",
+        "account-controlled-account-review--busy-metadata",
+        "account-controlled-account-review--invalid-profile",
+        "account-controlled-account-review--unavailable-scope",
+        "account-controlled-account-review--metadata-loading",
+        "account-controlled-account-review--metadata-error"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/account-review/Review.tsx",
       "frontend/src/administration/Account.tsx"
     ]
   },
@@ -12231,11 +12375,24 @@
     "name": "ApiTokenDraft",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Account.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/account-review/Review.tsx",
+      "frontend/src/account-review/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-account",
@@ -12244,11 +12401,23 @@
     "name": "ApiTokenManagerProps",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Account.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/account-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-account",
@@ -12257,11 +12426,23 @@
     "name": "ApiTokenRecord",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Account.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/account-review/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-account",
@@ -12270,11 +12451,23 @@
     "name": "ApiTokenScope",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Account.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/account-review/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-account",
@@ -12309,6 +12502,53 @@
     "name": "ConnectedAccounts",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "reviewed",
+    "reason": "Independent bounded private0.0 candidate account review: native/current email and scope validity, immutable fictional identity and authored metadata, current target confirmation/local held intent, genuine unknown/loading/error/empty/read-only/busy appearances, StrictMode and source/draft/principal/state/reset/unmount lifetime. No credential disclosure or business effects; not exhaustive account behavior.",
+    "nextAction": "Preserve reviewed local intent/portable checks; NewTokenDisclosure and external credentials/providers remain deferred by policy.",
+    "evidence": {
+      "pages": [
+        "frontend/src/account-review/Review.tsx",
+        "frontend/src/account-review/model.ts",
+        "docs/account-review.md"
+      ],
+      "checks": [
+        "frontend/tests/account-review.spec.ts",
+        "frontend/src/account-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/account-review/AccountReview.stories.tsx"
+      ],
+      "storyIds": [
+        "account-controlled-account-review--profile",
+        "account-controlled-account-review--metadata",
+        "account-controlled-account-review--empty",
+        "account-controlled-account-review--loading-identity",
+        "account-controlled-account-review--identity-error",
+        "account-controlled-account-review--denied",
+        "account-controlled-account-review--read-only",
+        "account-controlled-account-review--long-content",
+        "account-controlled-account-review--unknown-identity",
+        "account-controlled-account-review--unknown-status",
+        "account-controlled-account-review--busy",
+        "account-controlled-account-review--busy-metadata",
+        "account-controlled-account-review--invalid-profile",
+        "account-controlled-account-review--unavailable-scope",
+        "account-controlled-account-review--metadata-loading",
+        "account-controlled-account-review--metadata-error"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/account-review/Review.tsx",
+      "frontend/src/administration/Account.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.0.0",
+    "entry": ".",
+    "name": "ConnectedAccount",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "partial",
     "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
@@ -12324,21 +12564,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/administration/Account.tsx"
+      "frontend/src/account-review/model.ts"
     ]
-  },
-  {
-    "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
-    "entry": ".",
-    "name": "ConnectedAccount",
-    "category": "type-export",
-    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
   },
   {
     "package": "@hollis-labs/kit-account",
@@ -12347,11 +12574,23 @@
     "name": "ConnectedAccountsProps",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Account.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/account-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-code",
