@@ -430,8 +430,9 @@ export function TorqueExample({
                 reviewed presentation components.
               </p>
               <p>
-                Activity/Mission/Usage charts remain labelled fixed-clock adaptations until separate
-                parity tasks. No Torque API, SSE, providers or execution.
+                The torque-16w profile provides reviewed Activity/Mission/Usage reference
+                presentations. Legacy records-8/80 retain labelled fixed-clock adaptations. No
+                Torque API, SSE, providers or execution.
               </p>
               <dl>
                 <dt>Source</dt>

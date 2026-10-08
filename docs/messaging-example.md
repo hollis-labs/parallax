@@ -1,6 +1,6 @@
 # Messaging Example
 
-`/?example=messaging` and the Workbench destination open a standalone one-shell messaging review. The shared fullscreen `App examples/Messaging` stories mount the same composition without an API or transport.
+`/?example=messaging` and the Workbench destination open a standalone one-shell messaging review. The shared fullscreen `App Examples/Messaging` stories mount the same composition without an API or transport.
 
 The contact directory, email/SMS/Tether inbox, conversation detail and declared attachments use the unchanged `communications/v1` snapshot (`parallax/v3`, seed 4421, original UTC reference 2026-10-04T14:30:00Z). Its three contacts, three conversations, six messages and three attachments retain their original relationships. Latest-message ordering uses the supplied message timestamps; the fixture does not claim a conversation-updated timestamp. This independent snapshot never inherits the operations playback cutoff. The optional related Chat link resolves the exact current contact and run relationship.
 

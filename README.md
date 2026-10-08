@@ -79,11 +79,11 @@ Ops Dashboard unifies existing Activity/Mission Control/Usage under current-pref
 
 The [Evidence States review](docs/evidence-states.md) presents current-prefix resource appearances and nonessential native source help.
 
-The [Torque Activity reference](docs/torque-activity-reference.md) at `?example=torque&profile=torque-16w` provides the fixed-UTC task-update/run-start calendar, reference age-bin pulse and twelve admitted recent runs; Mission/Usage remain separate adaptations.
+The [Torque Activity reference](docs/torque-activity-reference.md) at `?example=torque&profile=torque-16w` provides the fixed-UTC task-update/run-start calendar, reference age-bin pulse and twelve admitted recent runs; the [Mission/Usage reference](docs/torque-mission-usage-reference.md) uses the same admitted profile. Legacy records-8/80 dashboards retain their labelled adaptations.
 
 Standalone Torque Mission/Usage reference: [semantics and transformation matrix](docs/torque-mission-usage-reference.md).
 
-The independently versioned [chat snapshot companion](docs/chat-example-fixtures.md) supplies finite authored history and original message/source references for the next whole-chat screen. Existing Chat and API-free pack stories share its read-only model.
+The independently versioned [chat snapshot companion](docs/chat-example-fixtures.md) supplies finite authored history and original message/source references for the accepted whole-chat screen. The standalone Chat example, legacy Chat inspector and API-free portable compositions consume the same supplied companion without treating authored history as recorded messages.
 
 The standalone [Chat Example](docs/chat-example.md) is available at `/?example=chat` and from Workbench. It uses the independent fixed-clock chat companion, a bounded transcript and pinned local-draft composer, with optional evidence/review sheets. Fullscreen portable stories reuse the same composition without APIs; submissions inspect local candidates and never append or send messages.
 

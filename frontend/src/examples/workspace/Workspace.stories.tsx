@@ -22,7 +22,7 @@ function Portable({ state: initial = defaultWorkspaceState }: { state?: Workspac
   return <WorkspaceExample state={state} onChange={setState} />
 }
 const meta = {
-  title: "App examples/Workspace",
+  title: "App Examples/Workspace",
   component: Portable,
   parameters: { layout: "fullscreen" },
   args: { state: defaultWorkspaceState },

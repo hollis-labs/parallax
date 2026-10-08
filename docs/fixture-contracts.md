@@ -13,7 +13,7 @@ The generated [family manifest](../frontend/src/fixtures/family-contracts.json) 
 
 Every artifact supplies seed 4421 and its own fixed reference clock, 2026-10-04T14:30:00Z. Their equal clocks do not make communication, administration or voice snapshots follow an operations cutoff. The manifest records actual coverage windows where supplied, and the developer recordedAt boundary. Presentation appearances and authored specimens are not persisted historical profiles. Administration now carries additive generator metadata; its existing v1 records and business relationships are unchanged.
 
-The generators' existing validators own record, foreign-key, timestamp, parent-span, media and sample bounds. This checkpoint closes two identity gaps: administration requires its supported generator; communications requires its supported dataset/generator versions. The metadata adapter does not replace record validation. A future compatible artifact needs an explicit manifest and adapter update rather than silently inheriting these declarations.
+The generators' existing validators own record, foreign-key, timestamp, parent-span, media and sample bounds. The accepted contract milestone (0047) closed two identity gaps: administration requires its supported generator; communications requires its supported dataset/generator versions. The metadata adapter does not replace record validation. A future compatible artifact needs an explicit manifest and adapter update rather than silently inheriting these declarations.
 
 ## Small example boundary
 
@@ -23,13 +23,27 @@ The actual Torque shell and the fullscreen portable Torque composition consume t
 
 Torque About exposes the same six-family matrix with native relationship/coverage disclosures. These are documentation and inspectable records, with no fetching or business effects. Portable About mounts no Go API or plugin delivery.
 
-## Concrete remaining fixture work (0119)
+## Accepted whole-app consumers and remaining limits
 
-- The separately versioned [Torque reference pack](torque-reference-profile.md) supplies effective task updates, a recorded start buffer and explicit coverage. The [Activity reference](torque-activity-reference.md) consumes those operands; Mission/Usage rendering remains CW-20261008-0050; current records-8/80 remain unchanged review packs.
-- CW-20261008-0051: a coherent whole-chat session/history pack, including timestamped communication metadata if prefix reconstruction is needed. Current manual stream chunks are authored previews, not committed history.
-- CW-20261008-0053/0054/0055: complete messages, administration and developer workspace compositions using declared family boundaries; app screens do not create saved preferences, provider connections, authentication decisions, execution or repository history.
-- No generic workflow executor, developer backend, voice capture, real speech/video, provider attribution or live observation collector is supplied. Current readonly graphs/files/media and resource appearances explicitly cover presentation only.
+All five compositions have a standalone finite entry and a fullscreen story in **App Examples**. The same component receives controlled state in both hosts; the standalone route adapter owns browser history while the portable host uses local state. No whole-app example nests the lab rail.
 
-Parent 0116/0119 acceptance remains a separate task decision. This child provides six actual family contracts and a consumed example boundary; it does not claim that every planned record family or whole application has been delivered.
+| Example | Entry | Primary supplied source | Shared composition / native proof |
+|---|---|---|---|
+| Torque | `?example=torque` | Operations prefix; explicit `torque-16w` reference profile or unchanged legacy packs | [TorqueExample](../frontend/src/examples/torque/TorqueExample.tsx), [routes and selection](../frontend/tests/torque-example.spec.ts), [Activity](../frontend/tests/torque-activity.spec.ts), [Mission/Usage](../frontend/tests/torque-mission.spec.ts) |
+| Chat | `?example=chat` | Independently versioned chat companion plus original communications and records-8 joins | [ChatExample](../frontend/src/examples/chat/ChatExample.tsx), [native proof](../frontend/tests/chat-example.spec.ts) |
+| Messaging | `?example=messaging` | Independent communications snapshot | [MessagingExample](../frontend/src/examples/messaging/MessagingExample.tsx), [native proof](../frontend/tests/messaging-example.spec.ts) |
+| Administration | `?example=administration` | Independent administration snapshot | [AdministrationExample](../frontend/src/examples/administration/AdministrationExample.tsx), [native proof](../frontend/tests/administration-example.spec.ts) |
+| Workspace | `?example=workspace` | Independent developer snapshot, recordedAt evidence and original records-8 joins | [WorkspaceExample](../frontend/src/examples/workspace/WorkspaceExample.tsx), [native proof](../frontend/tests/workspace-example.spec.ts) |
 
-Validation: `internal/scenarios/families_test.go` checks generation/artifact/count/pointer freshness. Existing family suites continue to validate real joins and bounds. `frontend/tests/example-contracts.spec.ts` checks incompatible identities/profiles/projected clocks/unknown boundaries, unsupported snapshot-to-prefix requests, actual About at a prefix, responsive matrix and API-free portable consumption. Existing Torque native route/reload/back/selection/plugin tests remain in the full suite.
+The [Torque reference pack](torque-reference-profile.md), [Activity](torque-activity-reference.md) and [Mission/Usage](torque-mission-usage-reference.md) are accepted reference presentations. Legacy records-8/80 dashboard charts remain labelled adaptations. The [chat companion](chat-example-fixtures.md) supplies finite authored order/history and original message/source references for the accepted whole-chat screen; its untimed authored history and manual preview are never committed recorded messages.
+
+Concrete runtime limits remain:
+
+- Communications metadata has no timestamped history contract for operations-prefix reconstruction. Its whole-app consumers use its independent snapshot clock.
+- Account preferences, token/provider metadata and rendering specimens are separately authored, not recorded runtime account outcomes. Roles and permissions never evaluate authorization.
+- No application creates saved settings, messages, provider connections, authentication decisions, execution results or repository history. Source/proposal files and the test ledger do not imply saved edits or executed CI.
+- No real collector, provider attribution, voice capture or recorded speech/video is supplied. Current readonly graphs/files/synthetic media and resource appearances cover presentation only; valid DiagnosticPanel copy remains excluded.
+
+[The criterion-specific parent evidence](whole-app-acceptance.md) maps original 0116/0119 requirements to these accepted consumers and validators. Parent disposition remains a separate root decision; this consolidation does not claim exhaustive component behavior or production runtime capabilities.
+
+Validation: `internal/scenarios/families_test.go` checks generation/artifact/count/pointer freshness. Existing family suites validate real joins and bounds. `frontend/tests/example-contracts.spec.ts` covers incompatible identities/profiles/projected clocks/unknown boundaries and snapshot-to-prefix refusal. `frontend/tests/app-examples-acceptance.spec.ts` proves native Workbench admission into all five standalone shells and the matching API-free fullscreen Storybook compositions, with current navigation, clocks and bounded narrow/short-height owners. Existing per-app tests retain detailed source/currentness, keyboard and endpoint proofs.

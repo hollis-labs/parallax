@@ -38,7 +38,7 @@ export const destinations: readonly Definition[] = [
     icon: "Gauge",
     source: "Standalone current operations prefix",
     scope: "Connected Dashboard, Tasks, Runs and readonly Task/Run inspection in one app shell.",
-    gap: "Current charts remain labelled adaptations; exact Torque parity follows separately.",
+    gap: "torque-16w has reviewed Activity/Mission/Usage reference presentations; legacy packs retain labelled adaptations. No live collection or business actions.",
     story: "app-examples-torque--dashboard",
     playback: true,
   },

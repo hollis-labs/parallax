@@ -1,6 +1,6 @@
 # Administration Example
 
-`/?example=administration` and Workbench open one standalone administration shell. The same controlled `App examples/Administration` fullscreen composition supplies API-free stories. Directory, Profile, Roles, Permissions, Current Account, Desired Settings and Setup Preview share the independent administration/v1 snapshot (parallax/v4, seed 4421, original reference 2026-10-04T14:30:00Z).
+`/?example=administration` and Workbench open one standalone administration shell. The same controlled `App Examples/Administration` fullscreen composition supplies API-free stories. Directory, Profile, Roles, Permissions, Current Account, Desired Settings and Setup Preview share the independent administration/v1 snapshot (parallax/v4, seed 4421, original reference 2026-10-04T14:30:00Z).
 
 The three fictional users, two roles, three permission labels and four desired settings retain their original bytes and relationships. A directory profile must be admitted by the current search and user selection; unknown selection never substitutes another person. The current account always refers to the snapshot's currentUserId USER-001, independently of a selected directory user. Role and permission references are presentation metadata, not grants, authorization or identity assurance. Known empty 0 and no-match 0 remain distinct from loading/error/denied/unknown, which withhold records and report Unknown counts. Long, missing-relationship, locked and degraded appearances are labelled authored presentations over unchanged source records.
 

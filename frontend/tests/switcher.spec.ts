@@ -143,6 +143,11 @@ test("current prefix selected record is retained on local command navigation and
   await page.getByRole("button", { name: "Open Review Workbench", exact: true }).click()
   await page.getByRole("button", { name: "Show keyboard view switcher", exact: true }).click()
   await page.getByRole("combobox", { name: "Find review view", exact: true }).fill("Activity")
+  // The reference app also mentions Activity: choose the declared lab destination explicitly.
+  await page.getByRole("combobox", { name: "Find review view", exact: true }).press("End")
+  await expect(
+    page.getByRole("option").filter({ has: page.getByText("Activity", { exact: true }) }),
+  ).toHaveAttribute("aria-selected", "true")
   await page.getByRole("combobox", { name: "Find review view", exact: true }).press("Enter")
   await expect(page.getByRole("region", { name: "Selected run" })).toContainText(
     "TASK-001 / RUN-001",

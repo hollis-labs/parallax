@@ -22,7 +22,7 @@ function Portable({ state: initial = defaultMessagingState }: { state?: Messagin
   return <MessagingExample state={state} onChange={setState} />
 }
 const meta = {
-  title: "App examples/Messaging",
+  title: "App Examples/Messaging",
   component: Portable,
   parameters: { layout: "fullscreen" },
   args: { state: defaultMessagingState },

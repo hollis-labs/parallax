@@ -87,11 +87,18 @@
         "frontend/src/playback/model.ts",
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/chimera/example.ts",
-        "frontend/src/examples/torque/reference.ts"
+        "frontend/src/examples/torque/reference.ts",
+        "frontend/src/examples/torque/Standalone.tsx",
+        "frontend/src/examples/torque/TorqueExample.tsx",
+        "frontend/src/examples/torque/Torque.stories.tsx",
+        "frontend/tests/torque-example.spec.ts",
+        "frontend/tests/torque-activity.spec.ts",
+        "frontend/tests/torque-mission.spec.ts",
+        "frontend/tests/app-examples-acceptance.spec.ts"
       ],
       "remaining": [
-        "Torque reference pack is separately versioned; exact presentations remain CW-20261008-0049/0050",
-        "Exact reference dashboard presentations (CW-20261008-0049/0050)"
+        "Legacy records-8/80 dashboard charts remain labelled adaptations; the separately versioned torque-16w profile has reviewed reference presentations",
+        "No live collection, task execution or business mutations"
       ]
     },
     {
@@ -151,12 +158,14 @@
         "frontend/src/examples/chat/Pack.stories.tsx",
         "frontend/src/examples/chat/ChatExample.tsx",
         "frontend/src/examples/chat/Chat.stories.tsx",
-        "frontend/tests/chat-example.spec.ts"
+        "frontend/tests/chat-example.spec.ts",
+        "frontend/src/examples/messaging/model.ts",
+        "frontend/src/examples/messaging/MessagingExample.tsx",
+        "frontend/src/examples/messaging/Messaging.stories.tsx",
+        "frontend/tests/messaging-example.spec.ts",
+        "frontend/tests/app-examples-acceptance.spec.ts"
       ],
-      "remaining": [
-        "Contacts/messages whole screens (CW-20261008-0053)",
-        "No timestamped metadata contract for prefix reconstruction"
-      ]
+      "remaining": ["No timestamped metadata contract for prefix reconstruction"]
     },
     {
       "id": "administration",
@@ -191,10 +200,14 @@
       ],
       "adapters": [
         "frontend/src/administration/model.ts",
-        "frontend/src/administration/Administration.stories.tsx"
+        "frontend/src/administration/Administration.stories.tsx",
+        "frontend/src/examples/administration/model.ts",
+        "frontend/src/examples/administration/AdministrationExample.tsx",
+        "frontend/src/examples/administration/Administration.stories.tsx",
+        "frontend/tests/administration-example.spec.ts",
+        "frontend/tests/app-examples-acceptance.spec.ts"
       ],
       "remaining": [
-        "Whole administration screens (CW-20261008-0054)",
         "No preferences/token/provider runtime records; current metadata specimens are separately authored"
       ]
     },
@@ -271,12 +284,14 @@
       "adapters": [
         "frontend/src/developer/model.ts",
         "frontend/src/developer-evidence/model.ts",
-        "frontend/src/developer/Developer.stories.tsx"
+        "frontend/src/developer/Developer.stories.tsx",
+        "frontend/src/examples/workspace/model.ts",
+        "frontend/src/examples/workspace/WorkspaceExample.tsx",
+        "frontend/src/examples/workspace/Workspace.stories.tsx",
+        "frontend/tests/workspace-example.spec.ts",
+        "frontend/tests/app-examples-acceptance.spec.ts"
       ],
-      "remaining": [
-        "Whole developer workspace composition (CW-20261008-0055)",
-        "No execution/editor saving or production repository history"
-      ]
+      "remaining": ["No execution/editor saving or production repository history"]
     },
     {
       "id": "voice",

@@ -22,7 +22,7 @@ function Portable({ state: initial = defaultChatState }: { state?: ChatExampleSt
   return <ChatExample state={state} onChange={setState} />
 }
 const meta = {
-  title: "App examples/Chat",
+  title: "App Examples/Chat",
   component: Portable,
   parameters: { layout: "fullscreen" },
   args: { state: defaultChatState },

@@ -26,7 +26,7 @@ function Portable({
   return <AdministrationExample state={state} onChange={setState} />
 }
 const meta = {
-  title: "App examples/Administration",
+  title: "App Examples/Administration",
   component: Portable,
   parameters: { layout: "fullscreen" },
   args: { state: defaultAdministrationState },
