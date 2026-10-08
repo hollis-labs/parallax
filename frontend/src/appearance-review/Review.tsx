@@ -154,6 +154,7 @@ function Instance({
         <>
           <section className="appearance-controls" aria-label="Local appearance controls">
             <ThemePicker
+              className="appearance-picker"
               theme={theme}
               themes={themes}
               onThemeChange={(next) => {

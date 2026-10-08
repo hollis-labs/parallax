@@ -273,7 +273,7 @@ test("complete desktop and dark narrow controls semantic sample exact companion 
 })
 test("portable unsupported resources literal labels and same-result context retirement are API-free", async ({
   page,
-}) => {
+}, info) => {
   const requests: string[] = []
   page.on("request", (r) => {
     if (/\/api\/|\/plugins\//.test(r.url()) || r.method() !== "GET") requests.push(r.url())
@@ -294,6 +294,27 @@ test("portable unsupported resources literal labels and same-result context reti
       .getByLabel("Theme", { exact: true }),
   ).toContainText("<script>inert</script>")
   await expect(page.locator(".appearance-review a,.appearance-review script")).toHaveCount(0)
+  await page.setViewportSize({ width: 390, height: 844 })
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+  const bounds = await page
+    .getByRole("region", { name: regionName, exact: true })
+    .getByLabel("Theme", { exact: true })
+    .evaluate((e) => {
+      const select = e.getBoundingClientRect(),
+        controls = e.closest(".appearance-controls")!.getBoundingClientRect()
+      return {
+        width: select.width,
+        contained: select.left >= controls.left && select.right <= controls.right + 1,
+        viewport: controls.right <= innerWidth && controls.left >= 0,
+      }
+    })
+  expect(bounds.width).toBeGreaterThan(0)
+  expect(bounds.contained).toBe(true)
+  expect(bounds.viewport).toBe(true)
+  await page.screenshot({
+    path: info.outputPath("appearance-long-label-narrow.png"),
+    animations: "disabled",
+  })
   await page.getByLabel("Authored context query", { exact: true }).fill("gateway")
   await page
     .getByRole("region", { name: regionName, exact: true })

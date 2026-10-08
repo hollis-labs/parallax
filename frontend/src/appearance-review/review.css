@@ -1,5 +1,6 @@
 .appearance-review {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: calc(var(--spacing) * 4);
   min-width: 0;
 }
@@ -72,4 +73,19 @@
   overflow-wrap: anywhere;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
+}
+
+.appearance-controls {
+  min-width: 0;
+  width: 100%;
+}
+.appearance-controls .appearance-picker {
+  width: min(100%, 24rem);
+  flex: 0 1 auto;
+  min-width: 0;
+}
+.appearance-controls .appearance-picker select {
+  flex: 1 1 0%;
+  min-width: 0;
+  max-width: 100%;
 }
