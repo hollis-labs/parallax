@@ -25,7 +25,7 @@ Torque About exposes the same six-family matrix with native relationship/coverag
 
 ## Concrete remaining fixture work (0119)
 
-- The separately versioned [Torque reference pack](torque-reference-profile.md) supplies effective task updates, a recorded start buffer and explicit coverage. Exact Activity/Mission/Usage rendering remains CW-20261008-0049/0050; current records-8/80 remain unchanged review packs.
+- The separately versioned [Torque reference pack](torque-reference-profile.md) supplies effective task updates, a recorded start buffer and explicit coverage. The [Activity reference](torque-activity-reference.md) consumes those operands; Mission/Usage rendering remains CW-20261008-0050; current records-8/80 remain unchanged review packs.
 - CW-20261008-0051: a coherent whole-chat session/history pack, including timestamped communication metadata if prefix reconstruction is needed. Current manual stream chunks are authored previews, not committed history.
 - CW-20261008-0053/0054/0055: complete messages, administration and developer workspace compositions using declared family boundaries; app screens do not create saved preferences, provider connections, authentication decisions, execution or repository history.
 - No generic workflow executor, developer backend, voice capture, real speech/video, provider attribution or live observation collector is supplied. Current readonly graphs/files/media and resource appearances explicitly cover presentation only.

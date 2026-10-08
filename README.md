@@ -78,3 +78,5 @@ Ops Dashboard unifies existing Activity/Mission Control/Usage under current-pref
 [Appearance Review](docs/appearance-review.md) compares four installed palettes on an isolated readonly specimen with local mode/annotation/density controls and an exact semantic token companion; preferences are never persisted.
 
 The [Evidence States review](docs/evidence-states.md) presents current-prefix resource appearances and nonessential native source help.
+
+The [Torque Activity reference](docs/torque-activity-reference.md) at `?example=torque&profile=torque-16w` provides the fixed-UTC task-update/run-start calendar, reference age-bin pulse and twelve admitted recent runs; Mission/Usage remain separate adaptations.

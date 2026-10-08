@@ -1,7 +1,7 @@
 import { Button, Tabs, TabsContent, TabsList, TabsTrigger } from "@hollis-labs/design-components"
 import { PageHeader, SummaryCards } from "@hollis-labs/kit-dashboard"
 import { IntelligenceRow, Kpi, KpiGrid } from "@hollis-labs/kit-dashboard/widgets"
-import { useLayoutEffect, useRef, useState } from "react"
+import { type ReactNode, useLayoutEffect, useRef, useState } from "react"
 import type { OperationsModel } from "../operations/model"
 import { ActivityView, MissionView, ResourceNotice, UsageView } from "../operations/Views"
 import { dashboardMetrics } from "./model"
@@ -18,6 +18,7 @@ export function OpsDashboard({
   onTabSelect,
   controlledTab,
   longHeader = false,
+  referenceActivity,
 }: {
   model: OperationsModel
   query: string
@@ -28,6 +29,7 @@ export function OpsDashboard({
   controlledTab?: DashboardTab
   initialTab?: DashboardTab
   longHeader?: boolean
+  referenceActivity?: ReactNode
 }) {
   const [localTab, setTab] = useState<DashboardTab>(initialTab),
     [, freshLifetime] = useState(0)
@@ -64,7 +66,9 @@ export function OpsDashboard({
           title={
             longHeader
               ? "Recorded operations review · supplied long fixture scope <script>inert</script>"
-              : "Recorded operations review"
+              : referenceActivity
+                ? "Ops Dashboard"
+                : "Recorded operations review"
           }
         >
           <Button
@@ -79,12 +83,14 @@ export function OpsDashboard({
       </div>
       <p>
         Fixed UTC cutoff {model.cutoff} · {model.dataset.profile} · Filter: {query || "None"}.
-        Recorded review, not live collection.
+        Recorded review, not live collection.{" "}
+        {referenceActivity &&
+          `Original reference ${model.referenceClock}. Fixture connection only.`}
       </p>
       <SummaryCards
         cards={[
           { label: "Total", value: display(m.total) },
-          { label: "Active tasks", value: display(m.activeTasks) },
+          { label: referenceActivity ? "Active" : "Active tasks", value: display(m.activeTasks) },
           { label: "Done", value: display(m.done) },
         ]}
       />
@@ -101,14 +107,16 @@ export function OpsDashboard({
         </TabsList>
         <TabsContent value="Activity">
           {model.accessible ? (
-            <ActivityView
-              model={model}
-              query={query}
-              onQuery={(q) => {
-                if (admitted()) onQuery(q)
-              }}
-              onSelect={choose}
-            />
+            (referenceActivity ?? (
+              <ActivityView
+                model={model}
+                query={query}
+                onQuery={(q) => {
+                  if (admitted()) onQuery(q)
+                }}
+                onSelect={choose}
+              />
+            ))
           ) : (
             <ResourceNotice model={model} />
           )}
@@ -135,7 +143,7 @@ export function OpsDashboard({
           )}
         </TabsContent>
       </Tabs>
-      <Metrics key={`${m.source}/${tab}`} model={model} onSelect={choose} />
+      {!referenceActivity && <Metrics key={`${m.source}/${tab}`} model={model} onSelect={choose} />}
     </section>
   )
 }

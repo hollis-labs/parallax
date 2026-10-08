@@ -8,6 +8,7 @@ import { resourceOverrides, timelineFrames } from "../../playback/model"
 import { RunExplorer } from "../../run-explorer/Explorer"
 import { exampleContext, torqueDefinition } from "../contracts"
 import { FixtureContracts } from "../FixtureContracts"
+import { TorqueActivity } from "./Activity"
 import { TorqueReferenceEvidence } from "./ReferenceEvidence"
 import { torqueProfiles, torqueReferenceModel, torqueSource } from "./reference"
 import { type TorqueState, torqueHref } from "./routes"
@@ -310,14 +311,40 @@ export function TorqueExample({
       ) : (
         <section className="torque-page" ref={pageRoot} aria-label={`${title} page scroll`}>
           {state.route === "dashboard" ? (
-            <OpsDashboard
-              model={model}
-              controlledTab={state.tab}
-              onTabSelect={(tab) => change({ tab }, true)}
-              query={state.query}
-              onQuery={(query) => change({ query, selected: null }, true)}
-              onSelect={select}
-            />
+            <>
+              {state.profile === "legacy" && (
+                <p>
+                  Legacy dashboard adaptation.{" "}
+                  <Button
+                    variant="outline"
+                    onClick={() =>
+                      change({
+                        profile: "torque-16w",
+                        tab: "Activity",
+                        cutoff: torqueSource(state.scenario, "torque-16w").clock,
+                        selected: null,
+                        query: "",
+                      })
+                    }
+                  >
+                    Open Torque Activity reference
+                  </Button>
+                </p>
+              )}
+              <OpsDashboard
+                model={model}
+                referenceActivity={
+                  state.profile === "torque-16w" ? (
+                    <TorqueActivity model={model} onSelect={select} />
+                  ) : undefined
+                }
+                controlledTab={state.tab}
+                onTabSelect={(tab) => change({ tab }, true)}
+                query={state.query}
+                onQuery={(query) => change({ query, selected: null }, true)}
+                onSelect={select}
+              />
+            </>
           ) : state.route === "tasks" ? (
             <section>
               <h1>Tasks</h1>

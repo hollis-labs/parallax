@@ -238,3 +238,185 @@
 .torque-about {
   overflow-wrap: anywhere;
 }
+
+.torque-activity {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: calc(var(--spacing) * 4);
+}
+.torque-activity [data-slot="card-content"] {
+  min-width: 0;
+  display: grid;
+  gap: calc(var(--spacing) * 3);
+}
+.torque-activity-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--spacing) * 3);
+  flex-wrap: wrap;
+}
+.torque-activity-title h2 {
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+}
+.torque-activity-title > span {
+  font-size: var(--text-xs);
+  color: var(--color-fg-muted);
+}
+.torque-calendar-months {
+  display: grid;
+  grid-template-columns: repeat(16, 13px);
+  margin-left: 20px;
+  font-size: 9px;
+  color: var(--color-fg-muted);
+  margin-bottom: calc(var(--spacing) * 2);
+}
+.torque-calendar-months span {
+  white-space: nowrap;
+}
+.torque-calendar-grid {
+  display: flex;
+  gap: 3px;
+}
+.torque-weekdays {
+  width: 17px;
+  display: grid;
+  grid-template-rows: repeat(7, 10px);
+  gap: 3px;
+  text-align: right;
+  font-size: 9px;
+  color: var(--color-fg-muted);
+}
+.torque-calendar-week {
+  display: grid;
+  grid-template-rows: repeat(7, 10px);
+  gap: 3px;
+}
+.torque-calendar-cell {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: calc(var(--spacing) / 2);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+}
+.torque-calendar-cell[data-level="1"] {
+  background: color-mix(in srgb, var(--color-dash-status-doing) 35%, var(--color-bg-elevated));
+  border-color: transparent;
+}
+.torque-calendar-cell[data-level="2"] {
+  background: color-mix(in srgb, var(--color-dash-status-doing) 65%, var(--color-bg-elevated));
+  border-color: transparent;
+}
+.torque-calendar-cell[data-level="3"] {
+  background: color-mix(in srgb, var(--color-dash-status-done) 75%, var(--color-bg-elevated));
+  border-color: transparent;
+}
+.torque-calendar-cell[data-level="4"] {
+  background: var(--color-dash-status-done);
+  border-color: transparent;
+}
+.torque-calendar-cell[data-level="unknown"] {
+  background: repeating-linear-gradient(
+    135deg,
+    var(--color-bg-elevated) 0 2px,
+    var(--color-border) 2px 3px
+  );
+  border-color: var(--color-border);
+}
+.torque-calendar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--spacing) * 3);
+  font-size: var(--text-xs);
+  color: var(--color-fg-muted);
+}
+.torque-calendar-legend > span {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.torque-activity-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: calc(var(--spacing) * 4);
+}
+.torque-pulse {
+  display: grid;
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+  gap: 2px;
+  height: 48px;
+  align-items: end;
+}
+.torque-pulse-bin {
+  height: 100%;
+  display: flex;
+  align-items: end;
+  background: var(--color-bg-elevated);
+}
+.torque-pulse-bin i {
+  display: block;
+  width: 100%;
+  background: var(--color-dash-status-doing);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+.torque-pulse-bin[data-count="unknown"] i {
+  background: repeating-linear-gradient(
+    135deg,
+    var(--color-bg-elevated) 0 3px,
+    var(--color-border) 3px 4px
+  );
+}
+.torque-pulse-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+  color: var(--color-fg-muted);
+}
+.torque-activity-table {
+  max-height: calc(var(--spacing) * 64);
+  overflow: auto;
+  border: 1px solid var(--color-border);
+  width: 100%;
+  min-width: 0;
+}
+.torque-activity-table table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+}
+.torque-activity-table th,
+.torque-activity-table td {
+  text-align: left;
+  padding: calc(var(--spacing) * 2);
+  white-space: normal;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--color-border);
+}
+.torque-activity-table caption {
+  padding: calc(var(--spacing) * 2);
+  text-align: left;
+}
+.torque-recent-row {
+  display: grid;
+  gap: calc(var(--spacing) * 1);
+  padding-block: calc(var(--spacing) * 3);
+  overflow-wrap: anywhere;
+}
+.torque-recent-row > span {
+  font-size: var(--text-xs);
+  color: var(--color-fg-muted);
+}
+.torque-recent button:focus-visible {
+  outline: 2px solid var(--color-fg);
+  outline-offset: 2px;
+}
+@media (min-width: 1280px) {
+  .torque-activity-pair {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+    align-items: start;
+  }
+}

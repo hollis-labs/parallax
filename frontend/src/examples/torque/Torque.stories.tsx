@@ -77,3 +77,21 @@ export const ReferenceEmpty: Story = {
 export const ReferenceSparse: Story = {
   args: { screen: "about", profile: "torque-16w", scenario: "sparse" },
 }
+
+export const ActivityReference: Story = { args: { profile: "torque-16w" } }
+export const ActivityEmpty: Story = { args: { profile: "torque-16w", scenario: "empty" } }
+export const ActivityLoading: Story = { args: { profile: "torque-16w", scenario: "loading" } }
+export const ActivityDegraded: Story = { args: { profile: "torque-16w", scenario: "degraded" } }
+export const ActivitySparse: Story = { args: { profile: "torque-16w", scenario: "sparse" } }
+export const ActivityUnknown: Story = {
+  args: { profile: "torque-16w", scenario: "unknown-status" },
+}
+export const ActivityPrefix: Story = {
+  args: { profile: "torque-16w", cutoff: "2026-10-04T14:15:15Z" },
+}
+
+export const ActivityError: Story = { args: { profile: "torque-16w", scenario: "error" } }
+export const ActivityDenied: Story = {
+  args: { profile: "torque-16w", scenario: "permission-denied" },
+}
+export const ActivityLong: Story = { args: { profile: "torque-16w", scenario: "long-labels" } }

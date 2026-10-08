@@ -1874,7 +1874,8 @@
     },
     "importEvidence": [
       "frontend/src/directory-review/Review.tsx",
-      "frontend/src/directory-review/contracts.ts"
+      "frontend/src/directory-review/contracts.ts",
+      "frontend/src/examples/torque/Activity.tsx"
     ]
   },
   {
@@ -2120,7 +2121,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/directory-review/Review.tsx"
+      "frontend/src/directory-review/Review.tsx",
+      "frontend/src/examples/torque/Activity.tsx"
     ]
   },
   {
@@ -4375,6 +4377,7 @@
     },
     "importEvidence": [
       "frontend/src/communications/Messaging.tsx",
+      "frontend/src/examples/torque/Activity.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/layouts/Comparison.tsx",
       "frontend/src/observability/Views.tsx",
@@ -6261,6 +6264,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/torque/Activity.tsx",
       "frontend/src/widgets/Gallery.tsx",
       "frontend/src/widgets/contracts.ts"
     ]
