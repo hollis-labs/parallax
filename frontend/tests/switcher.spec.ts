@@ -38,7 +38,9 @@ test("actual inline native Command groups separator options list scrolling and k
   await input.focus()
   await expect(list.getByRole("option")).toHaveCount(destinations.length)
   await expect(list.getByRole("group", { name: "Operations", exact: true })).toBeVisible()
-  await expect(list.getByRole("separator")).toHaveCount(5)
+  await expect(list.getByRole("separator")).toHaveCount(
+    new Set(destinations.map((d) => d.group)).size - 1,
+  )
   await page.keyboard.press("End")
   const last = await input.getAttribute("aria-activedescendant")
   expect(last).toBeTruthy()
@@ -47,12 +49,12 @@ test("actual inline native Command groups separator options list scrolling and k
   await page.keyboard.press("Home")
   await expect(
     page.locator(`[id="${await input.getAttribute("aria-activedescendant")}"]`),
-  ).toContainText("Ops Dashboard")
+  ).toContainText("Torque Example")
   await page.keyboard.press("ArrowDown")
   await page.keyboard.press("ArrowUp")
   await expect(
     page.locator(`[id="${await input.getAttribute("aria-activedescendant")}"]`),
-  ).toContainText("Ops Dashboard")
+  ).toContainText("Torque Example")
   await input.pressSequentially("voice")
   await expect(input).toHaveValue("voice")
   await expect(input).toBeFocused()

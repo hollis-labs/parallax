@@ -1,6 +1,7 @@
 import { Activity, Compass, Gauge, Layers, Mail, MessageSquare, Users } from "lucide-react"
 export const groups = [
   "All",
+  "App Examples",
   "Operations",
   "Communications",
   "Administration",
@@ -29,6 +30,16 @@ export const destinations: readonly Definition[] = [
     scope: "Unified Activity/Mission/Usage task summary and distinct exact metric companion.",
     gap: "Torque heatmap semantics and full chart fidelity remain partial; no live collection.",
     story: "operations-unified-dashboard--activity",
+    playback: true,
+  },
+  {
+    id: "Torque Example",
+    group: "App Examples",
+    icon: "Gauge",
+    source: "Standalone current operations prefix",
+    scope: "Connected Dashboard, Tasks, Runs and readonly Task/Run inspection in one app shell.",
+    gap: "Current charts remain labelled adaptations; exact Torque parity follows separately.",
+    story: "app-examples-torque--dashboard",
     playback: true,
   },
   {

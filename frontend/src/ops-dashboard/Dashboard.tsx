@@ -15,6 +15,8 @@ export function OpsDashboard({
   onSelect,
   onTabChange = () => {},
   initialTab = "Activity",
+  onTabSelect,
+  controlledTab,
   longHeader = false,
 }: {
   model: OperationsModel
@@ -22,11 +24,14 @@ export function OpsDashboard({
   onQuery: (q: string) => void
   onSelect: (id: string) => void
   onTabChange?: () => void
+  onTabSelect?: (tab: DashboardTab) => void
+  controlledTab?: DashboardTab
   initialTab?: DashboardTab
   longHeader?: boolean
 }) {
-  const [tab, setTab] = useState<DashboardTab>(initialTab),
+  const [localTab, setTab] = useState<DashboardTab>(initialTab),
     [, freshLifetime] = useState(0)
+  const tab = controlledTab ?? localTab
   const m = dashboardMetrics(model),
     scope = useRef(m.source),
     lease = useRef(0)
@@ -49,6 +54,7 @@ export function OpsDashboard({
     lease.current++
     setTab(value as DashboardTab)
     onTabChange()
+    onTabSelect?.(value as DashboardTab)
   }
   const display = (value: number | null) => (value === null ? "Unavailable" : value)
   return (

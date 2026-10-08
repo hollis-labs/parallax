@@ -30,14 +30,31 @@ export function RunExplorer({
   model,
   direct = false,
   epoch = 0,
+  onInspectRecord,
 }: {
   model: OperationsModel
   direct?: boolean
   epoch?: number
+  onInspectRecord?: (id: string) => void
 }) {
-  return <ExplorerFrame key={`${explorerSource(model)}/${epoch}`} model={model} direct={direct} />
+  return (
+    <ExplorerFrame
+      key={`${explorerSource(model)}/${epoch}`}
+      model={model}
+      direct={direct}
+      onInspectRecord={onInspectRecord}
+    />
+  )
 }
-function ExplorerFrame({ model, direct }: { model: OperationsModel; direct: boolean }) {
+function ExplorerFrame({
+  model,
+  direct,
+  onInspectRecord,
+}: {
+  model: OperationsModel
+  direct: boolean
+  onInspectRecord?: (id: string) => void
+}) {
   const [query, setQuery] = useState(""),
     [statuses, setStatuses] = useState<string[]>([]),
     [owner, setOwner] = useState<string | null>(null),
@@ -123,6 +140,7 @@ function ExplorerFrame({ model, direct }: { model: OperationsModel; direct: bool
         onDensity={setDensity}
         reset={reset}
         direct={direct}
+        onInspectRecord={onInspectRecord}
       />
     </div>
   )
@@ -143,6 +161,7 @@ function ExplorerScope({
   onDensity,
   reset,
   direct,
+  onInspectRecord,
 }: {
   model: OperationsModel
   projection: Projection
@@ -158,6 +177,7 @@ function ExplorerScope({
   onDensity: (d: TableDensity) => void
   reset: () => void
   direct: boolean
+  onInspectRecord?: (id: string) => void
 }) {
   const [selected, setSelected] = useState<string[]>([]),
     [revealed, setRevealed] = useState<string[]>([]),
@@ -196,6 +216,10 @@ function ExplorerScope({
   }, [opened])
   function open(id: string) {
     if (!admitted() || !projection.matches.some((r) => r.id === id)) return
+    if (onInspectRecord) {
+      onInspectRecord(id)
+      return
+    }
     if (focusFrame.current !== null) cancelAnimationFrame(focusFrame.current)
     current.current.lease++
     current.current.opened = id

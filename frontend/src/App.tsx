@@ -55,7 +55,7 @@ const DeveloperLab = lazy(() => import("./developer/Lab"))
 
 type Host = ReturnType<typeof createOperationsExample>
 type PluginStatus = "loading" | "ready" | "error" | "unloaded"
-function Contributions({
+export function Contributions({
   host,
   status,
   onUnload,
@@ -400,6 +400,12 @@ export function App() {
     <p className="p-4 text-sm text-fg-muted">Loading reviewed contribution…</p>
   )
   function navigate(name: string) {
+    if (name === "Torque Example") {
+      location.assign(
+        `/?${new URLSearchParams({ example: "torque", scenario, cutoff: review.cutoff, query, theme, mode, resource: review.override, ...(selectedId ? { selected: selectedId } : {}) })}`,
+      )
+      return
+    }
     if (normalizeView(name) !== name || name === page) return
     if (name === workbenchEntry.id) review.seek(review.index)
     pluginHost?.resetContext({

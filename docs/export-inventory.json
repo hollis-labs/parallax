@@ -221,6 +221,7 @@
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/event-ledger/Ledger.tsx",
       "frontend/src/evidence/Inspector.tsx",
+      "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/observation-review/Review.tsx",
       "frontend/src/operations/Views.tsx",
       "frontend/src/run-explorer/Explorer.tsx",
@@ -519,6 +520,7 @@
     },
     "importEvidence": [
       "frontend/src/App.tsx",
+      "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/layouts/Comparison.stories.tsx",
       "frontend/src/run-explorer/Explorer.stories.tsx"
     ]
@@ -547,6 +549,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/layouts/Comparison.tsx",
       "frontend/src/layouts/Navigation.tsx"
     ]
@@ -1706,6 +1709,7 @@
       "frontend/src/event-ledger/Ledger.tsx",
       "frontend/src/evidence/Evidence.stories.tsx",
       "frontend/src/evidence/Inspector.tsx",
+      "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/layouts/Comparison.stories.tsx",
       "frontend/src/layouts/Comparison.tsx",
       "frontend/src/layouts/Navigation.tsx",
@@ -4370,6 +4374,7 @@
     },
     "importEvidence": [
       "frontend/src/communications/Messaging.tsx",
+      "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/layouts/Comparison.tsx",
       "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Operations.stories.tsx",
@@ -4773,7 +4778,9 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/App.tsx"
+      "frontend/src/App.tsx",
+      "frontend/src/examples/torque/Standalone.tsx",
+      "frontend/src/examples/torque/Torque.stories.tsx"
     ]
   },
   {
@@ -21610,7 +21617,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/App.tsx"
+      "frontend/src/App.tsx",
+      "frontend/src/examples/torque/Standalone.tsx"
     ]
   },
   {
