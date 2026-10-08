@@ -15,7 +15,7 @@ The pinned catalogue records all fifteen packages at design-kit commit `dbcf4fa7
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | @hollis-labs/design-components | 147 | 20 | 22 | 19 | 3 | 167 | 0 |
 | @hollis-labs/kit-dashboard | 48 | 49 | 30 | 23 | 6 | 95 | 3 |
-| @hollis-labs/kit-chat | 147 | 195 | 16 | 4 | 39 | 315 | 0 |
+| @hollis-labs/kit-chat | 147 | 195 | 16 | 16 | 27 | 315 | 0 |
 | @hollis-labs/design-bindings | 0 | 19 | 9 | 0 | 4 | 24 | 0 |
 | @hollis-labs/kit-admin | 3 | 15 | 3 | 3 | 9 | 9 | 0 |
 | @hollis-labs/kit-settings | 4 | 23 | 7 | 4 | 12 | 18 | 0 |
@@ -63,3 +63,5 @@ Run Explorer adds exactly five independently reviewed runtime exports from kit-d
 The twentieth bounded batch independently reviews ten existing private code-candidate exports in [Developer Evidence](developer-evidence-review.md). Exact original stack, finite authored test ledger/progress, readonly disclosures, fictional commit/proposal rows and bounded file navigation have app/story/check pointers. Current totals72 reviewed/188 partial/1043 deferred/5 unsupported and257 exact imports. Twelve newly adopted structural children remain partial (net partial increase7, because five prior partial runtime rows become reviewed); missing durations, authored tests versus executed CI and the inclusive receipt boundary before run finish are explicit.
 
 The twenty-first bounded batch reviews seven exact workflow/canvas names in [Workflow Review](workflow-review.md), including both decorative Edge namespace variants under one public row. Actual node slots, selected toolbar/panel, immutable graph navigation, bounded validation specimens and reduced-motion/token geometry have independent pointers. Totals79 reviewed/186 partial/1038 deferred/5 unsupported,262 exact imports. Existing NodeDescription/Panel advance from partial; other supporting helpers remain partial.
+
+The twenty-second bounded batch independently reviews twelve released chat names in [Conversation Evidence](conversation-evidence-review.md): five Tool exports, three Reasoning exports and four Sources exports. Current projected tool/message evidence, explicitly authored explanations/specimens, withheld unfinished output and snapshot-gated metadata have native disclosure, literal text, keyboard, narrow and portable evidence. Totals91 reviewed/174 partial/1038 deferred/5 unsupported,262 exact imports. Twelve prior partial runtime rows advance; supporting helpers and types retain their dispositions. Nineteen new portable states bring the standalone catalogue to299 stories.

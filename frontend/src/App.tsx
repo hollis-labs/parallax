@@ -40,6 +40,7 @@ import { SettingsReview } from "./settings-review/Review"
 import { WidgetGallery } from "./widgets/Gallery"
 
 const VoiceLab = lazy(() => import("./voice/Lab"))
+const ConversationEvidence = lazy(() => import("./conversation-evidence/Review"))
 const WorkflowReview = lazy(() => import("./workflow-review/Review"))
 const DeveloperEvidence = lazy(() => import("./developer-evidence/Review"))
 const DeveloperLab = lazy(() => import("./developer/Lab"))
@@ -265,8 +266,15 @@ export function App() {
     isSettingsReview ||
     isAccountReview ||
     isAdminReview
+  const isConversationEvidence = page === "Conversation Evidence"
   const isConversationReview = page === "Conversation Review"
-  const isCommunication = ["Contacts", "Messages", "Chat", "Conversation Review"].includes(page)
+  const isCommunication = [
+    "Contacts",
+    "Messages",
+    "Chat",
+    "Conversation Review",
+    "Conversation Evidence",
+  ].includes(page)
   const review = usePlayback(scenario, undefined, () => {
     pluginHost?.resetContext({ ...pluginHost.context.getSnapshot(), retiredFrame: true })
     setIntent("")
@@ -281,6 +289,7 @@ export function App() {
     "Run Explorer",
     "Developer Evidence",
     "Workflow Review",
+    "Conversation Evidence",
     "Observability",
     "Widgets",
   ].includes(page)
@@ -403,6 +412,7 @@ export function App() {
     "Run Explorer",
     "Developer Evidence",
     "Workflow Review",
+    "Conversation Evidence",
   ].map((name, i) => ({
     key: name,
     label: name,
@@ -431,6 +441,7 @@ export function App() {
       <Layers key="run-explorer" className="size-4" />,
       <Layers key="developer-evidence" className="size-4" />,
       <Layers key="workflow-review" className="size-4" />,
+      <MessageSquare key="conversation-evidence" className="size-4" />,
     ][i],
     active: page === name,
     onSelect: () => {
@@ -637,6 +648,16 @@ export function App() {
                   <AdminReview key={scenario} context={scenario} />
                 ) : isObservationReview ? (
                   <ObservationReview key={scenario} context={scenario} />
+                ) : isConversationEvidence ? (
+                  <Suspense fallback={<p>Loading conversation evidence…</p>}>
+                    <ConversationEvidence
+                      operations={operationsModel(scenario, "", {
+                        cutoff: review.cutoff,
+                        override: review.override,
+                      })}
+                      epoch={review.epoch}
+                    />
+                  </Suspense>
                 ) : isConversationReview ? (
                   <ConversationReview key={scenario} context={scenario} />
                 ) : isAccountReview ? (

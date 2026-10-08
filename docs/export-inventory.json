@@ -784,6 +784,7 @@
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/CommunicationLab.tsx",
       "frontend/src/communications/Messaging.tsx",
+      "frontend/src/conversation-evidence/Review.tsx",
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/developer-evidence/Review.tsx",
       "frontend/src/observability/Views.tsx",
@@ -1610,6 +1611,7 @@
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/CommunicationLab.tsx",
       "frontend/src/communications/Messaging.tsx",
+      "frontend/src/conversation-evidence/Review.tsx",
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/developer/Lab.tsx",
       "frontend/src/developer-evidence/Review.tsx",
@@ -6690,22 +6692,48 @@
     "name": "Reasoning",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded released0.4 conversation evidence: current recorded tool/messages/outcomes, conservative metadata clock, native readonly disclosures, distinct authored status/null/zero/error specimens and truthful explanation/provenance, actual paint/keyboard/source-phase/cutoff/StrictMode/narrow/API-free proof.",
+    "nextAction": "Untested props/helpers and broader chat families retain partial/deferred review; no send/execution/retrieval/hidden-thought claims.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/conversation-evidence/Review.tsx",
+        "frontend/src/conversation-evidence/model.ts",
+        "docs/conversation-evidence-review.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/conversation-evidence.spec.ts",
+        "frontend/src/conversation-evidence/contracts.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/conversation-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-conversation-evidence--recorded",
+        "chat-conversation-evidence--empty",
+        "chat-conversation-evidence--loading",
+        "chat-conversation-evidence--read-failure",
+        "chat-conversation-evidence--denied",
+        "chat-conversation-evidence--locked",
+        "chat-conversation-evidence--long-content",
+        "chat-conversation-evidence--unknown-tool-state",
+        "chat-conversation-evidence--pending",
+        "chat-conversation-evidence--running",
+        "chat-conversation-evidence--awaiting-confirmation",
+        "chat-conversation-evidence--confirmed",
+        "chat-conversation-evidence--denied-tool",
+        "chat-conversation-evidence--error-tool",
+        "chat-conversation-evidence--zero-outcome",
+        "chat-conversation-evidence--no-outcome",
+        "chat-conversation-evidence--before-tool-finish",
+        "chat-conversation-evidence--before-metadata-snapshot",
+        "chat-conversation-evidence--incompatible-source"
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/conversation-evidence/Review.tsx",
+      "frontend/src/conversation-evidence/contracts.ts"
     ]
   },
   {
@@ -6715,22 +6743,48 @@
     "name": "ReasoningTrigger",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded released0.4 conversation evidence: current recorded tool/messages/outcomes, conservative metadata clock, native readonly disclosures, distinct authored status/null/zero/error specimens and truthful explanation/provenance, actual paint/keyboard/source-phase/cutoff/StrictMode/narrow/API-free proof.",
+    "nextAction": "Untested props/helpers and broader chat families retain partial/deferred review; no send/execution/retrieval/hidden-thought claims.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/conversation-evidence/Review.tsx",
+        "frontend/src/conversation-evidence/model.ts",
+        "docs/conversation-evidence-review.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/conversation-evidence.spec.ts",
+        "frontend/src/conversation-evidence/contracts.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/conversation-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-conversation-evidence--recorded",
+        "chat-conversation-evidence--empty",
+        "chat-conversation-evidence--loading",
+        "chat-conversation-evidence--read-failure",
+        "chat-conversation-evidence--denied",
+        "chat-conversation-evidence--locked",
+        "chat-conversation-evidence--long-content",
+        "chat-conversation-evidence--unknown-tool-state",
+        "chat-conversation-evidence--pending",
+        "chat-conversation-evidence--running",
+        "chat-conversation-evidence--awaiting-confirmation",
+        "chat-conversation-evidence--confirmed",
+        "chat-conversation-evidence--denied-tool",
+        "chat-conversation-evidence--error-tool",
+        "chat-conversation-evidence--zero-outcome",
+        "chat-conversation-evidence--no-outcome",
+        "chat-conversation-evidence--before-tool-finish",
+        "chat-conversation-evidence--before-metadata-snapshot",
+        "chat-conversation-evidence--incompatible-source"
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/conversation-evidence/Review.tsx",
+      "frontend/src/conversation-evidence/contracts.ts"
     ]
   },
   {
@@ -6740,22 +6794,48 @@
     "name": "ReasoningContent",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded released0.4 conversation evidence: current recorded tool/messages/outcomes, conservative metadata clock, native readonly disclosures, distinct authored status/null/zero/error specimens and truthful explanation/provenance, actual paint/keyboard/source-phase/cutoff/StrictMode/narrow/API-free proof.",
+    "nextAction": "Untested props/helpers and broader chat families retain partial/deferred review; no send/execution/retrieval/hidden-thought claims.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/conversation-evidence/Review.tsx",
+        "frontend/src/conversation-evidence/model.ts",
+        "docs/conversation-evidence-review.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/conversation-evidence.spec.ts",
+        "frontend/src/conversation-evidence/contracts.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/conversation-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-conversation-evidence--recorded",
+        "chat-conversation-evidence--empty",
+        "chat-conversation-evidence--loading",
+        "chat-conversation-evidence--read-failure",
+        "chat-conversation-evidence--denied",
+        "chat-conversation-evidence--locked",
+        "chat-conversation-evidence--long-content",
+        "chat-conversation-evidence--unknown-tool-state",
+        "chat-conversation-evidence--pending",
+        "chat-conversation-evidence--running",
+        "chat-conversation-evidence--awaiting-confirmation",
+        "chat-conversation-evidence--confirmed",
+        "chat-conversation-evidence--denied-tool",
+        "chat-conversation-evidence--error-tool",
+        "chat-conversation-evidence--zero-outcome",
+        "chat-conversation-evidence--no-outcome",
+        "chat-conversation-evidence--before-tool-finish",
+        "chat-conversation-evidence--before-metadata-snapshot",
+        "chat-conversation-evidence--incompatible-source"
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/conversation-evidence/Review.tsx",
+      "frontend/src/conversation-evidence/contracts.ts"
     ]
   },
   {
@@ -6986,22 +7066,48 @@
     "name": "Sources",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded released0.4 conversation evidence: current recorded tool/messages/outcomes, conservative metadata clock, native readonly disclosures, distinct authored status/null/zero/error specimens and truthful explanation/provenance, actual paint/keyboard/source-phase/cutoff/StrictMode/narrow/API-free proof.",
+    "nextAction": "Untested props/helpers and broader chat families retain partial/deferred review; no send/execution/retrieval/hidden-thought claims.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/conversation-evidence/Review.tsx",
+        "frontend/src/conversation-evidence/model.ts",
+        "docs/conversation-evidence-review.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/conversation-evidence.spec.ts",
+        "frontend/src/conversation-evidence/contracts.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/conversation-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-conversation-evidence--recorded",
+        "chat-conversation-evidence--empty",
+        "chat-conversation-evidence--loading",
+        "chat-conversation-evidence--read-failure",
+        "chat-conversation-evidence--denied",
+        "chat-conversation-evidence--locked",
+        "chat-conversation-evidence--long-content",
+        "chat-conversation-evidence--unknown-tool-state",
+        "chat-conversation-evidence--pending",
+        "chat-conversation-evidence--running",
+        "chat-conversation-evidence--awaiting-confirmation",
+        "chat-conversation-evidence--confirmed",
+        "chat-conversation-evidence--denied-tool",
+        "chat-conversation-evidence--error-tool",
+        "chat-conversation-evidence--zero-outcome",
+        "chat-conversation-evidence--no-outcome",
+        "chat-conversation-evidence--before-tool-finish",
+        "chat-conversation-evidence--before-metadata-snapshot",
+        "chat-conversation-evidence--incompatible-source"
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/conversation-evidence/Review.tsx",
+      "frontend/src/conversation-evidence/contracts.ts"
     ]
   },
   {
@@ -7011,22 +7117,48 @@
     "name": "SourcesTrigger",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded released0.4 conversation evidence: current recorded tool/messages/outcomes, conservative metadata clock, native readonly disclosures, distinct authored status/null/zero/error specimens and truthful explanation/provenance, actual paint/keyboard/source-phase/cutoff/StrictMode/narrow/API-free proof.",
+    "nextAction": "Untested props/helpers and broader chat families retain partial/deferred review; no send/execution/retrieval/hidden-thought claims.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/conversation-evidence/Review.tsx",
+        "frontend/src/conversation-evidence/model.ts",
+        "docs/conversation-evidence-review.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/conversation-evidence.spec.ts",
+        "frontend/src/conversation-evidence/contracts.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/conversation-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-conversation-evidence--recorded",
+        "chat-conversation-evidence--empty",
+        "chat-conversation-evidence--loading",
+        "chat-conversation-evidence--read-failure",
+        "chat-conversation-evidence--denied",
+        "chat-conversation-evidence--locked",
+        "chat-conversation-evidence--long-content",
+        "chat-conversation-evidence--unknown-tool-state",
+        "chat-conversation-evidence--pending",
+        "chat-conversation-evidence--running",
+        "chat-conversation-evidence--awaiting-confirmation",
+        "chat-conversation-evidence--confirmed",
+        "chat-conversation-evidence--denied-tool",
+        "chat-conversation-evidence--error-tool",
+        "chat-conversation-evidence--zero-outcome",
+        "chat-conversation-evidence--no-outcome",
+        "chat-conversation-evidence--before-tool-finish",
+        "chat-conversation-evidence--before-metadata-snapshot",
+        "chat-conversation-evidence--incompatible-source"
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/conversation-evidence/Review.tsx",
+      "frontend/src/conversation-evidence/contracts.ts"
     ]
   },
   {
@@ -7036,22 +7168,48 @@
     "name": "SourcesContent",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded released0.4 conversation evidence: current recorded tool/messages/outcomes, conservative metadata clock, native readonly disclosures, distinct authored status/null/zero/error specimens and truthful explanation/provenance, actual paint/keyboard/source-phase/cutoff/StrictMode/narrow/API-free proof.",
+    "nextAction": "Untested props/helpers and broader chat families retain partial/deferred review; no send/execution/retrieval/hidden-thought claims.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/conversation-evidence/Review.tsx",
+        "frontend/src/conversation-evidence/model.ts",
+        "docs/conversation-evidence-review.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/conversation-evidence.spec.ts",
+        "frontend/src/conversation-evidence/contracts.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/conversation-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-conversation-evidence--recorded",
+        "chat-conversation-evidence--empty",
+        "chat-conversation-evidence--loading",
+        "chat-conversation-evidence--read-failure",
+        "chat-conversation-evidence--denied",
+        "chat-conversation-evidence--locked",
+        "chat-conversation-evidence--long-content",
+        "chat-conversation-evidence--unknown-tool-state",
+        "chat-conversation-evidence--pending",
+        "chat-conversation-evidence--running",
+        "chat-conversation-evidence--awaiting-confirmation",
+        "chat-conversation-evidence--confirmed",
+        "chat-conversation-evidence--denied-tool",
+        "chat-conversation-evidence--error-tool",
+        "chat-conversation-evidence--zero-outcome",
+        "chat-conversation-evidence--no-outcome",
+        "chat-conversation-evidence--before-tool-finish",
+        "chat-conversation-evidence--before-metadata-snapshot",
+        "chat-conversation-evidence--incompatible-source"
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/conversation-evidence/Review.tsx",
+      "frontend/src/conversation-evidence/contracts.ts"
     ]
   },
   {
@@ -7061,22 +7219,48 @@
     "name": "Source",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded released0.4 conversation evidence: current recorded tool/messages/outcomes, conservative metadata clock, native readonly disclosures, distinct authored status/null/zero/error specimens and truthful explanation/provenance, actual paint/keyboard/source-phase/cutoff/StrictMode/narrow/API-free proof.",
+    "nextAction": "Untested props/helpers and broader chat families retain partial/deferred review; no send/execution/retrieval/hidden-thought claims.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/conversation-evidence/Review.tsx",
+        "frontend/src/conversation-evidence/model.ts",
+        "docs/conversation-evidence-review.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/conversation-evidence.spec.ts",
+        "frontend/src/conversation-evidence/contracts.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/conversation-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-conversation-evidence--recorded",
+        "chat-conversation-evidence--empty",
+        "chat-conversation-evidence--loading",
+        "chat-conversation-evidence--read-failure",
+        "chat-conversation-evidence--denied",
+        "chat-conversation-evidence--locked",
+        "chat-conversation-evidence--long-content",
+        "chat-conversation-evidence--unknown-tool-state",
+        "chat-conversation-evidence--pending",
+        "chat-conversation-evidence--running",
+        "chat-conversation-evidence--awaiting-confirmation",
+        "chat-conversation-evidence--confirmed",
+        "chat-conversation-evidence--denied-tool",
+        "chat-conversation-evidence--error-tool",
+        "chat-conversation-evidence--zero-outcome",
+        "chat-conversation-evidence--no-outcome",
+        "chat-conversation-evidence--before-tool-finish",
+        "chat-conversation-evidence--before-metadata-snapshot",
+        "chat-conversation-evidence--incompatible-source"
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/conversation-evidence/Review.tsx",
+      "frontend/src/conversation-evidence/contracts.ts"
     ]
   },
   {
@@ -8404,22 +8588,48 @@
     "name": "Tool",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded released0.4 conversation evidence: current recorded tool/messages/outcomes, conservative metadata clock, native readonly disclosures, distinct authored status/null/zero/error specimens and truthful explanation/provenance, actual paint/keyboard/source-phase/cutoff/StrictMode/narrow/API-free proof.",
+    "nextAction": "Untested props/helpers and broader chat families retain partial/deferred review; no send/execution/retrieval/hidden-thought claims.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/conversation-evidence/Review.tsx",
+        "frontend/src/conversation-evidence/model.ts",
+        "docs/conversation-evidence-review.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/conversation-evidence.spec.ts",
+        "frontend/src/conversation-evidence/contracts.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/conversation-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-conversation-evidence--recorded",
+        "chat-conversation-evidence--empty",
+        "chat-conversation-evidence--loading",
+        "chat-conversation-evidence--read-failure",
+        "chat-conversation-evidence--denied",
+        "chat-conversation-evidence--locked",
+        "chat-conversation-evidence--long-content",
+        "chat-conversation-evidence--unknown-tool-state",
+        "chat-conversation-evidence--pending",
+        "chat-conversation-evidence--running",
+        "chat-conversation-evidence--awaiting-confirmation",
+        "chat-conversation-evidence--confirmed",
+        "chat-conversation-evidence--denied-tool",
+        "chat-conversation-evidence--error-tool",
+        "chat-conversation-evidence--zero-outcome",
+        "chat-conversation-evidence--no-outcome",
+        "chat-conversation-evidence--before-tool-finish",
+        "chat-conversation-evidence--before-metadata-snapshot",
+        "chat-conversation-evidence--incompatible-source"
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/conversation-evidence/Review.tsx",
+      "frontend/src/conversation-evidence/contracts.ts"
     ]
   },
   {
@@ -8429,22 +8639,48 @@
     "name": "ToolHeader",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded released0.4 conversation evidence: current recorded tool/messages/outcomes, conservative metadata clock, native readonly disclosures, distinct authored status/null/zero/error specimens and truthful explanation/provenance, actual paint/keyboard/source-phase/cutoff/StrictMode/narrow/API-free proof.",
+    "nextAction": "Untested props/helpers and broader chat families retain partial/deferred review; no send/execution/retrieval/hidden-thought claims.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/conversation-evidence/Review.tsx",
+        "frontend/src/conversation-evidence/model.ts",
+        "docs/conversation-evidence-review.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/conversation-evidence.spec.ts",
+        "frontend/src/conversation-evidence/contracts.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/conversation-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-conversation-evidence--recorded",
+        "chat-conversation-evidence--empty",
+        "chat-conversation-evidence--loading",
+        "chat-conversation-evidence--read-failure",
+        "chat-conversation-evidence--denied",
+        "chat-conversation-evidence--locked",
+        "chat-conversation-evidence--long-content",
+        "chat-conversation-evidence--unknown-tool-state",
+        "chat-conversation-evidence--pending",
+        "chat-conversation-evidence--running",
+        "chat-conversation-evidence--awaiting-confirmation",
+        "chat-conversation-evidence--confirmed",
+        "chat-conversation-evidence--denied-tool",
+        "chat-conversation-evidence--error-tool",
+        "chat-conversation-evidence--zero-outcome",
+        "chat-conversation-evidence--no-outcome",
+        "chat-conversation-evidence--before-tool-finish",
+        "chat-conversation-evidence--before-metadata-snapshot",
+        "chat-conversation-evidence--incompatible-source"
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/conversation-evidence/Review.tsx",
+      "frontend/src/conversation-evidence/contracts.ts"
     ]
   },
   {
@@ -8454,22 +8690,48 @@
     "name": "ToolContent",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded released0.4 conversation evidence: current recorded tool/messages/outcomes, conservative metadata clock, native readonly disclosures, distinct authored status/null/zero/error specimens and truthful explanation/provenance, actual paint/keyboard/source-phase/cutoff/StrictMode/narrow/API-free proof.",
+    "nextAction": "Untested props/helpers and broader chat families retain partial/deferred review; no send/execution/retrieval/hidden-thought claims.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/conversation-evidence/Review.tsx",
+        "frontend/src/conversation-evidence/model.ts",
+        "docs/conversation-evidence-review.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/conversation-evidence.spec.ts",
+        "frontend/src/conversation-evidence/contracts.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/conversation-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-conversation-evidence--recorded",
+        "chat-conversation-evidence--empty",
+        "chat-conversation-evidence--loading",
+        "chat-conversation-evidence--read-failure",
+        "chat-conversation-evidence--denied",
+        "chat-conversation-evidence--locked",
+        "chat-conversation-evidence--long-content",
+        "chat-conversation-evidence--unknown-tool-state",
+        "chat-conversation-evidence--pending",
+        "chat-conversation-evidence--running",
+        "chat-conversation-evidence--awaiting-confirmation",
+        "chat-conversation-evidence--confirmed",
+        "chat-conversation-evidence--denied-tool",
+        "chat-conversation-evidence--error-tool",
+        "chat-conversation-evidence--zero-outcome",
+        "chat-conversation-evidence--no-outcome",
+        "chat-conversation-evidence--before-tool-finish",
+        "chat-conversation-evidence--before-metadata-snapshot",
+        "chat-conversation-evidence--incompatible-source"
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/conversation-evidence/Review.tsx",
+      "frontend/src/conversation-evidence/contracts.ts"
     ]
   },
   {
@@ -8479,22 +8741,48 @@
     "name": "ToolInput",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded released0.4 conversation evidence: current recorded tool/messages/outcomes, conservative metadata clock, native readonly disclosures, distinct authored status/null/zero/error specimens and truthful explanation/provenance, actual paint/keyboard/source-phase/cutoff/StrictMode/narrow/API-free proof.",
+    "nextAction": "Untested props/helpers and broader chat families retain partial/deferred review; no send/execution/retrieval/hidden-thought claims.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/conversation-evidence/Review.tsx",
+        "frontend/src/conversation-evidence/model.ts",
+        "docs/conversation-evidence-review.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/conversation-evidence.spec.ts",
+        "frontend/src/conversation-evidence/contracts.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/conversation-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-conversation-evidence--recorded",
+        "chat-conversation-evidence--empty",
+        "chat-conversation-evidence--loading",
+        "chat-conversation-evidence--read-failure",
+        "chat-conversation-evidence--denied",
+        "chat-conversation-evidence--locked",
+        "chat-conversation-evidence--long-content",
+        "chat-conversation-evidence--unknown-tool-state",
+        "chat-conversation-evidence--pending",
+        "chat-conversation-evidence--running",
+        "chat-conversation-evidence--awaiting-confirmation",
+        "chat-conversation-evidence--confirmed",
+        "chat-conversation-evidence--denied-tool",
+        "chat-conversation-evidence--error-tool",
+        "chat-conversation-evidence--zero-outcome",
+        "chat-conversation-evidence--no-outcome",
+        "chat-conversation-evidence--before-tool-finish",
+        "chat-conversation-evidence--before-metadata-snapshot",
+        "chat-conversation-evidence--incompatible-source"
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/conversation-evidence/Review.tsx",
+      "frontend/src/conversation-evidence/contracts.ts"
     ]
   },
   {
@@ -8504,22 +8792,48 @@
     "name": "ToolOutput",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded released0.4 conversation evidence: current recorded tool/messages/outcomes, conservative metadata clock, native readonly disclosures, distinct authored status/null/zero/error specimens and truthful explanation/provenance, actual paint/keyboard/source-phase/cutoff/StrictMode/narrow/API-free proof.",
+    "nextAction": "Untested props/helpers and broader chat families retain partial/deferred review; no send/execution/retrieval/hidden-thought claims.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/conversation-evidence/Review.tsx",
+        "frontend/src/conversation-evidence/model.ts",
+        "docs/conversation-evidence-review.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/conversation-evidence.spec.ts",
+        "frontend/src/conversation-evidence/contracts.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/conversation-evidence/Evidence.stories.tsx"
+      ],
+      "storyIds": [
+        "chat-conversation-evidence--recorded",
+        "chat-conversation-evidence--empty",
+        "chat-conversation-evidence--loading",
+        "chat-conversation-evidence--read-failure",
+        "chat-conversation-evidence--denied",
+        "chat-conversation-evidence--locked",
+        "chat-conversation-evidence--long-content",
+        "chat-conversation-evidence--unknown-tool-state",
+        "chat-conversation-evidence--pending",
+        "chat-conversation-evidence--running",
+        "chat-conversation-evidence--awaiting-confirmation",
+        "chat-conversation-evidence--confirmed",
+        "chat-conversation-evidence--denied-tool",
+        "chat-conversation-evidence--error-tool",
+        "chat-conversation-evidence--zero-outcome",
+        "chat-conversation-evidence--no-outcome",
+        "chat-conversation-evidence--before-tool-finish",
+        "chat-conversation-evidence--before-metadata-snapshot",
+        "chat-conversation-evidence--incompatible-source"
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/conversation-evidence/Review.tsx",
+      "frontend/src/conversation-evidence/contracts.ts"
     ]
   },
   {
