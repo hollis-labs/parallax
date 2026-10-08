@@ -33,6 +33,7 @@ import {
   RunInspection,
   UsageView,
 } from "./operations/Views"
+import { OpsDashboard } from "./ops-dashboard/Dashboard"
 import { PlaybackControls } from "./playback/Controls"
 import { usePlayback } from "./playback/usePlayback"
 import { PrimitiveGallery } from "./primitives/Gallery"
@@ -258,6 +259,7 @@ export function App() {
     applyTheme(theme as Parameters<typeof applyTheme>[0])
     document.documentElement.setAttribute("data-mode", mode)
   }, [theme, mode])
+  const isOpsDashboard = page === "Ops Dashboard"
   const isWorkbench = page === workbenchEntry.id
   const isWidgets = page === "Widgets"
   const isEvidence = page === "Evidence"
@@ -612,11 +614,12 @@ export function App() {
               </div>
             )}
             {routeNotice && <p role="status">{routeNotice}</p>}
-            {!model.accessible && !isWorkbench ? (
+            {!model.accessible && !isWorkbench && !isOpsDashboard ? (
               <ResourceNotice model={model} />
             ) : (
               <>
-                {!isWorkbench &&
+                {!isOpsDashboard &&
+                  !isWorkbench &&
                   !isCommunication &&
                   !isUsageEvidence &&
                   !isAdministration &&
@@ -633,6 +636,22 @@ export function App() {
                     source={`${model.dataset.version}/${model.dataset.profile}/${scenario}/${model.resource}/${model.cutoff}/${review.epoch}`}
                     host={location.host}
                     onNavigate={navigate}
+                  />
+                ) : isOpsDashboard ? (
+                  <OpsDashboard
+                    key={scenario}
+                    model={model}
+                    query={query}
+                    onQuery={setQuery}
+                    onSelect={select}
+                    onTabChange={() => {
+                      pluginHost?.resetContext({
+                        ...pluginHost.context.getSnapshot(),
+                        retiredDashboardTab: true,
+                      })
+                      setIntent("")
+                      setDraft("")
+                    }}
                   />
                 ) : isAdminReview ? (
                   <AdminReview key={scenario} context={scenario} />

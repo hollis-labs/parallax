@@ -1658,6 +1658,7 @@
       "frontend/src/observation-review/Review.tsx",
       "frontend/src/operations/Operations.stories.tsx",
       "frontend/src/operations/Views.tsx",
+      "frontend/src/ops-dashboard/Dashboard.tsx",
       "frontend/src/playback/Controls.tsx",
       "frontend/src/primitives/Gallery.tsx",
       "frontend/src/run-explorer/Explorer.tsx",
@@ -3368,7 +3369,8 @@
     },
     "importEvidence": [
       "frontend/src/directory-review/Review.tsx",
-      "frontend/src/directory-review/contracts.ts"
+      "frontend/src/directory-review/contracts.ts",
+      "frontend/src/ops-dashboard/Dashboard.tsx"
     ]
   },
   {
@@ -3409,7 +3411,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/directory-review/Review.tsx"
+      "frontend/src/directory-review/Review.tsx",
+      "frontend/src/ops-dashboard/Dashboard.tsx"
     ]
   },
   {
@@ -3450,7 +3453,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/directory-review/Review.tsx"
+      "frontend/src/directory-review/Review.tsx",
+      "frontend/src/ops-dashboard/Dashboard.tsx"
     ]
   },
   {
@@ -3491,7 +3495,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/directory-review/Review.tsx"
+      "frontend/src/directory-review/Review.tsx",
+      "frontend/src/ops-dashboard/Dashboard.tsx"
     ]
   },
   {
@@ -3579,25 +3584,41 @@
     "name": "PageHeader",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded unified recorded dashboard and distinct exact metric companion: root header/local child, current task status semantics, receipt unknown/zero/partial/raw amounts, explicit supplied statuses, native tabs/source/cutoff/StrictMode/narrow/API-free proof.",
+    "nextAction": "Aliases, untested props and supporting helpers remain partial/deferred; Torque reference fidelity remains partial.",
     "evidence": {
       "pages": [
-        "frontend/src/operations/Views.tsx"
+        "frontend/src/ops-dashboard/Dashboard.tsx",
+        "frontend/src/ops-dashboard/model.ts",
+        "docs/ops-dashboard-review.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/ops-dashboard.spec.ts",
+        "frontend/src/ops-dashboard/contracts.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/ops-dashboard/Dashboard.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--mission-control"
+        "operations-unified-dashboard--activity",
+        "operations-unified-dashboard--mission-control",
+        "operations-unified-dashboard--usage",
+        "operations-unified-dashboard--empty",
+        "operations-unified-dashboard--loading",
+        "operations-unified-dashboard--read-failure",
+        "operations-unified-dashboard--denied",
+        "operations-unified-dashboard--unknown-status",
+        "operations-unified-dashboard--long-header",
+        "operations-unified-dashboard--before-receipt",
+        "operations-unified-dashboard--at-receipt",
+        "operations-unified-dashboard--historical"
       ]
     },
     "importEvidence": [
-      "frontend/src/App.tsx"
+      "frontend/src/App.tsx",
+      "frontend/src/ops-dashboard/Dashboard.tsx",
+      "frontend/src/ops-dashboard/contracts.ts"
     ]
   },
   {
@@ -3722,6 +3743,7 @@
     },
     "importEvidence": [
       "frontend/src/operations/Views.tsx",
+      "frontend/src/ops-dashboard/Dashboard.tsx",
       "frontend/src/pages/dashboard.tsx"
     ]
   },
@@ -5634,11 +5656,41 @@
     "name": "Kpi",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded unified recorded dashboard and distinct exact metric companion: root header/local child, current task status semantics, receipt unknown/zero/partial/raw amounts, explicit supplied statuses, native tabs/source/cutoff/StrictMode/narrow/API-free proof.",
+    "nextAction": "Aliases, untested props and supporting helpers remain partial/deferred; Torque reference fidelity remains partial.",
+    "evidence": {
+      "pages": [
+        "frontend/src/ops-dashboard/Dashboard.tsx",
+        "frontend/src/ops-dashboard/model.ts",
+        "docs/ops-dashboard-review.md"
+      ],
+      "checks": [
+        "frontend/tests/ops-dashboard.spec.ts",
+        "frontend/src/ops-dashboard/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/ops-dashboard/Dashboard.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-unified-dashboard--activity",
+        "operations-unified-dashboard--mission-control",
+        "operations-unified-dashboard--usage",
+        "operations-unified-dashboard--empty",
+        "operations-unified-dashboard--loading",
+        "operations-unified-dashboard--read-failure",
+        "operations-unified-dashboard--denied",
+        "operations-unified-dashboard--unknown-status",
+        "operations-unified-dashboard--long-header",
+        "operations-unified-dashboard--before-receipt",
+        "operations-unified-dashboard--at-receipt",
+        "operations-unified-dashboard--historical"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/ops-dashboard/Dashboard.tsx",
+      "frontend/src/ops-dashboard/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -5660,11 +5712,40 @@
     "name": "KpiGrid",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded unified recorded dashboard and distinct exact metric companion: root header/local child, current task status semantics, receipt unknown/zero/partial/raw amounts, explicit supplied statuses, native tabs/source/cutoff/StrictMode/narrow/API-free proof.",
+    "nextAction": "Aliases, untested props and supporting helpers remain partial/deferred; Torque reference fidelity remains partial.",
+    "evidence": {
+      "pages": [
+        "frontend/src/ops-dashboard/Dashboard.tsx",
+        "frontend/src/ops-dashboard/model.ts",
+        "docs/ops-dashboard-review.md"
+      ],
+      "checks": [
+        "frontend/tests/ops-dashboard.spec.ts",
+        "frontend/src/ops-dashboard/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/ops-dashboard/Dashboard.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-unified-dashboard--activity",
+        "operations-unified-dashboard--mission-control",
+        "operations-unified-dashboard--usage",
+        "operations-unified-dashboard--empty",
+        "operations-unified-dashboard--loading",
+        "operations-unified-dashboard--read-failure",
+        "operations-unified-dashboard--denied",
+        "operations-unified-dashboard--unknown-status",
+        "operations-unified-dashboard--long-header",
+        "operations-unified-dashboard--before-receipt",
+        "operations-unified-dashboard--at-receipt",
+        "operations-unified-dashboard--historical"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/ops-dashboard/Dashboard.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -5741,11 +5822,41 @@
     "name": "IntelligenceRow",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded unified recorded dashboard and distinct exact metric companion: root header/local child, current task status semantics, receipt unknown/zero/partial/raw amounts, explicit supplied statuses, native tabs/source/cutoff/StrictMode/narrow/API-free proof.",
+    "nextAction": "Aliases, untested props and supporting helpers remain partial/deferred; Torque reference fidelity remains partial.",
+    "evidence": {
+      "pages": [
+        "frontend/src/ops-dashboard/Dashboard.tsx",
+        "frontend/src/ops-dashboard/model.ts",
+        "docs/ops-dashboard-review.md"
+      ],
+      "checks": [
+        "frontend/tests/ops-dashboard.spec.ts",
+        "frontend/src/ops-dashboard/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/ops-dashboard/Dashboard.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-unified-dashboard--activity",
+        "operations-unified-dashboard--mission-control",
+        "operations-unified-dashboard--usage",
+        "operations-unified-dashboard--empty",
+        "operations-unified-dashboard--loading",
+        "operations-unified-dashboard--read-failure",
+        "operations-unified-dashboard--denied",
+        "operations-unified-dashboard--unknown-status",
+        "operations-unified-dashboard--long-header",
+        "operations-unified-dashboard--before-receipt",
+        "operations-unified-dashboard--at-receipt",
+        "operations-unified-dashboard--historical"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/ops-dashboard/Dashboard.tsx",
+      "frontend/src/ops-dashboard/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",

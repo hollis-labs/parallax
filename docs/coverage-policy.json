@@ -1014,6 +1014,88 @@
           "administration-directory-review--unassigned"
         ]
       }
+    },
+    {
+      "package": "@hollis-labs/kit-dashboard",
+      "entries": [
+        "."
+      ],
+      "names": [
+        "PageHeader"
+      ],
+      "disposition": "reviewed",
+      "reason": "Independent bounded unified recorded dashboard and distinct exact metric companion: root header/local child, current task status semantics, receipt unknown/zero/partial/raw amounts, explicit supplied statuses, native tabs/source/cutoff/StrictMode/narrow/API-free proof.",
+      "nextAction": "Aliases, untested props and supporting helpers remain partial/deferred; Torque reference fidelity remains partial.",
+      "evidence": {
+        "pages": [
+          "frontend/src/ops-dashboard/Dashboard.tsx",
+          "frontend/src/ops-dashboard/model.ts",
+          "docs/ops-dashboard-review.md"
+        ],
+        "checks": [
+          "frontend/tests/ops-dashboard.spec.ts",
+          "frontend/src/ops-dashboard/contracts.ts"
+        ],
+        "stories": [
+          "frontend/src/ops-dashboard/Dashboard.stories.tsx"
+        ],
+        "storyIds": [
+          "operations-unified-dashboard--activity",
+          "operations-unified-dashboard--mission-control",
+          "operations-unified-dashboard--usage",
+          "operations-unified-dashboard--empty",
+          "operations-unified-dashboard--loading",
+          "operations-unified-dashboard--read-failure",
+          "operations-unified-dashboard--denied",
+          "operations-unified-dashboard--unknown-status",
+          "operations-unified-dashboard--long-header",
+          "operations-unified-dashboard--before-receipt",
+          "operations-unified-dashboard--at-receipt",
+          "operations-unified-dashboard--historical"
+        ]
+      }
+    },
+    {
+      "package": "@hollis-labs/kit-dashboard",
+      "entries": [
+        "./widgets"
+      ],
+      "names": [
+        "Kpi",
+        "KpiGrid",
+        "IntelligenceRow"
+      ],
+      "disposition": "reviewed",
+      "reason": "Independent bounded unified recorded dashboard and distinct exact metric companion: root header/local child, current task status semantics, receipt unknown/zero/partial/raw amounts, explicit supplied statuses, native tabs/source/cutoff/StrictMode/narrow/API-free proof.",
+      "nextAction": "Aliases, untested props and supporting helpers remain partial/deferred; Torque reference fidelity remains partial.",
+      "evidence": {
+        "pages": [
+          "frontend/src/ops-dashboard/Dashboard.tsx",
+          "frontend/src/ops-dashboard/model.ts",
+          "docs/ops-dashboard-review.md"
+        ],
+        "checks": [
+          "frontend/tests/ops-dashboard.spec.ts",
+          "frontend/src/ops-dashboard/contracts.ts"
+        ],
+        "stories": [
+          "frontend/src/ops-dashboard/Dashboard.stories.tsx"
+        ],
+        "storyIds": [
+          "operations-unified-dashboard--activity",
+          "operations-unified-dashboard--mission-control",
+          "operations-unified-dashboard--usage",
+          "operations-unified-dashboard--empty",
+          "operations-unified-dashboard--loading",
+          "operations-unified-dashboard--read-failure",
+          "operations-unified-dashboard--denied",
+          "operations-unified-dashboard--unknown-status",
+          "operations-unified-dashboard--long-header",
+          "operations-unified-dashboard--before-receipt",
+          "operations-unified-dashboard--at-receipt",
+          "operations-unified-dashboard--historical"
+        ]
+      }
     }
   ]
 }

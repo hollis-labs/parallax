@@ -22,6 +22,16 @@ type Definition = {
 }
 export const destinations: readonly Definition[] = [
   {
+    id: "Ops Dashboard",
+    group: "Operations",
+    icon: "Gauge",
+    source: "Recorded operations prefix",
+    scope: "Unified Activity/Mission/Usage task summary and distinct exact metric companion.",
+    gap: "Torque heatmap semantics and full chart fidelity remain partial; no live collection.",
+    story: "operations-unified-dashboard--activity",
+    playback: true,
+  },
+  {
     id: "Directory Review",
     group: "Administration",
     icon: "Users",

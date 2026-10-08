@@ -8,9 +8,9 @@ import {
   storyDestination,
 } from "../src/workbench/catalog"
 
-test("finite catalogue validates27 route icon scope and representative story destinations without discovery", () => {
-  expect(destinations).toHaveLength(27)
-  expect(new Set(destinations.map((d) => d.id)).size).toBe(27)
+test("finite catalogue validates28 route icon scope and representative story destinations without discovery", () => {
+  expect(destinations).toHaveLength(28)
+  expect(new Set(destinations.map((d) => d.id)).size).toBe(28)
   const stories = JSON.parse(
     readFileSync(new URL("../../.scratch/storybook/index.json", import.meta.url), "utf8"),
   ).entries
@@ -47,7 +47,7 @@ test("native Workbench sequential search groups keyboard local navigation and re
   await page.goto("/")
   await page.getByRole("button", { name: "Open Review Workbench", exact: true }).click()
   await expect(page.getByRole("heading", { name: "Review Workbench", exact: true })).toBeVisible()
-  await expect(page.locator(".workbench-grid article")).toHaveCount(27)
+  await expect(page.locator(".workbench-grid article")).toHaveCount(28)
   await page.screenshot({ path: info.outputPath("workbench-desktop.png"), animations: "disabled" })
   await page.keyboard.press("/")
   const search = page.getByRole("searchbox", { name: "Search review destinations", exact: true })
@@ -81,7 +81,7 @@ test("native Workbench sequential search groups keyboard local navigation and re
     page.getByText("No matching review destinations. Clear the search or choose another group."),
   ).toBeVisible()
   await page.getByRole("button", { name: "Reset workbench filters", exact: true }).click()
-  await expect(page.locator(".workbench-grid article")).toHaveCount(27)
+  await expect(page.locator(".workbench-grid article")).toHaveCount(28)
 })
 test("Workbench pauses current prefix while ordinary playback navigation and selected admitted evidence survive", async ({
   page,
@@ -176,7 +176,7 @@ test("source filter phase and unmount native callbacks retire while390dark cards
   ).toBe(true)
   await page.getByLabel("Scenario", { exact: true }).selectOption("empty")
   await page.evaluate(() => (window as unknown as { oldWorkbench: () => void }).oldWorkbench())
-  await expect(page.locator(".workbench-grid article")).toHaveCount(27)
+  await expect(page.locator(".workbench-grid article")).toHaveCount(28)
   await page.getByRole("button", { name: "Open Usage Evidence", exact: true }).click()
   await page.evaluate(() => (window as unknown as { oldWorkbench: () => void }).oldWorkbench())
   await expect(page.getByRole("heading", { name: "Usage Evidence", exact: true })).toBeVisible()
@@ -209,6 +209,6 @@ test("portable catalogue controlled navigation and actual native representative 
   await expect(page.locator(".workbench-grid a")).toHaveCount(0)
   await expect(
     page.getByText("Portable story link unavailable for this host.", { exact: true }),
-  ).toHaveCount(27)
+  ).toHaveCount(28)
   expect(bad).toEqual([])
 })
