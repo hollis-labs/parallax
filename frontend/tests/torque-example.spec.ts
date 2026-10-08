@@ -174,6 +174,28 @@ test("390 dark native navigation and bounded review sheets focus return and app 
   await page.goto(entry.replace("p4-white&mode=light", "p1-green-phosphor&mode=dark"))
   await expect(page.locator(".torque-sidebar")).toBeHidden()
   await page.getByRole("button", { name: "Open app navigation", exact: true }).click()
+  const leftSheet = page.getByRole("dialog", { name: "Torque navigation", exact: true })
+  await expect
+    .poll(() => leftSheet.evaluate((e) => Math.round(e.getBoundingClientRect().x)))
+    .toBe(0)
+  await expect.poll(() => leftSheet.evaluate((e) => getComputedStyle(e).opacity)).toBe("1")
+  const rows = await leftSheet
+    .getByRole("navigation")
+    .getByRole("link")
+    .evaluateAll((es) =>
+      es.map((e) => {
+        const r = e.getBoundingClientRect()
+        return { top: r.top, bottom: r.bottom, left: r.left, right: r.right, height: r.height }
+      }),
+    )
+  expect(rows).toHaveLength(4)
+  rows.forEach((r, i) => {
+    expect(r.height).toBeGreaterThanOrEqual(40)
+    expect(r.left).toBeGreaterThanOrEqual(0)
+    expect(r.right).toBeLessThanOrEqual(390)
+    if (i) expect(r.top).toBeGreaterThan(rows[i - 1].bottom)
+  })
+  await page.screenshot({ path: info.outputPath("torque-shell-navigation-narrow.png") })
   await page
     .getByRole("dialog", { name: "Torque navigation", exact: true })
     .getByRole("link", { name: "Tasks", exact: true })

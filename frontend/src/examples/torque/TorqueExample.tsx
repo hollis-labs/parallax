@@ -103,7 +103,7 @@ export function TorqueExample({
     }
   }
   const links = (
-    <nav aria-label="Torque application navigation">
+    <nav className="torque-navigation" aria-label="Torque application navigation">
       {destinations.map((d) => (
         <a
           key={d.route}

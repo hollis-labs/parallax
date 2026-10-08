@@ -22,15 +22,15 @@
   color: var(--color-fg-muted);
 }
 .torque-sidebar nav,
-.torque-example nav {
+.torque-navigation {
   display: grid;
   gap: calc(var(--spacing) * 2);
 }
-.torque-example nav a {
+.torque-navigation a {
   padding: calc(var(--spacing) * 3);
   border-radius: var(--radius-md);
 }
-.torque-example nav a[aria-current="page"] {
+.torque-navigation a[aria-current="page"] {
   background: var(--color-bg-elevated);
   font-weight: var(--font-weight-semibold);
 }
