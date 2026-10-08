@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client"
 import { App } from "./App"
 import { StandaloneAdminReview } from "./admin-review/Review"
 import { StandaloneChatExample } from "./examples/chat/Standalone"
+import { StandaloneMessagingExample } from "./examples/messaging/Standalone"
 import { StandaloneTorqueExample } from "./examples/torque/Standalone"
 import "./index.css"
 
@@ -10,7 +11,9 @@ const root = document.getElementById("root")
 if (!root) throw new Error("root element missing")
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
-    {new URLSearchParams(location.search).get("example") === "chat" ? (
+    {new URLSearchParams(location.search).get("example") === "messaging" ? (
+      <StandaloneMessagingExample />
+    ) : new URLSearchParams(location.search).get("example") === "chat" ? (
       <StandaloneChatExample />
     ) : new URLSearchParams(location.search).get("example") === "torque" ? (
       <StandaloneTorqueExample />

@@ -53,6 +53,15 @@ export const destinations: readonly Definition[] = [
     story: "app-examples-chat--conversation",
   },
   {
+    id: "Messaging Example",
+    group: "App Examples",
+    icon: "Mail",
+    source: "Independent communications snapshot",
+    scope: "Contacts, channel inboxes, current messages and declared attachment inspection.",
+    gap: "Local drafts are inspection candidates; no send, delivery or directory service.",
+    story: "app-examples-messaging--inbox",
+  },
+  {
     id: "Appearance Review",
     group: "Administration",
     icon: "Layers",

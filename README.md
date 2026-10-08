@@ -86,3 +86,5 @@ Standalone Torque Mission/Usage reference: [semantics and transformation matrix]
 The independently versioned [chat snapshot companion](docs/chat-example-fixtures.md) supplies finite authored history and original message/source references for the next whole-chat screen. Existing Chat and API-free pack stories share its read-only model.
 
 The standalone [Chat Example](docs/chat-example.md) is available at `/?example=chat` and from Workbench. It uses the independent fixed-clock chat companion, a bounded transcript and pinned local-draft composer, with optional evidence/review sheets. Fullscreen portable stories reuse the same composition without APIs; submissions inspect local candidates and never append or send messages.
+
+The standalone [Messaging Example](docs/messaging-example.md) at `/?example=messaging` and Workbench reviews the fixed communications snapshot through a contact directory, channel inbox and bounded conversation/attachment detail. Local draft candidates never send or change supplied records; fullscreen stories use the same API-free composition.
