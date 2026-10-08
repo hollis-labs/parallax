@@ -90,50 +90,57 @@ export function WorkflowReview({
   operations,
   initialState = "recorded",
   epoch = 0,
+  embedded = false,
 }: {
   operations: OperationsModel
   initialState?: WorkflowState
   epoch?: number
+  embedded?: boolean
 }) {
   return (
     <Frame
       key={`${workflowModel(operations, initialState).source}/${epoch}`}
       operations={operations}
       initialState={initialState}
+      embedded={embedded}
     />
   )
 }
 function Frame({
   operations,
   initialState,
+  embedded,
 }: {
   operations: OperationsModel
   initialState: WorkflowState
+  embedded: boolean
 }) {
   const [state, setState] = useState(initialState),
     [copy, setCopy] = useState(0)
   const data = workflowModel(operations, state)
   return (
     <section className="workflow-review">
-      <div className="workflow-review-controls">
-        <label>
-          Workflow appearance{" "}
-          <select
-            aria-label="Workflow review appearance"
-            value={state}
-            onChange={(e) => {
-              if (workflowStates.includes(e.target.value as WorkflowState))
-                setState(e.target.value as WorkflowState)
-            }}
-          >
-            {workflowStates.map((s) => (
-              <option key={s}>{s}</option>
-            ))}
-          </select>
-        </label>
-        <Button onClick={() => setCopy((n) => n + 1)}>Reset workflow review</Button>
-        <Button onClick={() => setCopy((n) => n + 1)}>Replace workflow source copy</Button>
-      </div>
+      {!embedded && (
+        <div className="workflow-review-controls">
+          <label>
+            Workflow appearance{" "}
+            <select
+              aria-label="Workflow review appearance"
+              value={state}
+              onChange={(e) => {
+                if (workflowStates.includes(e.target.value as WorkflowState))
+                  setState(e.target.value as WorkflowState)
+              }}
+            >
+              {workflowStates.map((s) => (
+                <option key={s}>{s}</option>
+              ))}
+            </select>
+          </label>
+          <Button onClick={() => setCopy((n) => n + 1)}>Reset workflow review</Button>
+          <Button onClick={() => setCopy((n) => n + 1)}>Replace workflow source copy</Button>
+        </div>
+      )}
       <p className="muted">
         {data.fixture.version} · recorded {data.fixture.recordedAt} · cutoff {data.cutoff}. Supplied
         graph is authored inspection order, not workflow execution. Equal-width review positions are
@@ -145,11 +152,11 @@ function Frame({
           decorative specimen selection remain local presentation controls.
         </p>
       )}
-      <Instance key={`${data.source}/${copy}`} data={data} />
+      <Instance key={`${data.source}/${copy}`} data={data} embedded={embedded} />
     </section>
   )
 }
-function Instance({ data }: { data: WorkflowModel }) {
+function Instance({ data, embedded }: { data: WorkflowModel; embedded: boolean }) {
   const [selection, setSelection] = useState(""),
     [inspection, setInspection] = useState(""),
     [connection, setConnection] = useState<null | "valid" | "invalid">(null)
@@ -333,83 +340,85 @@ function Instance({ data }: { data: WorkflowModel }) {
           <p>Select a supplied node or relationship. No results are produced by inspecting.</p>
         )}
       </section>
-      <section aria-label="Authored connection and edge specimens">
-        <h2>Authored presentation specimens</h2>
-        <p className="muted">
-          These finite paths are separate from the recorded graph. Valid means a supplied visual
-          validation state, not an accepted business connection; the traveller is decorative, not
-          processing.
-        </p>
-        <label>
-          Connection specimen{" "}
-          <select
-            aria-label="Connection specimen state"
-            value={connection ?? "default"}
-            onChange={(e) => {
-              if (!admitted()) return
-              const next = e.target.value
-              if (!["default", "valid", "invalid"].includes(next)) return
-              if ((next === "default" ? null : next) === connection) return
-              current.current.lease++
-              setConnection(next === "default" ? null : (next as "valid" | "invalid"))
-              setInspection("")
-            }}
-          >
-            <option>default</option>
-            <option>valid</option>
-            <option>invalid</option>
-          </select>
-        </label>
-        <div className="workflow-specimen">
-          <p>Connection: {connection ?? "default"} · bounded authored cubic path</p>
-          <svg
-            className="kit-workflow react-flow workflow-specimen-svg"
-            viewBox="0 0 320 90"
-            aria-hidden="true"
-            data-testid="connection-specimen"
-          >
-            <Connection fromX={20} fromY={30} toX={295} toY={60} connectionStatus={connection} />
-          </svg>
-          <p>Animated edge · decorative traveler (hidden with reduced motion)</p>
-          <svg
-            className="kit-workflow react-flow workflow-specimen-svg"
-            viewBox="0 0 320 90"
-            aria-hidden="true"
-            data-testid="animated-specimen"
-          >
-            <Edge.Animated
-              id="SPECIMEN-ANIMATED"
-              source="authored-a"
-              target="authored-b"
-              sourceX={20}
-              sourceY={30}
-              targetX={295}
-              targetY={60}
-              sourcePosition={Position.Right}
-              targetPosition={Position.Left}
-            />
-          </svg>
-          <p>Temporary edge · authored dashed proposal, not a recorded relationship</p>
-          <svg
-            className="kit-workflow react-flow workflow-specimen-svg"
-            viewBox="0 0 320 90"
-            aria-hidden="true"
-            data-testid="temporary-specimen"
-          >
-            <Edge.Temporary
-              id="SPECIMEN-TEMPORARY"
-              source="authored-a"
-              target="authored-b"
-              sourceX={20}
-              sourceY={30}
-              targetX={295}
-              targetY={60}
-              sourcePosition={Position.Right}
-              targetPosition={Position.Left}
-            />
-          </svg>
-        </div>
-      </section>
+      {!embedded && (
+        <section aria-label="Authored connection and edge specimens">
+          <h2>Authored presentation specimens</h2>
+          <p className="muted">
+            These finite paths are separate from the recorded graph. Valid means a supplied visual
+            validation state, not an accepted business connection; the traveller is decorative, not
+            processing.
+          </p>
+          <label>
+            Connection specimen{" "}
+            <select
+              aria-label="Connection specimen state"
+              value={connection ?? "default"}
+              onChange={(e) => {
+                if (!admitted()) return
+                const next = e.target.value
+                if (!["default", "valid", "invalid"].includes(next)) return
+                if ((next === "default" ? null : next) === connection) return
+                current.current.lease++
+                setConnection(next === "default" ? null : (next as "valid" | "invalid"))
+                setInspection("")
+              }}
+            >
+              <option>default</option>
+              <option>valid</option>
+              <option>invalid</option>
+            </select>
+          </label>
+          <div className="workflow-specimen">
+            <p>Connection: {connection ?? "default"} · bounded authored cubic path</p>
+            <svg
+              className="kit-workflow react-flow workflow-specimen-svg"
+              viewBox="0 0 320 90"
+              aria-hidden="true"
+              data-testid="connection-specimen"
+            >
+              <Connection fromX={20} fromY={30} toX={295} toY={60} connectionStatus={connection} />
+            </svg>
+            <p>Animated edge · decorative traveler (hidden with reduced motion)</p>
+            <svg
+              className="kit-workflow react-flow workflow-specimen-svg"
+              viewBox="0 0 320 90"
+              aria-hidden="true"
+              data-testid="animated-specimen"
+            >
+              <Edge.Animated
+                id="SPECIMEN-ANIMATED"
+                source="authored-a"
+                target="authored-b"
+                sourceX={20}
+                sourceY={30}
+                targetX={295}
+                targetY={60}
+                sourcePosition={Position.Right}
+                targetPosition={Position.Left}
+              />
+            </svg>
+            <p>Temporary edge · authored dashed proposal, not a recorded relationship</p>
+            <svg
+              className="kit-workflow react-flow workflow-specimen-svg"
+              viewBox="0 0 320 90"
+              aria-hidden="true"
+              data-testid="temporary-specimen"
+            >
+              <Edge.Temporary
+                id="SPECIMEN-TEMPORARY"
+                source="authored-a"
+                target="authored-b"
+                sourceX={20}
+                sourceY={30}
+                targetX={295}
+                targetY={60}
+                sourcePosition={Position.Right}
+                targetPosition={Position.Left}
+              />
+            </svg>
+          </div>
+        </section>
+      )}
     </>
   )
 }

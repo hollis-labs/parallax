@@ -72,6 +72,16 @@ export const destinations: readonly Definition[] = [
     story: "app-examples-messaging--inbox",
   },
   {
+    id: "Workspace Example",
+    group: "App Examples",
+    icon: "Layers",
+    source: "Independent developer snapshot",
+    scope:
+      "Declared files, readonly proposals, diagnostic/tool evidence and inspection graph in one shell.",
+    gap: "Project grouping and test cases are authored review examples; no editor or execution.",
+    story: "app-examples-workspace--source",
+  },
+  {
     id: "Appearance Review",
     group: "Administration",
     icon: "Layers",

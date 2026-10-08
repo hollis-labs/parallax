@@ -90,3 +90,5 @@ The standalone [Chat Example](docs/chat-example.md) is available at `/?example=c
 The standalone [Messaging Example](docs/messaging-example.md) at `/?example=messaging` and Workbench reviews the fixed communications snapshot through a contact directory, channel inbox and bounded conversation/attachment detail. Local draft candidates never send or change supplied records; fullscreen stories use the same API-free composition.
 
 The standalone [Administration Example](docs/administration-example.md) at `/?example=administration` and Workbench joins fictional directory/profile/role/permission metadata, the distinct current account, immutable desired settings provenance and an unreported setup preview in one shell. It has no identity/configuration writers; optional account candidates remain local inspection only.
+
+The standalone [Developer workspace](docs/workspace-example.md) connects immutable source proposals, diagnostics, current tool metadata and a readonly inspection graph at `/?example=workspace`.

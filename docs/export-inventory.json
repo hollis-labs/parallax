@@ -224,6 +224,7 @@
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
+      "frontend/src/examples/workspace/WorkspaceExample.tsx",
       "frontend/src/observation-review/Review.tsx",
       "frontend/src/operations/Views.tsx",
       "frontend/src/run-explorer/Explorer.tsx",
@@ -353,6 +354,7 @@
       "frontend/src/evidence/contracts.ts",
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
+      "frontend/src/examples/workspace/WorkspaceExample.tsx",
       "frontend/src/observation-review/Review.tsx",
       "frontend/src/settings-review/Review.tsx",
       "frontend/src/widgets/Gallery.tsx"
@@ -528,6 +530,7 @@
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
+      "frontend/src/examples/workspace/WorkspaceExample.tsx",
       "frontend/src/layouts/Comparison.stories.tsx",
       "frontend/src/run-explorer/Explorer.stories.tsx"
     ]
@@ -560,6 +563,7 @@
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
+      "frontend/src/examples/workspace/WorkspaceExample.tsx",
       "frontend/src/layouts/Comparison.tsx",
       "frontend/src/layouts/Navigation.tsx"
     ]
@@ -1725,6 +1729,7 @@
       "frontend/src/examples/torque/Mission.tsx",
       "frontend/src/examples/torque/ReferenceEvidence.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
+      "frontend/src/examples/workspace/WorkspaceExample.tsx",
       "frontend/src/layouts/Comparison.stories.tsx",
       "frontend/src/layouts/Comparison.tsx",
       "frontend/src/layouts/Navigation.tsx",
@@ -4807,7 +4812,9 @@
       "frontend/src/examples/messaging/Messaging.stories.tsx",
       "frontend/src/examples/messaging/Standalone.tsx",
       "frontend/src/examples/torque/Standalone.tsx",
-      "frontend/src/examples/torque/Torque.stories.tsx"
+      "frontend/src/examples/torque/Torque.stories.tsx",
+      "frontend/src/examples/workspace/Standalone.tsx",
+      "frontend/src/examples/workspace/Workspace.stories.tsx"
     ]
   },
   {
@@ -15920,7 +15927,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Lab.tsx"
+      "frontend/src/developer/Lab.tsx",
+      "frontend/src/examples/workspace/WorkspaceExample.tsx"
     ]
   },
   {
@@ -15971,7 +15979,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Lab.tsx"
+      "frontend/src/developer/Lab.tsx",
+      "frontend/src/examples/workspace/WorkspaceExample.tsx"
     ]
   },
   {
@@ -15996,7 +16005,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Lab.tsx"
+      "frontend/src/developer/Lab.tsx",
+      "frontend/src/examples/workspace/WorkspaceExample.tsx"
     ]
   },
   {

@@ -45,60 +45,73 @@ export function DeveloperEvidence({
   operations,
   initialState = "recorded",
   epoch = 0,
+  embedded,
 }: {
   operations: OperationsModel
   initialState?: EvidenceState
   epoch?: number
+  embedded?: { onFileSelect: (id: string, line: number, column: number) => void }
 }) {
   return (
     <ReviewFrame
       key={`${developerEvidenceModel(operations, initialState).source}/${epoch}`}
       operations={operations}
       initialState={initialState}
+      embedded={embedded}
     />
   )
 }
 function ReviewFrame({
   operations,
   initialState,
+  embedded,
 }: {
   operations: OperationsModel
   initialState: EvidenceState
+  embedded?: { onFileSelect: (id: string, line: number, column: number) => void }
 }) {
   const [state, setState] = useState(initialState),
     [copy, setCopy] = useState(0)
   const data = developerEvidenceModel(operations, state)
   return (
     <section className="developer-evidence">
-      <div className="evidence-review-controls">
-        <label>
-          Developer appearance{" "}
-          <select
-            aria-label="Developer evidence appearance"
-            value={state}
-            onChange={(e) => {
-              if (evidenceStates.includes(e.target.value as EvidenceState))
-                setState(e.target.value as EvidenceState)
-            }}
-          >
-            {evidenceStates.map((s) => (
-              <option key={s}>{s}</option>
-            ))}
-          </select>
-        </label>
-        <Button onClick={() => setCopy((c) => c + 1)}>Reset developer evidence</Button>
-        <Button onClick={() => setCopy((c) => c + 1)}>Replace review source copy</Button>
-      </div>
+      {!embedded && (
+        <div className="evidence-review-controls">
+          <label>
+            Developer appearance{" "}
+            <select
+              aria-label="Developer evidence appearance"
+              value={state}
+              onChange={(e) => {
+                if (evidenceStates.includes(e.target.value as EvidenceState))
+                  setState(e.target.value as EvidenceState)
+              }}
+            >
+              {evidenceStates.map((s) => (
+                <option key={s}>{s}</option>
+              ))}
+            </select>
+          </label>
+          <Button onClick={() => setCopy((c) => c + 1)}>Reset developer evidence</Button>
+          <Button onClick={() => setCopy((c) => c + 1)}>Replace review source copy</Button>
+        </div>
+      )}
       <p className="muted">
         {data.fixture.version} · recorded {data.fixture.recordedAt} · review cutoff {data.cutoff}.
         Test ledger is an authored presentation example, not executed CI. Files and commit are
         fictional supplied proposal evidence.
       </p>
-      <EvidenceInstance key={`${data.source}/${copy}`} data={data} />
+      <EvidenceInstance key={`${data.source}/${copy}`} data={data} embedded={embedded} />
     </section>
   )
 }
-function EvidenceInstance({ data }: { data: EvidenceModel }) {
+function EvidenceInstance({
+  data,
+  embedded,
+}: {
+  data: EvidenceModel
+  embedded?: { onFileSelect: (id: string, line: number, column: number) => void }
+}) {
   const [suite, setSuite] = useState(true),
     [stack, setStack] = useState(true),
     [commit, setCommit] = useState(true),
@@ -124,6 +137,10 @@ function EvidenceInstance({ data }: { data: EvidenceModel }) {
       return
     }
     setNavigationNote("")
+    if (embedded) {
+      embedded.onFileSelect(id, line, column)
+      return
+    }
     current.current.lease++
     setSelection({ id, line, column })
   }
@@ -287,51 +304,53 @@ function EvidenceInstance({ data }: { data: EvidenceModel }) {
         </section>
       </div>
       {navigationNote && <p role="status">{navigationNote}</p>}
-      <section aria-label="Selected developer file" className="developer-file-evidence">
-        <h2>
-          {selected
-            ? `${selected.file.id} · ${selected.file.path}:${selected.line}:${selected.column}`
-            : "Select declared file evidence"}
-        </h2>
-        {selected ? (
-          <>
+      {!embedded && (
+        <section aria-label="Selected developer file" className="developer-file-evidence">
+          <h2>
+            {selected
+              ? `${selected.file.id} · ${selected.file.path}:${selected.line}:${selected.column}`
+              : "Select declared file evidence"}
+          </h2>
+          {selected ? (
+            <>
+              <p>
+                {selected.file.runId} · {selected.file.toolId} · immutable supplied source; local
+                selection only.
+              </p>
+              <div className="developer-evidence-grid">
+                <section>
+                  <h3>Before</h3>
+                  <pre>{selected.file.before}</pre>
+                </section>
+                <section>
+                  <h3>Proposal</h3>
+                  <pre>{selected.file.after}</pre>
+                  {data.state === "long-content" && (
+                    <pre data-testid="authored-long-source">
+                      {"// Authored rendering sample, not additional supplied source. ".repeat(80)}
+                    </pre>
+                  )}
+                </section>
+              </div>
+              <Button
+                onClick={() => {
+                  if (allowed()) {
+                    current.current.lease++
+                    setSelection(null)
+                  }
+                }}
+              >
+                Clear file inspection
+              </Button>
+            </>
+          ) : (
             <p>
-              {selected.file.runId} · {selected.file.toolId} · immutable supplied source; local
-              selection only.
+              No source opened; native stack links, case buttons and proposal rows inspect the same
+              three declared files.
             </p>
-            <div className="developer-evidence-grid">
-              <section>
-                <h3>Before</h3>
-                <pre>{selected.file.before}</pre>
-              </section>
-              <section>
-                <h3>Proposal</h3>
-                <pre>{selected.file.after}</pre>
-                {data.state === "long-content" && (
-                  <pre data-testid="authored-long-source">
-                    {"// Authored rendering sample, not additional supplied source. ".repeat(80)}
-                  </pre>
-                )}
-              </section>
-            </div>
-            <Button
-              onClick={() => {
-                if (allowed()) {
-                  current.current.lease++
-                  setSelection(null)
-                }
-              }}
-            >
-              Clear file inspection
-            </Button>
-          </>
-        ) : (
-          <p>
-            No source opened; native stack links, case buttons and proposal rows inspect the same
-            three declared files.
-          </p>
-        )}
-      </section>
+          )}
+        </section>
+      )}
     </>
   )
 }
