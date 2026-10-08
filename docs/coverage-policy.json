@@ -615,6 +615,60 @@
           "conversation-controlled-conversation-review--history-loading"
         ]
       }
+    },
+    {
+      "package": "@hollis-labs/kit-observe",
+      "names": [
+        "ObservationStatus",
+        "HealthSummary",
+        "StatCollection",
+        "SampleSeriesView"
+      ],
+      "disposition": "reviewed",
+      "reason": "Independent bounded pinned0.1.1 Observation Review: resource-local availability vs exact threshold/future/invalid freshness and health, retained receipts, actual zero/null/nonfinite/unit/kind stats, host-bounded ordered exact UTC/null-gap/truncated/empty samples and rendered time geometry, native retry candidate/source/resource/clock/StrictMode lifetime, no new successful receipt or effects. No DiagnosticPanel valid-copy adoption.",
+      "nextAction": "Preserve precise native/portable/freshness/geometry checks; DiagnosticPanel remains partial under inseparable Copy policy; helpers/internal chart and broader observations remain separately bounded reviews.",
+      "evidence": {
+        "pages": [
+          "frontend/src/observation-review/Review.tsx",
+          "frontend/src/observation-review/model.ts",
+          "docs/observation-review.md"
+        ],
+        "checks": [
+          "frontend/tests/observation-review.spec.ts",
+          "frontend/src/observation-review/contracts.ts"
+        ],
+        "stories": [
+          "frontend/src/observation-review/ObservationReview.stories.tsx"
+        ],
+        "storyIds": [
+          "observation-controlled-observation-review--recorded",
+          "observation-controlled-observation-review--idle",
+          "observation-controlled-observation-review--initial-loading",
+          "observation-controlled-observation-review--initial-error",
+          "observation-controlled-observation-review--refresh-loading",
+          "observation-controlled-observation-review--refresh-error",
+          "observation-controlled-observation-review--threshold-equality",
+          "observation-controlled-observation-review--stale",
+          "observation-controlled-observation-review--future-age",
+          "observation-controlled-observation-review--invalid-clock",
+          "observation-controlled-observation-review--invalid-threshold",
+          "observation-controlled-observation-review--invalid-receipt",
+          "observation-controlled-observation-review--paused",
+          "observation-controlled-observation-review--unsupported",
+          "observation-controlled-observation-review--empty",
+          "observation-controlled-observation-review--long-content",
+          "observation-controlled-observation-review--gap",
+          "observation-controlled-observation-review--truncated",
+          "observation-controlled-observation-review--nonfinite-stat",
+          "observation-controlled-observation-review--duration-gauge",
+          "observation-controlled-observation-review--empty-bounded-window",
+          "observation-controlled-observation-review--denied",
+          "observation-controlled-observation-review--locked-retry",
+          "observation-controlled-observation-review--healthy",
+          "observation-controlled-observation-review--unhealthy",
+          "observation-controlled-observation-review--unknown-health"
+        ]
+      }
     }
   ]
 }

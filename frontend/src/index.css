@@ -1093,3 +1093,10 @@ dd {
   overflow-wrap: anywhere;
   white-space: pre-wrap;
 }
+
+.observation-review {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: calc(var(--spacing) * 4);
+}

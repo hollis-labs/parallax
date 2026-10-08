@@ -20,6 +20,7 @@ import { EvidenceInspector } from "./evidence/Inspector"
 import { Comparison, type Layout, layouts } from "./layouts/Comparison"
 import { Navigation, type NavigationMode } from "./layouts/Navigation"
 import { ObservationLab } from "./observability/Lab"
+import { ObservationReview } from "./observation-review/Review"
 import { normalizeScenario, operationsModel, runDetail } from "./operations/model"
 import {
   ActivityView,
@@ -233,7 +234,8 @@ export function App() {
   const isPrimitives = page === "Primitives"
   const isVoice = page === "Voice"
   const isDeveloper = page === "Developer"
-  const isObservation = page === "Observability"
+  const isObservationReview = page === "Observation Review"
+  const isObservation = page === "Observability" || isObservationReview
   const isAccountReview = page === "Account Review"
   const isSettingsReview = page === "Settings Review"
   const isAdministration =
@@ -361,6 +363,7 @@ export function App() {
     "Settings Review",
     "Account Review",
     "Observability",
+    "Observation Review",
     "Developer",
     "Voice",
     "Examples",
@@ -384,6 +387,7 @@ export function App() {
       <Layers key="settings-review" className="size-4" />,
       <Users key="account-review" className="size-4" />,
       <Activity key="i" className="size-4" />,
+      <Activity key="observation-review" className="size-4" />,
       <Layers key="j" className="size-4" />,
       <Layers key="k" className="size-4" />,
       <MessageSquare key="l" className="size-4" />,
@@ -585,7 +589,9 @@ export function App() {
                   !isPrimitives &&
                   !isEvidence &&
                   !isWidgets && <OperationsSummary model={model} />}
-                {isConversationReview ? (
+                {isObservationReview ? (
+                  <ObservationReview key={scenario} context={scenario} />
+                ) : isConversationReview ? (
                   <ConversationReview key={scenario} context={scenario} />
                 ) : isAccountReview ? (
                   <AccountReview key={scenario} context={scenario} />

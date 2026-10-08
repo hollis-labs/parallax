@@ -129,6 +129,7 @@
       "frontend/src/account-review/Review.tsx",
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/evidence/Inspector.tsx",
+      "frontend/src/observation-review/Review.tsx",
       "frontend/src/primitives/Gallery.tsx",
       "frontend/src/primitives/model.ts",
       "frontend/src/settings-review/Review.tsx",
@@ -217,6 +218,7 @@
       "frontend/src/communications/Messaging.tsx",
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/evidence/Inspector.tsx",
+      "frontend/src/observation-review/Review.tsx",
       "frontend/src/operations/Views.tsx",
       "frontend/src/settings-review/Review.tsx",
       "frontend/src/widgets/Gallery.tsx"
@@ -341,6 +343,7 @@
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/evidence/contracts.ts",
+      "frontend/src/observation-review/Review.tsx",
       "frontend/src/settings-review/Review.tsx",
       "frontend/src/widgets/Gallery.tsx"
     ]
@@ -386,6 +389,7 @@
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/evidence/contracts.ts",
+      "frontend/src/observation-review/Review.tsx",
       "frontend/src/settings-review/Review.tsx",
       "frontend/src/widgets/Gallery.tsx"
     ]
@@ -775,6 +779,7 @@
       "frontend/src/communications/Messaging.tsx",
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/observability/Views.tsx",
+      "frontend/src/observation-review/Review.tsx",
       "frontend/src/operations/Operations.stories.tsx",
       "frontend/src/operations/Views.tsx",
       "frontend/src/pages/dashboard.tsx"
@@ -1587,6 +1592,7 @@
       "frontend/src/layouts/Navigation.tsx",
       "frontend/src/observability/Lab.tsx",
       "frontend/src/observability/Views.tsx",
+      "frontend/src/observation-review/Review.tsx",
       "frontend/src/operations/Operations.stories.tsx",
       "frontend/src/operations/Views.tsx",
       "frontend/src/playback/Controls.tsx",
@@ -11901,22 +11907,54 @@
     "name": "ObservationStatus",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded pinned0.1.1 Observation Review: resource-local availability vs exact threshold/future/invalid freshness and health, retained receipts, actual zero/null/nonfinite/unit/kind stats, host-bounded ordered exact UTC/null-gap/truncated/empty samples and rendered time geometry, native retry candidate/source/resource/clock/StrictMode lifetime, no new successful receipt or effects. No DiagnosticPanel valid-copy adoption.",
+    "nextAction": "Preserve precise native/portable/freshness/geometry checks; DiagnosticPanel remains partial under inseparable Copy policy; helpers/internal chart and broader observations remain separately bounded reviews.",
     "evidence": {
       "pages": [
-        "frontend/src/observability/Views.tsx"
+        "frontend/src/observation-review/Review.tsx",
+        "frontend/src/observation-review/model.ts",
+        "docs/observation-review.md"
       ],
       "checks": [
-        "frontend/tests/observability.spec.ts"
+        "frontend/tests/observation-review.spec.ts",
+        "frontend/src/observation-review/contracts.ts"
       ],
       "stories": [
-        "frontend/src/observability/Observability.stories.tsx"
+        "frontend/src/observation-review/ObservationReview.stories.tsx"
+      ],
+      "storyIds": [
+        "observation-controlled-observation-review--recorded",
+        "observation-controlled-observation-review--idle",
+        "observation-controlled-observation-review--initial-loading",
+        "observation-controlled-observation-review--initial-error",
+        "observation-controlled-observation-review--refresh-loading",
+        "observation-controlled-observation-review--refresh-error",
+        "observation-controlled-observation-review--threshold-equality",
+        "observation-controlled-observation-review--stale",
+        "observation-controlled-observation-review--future-age",
+        "observation-controlled-observation-review--invalid-clock",
+        "observation-controlled-observation-review--invalid-threshold",
+        "observation-controlled-observation-review--invalid-receipt",
+        "observation-controlled-observation-review--paused",
+        "observation-controlled-observation-review--unsupported",
+        "observation-controlled-observation-review--empty",
+        "observation-controlled-observation-review--long-content",
+        "observation-controlled-observation-review--gap",
+        "observation-controlled-observation-review--truncated",
+        "observation-controlled-observation-review--nonfinite-stat",
+        "observation-controlled-observation-review--duration-gauge",
+        "observation-controlled-observation-review--empty-bounded-window",
+        "observation-controlled-observation-review--denied",
+        "observation-controlled-observation-review--locked-retry",
+        "observation-controlled-observation-review--healthy",
+        "observation-controlled-observation-review--unhealthy",
+        "observation-controlled-observation-review--unknown-health"
       ]
     },
     "importEvidence": [
-      "frontend/src/observability/Views.tsx"
+      "frontend/src/observability/Views.tsx",
+      "frontend/src/observation-review/Review.tsx"
     ]
   },
   {
@@ -11926,19 +11964,6 @@
     "name": "ObservationStatusProps",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
-  },
-  {
-    "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
-    "entry": ".",
-    "name": "HealthSummary",
-    "category": "visual-component",
-    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "partial",
     "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
@@ -11954,7 +11979,64 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/observability/Views.tsx"
+      "frontend/src/observation-review/contracts.ts"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": ".",
+    "name": "HealthSummary",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "reviewed",
+    "reason": "Independent bounded pinned0.1.1 Observation Review: resource-local availability vs exact threshold/future/invalid freshness and health, retained receipts, actual zero/null/nonfinite/unit/kind stats, host-bounded ordered exact UTC/null-gap/truncated/empty samples and rendered time geometry, native retry candidate/source/resource/clock/StrictMode lifetime, no new successful receipt or effects. No DiagnosticPanel valid-copy adoption.",
+    "nextAction": "Preserve precise native/portable/freshness/geometry checks; DiagnosticPanel remains partial under inseparable Copy policy; helpers/internal chart and broader observations remain separately bounded reviews.",
+    "evidence": {
+      "pages": [
+        "frontend/src/observation-review/Review.tsx",
+        "frontend/src/observation-review/model.ts",
+        "docs/observation-review.md"
+      ],
+      "checks": [
+        "frontend/tests/observation-review.spec.ts",
+        "frontend/src/observation-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/observation-review/ObservationReview.stories.tsx"
+      ],
+      "storyIds": [
+        "observation-controlled-observation-review--recorded",
+        "observation-controlled-observation-review--idle",
+        "observation-controlled-observation-review--initial-loading",
+        "observation-controlled-observation-review--initial-error",
+        "observation-controlled-observation-review--refresh-loading",
+        "observation-controlled-observation-review--refresh-error",
+        "observation-controlled-observation-review--threshold-equality",
+        "observation-controlled-observation-review--stale",
+        "observation-controlled-observation-review--future-age",
+        "observation-controlled-observation-review--invalid-clock",
+        "observation-controlled-observation-review--invalid-threshold",
+        "observation-controlled-observation-review--invalid-receipt",
+        "observation-controlled-observation-review--paused",
+        "observation-controlled-observation-review--unsupported",
+        "observation-controlled-observation-review--empty",
+        "observation-controlled-observation-review--long-content",
+        "observation-controlled-observation-review--gap",
+        "observation-controlled-observation-review--truncated",
+        "observation-controlled-observation-review--nonfinite-stat",
+        "observation-controlled-observation-review--duration-gauge",
+        "observation-controlled-observation-review--empty-bounded-window",
+        "observation-controlled-observation-review--denied",
+        "observation-controlled-observation-review--locked-retry",
+        "observation-controlled-observation-review--healthy",
+        "observation-controlled-observation-review--unhealthy",
+        "observation-controlled-observation-review--unknown-health"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/observability/Views.tsx",
+      "frontend/src/observation-review/Review.tsx"
     ]
   },
   {
@@ -11964,11 +12046,23 @@
     "name": "HealthSummaryProps",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/observability/Views.tsx"
+      ],
+      "checks": [
+        "frontend/tests/observability.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/observability/Observability.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/observation-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-observe",
@@ -11976,19 +12070,6 @@
     "entry": ".",
     "name": "HealthCheck",
     "category": "type-export",
-    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
-  },
-  {
-    "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
-    "entry": ".",
-    "name": "StatCollection",
-    "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "partial",
     "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
@@ -12005,7 +12086,64 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/observability/Views.tsx"
+      "frontend/src/observation-review/model.ts"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": ".",
+    "name": "StatCollection",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "reviewed",
+    "reason": "Independent bounded pinned0.1.1 Observation Review: resource-local availability vs exact threshold/future/invalid freshness and health, retained receipts, actual zero/null/nonfinite/unit/kind stats, host-bounded ordered exact UTC/null-gap/truncated/empty samples and rendered time geometry, native retry candidate/source/resource/clock/StrictMode lifetime, no new successful receipt or effects. No DiagnosticPanel valid-copy adoption.",
+    "nextAction": "Preserve precise native/portable/freshness/geometry checks; DiagnosticPanel remains partial under inseparable Copy policy; helpers/internal chart and broader observations remain separately bounded reviews.",
+    "evidence": {
+      "pages": [
+        "frontend/src/observation-review/Review.tsx",
+        "frontend/src/observation-review/model.ts",
+        "docs/observation-review.md"
+      ],
+      "checks": [
+        "frontend/tests/observation-review.spec.ts",
+        "frontend/src/observation-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/observation-review/ObservationReview.stories.tsx"
+      ],
+      "storyIds": [
+        "observation-controlled-observation-review--recorded",
+        "observation-controlled-observation-review--idle",
+        "observation-controlled-observation-review--initial-loading",
+        "observation-controlled-observation-review--initial-error",
+        "observation-controlled-observation-review--refresh-loading",
+        "observation-controlled-observation-review--refresh-error",
+        "observation-controlled-observation-review--threshold-equality",
+        "observation-controlled-observation-review--stale",
+        "observation-controlled-observation-review--future-age",
+        "observation-controlled-observation-review--invalid-clock",
+        "observation-controlled-observation-review--invalid-threshold",
+        "observation-controlled-observation-review--invalid-receipt",
+        "observation-controlled-observation-review--paused",
+        "observation-controlled-observation-review--unsupported",
+        "observation-controlled-observation-review--empty",
+        "observation-controlled-observation-review--long-content",
+        "observation-controlled-observation-review--gap",
+        "observation-controlled-observation-review--truncated",
+        "observation-controlled-observation-review--nonfinite-stat",
+        "observation-controlled-observation-review--duration-gauge",
+        "observation-controlled-observation-review--empty-bounded-window",
+        "observation-controlled-observation-review--denied",
+        "observation-controlled-observation-review--locked-retry",
+        "observation-controlled-observation-review--healthy",
+        "observation-controlled-observation-review--unhealthy",
+        "observation-controlled-observation-review--unknown-health"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/observability/Views.tsx",
+      "frontend/src/observation-review/Review.tsx"
     ]
   },
   {
@@ -12015,11 +12153,23 @@
     "name": "StatCollectionProps",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/observability/Views.tsx"
+      ],
+      "checks": [
+        "frontend/tests/observability.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/observability/Observability.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/observation-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-observe",
@@ -12028,11 +12178,23 @@
     "name": "StatObservation",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/observability/Views.tsx"
+      ],
+      "checks": [
+        "frontend/tests/observability.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/observability/Observability.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/observation-review/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-observe",
@@ -12094,7 +12256,9 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/observability/model.ts"
+      "frontend/src/observability/model.ts",
+      "frontend/src/observation-review/contracts.ts",
+      "frontend/src/observation-review/model.ts"
     ]
   },
   {
@@ -12119,7 +12283,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/observability/model.ts"
+      "frontend/src/observability/model.ts",
+      "frontend/src/observation-review/model.ts"
     ]
   },
   {
@@ -12205,6 +12370,63 @@
     "name": "SampleSeriesView",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "reviewed",
+    "reason": "Independent bounded pinned0.1.1 Observation Review: resource-local availability vs exact threshold/future/invalid freshness and health, retained receipts, actual zero/null/nonfinite/unit/kind stats, host-bounded ordered exact UTC/null-gap/truncated/empty samples and rendered time geometry, native retry candidate/source/resource/clock/StrictMode lifetime, no new successful receipt or effects. No DiagnosticPanel valid-copy adoption.",
+    "nextAction": "Preserve precise native/portable/freshness/geometry checks; DiagnosticPanel remains partial under inseparable Copy policy; helpers/internal chart and broader observations remain separately bounded reviews.",
+    "evidence": {
+      "pages": [
+        "frontend/src/observation-review/Review.tsx",
+        "frontend/src/observation-review/model.ts",
+        "docs/observation-review.md"
+      ],
+      "checks": [
+        "frontend/tests/observation-review.spec.ts",
+        "frontend/src/observation-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/observation-review/ObservationReview.stories.tsx"
+      ],
+      "storyIds": [
+        "observation-controlled-observation-review--recorded",
+        "observation-controlled-observation-review--idle",
+        "observation-controlled-observation-review--initial-loading",
+        "observation-controlled-observation-review--initial-error",
+        "observation-controlled-observation-review--refresh-loading",
+        "observation-controlled-observation-review--refresh-error",
+        "observation-controlled-observation-review--threshold-equality",
+        "observation-controlled-observation-review--stale",
+        "observation-controlled-observation-review--future-age",
+        "observation-controlled-observation-review--invalid-clock",
+        "observation-controlled-observation-review--invalid-threshold",
+        "observation-controlled-observation-review--invalid-receipt",
+        "observation-controlled-observation-review--paused",
+        "observation-controlled-observation-review--unsupported",
+        "observation-controlled-observation-review--empty",
+        "observation-controlled-observation-review--long-content",
+        "observation-controlled-observation-review--gap",
+        "observation-controlled-observation-review--truncated",
+        "observation-controlled-observation-review--nonfinite-stat",
+        "observation-controlled-observation-review--duration-gauge",
+        "observation-controlled-observation-review--empty-bounded-window",
+        "observation-controlled-observation-review--denied",
+        "observation-controlled-observation-review--locked-retry",
+        "observation-controlled-observation-review--healthy",
+        "observation-controlled-observation-review--unhealthy",
+        "observation-controlled-observation-review--unknown-health"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/observability/Views.tsx",
+      "frontend/src/observation-review/Review.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-observe",
+    "version": "0.1.1",
+    "entry": "./charts",
+    "name": "SampleSeriesViewProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "partial",
     "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
@@ -12220,21 +12442,9 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/observability/Views.tsx"
+      "frontend/src/observation-review/contracts.ts",
+      "frontend/src/observation-review/model.ts"
     ]
-  },
-  {
-    "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
-    "entry": "./charts",
-    "name": "SampleSeriesViewProps",
-    "category": "type-export",
-    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
   },
   {
     "package": "@hollis-labs/kit-observe",
