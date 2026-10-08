@@ -1,0 +1,154 @@
+.administration-example {
+  font-size: var(--text-sm);
+}
+.administration-navigation {
+  display: grid;
+  gap: calc(var(--spacing) * 2);
+  padding: calc(var(--spacing) * 4);
+}
+.administration-navigation a {
+  padding: calc(var(--spacing) * 3);
+  border-radius: var(--radius-md);
+}
+.administration-navigation a[aria-current="page"] {
+  background: var(--color-bg-elevated);
+  font-weight: 600;
+}
+.administration-sidebar {
+  width: 13rem;
+  overflow: auto;
+  flex-shrink: 0;
+  border-right: 1px solid var(--color-border);
+}
+.administration-header {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 3);
+  padding: calc(var(--spacing) * 3);
+  border-bottom: 1px solid var(--color-border);
+}
+.administration-header > div {
+  min-width: 0;
+  flex: 1;
+}
+.administration-header h1 {
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+.administration-header small,
+.administration-context {
+  color: var(--color-fg-muted);
+}
+.administration-page {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  padding: calc(var(--spacing) * 4);
+}
+.administration-page p {
+  margin-bottom: calc(var(--spacing) * 3);
+}
+.administration-page h2,
+.administration-page h3 {
+  font-weight: 600;
+  margin-bottom: calc(var(--spacing) * 3);
+}
+.administration-user-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(var(--spacing) * 4);
+  margin-top: calc(var(--spacing) * 4);
+}
+.administration-user-list button {
+  display: grid;
+  gap: calc(var(--spacing) * 2);
+  padding: calc(var(--spacing) * 4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+.administration-selection,
+.administration-review-controls {
+  display: grid;
+  gap: calc(var(--spacing) * 3);
+  margin-bottom: calc(var(--spacing) * 4);
+}
+.administration-example input:not([type="checkbox"]),
+.administration-example select,
+.administration-review-controls select {
+  padding: calc(var(--spacing) * 2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+}
+.administration-page p,
+.administration-page dd,
+.administration-page h2,
+.administration-page span {
+  overflow-wrap: anywhere;
+}
+.administration-page .directory-embedded {
+  grid-template-columns: minmax(0, 1fr);
+}
+.administration-page .account-review {
+  display: grid;
+  gap: calc(var(--spacing) * 4);
+}
+.administration-table-region {
+  max-height: 20rem;
+  overflow: auto;
+  min-width: 0;
+  max-width: 100%;
+}
+.administration-table-region table {
+  width: 100%;
+  table-layout: fixed;
+}
+.administration-table-region td,
+.administration-table-region th {
+  text-align: left;
+  vertical-align: top;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  padding: calc(var(--spacing) * 3);
+  border-bottom: 1px solid var(--color-border);
+}
+.administration-setup-list {
+  display: grid;
+  gap: calc(var(--spacing) * 4);
+}
+.administration-setup-list li {
+  padding: calc(var(--spacing) * 4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+.administration-example-footer {
+  flex-shrink: 0;
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
+  font-size: var(--text-xs);
+  border-top: 1px solid var(--color-border);
+  overflow-wrap: anywhere;
+}
+.administration-mobile {
+  display: none;
+}
+.administration-example :focus-visible,
+.administration-navigation :focus-visible {
+  outline: 2px solid var(--color-fg);
+  outline-offset: 2px;
+}
+@media (max-width: 760px) {
+  .administration-sidebar {
+    display: none;
+  }
+  .administration-mobile {
+    display: block;
+  }
+  .administration-user-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

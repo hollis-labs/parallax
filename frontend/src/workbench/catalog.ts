@@ -53,6 +53,16 @@ export const destinations: readonly Definition[] = [
     story: "app-examples-chat--conversation",
   },
   {
+    id: "Administration Example",
+    group: "App Examples",
+    icon: "Users",
+    source: "Independent administration snapshot",
+    scope:
+      "Directory/profile relationships, current account and readonly desired settings/setup preview.",
+    gap: "Metadata is not authorization; local account candidates never save or change access.",
+    story: "app-examples-administration--directory",
+  },
+  {
     id: "Messaging Example",
     group: "App Examples",
     icon: "Mail",

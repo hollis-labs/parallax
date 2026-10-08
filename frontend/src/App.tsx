@@ -400,6 +400,10 @@ export function App() {
     <p className="p-4 text-sm text-fg-muted">Loading reviewed contribution…</p>
   )
   function navigate(name: string) {
+    if (name === "Administration Example") {
+      location.assign(`/?${new URLSearchParams({ example: "administration", theme, mode })}`)
+      return
+    }
     if (name === "Messaging Example") {
       location.assign(`/?${new URLSearchParams({ example: "messaging", theme, mode })}`)
       return

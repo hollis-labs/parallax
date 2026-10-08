@@ -26,10 +26,16 @@ export function DirectoryReview({
   context = "populated",
   initialState = "recorded",
   sourceCopy = 0,
+  embedded,
 }: {
   context?: string
   initialState?: Appearance
   sourceCopy?: number
+  embedded?: {
+    user: string
+    tab: "profile" | "roles" | "permissions"
+    onTab: (tab: "profile" | "roles" | "permissions") => void
+  }
 }) {
   const [state, setState] = useState(initialState),
     [reset, setReset] = useState(0)
@@ -41,33 +47,49 @@ export function DirectoryReview({
         operation playback. Relationships are supplied metadata, not identity assurance or
         authorization.
       </p>
-      <div className="directory-controls">
-        <Label>
-          Directory appearance
-          <select
-            aria-label="Directory appearance"
-            value={state}
-            onChange={(e) => setState(e.target.value as Appearance)}
-          >
-            {appearances.map((s) => (
-              <option key={s}>{s}</option>
-            ))}
-          </select>
-        </Label>
-        <Button onClick={() => setReset((n) => n + 1)}>Reset directory review</Button>
-      </div>
+      {!embedded && (
+        <div className="directory-controls">
+          <Label>
+            Directory appearance
+            <select
+              aria-label="Directory appearance"
+              value={state}
+              onChange={(e) => setState(e.target.value as Appearance)}
+            >
+              {appearances.map((s) => (
+                <option key={s}>{s}</option>
+              ))}
+            </select>
+          </Label>
+          <Button onClick={() => setReset((n) => n + 1)}>Reset directory review</Button>
+        </div>
+      )}
       {data.authored && (
         <p>
           Authored {state} presentation over the supplied fixture; source records remain unchanged.
         </p>
       )}
-      <Instance key={`${data.source}/${reset}`} data={data} />
+      <Instance
+        key={`${data.source}/${reset}/${embedded?.user ?? ""}/${embedded?.tab ?? ""}`}
+        data={data}
+        embedded={embedded}
+      />
     </section>
   )
 }
-function Instance({ data }: { data: ReturnType<typeof directoryModel> }) {
-  const [selected, setSelected] = useState(data.users[0]?.id ?? ""),
-    [tab, setTab] = useState("profile"),
+function Instance({
+  data,
+  embedded,
+}: {
+  data: ReturnType<typeof directoryModel>
+  embedded?: {
+    user: string
+    tab: "profile" | "roles" | "permissions"
+    onTab: (tab: "profile" | "roles" | "permissions") => void
+  }
+}) {
+  const [selected, setSelected] = useState(embedded ? embedded.user : (data.users[0]?.id ?? "")),
+    [tab, setTab] = useState(embedded?.tab ?? "profile"),
     [open, setOpen] = useState(false),
     [inspection, setInspection] = useState(""),
     [busy, setBusy] = useState(false),
@@ -119,7 +141,8 @@ function Instance({ data }: { data: ReturnType<typeof directoryModel> }) {
     )
       return
     retire()
-    setTab(value)
+    setTab(value as "profile" | "roles" | "permissions")
+    embedded?.onTab(value as "profile" | "roles" | "permissions")
   }
   const popup = (next: boolean) => {
     if (!current() || !relation || next === open) return
@@ -173,20 +196,22 @@ function Instance({ data }: { data: ReturnType<typeof directoryModel> }) {
       />
     )
   return (
-    <div className="directory-grid">
-      <aside aria-label="Supplied users">
-        <h2>Supplied users · {data.users.length}</h2>
-        {data.users.map((u) => (
-          <Button
-            key={u.id}
-            variant={u.id === selected ? "default" : "outline"}
-            onClick={() => choose(u.id)}
-            aria-pressed={u.id === selected}
-          >
-            {u.id} · {u.name}
-          </Button>
-        ))}
-      </aside>
+    <div className={embedded ? "directory-grid directory-embedded" : "directory-grid"}>
+      {!embedded && (
+        <aside aria-label="Supplied users">
+          <h2>Supplied users · {data.users.length}</h2>
+          {data.users.map((u) => (
+            <Button
+              key={u.id}
+              variant={u.id === selected ? "default" : "outline"}
+              onClick={() => choose(u.id)}
+              aria-pressed={u.id === selected}
+            >
+              {u.id} · {u.name}
+            </Button>
+          ))}
+        </aside>
+      )}
       <Card data-testid="directory-card">
         <CardHeader>
           <CardTitle>

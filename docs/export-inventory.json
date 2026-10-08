@@ -524,6 +524,7 @@
     },
     "importEvidence": [
       "frontend/src/App.tsx",
+      "frontend/src/examples/administration/AdministrationExample.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
@@ -555,6 +556,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/administration/AdministrationExample.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
@@ -1717,6 +1719,7 @@
       "frontend/src/event-ledger/Ledger.tsx",
       "frontend/src/evidence/Evidence.stories.tsx",
       "frontend/src/evidence/Inspector.tsx",
+      "frontend/src/examples/administration/AdministrationExample.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
       "frontend/src/examples/torque/Mission.tsx",
@@ -4797,6 +4800,8 @@
     },
     "importEvidence": [
       "frontend/src/App.tsx",
+      "frontend/src/examples/administration/Administration.stories.tsx",
+      "frontend/src/examples/administration/Standalone.tsx",
       "frontend/src/examples/chat/Chat.stories.tsx",
       "frontend/src/examples/chat/Standalone.tsx",
       "frontend/src/examples/messaging/Messaging.stories.tsx",
@@ -14129,6 +14134,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/administration/AdministrationExample.tsx",
       "frontend/src/settings-review/Review.tsx",
       "frontend/src/settings-review/contracts.ts"
     ]

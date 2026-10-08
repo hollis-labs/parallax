@@ -34,10 +34,14 @@ export function AccountReview({
   context = "populated",
   initialState = "recorded",
   initialMode = "profile",
+  embedded = false,
+  onEmbeddedReset,
 }: {
   context?: string
   initialState?: AccountAppearance
   initialMode?: AccountMode
+  embedded?: boolean
+  onEmbeddedReset?: () => void
 }) {
   const [state, setState] = useState(initialState),
     [mode, setMode] = useState(initialMode),
@@ -51,6 +55,7 @@ export function AccountReview({
   function reset() {
     retire.current()
     setRevision((n) => n + 1)
+    if (embedded) onEmbeddedReset?.()
   }
   function release() {
     queue.current.shift()?.()
@@ -58,75 +63,77 @@ export function AccountReview({
   }
   return (
     <section className="account-review" aria-label="Controlled account review">
-      <div className="gallery-controls">
-        <label>
-          Account appearance{" "}
-          <select
-            aria-label="Account appearance"
-            value={state}
-            onChange={(e) => {
-              setState(e.target.value as AccountAppearance)
-              reset()
-            }}
-          >
-            {accountAppearances.map((s) => (
-              <option key={s}>{s}</option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Account composition{" "}
-          <select
-            aria-label="Account composition"
-            value={mode}
-            onChange={(e) => {
-              setMode(e.target.value as AccountMode)
-              reset()
-            }}
-          >
-            {accountModes.map((s) => (
-              <option key={s}>{s}</option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Fixture principal{" "}
-          <select
-            aria-label="Fixture principal"
-            value={principal}
-            onChange={(e) => {
-              setPrincipal(e.target.value)
-              reset()
-            }}
-          >
-            {data.fixture.users.map((u) => (
-              <option key={u.id} value={u.id}>
-                {u.id} · {u.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Reviewed account source{" "}
-          <select
-            aria-label="Reviewed account source"
-            value={copy ? "copy" : "original"}
-            onChange={(e) => {
-              setCopy(e.target.value === "copy")
-              reset()
-            }}
-          >
-            <option value="original">Original fixture</option>
-            <option value="copy">Reviewed copy (same records)</option>
-          </select>
-        </label>
-        <Button variant="outline" onClick={reset}>
-          Reset account review
-        </Button>
-        <Button variant="outline" disabled={!queued} onClick={release}>
-          Release oldest scripted inspection ({queued})
-        </Button>
-      </div>
+      {!embedded && (
+        <div className="gallery-controls">
+          <label>
+            Account appearance{" "}
+            <select
+              aria-label="Account appearance"
+              value={state}
+              onChange={(e) => {
+                setState(e.target.value as AccountAppearance)
+                reset()
+              }}
+            >
+              {accountAppearances.map((s) => (
+                <option key={s}>{s}</option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Account composition{" "}
+            <select
+              aria-label="Account composition"
+              value={mode}
+              onChange={(e) => {
+                setMode(e.target.value as AccountMode)
+                reset()
+              }}
+            >
+              {accountModes.map((s) => (
+                <option key={s}>{s}</option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Fixture principal{" "}
+            <select
+              aria-label="Fixture principal"
+              value={principal}
+              onChange={(e) => {
+                setPrincipal(e.target.value)
+                reset()
+              }}
+            >
+              {data.fixture.users.map((u) => (
+                <option key={u.id} value={u.id}>
+                  {u.id} · {u.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Reviewed account source{" "}
+            <select
+              aria-label="Reviewed account source"
+              value={copy ? "copy" : "original"}
+              onChange={(e) => {
+                setCopy(e.target.value === "copy")
+                reset()
+              }}
+            >
+              <option value="original">Original fixture</option>
+              <option value="copy">Reviewed copy (same records)</option>
+            </select>
+          </label>
+          <Button variant="outline" onClick={reset}>
+            Reset account review
+          </Button>
+          <Button variant="outline" disabled={!queued} onClick={release}>
+            Release oldest scripted inspection ({queued})
+          </Button>
+        </div>
+      )}
       <Callout tone="info" title="Local candidate intents only">
         Save/Create/Revoke/Connect/Disconnect labels belong to the candidate. Every admitted
         callback only opens a local inspection; no records, status, identity, permissions or
