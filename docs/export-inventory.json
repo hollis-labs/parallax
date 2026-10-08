@@ -127,6 +127,7 @@
     },
     "importEvidence": [
       "frontend/src/account-review/Review.tsx",
+      "frontend/src/admin-review/Review.tsx",
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/observation-review/Review.tsx",
@@ -214,6 +215,7 @@
     "importEvidence": [
       "frontend/src/App.tsx",
       "frontend/src/account-review/Review.tsx",
+      "frontend/src/admin-review/Review.tsx",
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/Messaging.tsx",
       "frontend/src/conversation-review/Review.tsx",
@@ -340,6 +342,7 @@
     },
     "importEvidence": [
       "frontend/src/account-review/Review.tsx",
+      "frontend/src/admin-review/Review.tsx",
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/evidence/contracts.ts",
@@ -386,6 +389,7 @@
     },
     "importEvidence": [
       "frontend/src/account-review/Review.tsx",
+      "frontend/src/admin-review/Review.tsx",
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/evidence/contracts.ts",
@@ -773,6 +777,7 @@
     },
     "importEvidence": [
       "frontend/src/account-review/Review.tsx",
+      "frontend/src/admin-review/Review.tsx",
       "frontend/src/administration/Account.tsx",
       "frontend/src/communications/Chat.tsx",
       "frontend/src/communications/CommunicationLab.tsx",
@@ -1578,6 +1583,7 @@
     "importEvidence": [
       "frontend/src/App.tsx",
       "frontend/src/account-review/Review.tsx",
+      "frontend/src/admin-review/Review.tsx",
       "frontend/src/administration/Account.tsx",
       "frontend/src/administration/Admin.tsx",
       "frontend/src/communications/Chat.tsx",
@@ -10846,6 +10852,178 @@
     "name": "AdminContent",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "reviewed",
+    "reason": "Independent bounded pinned0.1.0 declared navigation/content/standalone shell: actual discovery and manifest guards, readonly snapshots, canonical local/href targets and finite local inspection lifetime; no new diagnostic copy mount or business actions.",
+    "nextAction": "Additional prop combinations/wire validation remain outside this bounded review; retain supporting types/helpers as partial.",
+    "evidence": {
+      "pages": [
+        "frontend/src/admin-review/Review.tsx",
+        "frontend/src/admin-review/model.ts",
+        "frontend/src/main.tsx",
+        "docs/admin-review.md"
+      ],
+      "checks": [
+        "frontend/tests/admin-review.spec.ts",
+        "frontend/src/admin-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/admin-review/AdminReview.stories.tsx"
+      ],
+      "storyIds": [
+        "admin-controlled-admin-review--recorded",
+        "admin-controlled-admin-review--initial-loading",
+        "admin-controlled-admin-review--initial-error",
+        "admin-controlled-admin-review--retained-loading",
+        "admin-controlled-admin-review--retained-error",
+        "admin-controlled-admin-review--context-mismatch",
+        "admin-controlled-admin-review--unsupported",
+        "admin-controlled-admin-review--malformed",
+        "admin-controlled-admin-review--contradictory",
+        "admin-controlled-admin-review--duplicate",
+        "admin-controlled-admin-review--empty",
+        "admin-controlled-admin-review--unknown-group",
+        "admin-controlled-admin-review--unknown-page",
+        "admin-controlled-admin-review--missing-snapshot",
+        "admin-controlled-admin-review--group-loading",
+        "admin-controlled-admin-review--group-error",
+        "admin-controlled-admin-review--retained-group-error",
+        "admin-controlled-admin-review--missing-observation",
+        "admin-controlled-admin-review--status",
+        "admin-controlled-admin-review--series-absent",
+        "admin-controlled-admin-review--series-present",
+        "admin-controlled-admin-review--denied",
+        "admin-controlled-admin-review--long",
+        "admin-controlled-admin-review--standalone",
+        "admin-controlled-admin-review--standalone-series",
+        "admin-controlled-admin-review--read-only-settings"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/admin-review/Review.tsx",
+      "frontend/src/administration/Admin.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminNavigation",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "reviewed",
+    "reason": "Independent bounded pinned0.1.0 declared navigation/content/standalone shell: actual discovery and manifest guards, readonly snapshots, canonical local/href targets and finite local inspection lifetime; no new diagnostic copy mount or business actions.",
+    "nextAction": "Additional prop combinations/wire validation remain outside this bounded review; retain supporting types/helpers as partial.",
+    "evidence": {
+      "pages": [
+        "frontend/src/admin-review/Review.tsx",
+        "frontend/src/admin-review/model.ts",
+        "frontend/src/main.tsx",
+        "docs/admin-review.md"
+      ],
+      "checks": [
+        "frontend/tests/admin-review.spec.ts",
+        "frontend/src/admin-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/admin-review/AdminReview.stories.tsx"
+      ],
+      "storyIds": [
+        "admin-controlled-admin-review--recorded",
+        "admin-controlled-admin-review--initial-loading",
+        "admin-controlled-admin-review--initial-error",
+        "admin-controlled-admin-review--retained-loading",
+        "admin-controlled-admin-review--retained-error",
+        "admin-controlled-admin-review--context-mismatch",
+        "admin-controlled-admin-review--unsupported",
+        "admin-controlled-admin-review--malformed",
+        "admin-controlled-admin-review--contradictory",
+        "admin-controlled-admin-review--duplicate",
+        "admin-controlled-admin-review--empty",
+        "admin-controlled-admin-review--unknown-group",
+        "admin-controlled-admin-review--unknown-page",
+        "admin-controlled-admin-review--missing-snapshot",
+        "admin-controlled-admin-review--group-loading",
+        "admin-controlled-admin-review--group-error",
+        "admin-controlled-admin-review--retained-group-error",
+        "admin-controlled-admin-review--missing-observation",
+        "admin-controlled-admin-review--status",
+        "admin-controlled-admin-review--series-absent",
+        "admin-controlled-admin-review--series-present",
+        "admin-controlled-admin-review--denied",
+        "admin-controlled-admin-review--long",
+        "admin-controlled-admin-review--standalone",
+        "admin-controlled-admin-review--standalone-series",
+        "admin-controlled-admin-review--read-only-settings"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/admin-review/Review.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminShell",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "reviewed",
+    "reason": "Independent bounded pinned0.1.0 declared navigation/content/standalone shell: actual discovery and manifest guards, readonly snapshots, canonical local/href targets and finite local inspection lifetime; no new diagnostic copy mount or business actions.",
+    "nextAction": "Additional prop combinations/wire validation remain outside this bounded review; retain supporting types/helpers as partial.",
+    "evidence": {
+      "pages": [
+        "frontend/src/admin-review/Review.tsx",
+        "frontend/src/admin-review/model.ts",
+        "frontend/src/main.tsx",
+        "docs/admin-review.md"
+      ],
+      "checks": [
+        "frontend/tests/admin-review.spec.ts",
+        "frontend/src/admin-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/admin-review/AdminReview.stories.tsx"
+      ],
+      "storyIds": [
+        "admin-controlled-admin-review--recorded",
+        "admin-controlled-admin-review--initial-loading",
+        "admin-controlled-admin-review--initial-error",
+        "admin-controlled-admin-review--retained-loading",
+        "admin-controlled-admin-review--retained-error",
+        "admin-controlled-admin-review--context-mismatch",
+        "admin-controlled-admin-review--unsupported",
+        "admin-controlled-admin-review--malformed",
+        "admin-controlled-admin-review--contradictory",
+        "admin-controlled-admin-review--duplicate",
+        "admin-controlled-admin-review--empty",
+        "admin-controlled-admin-review--unknown-group",
+        "admin-controlled-admin-review--unknown-page",
+        "admin-controlled-admin-review--missing-snapshot",
+        "admin-controlled-admin-review--group-loading",
+        "admin-controlled-admin-review--group-error",
+        "admin-controlled-admin-review--retained-group-error",
+        "admin-controlled-admin-review--missing-observation",
+        "admin-controlled-admin-review--status",
+        "admin-controlled-admin-review--series-absent",
+        "admin-controlled-admin-review--series-present",
+        "admin-controlled-admin-review--denied",
+        "admin-controlled-admin-review--long",
+        "admin-controlled-admin-review--standalone",
+        "admin-controlled-admin-review--standalone-series",
+        "admin-controlled-admin-review--read-only-settings"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/admin-review/Review.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "adminManifestProblem",
+    "category": "nonvisual-function",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "partial",
     "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
@@ -10861,47 +11039,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/administration/Admin.tsx"
+      "frontend/src/admin-review/model.ts"
     ]
-  },
-  {
-    "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
-    "entry": ".",
-    "name": "AdminNavigation",
-    "category": "visual-component",
-    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
-  },
-  {
-    "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
-    "entry": ".",
-    "name": "AdminShell",
-    "category": "visual-component",
-    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
-  },
-  {
-    "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
-    "entry": ".",
-    "name": "adminManifestProblem",
-    "category": "nonvisual-function",
-    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
   },
   {
     "package": "@hollis-labs/kit-admin",
@@ -10910,11 +11049,23 @@
     "name": "adminPages",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/admin-review/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-admin",
@@ -10938,6 +11089,9 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/admin-review/Review.tsx",
+      "frontend/src/admin-review/contracts.ts",
+      "frontend/src/admin-review/model.ts",
       "frontend/src/administration/Admin.tsx",
       "frontend/src/administration/type-contract.ts"
     ]
@@ -11042,6 +11196,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/admin-review/model.ts",
       "frontend/src/administration/Admin.tsx"
     ]
   },
@@ -11067,6 +11222,8 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/admin-review/AdminReview.stories.tsx",
+      "frontend/src/admin-review/Review.tsx",
       "frontend/src/administration/Admin.tsx"
     ]
   },
@@ -11077,11 +11234,24 @@
     "name": "AdminTarget",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/admin-review/Review.tsx",
+      "frontend/src/admin-review/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-admin",
@@ -11090,11 +11260,23 @@
     "name": "AdminDestination",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/admin-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-admin",
@@ -11103,11 +11285,25 @@
     "name": "AdminSelection",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/admin-review/Review.tsx",
+      "frontend/src/admin-review/contracts.ts",
+      "frontend/src/admin-review/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-admin",
@@ -11144,6 +11340,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/admin-review/model.ts",
       "frontend/src/administration/Admin.tsx"
     ]
   },
@@ -12416,6 +12613,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/admin-review/Review.tsx",
       "frontend/src/observability/Views.tsx",
       "frontend/src/observation-review/Review.tsx"
     ]

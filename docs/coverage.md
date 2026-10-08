@@ -17,7 +17,7 @@ The pinned catalogue records all fifteen packages at design-kit commit `dbcf4fa7
 | @hollis-labs/kit-dashboard | 48 | 49 | 30 | 18 | 5 | 101 | 3 |
 | @hollis-labs/kit-chat | 147 | 195 | 16 | 4 | 39 | 315 | 0 |
 | @hollis-labs/design-bindings | 0 | 19 | 9 | 0 | 4 | 24 | 0 |
-| @hollis-labs/kit-admin | 3 | 15 | 3 | 0 | 5 | 16 | 0 |
+| @hollis-labs/kit-admin | 3 | 15 | 3 | 3 | 9 | 9 | 0 |
 | @hollis-labs/kit-settings | 4 | 23 | 7 | 4 | 12 | 18 | 0 |
 | @hollis-labs/kit-observe | 5 | 14 | 0 | 4 | 11 | 4 | 0 |
 | @hollis-labs/kit-account | 6 | 12 | 0 | 5 | 11 | 2 | 0 |
@@ -54,3 +54,6 @@ The sixteenth bounded batch reviews four released kit-chat0.4.0 runtime exports 
 
 
 The seventeenth bounded batch independently reviews four released kit-observe0.1.1 runtime exports ObservationStatus/HealthSummary/StatCollection/SampleSeriesView. Twenty-six portable compositions share fixed resource receipts, controlled freshness/availability appearances, exact bounded UTC points and finite local retry inspection. Four independent runtime rows become reviewed; two additional supporting type rows are partial. Total54 reviewed175 partial1074 deferred5 unsupported226 exact imports. Previously reviewed TimestampSampleChart evidence is unchanged; DiagnosticPanel remains partial with no new valid mount because its CopyButton is inseparable under this review policy. See [observation review](observation-review.md).
+
+
+The eighteenth bounded batch independently reviews released kit-admin0.1.0 AdminNavigation/AdminContent/AdminShell over fixed declarations, read-only snapshots and guarded local/same-origin destinations. Twenty-six portable shared compositions include a real full-height standalone shell with local-only destinations. Total57 reviewed179 partial1067 deferred5 unsupported233 exact imports. Only three named runtime dispositions are promoted; five newly imported helper/type rows remain supporting partial. Existing nested settings/observe/chart claims are unchanged, and valid DiagnosticPanel remains unmounted in this new composition. See [admin review](admin-review.md).

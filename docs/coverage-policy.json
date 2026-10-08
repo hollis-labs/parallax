@@ -669,6 +669,60 @@
           "observation-controlled-observation-review--unknown-health"
         ]
       }
+    },
+    {
+      "package": "@hollis-labs/kit-admin",
+      "names": [
+        "AdminNavigation",
+        "AdminContent",
+        "AdminShell"
+      ],
+      "disposition": "reviewed",
+      "reason": "Independent bounded pinned0.1.0 declared navigation/content/standalone shell: actual discovery and manifest guards, readonly snapshots, canonical local/href targets and finite local inspection lifetime; no new diagnostic copy mount or business actions.",
+      "nextAction": "Additional prop combinations/wire validation remain outside this bounded review; retain supporting types/helpers as partial.",
+      "evidence": {
+        "pages": [
+          "frontend/src/admin-review/Review.tsx",
+          "frontend/src/admin-review/model.ts",
+          "frontend/src/main.tsx",
+          "docs/admin-review.md"
+        ],
+        "checks": [
+          "frontend/tests/admin-review.spec.ts",
+          "frontend/src/admin-review/contracts.ts"
+        ],
+        "stories": [
+          "frontend/src/admin-review/AdminReview.stories.tsx"
+        ],
+        "storyIds": [
+          "admin-controlled-admin-review--recorded",
+          "admin-controlled-admin-review--initial-loading",
+          "admin-controlled-admin-review--initial-error",
+          "admin-controlled-admin-review--retained-loading",
+          "admin-controlled-admin-review--retained-error",
+          "admin-controlled-admin-review--context-mismatch",
+          "admin-controlled-admin-review--unsupported",
+          "admin-controlled-admin-review--malformed",
+          "admin-controlled-admin-review--contradictory",
+          "admin-controlled-admin-review--duplicate",
+          "admin-controlled-admin-review--empty",
+          "admin-controlled-admin-review--unknown-group",
+          "admin-controlled-admin-review--unknown-page",
+          "admin-controlled-admin-review--missing-snapshot",
+          "admin-controlled-admin-review--group-loading",
+          "admin-controlled-admin-review--group-error",
+          "admin-controlled-admin-review--retained-group-error",
+          "admin-controlled-admin-review--missing-observation",
+          "admin-controlled-admin-review--status",
+          "admin-controlled-admin-review--series-absent",
+          "admin-controlled-admin-review--series-present",
+          "admin-controlled-admin-review--denied",
+          "admin-controlled-admin-review--long",
+          "admin-controlled-admin-review--standalone",
+          "admin-controlled-admin-review--standalone-series",
+          "admin-controlled-admin-review--read-only-settings"
+        ]
+      }
     }
   ]
 }

@@ -11,6 +11,8 @@ import {
 import { Activity, Compass, Gauge, Layers, Mail, MessageSquare, Users, X } from "lucide-react"
 import { lazy, Suspense, useEffect, useRef, useState, useSyncExternalStore } from "react"
 import { AccountReview } from "./account-review/Review"
+import { adminAppearances } from "./admin-review/model"
+import { AdminReview } from "./admin-review/Review"
 import { AccountLab } from "./administration/Account"
 import { AdminLab } from "./administration/Admin"
 import { createOperationsExample } from "./chimera/example"
@@ -175,6 +177,19 @@ function Contributions({
 export function App() {
   const params = new URLSearchParams(location.search)
   const pageScroll = useRef<HTMLDivElement>(null)
+  const initialAdminQuery = useRef(
+    Object.fromEntries(
+      [...params].filter(([key, value]) =>
+        key === "adminAppearance"
+          ? adminAppearances.some((s) => s === value)
+          : key === "adminPage"
+            ? ["dashboard", "settings", "status", "diagnostics"].includes(value)
+            : key === "adminGroup"
+              ? ["workspace", "appearance"].includes(value)
+              : ["adminCopy", "adminSeries", "adminHref"].includes(key) && value === "1",
+      ),
+    ),
+  )
 
   const [page, setPage] = useState(params.get("view") ?? "Activity"),
     [layout, setLayout] = useState<Layout>(
@@ -238,8 +253,13 @@ export function App() {
   const isObservation = page === "Observability" || isObservationReview
   const isAccountReview = page === "Account Review"
   const isSettingsReview = page === "Settings Review"
+  const isAdminReview = page === "Admin Review"
   const isAdministration =
-    page === "Administration" || page === "Account" || isSettingsReview || isAccountReview
+    page === "Administration" ||
+    page === "Account" ||
+    isSettingsReview ||
+    isAccountReview ||
+    isAdminReview
   const isConversationReview = page === "Conversation Review"
   const isCommunication = ["Contacts", "Messages", "Chat", "Conversation Review"].includes(page)
   const review = usePlayback(scenario, undefined, () => {
@@ -301,7 +321,7 @@ export function App() {
     history.replaceState(
       null,
       "",
-      `?${new URLSearchParams({ view: page, scenario, theme, mode, viewport, layout, navigation })}`,
+      `?${new URLSearchParams({ view: page, scenario, theme, mode, viewport, layout, navigation, ...(page === "Admin Review" ? initialAdminQuery.current : {}) })}`,
     )
   }, [page, scenario, theme, mode, viewport, layout, navigation])
   useEffect(() => {
@@ -364,6 +384,7 @@ export function App() {
     "Account Review",
     "Observability",
     "Observation Review",
+    "Admin Review",
     "Developer",
     "Voice",
     "Examples",
@@ -388,6 +409,7 @@ export function App() {
       <Users key="account-review" className="size-4" />,
       <Activity key="i" className="size-4" />,
       <Activity key="observation-review" className="size-4" />,
+      <Layers key="admin-review" className="size-4" />,
       <Layers key="j" className="size-4" />,
       <Layers key="k" className="size-4" />,
       <MessageSquare key="l" className="size-4" />,
@@ -589,7 +611,9 @@ export function App() {
                   !isPrimitives &&
                   !isEvidence &&
                   !isWidgets && <OperationsSummary model={model} />}
-                {isObservationReview ? (
+                {isAdminReview ? (
+                  <AdminReview key={scenario} context={scenario} />
+                ) : isObservationReview ? (
                   <ObservationReview key={scenario} context={scenario} />
                 ) : isConversationReview ? (
                   <ConversationReview key={scenario} context={scenario} />
