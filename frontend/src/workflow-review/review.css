@@ -1,0 +1,67 @@
+@import "@hollis-labs/kit-workflow/canvas.css";
+@import "@hollis-labs/kit-workflow/keyframes.css";
+.workflow-review {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 4);
+}
+.workflow-review-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--spacing) * 3);
+  align-items: center;
+}
+.workflow-review-canvas {
+  height: calc(var(--spacing) * 110);
+  min-width: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+}
+.workflow-review .react-flow__node {
+  overflow-wrap: anywhere;
+}
+.workflow-review button {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.workflow-review .wf-panel {
+  max-width: calc(100% - var(--spacing) * 8);
+  font-size: var(--text-xs);
+}
+.workflow-review-inspector {
+  padding: calc(var(--spacing) * 4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  overflow-wrap: anywhere;
+}
+.workflow-review-inspector dl {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: calc(var(--spacing) * 2);
+}
+.workflow-review-inspector dd {
+  margin: 0;
+  min-width: 0;
+}
+.workflow-specimen {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: calc(var(--spacing) * 3);
+  align-items: center;
+}
+.workflow-review .workflow-specimen-svg {
+  height: calc(var(--spacing) * 22);
+  width: 100%;
+  min-width: 0;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+}
+@media (max-width: 48rem) {
+  .workflow-specimen {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

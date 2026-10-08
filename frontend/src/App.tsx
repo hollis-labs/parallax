@@ -40,6 +40,7 @@ import { SettingsReview } from "./settings-review/Review"
 import { WidgetGallery } from "./widgets/Gallery"
 
 const VoiceLab = lazy(() => import("./voice/Lab"))
+const WorkflowReview = lazy(() => import("./workflow-review/Review"))
 const DeveloperEvidence = lazy(() => import("./developer-evidence/Review"))
 const DeveloperLab = lazy(() => import("./developer/Lab"))
 
@@ -250,8 +251,9 @@ export function App() {
   const isEvidence = page === "Evidence"
   const isPrimitives = page === "Primitives"
   const isVoice = page === "Voice"
+  const isWorkflowReview = page === "Workflow Review"
   const isDeveloperEvidence = page === "Developer Evidence"
-  const isDeveloper = page === "Developer" || isDeveloperEvidence
+  const isDeveloper = page === "Developer" || isDeveloperEvidence || isWorkflowReview
   const isObservationReview = page === "Observation Review"
   const isObservation = page === "Observability" || isObservationReview
   const isAccountReview = page === "Account Review"
@@ -278,6 +280,7 @@ export function App() {
     "Layouts",
     "Run Explorer",
     "Developer Evidence",
+    "Workflow Review",
     "Observability",
     "Widgets",
   ].includes(page)
@@ -399,6 +402,7 @@ export function App() {
     "Layouts",
     "Run Explorer",
     "Developer Evidence",
+    "Workflow Review",
   ].map((name, i) => ({
     key: name,
     label: name,
@@ -426,6 +430,7 @@ export function App() {
       <Layers key="p" className="size-4" />,
       <Layers key="run-explorer" className="size-4" />,
       <Layers key="developer-evidence" className="size-4" />,
+      <Layers key="workflow-review" className="size-4" />,
     ][i],
     active: page === name,
     onSelect: () => {
@@ -659,6 +664,16 @@ export function App() {
                 ) : isVoice ? (
                   <Suspense fallback={<p role="status">Loading voice presentation…</p>}>
                     <VoiceLab key={scenario} onInspect={select} onIntent={setIntent} />
+                  </Suspense>
+                ) : isWorkflowReview ? (
+                  <Suspense fallback={<p>Loading workflow presentation…</p>}>
+                    <WorkflowReview
+                      operations={operationsModel(scenario, "", {
+                        cutoff: review.cutoff,
+                        override: review.override,
+                      })}
+                      epoch={review.epoch}
+                    />
                   </Suspense>
                 ) : isDeveloperEvidence ? (
                   <Suspense fallback={<p>Loading developer evidence presentation…</p>}>

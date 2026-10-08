@@ -791,7 +791,8 @@
       "frontend/src/operations/Operations.stories.tsx",
       "frontend/src/operations/Views.tsx",
       "frontend/src/pages/dashboard.tsx",
-      "frontend/src/run-explorer/Explorer.tsx"
+      "frontend/src/run-explorer/Explorer.tsx",
+      "frontend/src/workflow-review/Review.tsx"
     ]
   },
   {
@@ -1627,7 +1628,8 @@
       "frontend/src/run-explorer/Explorer.tsx",
       "frontend/src/settings-review/Review.tsx",
       "frontend/src/voice/Lab.tsx",
-      "frontend/src/widgets/Gallery.tsx"
+      "frontend/src/widgets/Gallery.tsx",
+      "frontend/src/workflow-review/Review.tsx"
     ]
   },
   {
@@ -16361,7 +16363,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Workflow.tsx"
+      "frontend/src/developer/Workflow.tsx",
+      "frontend/src/workflow-review/Review.tsx"
     ]
   },
   {
@@ -16424,7 +16427,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Workflow.tsx"
+      "frontend/src/developer/Workflow.tsx",
+      "frontend/src/workflow-review/Review.tsx"
     ]
   },
   {
@@ -16462,7 +16466,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Workflow.tsx"
+      "frontend/src/developer/Workflow.tsx",
+      "frontend/src/workflow-review/Review.tsx"
     ]
   },
   {
@@ -16500,7 +16505,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Workflow.tsx"
+      "frontend/src/developer/Workflow.tsx",
+      "frontend/src/workflow-review/Review.tsx"
     ]
   },
   {
@@ -16523,22 +16529,40 @@
     "name": "NodeDescription",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded existing dual-licensed canvas candidate: readonly current graph node slots/selected toolbar/panel, native inspection, distinct bounded connection validation and Edge namespace decorative variants, actual token geometry/reduced-motion and current source/cutoff/selection lifetimes.",
+    "nextAction": "Other graph/helper/prop contracts and execution/authoring remain partial/deferred; Edge namespace variants are not separate public export rows.",
     "evidence": {
       "pages": [
-        "frontend/src/developer/Workflow.tsx"
+        "frontend/src/workflow-review/Review.tsx",
+        "frontend/src/workflow-review/model.ts",
+        "docs/workflow-review.md"
       ],
       "checks": [
-        "frontend/tests/developer.spec.ts"
+        "frontend/tests/workflow-review.spec.ts",
+        "frontend/src/workflow-review/contracts.ts"
       ],
       "stories": [
-        "frontend/src/developer/Developer.stories.tsx"
+        "frontend/src/workflow-review/Review.stories.tsx"
+      ],
+      "storyIds": [
+        "developer-workflow-review--recorded",
+        "developer-workflow-review--empty",
+        "developer-workflow-review--loading",
+        "developer-workflow-review--read-failure",
+        "developer-workflow-review--denied",
+        "developer-workflow-review--locked",
+        "developer-workflow-review--long-content",
+        "developer-workflow-review--unknown-kind",
+        "developer-workflow-review--before-evidence",
+        "developer-workflow-review--before-run-finish",
+        "developer-workflow-review--incompatible-source"
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Workflow.tsx"
+      "frontend/src/developer/Workflow.tsx",
+      "frontend/src/workflow-review/Review.tsx",
+      "frontend/src/workflow-review/contracts.ts"
     ]
   },
   {
@@ -16561,11 +16585,40 @@
     "name": "NodeAction",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded existing dual-licensed canvas candidate: readonly current graph node slots/selected toolbar/panel, native inspection, distinct bounded connection validation and Edge namespace decorative variants, actual token geometry/reduced-motion and current source/cutoff/selection lifetimes.",
+    "nextAction": "Other graph/helper/prop contracts and execution/authoring remain partial/deferred; Edge namespace variants are not separate public export rows.",
+    "evidence": {
+      "pages": [
+        "frontend/src/workflow-review/Review.tsx",
+        "frontend/src/workflow-review/model.ts",
+        "docs/workflow-review.md"
+      ],
+      "checks": [
+        "frontend/tests/workflow-review.spec.ts",
+        "frontend/src/workflow-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/workflow-review/Review.stories.tsx"
+      ],
+      "storyIds": [
+        "developer-workflow-review--recorded",
+        "developer-workflow-review--empty",
+        "developer-workflow-review--loading",
+        "developer-workflow-review--read-failure",
+        "developer-workflow-review--denied",
+        "developer-workflow-review--locked",
+        "developer-workflow-review--long-content",
+        "developer-workflow-review--unknown-kind",
+        "developer-workflow-review--before-evidence",
+        "developer-workflow-review--before-run-finish",
+        "developer-workflow-review--incompatible-source"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/workflow-review/Review.tsx",
+      "frontend/src/workflow-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-workflow",
@@ -16602,7 +16655,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Workflow.tsx"
+      "frontend/src/developer/Workflow.tsx",
+      "frontend/src/workflow-review/Review.tsx"
     ]
   },
   {
@@ -16625,11 +16679,40 @@
     "name": "NodeFooter",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded existing dual-licensed canvas candidate: readonly current graph node slots/selected toolbar/panel, native inspection, distinct bounded connection validation and Edge namespace decorative variants, actual token geometry/reduced-motion and current source/cutoff/selection lifetimes.",
+    "nextAction": "Other graph/helper/prop contracts and execution/authoring remain partial/deferred; Edge namespace variants are not separate public export rows.",
+    "evidence": {
+      "pages": [
+        "frontend/src/workflow-review/Review.tsx",
+        "frontend/src/workflow-review/model.ts",
+        "docs/workflow-review.md"
+      ],
+      "checks": [
+        "frontend/tests/workflow-review.spec.ts",
+        "frontend/src/workflow-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/workflow-review/Review.stories.tsx"
+      ],
+      "storyIds": [
+        "developer-workflow-review--recorded",
+        "developer-workflow-review--empty",
+        "developer-workflow-review--loading",
+        "developer-workflow-review--read-failure",
+        "developer-workflow-review--denied",
+        "developer-workflow-review--locked",
+        "developer-workflow-review--long-content",
+        "developer-workflow-review--unknown-kind",
+        "developer-workflow-review--before-evidence",
+        "developer-workflow-review--before-run-finish",
+        "developer-workflow-review--incompatible-source"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/workflow-review/Review.tsx",
+      "frontend/src/workflow-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-workflow",
@@ -16638,11 +16721,40 @@
     "name": "Edge",
     "category": "runtime-value",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded existing dual-licensed canvas candidate: readonly current graph node slots/selected toolbar/panel, native inspection, distinct bounded connection validation and Edge namespace decorative variants, actual token geometry/reduced-motion and current source/cutoff/selection lifetimes.",
+    "nextAction": "Other graph/helper/prop contracts and execution/authoring remain partial/deferred; Edge namespace variants are not separate public export rows.",
+    "evidence": {
+      "pages": [
+        "frontend/src/workflow-review/Review.tsx",
+        "frontend/src/workflow-review/model.ts",
+        "docs/workflow-review.md"
+      ],
+      "checks": [
+        "frontend/tests/workflow-review.spec.ts",
+        "frontend/src/workflow-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/workflow-review/Review.stories.tsx"
+      ],
+      "storyIds": [
+        "developer-workflow-review--recorded",
+        "developer-workflow-review--empty",
+        "developer-workflow-review--loading",
+        "developer-workflow-review--read-failure",
+        "developer-workflow-review--denied",
+        "developer-workflow-review--locked",
+        "developer-workflow-review--long-content",
+        "developer-workflow-review--unknown-kind",
+        "developer-workflow-review--before-evidence",
+        "developer-workflow-review--before-run-finish",
+        "developer-workflow-review--incompatible-source"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/workflow-review/Review.tsx",
+      "frontend/src/workflow-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-workflow",
@@ -16651,11 +16763,40 @@
     "name": "Connection",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded existing dual-licensed canvas candidate: readonly current graph node slots/selected toolbar/panel, native inspection, distinct bounded connection validation and Edge namespace decorative variants, actual token geometry/reduced-motion and current source/cutoff/selection lifetimes.",
+    "nextAction": "Other graph/helper/prop contracts and execution/authoring remain partial/deferred; Edge namespace variants are not separate public export rows.",
+    "evidence": {
+      "pages": [
+        "frontend/src/workflow-review/Review.tsx",
+        "frontend/src/workflow-review/model.ts",
+        "docs/workflow-review.md"
+      ],
+      "checks": [
+        "frontend/tests/workflow-review.spec.ts",
+        "frontend/src/workflow-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/workflow-review/Review.stories.tsx"
+      ],
+      "storyIds": [
+        "developer-workflow-review--recorded",
+        "developer-workflow-review--empty",
+        "developer-workflow-review--loading",
+        "developer-workflow-review--read-failure",
+        "developer-workflow-review--denied",
+        "developer-workflow-review--locked",
+        "developer-workflow-review--long-content",
+        "developer-workflow-review--unknown-kind",
+        "developer-workflow-review--before-evidence",
+        "developer-workflow-review--before-run-finish",
+        "developer-workflow-review--incompatible-source"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/workflow-review/Review.tsx",
+      "frontend/src/workflow-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-workflow",
@@ -16692,7 +16833,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Workflow.tsx"
+      "frontend/src/developer/Workflow.tsx",
+      "frontend/src/workflow-review/Review.tsx"
     ]
   },
   {
@@ -16715,22 +16857,40 @@
     "name": "Panel",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Independent bounded existing dual-licensed canvas candidate: readonly current graph node slots/selected toolbar/panel, native inspection, distinct bounded connection validation and Edge namespace decorative variants, actual token geometry/reduced-motion and current source/cutoff/selection lifetimes.",
+    "nextAction": "Other graph/helper/prop contracts and execution/authoring remain partial/deferred; Edge namespace variants are not separate public export rows.",
     "evidence": {
       "pages": [
-        "frontend/src/developer/Workflow.tsx"
+        "frontend/src/workflow-review/Review.tsx",
+        "frontend/src/workflow-review/model.ts",
+        "docs/workflow-review.md"
       ],
       "checks": [
-        "frontend/tests/developer.spec.ts"
+        "frontend/tests/workflow-review.spec.ts",
+        "frontend/src/workflow-review/contracts.ts"
       ],
       "stories": [
-        "frontend/src/developer/Developer.stories.tsx"
+        "frontend/src/workflow-review/Review.stories.tsx"
+      ],
+      "storyIds": [
+        "developer-workflow-review--recorded",
+        "developer-workflow-review--empty",
+        "developer-workflow-review--loading",
+        "developer-workflow-review--read-failure",
+        "developer-workflow-review--denied",
+        "developer-workflow-review--locked",
+        "developer-workflow-review--long-content",
+        "developer-workflow-review--unknown-kind",
+        "developer-workflow-review--before-evidence",
+        "developer-workflow-review--before-run-finish",
+        "developer-workflow-review--incompatible-source"
       ]
     },
     "importEvidence": [
-      "frontend/src/developer/Workflow.tsx"
+      "frontend/src/developer/Workflow.tsx",
+      "frontend/src/workflow-review/Review.tsx",
+      "frontend/src/workflow-review/contracts.ts"
     ]
   },
   {
@@ -16753,11 +16913,40 @@
     "name": "Toolbar",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Independent bounded existing dual-licensed canvas candidate: readonly current graph node slots/selected toolbar/panel, native inspection, distinct bounded connection validation and Edge namespace decorative variants, actual token geometry/reduced-motion and current source/cutoff/selection lifetimes.",
+    "nextAction": "Other graph/helper/prop contracts and execution/authoring remain partial/deferred; Edge namespace variants are not separate public export rows.",
+    "evidence": {
+      "pages": [
+        "frontend/src/workflow-review/Review.tsx",
+        "frontend/src/workflow-review/model.ts",
+        "docs/workflow-review.md"
+      ],
+      "checks": [
+        "frontend/tests/workflow-review.spec.ts",
+        "frontend/src/workflow-review/contracts.ts"
+      ],
+      "stories": [
+        "frontend/src/workflow-review/Review.stories.tsx"
+      ],
+      "storyIds": [
+        "developer-workflow-review--recorded",
+        "developer-workflow-review--empty",
+        "developer-workflow-review--loading",
+        "developer-workflow-review--read-failure",
+        "developer-workflow-review--denied",
+        "developer-workflow-review--locked",
+        "developer-workflow-review--long-content",
+        "developer-workflow-review--unknown-kind",
+        "developer-workflow-review--before-evidence",
+        "developer-workflow-review--before-run-finish",
+        "developer-workflow-review--incompatible-source"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/workflow-review/Review.tsx",
+      "frontend/src/workflow-review/contracts.ts"
+    ]
   },
   {
     "package": "@hollis-labs/kit-voice",

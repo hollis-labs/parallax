@@ -22,7 +22,7 @@ The pinned catalogue records all fifteen packages at design-kit commit `dbcf4fa7
 | @hollis-labs/kit-observe | 5 | 14 | 0 | 4 | 11 | 4 | 0 |
 | @hollis-labs/kit-account | 6 | 12 | 0 | 5 | 11 | 2 | 0 |
 | @hollis-labs/kit-code | 88 | 81 | 3 | 10 | 33 | 129 | 0 |
-| @hollis-labs/kit-workflow | 12 | 11 | 1 | 0 | 9 | 15 | 0 |
+| @hollis-labs/kit-workflow | 12 | 11 | 1 | 7 | 7 | 10 | 0 |
 | @hollis-labs/kit-voice | 42 | 46 | 2 | 0 | 26 | 62 | 2 |
 | @hollis-labs/plugin-host-ui | 5 | 108 | 60 | 0 | 23 | 150 | 0 |
 | @hollis-labs/design-app-runtime | 0 | 28 | 27 | 0 | 2 | 53 | 0 |
@@ -61,3 +61,5 @@ The eighteenth bounded batch independently reviews released kit-admin0.1.0 Admin
 Run Explorer adds exactly five independently reviewed runtime exports from kit-dashboard0.4.0. SortState and TableDensity are supporting partial imports; nested DataTable/SearchInput remain their existing dispositions. The complete inventory is62 reviewed/181 partial/1060 deferred/5 unsupported over1308 declarations, with240 exact imports. Twelve shared portable states complement real sequential native filtering, actual observer/UTC-order evidence and source/modal retirement; [bounded review](run-explorer.md) records limitations.
 
 The twentieth bounded batch independently reviews ten existing private code-candidate exports in [Developer Evidence](developer-evidence-review.md). Exact original stack, finite authored test ledger/progress, readonly disclosures, fictional commit/proposal rows and bounded file navigation have app/story/check pointers. Current totals72 reviewed/188 partial/1043 deferred/5 unsupported and257 exact imports. Twelve newly adopted structural children remain partial (net partial increase7, because five prior partial runtime rows become reviewed); missing durations, authored tests versus executed CI and the inclusive receipt boundary before run finish are explicit.
+
+The twenty-first bounded batch reviews seven exact workflow/canvas names in [Workflow Review](workflow-review.md), including both decorative Edge namespace variants under one public row. Actual node slots, selected toolbar/panel, immutable graph navigation, bounded validation specimens and reduced-motion/token geometry have independent pointers. Totals79 reviewed/186 partial/1038 deferred/5 unsupported,262 exact imports. Existing NodeDescription/Panel advance from partial; other supporting helpers remain partial.
