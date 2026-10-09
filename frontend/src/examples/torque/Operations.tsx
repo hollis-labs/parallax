@@ -1,4 +1,11 @@
-import { ROW_INTERACTIVE_SELECTOR, rowInteractiveProps } from "@hollis-labs/design-components"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  ROW_INTERACTIVE_SELECTOR,
+  rowInteractiveProps,
+} from "@hollis-labs/design-components"
 import {
   BookOpen,
   Calendar,
@@ -11,6 +18,7 @@ import {
 import { type RefObject, useEffect, useLayoutEffect, useRef, useState } from "react"
 import type { OperationsModel } from "../../operations/model"
 import { ResourceNotice } from "../../operations/Views"
+import { BoardIntent, type BoardIntentRequest } from "./BoardIntent"
 import { operationsMetadata } from "./operations-metadata"
 import { torqueReferenceModel } from "./reference"
 import { type TorqueState, torqueHref } from "./routes"
@@ -55,8 +63,25 @@ export function TorqueOperations({
   const [filtersOpen, setFiltersOpen] = useState(false)
   const [scope, setScope] = useState({ project: "", epic: "", sprint: "", tag: "" })
   const [sort, setSort] = useState({ key: "date", desc: true })
+  const [notice, setNotice] = useState("")
+  const [intent, setIntent] = useState<BoardIntentRequest | null>(null)
+  const intentFrame = JSON.stringify([
+    state.profile,
+    state.scenario,
+    state.cutoff,
+    state.override,
+    state.query,
+  ])
+  const lastIntentFrame = useRef(intentFrame)
+  useLayoutEffect(() => {
+    if (lastIntentFrame.current !== intentFrame) {
+      lastIntentFrame.current = intentFrame
+      setIntent(null)
+    }
+  }, [intentFrame])
   const [selected, setSelected] = useState<string[]>([])
   const [visibleCount, setVisibleCount] = useState(50)
+  const selectAll = useRef<HTMLInputElement>(null)
   const tableRoot = useRef<HTMLDivElement>(null),
     sentinel = useRef<HTMLTableRowElement>(null)
   const identity = JSON.stringify([
@@ -167,14 +192,44 @@ export function TorqueOperations({
       )
     })
   const filterFrame = JSON.stringify([identity, active, priority, manual, system, scope, sort])
+  const matchingIds = JSON.stringify(matching.map((r) => r.task.id))
   const previousFilter = useRef(filterFrame)
   useLayoutEffect(() => {
     if (previousFilter.current === filterFrame) return
     previousFilter.current = filterFrame
-    setSelected([])
+    setSelected((ids) => ids.filter((id) => (JSON.parse(matchingIds) as string[]).includes(id)))
     setVisibleCount(50)
-  }, [filterFrame])
+    if (tableRoot.current) tableRoot.current.scrollTop = 0
+  }, [filterFrame, matchingIds])
   const visible = matching.slice(0, visibleCount)
+  useLayoutEffect(() => {
+    if (selectAll.current)
+      selectAll.current.indeterminate =
+        visible.some((r) => selected.includes(r.task.id)) &&
+        !visible.every((r) => selected.includes(r.task.id))
+  })
+  useEffect(() => {
+    function shortcut(e: KeyboardEvent) {
+      const target = e.target
+      if (
+        e.key !== "/" ||
+        e.defaultPrevented ||
+        e.isComposing ||
+        e.ctrlKey ||
+        e.metaKey ||
+        e.altKey ||
+        e.shiftKey ||
+        document.querySelector('[role="dialog"], [role="menu"]') ||
+        (target instanceof Element &&
+          target.closest('input, textarea, select, button, a, [contenteditable="true"]'))
+      )
+        return
+      e.preventDefault()
+      anchorRef.current?.focus()
+    }
+    window.addEventListener("keydown", shortcut)
+    return () => window.removeEventListener("keydown", shortcut)
+  }, [anchorRef])
   const cursorIds = JSON.stringify(visible.map((r) => r.task.id))
   useLayoutEffect(() => {
     onCursor({ identity, ids: JSON.parse(cursorIds) })
@@ -233,8 +288,13 @@ export function TorqueOperations({
           <button
             type="button"
             className="torque-eligible"
-            aria-pressed={manual === "Auto"}
-            onClick={() => edit(() => setManual(manual === "Auto" ? "Both" : "Auto"))}
+            aria-disabled="true"
+            title="Eligibility unavailable: these fixtures have no scheduler eligibility evidence. Auto is only an authored mode."
+            onClick={() =>
+              setNotice(
+                "Eligibility unavailable: no scheduler eligibility evidence is supplied. Auto is an authored task mode, not eligibility.",
+              )
+            }
           >
             ϟ Eligible
           </button>
@@ -246,6 +306,13 @@ export function TorqueOperations({
             value={state.query}
             onChange={(e) => {
               if (admitted()) onQuery(e.target.value)
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Escape" && !e.nativeEvent.isComposing) {
+                e.preventDefault()
+                e.stopPropagation()
+                if (admitted()) onQuery("")
+              }
             }}
           />
           <button
@@ -263,9 +330,9 @@ export function TorqueOperations({
             <SlidersHorizontal size={13} />
             {filters}
           </span>
-          {(filters > 0 || state.query) && (
+          {(filters > 0 || state.query || sort.key !== "date" || !sort.desc) && (
             <>
-              <span>{matching.length} matches</span>
+              <span>{model.accessible ? `${matching.length} matches` : "Matches unknown"}</span>
               <button
                 type="button"
                 onClick={() =>
@@ -277,7 +344,11 @@ export function TorqueOperations({
                     setManual("Both")
                     setSystem(false)
                     setScope({ project: "", epic: "", sprint: "", tag: "" })
+                    setNotice("")
+                    setSort({ key: "date", desc: true })
+                    setSelected([])
                     onQuery("")
+                    anchorRef.current?.focus()
                   })
                 }
               >
@@ -329,8 +400,20 @@ export function TorqueOperations({
               <button
                 type="button"
                 key={value}
-                aria-pressed={manual === value}
-                onClick={() => edit(() => setManual(manual === value ? "Both" : value))}
+                aria-pressed={manual === "Both" || manual === value}
+                onClick={() =>
+                  edit(() =>
+                    setManual(
+                      manual === "Both"
+                        ? value === "Manual"
+                          ? "Auto"
+                          : "Manual"
+                        : manual === value
+                          ? "Both"
+                          : value,
+                    ),
+                  )
+                }
               >
                 {value}
               </button>
@@ -360,18 +443,49 @@ export function TorqueOperations({
                 <select
                   aria-label={`Filter by ${key}`}
                   value={scope[key]}
-                  onChange={(e) => edit(() => setScope((v) => ({ ...v, [key]: e.target.value })))}
+                  onChange={(e) =>
+                    edit(() =>
+                      setScope((v) => ({
+                        ...v,
+                        [key]: e.target.value,
+                        ...(key === "project"
+                          ? { epic: "", sprint: "" }
+                          : key === "epic"
+                            ? { sprint: "" }
+                            : {}),
+                      })),
+                    )
+                  }
                 >
                   <option value="">All {key}s</option>
-                  {values.map((v) => (
-                    <option key={v}>{v}</option>
-                  ))}
+                  {values
+                    .filter((value) => {
+                      if (key === "epic" || key === "sprint")
+                        return Object.values(operationsMetadata).some(
+                          (m) =>
+                            m[key] === value &&
+                            (!scope.project || m.project === scope.project) &&
+                            (key !== "sprint" || !scope.epic || m.epic === scope.epic),
+                        )
+                      return true
+                    })
+                    .map((v) => (
+                      <option key={v}>{v}</option>
+                    ))}
                 </select>
               </label>
             ))}
           </div>
         </div>
       </div>
+      {notice && (
+        <p role="status" className="torque-ops-notice">
+          {notice}{" "}
+          <button type="button" onClick={() => setNotice("")}>
+            Dismiss explanation
+          </button>
+        </p>
+      )}
       {!model.accessible ? (
         <ResourceNotice model={model} />
       ) : (
@@ -387,13 +501,21 @@ export function TorqueOperations({
               <tr>
                 <th>
                   <input
+                    ref={selectAll}
                     type="checkbox"
                     aria-label="Select all tasks"
+                    disabled={!visible.length}
                     checked={
                       matching.length > 0 && visible.every((r) => selected.includes(r.task.id))
                     }
                     onChange={(e) =>
-                      edit(() => setSelected(e.target.checked ? visible.map((r) => r.task.id) : []))
+                      edit(() =>
+                        setSelected((ids) =>
+                          e.target.checked
+                            ? [...new Set([...ids, ...visible.map((r) => r.task.id)])]
+                            : ids.filter((id) => !visible.some((r) => r.task.id === id)),
+                        ),
+                      )
                     }
                   />
                 </th>
@@ -404,7 +526,18 @@ export function TorqueOperations({
                   ["usage", "Usage"],
                   ["date", "Date"],
                 ].map(([key, label]) => (
-                  <th key={key}>
+                  <th
+                    key={key}
+                    aria-sort={
+                      key === "usage"
+                        ? undefined
+                        : sort.key === key
+                          ? sort.desc
+                            ? "descending"
+                            : "ascending"
+                          : "none"
+                    }
+                  >
                     {key === "usage" ? (
                       label
                     ) : (
@@ -517,7 +650,7 @@ export function TorqueOperations({
                   </td>
                   <td>
                     <span className="torque-ops-priority" data-priority={r.priority}>
-                      P{r.priority}
+                      {r.priority == null ? "Unknown" : `P${r.priority}`}
                     </span>
                   </td>
                   <td className="torque-ops-usage">
@@ -549,16 +682,100 @@ export function TorqueOperations({
                     <small>{r.update ? relativeUpdate(r.update, state.cutoff) : "Unknown"}</small>
                   </td>
                   <td>
-                    <button
-                      type="button"
-                      {...rowInteractiveProps(true)}
-                      aria-label={`Inspect task ${r.task.id}`}
-                      onClick={() => {
-                        if (admitted()) onSelect(r.task.id)
-                      }}
-                    >
-                      <MoreHorizontal size={14} />
-                    </button>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger
+                        {...rowInteractiveProps(true)}
+                        aria-label={`Task actions ${r.task.id}`}
+                      >
+                        <MoreHorizontal size={14} />
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end" {...rowInteractiveProps(true)}>
+                        <DropdownMenuItem
+                          onClick={() => {
+                            if (admitted()) {
+                              document
+                                .querySelector<HTMLElement>(
+                                  `[aria-label="Task actions ${r.task.id}"]`,
+                                )
+                                ?.focus()
+                              onSelect(r.task.id)
+                            }
+                          }}
+                        >
+                          Inspect task {r.task.id}
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() =>
+                            edit(() =>
+                              setSelected((ids) =>
+                                ids.includes(r.task.id)
+                                  ? ids.filter((id) => id !== r.task.id)
+                                  : [...ids, r.task.id],
+                              ),
+                            )
+                          }
+                        >
+                          {selected.includes(r.task.id) ? "Deselect task" : "Select task"}
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          disabled={
+                            ![
+                              "review",
+                              "doing",
+                              "todo",
+                              "queued",
+                              "blocked",
+                              "paused",
+                              "backlog",
+                              "done",
+                            ].includes(r.status)
+                          }
+                          onClick={() => {
+                            if (admitted())
+                              setIntent({
+                                id: r.task.id,
+                                action:
+                                  r.status === "review"
+                                    ? "Approve"
+                                    : r.status === "done"
+                                      ? "Reopen"
+                                      : "Mark done",
+                                outcome:
+                                  r.status === "done"
+                                    ? "refusal"
+                                    : r.status === "blocked"
+                                      ? "error"
+                                      : "preview",
+                                returnTarget: document.querySelector<HTMLElement>(
+                                  `[aria-label="Task actions ${r.task.id}"]`,
+                                ),
+                              })
+                          }}
+                        >
+                          {![
+                            "review",
+                            "doing",
+                            "todo",
+                            "queued",
+                            "blocked",
+                            "paused",
+                            "backlog",
+                            "done",
+                          ].includes(r.status)
+                            ? "Preview unavailable · unsupported board status"
+                            : r.status === "review"
+                              ? "Preview approval"
+                              : r.status === "done"
+                                ? "Preview reopening · refusal"
+                                : r.status === "blocked"
+                                  ? "Preview completion · error"
+                                  : "Preview completion"}
+                        </DropdownMenuItem>
+                        <DropdownMenuItem disabled>
+                          Execution unavailable · read-only fixture
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </td>
                 </tr>
               ))}
@@ -578,6 +795,7 @@ export function TorqueOperations({
           )}
         </section>
       )}
+      <BoardIntent request={intent} onClose={() => setIntent(null)} />
       <footer className="torque-ops-footer">
         {model.accessible
           ? `${matching.length} tasks · ${matching.filter((r) => selected.includes(r.task.id)).length} selected`
