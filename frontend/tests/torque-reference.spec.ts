@@ -149,9 +149,13 @@ test("native Torque source profile reload/history/reset and readable reference o
   await page.getByLabel("Example task filter", { exact: true }).fill("TASK-003")
   await page.locator(".torque-ops-task > a").click()
   await expect(page).toHaveURL(/selected=TASK-003/)
-  await expect(page.getByRole("dialog", { name: "Task and run inspection", exact: true })).toBeVisible()
+  await expect(
+    page.getByRole("dialog", { name: "Task and run inspection", exact: true }),
+  ).toBeVisible()
   await page.keyboard.press("Escape")
-  await expect(page.getByRole("dialog", { name: "Task and run inspection", exact: true })).toHaveCount(0)
+  await expect(
+    page.getByRole("dialog", { name: "Task and run inspection", exact: true }),
+  ).toHaveCount(0)
   const review = () => page.getByRole("button", { name: "Review fixtures", exact: true }).click()
   await review()
   await page.getByLabel("Example review position", { exact: true }).press("Home")
