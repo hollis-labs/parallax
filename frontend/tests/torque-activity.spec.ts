@@ -137,8 +137,7 @@ test("native UTC disclosures recent keyboard detail and fresh StrictMode callbac
   await expect(
     page.getByRole("heading", { name: "Task and run inspection", exact: true }),
   ).toBeVisible()
-  await page.getByRole("button", { name: "Open bounded record details", exact: true }).click()
-  const dialog = page.getByRole("dialog", { name: "Torque record inspection", exact: true })
+  const dialog = page.getByRole("dialog", { name: "Task and run inspection", exact: true })
   await expect(dialog).toContainText("TASK-003 / RUN-003")
   await expect(dialog).toContainText("3,812")
   await expect(dialog).toContainText("running")
@@ -150,11 +149,9 @@ test("native UTC disclosures recent keyboard detail and fresh StrictMode callbac
   await page.screenshot({ path: info.outputPath("activity-record-prefix-desktop.png") })
   await page.keyboard.press("Escape")
   await expect(dialog).toHaveCount(0)
-  await expect(
-    page.getByRole("button", { name: "Open bounded record details", exact: true }),
-  ).toBeFocused()
+  await expect(page).toHaveURL(/screen=dashboard/)
   await page.setViewportSize({ width: 390, height: 650 })
-  await page.getByRole("button", { name: "Open bounded record details", exact: true }).click()
+  await page.goForward()
   await expect.poll(() => dialog.evaluate((e) => getComputedStyle(e).opacity)).toBe("1")
   const body = dialog.locator(".example-body")
   const scrollState = () =>
@@ -229,9 +226,7 @@ test("native UTC disclosures recent keyboard detail and fresh StrictMode callbac
   await page.screenshot({ path: info.outputPath("activity-record-prefix-narrow-tail.png") })
   await page.keyboard.press("Escape")
   await expect(dialog).toHaveCount(0)
-  await expect(
-    page.getByRole("button", { name: "Open bounded record details", exact: true }),
-  ).toBeFocused()
+  await expect(page).toHaveURL(/screen=dashboard/)
   await page.setViewportSize({ width: 1280, height: 720 })
   await page
     .getByRole("navigation", { name: "Torque application navigation", exact: true })

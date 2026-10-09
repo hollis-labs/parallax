@@ -1,8 +1,7 @@
-import { AppShell, Button, DetailDialog, OverlaySidebar } from "@hollis-labs/design-components"
+import { AppShell, Button, OverlaySidebar } from "@hollis-labs/design-components"
 import { Activity, Cog, FileText, LayoutList, PanelLeft, Radio } from "lucide-react"
 import { type ReactNode, useLayoutEffect, useRef, useState } from "react"
 import { operationsModel, runDetail, scenarios } from "../../operations/model"
-import { RunDetailBody } from "../../operations/Views"
 import { OpsDashboard } from "../../ops-dashboard/Dashboard"
 import { resourceOverrides, timelineFrames } from "../../playback/model"
 import { RunExplorer } from "../../run-explorer/Explorer"
@@ -11,10 +10,10 @@ import { FixtureContracts } from "../FixtureContracts"
 import { TorqueActivity } from "./Activity"
 import { TorqueMission } from "./Mission"
 import { TorqueOperations } from "./Operations"
-import { operationsMetadata } from "./operations-metadata"
 import { TorqueReferenceEvidence } from "./ReferenceEvidence"
 import { torqueProfiles, torqueReferenceModel, torqueSource } from "./reference"
 import { type TorqueState, torqueHref } from "./routes"
+import { TaskInspection } from "./TaskInspection"
 import "./torque.css"
 import "./operations.css"
 
@@ -25,9 +24,11 @@ export function TorqueExample({
   state,
   onChange,
   contributions,
+  onCloseInspection,
 }: {
   state: TorqueState
   onChange: (patch: Partial<TorqueState>, replace?: boolean) => void
+  onCloseInspection?: () => void
   contributions?: ReactNode
 }) {
   const artifact = torqueSource(state.scenario, state.profile)
@@ -42,7 +43,6 @@ export function TorqueExample({
     reference = torqueReferenceModel(model)
   const [navOpen, setNavOpen] = useState(false),
     [reviewOpen, setReviewOpen] = useState(false),
-    [inspection, setInspection] = useState(false),
     [intent, setIntent] = useState(""),
     [, fresh] = useState(0)
   const source = JSON.stringify([
@@ -87,16 +87,23 @@ export function TorqueExample({
       setNavOpen(false)
       setReviewOpen(false)
       setIntent("")
-      if (!detail) setInspection(false)
     }
-  }, [source, detail])
+  }, [source])
+  const boardRoute = state.route === "task" ? "tasks" : state.route
+  const [cursor, setCursor] = useState<{ identity: string; ids: string[] }>({
+    identity: "",
+    ids: [],
+  })
+  const opener = useRef<HTMLElement | null>(null)
+  const boardAnchor = useRef<HTMLInputElement | null>(null)
+  const headingAnchor = useRef<HTMLHeadingElement | null>(null)
   const pageRoot = useRef<HTMLElement>(null)
   useLayoutEffect(() => {
     if (pageRoot.current) {
-      pageRoot.current.dataset.route = state.route
+      pageRoot.current.dataset.route = boardRoute
       pageRoot.current.scrollTo({ top: 0 })
     }
-  }, [state.route])
+  }, [boardRoute])
   function change(patch: Partial<TorqueState>, replace = false) {
     if (!admitted() || JSON.stringify({ ...state, ...patch }) === JSON.stringify(state)) return
     lifetime.lease++
@@ -110,8 +117,10 @@ export function TorqueExample({
   }
   function select(id: string) {
     if (admitted() && model.tasks.some((t) => t.id === id)) {
-      change({ selected: id, route: "task" })
-      setInspection(false)
+      if (state.route !== "task")
+        opener.current =
+          document.activeElement instanceof HTMLElement ? document.activeElement : null
+      change({ selected: id, route: "task" }, state.route === "task")
     }
   }
   const links = (
@@ -120,7 +129,7 @@ export function TorqueExample({
         <a
           key={d.route}
           href={torqueHref(state, { route: d.route })}
-          aria-current={state.route === d.route ? "page" : undefined}
+          aria-current={boardRoute === d.route ? "page" : undefined}
           onClick={(e) => {
             if (admitted() && e.button === 0 && !e.metaKey && !e.ctrlKey && !e.shiftKey) {
               e.preventDefault()
@@ -145,10 +154,7 @@ export function TorqueExample({
       ))}
     </nav>
   )
-  const title =
-    state.route === "task"
-      ? "Task and run"
-      : (destinations.find((d) => d.route === state.route)?.label ?? "Dashboard")
+  const title = destinations.find((d) => d.route === boardRoute)?.label ?? "Dashboard"
   const review = (
     <div className="torque-review-controls">
       <label>
@@ -259,7 +265,7 @@ export function TorqueExample({
   )
   return (
     <AppShell
-      className={`torque-example ${state.route === "tasks" ? "torque-operations-shell" : ""}`}
+      className={`torque-example ${boardRoute === "tasks" ? "torque-operations-shell" : ""}`}
       nav={
         <aside className="torque-sidebar">
           <a
@@ -306,12 +312,14 @@ export function TorqueExample({
             </OverlaySidebar>
           </div>
           <div className="torque-heading">
-            <h1>{title}</h1>
+            <h1 ref={headingAnchor} tabIndex={-1}>
+              {title}
+            </h1>
             <span>
               {state.cutoff.slice(11, 19)} UTC · {model.resource}
             </span>
           </div>
-          {state.route === "tasks" && (
+          {boardRoute === "tasks" && (
             <div className="torque-header-scopes">
               {["Projects", "Sprints", "Epics", "Scope"].map((label) => (
                 <button
@@ -358,7 +366,7 @@ export function TorqueExample({
           className="torque-page"
           ref={pageRoot}
           aria-label={`${title} page scroll`}
-          data-operations={state.route === "tasks"}
+          data-operations={boardRoute === "tasks"}
         >
           {state.route === "dashboard" ? (
             <>
@@ -405,44 +413,15 @@ export function TorqueExample({
                 onSelect={select}
               />
             </>
-          ) : state.route === "tasks" ? (
+          ) : boardRoute === "tasks" ? (
             <TorqueOperations
               model={model}
               state={state}
               onQuery={(query) => change({ query, selected: null }, true)}
               onSelect={select}
+              onCursor={setCursor}
+              anchorRef={boardAnchor}
             />
-          ) : state.route === "task" ? (
-            <section>
-              <h1>Task and run inspection</h1>
-              {detail ? (
-                <>
-                  <p>
-                    {detail.task.id} / {detail.run.id} · selected admitted record · Fictional board
-                    status: {operationsMetadata[detail.task.id]?.status ?? "Unknown"}· Recorded task
-                    status: {detail.task.status}
-                  </p>
-                  <Button
-                    onClick={() => {
-                      surface(inspection, true, setInspection)
-                    }}
-                  >
-                    Open bounded record details
-                  </Button>
-                  <RunDetailBody
-                    detail={detail}
-                    onIntent={(action, id) => {
-                      if (admitted())
-                        setIntent(
-                          `${action} / ${id}: local intent inspection only; supplied records unchanged.`,
-                        )
-                    }}
-                  />
-                </>
-              ) : (
-                <p>No selected admitted task at this context. Choose a current task or run.</p>
-              )}
-            </section>
           ) : (
             <section className="torque-about">
               <h1>About this example</h1>
@@ -478,7 +457,7 @@ export function TorqueExample({
             </section>
           )}
           {intent && <p role="status">{intent}</p>}
-          {state.route !== "tasks" && (
+          {boardRoute !== "tasks" && (
             <footer className="torque-page-footer">
               {state.selected && detail
                 ? `Selected ${detail.task.id} / ${detail.run.id}`
@@ -488,32 +467,30 @@ export function TorqueExample({
           )}
         </section>
       )}
-      <DetailDialog
-        open={inspection && !!detail}
+      <TaskInspection
+        open={state.route === "task"}
+        detail={detail}
+        model={model}
+        state={state}
+        cursor={cursor}
+        onSelect={select}
         onClose={() => {
-          surface(inspection, false, setInspection)
+          if (admitted()) {
+            lifetime.lease++
+            if (onCloseInspection) onCloseInspection()
+            else onChange({ route: "tasks", selected: null }, true)
+          }
         }}
-        title="Torque record inspection"
-        meta={detail ? `${detail.task.id} / ${detail.run.id} · ${state.cutoff}` : ""}
-        footer={
-          <Button
-            onClick={() => {
-              surface(inspection, false, setInspection)
-            }}
-          >
-            Close record inspection
-          </Button>
+        returnTarget={() =>
+          opener.current?.isConnected
+            ? opener.current
+            : (boardAnchor.current ?? headingAnchor.current)
         }
-      >
-        {detail && (
-          <RunDetailBody
-            detail={detail}
-            onIntent={(action, id) => {
-              if (admitted()) setIntent(`${action} / ${id}: inspected locally, no execution.`)
-            }}
-          />
-        )}
-      </DetailDialog>
+        onIntent={(action, id) => {
+          if (admitted()) setIntent(`${action} / ${id}: inspected locally, no execution.`)
+        }}
+        intent={intent}
+      />
     </AppShell>
   )
 }

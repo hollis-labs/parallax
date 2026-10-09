@@ -1,3 +1,4 @@
+import { ROW_INTERACTIVE_SELECTOR, rowInteractiveProps } from "@hollis-labs/design-components"
 import {
   BookOpen,
   Calendar,
@@ -7,7 +8,7 @@ import {
   Search,
   SlidersHorizontal,
 } from "lucide-react"
-import { useEffect, useLayoutEffect, useRef, useState } from "react"
+import { type RefObject, useEffect, useLayoutEffect, useRef, useState } from "react"
 import type { OperationsModel } from "../../operations/model"
 import { ResourceNotice } from "../../operations/Views"
 import { operationsMetadata } from "./operations-metadata"
@@ -35,11 +36,15 @@ export function TorqueOperations({
   state,
   onQuery,
   onSelect,
+  onCursor,
+  anchorRef,
 }: {
   model: OperationsModel
   state: TorqueState
   onQuery: (query: string) => void
   onSelect: (id: string) => void
+  onCursor: (cursor: { identity: string; ids: string[] }) => void
+  anchorRef: RefObject<HTMLInputElement | null>
 }) {
   const [active, setActive] = useState(
     statuses.filter((s) => !["archived", "abandoned", "cancelled"].includes(s)),
@@ -170,6 +175,10 @@ export function TorqueOperations({
     setVisibleCount(50)
   }, [filterFrame])
   const visible = matching.slice(0, visibleCount)
+  const cursorIds = JSON.stringify(visible.map((r) => r.task.id))
+  useLayoutEffect(() => {
+    onCursor({ identity, ids: JSON.parse(cursorIds) })
+  }, [identity, cursorIds, onCursor])
   const currentFilter = useRef(filterFrame)
   currentFilter.current = filterFrame
   useEffect(() => {
@@ -231,6 +240,7 @@ export function TorqueOperations({
           </button>
           <Search size={14} />
           <input
+            ref={anchorRef}
             aria-label="Example task filter"
             placeholder="Search…"
             value={state.query}
@@ -416,10 +426,42 @@ export function TorqueOperations({
             </thead>
             <tbody>
               {visible.map((r) => (
-                <tr key={r.task.id} data-selected={selected.includes(r.task.id)}>
+                <tr
+                  key={r.task.id}
+                  data-selected={selected.includes(r.task.id)}
+                  tabIndex={0}
+                  onClick={(e) => {
+                    if (
+                      admitted() &&
+                      e.button === 0 &&
+                      !e.ctrlKey &&
+                      !e.metaKey &&
+                      !e.shiftKey &&
+                      !e.altKey &&
+                      !(e.target instanceof Element && e.target.closest(ROW_INTERACTIVE_SELECTOR))
+                    )
+                      onSelect(r.task.id)
+                  }}
+                  onKeyDown={(e) => {
+                    if (
+                      admitted() &&
+                      e.target === e.currentTarget &&
+                      !e.nativeEvent.isComposing &&
+                      !e.ctrlKey &&
+                      !e.metaKey &&
+                      !e.shiftKey &&
+                      !e.altKey &&
+                      (e.key === "Enter" || e.key === " ")
+                    ) {
+                      e.preventDefault()
+                      onSelect(r.task.id)
+                    }
+                  }}
+                >
                   <td>
                     <input
                       type="checkbox"
+                      {...rowInteractiveProps(true)}
                       aria-label={`Select task ${r.task.title}`}
                       checked={selected.includes(r.task.id)}
                       onChange={(e) =>
@@ -435,9 +477,17 @@ export function TorqueOperations({
                   </td>
                   <td className="torque-ops-task">
                     <a
+                      {...rowInteractiveProps(true)}
                       href={torqueHref(state, { route: "task", selected: r.task.id })}
                       onClick={(e) => {
-                        if (admitted() && e.button === 0 && !e.ctrlKey && !e.metaKey) {
+                        if (
+                          admitted() &&
+                          e.button === 0 &&
+                          !e.ctrlKey &&
+                          !e.metaKey &&
+                          !e.shiftKey &&
+                          !e.altKey
+                        ) {
                           e.preventDefault()
                           onSelect(r.task.id)
                         }
@@ -501,6 +551,7 @@ export function TorqueOperations({
                   <td>
                     <button
                       type="button"
+                      {...rowInteractiveProps(true)}
                       aria-label={`Inspect task ${r.task.id}`}
                       onClick={() => {
                         if (admitted()) onSelect(r.task.id)

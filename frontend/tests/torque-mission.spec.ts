@@ -144,7 +144,6 @@ test("Usage actual nullable area zero unavailable sparse split and exact receipt
   await expect(
     page.getByRole("heading", { name: "Task and run inspection", exact: true }),
   ).toBeVisible()
-  await page.getByRole("button", { name: "Open bounded record details", exact: true }).click()
   await expect(page.getByRole("dialog")).toContainText("3,812")
   const dialog = page.getByRole("dialog")
   await expect.poll(() => dialog.evaluate((e) => getComputedStyle(e).opacity)).toBe("1")
@@ -196,7 +195,7 @@ test("Usage actual nullable area zero unavailable sparse split and exact receipt
     .getByRole("link", { name: "Observability", exact: true })
     .click()
   await page.getByRole("tab", { name: "Usage", exact: true }).click()
-  await expect(page).toHaveURL(/selected=TASK-003/)
+  await expect(page).not.toHaveURL(/selected=/)
   await expect(page.locator(".torque-mission")).toContainText("3812 tokens")
 })
 test("native UTC companion bounded scroll reaches full final USD coverage and last inspection without outer chaining", async ({
@@ -253,13 +252,10 @@ test("native UTC companion bounded scroll reaches full final USD coverage and la
     page.getByRole("heading", { name: "Task and run inspection", exact: true }),
   ).toBeVisible()
   await expect(page).toHaveURL(/selected=TASK-001/)
-  await page.getByRole("button", { name: "Open bounded record details", exact: true }).click()
   await expect(page.getByRole("dialog")).toContainText("USAGE-001")
   await page.keyboard.press("Escape")
   await expect(page.getByRole("dialog")).toHaveCount(0)
-  await expect(
-    page.getByRole("button", { name: "Open bounded record details", exact: true }),
-  ).toBeFocused()
+  await expect(page).toHaveURL(/screen=dashboard/)
   await page.getByRole("button", { name: "Open app navigation", exact: true }).click()
   await page
     .getByRole("dialog", { name: "Torque navigation", exact: true })
