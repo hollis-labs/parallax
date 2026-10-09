@@ -11,7 +11,7 @@ import { operationsModel } from "../src/operations/model"
 const source = torqueSource("populated", "torque-16w")
 const at = (scenario = "populated", cutoff = source.clock, query = "") =>
   operationsModel(scenario, query, { source, cutoff })
-const entry = "/?example=torque&profile=torque-16w&theme=p4-white&mode=light"
+const entry = "/?example=torque&screen=dashboard&profile=torque-16w&theme=p4-white&mode=light"
 test("reference Mission usage sums retain actual receipt joins window sample and independent classifier pipeline operands", () => {
   const d = torqueMissionModel(at())
   expect(d.sample).toMatchObject({ runs: 96, receipts: 96, tokens: 746223 })
@@ -193,7 +193,7 @@ test("Usage actual nullable area zero unavailable sparse split and exact receipt
   await page.setViewportSize({ width: 1280, height: 750 })
   await page
     .getByRole("navigation", { name: "Torque application navigation", exact: true })
-    .getByRole("link", { name: "Dashboard", exact: true })
+    .getByRole("link", { name: "Observability", exact: true })
     .click()
   await page.getByRole("tab", { name: "Usage", exact: true }).click()
   await expect(page).toHaveURL(/selected=TASK-003/)
@@ -263,7 +263,7 @@ test("native UTC companion bounded scroll reaches full final USD coverage and la
   await page.getByRole("button", { name: "Open app navigation", exact: true }).click()
   await page
     .getByRole("dialog", { name: "Torque navigation", exact: true })
-    .getByRole("link", { name: "Dashboard", exact: true })
+    .getByRole("link", { name: "Observability", exact: true })
     .click()
   await expect(page.getByRole("dialog")).toHaveCount(0)
   await page.getByRole("heading", { name: "Provider / model attribution" }).scrollIntoViewIfNeeded()
@@ -288,7 +288,7 @@ test("fresh StrictMode and previous tab callback retirement refuse captured earl
   await page.setViewportSize({ width: 1280, height: 750 })
   await page
     .getByRole("navigation", { name: "Torque application navigation", exact: true })
-    .getByRole("link", { name: "Dashboard", exact: true })
+    .getByRole("link", { name: "Observability", exact: true })
     .click()
   await page.getByRole("tab", { name: "Usage", exact: true }).click()
   await page.evaluate(() => {

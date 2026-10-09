@@ -23,10 +23,10 @@ export type ExampleDefinition = {
 export const torqueDefinition = {
   id: "torque",
   entry: { parameter: "example", value: "torque" },
-  defaultDestination: "dashboard",
+  defaultDestination: "tasks",
   destinations: [
-    { id: "dashboard", label: "Dashboard" },
-    { id: "tasks", label: "Tasks" },
+    { id: "tasks", label: "Operations" },
+    { id: "dashboard", label: "Observability" },
     { id: "runs", label: "Runs" },
     { id: "task", label: "Task and run" },
     { id: "about", label: "About" },

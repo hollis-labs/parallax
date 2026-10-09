@@ -11,7 +11,7 @@ import { sourceDataset, timelineFrames } from "../src/playback/model"
 const source = torqueSource("populated", "torque-16w")
 const at = (scenario = "populated", cutoff = source.clock, query = "") =>
   operationsModel(scenario, query, { source, cutoff })
-const entry = "/?example=torque&profile=torque-16w&theme=p4-white&mode=light"
+const entry = "/?example=torque&screen=dashboard&profile=torque-16w&theme=p4-white&mode=light"
 
 test("reference Activity age endpoints and fixed cutoff retain exact calendar totals and covered zero semantics", async ({
   page,
@@ -235,7 +235,7 @@ test("native UTC disclosures recent keyboard detail and fresh StrictMode callbac
   await page.setViewportSize({ width: 1280, height: 720 })
   await page
     .getByRole("navigation", { name: "Torque application navigation", exact: true })
-    .getByRole("link", { name: "Dashboard", exact: true })
+    .getByRole("link", { name: "Observability", exact: true })
     .click()
   await page.evaluate(() => {
     ;(window as any).oldRecent()
@@ -345,7 +345,7 @@ test("visible reference entry replaces incompatible legacy frame consistently ac
     (t) => !timelineFrames(source).includes(t),
   )
   if (!old) throw new Error("missing distinct legacy frame")
-  await page.goto(`/?example=torque&scenario=large&cutoff=${old}`)
+  await page.goto(`/?example=torque&screen=dashboard&profile=legacy&scenario=large&cutoff=${old}`)
   await page.getByRole("tab", { name: "Usage", exact: true }).click()
   await page.getByRole("button", { name: "Open Torque Activity reference", exact: true }).click()
   await expect(page.getByRole("tab", { name: "Activity", exact: true })).toHaveAttribute(

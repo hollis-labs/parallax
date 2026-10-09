@@ -1,8 +1,8 @@
 import { AppShell, Button, DetailDialog, OverlaySidebar } from "@hollis-labs/design-components"
-import { StatusBadge } from "@hollis-labs/kit-dashboard"
+import { Activity, Cog, FileText, LayoutList, PanelLeft, Radio } from "lucide-react"
 import { type ReactNode, useLayoutEffect, useRef, useState } from "react"
 import { operationsModel, runDetail, scenarios } from "../../operations/model"
-import { ResourceNotice, RunDetailBody } from "../../operations/Views"
+import { RunDetailBody } from "../../operations/Views"
 import { OpsDashboard } from "../../ops-dashboard/Dashboard"
 import { resourceOverrides, timelineFrames } from "../../playback/model"
 import { RunExplorer } from "../../run-explorer/Explorer"
@@ -10,10 +10,13 @@ import { exampleContext, torqueDefinition } from "../contracts"
 import { FixtureContracts } from "../FixtureContracts"
 import { TorqueActivity } from "./Activity"
 import { TorqueMission } from "./Mission"
+import { TorqueOperations } from "./Operations"
+import { operationsMetadata } from "./operations-metadata"
 import { TorqueReferenceEvidence } from "./ReferenceEvidence"
 import { torqueProfiles, torqueReferenceModel, torqueSource } from "./reference"
 import { type TorqueState, torqueHref } from "./routes"
 import "./torque.css"
+import "./operations.css"
 
 const destinations = torqueDefinition.destinations
   .filter((d) => d.id !== "task")
@@ -126,7 +129,18 @@ export function TorqueExample({
             }
           }}
         >
-          {d.label}
+          <span className="torque-nav-icon">
+            {d.route === "tasks" ? (
+              <LayoutList size={16} />
+            ) : d.route === "dashboard" ? (
+              <Activity size={16} />
+            ) : d.route === "runs" ? (
+              <Radio size={16} />
+            ) : (
+              <FileText size={16} />
+            )}
+          </span>
+          <span className="torque-nav-label">{d.label}</span>
         </a>
       ))}
     </nav>
@@ -153,6 +167,10 @@ export function TorqueExample({
         </select>
       </label>
       <p>Local fixture review; no live collection or business effects.</p>
+      <p>
+        Operations board status, priority, scopes, tags and executor are fictional annotations.
+        Dates and usage come from admitted records; detail preserves original task/run status.
+      </p>
       <label>
         Scenario
         <select
@@ -241,23 +259,26 @@ export function TorqueExample({
   )
   return (
     <AppShell
-      className="torque-example"
+      className={`torque-example ${state.route === "tasks" ? "torque-operations-shell" : ""}`}
       nav={
         <aside className="torque-sidebar">
           <a
             className="torque-brand"
-            href={torqueHref(state, { route: "dashboard" })}
+            href={torqueHref(state, { route: "tasks" })}
             onClick={(e) => {
               e.preventDefault()
-              change({ route: "dashboard" })
+              change({ route: "tasks" })
             }}
           >
-            Torque<span>Fixture example</span>
+            <Cog size={20} />
+            <span>Torque</span>
           </a>
           {links}
           <footer>
-            <a href="/?view=Review+Workbench">Back to review lab</a>
-            <p>Readonly recorded evidence</p>
+            <a href="/?view=Review+Workbench">
+              <PanelLeft size={16} />
+              <span className="torque-nav-label">Back to review lab</span>
+            </a>
           </footer>
         </aside>
       }
@@ -278,15 +299,38 @@ export function TorqueExample({
               }
             >
               {links}
-              <a href="/?view=Review+Workbench">Back to review lab</a>
+              <a href="/?view=Review+Workbench">
+                <PanelLeft size={16} />
+                <span className="torque-nav-label">Back to review lab</span>
+              </a>
             </OverlaySidebar>
           </div>
           <div className="torque-heading">
-            <strong>{title}</strong>
+            <h1>{title}</h1>
             <span>
               {state.cutoff.slice(11, 19)} UTC · {model.resource}
             </span>
           </div>
+          {state.route === "tasks" && (
+            <div className="torque-header-scopes">
+              {["Projects", "Sprints", "Epics", "Scope"].map((label) => (
+                <button
+                  type="button"
+                  key={label}
+                  onClick={() => {
+                    if (admitted())
+                      pageRoot.current
+                        ?.querySelector<HTMLSelectElement>(
+                          `select[aria-label="Filter by ${label === "Scope" ? "tag" : label.toLowerCase().slice(0, -1)}"]`,
+                        )
+                        ?.focus()
+                  }}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          )}
           <OverlaySidebar
             side="right"
             open={reviewOpen}
@@ -310,7 +354,12 @@ export function TorqueExample({
           <RunExplorer model={model} onInspectRecord={select} />
         </div>
       ) : (
-        <section className="torque-page" ref={pageRoot} aria-label={`${title} page scroll`}>
+        <section
+          className="torque-page"
+          ref={pageRoot}
+          aria-label={`${title} page scroll`}
+          data-operations={state.route === "tasks"}
+        >
           {state.route === "dashboard" ? (
             <>
               {state.profile === "legacy" && (
@@ -357,49 +406,21 @@ export function TorqueExample({
               />
             </>
           ) : state.route === "tasks" ? (
-            <section>
-              <h1>Tasks</h1>
-              <p>Current admitted tasks and distinct run lifecycle, through {state.cutoff}.</p>
-              <label>
-                Filter supplied tasks
-                <input
-                  aria-label="Example task filter"
-                  value={state.query}
-                  onChange={(e) => change({ query: e.target.value, selected: null }, true)}
-                />
-              </label>
-              {!model.accessible ? (
-                <ResourceNotice model={model} />
-              ) : model.tasks.length ? (
-                <div className="torque-task-list">
-                  {model.tasks.map((t) => (
-                    <a
-                      key={t.id}
-                      href={torqueHref(state, { route: "task", selected: t.id })}
-                      onClick={(e) => {
-                        e.preventDefault()
-                        select(t.id)
-                      }}
-                    >
-                      <strong>{t.title}</strong>
-                      <span>
-                        {t.id} · {t.runId} · {t.owner ?? "Owner unknown"}
-                      </span>
-                      <StatusBadge status={t.status} />
-                    </a>
-                  ))}
-                </div>
-              ) : (
-                <p>No admitted matching tasks. Known count 0.</p>
-              )}
-            </section>
+            <TorqueOperations
+              model={model}
+              state={state}
+              onQuery={(query) => change({ query, selected: null }, true)}
+              onSelect={select}
+            />
           ) : state.route === "task" ? (
             <section>
               <h1>Task and run inspection</h1>
               {detail ? (
                 <>
                   <p>
-                    {detail.task.id} / {detail.run.id} · selected admitted record
+                    {detail.task.id} / {detail.run.id} · selected admitted record · Fictional board
+                    status: {operationsMetadata[detail.task.id]?.status ?? "Unknown"}· Recorded task
+                    status: {detail.task.status}
                   </p>
                   <Button
                     onClick={() => {
@@ -425,6 +446,11 @@ export function TorqueExample({
           ) : (
             <section className="torque-about">
               <h1>About this example</h1>
+              <p>
+                Operations uses fixed fictional task-board annotations for status, priority and
+                scope. Cutoff admits original graph evidence, not authored status history. Original
+                task/run status is preserved in detail.
+              </p>
               <p>
                 One standalone application shell, using operations/v2 fixed fixtures and current
                 reviewed presentation components.
@@ -452,12 +478,14 @@ export function TorqueExample({
             </section>
           )}
           {intent && <p role="status">{intent}</p>}
-          <footer className="torque-page-footer">
-            {state.selected && detail
-              ? `Selected ${detail.task.id} / ${detail.run.id}`
-              : "No admitted selection"}{" "}
-            · {model.dataset.version} · readonly fixture
-          </footer>
+          {state.route !== "tasks" && (
+            <footer className="torque-page-footer">
+              {state.selected && detail
+                ? `Selected ${detail.task.id} / ${detail.run.id}`
+                : "No admitted selection"}{" "}
+              · {model.dataset.version} · readonly fixture
+            </footer>
+          )}
         </section>
       )}
       <DetailDialog

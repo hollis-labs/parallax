@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test"
 import { sourceDataset, timelineFrames } from "../src/playback/model"
 
-const entry = "/?example=torque&theme=p4-white&mode=light"
+const entry = "/?example=torque&profile=legacy&theme=p4-white&mode=light"
 const nav = (page: any) =>
   page.getByRole("navigation", { name: "Torque application navigation", exact: true })
 test("standalone app native routes reload and browser back retain admitted selected record and cutoff", async ({
@@ -15,24 +15,24 @@ test("standalone app native routes reload and browser back retain admitted selec
   await nav(page).getByRole("link", { name: "About", exact: true }).click()
   await expect(page.locator('dt:text-is("Reference") + dd')).toHaveText("2026-10-04T14:30:00Z")
   await expect(page.locator('dt:text-is("Cutoff") + dd')).toHaveText("2026-10-04T14:15:15Z")
-  await nav(page).getByRole("link", { name: "Tasks", exact: true }).click()
+  await nav(page).getByRole("link", { name: "Operations", exact: true }).click()
   await expect(page).toHaveURL(/screen=tasks/)
   await expect(page).toHaveURL(/selected=TASK-003/)
   await page.reload()
-  await expect(nav(page).getByRole("link", { name: "Tasks", exact: true })).toHaveAttribute(
+  await expect(nav(page).getByRole("link", { name: "Operations", exact: true })).toHaveAttribute(
     "aria-current",
     "page",
   )
-  await nav(page).getByRole("link", { name: "Dashboard", exact: true }).click()
+  await nav(page).getByRole("link", { name: "Observability", exact: true }).click()
   await expect(
     page.getByRole("region", { name: "Unified Ops Dashboard", exact: true }),
   ).toBeVisible()
   await page.goBack()
-  await expect(page.getByRole("heading", { name: "Tasks", exact: true })).toBeVisible()
-  await nav(page).getByRole("link", { name: "Dashboard", exact: true }).click()
+  await expect(page.getByRole("heading", { name: "Operations", exact: true })).toBeVisible()
+  await nav(page).getByRole("link", { name: "Observability", exact: true }).click()
   await page.getByRole("tab", { name: "Usage", exact: true }).click()
   await expect(page).toHaveURL(/tab=Usage/)
-  await nav(page).getByRole("link", { name: "Tasks", exact: true }).click()
+  await nav(page).getByRole("link", { name: "Operations", exact: true }).click()
   await page.goBack()
   await expect(page.getByRole("tab", { name: "Usage", exact: true })).toHaveAttribute(
     "aria-selected",
@@ -64,7 +64,9 @@ test("standalone app native routes reload and browser back retain admitted selec
     mode: "dark",
   }))
     expect(new URL(page.url()).searchParams.get(key)).toBe(value)
-  await expect(page.locator(".torque-page-footer")).toContainText("TASK-001 / RUN-001")
+  await expect(page.locator(".torque-page-footer, .torque-ops-footer")).toContainText(
+    "TASK-001 / RUN-001",
+  )
 })
 test("native compact review source and prefix retirement withhold old selection while current callbacks stay usable", async ({
   page,
@@ -82,25 +84,25 @@ test("native compact review source and prefix retirement withhold old selection 
   await expect(page.locator(".torque-page")).toContainText("No selected admitted task")
   await page.getByRole("button", { name: "Review fixtures", exact: true }).click()
   await page.getByLabel("Example scenario", { exact: true }).selectOption("populated")
-  await nav(page).getByRole("link", { name: "Tasks", exact: true }).click()
+  await nav(page).getByRole("link", { name: "Operations", exact: true }).click()
   await page.getByLabel("Example task filter", { exact: true }).pressSequentially("gateway")
   await expect(page.getByLabel("Example task filter", { exact: true })).toBeFocused()
-  await expect(page.locator(".torque-task-list a")).toHaveCount(1)
-  await page.locator(".torque-task-list a").click()
+  await expect(page.locator(".torque-ops-task > a")).toHaveCount(1)
+  await page.locator(".torque-ops-task > a").click()
   await expect(page).toHaveURL(/selected=TASK-001/)
 })
 test("history roundtrips and StrictMode native first interaction retire captured callbacks and invalid reload selection", async ({
   page,
 }) => {
   await page.goto("http://127.0.0.1:18545" + entry + "&screen=tasks")
-  const dashboard = nav(page).getByRole("link", { name: "Dashboard", exact: true })
+  const dashboard = nav(page).getByRole("link", { name: "Observability", exact: true })
   await dashboard.evaluate((e) => {
     const key = Object.keys(e).find((k) => k.startsWith("__reactProps"))!
     ;(window as any).oldNav = (e as any)[key].onClick
   })
   await dashboard.click()
   await page.goBack()
-  await expect(page.getByRole("heading", { name: "Tasks", exact: true })).toBeVisible()
+  await expect(page.getByRole("heading", { name: "Operations", exact: true })).toBeVisible()
   await page.evaluate(() => {
     ;(window as any).oldNav({ button: 0, preventDefault() {} })
   })
@@ -128,13 +130,15 @@ test("desktop and short-height app show complete nav footer connected readonly r
   await page.goto(entry)
   await expect(page.locator(".torque-sidebar")).toBeVisible()
   await page.screenshot({ path: info.outputPath("torque-shell-dashboard-desktop.png") })
-  await nav(page).getByRole("link", { name: "Tasks", exact: true }).click()
+  await nav(page).getByRole("link", { name: "Operations", exact: true }).click()
   await page.screenshot({ path: info.outputPath("torque-shell-tasks-desktop.png") })
   await nav(page).getByRole("link", { name: "Runs", exact: true }).click()
   await expect(page.getByRole("heading", { name: "Run Explorer", exact: true })).toBeVisible()
   await page.screenshot({ path: info.outputPath("torque-shell-runs-desktop.png") })
-  await nav(page).getByRole("link", { name: "Tasks", exact: true }).click()
-  await page.locator(".torque-task-list a").first().click()
+  await nav(page).getByRole("link", { name: "Operations", exact: true }).click()
+  await page
+    .getByRole("link", { name: "Review gateway permission boundaries", exact: true })
+    .click()
   await page.screenshot({ path: info.outputPath("torque-shell-record-desktop.png") })
   await page.getByRole("button", { name: "Open bounded record details", exact: true }).click()
   await expect(
@@ -199,9 +203,9 @@ test("390 dark native navigation and bounded review sheets focus return and app 
   await page.screenshot({ path: info.outputPath("torque-shell-navigation-narrow.png") })
   await page
     .getByRole("dialog", { name: "Torque navigation", exact: true })
-    .getByRole("link", { name: "Tasks", exact: true })
+    .getByRole("link", { name: "Operations", exact: true })
     .click()
-  await expect(page.getByRole("heading", { name: "Tasks", exact: true })).toBeVisible()
+  await expect(page.getByRole("heading", { name: "Operations", exact: true })).toBeVisible()
   await expect(page.getByRole("dialog")).toHaveCount(0)
   await page.screenshot({ path: info.outputPath("torque-shell-tasks-narrow.png") })
   await page.getByRole("button", { name: "Review fixtures", exact: true }).click()
@@ -229,7 +233,9 @@ test("390 dark native navigation and bounded review sheets focus return and app 
   await page.keyboard.press("Escape")
   await expect(page.getByRole("button", { name: "Review fixtures", exact: true })).toBeFocused()
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)
-  await page.locator(".torque-task-list a").first().click()
+  await page
+    .getByRole("link", { name: "Review gateway permission boundaries", exact: true })
+    .click()
   const trigger = page.getByRole("button", { name: "Open bounded record details", exact: true })
   await trigger.click()
   const dialog = page.getByRole("dialog", { name: "Torque record inspection", exact: true })
@@ -284,7 +290,7 @@ test("fullscreen portable complete app shares native routes and resource policy 
     await expect(page.locator(".torque-example")).toBeVisible()
     expect(await page.locator(".torque-example").count()).toBe(1)
   }
-  await nav(page).getByRole("link", { name: "Dashboard", exact: true }).click()
+  await nav(page).getByRole("link", { name: "Observability", exact: true }).click()
   await expect(
     page.getByRole("region", { name: "Unified Ops Dashboard", exact: true }),
   ).toBeVisible()

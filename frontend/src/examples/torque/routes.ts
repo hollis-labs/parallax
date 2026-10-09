@@ -18,7 +18,7 @@ export type TorqueState = {
 }
 export function initialTorqueState(params: URLSearchParams): TorqueState {
   const scenario = normalizeScenario(params.get("scenario") ?? "populated"),
-    profile = torqueProfiles.find((p) => p === params.get("profile")) ?? "legacy",
+    profile = torqueProfiles.find((p) => p === params.get("profile")) ?? "torque-16w",
     frames = timelineFrames(torqueSource(scenario, profile)),
     raw = params.get("cutoff")
   return admitTorqueState({
@@ -40,7 +40,7 @@ export function initialTorqueState(params: URLSearchParams): TorqueState {
       ["p4-white", "p1-green-phosphor", "p3-amber-phosphor", "hi-contrast"].find(
         (t) => t === params.get("theme"),
       ) ?? "p4-white",
-    mode: params.get("mode") === "dark" ? "dark" : "light",
+    mode: params.get("mode") === "light" ? "light" : "dark",
   })
 }
 export function torqueHref(state: TorqueState, patch: Partial<TorqueState> = {}) {

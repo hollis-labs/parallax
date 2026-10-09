@@ -4400,7 +4400,6 @@
       "frontend/src/communications/Messaging.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
       "frontend/src/examples/torque/Activity.tsx",
-      "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/layouts/Comparison.tsx",
       "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Operations.stories.tsx",

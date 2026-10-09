@@ -37,9 +37,10 @@ export const destinations: readonly Definition[] = [
     group: "App Examples",
     icon: "Gauge",
     source: "Standalone current operations prefix",
-    scope: "Connected Dashboard, Tasks, Runs and readonly Task/Run inspection in one app shell.",
+    scope:
+      "Dense Operations board, Observability, Runs and readonly Task/Run inspection in one app shell.",
     gap: "torque-16w has reviewed Activity/Mission/Usage reference presentations; legacy packs retain labelled adaptations. No live collection or business actions.",
-    story: "app-examples-torque--dashboard",
+    story: "app-examples-torque--tasks",
     playback: true,
   },
   {

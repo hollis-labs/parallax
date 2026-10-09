@@ -24,8 +24,8 @@ const examples = [
     id: "Torque Example",
     route: "torque",
     root: ".torque-example",
-    footer: ".torque-page-footer",
-    story: "app-examples-torque--dashboard",
+    footer: ".torque-ops-footer",
+    story: "app-examples-torque--tasks",
   },
   {
     id: "Chat Example",
