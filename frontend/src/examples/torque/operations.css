@@ -615,7 +615,7 @@
 
 @media (max-height: 540px) {
   .torque-ops-chips[data-open] {
-    max-height: 88px;
+    max-height: 64px;
     overflow-y: auto;
   }
 }
