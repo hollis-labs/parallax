@@ -76,7 +76,10 @@ test("native compact review source and prefix retirement withhold old selection 
   page,
 }) => {
   await page.goto(entry + "&screen=task&selected=TASK-003")
+  const inspection = page.getByRole("dialog", { name: "Task and run inspection", exact: true })
+  await expect(inspection).toBeVisible()
   await page.keyboard.press("Escape")
+  await expect(inspection).toHaveCount(0)
   await page.getByRole("button", { name: "Review fixtures", exact: true }).click()
   await page.getByLabel("Example review position", { exact: true }).fill("1")
   await expect(page).not.toHaveURL(/selected=/)
