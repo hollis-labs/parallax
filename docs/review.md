@@ -1,5 +1,9 @@
 # Review evidence and boundaries
 
+## Current Go dependency migration
+
+CW-20261009-0023 adopts released Chimera v0.1.0, libs/plugin-mcp v0.1.1 and libs/ui-go v0.1.0 with Go 1.26.9. The fixture registry uses the consolidated SDK package identity required by Chimera. Frontend pins, authored fixtures and reviewed plugin bytes are unchanged. Earlier dependency pins and validation counts below describe their historical checkpoints.
+
 Commands: `make check`; `node scripts/coverage.mjs`; `npm run build-storybook --prefix frontend`; `npm exec --prefix frontend -- playwright test --config frontend/playwright.config.ts` against `make run`.
 
 Browser tests cover coherent detail, transient business intents/reset, light mode, large-list page scroll and narrow layout. Tests use bundled fixtures and local host only. Screenshots are ignored review artifacts under `.scratch`. CSS TSX design lint and CSS variable resolution are separate checks; browser computed-style evidence confirms 24px page padding, actual themed text/background and source registration.

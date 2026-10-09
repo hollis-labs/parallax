@@ -7,7 +7,7 @@ make run
 # http://127.0.0.1:18441
 ```
 
-Requires Go 1.26.6+ and Node 22.12+. Dependency installation needs network access; the built binary runs independently. `make ui-dev` starts Vite with same-origin fixture/plugin proxy to the running Go host. `make fixtures` explicitly regenerates bundled JSON; `make check` validates Go, frontend and CSS contracts.
+Requires Go 1.26.9+ and Node 22.12+. The Go host is Chimera v0.1.0, with consolidated plugin SDK/host packages from libs/plugin-mcp v0.1.1 and webui from libs/ui-go v0.1.0. Dependency installation needs network access; the built binary runs independently. `make ui-dev` starts Vite with same-origin fixture/plugin proxy to the running Go host. `make fixtures` explicitly regenerates bundled JSON; `make check` validates Go, frontend and CSS contracts.
 
 Activity, Mission Control and Usage share deterministic Go-generated 8-record and 80-record profiles, seed 4421/reference time `2026-10-04T14:30:00Z`. Named scenario controls show populated/empty/loading/error/degraded/unavailable/permission-denied/long-label/large/sparse/unknown-status examples. Fixture timeline review provides bounded local play/pause/step/seek/reset over authored UTC evidence boundaries. Operations, run details, Layouts, plugin counters and compatible Observability projections use the same cutoff; future states/messages/outputs/usage and uncovered bins remain unavailable. Loading/error/degraded/unavailable resource overrides are presentation-only. Scenario/reset/seek/source retirement cancels old timer and presentation producers. Other families are explicitly full-snapshot views.
 
