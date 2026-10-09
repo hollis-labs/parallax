@@ -22,7 +22,10 @@ export function StandaloneTorqueExample() {
     const next = admitTorqueState({ ...stateRef.current, ...patch })
     host?.resetContext({ ...host.context.getSnapshot(), retiredExample: true })
     setState(next)
-    history[replace ? "replaceState" : "pushState"]({}, "", torqueHref(next))
+    const opening = stateRef.current.route !== "task" && next.route === "task"
+    const marker =
+      next.route === "task" ? (opening ? { torqueOverlay: true } : (history.state ?? {})) : {}
+    history[replace ? "replaceState" : "pushState"](marker, "", torqueHref(next))
   }
   navigate.current = change
   useEffect(() => {
@@ -32,7 +35,7 @@ export function StandaloneTorqueExample() {
     const pop = () => {
       host?.resetContext({ ...host.context.getSnapshot(), retiredExample: true })
       const next = initialTorqueState(new URLSearchParams(location.search))
-      history.replaceState({}, "", torqueHref(next))
+      history.replaceState(history.state ?? {}, "", torqueHref(next))
       setState(next)
     }
     addEventListener("popstate", pop)
@@ -109,6 +112,10 @@ export function StandaloneTorqueExample() {
     <TorqueExample
       state={state}
       onChange={change}
+      onCloseInspection={() => {
+        if (history.state?.torqueOverlay) history.back()
+        else change({ route: "tasks", selected: null }, true)
+      }}
       contributions={
         host ? (
           <Contributions host={host} status={status} onUnload={() => setStatus("unloaded")} />

@@ -11,13 +11,15 @@ test("standalone app native routes reload and browser back retain admitted selec
   await expect(
     page.getByRole("heading", { name: "Task and run inspection", exact: true }),
   ).toBeVisible()
-  await expect(page.locator(".torque-page")).toContainText("TASK-003 / RUN-003")
+  await expect(
+    page.getByRole("dialog", { name: "Task and run inspection", exact: true }),
+  ).toContainText("TASK-003 / RUN-003")
+  await page.keyboard.press("Escape")
   await nav(page).getByRole("link", { name: "About", exact: true }).click()
   await expect(page.locator('dt:text-is("Reference") + dd')).toHaveText("2026-10-04T14:30:00Z")
   await expect(page.locator('dt:text-is("Cutoff") + dd')).toHaveText("2026-10-04T14:15:15Z")
   await nav(page).getByRole("link", { name: "Operations", exact: true }).click()
   await expect(page).toHaveURL(/screen=tasks/)
-  await expect(page).toHaveURL(/selected=TASK-003/)
   await page.reload()
   await expect(nav(page).getByRole("link", { name: "Operations", exact: true })).toHaveAttribute(
     "aria-current",
@@ -43,7 +45,9 @@ test("standalone app native routes reload and browser back retain admitted selec
   await page.getByRole("button", { name: /^Inspect RUN-001 / }).click()
   await expect(page).toHaveURL(/screen=task/)
   await expect(page).toHaveURL(/selected=TASK-001/)
-  await expect(page.locator(".torque-page")).toContainText("TASK-001 / RUN-001")
+  await expect(
+    page.getByRole("dialog", { name: "Task and run inspection", exact: true }),
+  ).toContainText("TASK-001 / RUN-001")
   await expect(
     page.getByRole("button", { name: "Open Review Workbench", exact: true }),
   ).toHaveCount(0)
@@ -72,6 +76,10 @@ test("native compact review source and prefix retirement withhold old selection 
   page,
 }) => {
   await page.goto(entry + "&screen=task&selected=TASK-003")
+  const inspection = page.getByRole("dialog", { name: "Task and run inspection", exact: true })
+  await expect(inspection).toBeVisible()
+  await page.keyboard.press("Escape")
+  await expect(inspection).toHaveCount(0)
   await page.getByRole("button", { name: "Review fixtures", exact: true }).click()
   await page.getByLabel("Example review position", { exact: true }).fill("1")
   await expect(page).not.toHaveURL(/selected=/)
@@ -81,7 +89,7 @@ test("native compact review source and prefix retirement withhold old selection 
   await page.getByRole("button", { name: "Review fixtures", exact: true }).click()
   await expect(page.getByLabel("Example review position", { exact: true })).toHaveValue("1")
   await page.getByLabel("Example scenario", { exact: true }).selectOption("empty")
-  await expect(page.locator(".torque-page")).toContainText("No selected admitted task")
+  await expect(page.locator(".torque-ops-task > a")).toHaveCount(0)
   await page.getByRole("button", { name: "Review fixtures", exact: true }).click()
   await page.getByLabel("Example scenario", { exact: true }).selectOption("populated")
   await nav(page).getByRole("link", { name: "Operations", exact: true }).click()
@@ -121,7 +129,9 @@ test("history roundtrips and StrictMode native first interaction retire captured
   await expect(page.getByRole("heading", { name: "About this example", exact: true })).toBeVisible()
   await page.goto(entry + "&screen=task&selected=TASK-003&cutoff=2026-10-04T14:10:00Z")
   await expect(page).not.toHaveURL(/selected=/)
-  await expect(page.locator(".torque-page")).toContainText("No selected admitted task")
+  await expect(
+    page.getByRole("dialog", { name: "Task and run inspection", exact: true }),
+  ).toContainText("No selected admitted task")
 })
 test("desktop and short-height app show complete nav footer connected readonly record and admitted plugins", async ({
   page,
@@ -140,13 +150,12 @@ test("desktop and short-height app show complete nav footer connected readonly r
     .getByRole("link", { name: "Review gateway permission boundaries", exact: true })
     .click()
   await page.screenshot({ path: info.outputPath("torque-shell-record-desktop.png") })
-  await page.getByRole("button", { name: "Open bounded record details", exact: true }).click()
   await expect(
-    page.getByRole("dialog", { name: "Torque record inspection", exact: true }),
+    page.getByRole("dialog", { name: "Task and run inspection", exact: true }),
   ).toBeVisible()
   await page.keyboard.press("Escape")
   await expect(
-    page.getByRole("dialog", { name: "Torque record inspection", exact: true }),
+    page.getByRole("dialog", { name: "Task and run inspection", exact: true }),
   ).toHaveCount(0)
   await nav(page).getByRole("link", { name: "About", exact: true }).click()
   await expect(
@@ -236,9 +245,11 @@ test("390 dark native navigation and bounded review sheets focus return and app 
   await page
     .getByRole("link", { name: "Review gateway permission boundaries", exact: true })
     .click()
-  const trigger = page.getByRole("button", { name: "Open bounded record details", exact: true })
-  await trigger.click()
-  const dialog = page.getByRole("dialog", { name: "Torque record inspection", exact: true })
+  const trigger = page.getByRole("link", {
+    name: "Review gateway permission boundaries",
+    exact: true,
+  })
+  const dialog = page.getByRole("dialog", { name: "Task and run inspection", exact: true })
   await expect(dialog).toContainText("TASK-001 / RUN-001")
   await expect(dialog).toBeVisible()
   await expect.poll(() => dialog.evaluate((e) => getComputedStyle(e).opacity)).toBe("1")
@@ -252,6 +263,7 @@ test("390 dark native navigation and bounded review sheets focus return and app 
     await page.keyboard.press("Tab")
   await expect(close).toBeFocused()
   await page.keyboard.press("Shift+Tab")
+  await dialog.getByRole("region", { name: "Task evidence scroll", exact: true }).focus()
   await page.keyboard.press("Control+End")
   await expect(
     dialog.getByRole("heading", { name: "Lifecycle events", exact: true }),
@@ -287,6 +299,8 @@ test("fullscreen portable complete app shares native routes and resource policy 
     await page.goto(
       `http://127.0.0.1:18542/iframe.html?id=app-examples-torque--${story}&viewMode=story`,
     )
+    if (await page.getByRole("dialog", { name: "Task and run inspection", exact: true }).count())
+      await page.keyboard.press("Escape")
     await expect(page.locator(".torque-example")).toBeVisible()
     expect(await page.locator(".torque-example").count()).toBe(1)
   }
