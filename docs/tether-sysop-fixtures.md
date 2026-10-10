@@ -30,24 +30,30 @@ All shapes preserve the primary Tether source definitions from `apps/sysop/front
 ### 1. Overview (`OverviewInfo`)
 
 Mirrors the `GET /api/overview` dashboard aggregate payload:
-- **Sessions** (`OverviewSessions`): total 8, running 2 (`sess-007`, `sess-008`), ended 6 (`sess-001` through `sess-006`). Derived rates: 83% success (5/6 ended), 17% failure (1/6 ended), avg duration 10440s. Categorized by state (`running`, `ended`), provider (`claude`, `codex`, `agy`), and project (`parallax`, `tether`, `tangent`). All 8 sessions started within the 24h window (`recent_24h: 8`).
-- **Tool Calls** (`OverviewToolCalls`): total 30, ok 29, errors 1 (96% success rate in standard profile, <95% in degraded variant). Latency metrics: p50 210ms, p95 1450ms, avg 461ms. Slow calls (≥1000ms): 4. Calls within last hour: 2. Ranked lists: `top_tools`, `top_errors`, `by_server`, `latency` bands (`<10ms`, `10-99ms`, `100-499ms`, `500-999ms`, `>=1s`).
+- **Sessions** (`OverviewSessions`): total 8, running 2 (`sess-007`, `sess-008`), ended 6 (`sess-001` through `sess-006`). Derived rates: 83% success (5/6 ended), 17% failure (1/6 ended), avg duration 10440s. Categorized by state (`running`, `ended`), provider (`claude`, `codex`, `agy`), and project (`parallax`, `tether`, `tangent`). Recent 24h: 7 (strict parity with Tether `main.go:3006` `c.After(cutoff)` where `sess-001` was created at the exact cutoff boundary `clock - 24h`, so strictly 7 sessions started after cutoff).
+- **Tool Calls** (`OverviewToolCalls`): total 30, ok 29, errors 1 (96% success rate in standard profile, 90% in degraded variant). Latency metrics: p50 210ms, p95 1450ms, avg 461ms. Slow calls (≥1000ms): 4. Calls within last hour: 2. Ranked lists: `top_tools`, `top_errors`, `by_server`, `latency` bands (`<10ms`, `10-99ms`, `100-499ms`, `500-999ms`, `>=1s`).
 - **Messages** (`OverviewMessages`): total 24, unread 0 (in standard; 7 in degraded), archived 4, recent24h 24. Distributions: `by_kind` (`turn`, `notice`, `system`), `by_scope` (`agent`, `user`, `group`).
 - **Events** (`OverviewEvents`): total 64, recent1h 3 (derived strictly using Tether clock cutoff `clock.Add(-time.Hour)`), latest_seq 64. Distributions: `by_scope` (`session`, `agent`, `system`, `router`, `mesh`), `by_kind` (`session.turn`, `tool.dispatched`, `tool.completed`, `session.started`, `checkpoint.saved`).
 - **AI Gateway** (`OverviewAI`): configured providers 4, enabled 3, routes 6. Requests 140, successes 136, errors 4, budget rejections 1. Tokens: 384k input, 96k output, estimated cost $1.84. Distributions: `by_provider`, `by_model`, `by_event_type`.
 - **Catalog** (`OverviewCatalog`): projects 4, agents 8, providers 4, launches 8.
 - **Health** (`HealthInfo`): status `"ok"`, catalog_root `"/home/chrispian/.tether/catalog"`.
-- **Trend Buckets**: 24 equal-width oldest-first bins across the retrospective 24h window.
+- **Trend Buckets**: 24 variable-range equal-width bins spanning `[min(times), max(times)]` oldest-to-newest, matching Tether `main.go:3346`.
 
 ### 2. Trend Bucket Projection Semantics (`bucketCounts`)
 
-In upstream Tether (`apps/sysop/cmd/tether_sysop/main.go:3346`), `bucketCounts(times []time.Time, n int)` computes:
+In upstream Tether (`apps/sysop/cmd/tether_sysop/main.go:3346`), `bucketCounts(times []time.Time, n int)` calculates dynamic span bounds across the observed slice:
 ```go
-lo := times[0]
-hi := times[len(times)-1]
+lo, hi := times[0], times[0]
+// find min(times) and max(times)
+span := hi.Sub(lo)
 // partitions [lo, hi] into n equal-width buckets, returning counts oldest-to-newest
 ```
-For retrospective 24-hour dashboard views where the observation window is anchored to `clock` (`2026-10-04T14:30:00Z`) and `observedSince` (`2026-10-03T14:30:00Z`), the 24 hourly buckets partition this fixed 24h interval into equal 1-hour slots oldest-first, ensuring deterministic, stable sparkline rendering across all 5 trend categories.
+Rather than anchoring to a fixed 24-hour clock window (`[clock-24h, clock]`), the source algorithm computes variable-range equal-width bins spanning the observed timestamp bounds:
+- **Tool Calls Trend** (`overview.tool_calls.trend`): partitions the observed ~18h span between the first tool call (Oct 3 20:15Z) and latest tool call (Oct 4 14:26Z) into 24 equal-width bins.
+- **Events Trend** (`overview.events.trend`): partitions the observed ~23h 37m span between the first event (Oct 3 14:45Z) and latest event (Oct 4 14:22Z) into 24 equal-width bins.
+- **Messages / Sessions Trends**: similarly partition the exact `[min, max]` span of their respective timestamp series.
+
+A fixed-window 24 hourly partition anchored to the 24h reference clock remains an alternative proposal for future dashboard releases, but the current fixture preserves exact upstream Tether source fidelity with variable-range `[min, max]` bins.
 
 ### 3. Session Provenance & Incompatible Joins
 
@@ -64,7 +70,7 @@ The `tether-sysop/v1` fixture defines authentic, fixture-local sessions (`sess-0
 
 ### 4. Direct / Flat Projection Invariants
 
-`TetherSysopFixture` exposes direct top-level arrays (`events`, `toolCalls`, `scopes`, `registryRows`, `aiProviders`, `aiRoutes`, `aiAuditEvents`, `aiBudgets`) for automated contract and inventory verification.
+`TetherSysopFixture` exposes direct top-level arrays (`events`, `toolCalls`, `scopes`, `sessions`, `registryRows`, `aiProviders`, `aiRoutes`, `aiAuditEvents`, `aiBudgets`) for automated contract and inventory verification.
 
 `ValidateTetherSysop` strictly asserts deep equality between these top-level projections and their canonical nested locations:
 - `f.Events == f.Activity.Events.Events`
@@ -82,16 +88,22 @@ The `tether-sysop/v1` fixture defines authentic, fixture-local sessions (`sess-0
 The fixture bundle provides explicit alternative specimens under `overviewVariants`:
 - `standard`: Canonical baseline derived directly from the underlying activity ledger and session state.
 - `blocked-health`: Simulates catalog permission failure (`health.status = "blocked"`).
-- `degraded-reliability`: Simulates service degradation (`tool_calls.success_pct = 85%`, `slow_calls = 4`, `messages.unread = 7`, `sessions.success_pct = 40%`).
+- `degraded-reliability`: Simulates service degradation (`tool_calls.success_pct = 90%`, `slow_calls = 4`, `messages.unread = 7`, `sessions.success_pct = 45%`).
 - `combined-adverse`: Combines blocked health status with degraded reliability.
 
 **Important Note:** The adverse specimens are synthetic UI stress-test fixtures intended for rendering edge-case error banners, alert badges, and degraded tables. They are intentionally adverse and do NOT reconcile with the underlying raw activity log. Downstream testing should use `standard` for ledger consistency tests and variants for visual state tests.
 
-### 6. AI Gateway Provider Catalog Error Handling
+### 6. Primary Client API & Catalog Error Handling
 
-Per review requirements, the mock API client (`createTetherSysopMockApi`) enforces strict provider catalog lookups:
-- If a known `provider_type` (`anthropic`, `google`) is queried, its catalog model descriptor is returned.
-- If an unknown or unregistered `provider_type` is requested, the client throws `Error("provider catalog unavailable: <provider_type>")` rather than returning an observed-empty collection.
+Per review requirements, the mock API client (`createTetherSysopMockApi`) matches primary Tether `client.ts` signatures:
+- `getAIProviderCatalog(providerType: string)`:
+  - If a known `provider_type` (`anthropic`, `google`) is queried, its catalog model descriptor is returned.
+  - If an unknown or unregistered `provider_type` is requested, the client throws `Error("provider catalog unavailable: <provider_type>")` rather than returning an observed-empty collection.
+- `getRegistry(kind: 'agent' | 'project', query?: RegistryQuery)`:
+  - Validates `kind` ('agent' or 'project') and rejects invalid kinds.
+  - Supports finite query filters: `status`, `role`, `title`, `project`, `capability`, `skill_name`. Rejects unknown query keys with `Error("unsupported registry query filter: <key>")`.
+- `AIRuntimeRouteInfo.usage_budget`:
+  - Carries optional `level` matching upstream Tether `AIUsageBudgetPolicyDTO`.
 
 ### 7. Telemetry Windows & Distinct Datasets
 
@@ -108,17 +120,20 @@ Telemetry across the sysop surface serves different operational purposes and ref
 In accordance with the propose-then-confirm process (DEC-073), the following concrete defaults were implemented:
 
 1. **Trend Bucket Window & Granularity**:
-   - *Default*: 24 hourly buckets oldest-to-newest across all 5 overview trend series.
-   - *Rationale*: Exactly matches Tether Sysop `overviewTrendBuckets = 24` in `cmd/tether_sysop/main.go`.
+   - *Default*: 24 variable-range equal-width buckets spanning `[min(times), max(times)]` oldest-to-newest across all 5 overview trend series.
+   - *Rationale*: Exactly matches Tether Sysop `bucketCounts` in `cmd/tether_sysop/main.go:3346`.
 2. **Fixture-Local Session Namespace**:
    - *Default*: Use explicit fixture-local sessions `sess-001` through `sess-008` with authentic metadata.
    - *Rationale*: Resolves temporal inconsistencies with `operations/v2` 16-minute runs and provides clean provenance.
-3. **Data-Driven AI Gateway Fixtures**:
+3. **Session recent_24h Strict Cutoff**:
+   - *Default*: `recent_24h: 7` based on strict `c.After(clock.Add(-24*time.Hour))`.
+   - *Rationale*: Exactly matches Tether Sysop `main.go:3006`.
+4. **Data-Driven AI Gateway Fixtures**:
    - *Default*: Model metadata, route tables, and budget rules are structured purely as data-driven collections.
    - *Rationale*: Insulates Parallax fixtures from pending one-registry and gateway refactors.
-4. **Registry URN Hierarchy**:
+5. **Registry URN Hierarchy**:
    - *Default*: URN format `msg://agent/agent-mux/<id>` and `msg://project/hollis-labs/<name>`.
    - *Rationale*: Conforms to Tether canonical URN scheme while presenting opaque strings for UI data-table rendering.
-5. **No Visual Pages or Primitives**:
+6. **No Visual Pages or Primitives**:
    - *Default*: Scope restricted strictly to Go fixture generator, validation, TypeScript model adapter, and documentation.
    - *Rationale*: Preserves task boundary; page recreation is reserved for CW-20261010-0099 through -0102.

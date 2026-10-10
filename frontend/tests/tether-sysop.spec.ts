@@ -32,6 +32,7 @@ test("overview model provides standard and required variants", () => {
   expect(standard.messages.trend.length).toBe(24)
   expect(standard.events.trend.length).toBe(24)
   expect(standard.ai.trend.length).toBe(24)
+  expect(standard.sessions.recent_24h).toBe(7)
 
   const blocked = overviewModel("blocked-health")
   expect(blocked.health.status).toBe("blocked")

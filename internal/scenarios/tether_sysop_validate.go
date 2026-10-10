@@ -75,7 +75,7 @@ func ValidateTetherSysop(f TetherSysopFixture) error {
 		if sStart.After(clock) {
 			return fmt.Errorf("session [%d] created_at %v exceeds clock %v", i, sStart, clock)
 		}
-		if sStart.Equal(recent24hCutoff) || sStart.After(recent24hCutoff) {
+		if sStart.After(recent24hCutoff) {
 			sessionRecent24h++
 		}
 		if s.State == "running" {

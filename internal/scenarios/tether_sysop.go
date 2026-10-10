@@ -959,7 +959,7 @@ func GenerateTetherSysop() TetherSysopFixture {
 		sessionProjectCounts[s.ProjectID]++
 		start, _ := time.Parse(time.RFC3339, s.CreatedAt)
 		sessionStarts = append(sessionStarts, start)
-		if start.Equal(recent24hCutoff) || start.After(recent24hCutoff) {
+		if start.After(recent24hCutoff) {
 			sessionRecent24h++
 		}
 		if s.State == "running" {

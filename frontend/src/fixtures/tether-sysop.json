@@ -13,7 +13,7 @@
       "success_pct": 83,
       "failure_pct": 16,
       "avg_seconds": 13800,
-      "recent_24h": 8,
+      "recent_24h": 7,
       "trend": [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1],
       "by_state": [
         {
@@ -323,7 +323,7 @@
         "success_pct": 83,
         "failure_pct": 16,
         "avg_seconds": 13800,
-        "recent_24h": 8,
+        "recent_24h": 7,
         "trend": [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1],
         "by_state": [
           {
@@ -633,7 +633,7 @@
         "success_pct": 45,
         "failure_pct": 55,
         "avg_seconds": 13800,
-        "recent_24h": 8,
+        "recent_24h": 7,
         "trend": [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1],
         "by_state": [
           {
@@ -943,7 +943,7 @@
         "success_pct": 45,
         "failure_pct": 55,
         "avg_seconds": 13800,
-        "recent_24h": 8,
+        "recent_24h": 7,
         "trend": [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1],
         "by_state": [
           {
