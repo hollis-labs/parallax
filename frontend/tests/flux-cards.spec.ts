@@ -1,12 +1,25 @@
 import { readFileSync } from "node:fs"
 import { getBuiltinTheme } from "@hollis-labs/design-tokens"
-import { expect, test } from "@playwright/test"
+import { expect, type Page, test } from "@playwright/test"
 
 const identities: string[] = JSON.parse(
   readFileSync(new URL("../src/examples/flux-cards/operands.json", import.meta.url), "utf8"),
 ).envelopes.map((entry: { type: string }) => entry.type)
 
 const entry = "/?example=flux-cards"
+async function paletteColor(page: Page, value: string | undefined) {
+  if (!value) throw new Error("Palette token unavailable")
+  // Compare actual browser colors across equivalent minified hex/rgb forms.
+  return page.evaluate((color) => {
+    if (!CSS.supports("color", color)) throw new Error("Invalid palette color")
+    const probe = document.createElement("span")
+    probe.style.color = color
+    document.body.append(probe)
+    const canonical = getComputedStyle(probe).color
+    probe.remove()
+    return canonical
+  }, value)
+}
 function lifecycleEntry() {
   const base = new URL(String(test.info().project.use.baseURL))
   // This isolated development HTML is served by the configured Vite listener.
@@ -245,17 +258,24 @@ test("all tool modes and actual theme palettes remain readable at 1280 and 390 w
       const values = getBuiltinTheme(theme)?.tokens[mode as "light" | "dark"]
       if (!values) throw Error("Built-in palette unavailable")
       expect(
-        await page
-          .locator("html")
-          .evaluate((node) => getComputedStyle(node).getPropertyValue("--hl-bg").trim()),
-      ).toBe(values.bg)
+        await paletteColor(
+          page,
+          await page
+            .locator("html")
+            .evaluate((node) => getComputedStyle(node).getPropertyValue("--hl-bg").trim()),
+        ),
+      ).toBe(await paletteColor(page, values.bg))
+      expect(paint.bg).toBe(await paletteColor(page, values.bg))
       const composerMode = theme === "nanite-default" ? "dark" : mode
       const expectedComposer = getBuiltinTheme(theme)?.tokens[composerMode as "light" | "dark"]
       expect(
-        await page
-          .locator(".flux-composer-scope")
-          .evaluate((node) => getComputedStyle(node).getPropertyValue("--hl-bg-elevated").trim()),
-      ).toBe(expectedComposer?.["bg-elevated"])
+        await paletteColor(
+          page,
+          await page
+            .locator(".flux-composer-scope")
+            .evaluate((node) => getComputedStyle(node).getPropertyValue("--hl-bg-elevated").trim()),
+        ),
+      ).toBe(await paletteColor(page, expectedComposer?.["bg-elevated"]))
       await page.screenshot({
         path: info.outputPath(`palette-${theme}-${mode}-1280.png`),
         fullPage: true,
@@ -413,5 +433,67 @@ test("queued return yields to replacement activation, layer and foreground focus
     await expect(page.getByRole("dialog")).toBeVisible()
     await page.keyboard.press("Escape")
     await expect(approve).toBeFocused()
+  }
+})
+
+test("queued own return yields to actual outside native dialog and menu owners", async ({
+  page,
+}) => {
+  for (const owner of ["dialog", "menu"]) {
+    await page.goto(lifecycleEntry())
+    await page.getByRole("button", { name: "Open outside native dialog", exact: true }).click()
+    await expect(
+      page.getByRole("dialog", { name: "Outside native dialog", exact: true }),
+    ).toBeVisible()
+    await page
+      .getByRole("button", { name: "Inspect approve candidate", exact: true })
+      .evaluate((node) => {
+        const key = Object.keys(node).find((name) => name.startsWith("__reactProps$"))!
+        ;(node as any)[key].onClick()
+      })
+    await page
+      .getByRole("button", { name: "Close candidate inspection", exact: true })
+      .evaluate((node) => {
+        const win = window as any
+        const key = Object.keys(node).find((name) => name.startsWith("__reactProps$"))!
+        const original = window.requestAnimationFrame
+        const frames: FrameRequestCallback[] = []
+        window.requestAnimationFrame = (callback) => {
+          frames.push(callback)
+          return 1
+        }
+        ;(node as any)[key].onClick()
+        window.requestAnimationFrame = original
+        win.outsideReturn = frames.find((callback) =>
+          callback.toString().includes("competingFocus"),
+        )
+        if (!win.outsideReturn) throw new Error("author return frame not captured")
+      })
+    await expect(page.getByRole("dialog", { name: "Approval candidate", exact: true })).toHaveCount(
+      0,
+    )
+    if (owner === "dialog")
+      await page.getByRole("textbox", { name: "Outside foreground draft", exact: true }).focus()
+    else {
+      await page.getByRole("button", { name: "Open outside native menu", exact: true }).click()
+      await page
+        .getByRole("menuitem", { name: "Outside foreground menu item", exact: true })
+        .focus()
+    }
+    await page.evaluate(() => {
+      ;(window as any).outsideFocused = document.activeElement
+      ;(window as any).outsideReturn(performance.now())
+    })
+    expect(
+      await page.evaluate(() => document.activeElement === (window as any).outsideFocused),
+    ).toBe(true)
+    if (owner === "dialog")
+      await expect(
+        page.getByRole("textbox", { name: "Outside foreground draft", exact: true }),
+      ).toBeFocused()
+    else
+      await expect(
+        page.getByRole("menuitem", { name: "Outside foreground menu item", exact: true }),
+      ).toBeFocused()
   }
 })

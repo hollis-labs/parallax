@@ -85,7 +85,11 @@ retires pending intent and closes layers; captured prior callbacks are rejected.
 Each committed activation owns a permanently retiring lease, so Activity hide/show
 cannot revive an old callback. Close handlers capture the current layer revision;
 queued focus returns yield to source/access retirement, a newer layer, activation
-cleanup and newer foreground focus. The isolated `flux-cards-lifecycle.html`
+cleanup and newer foreground focus. The exact own popup is captured through the public
+DialogContent ref. The installed DetailDialog does not forward that ref, so this
+local inspection composes existing Dialog/DialogContent/DialogTitle with its
+unchanged shell token grammar; shared kit sources/pins are untouched. Actual
+outside native dialog/menu focus owners are tested. The isolated `flux-cards-lifecycle.html`
 fixture proves this against native React Activity under StrictMode.
 
 The dark composer context applies only to `nanite-default` (Concrete & Signal).

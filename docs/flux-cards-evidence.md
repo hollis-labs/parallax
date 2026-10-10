@@ -10,58 +10,80 @@ Primary source pins and file hashes are in `flux-cards-source.json`: Flux
 `ae5bc8c72e1d58a81fb858a66c688b1e60c0139e`. The entire 274-file preparation scan
 domain matched actual fetched Flux source. All 18 complete fictional operands
 validated against primary schemas; deliberate partial omissions failed as expected.
-Raw receipts: `source-verification.json`, `schema-validation.json`, and exact
-primary-source tar archives in the owned proof directory.
+Raw receipts and exact primary-source tar archives are retained in the owned proof.
 
-Current corrected gate ran through `heavytest`: frontend typecheck, Biome/design
-lint, production build, Storybook build, inventory regeneration, coverage --check,
-and all **10 focused native tests passed** (1.1m). Raw log:
-`.scratch/flux-cards/corrected-gate-full-native.log` (historical filename; current
-contents are the scoped gate, not a local full-suite run), SHA256
-`2a97d1340eed78822e6bed1a20a72ccbf0aa1cf079d4ff0f0eeac01afdc4759b`.
-The earlier `make check` Go race tests/vet passed against unchanged Go sources;
-its retained logs are attributed separately. The remote configured CI will check
-unmodified default ports/configuration and the entire native suite at the PR head.
+The current own-popup correction gate ran through `heavytest`: frontend typecheck,
+Biome/design lint, production build, Storybook build, inventory regeneration,
+coverage --check, and **10 selected native checks passed** (1.0m): eight affected
+popup/input/lifecycle controls plus two settled card/theme artifact probes. Raw log
+`popup-owned-gate.log`, SHA256
+`7c7cebbf8fe8796fd75766e6d5d484760a3ee89809436b8f19bffc97fa9120a1`.
+Earlier approval risk/receipt/all-five-loop-code checks passed against unchanged
+card/model source and are attributed separately. Go race/vet passed against
+unchanged Go source. Final scoped type/lint receipts accompany the final seal.
 
-The native evidence includes 18 identities × complete/partial/empty/long ×
-1280/390 (390 at 420 height), 144 settled card screenshots; all ten actual built-in
-themes in light/dark modes (20 screenshots); tool indicator/minimal/compact/full
-and running/done/error; receipt/risk/loop variants; native slash/@, suffix insertion,
-IME composing/229, editable busy draft, empty matches, nested popover Escape/focus,
-original table-row index actions, unaddressed controls and unresolved sources.
-Action bounds now prevent horizontally clipped local footer controls at narrow width.
-The final proof directory contains **168 screenshots** including focused menu/layer
-specimens. System fonts and token paint remain explicit owner-relayed defaults.
+A separate **production palette probe passed** against the minified build served
+by the owned Go app on port 18911. Raw log `production-palette.log`, SHA256
+`c63fd71fb536a58bfba4c9620353c9d717cdaf83254c9191e3877c608e4ed71b`.
+It compares browser-resolved colors rather than equivalent CSS serialization
+(`#fff`, `#ffffff`, hex versus rgb); it also checks actual gallery paint against
+its expected palette. Missing/invalid colors still fail. This corrects the owned
+palette failure in historical configured CI 38039488944, which passed 388/390 and
+also exposed an unchanged OpsShell access-callback failure routed to the lead.
+Raw CI failure remains retained. Fresh replacement-head configured CI is required;
+no historical successful build or unrelated passing test substitutes for it.
 
-Lead review found that the old mutable alive bit could revive a once-working
-callback after Activity hide/show. `lifecycle-reproduction.log` retains the native
-failure. The replacement captures a committed activation lease that cleanup only
-retires; new activation gets a new lease. Native old-refusal/current-positive tests
-passed. Retained close handlers capture a layer revision; queued return tests passed
-across source/access/activation/new-layer and newer foreground focus, while current
-ordinary close still returns to its origin. No shared kit source was changed.
+The settled native evidence covers 18 identities × complete/partial/empty/long ×
+1280/390 (390 at 420 height), 144 card images; all ten actual built-in themes in
+light/dark modes; tool indicator/minimal/compact/full and running/done/error;
+receipt/zero/missing/access/source truth, native slash/@ suffix insertion,
+IME composing/229, editable busy drafts, empty matches, table original row indices,
+unaddressed controls, unresolved sources and nested popover Escape/focus. Local
+Footer wrapping prevents clipped actions at 390. Current dedicated popup and
+production output directories retain **190 screenshots**. System fonts and
+scoped Concrete & Signal dark composer remain the owner-relayed defaults.
 
-Raw environment, doubled-@, fractional scroll alignment, fixture markup and intermediate
-harness failures are retained as distinct logs. Corrected assertions keep strict
-insertion and viewport bounds. Kit-native viewport spacing and local Footer wrapping
-fixed the observed presentation issues. `verification-files.json` hashes 193 proof
-files (including 168 screens and raw logs/archives), SHA256
-`00df610282878de2dea8008ea0f2cc531a434584f8d50e91361f5fd793bb8869`.
-Final post-commit sealing adds exact authored source/archive/replay hashes separately.
+Lead review found mutable alive-bit revival after Activity hide/show. The original
+native failure is retained in `lifecycle-reproduction.log`; the pre-lease authored
+index tree is archived as `historical-prelease-tree-9cc6e39.tar`. Committed activation
+leases only retire, never revive. Once-working old-refusal/current-positive tests
+passed. Retained close handlers capture layer revisions; queued returns yield to
+source/access/activation/new-layer and newer foreground focus; normal close returns
+to its current origin.
 
-## Pinned replay and limits
+A later source review found global closing-dialog lookup lacked exact ownership.
+The actual installed DetailDialog does not forward a popup ref. With lead agreement,
+local inspection now composes existing public Dialog/DialogContent/DialogTitle,
+preserving DetailDialog's shell token grammar, and captures the exact own committed
+popup ref. Actual outside native dialog/menu controls passed, as did ordinary close,
+lease refusal and nested layer positives. The historical outside probe also passed
+on this browser; no failing reproduction of that boundary is claimed. Shared kit
+source, publication and pins are untouched.
+
+## Proof retention and replay
+
+An outside probe reused Playwright's default output and cleared the historical
+168 screenshot files. Old a2c20ba source/archive/raw logs/hash snapshots remain
+historical; its screen seal is not claimed fully materialized. Replacement runs use
+separate output directories, and settled images were regenerated with unchanged
+assertions. Current `replacement-verification-files.json` hashes 226 physical proof
+files including 190 images, SHA256
+`c5129374ac636595b879aa40dab8f334f5738e16bfadf583703b4bf4bb588aeb`.
+The final seal adds exact committed source/archive/pinned-replay hashes and physically
+verifies every current entry before handoff. Failures stay separate from successes.
 
 Run `python3 docs/flux-cards-replay.py EXACT_COMMIT` from the owned worktree, then
-`heavytest bash .scratch/flux-cards/pinned-replay/run.sh`, retaining its raw log.
-The recipe extracts a new pinned Git archive, records every source hash, and runs
-only stale/current lifecycle/send/focus controls on port 18915. It explicitly uses
-retained installed dependencies plus the owned copied browser/libs/fonts and own
-short TMPDIR. It makes no fresh-install claim. Playwright stops its own listener;
-retain the stage/worktree/proofs until lead retirement, with no sibling cleanup.
+`heavytest bash .scratch/flux-cards/pinned-replay/run.sh`, retaining a distinct raw
+log for that head. The recipe extracts a new pinned archive, records every source
+hash and runs only lifecycle/send/focus controls on 18915. It explicitly uses retained
+installed dependencies plus owned browser/libs/fonts and short own TMPDIR; no
+fresh-install claim. Playwright stops only its own listener. Retain stage/worktree/
+proofs until lead retirement, with no sibling cleanup.
 
-Session-task stays explicitly unsupported. Document/report rich content is plaintext
-in this bounded candidate. No producer/transport/provider/SSE, real decisions/retries,
-physical OS IME/touch, kit release/promotion or full Flux composition is claimed.
-Owner visual approval remains false. Upstream proposal and fidelity differences
-are in `flux-cards-proposal.md`; final manager/CI/merge receipts belong to Torque
-and the durable full-body/data workspace record after review.
+The landed rail main 1271636 was reconciled normally, preserving both additive entry
+cases. No sibling ChatExample/Standalone slots were edited. Session-task stays
+explicitly unsupported; document/report rich content is plaintext. No producer/
+transport/provider/SSE, real decisions/retries, physical OS IME/touch, kit promotion
+or full Flux composition is claimed. Owner visual approval remains false. Final lead,
+configured CI and merge receipts live in Torque and the durable full-body/data
+workspace record after review.

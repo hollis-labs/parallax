@@ -241,7 +241,6 @@
       "frontend/src/event-ledger/Ledger.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
-      "frontend/src/examples/flux-cards/Gallery.tsx",
       "frontend/src/examples/workspace/WorkspaceExample.tsx",
       "frontend/src/observation-review/Review.tsx",
       "frontend/src/operations/Views.tsx",
@@ -2412,6 +2411,7 @@
       "frontend/src/examples/flux-cards/Cards.tsx",
       "frontend/src/examples/flux-cards/Gallery.tsx",
       "frontend/src/examples/flux-cards/StreamStates.tsx",
+      "frontend/src/examples/flux-cards/lifecycle.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/examples/reader/ReaderExample.tsx",
@@ -3230,6 +3230,8 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/flux-cards/Gallery.tsx",
+      "frontend/src/examples/flux-cards/lifecycle.tsx",
       "frontend/src/examples/reader/ReaderExample.tsx",
       "frontend/src/examples/reader/ReaderVisual.tsx",
       "frontend/src/examples/torque/BoardIntent.tsx"
@@ -3273,6 +3275,8 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/flux-cards/Gallery.tsx",
+      "frontend/src/examples/flux-cards/lifecycle.tsx",
       "frontend/src/examples/reader/ReaderExample.tsx",
       "frontend/src/examples/reader/ReaderVisual.tsx",
       "frontend/src/examples/torque/BoardIntent.tsx"
@@ -3400,6 +3404,8 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/flux-cards/Gallery.tsx",
+      "frontend/src/examples/flux-cards/lifecycle.tsx",
       "frontend/src/examples/reader/ReaderExample.tsx",
       "frontend/src/examples/reader/ReaderVisual.tsx",
       "frontend/src/examples/torque/BoardIntent.tsx"
@@ -3443,6 +3449,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/flux-cards/lifecycle.tsx",
       "frontend/src/examples/torque/Operations.tsx",
       "frontend/src/flux-rail/Review.tsx"
     ]
@@ -3485,6 +3492,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/flux-cards/lifecycle.tsx",
       "frontend/src/examples/torque/Operations.tsx",
       "frontend/src/flux-rail/Review.tsx"
     ]
@@ -3514,6 +3522,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/flux-cards/lifecycle.tsx",
       "frontend/src/examples/torque/Operations.tsx"
     ]
   },
@@ -3568,6 +3577,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/flux-cards/lifecycle.tsx",
       "frontend/src/examples/torque/Operations.tsx",
       "frontend/src/flux-rail/Review.tsx"
     ]

@@ -42,7 +42,7 @@ commands = ["#!/usr/bin/env bash", "set -euo pipefail", f"cd {quote(str(stage))}
             f"export LD_LIBRARY_PATH={quote(str(root / '.scratch/tooling/libs') + ':' + str(root / '.scratch/tooling/libs/gbm'))}",
             f"export FONTCONFIG_FILE={quote(str(root / '.scratch/tooling/fonts.conf'))}",
             f"export FLUX_BROWSER={quote(str(root / '.scratch/tooling/chromium/chrome-headless-shell'))}",
-            "npm exec --prefix frontend -- playwright test --config frontend/playwright.flux-cards.config.ts --grep 'same-identity|queued return|source/access retirement|captured send'",
+            "npm exec --prefix frontend -- playwright test --config frontend/playwright.flux-cards.config.ts --grep 'same-identity|queued|source/access retirement|captured send'",
             "# Playwright stops only its own assigned-port listener. Retain stage/logs/screens until lead retirement."]
 (proof / "run.sh").write_text("\n".join(commands) + "\n")
 print(json.dumps({"head": head, "stage": str(stage), "archive_sha256": receipt["archive_sha256"]}))

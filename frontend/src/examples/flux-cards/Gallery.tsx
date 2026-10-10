@@ -1,6 +1,8 @@
 import {
   Button,
-  DetailDialog,
+  Dialog,
+  DialogContent,
+  DialogTitle,
   JsonViewer,
   Popover,
   PopoverContent,
@@ -59,7 +61,8 @@ export function FluxCardsGallery({
   currentDraft.current = draft
   currentBusy.current = busy
   const inputRef = useRef<HTMLTextAreaElement>(null),
-    origin = useRef<HTMLElement | null>(null)
+    origin = useRef<HTMLElement | null>(null),
+    inspectionPopup = useRef<HTMLDivElement>(null)
   const heading = useRef<HTMLHeadingElement>(null),
     layerRevision = useRef(0),
     current = useRef("")
@@ -115,9 +118,10 @@ export function FluxCardsGallery({
       renderedLayerRevision !== layerRevision.current
     )
       return
+    const closingDialog = inspectionPopup.current
+    if (!closingDialog?.isConnected) return
     const revision = ++layerRevision.current
     layerOpen.current = false
-    const closingDialog = document.querySelector('[role="dialog"]')
     let competingFocus = false
     const target = origin.current
     const observeFocus = (event: FocusEvent) => {
@@ -427,29 +431,50 @@ export function FluxCardsGallery({
         </aside>
       </div>
       {inspection && (
-        <DetailDialog
-          title={inspection.label}
-          meta="Local inspection · no effect committed"
+        <Dialog
           open
-          onClose={close}
-          footer={<Button onClick={close}>Close candidate inspection</Button>}
+          onOpenChange={(next) => {
+            if (!next) close()
+          }}
         >
-          <div className="flux-inspection">
-            <p>
-              Nothing sent, approved, rejected, retried or saved. Supplied card receipt unchanged.
-            </p>
-            <JsonViewer value={inspection.value} />
-            <Popover>
-              <PopoverTrigger render={<Button variant="outline" />}>
-                Inspect nested local detail
-              </PopoverTrigger>
-              <PopoverContent>
-                <p>Nested local inspection only.</p>
+          <DialogContent
+            ref={inspectionPopup}
+            className="flex h-[450px] max-h-[calc(100vh-2rem)] flex-col gap-0 overflow-hidden p-0"
+            widthClassName="w-[600px] max-w-[calc(100vw-2rem)]"
+          >
+            <div className="flex h-20 shrink-0 flex-col justify-center gap-1.5 px-4 pr-10">
+              <div className="flex min-h-0 items-start gap-2">
+                <DialogTitle className="line-clamp-2 min-w-0 break-words text-base font-semibold leading-snug tracking-tight text-fg">
+                  {inspection.label}
+                </DialogTitle>
+              </div>
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-label text-fg-faint">
+                Local inspection · no effect committed
+              </div>
+            </div>
+            <div className="min-h-0 flex-1 overflow-y-auto">
+              <div className="flux-inspection">
+                <p>
+                  Nothing sent, approved, rejected, retried or saved. Supplied card receipt
+                  unchanged.
+                </p>
                 <JsonViewer value={inspection.value} />
-              </PopoverContent>
-            </Popover>
-          </div>
-        </DetailDialog>
+                <Popover>
+                  <PopoverTrigger render={<Button variant="outline" />}>
+                    Inspect nested local detail
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <p>Nested local inspection only.</p>
+                    <JsonViewer value={inspection.value} />
+                  </PopoverContent>
+                </Popover>
+              </div>
+            </div>
+            <div className="flex h-14 shrink-0 items-center justify-end gap-2 border-t border-border px-4">
+              <Button onClick={close}>Close candidate inspection</Button>
+            </div>
+          </DialogContent>
+        </Dialog>
       )}
     </main>
   )
