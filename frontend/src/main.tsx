@@ -12,6 +12,7 @@ import { StandaloneMessagingExample } from "./examples/messaging/Standalone"
 import { NilExample } from "./examples/nil/NilExample"
 import { StandaloneOpsShellExample } from "./examples/ops-shell/Standalone"
 import { StandaloneReaderExample } from "./examples/reader/Standalone"
+import { StandaloneTetherExample } from "./examples/tether/Standalone"
 import { StandaloneTorqueExample } from "./examples/torque/Standalone"
 import { StandaloneWorkspaceExample } from "./examples/workspace/Standalone"
 import { StandaloneFluxRailReview } from "./flux-rail/Review"
@@ -21,7 +22,9 @@ const root = document.getElementById("root")
 if (!root) throw new Error("root element missing")
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
-    {new URLSearchParams(location.search).get("example") === "flux-settings" ? (
+    {new URLSearchParams(location.search).get("example") === "tether" ? (
+      <StandaloneTetherExample />
+    ) : new URLSearchParams(location.search).get("example") === "flux-settings" ? (
       <StandaloneFluxSettingsComposition />
     ) : new URLSearchParams(location.search).get("example") === "nil" ? (
       <NilExample />

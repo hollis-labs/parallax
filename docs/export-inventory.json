@@ -48,7 +48,8 @@
       "frontend/src/examples/reader/ReaderInlineActions.tsx",
       "frontend/src/examples/reader/ReaderNotes.tsx",
       "frontend/src/examples/reader/ReaderTags.tsx",
-      "frontend/src/examples/reader/ReaderVisual.tsx"
+      "frontend/src/examples/reader/ReaderVisual.tsx",
+      "frontend/src/tether-sysop/OverviewPage.tsx"
     ]
   },
   {
@@ -1066,6 +1067,7 @@
       "frontend/src/operations/Views.tsx",
       "frontend/src/pages/dashboard.tsx",
       "frontend/src/run-explorer/Explorer.tsx",
+      "frontend/src/tether-sysop/OverviewPage.tsx",
       "frontend/src/usage-evidence/Review.tsx",
       "frontend/src/workflow-review/Review.tsx"
     ]
@@ -3619,6 +3621,7 @@
       "frontend/src/primitives/Gallery.tsx",
       "frontend/src/run-explorer/Explorer.tsx",
       "frontend/src/settings-review/Review.tsx",
+      "frontend/src/tether-sysop/OverviewPage.tsx",
       "frontend/src/usage-evidence/Review.tsx",
       "frontend/src/voice/Lab.tsx",
       "frontend/src/widgets/Gallery.tsx",
@@ -7069,7 +7072,8 @@
       "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Operations.stories.tsx",
       "frontend/src/operations/Views.tsx",
-      "frontend/src/run-explorer/Explorer.tsx"
+      "frontend/src/run-explorer/Explorer.tsx",
+      "frontend/src/tether-sysop/OverviewPage.tsx"
     ]
   },
   {
@@ -7482,6 +7486,8 @@
       "frontend/src/examples/messaging/Standalone.tsx",
       "frontend/src/examples/reader/Reader.stories.tsx",
       "frontend/src/examples/reader/Standalone.tsx",
+      "frontend/src/examples/tether/Standalone.tsx",
+      "frontend/src/examples/tether/Tether.stories.tsx",
       "frontend/src/examples/torque/Standalone.tsx",
       "frontend/src/examples/torque/Torque.stories.tsx",
       "frontend/src/examples/workspace/Standalone.tsx",
@@ -8741,6 +8747,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/tether-sysop/OverviewPage.tsx",
       "frontend/src/widgets/Gallery.tsx",
       "frontend/src/widgets/contracts.ts"
     ]
@@ -8786,7 +8793,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/operations/Views.tsx"
+      "frontend/src/operations/Views.tsx",
+      "frontend/src/tether-sysop/OverviewPage.tsx"
     ]
   },
   {
@@ -8843,7 +8851,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/operations/Views.tsx"
+      "frontend/src/operations/Views.tsx",
+      "frontend/src/tether-sysop/OverviewPage.tsx"
     ]
   },
   {
@@ -9168,6 +9177,7 @@
       "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Views.tsx",
       "frontend/src/primitives/Gallery.tsx",
+      "frontend/src/tether-sysop/OverviewPage.tsx",
       "frontend/src/voice/Lab.tsx",
       "frontend/src/widgets/Gallery.tsx"
     ]
@@ -9226,7 +9236,8 @@
     "importEvidence": [
       "frontend/src/flux-rail/Contents.tsx",
       "frontend/src/ops-dashboard/Dashboard.tsx",
-      "frontend/src/ops-dashboard/contracts.ts"
+      "frontend/src/ops-dashboard/contracts.ts",
+      "frontend/src/tether-sysop/OverviewPage.tsx"
     ]
   },
   {
@@ -9282,7 +9293,8 @@
     },
     "importEvidence": [
       "frontend/src/flux-rail/Contents.tsx",
-      "frontend/src/ops-dashboard/Dashboard.tsx"
+      "frontend/src/ops-dashboard/Dashboard.tsx",
+      "frontend/src/tether-sysop/OverviewPage.tsx"
     ]
   },
   {
@@ -9337,6 +9349,7 @@
     },
     "importEvidence": [
       "frontend/src/flux-rail/Contents.tsx",
+      "frontend/src/tether-sysop/OverviewPage.tsx",
       "frontend/src/widgets/Gallery.tsx",
       "frontend/src/widgets/contracts.ts"
     ]
@@ -9394,7 +9407,8 @@
     },
     "importEvidence": [
       "frontend/src/ops-dashboard/Dashboard.tsx",
-      "frontend/src/ops-dashboard/contracts.ts"
+      "frontend/src/ops-dashboard/contracts.ts",
+      "frontend/src/tether-sysop/OverviewPage.tsx"
     ]
   },
   {

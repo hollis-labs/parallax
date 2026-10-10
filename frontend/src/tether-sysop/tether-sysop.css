@@ -1,0 +1,166 @@
+.tether-overview-root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+.tether-overview-header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border-strong);
+  background: var(--color-bg);
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+  gap: calc(var(--spacing) * 3);
+  flex-wrap: wrap;
+}
+
+.tether-overview-header-left {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.tether-overview-caption {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-text-subtle);
+  margin: 0;
+}
+
+.tether-overview-catalog-root {
+  margin-top: calc(var(--spacing) * 0.5);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-subtle);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tether-overview-links {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 1.5);
+  flex-wrap: wrap;
+}
+
+.tether-id-link {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 1);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  background: var(--color-panel);
+  transition:
+    color 0.15s,
+    border-color 0.15s,
+    background-color 0.15s;
+}
+
+.tether-id-link:hover,
+.tether-id-link:focus-visible {
+  color: var(--color-text);
+  border-color: var(--color-border-strong);
+  background: var(--color-panel-hover);
+  outline: none;
+}
+
+.tether-overview-header-right {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+  flex-wrap: wrap;
+}
+
+.tether-overview-variant-label {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 1.5);
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+}
+
+.tether-overview-variant-select {
+  font-size: var(--text-xs);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  padding: calc(var(--spacing) * 1) calc(var(--spacing) * 2);
+}
+
+.tether-overview-empty {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--spacing) * 6);
+  background: var(--color-bg);
+}
+
+.tether-panel-section-b {
+  border-bottom: 1px solid var(--color-border);
+  padding: calc(var(--spacing) * 3);
+}
+
+.tether-panel-section-t {
+  border-top: 1px solid var(--color-border);
+  padding: calc(var(--spacing) * 3);
+}
+
+.tether-overview-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: calc(var(--spacing) * 3);
+}
+
+.tether-data-list {
+  min-height: 0;
+  padding: calc(var(--spacing) * 3);
+}
+
+.tether-section-header {
+  margin-bottom: calc(var(--spacing) * 2);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-text-subtle);
+  font-weight: 500;
+}
+
+.tether-overview-error-banner {
+  margin-top: calc(var(--spacing) * 3);
+  border: 1px solid var(--color-status-blocked);
+  background: var(--color-danger-soft);
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
+  font-size: 12px;
+  color: var(--color-status-blocked);
+  border-radius: var(--radius-sm);
+}
+
+.tether-panel-action {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  margin-left: calc(var(--spacing) * 2);
+}
+
+.tether-panel-action:hover {
+  color: var(--color-text);
+  text-decoration: underline;
+}

@@ -45,6 +45,21 @@ export const torqueDefinition = {
   },
 } as const satisfies ExampleDefinition
 
+export const tetherDefinition = {
+  id: "tether",
+  entry: { parameter: "example", value: "tether" },
+  defaultDestination: "overview",
+  destinations: [{ id: "overview", label: "Agent Ops Overview" }],
+  primaryFamily: "tether-sysop",
+  projection: "snapshot",
+  selectionPolicy:
+    "Pure dashboard; state reset preserves admitted fixture variant and local presentation.",
+  reset: { query: "", selected: null, override: "scenario" },
+  scrollOwners: {
+    ordinary: ".tether-overview-scroll",
+  },
+} as const satisfies ExampleDefinition
+
 type ArtifactIdentity = {
   version: string
   generator: string
