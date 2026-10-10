@@ -76,13 +76,13 @@ else:
             file.write_text(mapped)
             receipt["mapped_files"][str(file.relative_to(stage))] = {"original_sha256": before, "mapped_sha256": sha(file)}
     # Browser/tool, output and worker overrides are explicit and separate from the port-only source mapping.
-    wrapper = stage / "owned-native.config.ts"
+    wrapper = stage / "owned-native.config.mts"
     wrapper.write_text('import { defineConfig } from "./frontend/node_modules/@playwright/test/index.mjs"\n'
-                       'import base from "./frontend/playwright.config"\n'
+                       'import base from "./frontend/playwright.config.ts"\n'
                        'export default defineConfig({...base, testDir:"./frontend/tests", workers:2, outputDir:"../results", '
                        'use:{...base.use, launchOptions:{executablePath:process.env.OWN_CHROMIUM,args:["--no-sandbox"]}}})\n')
     receipt["tool_override_sha256"] = sha(wrapper)
-    browser_tmp = Path("/home/chrispian/.cache/team-tmp/cw0088-browser")
+    browser_tmp = Path(f"/home/chrispian/.cache/team-tmp/cw0088-b-{head[:7]}")
     browser_tmp.mkdir(parents=True, exist_ok=False)
     receipt["owned_browser_tmp"] = str(browser_tmp)
     quote = shlex.quote
@@ -91,7 +91,7 @@ else:
                 f"export OWN_CHROMIUM={quote(str(root / '.scratch/tooling/chromium/chrome-headless-shell'))}",
                 f"export LD_LIBRARY_PATH={quote(str(root / '.scratch/tooling/libs'))}",
                 f"export FONTCONFIG_FILE={quote(str(root / '.scratch/tooling/fonts.conf'))}",
-                "frontend/node_modules/.bin/playwright test --config owned-native.config.ts"]
+                "frontend/node_modules/.bin/playwright test --config owned-native.config.mts"]
     (proof / "run.sh").write_text("\n".join(commands) + "\n")
 (proof / "receipt.json").write_text(json.dumps(receipt, indent=2) + "\n")
 print(json.dumps({"head": head, "mode": mode, "proof": str(proof), "archive_sha256": receipt["archive_sha256"]}))
