@@ -83,11 +83,11 @@ export const retiredLeases = new Set<number>()
 
 export function isElementVisibleAndActive(el: HTMLElement): boolean {
   if (el.hidden || el.getAttribute("aria-hidden") === "true") return false
-  if (el.hasAttribute("inert") || Boolean(el.closest("[inert]"))) return false
-  if (Boolean(el.closest('[aria-hidden="true"]'))) return false
-  if (Boolean(el.closest("details:not([open])"))) return false
+  if (el.hasAttribute("inert") || el.closest("[inert]")) return false
+  if (el.closest('[aria-hidden="true"]')) return false
+  if (el.closest("details:not([open])")) return false
 
-  if (el.getAttribute("data-state") === "closed" || Boolean(el.closest('[data-state="closed"]'))) {
+  if (el.getAttribute("data-state") === "closed" || el.closest('[data-state="closed"]')) {
     return false
   }
 
@@ -195,26 +195,23 @@ export function OverviewPage({
     }
   }, [currentVariant])
 
-  const isAdmitted = useCallback(
-    (leaseToVerify: number): boolean => {
-      if (
-        leaseToVerify === 0 ||
-        !activeLeases.has(leaseToVerify) ||
-        retiredLeases.has(leaseToVerify) ||
-        leaseToVerify !== currentLeaseRef.current
-      ) {
-        return false
-      }
-      if (!rootRef.current || !rootRef.current.isConnected || !document.contains(rootRef.current)) {
-        return false
-      }
-      if (hasCompetingOverlay()) {
-        return false
-      }
-      return true
-    },
-    [],
-  )
+  const isAdmitted = useCallback((leaseToVerify: number): boolean => {
+    if (
+      leaseToVerify === 0 ||
+      !activeLeases.has(leaseToVerify) ||
+      retiredLeases.has(leaseToVerify) ||
+      leaseToVerify !== currentLeaseRef.current
+    ) {
+      return false
+    }
+    if (!rootRef.current || !rootRef.current.isConnected || !document.contains(rootRef.current)) {
+      return false
+    }
+    if (hasCompetingOverlay()) {
+      return false
+    }
+    return true
+  }, [])
 
   const api = useMemo(() => createTetherSysopMockApi(currentVariant), [currentVariant])
 
