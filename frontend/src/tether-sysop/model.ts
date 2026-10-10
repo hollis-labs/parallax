@@ -552,7 +552,8 @@ export function registryModel(
     rows = rows.filter((r) => r.project === params.project)
   }
   if (params?.capability) {
-    rows = rows.filter((r) => r.capabilities?.includes(params.capability!))
+    const cap = params.capability
+    rows = rows.filter((r) => r.capabilities?.includes(cap))
   }
   if (params?.skill_name) {
     rows = rows.filter((r) => r.skills?.some((s) => s.name === params.skill_name))

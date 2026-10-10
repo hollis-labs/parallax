@@ -363,9 +363,17 @@
         "internal/scenarios/tether_sysop_validate.go",
         "internal/scenarios/tether_sysop_test.go"
       ],
-      "adapters": ["frontend/src/fixtures/tether-sysop.json", "frontend/src/tether-sysop/model.ts"],
+      "adapters": [
+        "frontend/src/fixtures/tether-sysop.json",
+        "frontend/src/tether-sysop/model.ts",
+        "frontend/src/tether-sysop/OverviewPage.tsx",
+        "frontend/src/examples/tether/model.ts",
+        "frontend/src/examples/tether/Standalone.tsx",
+        "frontend/src/examples/tether/Tether.stories.tsx",
+        "frontend/tests/tether-overview.spec.ts"
+      ],
       "remaining": [
-        "Page implementations (0099 overview, 0100 ai, 0101 activity, 0102 registry) are separate tasks",
+        "Page implementations (0100 ai, 0101 activity, 0102 registry) are separate tasks; 0099 overview in review PR26",
         "No live mutation or daemon socket connection"
       ]
     }
