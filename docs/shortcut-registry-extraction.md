@@ -1,37 +1,25 @@
-# Nil shortcut registry & layered Escape ownership — CW-20261010-0090
+# Nil shortcut registry and layered Escape ownership — CW-20261010-0090
 
-## Overview
+Torque and Messaging exercise shared primitives in two existing idioms: task-board inspection and message-draft inspection. These are isolated local candidate proofs. Registry publication and application deployment remain separate work.
 
-Torque and Messaging adopt the scoped shortcut registry and layered Escape ownership primitives extracted into `@hollis-labs/design-components`:
-- `useLayeredEscape`: LIFO Escape stack with explicit consumer ownership, input-clearing priority before dialog closing, and admitted focus return to valid openers.
-- `useShortcut`: Scoped keyboard shortcuts with exact modifier matching, editable/interactive target guards, composing/IME guards, and overlay suspension.
-- `useShiftShift`: Double-tap Shift detection with 300ms default threshold, modifier cancellation, editable target suppression, and monotonic `getTime` clock injection.
-- `useQuickSearchShortcut`: Composite shortcut binding `Mod+K` (`Cmd+K` on macOS, `Ctrl+K` on Linux/Windows) and `Shift-Shift` alias.
-- `resolveAdmittedFocusTarget` / `restoreAdmittedFocus`: Safe focus restoration verifying target connectivity, enabled state (`:disabled` checks), and caller admission.
+## Consumer ownership
 
-## Two Genuine Consumers & Distinct Idioms
+Torque binds `/`, Mod+K and the 300ms Shift-Shift alias to its existing task filter. The caller supplies current source/access admission. Its own input consumes Escape and retains focus, including when empty. Task inspection uses its admitted loaded task order with explicit wrap navigation, a connected popup root, and source/selection admission. Closing inspection preserves the background query and returns focus to the admitted opener. After an external source reset, the current empty inspection shell remains dismissible; retired selection handles stay fenced.
 
-1. **Torque Operations & Task Inspection (Dashboard / Task Management Idiom)**:
-   - `TaskInspection`: Registers modal inspection overlay on the LIFO Escape stack with `boundaryPolicy: "wrap"`, restoring focus to the originating row action button trigger.
-   - `Operations`: Mounts `useQuickSearchShortcut` to focus the task filter input via `Mod+K` and double-tap `Shift` (with 300ms window). Search input Escape key handling consumes the event (`stopImmediatePropagation()`) to clear the query first without dismissing open menus or parent surfaces. Background filter query is preserved when child inspection dialogs are dismissed.
+Messaging uses the existing conversation search and message-draft inspector. Search clears before dismissal. The browser proof invokes a captured first inspector action successfully, reopens a replacement inspector, then invokes that same old action while the replacement remains open. A current Escape still closes the replacement.
 
-2. **Messaging Example (Communications / Chat Idiom)**:
-   - `MessagingExample`: Registers message candidate inspection dialog on `useLayeredEscape`. Search conversations input independently clears filter text on Escape with immediate propagation suppression.
-   - Positive and retired negative controls verify committed React fiber frame fencing: held close actions succeed during active presentation and safely refuse execution after layer unmount.
+Both controlled Base UI popups cancel the library's Escape close request and allow propagation to one window bubble coordinator. Native and React child handlers settle first. Registered innermost layers and active unregistered child overlays retain ownership. Closed popups in an exit animation release ownership, even while they retain layout. A popup root may connect after registration; dispatch still requires a connected current root.
 
-## Packaging & Candidate Provenance
+## Shared contract
 
-- Package: `@hollis-labs/design-components` candidate `0.4.0-cw0090`.
-- Tarball: `third_party/hollis-labs-design-components-0.4.0-cw0090.tgz`
-- SHA256: `da06b88070d607907f08fad5282e2da28d91fc34d1e1c593d4acb4cf1ad9aa5f`
-- Source Commit: `10e360b871116e0f70ae418d769d61064f4488d1` (`packages/design-components` tree `41836c6f575d03f54df33bcb057d50abf9d7acd6`)
-- Provenance manifest: `third_party/hollis-labs-design-components-0.4.0-cw0090.provenance.json`
-- Pinned in `frontend/package.json` as `file:../third_party/hollis-labs-design-components-0.4.0-cw0090.tgz`.
+`useShortcut`, `useShiftShift`, `useQuickSearchShortcut` and `useLayeredEscape` keep native listeners current while each exposed handle captures its own committed frame and activation lease. Retained handles retire after replacement, access changes, layer retirement or unmount, including StrictMode effect replay. Modifier matching is exact; clock zero is a valid Shift tap origin. Composition lifetime and event diagnostics, editable/composite targets, scopes, admission and overlay ownership fence activation.
 
-## Verification & Acceptance
+Focus return resolves only connected, visible, enabled targets accepted by caller admission, with an explicit caller fallback. Restoration reports actual focus success. Existing SearchInput defaults retain legacy clear-and-blur behavior; layered Escape behavior is opt-in. Existing useArrowNav consumers retain their defaults.
 
-- Unit tests in `design-components`: 22 test cases in `src/__tests__/shortcut-registry.test.tsx` verifying exact modifiers, LIFO ordering, input-clearing priority, frame fencing, focus restoration, and Shift-Shift timing.
-- Browser acceptance: Playwright test suite `frontend/tests/shortcut-registry.spec.ts` executed through `heavytest` with isolated task scratch libraries and fonts.
-- Typecheck & Lint: Clean pass across frontend (`tsc --noEmit`, `biome check`, `eslint`).
-- Design CSS & Optional imports: All variable and import checks pass.
-- Export inventory: Synchronized via `scripts/coverage.mjs`.
+## Candidate and evidence
+
+The tarball is `third_party/hollis-labs-design-components-0.4.0-cw0090.tgz`, pinned through the frontend file dependency. Its package metadata remains `0.4.0`; this unpublished candidate is not registry-equivalent to released 0.4.0. The adjacent provenance manifest records the exact source commit, package tree, archive SHA256 and every packed file's SHA256. `.scratch/recovery/installed-byte-map.json` checks those packed bytes against the installed package.
+
+Kit package tests include the original independent manager reproductions, captured/current controls, delayed portal connection and closing-menu ownership. The package gate includes typecheck, complete component tests, build, lint and the repository design-rules gate. Consumer checks cover frontend typecheck/lint, CSS variables, optional imports and export coverage. Native Playwright acceptance covers shortcut registry, Torque keyboard ownership, Run Explorer and Evidence legacy behavior. Exact commands, failed and final logs, screenshots and executable isolated-port replay are retained in each worktree's `.scratch/recovery`.
+
+Synthetic composition diagnostics demonstrate event admission, not hardware OS IME or physical touch behavior. These adapters add keyboard behavior to existing chrome; no new theme styling, transport, persistence or domain behavior is introduced. Downstream radial, fullscreen and full Nil example tasks are outside this change.

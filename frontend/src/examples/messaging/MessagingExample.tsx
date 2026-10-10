@@ -44,6 +44,7 @@ export function MessagingExample({
     } | null>(null),
     [lease, setLease] = useState(0)
   const inspectionTitle = useRef<HTMLHeadingElement>(null)
+  const inspectionPopup = useRef<HTMLDivElement>(null)
   const life = useRef({ alive: false, lease: 0 }),
     rendered = useRef(identity),
     session = useRef<ReturnType<typeof createAdminPresentationSession> | null>(null),
@@ -86,6 +87,9 @@ export function MessagingExample({
       return "closed"
     },
     trigger: () => origin.current,
+    rootElement: () => inspectionPopup.current,
+    isLayerAdmitted: () => admitted(),
+    sourceGeneration: `${identity}:${token}`,
   })
   const admitted = () =>
     life.current.alive && life.current.lease === token && rendered.current === identity
@@ -609,8 +613,14 @@ export function MessagingExample({
         <InspectionDialog
           title={inspection.title}
           meta={`${data.conversation?.id ?? ""} · ${data.clock}`}
+          ref={inspectionPopup}
           open
-          onOpenChange={(next) => {
+          onOpenChange={(next, details) => {
+            if (details.reason === "escape-key") {
+              details.cancel()
+              details.allowPropagation()
+              return
+            }
             if (!next) close()
           }}
           initialFocus={inspectionTitle}

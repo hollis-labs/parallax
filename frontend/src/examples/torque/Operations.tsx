@@ -233,9 +233,16 @@ export function TorqueOperations({
   useShortcut({
     key: "/",
     onTrigger: () => anchorRef.current?.focus(),
+    allowInInteractive: false,
+    sourceGeneration: identity,
+    accessible: model.accessible,
+    isAdmitted: admitted,
   })
   useQuickSearchShortcut({
     onOpen: () => anchorRef.current?.focus(),
+    sourceGeneration: identity,
+    accessible: model.accessible,
+    isAdmitted: admitted,
   })
   const cursorIds = JSON.stringify(visible.map((r) => r.task.id))
   useLayoutEffect(() => {
@@ -325,10 +332,8 @@ export function TorqueOperations({
                 if (typeof e.nativeEvent?.stopImmediatePropagation === "function") {
                   e.nativeEvent.stopImmediatePropagation()
                 }
-                if (state.query !== "") {
-                  if (admitted()) onQuery("")
-                } else {
-                  anchorRef.current?.blur()
+                if (state.query !== "" && admitted()) {
+                  onQuery("")
                 }
               }
             }}

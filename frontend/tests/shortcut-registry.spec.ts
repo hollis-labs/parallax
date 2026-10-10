@@ -56,8 +56,12 @@ test.describe("Nil Shortcut Registry & Layered Escape Ownership (CW-20261010-009
     await page.keyboard.press("/")
     await expect(searchInput).toBeFocused()
 
-    // Blur search input
+    // Empty search: Escape retains focus on the search input
     await page.keyboard.press("Escape")
+    await expect(searchInput).toBeFocused()
+
+    // Blur explicitly to verify next shortcut
+    await searchInput.blur()
     await expect(searchInput).not.toBeFocused()
 
     // 2. Mod+K (Cmd+K / Ctrl+K) focuses search input
@@ -67,8 +71,8 @@ test.describe("Nil Shortcut Registry & Layered Escape Ownership (CW-20261010-009
     await page.keyboard.press(isMac ? "Meta+k" : "Control+k")
     await expect(searchInput).toBeFocused()
 
-    // Blur search input again
-    await page.keyboard.press("Escape")
+    // Blur explicitly to verify next shortcut
+    await searchInput.blur()
     await expect(searchInput).not.toBeFocused()
 
     // 3. Consecutive Shift-Shift taps within 300ms threshold focus search input
@@ -77,7 +81,7 @@ test.describe("Nil Shortcut Registry & Layered Escape Ownership (CW-20261010-009
     await expect(searchInput).toBeFocused()
 
     // Blur
-    await page.keyboard.press("Escape")
+    await searchInput.blur()
     await expect(searchInput).not.toBeFocused()
 
     // 4. Shift taps separated by >300ms do NOT trigger search focus
@@ -128,10 +132,46 @@ test.describe("Nil Shortcut Registry & Layered Escape Ownership (CW-20261010-009
     // Focus restored to admitted opener trigger
     await expect(trigger).toBeFocused()
 
-    // Escape while focused on search input clears the input first
+    // Escape while focused on search input clears the input first, retaining focus
     await searchInput.focus()
     await page.keyboard.press("Escape")
     await expect(searchInput).toHaveValue("")
+    await expect(searchInput).toBeFocused()
+  })
+
+  test("Torque: a native child search clears before the shared stack closes its popup", async ({
+    page,
+  }) => {
+    await page.goto(entry)
+    const first = rows(page).first()
+    await first.locator("a").click()
+    const modal = inspection(page)
+    await expect(modal).toBeVisible()
+    // Fixture-independent child control: a real native Escape must settle at
+    // the target before the single window bubble coordinator receives it.
+    await modal.evaluate((root) => {
+      const input = document.createElement("input")
+      input.type = "search"
+      input.setAttribute("aria-label", "Native child search")
+      input.value = "local filter"
+      input.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape" || input.value === "") return
+        event.preventDefault()
+        event.stopPropagation()
+        event.stopImmediatePropagation()
+        input.value = ""
+      })
+      root.append(input)
+      input.focus()
+    })
+    const child = page.getByLabel("Native child search", { exact: true })
+    await page.keyboard.press("Escape")
+    await expect(child).toHaveValue("")
+    await expect(child).toBeFocused()
+    await expect(modal).toBeVisible()
+    await page.keyboard.press("Escape")
+    await expect(modal).toHaveCount(0)
+    await expect(first.locator("a")).toBeFocused()
   })
 
   test("Messaging: Layered Escape Stack handles search-clear and inspector dismissal independently", async ({
@@ -166,7 +206,7 @@ test.describe("Nil Shortcut Registry & Layered Escape Ownership (CW-20261010-009
     })
     await expect(inspectDialog).toBeVisible()
 
-    // Retain authored action for frame fence proof
+    // Retain authored action from first inspector for frame fence proof
     await holdTaskInspectionClose(
       inspectDialog.getByRole("button", { name: "Close inspection", exact: true }),
     )
@@ -177,20 +217,21 @@ test.describe("Nil Shortcut Registry & Layered Escape Ownership (CW-20261010-009
     })
     await expect(inspectDialog).toHaveCount(0)
 
-    // Reopen inspection dialog
+    // Reopen inspection dialog (second / replacement inspector)
     await chatInput.fill("sample draft response")
     await inspectBtn.click()
     await expect(inspectDialog).toBeVisible()
 
-    // Press Escape: innermost overlay (inspectDialog) closes and restores focus to trigger
-    await page.keyboard.press("Escape")
-    await expect(inspectDialog).toHaveCount(0)
-    await expect(inspectBtn).toBeFocused()
-
-    // Retired negative control: invoking held action after modal unmount cannot reopen or mutate state
+    // Retired negative control: invoking held action from first inspector while replacement
+    // inspector is OPEN cannot close or affect the active replacement inspector
     await page.evaluate(() => {
       ;(window as unknown as { heldCloseAction: () => void }).heldCloseAction()
     })
+    await expect(inspectDialog).toBeVisible()
+
+    // Current positive control: Escape closes active replacement inspector and restores focus to trigger
+    await page.keyboard.press("Escape")
     await expect(inspectDialog).toHaveCount(0)
+    await expect(inspectBtn).toBeFocused()
   })
 })
