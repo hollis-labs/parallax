@@ -87,3 +87,12 @@ inspectors. Its [behavior/owner review notes](ops-shell-example.md) and
 `frontend/tests/ops-shell.spec.ts` bound the new evidence. Inventory imports are
 regenerated from the actual candidate declarations. This adds composition evidence
 without promoting every shared export/state to exhaustive or owner-approved status.
+
+CW-20261010-0087 adds isolated `Flux/Stream cards` compositions and native
+`?example=flux-cards`: all 18 primary manifest identities, including unsupported
+session-task, complete/partial/empty/long operands, missing candidate cards,
+banners/tool modes, and native slash/@ input. Fourteen existing Envelope/card
+exports gain bounded rendering/adaptation evidence; no shared wire protocol or
+whole-app/owner visual acceptance is implied. [Binding and proposal notes](flux-cards-proposal.md)
+detail local action semantics and upstream second-consumer boundaries. Exact
+imports and generated inventory reconcile from actual source after sibling landing.
