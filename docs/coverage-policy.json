@@ -1260,6 +1260,36 @@
           "review-evidence-states--long"
         ]
       }
+    },
+    {
+      "package": "@hollis-labs/design-components",
+      "names": [
+        "useControlledRecordNavigation"
+      ],
+      "entries": [
+        "."
+      ],
+      "disposition": "partial",
+      "reason": "Exact unpublished CW-20261010-0036 candidate consumed in Torque wrapping popup and independent Administration inline stop navigation. Bounded native/current-positive/stale-negative acceptance is undergoing independent review; synthetic composition is not OS IME and physical touch is untested.",
+      "nextAction": "Review exact candidate provenance and final named native/lifecycle evidence before marking this export reviewed; registry publication and deployment remain separate.",
+      "evidence": {
+        "pages": [
+          "frontend/src/examples/torque/TaskInspection.tsx",
+          "frontend/src/examples/administration/AdministrationExample.tsx"
+        ],
+        "checks": [
+          "frontend/tests/torque-keyboard.spec.ts",
+          "frontend/tests/controlled-record-navigation.spec.ts"
+        ],
+        "stories": [
+          "frontend/src/examples/torque/Torque.stories.tsx",
+          "frontend/src/examples/administration/Administration.stories.tsx"
+        ],
+        "storyIds": [
+          "app-examples-torque--tasks",
+          "app-examples-administration--directory"
+        ]
+      }
     }
   ]
 }

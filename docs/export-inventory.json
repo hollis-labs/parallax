@@ -1505,6 +1505,65 @@
     "package": "@hollis-labs/design-components",
     "version": "0.4.0",
     "entry": ".",
+    "name": "useControlledRecordNavigation",
+    "category": "nonvisual-function",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact unpublished CW-20261010-0036 candidate consumed in Torque wrapping popup and independent Administration inline stop navigation. Bounded native/current-positive/stale-negative acceptance is undergoing independent review; synthetic composition is not OS IME and physical touch is untested.",
+    "nextAction": "Review exact candidate provenance and final named native/lifecycle evidence before marking this export reviewed; registry publication and deployment remain separate.",
+    "evidence": {
+      "pages": [
+        "frontend/src/examples/torque/TaskInspection.tsx",
+        "frontend/src/examples/administration/AdministrationExample.tsx"
+      ],
+      "checks": [
+        "frontend/tests/torque-keyboard.spec.ts",
+        "frontend/tests/controlled-record-navigation.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/examples/torque/Torque.stories.tsx",
+        "frontend/src/examples/administration/Administration.stories.tsx"
+      ],
+      "storyIds": [
+        "app-examples-torque--tasks",
+        "app-examples-administration--directory"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/administration/AdministrationExample.tsx",
+      "frontend/src/examples/torque/TaskInspection.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ControlledRecordNavigationOptions",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ControlledRecordNavigation",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
     "name": "AlertDialog",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",

@@ -14,12 +14,31 @@ async function holdNavigation(button: Locator) {
   await button.evaluate((node) => {
     const key = Object.keys(node).find((k) => k.startsWith("__reactFiber"))
     if (!key) throw Error("Missing React fiber")
-    let fiber = (node as any)[key]
+    type Fiber = {
+      memoizedProps?: { "aria-keyshortcuts"?: string; onClick?: () => void }
+      return?: Fiber
+      child?: Fiber
+      sibling?: Fiber
+      stateNode?: unknown
+    }
+    let attached = (node as unknown as Record<string, Fiber>)[key]
+    while (attached.return) attached = attached.return
+    const current = (attached.stateNode as { current: Fiber }).current
+    function pathToNode(fiber: Fiber, parents: Fiber[]): Fiber[] | null {
+      const path = [...parents, fiber]
+      if (fiber.stateNode === node) return path
+      for (let child = fiber.child; child; child = child.sibling) {
+        const found = pathToNode(child, path)
+        if (found) return found
+      }
+      return null
+    }
+    const path = pathToNode(current, [])
+    if (!path) throw Error("Node absent from committed React tree")
     let callback: (() => void) | undefined
-    while (fiber) {
+    for (const fiber of path.reverse()) {
       if (fiber.memoizedProps?.["aria-keyshortcuts"] === "ArrowRight")
         callback = fiber.memoizedProps.onClick
-      fiber = fiber.return
     }
     if (!callback) throw Error("Missing authored navigation callback")
     ;(window as any).heldNavigation = callback
@@ -268,6 +287,13 @@ test("held navigation retires after order, selection and source changes; return 
   const originalId = (await first.getAttribute("data-task-id"))!
   await first.locator("a").click()
   await expect(title(page)).toBeFocused()
+  await holdNavigation(inspection(page).getByRole("button", { name: "Next task", exact: true }))
+  // Positive control: this exact retained authored callback is live before retirement.
+  await page.evaluate(() => (window as any).heldNavigation())
+  await expect(record(page)).not.toContainText(originalId)
+  const positive = await record(page).textContent()
+  await page.evaluate(() => (window as any).heldNavigation())
+  await expect(record(page)).toHaveText(positive!)
   await holdNavigation(inspection(page).getByRole("button", { name: "Next task", exact: true }))
   await page.keyboard.press("ArrowRight")
   await expect(record(page)).not.toContainText(originalId)
