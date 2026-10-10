@@ -1,8 +1,13 @@
+import fs from "node:fs"
 import { fileURLToPath } from "node:url"
 import { defineConfig } from "@playwright/test"
 
 const repo = fileURLToPath(new URL("../", import.meta.url))
-const chromiumPath = `${repo}.scratch/tooling/chromium/chrome-headless-shell`
+const localChromium = `${repo}.scratch/tooling/chromium/chrome-headless-shell`
+const chromiumPath =
+  process.env.OWN_CHROMIUM ||
+  process.env.FLUX_BROWSER ||
+  (fs.existsSync(localChromium) ? localChromium : undefined)
 
 export default defineConfig({
   testDir: "./tests",
@@ -14,12 +19,16 @@ export default defineConfig({
     baseURL: "http://127.0.0.1:19025",
     headless: true,
     launchOptions: {
-      executablePath: chromiumPath,
+      ...(chromiumPath ? { executablePath: chromiumPath } : {}),
       args: ["--no-sandbox", "--disable-dev-shm-usage"],
       env: {
         ...process.env,
-        LD_LIBRARY_PATH: `${repo}.scratch/tooling/libs:${process.env.LD_LIBRARY_PATH ?? ""}`,
-        FONTCONFIG_PATH: `${repo}.scratch/tooling`,
+        ...(fs.existsSync(`${repo}.scratch/tooling/libs`)
+          ? {
+              LD_LIBRARY_PATH: `${repo}.scratch/tooling/libs:${process.env.LD_LIBRARY_PATH ?? ""}`,
+              FONTCONFIG_PATH: `${repo}.scratch/tooling`,
+            }
+          : {}),
       },
     },
     viewport: { width: 1280, height: 900 },

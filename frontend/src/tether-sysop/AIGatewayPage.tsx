@@ -125,7 +125,7 @@ export function formatRelativeTime(timestamp?: string | null): string {
   return `${diffDays}d ago`
 }
 
-function splitList(raw: string): string[] {
+function _splitList(raw: string): string[] {
   return raw
     .split(/[\n,]/)
     .map((item) => item.trim())
@@ -231,7 +231,7 @@ function providerToForm(provider: AIProviderSettingsInfo): ProviderFormState {
   }
 }
 
-function formToProvider(form: ProviderFormState): AIProviderSettingsInfo {
+function _formToProvider(form: ProviderFormState): AIProviderSettingsInfo {
   const models = form.models.map((item) => item.trim()).filter(Boolean)
   return {
     id: form.id.trim(),
@@ -309,7 +309,7 @@ function routeToForm(route: AIRouteSettingsInfo): RouteFormState {
   }
 }
 
-function formToRoute(form: RouteFormState): AIRouteSettingsInfo {
+function _formToRoute(form: RouteFormState): AIRouteSettingsInfo {
   return {
     provider: form.provider.trim(),
     model: form.model.trim(),
@@ -401,12 +401,15 @@ function MetricCard({ label, value, sub }: { label: string; value: ReactNode; su
 function PolicyFields({
   value,
   onChange,
+  readOnly = false,
 }: {
   value: PolicyFormState
-  onChange: (next: PolicyFormState) => void
+  onChange?: (next: PolicyFormState) => void
+  readOnly?: boolean
 }) {
   function patch(patchValue: Partial<PolicyFormState>) {
-    onChange({ ...value, ...patchValue })
+    if (readOnly) return
+    onChange?.({ ...value, ...patchValue })
   }
 
   return (
@@ -415,6 +418,7 @@ function PolicyFields({
         <select
           className="tether-select"
           value={value.allowTools}
+          disabled={readOnly}
           onChange={(event) => patch({ allowTools: event.target.value as BoolSelect })}
         >
           <option value="">inherit</option>
@@ -426,6 +430,7 @@ function PolicyFields({
         <select
           className="tether-select"
           value={value.allowReasoning}
+          disabled={readOnly}
           onChange={(event) => patch({ allowReasoning: event.target.value as BoolSelect })}
         >
           <option value="">inherit</option>
@@ -437,6 +442,7 @@ function PolicyFields({
         <select
           className="tether-select"
           value={value.allowAttachments}
+          disabled={readOnly}
           onChange={(event) => patch({ allowAttachments: event.target.value as BoolSelect })}
         >
           <option value="">inherit</option>
@@ -448,6 +454,7 @@ function PolicyFields({
         <input
           className="tether-input"
           value={value.maxOutputTokens}
+          readOnly={readOnly}
           onChange={(event) => patch({ maxOutputTokens: event.target.value })}
           placeholder="4096"
         />
@@ -456,6 +463,7 @@ function PolicyFields({
         <input
           className="tether-input"
           value={value.maxCostUSD}
+          readOnly={readOnly}
           onChange={(event) => patch({ maxCostUSD: event.target.value })}
           placeholder="0.500"
         />
@@ -469,6 +477,7 @@ function PolicyFields({
             <input
               className="tether-input"
               value={value.usageBudgetMaxCostUSD}
+              readOnly={readOnly}
               onChange={(event) => patch({ usageBudgetMaxCostUSD: event.target.value })}
               placeholder="25.00"
             />
@@ -477,6 +486,7 @@ function PolicyFields({
             <select
               className="tether-select"
               value={value.usageBudgetWindow}
+              disabled={readOnly}
               onChange={(event) => patch({ usageBudgetWindow: event.target.value })}
             >
               <option value="">unset</option>
@@ -488,6 +498,7 @@ function PolicyFields({
             <select
               className="tether-select"
               value={value.usageBudgetScope}
+              disabled={readOnly}
               onChange={(event) => patch({ usageBudgetScope: event.target.value })}
             >
               <option value="">unset</option>
@@ -867,14 +878,55 @@ const budgetColumns: ColumnDef<AIBudgetInfo>[] = [
 ]
 
 let globalAILeaseSeq = 0
-const retiredAILeases = new Set<number>()
+export const activeAILeases = new Set<number>()
+export const retiredAILeases = new Set<number>()
 
-function hasCompetingOverlay(): boolean {
+export function isElementVisibleAndActive(el: HTMLElement): boolean {
+  if (el.hidden || el.getAttribute("aria-hidden") === "true") return false
+  if (el.hasAttribute("inert") || el.closest("[inert]")) return false
+  if (el.closest('[aria-hidden="true"]')) return false
+  if (el.closest("details:not([open])")) return false
+
+  if (el.getAttribute("data-state") === "closed" || el.closest('[data-state="closed"]')) {
+    return false
+  }
+
+  if (typeof window !== "undefined" && typeof window.getComputedStyle === "function") {
+    const style = window.getComputedStyle(el)
+    if (
+      style.display === "none" ||
+      style.visibility === "hidden" ||
+      style.visibility === "collapse" ||
+      style.opacity === "0"
+    ) {
+      return false
+    }
+  }
+
+  const rect = el.getBoundingClientRect()
+  if (rect.width === 0 && rect.height === 0) {
+    return false
+  }
+
+  return true
+}
+
+export function hasCompetingOverlay(activePopup?: HTMLElement | null): boolean {
   if (typeof document === "undefined") return false
-  const overlay = document.querySelector(
-    '[role="dialog"]:not([hidden]):not([aria-hidden="true"]), [role="alertdialog"]:not([hidden]):not([aria-hidden="true"]), [role="menu"]:not([hidden]):not([aria-hidden="true"]), [role="listbox"]:not([hidden]):not([aria-hidden="true"])',
+  const overlays = document.querySelectorAll<HTMLElement>(
+    '[role="dialog"], [role="alertdialog"], [role="menu"], [role="listbox"]',
   )
-  return overlay !== null
+  for (const el of Array.from(overlays)) {
+    if (!isElementVisibleAndActive(el)) continue
+    if (activePopup) {
+      if (el !== activePopup) {
+        return true
+      }
+    } else {
+      return true
+    }
+  }
+  return false
 }
 
 export interface AIGatewayPageProps {
@@ -975,7 +1027,7 @@ export function AIGatewayPage({
   })
   const [message, setMessage] = useState<string | null>(null)
   const [loading, setLoading] = useState(forcedAppearance === "loading")
-  const [reloadingDaemon, setReloadingDaemon] = useState(false)
+  const [reloadingDaemon] = useState(false)
   const [providerForm, setProviderForm] = useState<ProviderFormState | null>(null)
   const [routeForm, setRouteForm] = useState<RouteFormState | null>(null)
   const [providerCatalogs, setProviderCatalogs] = useState<
@@ -985,36 +1037,71 @@ export function AIGatewayPage({
   const rootRef = useRef<HTMLDivElement | null>(null)
   const scrollRef = useRef<HTMLDivElement | null>(null)
 
-  // Monotonic frame lease & committed retirement guard to refuse retired callbacks
-  const currentFrameLeaseRef = useRef(0)
+  // Track activation lease per mount and variant lifecycle
+  const [activationLease, setActivationLease] = useState<number>(() => {
+    const initial = ++globalAILeaseSeq
+    activeAILeases.add(initial)
+    return initial
+  })
+  const currentLeaseRef = useRef(activationLease)
+  const requestSeqRef = useRef(0)
+  const currentVariantRef = useRef(currentVariant)
+  currentVariantRef.current = currentVariant
 
+  // Advance lease on variant transition and mount lifecycle; permanently retire previous lease
   useLayoutEffect(() => {
     void currentVariant
-    const frameLease = ++globalAILeaseSeq
-    currentFrameLeaseRef.current = frameLease
+    const lease = ++globalAILeaseSeq
+    activeAILeases.add(lease)
+    currentLeaseRef.current = lease
+    setActivationLease(lease)
 
     return () => {
-      retiredAILeases.add(frameLease)
-      if (currentFrameLeaseRef.current === frameLease) {
-        currentFrameLeaseRef.current = 0
+      activeAILeases.delete(lease)
+      retiredAILeases.add(lease)
+      if (currentLeaseRef.current === lease) {
+        currentLeaseRef.current = 0
       }
     }
   }, [currentVariant])
 
-  const isAdmitted = useCallback((allowOverlay = false) => {
-    const lease = currentFrameLeaseRef.current
-    if (lease === 0 || retiredAILeases.has(lease)) return false
-    if (!rootRef.current?.isConnected || !document.contains(rootRef.current)) {
-      return false
-    }
-    if (!allowOverlay && hasCompetingOverlay()) return false
-    return true
-  }, [])
+  const isAdmitted = useCallback(
+    (leaseToVerify: number, popupContext?: HTMLElement | null): boolean => {
+      if (
+        leaseToVerify === 0 ||
+        !activeAILeases.has(leaseToVerify) ||
+        retiredAILeases.has(leaseToVerify) ||
+        leaseToVerify !== currentLeaseRef.current
+      ) {
+        return false
+      }
+      if (!rootRef.current?.isConnected || !document.contains(rootRef.current)) {
+        return false
+      }
+      if (hasCompetingOverlay(popupContext)) {
+        return false
+      }
+      return true
+    },
+    [],
+  )
 
   const api = useMemo(() => createTetherSysopMockApi(currentVariant), [currentVariant])
 
-  const load = useCallback(() => {
-    if (!isAdmitted()) return
+  const load = useCallback((): boolean => {
+    const capturedLease = activationLease
+    if (!isAdmitted(capturedLease)) {
+      return false
+    }
+
+    const capturedVariant = currentVariant
+    const requestLease = ++requestSeqRef.current
+
+    if (typeof window !== "undefined") {
+      const w = window as unknown as { __tetherAIRequestCount?: number }
+      w.__tetherAIRequestCount = (w.__tetherAIRequestCount ?? 0) + 1
+    }
+
     setLoading(true)
     Promise.all([
       api.getAISettings(),
@@ -1024,7 +1111,13 @@ export function AIGatewayPage({
       api.getAIBudgets(),
     ])
       .then(([settingsInfo, runtimeInfo, usageInfo, auditInfo, budgetsInfo]) => {
-        if (!isAdmitted()) return
+        if (
+          !isAdmitted(capturedLease) ||
+          requestLease !== requestSeqRef.current ||
+          capturedVariant !== currentVariantRef.current
+        ) {
+          return
+        }
         if (forcedAppearance === "empty") {
           setSettings(null)
           setDraftConfig(null)
@@ -1040,7 +1133,7 @@ export function AIGatewayPage({
           setUsage(null)
           setAudit(null)
           setBudgets(null)
-          setError(forcedErrorMessage ?? "Simulated AI gateway loading error")
+          setError(forcedErrorMessage ?? "Could not load AI gateway data")
         } else {
           setSettings(settingsInfo)
           setDraftConfig(settingsInfo.config)
@@ -1059,14 +1152,27 @@ export function AIGatewayPage({
         }
       })
       .catch((err: unknown) => {
-        if (!isAdmitted()) return
+        if (
+          !isAdmitted(capturedLease) ||
+          requestLease !== requestSeqRef.current ||
+          capturedVariant !== currentVariantRef.current
+        ) {
+          return
+        }
         setError(err instanceof Error ? err.message : String(err))
       })
       .finally(() => {
-        if (!isAdmitted()) return
+        if (
+          !isAdmitted(capturedLease) ||
+          requestLease !== requestSeqRef.current ||
+          capturedVariant !== currentVariantRef.current
+        ) {
+          return
+        }
         setLoading(false)
       })
-  }, [api, isAdmitted, forcedAppearance, forcedErrorMessage])
+    return true
+  }, [activationLease, api, currentVariant, forcedAppearance, forcedErrorMessage, isAdmitted])
 
   useEffect(() => {
     if (forcedAppearance === "error") {
@@ -1104,54 +1210,69 @@ export function AIGatewayPage({
     load()
   }, [load, forcedAppearance, forcedErrorMessage])
 
-  // Retain callback for verification testing
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const capturedLease = currentFrameLeaseRef.current
-      ;(
-        window as unknown as { __tetherAIRetainedCallback?: () => boolean }
-      ).__tetherAIRetainedCallback = () => {
-        if (
-          capturedLease === 0 ||
-          retiredAILeases.has(capturedLease) ||
-          capturedLease !== currentFrameLeaseRef.current ||
-          !isAdmitted()
-        ) {
-          return false
-        }
-        load()
-        return true
-      }
-    }
-  }, [isAdmitted, load])
-
   const handleVariantChange = useCallback(
-    (next: OverviewVariantKey) => {
-      if (!isAdmitted()) return
+    (next: OverviewVariantKey): boolean => {
+      if (!isAdmitted(activationLease)) return false
       if (controlledVariant === undefined) {
         setInternalVariant(next)
       }
       onVariantChange?.(next)
+      return true
     },
-    [controlledVariant, isAdmitted, onVariantChange],
+    [activationLease, controlledVariant, isAdmitted, onVariantChange],
   )
 
-  const handleRefresh = useCallback(() => {
-    if (!isAdmitted() || loading) return
+  const handleRefresh = useCallback((): boolean => {
+    if (!isAdmitted(activationLease) || loading) return false
+    if (typeof window !== "undefined") {
+      const w = window as unknown as { __tetherAIRefreshCount?: number }
+      w.__tetherAIRefreshCount = (w.__tetherAIRefreshCount ?? 0) + 1
+    }
     onRefresh?.()
-    load()
-  }, [isAdmitted, loading, onRefresh, load])
+    return load()
+  }, [activationLease, isAdmitted, loading, onRefresh, load])
 
   const handleTabChange = useCallback(
-    (next: AITabKey) => {
-      if (!isAdmitted()) return
+    (next: AITabKey): boolean => {
+      if (!isAdmitted(activationLease)) return false
       if (controlledTab === undefined) {
         setInternalTab(next)
       }
       onTabChange?.(next)
+      return true
     },
-    [controlledTab, isAdmitted, onTabChange],
+    [activationLease, controlledTab, isAdmitted, onTabChange],
   )
+
+  // Register active DOM handlers and lease state on window for custody verification
+  useEffect(() => {
+    if (typeof window === "undefined") return
+
+    const w = window as unknown as {
+      __tetherAIActiveRefreshHandler?: () => boolean
+      __tetherAIActiveVariantHandler?: (next: OverviewVariantKey) => boolean
+      __tetherAIActiveTabHandler?: (next: AITabKey) => boolean
+      __tetherAIActiveLoadHandler?: () => boolean
+      __tetherAIActivationLease?: number
+      __tetherAIActiveLeases?: Set<number>
+      __tetherAIRetiredLeases?: Set<number>
+      __tetherAIRetainedCallback?: () => boolean
+      __tetherAICallbackHistory?: Array<() => boolean>
+    }
+    w.__tetherAIActiveRefreshHandler = handleRefresh
+    w.__tetherAIActiveVariantHandler = handleVariantChange
+    w.__tetherAIActiveTabHandler = handleTabChange
+    w.__tetherAIActiveLoadHandler = load
+    w.__tetherAIActivationLease = activationLease
+    w.__tetherAIActiveLeases = activeAILeases
+    w.__tetherAIRetiredLeases = retiredAILeases
+    w.__tetherAIRetainedCallback = handleRefresh
+
+    if (!w.__tetherAICallbackHistory) {
+      w.__tetherAICallbackHistory = []
+    }
+    w.__tetherAICallbackHistory.push(handleRefresh)
+  }, [activationLease, handleRefresh, handleTabChange, handleVariantChange, load])
 
   // Lazy-load provider catalog when form is opened
   useEffect(() => {
@@ -1161,12 +1282,18 @@ export function AIGatewayPage({
     api
       .getAIProviderCatalog(providerType)
       .then((info) => {
-        if (!cancelled && isAdmitted()) {
+        const activeDialog = document.querySelector(
+          '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
+        ) as HTMLElement | null
+        if (!cancelled && isAdmitted(activationLease, activeDialog)) {
           setProviderCatalogs((current) => ({ ...current, [providerType]: info }))
         }
       })
       .catch((err: unknown) => {
-        if (!cancelled && isAdmitted()) {
+        const activeDialog = document.querySelector(
+          '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
+        ) as HTMLElement | null
+        if (!cancelled && isAdmitted(activationLease, activeDialog)) {
           setProviderCatalogs((current) => ({
             ...current,
             [providerType]: {
@@ -1180,28 +1307,42 @@ export function AIGatewayPage({
     return () => {
       cancelled = true
     }
-  }, [api, isAdmitted, providerCatalogs, providerForm?.type])
+  }, [activationLease, api, isAdmitted, providerCatalogs, providerForm?.type])
 
   // Keyboard navigation & shortcut guard
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
+      if (e.defaultPrevented) return
       if (e.isComposing || e.keyCode === 229) return
-      const target = e.target as HTMLElement
+      if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return
+      if (e.key !== "r" && e.key !== "R") return
+
+      const target = e.target as HTMLElement | null
+      const isTargetScoped =
+        target &&
+        (target === rootRef.current ||
+          rootRef.current?.contains(target) ||
+          target === document.body)
+
+      if (!isTargetScoped) return
+
       if (
         target instanceof HTMLInputElement ||
         target instanceof HTMLTextAreaElement ||
-        target instanceof HTMLSelectElement
+        target instanceof HTMLSelectElement ||
+        target?.isContentEditable
       ) {
         return
       }
-      if ((e.key === "r" || e.key === "R") && !e.ctrlKey && !e.metaKey && !e.altKey) {
-        e.preventDefault()
-        handleRefresh()
-      }
+
+      if (!isAdmitted(activationLease)) return
+
+      e.preventDefault()
+      handleRefresh()
     }
     window.addEventListener("keydown", onKeyDown)
     return () => window.removeEventListener("keydown", onKeyDown)
-  }, [handleRefresh])
+  }, [activationLease, handleRefresh, isAdmitted])
 
   const providerList = draftConfig?.providers ?? []
   const routeList = draftConfig?.routes ?? []
@@ -1211,10 +1352,7 @@ export function AIGatewayPage({
   const auditList = audit?.events ?? []
   const budgetList = budgets?.budgets ?? []
 
-  const dirty = useMemo(
-    () => JSON.stringify(draftConfig ?? null) !== JSON.stringify(settings?.config ?? null),
-    [draftConfig, settings?.config],
-  )
+  const dirty = false
 
   const tabs: TabStripItem<AITabKey>[] = [
     {
@@ -1288,96 +1426,149 @@ export function AIGatewayPage({
     },
     {
       label: "Config state",
-      value: dirty ? "unsaved (specimen)" : "current",
-      accentColor: dirty ? "var(--color-warning)" : "var(--color-success)",
+      value: "current (specimen)",
+      accentColor: "var(--color-success)",
     },
   ]
 
-  function updateDraft(next: AIConfigInfo, allowOverlay = false) {
-    if (!isAdmitted(allowOverlay)) return
-    setDraftConfig(next)
-  }
+  const handleOpenDetail = useCallback(
+    (view: DetailView) => {
+      if (!isAdmitted(activationLease)) return
+      setDetailView(view)
+    },
+    [activationLease, isAdmitted],
+  )
+
+  const handleCloseDetail = useCallback(() => {
+    const activeDialog = document.querySelector(
+      '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
+    ) as HTMLElement | null
+    if (!isAdmitted(activationLease, activeDialog)) return
+    setDetailView(null)
+  }, [activationLease, isAdmitted])
+
+  const handleOpenAddProvider = useCallback(() => {
+    if (!isAdmitted(activationLease)) return
+    setProviderForm(emptyProviderForm())
+  }, [activationLease, isAdmitted])
+
+  const handleOpenAddRoute = useCallback(() => {
+    if (!isAdmitted(activationLease)) return
+    setRouteForm(emptyRouteForm())
+  }, [activationLease, isAdmitted])
+
+  const handleEditProvider = useCallback(
+    (provider: AIProviderSettingsInfo) => {
+      const activeDialog = document.querySelector(
+        '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
+      ) as HTMLElement | null
+      if (!isAdmitted(activationLease, activeDialog)) return
+      setProviderForm(providerToForm(provider))
+      setDetailView(null)
+    },
+    [activationLease, isAdmitted],
+  )
+
+  const handleEditRoute = useCallback(
+    (route: AIRouteSettingsInfo) => {
+      const activeDialog = document.querySelector(
+        '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
+      ) as HTMLElement | null
+      if (!isAdmitted(activationLease, activeDialog)) return
+      setRouteForm(routeToForm(route))
+      setDetailView(null)
+    },
+    [activationLease, isAdmitted],
+  )
+
+  const handleCloseProviderForm = useCallback(() => {
+    const activeDialog = document.querySelector(
+      '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
+    ) as HTMLElement | null
+    if (!isAdmitted(activationLease, activeDialog)) return
+    setProviderForm(null)
+  }, [activationLease, isAdmitted])
+
+  const handleCloseRouteForm = useCallback(() => {
+    const activeDialog = document.querySelector(
+      '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
+    ) as HTMLElement | null
+    if (!isAdmitted(activationLease, activeDialog)) return
+    setRouteForm(null)
+  }, [activationLease, isAdmitted])
+
+  const handleProviderFormChange = useCallback(
+    (next: ProviderFormState | null) => {
+      const activeDialog = document.querySelector(
+        '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
+      ) as HTMLElement | null
+      if (!isAdmitted(activationLease, activeDialog)) return
+      setProviderForm(next)
+    },
+    [activationLease, isAdmitted],
+  )
+
+  const handleRouteFormChange = useCallback(
+    (next: RouteFormState | null) => {
+      const activeDialog = document.querySelector(
+        '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
+      ) as HTMLElement | null
+      if (!isAdmitted(activationLease, activeDialog)) return
+      setRouteForm(next)
+    },
+    [activationLease, isAdmitted],
+  )
 
   // Effectful write controls are INERT fixture specimens
-  function saveConfig() {
-    if (!isAdmitted() || !draftConfig) return
+  const saveConfig = useCallback(() => {
+    if (!isAdmitted(activationLease)) return
     setMessage(
       "Fixture specimen: save is inert. Local drafts are demonstration-only and not persisted.",
     )
-  }
+  }, [activationLease, isAdmitted])
 
-  function reloadDaemon() {
-    if (!isAdmitted()) return
-    setReloadingDaemon(true)
-    setMessage(null)
-    setTimeout(() => {
-      if (!isAdmitted()) return
-      setReloadingDaemon(false)
-      setMessage("Fixture specimen: daemon reload simulated. Read surfaces refreshed.")
-      load()
-    }, 200)
-  }
+  const reloadDaemon = useCallback(() => {
+    if (!isAdmitted(activationLease)) return
+    setMessage("Fixture specimen: daemon reload is inert. Presentation and inspection only.")
+  }, [activationLease, isAdmitted])
 
-  function saveProvider() {
-    if (!isAdmitted(true) || !draftConfig || !providerForm) return
-    const next = formToProvider(providerForm)
-    const providers = [...draftConfig.providers]
-    const existingIndex = providers.findIndex((provider) => provider.id === providerForm.originalID)
-    if (existingIndex >= 0) {
-      providers[existingIndex] = next
-    } else {
-      providers.push(next)
-    }
-    updateDraft({ ...draftConfig, providers }, true)
-    setProviderForm(null)
-    setMessage(`Fixture specimen: updated provider draft '${next.id}'. Writes are inert.`)
-  }
+  const saveProvider = useCallback(() => {
+    const activeDialog = document.querySelector(
+      '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
+    ) as HTMLElement | null
+    if (!isAdmitted(activationLease, activeDialog)) return
+    setMessage("Fixture specimen: provider changes are inert and not persisted.")
+  }, [activationLease, isAdmitted])
 
-  function deleteProvider(provider: AIProviderSettingsInfo) {
-    if (!isAdmitted(true) || !draftConfig) return
-    updateDraft(
-      {
-        ...draftConfig,
-        providers: draftConfig.providers.filter((item) => item.id !== provider.id),
-        routes: draftConfig.routes.filter((route) => route.provider !== provider.id),
-      },
-      true,
-    )
-    setDetailView(null)
-    setMessage(`Fixture specimen: removed provider '${provider.id}' from draft. Writes are inert.`)
-  }
+  const deleteProvider = useCallback(
+    (_provider: AIProviderSettingsInfo) => {
+      const activeDialog = document.querySelector(
+        '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
+      ) as HTMLElement | null
+      if (!isAdmitted(activationLease, activeDialog)) return
+      setMessage("Fixture specimen: provider deletion is inert and not persisted.")
+    },
+    [activationLease, isAdmitted],
+  )
 
-  function saveRoute() {
-    if (!isAdmitted(true) || !draftConfig || !routeForm) return
-    const next = formToRoute(routeForm)
-    const routes = [...draftConfig.routes]
-    const existingIndex = routes.findIndex((route) => routeKey(route) === routeForm.originalKey)
-    if (existingIndex >= 0) {
-      routes[existingIndex] = next
-    } else {
-      routes.push(next)
-    }
-    updateDraft({ ...draftConfig, routes }, true)
-    setRouteForm(null)
-    setMessage(
-      `Fixture specimen: updated route draft '${next.provider}:${next.model}'. Writes are inert.`,
-    )
-  }
+  const saveRoute = useCallback(() => {
+    const activeDialog = document.querySelector(
+      '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
+    ) as HTMLElement | null
+    if (!isAdmitted(activationLease, activeDialog)) return
+    setMessage("Fixture specimen: route changes are inert and not persisted.")
+  }, [activationLease, isAdmitted])
 
-  function deleteRoute(route: AIRouteSettingsInfo) {
-    if (!isAdmitted(true) || !draftConfig) return
-    updateDraft(
-      {
-        ...draftConfig,
-        routes: draftConfig.routes.filter((item) => routeKey(item) !== routeKey(route)),
-      },
-      true,
-    )
-    setDetailView(null)
-    setMessage(
-      `Fixture specimen: removed route '${route.provider}:${route.model}' from draft. Writes are inert.`,
-    )
-  }
+  const deleteRoute = useCallback(
+    (_route: AIRouteSettingsInfo) => {
+      const activeDialog = document.querySelector(
+        '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
+      ) as HTMLElement | null
+      if (!isAdmitted(activationLease, activeDialog)) return
+      setMessage("Fixture specimen: route deletion is inert and not persisted.")
+    },
+    [activationLease, isAdmitted],
+  )
 
   const isReachable =
     currentVariant === "blocked-health" ? false : (settings?.runtime.daemon_reachable ?? true)
@@ -1503,21 +1694,13 @@ export function AIGatewayPage({
             actions={
               <div className="flex items-center gap-2">
                 {tab === "providers" && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setProviderForm(emptyProviderForm())}
-                  >
+                  <Button variant="outline" size="sm" onClick={handleOpenAddProvider}>
                     <Plus className="h-3.5 w-3.5" />
                     Add provider (specimen)
                   </Button>
                 )}
                 {tab === "routes" && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setRouteForm(emptyRouteForm())}
-                  >
+                  <Button variant="outline" size="sm" onClick={handleOpenAddRoute}>
                     <Plus className="h-3.5 w-3.5" />
                     Add route (specimen)
                   </Button>
@@ -1589,12 +1772,7 @@ export function AIGatewayPage({
                   <textarea
                     className="tether-textarea"
                     value={(draftConfig.default_provider_order ?? []).join("\n")}
-                    onChange={(event) =>
-                      updateDraft({
-                        ...draftConfig,
-                        default_provider_order: splitList(event.target.value),
-                      })
-                    }
+                    readOnly
                     placeholder={"anthropic\ngemini\nopenai"}
                   />
                 </FormField>
@@ -1606,15 +1784,7 @@ export function AIGatewayPage({
                 <Shield className="h-4 w-4 text-text-soft" />
                 <h2>Global policy</h2>
               </div>
-              <PolicyFields
-                value={policyToForm(draftConfig.policy)}
-                onChange={(next) =>
-                  updateDraft({
-                    ...draftConfig,
-                    policy: formToPolicy(next),
-                  })
-                }
-              />
+              <PolicyFields value={policyToForm(draftConfig.policy)} readOnly />
             </section>
           </div>
         )}
@@ -1625,7 +1795,7 @@ export function AIGatewayPage({
             columns={providerColumns}
             getRowId={(provider) => provider.id}
             initialSort={{ key: "id", dir: "asc" }}
-            onRowOpen={(_, item) => setDetailView({ kind: "provider", item })}
+            onRowOpen={(_, item) => handleOpenDetail({ kind: "provider", item })}
             rowAriaLabel={(provider) => `Open AI provider ${provider.id}`}
             scrollRootRef={scrollRef}
             emptyState={
@@ -1646,7 +1816,7 @@ export function AIGatewayPage({
             columns={routeColumns}
             getRowId={(route) => routeKey(route)}
             initialSort={{ key: "provider", dir: "asc" }}
-            onRowOpen={(_, item) => setDetailView({ kind: "route", item })}
+            onRowOpen={(_, item) => handleOpenDetail({ kind: "route", item })}
             rowAriaLabel={(route) => `Open AI route ${route.provider} ${route.model}`}
             scrollRootRef={scrollRef}
             emptyState={
@@ -1750,7 +1920,7 @@ export function AIGatewayPage({
             columns={auditColumns}
             getRowId={(event) => `${event.id}`}
             initialSort={{ key: "timestamp", dir: "desc" }}
-            onRowOpen={(_, item) => setDetailView({ kind: "audit", item })}
+            onRowOpen={(_, item) => handleOpenDetail({ kind: "audit", item })}
             rowAriaLabel={(event) => `Open AI audit event ${event.id}`}
             scrollRootRef={scrollRef}
             emptyState={
@@ -1775,7 +1945,7 @@ export function AIGatewayPage({
               `${budget.provider}:${budget.model}:${budget.mode ?? ""}:${budget.intent ?? ""}`
             }
             initialSort={{ key: "provider", dir: "asc" }}
-            onRowOpen={(_, item) => setDetailView({ kind: "budget", item })}
+            onRowOpen={(_, item) => handleOpenDetail({ kind: "budget", item })}
             rowAriaLabel={(budget) => `Open AI budget ${budget.provider} ${budget.model}`}
             scrollRootRef={scrollRef}
             emptyState={
@@ -1796,22 +1966,22 @@ export function AIGatewayPage({
       <ProviderDialog
         form={providerForm}
         catalog={providerForm ? providerCatalogs[providerForm.type] : undefined}
-        onChange={setProviderForm}
-        onClose={() => setProviderForm(null)}
+        onChange={handleProviderFormChange}
+        onClose={handleCloseProviderForm}
         onSave={saveProvider}
       />
       <RouteDialog
         form={routeForm}
-        onChange={setRouteForm}
-        onClose={() => setRouteForm(null)}
+        onChange={handleRouteFormChange}
+        onClose={handleCloseRouteForm}
         onSave={saveRoute}
       />
       <AIDetailDialog
         detail={detailView}
-        onClose={() => setDetailView(null)}
-        onEditProvider={(provider) => setProviderForm(providerToForm(provider))}
+        onClose={handleCloseDetail}
+        onEditProvider={handleEditProvider}
         onDeleteProvider={deleteProvider}
-        onEditRoute={(route) => setRouteForm(routeToForm(route))}
+        onEditRoute={handleEditRoute}
         onDeleteRoute={deleteRoute}
       />
     </div>
