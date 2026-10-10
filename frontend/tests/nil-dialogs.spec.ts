@@ -352,9 +352,10 @@ for (const section of ["List navigation", "Board navigation"]) {
     await expect.poll(() => palettePopup.evaluate((popup) => !popup.isConnected)).toBe(true)
     // Complete the native close restoration frame before measuring a new competitor.
     await page.evaluate(
-      () => new Promise<void>((resolve) => {
-        requestAnimationFrame(() => queueMicrotask(resolve))
-      }),
+      () =>
+        new Promise<void>((resolve) => {
+          requestAnimationFrame(() => queueMicrotask(resolve))
+        }),
     )
     await page.evaluate(() => {
       ;(window as typeof window & { attemptedBackgroundFocus: number }).attemptedBackgroundFocus = 0
