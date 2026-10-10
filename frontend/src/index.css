@@ -269,6 +269,8 @@ dd {
   .review-controls {
     gap: calc(var(--spacing) * 2);
     padding: calc(var(--spacing) * 2);
+    max-height: 120px;
+    overflow-y: auto;
   }
   .clock {
     margin-left: 0;
