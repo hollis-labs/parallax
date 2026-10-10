@@ -110,11 +110,25 @@ for (const consumer of ["torque", "runs"]) {
 test("synthetic IME/modifier controls, reveal and sort membership", async ({ page }) => {
   await page.goto(path("torque", "large"))
   const composingSearch = page.getByRole("searchbox", { name: "Search Torque tasks" })
-  await composingSearch.dispatchEvent("compositionstart")
-  await composingSearch.fill("字")
-  await page.keyboard.press("Escape")
+  await composingSearch.evaluate((node) => {
+    node.focus()
+    node.dispatchEvent(new CompositionEvent("compositionstart", { bubbles: true, data: "" }))
+    Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")!.set!.call(node, "字")
+    node.dispatchEvent(
+      new InputEvent("input", {
+        bubbles: true,
+        data: "字",
+        inputType: "insertCompositionText",
+        isComposing: true,
+      }),
+    )
+  })
   await expect(composingSearch).toHaveValue("字")
-  await composingSearch.dispatchEvent("compositionend")
+  await composingSearch.dispatchEvent("keydown", { key: "Escape", isComposing: true, keyCode: 229 })
+  await expect(composingSearch).toHaveValue("字")
+  await composingSearch.evaluate((node) =>
+    node.dispatchEvent(new CompositionEvent("compositionend", { bubbles: true, data: "字" })),
+  )
   await page.keyboard.press("Escape")
   await expect(composingSearch).toHaveValue("")
   const row = page.locator("[data-ops-row-id]").first()
