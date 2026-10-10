@@ -6,11 +6,29 @@
     "name": "cn",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/reader/ReaderInlineActions.tsx",
+      "frontend/src/examples/reader/ReaderNotes.tsx",
+      "frontend/src/examples/reader/ReaderTags.tsx",
+      "frontend/src/examples/reader/ReaderVisual.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -857,6 +875,7 @@
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/developer-evidence/Review.tsx",
       "frontend/src/directory-review/Review.tsx",
+      "frontend/src/examples/reader/ReaderExample.tsx",
       "frontend/src/observability/Views.tsx",
       "frontend/src/observation-review/Review.tsx",
       "frontend/src/operations/Operations.stories.tsx",
@@ -1866,6 +1885,9 @@
       "frontend/src/examples/administration/AdministrationExample.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
+      "frontend/src/examples/reader/ReaderExample.tsx",
+      "frontend/src/examples/reader/ReaderInlineActions.tsx",
+      "frontend/src/examples/reader/ReaderVisual.tsx",
       "frontend/src/examples/torque/BoardIntent.tsx",
       "frontend/src/examples/torque/Mission.tsx",
       "frontend/src/examples/torque/ReferenceEvidence.tsx",
@@ -2673,6 +2695,8 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/reader/ReaderExample.tsx",
+      "frontend/src/examples/reader/ReaderVisual.tsx",
       "frontend/src/examples/torque/BoardIntent.tsx"
     ]
   },
@@ -2714,6 +2738,8 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/reader/ReaderExample.tsx",
+      "frontend/src/examples/reader/ReaderVisual.tsx",
       "frontend/src/examples/torque/BoardIntent.tsx"
     ]
   },
@@ -2724,11 +2750,27 @@
     "name": "DialogDescription",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/reader/ReaderExample.tsx",
+      "frontend/src/examples/reader/ReaderVisual.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2750,11 +2792,27 @@
     "name": "DialogHeader",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/reader/ReaderExample.tsx",
+      "frontend/src/examples/reader/ReaderVisual.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2807,6 +2865,8 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/reader/ReaderExample.tsx",
+      "frontend/src/examples/reader/ReaderVisual.tsx",
       "frontend/src/examples/torque/BoardIntent.tsx"
     ]
   },
@@ -3124,11 +3184,27 @@
     "name": "Input",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/reader/ReaderInlineActions.tsx",
+      "frontend/src/examples/reader/ReaderTags.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -3276,7 +3352,8 @@
     },
     "importEvidence": [
       "frontend/src/directory-review/Review.tsx",
-      "frontend/src/directory-review/contracts.ts"
+      "frontend/src/directory-review/contracts.ts",
+      "frontend/src/examples/reader/ReaderInlineActions.tsx"
     ]
   },
   {
@@ -3317,7 +3394,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/directory-review/Review.tsx"
+      "frontend/src/directory-review/Review.tsx",
+      "frontend/src/examples/reader/ReaderInlineActions.tsx"
     ]
   },
   {
@@ -3327,11 +3405,26 @@
     "name": "PopoverDescription",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/reader/ReaderInlineActions.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -3340,11 +3433,26 @@
     "name": "PopoverHeader",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/reader/ReaderInlineActions.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -3353,11 +3461,26 @@
     "name": "PopoverTitle",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/reader/ReaderInlineActions.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -3397,7 +3520,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/directory-review/Review.tsx"
+      "frontend/src/directory-review/Review.tsx",
+      "frontend/src/examples/reader/ReaderInlineActions.tsx"
     ]
   },
   {
@@ -3823,7 +3947,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/evidence-states/Review.tsx"
+      "frontend/src/evidence-states/Review.tsx",
+      "frontend/src/examples/reader/ReaderExample.tsx"
     ]
   },
   {
@@ -4568,6 +4693,7 @@
     },
     "importEvidence": [
       "frontend/src/App.tsx",
+      "frontend/src/examples/reader/ReaderExample.tsx",
       "frontend/src/ops-dashboard/Dashboard.tsx",
       "frontend/src/ops-dashboard/contracts.ts"
     ]
@@ -5057,6 +5183,8 @@
       "frontend/src/examples/chat/Standalone.tsx",
       "frontend/src/examples/messaging/Messaging.stories.tsx",
       "frontend/src/examples/messaging/Standalone.tsx",
+      "frontend/src/examples/reader/Reader.stories.tsx",
+      "frontend/src/examples/reader/Standalone.tsx",
       "frontend/src/examples/torque/Standalone.tsx",
       "frontend/src/examples/torque/Torque.stories.tsx",
       "frontend/src/examples/workspace/Standalone.tsx",
