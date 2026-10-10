@@ -1,6 +1,7 @@
 import { isComposingEvent } from "@hollis-labs/design-components"
 import { Check, Keyboard, Lock, RotateCcw, X } from "lucide-react"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { useCommittedFrame } from "../committed-frame"
 import {
   FIXTURE_PLUGIN_SHORTCUTS,
   formatKeyBinding,
@@ -10,6 +11,14 @@ import {
   type ShortcutDefinition,
 } from "../model"
 import { Kbd, KbdGroup, PanelHeader, SCard, SRow } from "../primitives"
+
+export interface CaptureDiagnostics {
+  key: string
+  isLive: () => boolean
+  captured: string | null
+  save: () => boolean
+  cancel: () => boolean
+}
 
 const SHORTCUT_GROUPS = [
   { id: "navigation", label: "Navigation" },
@@ -27,6 +36,7 @@ interface ShortcutRowProps {
   onEdit: () => void
   onSave: (binding: string) => boolean | undefined
   onCancel: () => boolean
+  onCapture?: (frame: CaptureDiagnostics | undefined) => void
 }
 
 function renderKeyBadges(binding: string, prefix: string, active = false) {
@@ -52,32 +62,42 @@ function ShortcutRow({
   onEdit,
   onSave,
   onCancel,
+  onCapture,
 }: ShortcutRowProps) {
+  const { frameToken, checkToken } = useCommittedFrame()
+  const admitted = useCallback(
+    () => checkToken(frameToken) && !!rowRef.current?.isConnected && (!isLive || isLive()),
+    [checkToken, frameToken, isLive],
+  )
   const [captured, setCaptured] = useState<string | null>(null)
   const rowRef = useRef<HTMLDivElement>(null)
   const captureBoxRef = useRef<HTMLButtonElement>(null)
+  const focusStarted = useRef(false)
 
   const handleCommitSave = useCallback(() => {
-    if (readOnly || (isLive && !isLive())) return false
+    if (readOnly || !admitted()) return false
     if (captured) {
-      onSave(captured)
-      return true
+      return onSave(captured) === true
     }
     return false
-  }, [readOnly, isLive, captured, onSave])
+  }, [readOnly, captured, onSave, admitted])
 
   const handleGuardedCancel = useCallback((): boolean => {
-    if (readOnly || (isLive && !isLive())) return false
+    if (readOnly || !admitted()) return false
     return onCancel()
-  }, [readOnly, isLive, onCancel])
+  }, [readOnly, onCancel, admitted])
 
   useEffect(() => {
     if (!isEditing) {
       setCaptured(null)
+      focusStarted.current = false
       return
     }
 
-    captureBoxRef.current?.focus()
+    if (admitted() && !focusStarted.current) {
+      captureBoxRef.current?.focus()
+      focusStarted.current = true
+    }
 
     function handleKeyDown(e: KeyboardEvent) {
       // 1. Root / lease guard: if row is disconnected, ignore
@@ -92,7 +112,7 @@ function ShortcutRow({
 
       // 3. Current host / row admission lease:
       // If row is readOnly or host frame admission/lease is false or retired, refuse to consume/cancel
-      if (readOnly || (isLive && !isLive())) {
+      if (readOnly || !admitted()) {
         return
       }
 
@@ -136,7 +156,19 @@ function ShortcutRow({
 
     window.addEventListener("keydown", handleKeyDown, true)
     return () => window.removeEventListener("keydown", handleKeyDown, true)
-  }, [isEditing, readOnly, isLive, handleGuardedCancel])
+  }, [isEditing, readOnly, handleGuardedCancel, admitted])
+
+  useEffect(() => {
+    if (!isEditing) return
+    onCapture?.({
+      key: def.key,
+      isLive: admitted,
+      captured,
+      save: handleCommitSave,
+      cancel: handleGuardedCancel,
+    })
+    return () => onCapture?.(undefined)
+  }, [isEditing, def.key, captured, handleCommitSave, handleGuardedCancel, onCapture, admitted])
 
   // Publish active capture lease to window diagnostics when editing
   useEffect(() => {
@@ -144,7 +176,7 @@ function ShortcutRow({
     if (typeof window !== "undefined" && window.fluxSettings) {
       window.fluxSettings.currentCapture = {
         key: def.key,
-        isLive: () => !readOnly && (!isLive || isLive()),
+        isLive: () => !readOnly && admitted(),
         captured,
         save: handleCommitSave,
         cancel: handleGuardedCancel,
@@ -155,7 +187,7 @@ function ShortcutRow({
         window.fluxSettings.currentCapture = undefined
       }
     }
-  }, [isEditing, def.key, readOnly, isLive, captured, handleCommitSave, handleGuardedCancel])
+  }, [isEditing, def.key, readOnly, captured, handleCommitSave, handleGuardedCancel, admitted])
 
   return (
     <div ref={rowRef} data-shortcut-row={def.key} className="w-full">
@@ -234,6 +266,7 @@ function ShortcutRow({
 
 export interface ShortcutsSectionProps {
   shortcuts: Record<string, string>
+  onCapture?: (frame: CaptureDiagnostics | undefined) => void
   onChange: (shortcuts: Record<string, string>) => void
   readOnly?: boolean
   isLive?: () => boolean
@@ -241,10 +274,16 @@ export interface ShortcutsSectionProps {
 
 export function ShortcutsSection({
   shortcuts,
+  onCapture,
   onChange,
   readOnly = false,
   isLive,
 }: ShortcutsSectionProps) {
+  const { frameToken, checkToken } = useCommittedFrame()
+  const admitted = useCallback(
+    () => checkToken(frameToken) && (!isLive || isLive()),
+    [checkToken, frameToken, isLive],
+  )
   const [editingKey, setEditingKey] = useState<string | null>(null)
 
   const getBinding = useCallback(
@@ -254,31 +293,31 @@ export function ShortcutsSection({
 
   const handleSave = useCallback(
     (key: string, newBinding: string): boolean => {
-      if (readOnly || (isLive && !isLive())) return false
+      if (readOnly || !admitted()) return false
       onChange({ ...shortcuts, [key]: newBinding })
       setEditingKey(null)
       return true
     },
-    [shortcuts, onChange, readOnly, isLive],
+    [shortcuts, onChange, readOnly, admitted],
   )
 
   const handleCancel = useCallback(
     (key: string): boolean => {
-      if (readOnly || (isLive && !isLive())) return false
+      if (readOnly || !admitted()) return false
       setEditingKey((current) => (current === key ? null : current))
       return true
     },
-    [readOnly, isLive],
+    [readOnly, admitted],
   )
 
   const handleResetAll = useCallback((): boolean => {
-    if (readOnly || (isLive && !isLive())) return false
+    if (readOnly || !admitted()) return false
     const defaults: Record<string, string> = {}
     for (const def of SHORTCUT_DEFS) defaults[def.key] = def.default
     onChange(defaults)
     setEditingKey(null)
     return true
-  }, [onChange, readOnly, isLive])
+  }, [onChange, readOnly, admitted])
 
   // Conflict detection
   const conflicts = useMemo(() => {
@@ -326,9 +365,12 @@ export function ShortcutsSection({
                 binding={getBinding(def.key, def.default)}
                 isEditing={editingKey === def.key}
                 readOnly={readOnly}
-                isLive={isLive}
+                isLive={admitted}
+                onCapture={onCapture}
                 conflict={conflicts[def.key]}
-                onEdit={() => setEditingKey(def.key)}
+                onEdit={() => {
+                  if (admitted() && !readOnly) setEditingKey(def.key)
+                }}
                 onSave={(b) => handleSave(def.key, b)}
                 onCancel={() => handleCancel(def.key)}
               />

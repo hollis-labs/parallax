@@ -2022,6 +2022,7 @@
     },
     "importEvidence": [
       "frontend/src/examples/flux-navigation/Sidebar.tsx",
+      "frontend/src/examples/flux-settings/composition/admission.ts",
       "frontend/src/examples/flux-settings/sections/ShortcutsSection.tsx",
       "frontend/src/examples/nil/Editor.tsx",
       "frontend/src/examples/nil/NilExample.tsx",
@@ -17524,6 +17525,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/flux-settings/composition/ScalarForm.tsx",
       "frontend/src/settings-review/Review.tsx",
       "frontend/src/settings-review/contracts.ts"
     ]
@@ -17571,6 +17573,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/flux-settings/composition/ScalarForm.tsx",
       "frontend/src/settings-review/Review.tsx",
       "frontend/src/settings-review/contracts.ts"
     ]
@@ -17613,16 +17616,28 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/administration/Admin.tsx"
+        "frontend/src/administration/Admin.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.tsx",
+        "frontend/src/examples/flux-settings/composition/ScalarForm.tsx"
       ],
       "checks": [
-        "frontend/tests/administration.spec.ts"
+        "frontend/tests/administration.spec.ts",
+        "frontend/tests/flux-composition.spec.ts"
       ],
       "stories": [
-        "frontend/src/administration/Administration.stories.tsx"
+        "frontend/src/administration/Administration.stories.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.stories.tsx"
+      ],
+      "storyIds": [
+        "templates-flux-settings-composition--profile",
+        "templates-flux-settings-composition--preferences",
+        "templates-flux-settings-composition--plugins",
+        "templates-flux-settings-composition--layout",
+        "templates-flux-settings-composition--permissions"
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/flux-settings/composition/ScalarForm.tsx",
       "frontend/src/settings-review/Review.tsx",
       "frontend/src/settings-review/model.ts"
     ]
@@ -17639,16 +17654,28 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/administration/Admin.tsx"
+        "frontend/src/administration/Admin.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.tsx",
+        "frontend/src/examples/flux-settings/composition/ScalarForm.tsx"
       ],
       "checks": [
-        "frontend/tests/administration.spec.ts"
+        "frontend/tests/administration.spec.ts",
+        "frontend/tests/flux-composition.spec.ts"
       ],
       "stories": [
-        "frontend/src/administration/Administration.stories.tsx"
+        "frontend/src/administration/Administration.stories.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.stories.tsx"
+      ],
+      "storyIds": [
+        "templates-flux-settings-composition--profile",
+        "templates-flux-settings-composition--preferences",
+        "templates-flux-settings-composition--plugins",
+        "templates-flux-settings-composition--layout",
+        "templates-flux-settings-composition--permissions"
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/flux-settings/composition/ScalarForm.tsx",
       "frontend/src/settings-review/model.ts"
     ]
   },
@@ -17677,13 +17704,24 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/administration/Admin.tsx"
+        "frontend/src/administration/Admin.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.tsx",
+        "frontend/src/examples/flux-settings/composition/ScalarForm.tsx"
       ],
       "checks": [
-        "frontend/tests/administration.spec.ts"
+        "frontend/tests/administration.spec.ts",
+        "frontend/tests/flux-composition.spec.ts"
       ],
       "stories": [
-        "frontend/src/administration/Administration.stories.tsx"
+        "frontend/src/administration/Administration.stories.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.stories.tsx"
+      ],
+      "storyIds": [
+        "templates-flux-settings-composition--profile",
+        "templates-flux-settings-composition--preferences",
+        "templates-flux-settings-composition--plugins",
+        "templates-flux-settings-composition--layout",
+        "templates-flux-settings-composition--permissions"
       ]
     },
     "importEvidence": [
@@ -17715,16 +17753,28 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/administration/Admin.tsx"
+        "frontend/src/administration/Admin.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.tsx",
+        "frontend/src/examples/flux-settings/composition/ScalarForm.tsx"
       ],
       "checks": [
-        "frontend/tests/administration.spec.ts"
+        "frontend/tests/administration.spec.ts",
+        "frontend/tests/flux-composition.spec.ts"
       ],
       "stories": [
-        "frontend/src/administration/Administration.stories.tsx"
+        "frontend/src/administration/Administration.stories.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.stories.tsx"
+      ],
+      "storyIds": [
+        "templates-flux-settings-composition--profile",
+        "templates-flux-settings-composition--preferences",
+        "templates-flux-settings-composition--plugins",
+        "templates-flux-settings-composition--layout",
+        "templates-flux-settings-composition--permissions"
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/flux-settings/composition/model.ts",
       "frontend/src/settings-review/model.ts"
     ]
   },
@@ -17779,18 +17829,30 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/administration/Admin.tsx"
+        "frontend/src/administration/Admin.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.tsx",
+        "frontend/src/examples/flux-settings/composition/ScalarForm.tsx"
       ],
       "checks": [
-        "frontend/tests/administration.spec.ts"
+        "frontend/tests/administration.spec.ts",
+        "frontend/tests/flux-composition.spec.ts"
       ],
       "stories": [
-        "frontend/src/administration/Administration.stories.tsx"
+        "frontend/src/administration/Administration.stories.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.stories.tsx"
+      ],
+      "storyIds": [
+        "templates-flux-settings-composition--profile",
+        "templates-flux-settings-composition--preferences",
+        "templates-flux-settings-composition--plugins",
+        "templates-flux-settings-composition--layout",
+        "templates-flux-settings-composition--permissions"
       ]
     },
     "importEvidence": [
       "frontend/src/administration/Admin.tsx",
       "frontend/src/administration/type-contract.ts",
+      "frontend/src/examples/flux-settings/composition/ScalarForm.tsx",
       "frontend/src/settings-review/Review.tsx",
       "frontend/src/settings-review/contracts.ts",
       "frontend/src/settings-review/model.ts"
@@ -17931,6 +17993,7 @@
     },
     "importEvidence": [
       "frontend/src/examples/administration/AdministrationExample.tsx",
+      "frontend/src/examples/flux-settings/composition/ScalarForm.tsx",
       "frontend/src/settings-review/Review.tsx",
       "frontend/src/settings-review/contracts.ts"
     ]
@@ -17947,13 +18010,24 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/administration/Admin.tsx"
+        "frontend/src/administration/Admin.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.tsx",
+        "frontend/src/examples/flux-settings/composition/ScalarForm.tsx"
       ],
       "checks": [
-        "frontend/tests/administration.spec.ts"
+        "frontend/tests/administration.spec.ts",
+        "frontend/tests/flux-composition.spec.ts"
       ],
       "stories": [
-        "frontend/src/administration/Administration.stories.tsx"
+        "frontend/src/administration/Administration.stories.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.stories.tsx"
+      ],
+      "storyIds": [
+        "templates-flux-settings-composition--profile",
+        "templates-flux-settings-composition--preferences",
+        "templates-flux-settings-composition--plugins",
+        "templates-flux-settings-composition--layout",
+        "templates-flux-settings-composition--permissions"
       ]
     },
     "importEvidence": [
@@ -17998,16 +18072,29 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/administration/Admin.tsx"
+        "frontend/src/administration/Admin.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.tsx",
+        "frontend/src/examples/flux-settings/composition/ScalarForm.tsx"
       ],
       "checks": [
-        "frontend/tests/administration.spec.ts"
+        "frontend/tests/administration.spec.ts",
+        "frontend/tests/flux-composition.spec.ts"
       ],
       "stories": [
-        "frontend/src/administration/Administration.stories.tsx"
+        "frontend/src/administration/Administration.stories.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.stories.tsx"
+      ],
+      "storyIds": [
+        "templates-flux-settings-composition--profile",
+        "templates-flux-settings-composition--preferences",
+        "templates-flux-settings-composition--plugins",
+        "templates-flux-settings-composition--layout",
+        "templates-flux-settings-composition--permissions"
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/flux-settings/composition/ScalarForm.tsx",
+      "frontend/src/examples/flux-settings/composition/model.ts",
       "frontend/src/settings-review/model.ts"
     ]
   },
@@ -18067,6 +18154,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/flux-settings/composition/ScalarForm.tsx",
       "frontend/src/settings-review/Review.tsx",
       "frontend/src/settings-review/contracts.ts"
     ]
@@ -18096,13 +18184,24 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/administration/Admin.tsx"
+        "frontend/src/administration/Admin.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.tsx",
+        "frontend/src/examples/flux-settings/composition/ScalarForm.tsx"
       ],
       "checks": [
-        "frontend/tests/administration.spec.ts"
+        "frontend/tests/administration.spec.ts",
+        "frontend/tests/flux-composition.spec.ts"
       ],
       "stories": [
-        "frontend/src/administration/Administration.stories.tsx"
+        "frontend/src/administration/Administration.stories.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.stories.tsx"
+      ],
+      "storyIds": [
+        "templates-flux-settings-composition--profile",
+        "templates-flux-settings-composition--preferences",
+        "templates-flux-settings-composition--plugins",
+        "templates-flux-settings-composition--layout",
+        "templates-flux-settings-composition--permissions"
       ]
     },
     "importEvidence": [
@@ -18121,13 +18220,24 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/administration/Admin.tsx"
+        "frontend/src/administration/Admin.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.tsx",
+        "frontend/src/examples/flux-settings/composition/ScalarForm.tsx"
       ],
       "checks": [
-        "frontend/tests/administration.spec.ts"
+        "frontend/tests/administration.spec.ts",
+        "frontend/tests/flux-composition.spec.ts"
       ],
       "stories": [
-        "frontend/src/administration/Administration.stories.tsx"
+        "frontend/src/administration/Administration.stories.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.stories.tsx"
+      ],
+      "storyIds": [
+        "templates-flux-settings-composition--profile",
+        "templates-flux-settings-composition--preferences",
+        "templates-flux-settings-composition--plugins",
+        "templates-flux-settings-composition--layout",
+        "templates-flux-settings-composition--permissions"
       ]
     },
     "importEvidence": [
@@ -18146,13 +18256,24 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/administration/Admin.tsx"
+        "frontend/src/administration/Admin.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.tsx",
+        "frontend/src/examples/flux-settings/composition/ScalarForm.tsx"
       ],
       "checks": [
-        "frontend/tests/administration.spec.ts"
+        "frontend/tests/administration.spec.ts",
+        "frontend/tests/flux-composition.spec.ts"
       ],
       "stories": [
-        "frontend/src/administration/Administration.stories.tsx"
+        "frontend/src/administration/Administration.stories.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.stories.tsx"
+      ],
+      "storyIds": [
+        "templates-flux-settings-composition--profile",
+        "templates-flux-settings-composition--preferences",
+        "templates-flux-settings-composition--plugins",
+        "templates-flux-settings-composition--layout",
+        "templates-flux-settings-composition--permissions"
       ]
     },
     "importEvidence": [
@@ -18171,13 +18292,24 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/administration/Admin.tsx"
+        "frontend/src/administration/Admin.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.tsx",
+        "frontend/src/examples/flux-settings/composition/ScalarForm.tsx"
       ],
       "checks": [
-        "frontend/tests/administration.spec.ts"
+        "frontend/tests/administration.spec.ts",
+        "frontend/tests/flux-composition.spec.ts"
       ],
       "stories": [
-        "frontend/src/administration/Administration.stories.tsx"
+        "frontend/src/administration/Administration.stories.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.stories.tsx"
+      ],
+      "storyIds": [
+        "templates-flux-settings-composition--profile",
+        "templates-flux-settings-composition--preferences",
+        "templates-flux-settings-composition--plugins",
+        "templates-flux-settings-composition--layout",
+        "templates-flux-settings-composition--permissions"
       ]
     },
     "importEvidence": [
@@ -18196,13 +18328,24 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/administration/Admin.tsx"
+        "frontend/src/administration/Admin.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.tsx",
+        "frontend/src/examples/flux-settings/composition/ScalarForm.tsx"
       ],
       "checks": [
-        "frontend/tests/administration.spec.ts"
+        "frontend/tests/administration.spec.ts",
+        "frontend/tests/flux-composition.spec.ts"
       ],
       "stories": [
-        "frontend/src/administration/Administration.stories.tsx"
+        "frontend/src/administration/Administration.stories.tsx",
+        "frontend/src/examples/flux-settings/composition/Composition.stories.tsx"
+      ],
+      "storyIds": [
+        "templates-flux-settings-composition--profile",
+        "templates-flux-settings-composition--preferences",
+        "templates-flux-settings-composition--plugins",
+        "templates-flux-settings-composition--layout",
+        "templates-flux-settings-composition--permissions"
       ]
     },
     "importEvidence": [

@@ -7,6 +7,7 @@ import { StandaloneAdministrationExample } from "./examples/administration/Stand
 import { StandaloneChatExample } from "./examples/chat/Standalone"
 import { FluxCardsGallery } from "./examples/flux-cards/Gallery"
 import { StandaloneFluxChat } from "./examples/flux-chat/Standalone"
+import { StandaloneFluxSettingsComposition } from "./examples/flux-settings/composition/Composition"
 import { StandaloneMessagingExample } from "./examples/messaging/Standalone"
 import { NilExample } from "./examples/nil/NilExample"
 import { StandaloneOpsShellExample } from "./examples/ops-shell/Standalone"
@@ -20,7 +21,9 @@ const root = document.getElementById("root")
 if (!root) throw new Error("root element missing")
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
-    {new URLSearchParams(location.search).get("example") === "nil" ? (
+    {new URLSearchParams(location.search).get("example") === "flux-settings" ? (
+      <StandaloneFluxSettingsComposition />
+    ) : new URLSearchParams(location.search).get("example") === "nil" ? (
       <NilExample />
     ) : new URLSearchParams(location.search).get("example") === "flux-chat" ? (
       <StandaloneFluxChat />
