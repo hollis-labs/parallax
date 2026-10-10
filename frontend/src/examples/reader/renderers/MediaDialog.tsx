@@ -8,7 +8,7 @@ import {
   DialogTitle,
 } from "@hollis-labs/design-components"
 import { X } from "lucide-react"
-import { type KeyboardEvent, type ReactNode, type RefObject, useLayoutEffect, useRef } from "react"
+import { type KeyboardEvent, type ReactNode, type RefObject, useEffect, useLayoutEffect, useRef } from "react"
 
 import { competingLayer, visible } from "../../flux-chat/ownership"
 
@@ -24,6 +24,26 @@ export interface MediaDialogProps {
   sourceGeneration?: unknown
 }
 
+declare global {
+  interface Window {
+    readerDialog?: {
+      finalFocus: () => HTMLElement | false
+      activeTicket: () => number | null
+    }
+    heldFinalFocus?: () => HTMLElement | false
+  }
+}
+
+let nextDialogActivationTicket = 0
+
+interface DialogActivation {
+  ticket: number
+  sourceGeneration: unknown
+  root: HTMLElement | null
+  target: HTMLElement | null
+  alive: boolean
+}
+
 export function MediaDialog({
   open,
   onOpenChange,
@@ -36,21 +56,94 @@ export function MediaDialog({
   sourceGeneration,
 }: MediaDialogProps) {
   const dialogRef = useRef<HTMLDivElement>(null)
-  const openTicket = useRef(0)
-  const openedTicket = useRef<number | null>(null)
-  const openedGeneration = useRef<unknown>(null)
-  const openedRoot = useRef<HTMLElement | null>(null)
+  const currentActivationRef = useRef<DialogActivation | null>(null)
+
+  const resolveFinalFocus = (boundActivation: DialogActivation | null): HTMLElement | false => {
+    if (!boundActivation || !boundActivation.alive) {
+      return false
+    }
+    if (currentActivationRef.current !== boundActivation) {
+      return false
+    }
+    // Fulfill and permanently retire this activation
+    boundActivation.alive = false
+    if (currentActivationRef.current === boundActivation) {
+      currentActivationRef.current = null
+    }
+
+    if (sourceGeneration !== undefined && boundActivation.sourceGeneration !== sourceGeneration) {
+      return false
+    }
+
+    const target = boundActivation.target
+    if (!target || !target.isConnected || !visible(target)) {
+      return false
+    }
+
+    if (
+      boundActivation.root &&
+      (!boundActivation.root.isConnected ||
+        !visible(boundActivation.root) ||
+        !boundActivation.root.contains(target))
+    ) {
+      return false
+    }
+
+    // Exempt the exact closing popup itself, veto on any other competing layer
+    if (competingLayer([dialogRef.current])) {
+      return false
+    }
+
+    const foreground = document.activeElement
+    if (
+      foreground instanceof HTMLElement &&
+      foreground !== document.body &&
+      !dialogRef.current?.contains(foreground) &&
+      visible(foreground)
+    ) {
+      return false
+    }
+
+    return target
+  }
 
   useLayoutEffect(() => {
     if (open) {
-      openTicket.current++
-      openedTicket.current = openTicket.current
-      openedGeneration.current = sourceGeneration
-      const target = returnFocusRef?.current
-      openedRoot.current =
-        target?.closest<HTMLElement>('[data-testid="reader-detail-page"]') ?? null
+      if (currentActivationRef.current) {
+        currentActivationRef.current.alive = false
+      }
+      const target = returnFocusRef?.current ?? null
+      const root = target?.closest<HTMLElement>('[data-testid="reader-detail-page"]') ?? null
+      const activation: DialogActivation = {
+        ticket: ++nextDialogActivationTicket,
+        sourceGeneration,
+        root,
+        target,
+        alive: true,
+      }
+      currentActivationRef.current = activation
+
+      if (typeof window !== "undefined") {
+        window.readerDialog = {
+          finalFocus: () => resolveFinalFocus(activation),
+          activeTicket: () => (activation.alive ? activation.ticket : null),
+        }
+      }
     }
   }, [open, sourceGeneration, returnFocusRef])
+
+  useEffect(() => {
+    return () => {
+      // Activity retirement, root unmount, or source change
+      if (currentActivationRef.current) {
+        currentActivationRef.current.alive = false
+        currentActivationRef.current = null
+      }
+      if (typeof window !== "undefined") {
+        window.readerDialog = undefined
+      }
+    }
+  }, [sourceGeneration])
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -59,39 +152,8 @@ export function MediaDialog({
         data-reader-dialog
         className="max-h-[calc(100dvh-1rem)] max-w-4xl overflow-hidden p-0 motion-reduce:animate-none border border-border bg-panel shadow-xl"
         finalFocus={() => {
-          // 1. Must match captured open ticket and source generation
-          if (openedTicket.current === null || openTicket.current !== openedTicket.current) {
-            return false
-          }
-          if (sourceGeneration !== undefined && openedGeneration.current !== sourceGeneration) {
-            return false
-          }
-          const target = returnFocusRef?.current
-          // 2. Target must be connected and within captured root
-          if (!target || !target.isConnected || !visible(target)) {
-            return false
-          }
-          if (
-            openedRoot.current &&
-            (!openedRoot.current.isConnected || !openedRoot.current.contains(target))
-          ) {
-            return false
-          }
-          // 3. No competing dialogs/menus
-          if (competingLayer([target])) {
-            return false
-          }
-          // 4. Newer plain foreground owner check
-          const foreground = document.activeElement
-          if (
-            foreground instanceof HTMLElement &&
-            foreground !== document.body &&
-            !dialogRef.current?.contains(foreground) &&
-            visible(foreground)
-          ) {
-            return false
-          }
-          return target
+          const current = currentActivationRef.current
+          return resolveFinalFocus(current)
         }}
         aria-label={title}
         onClick={(event) => event.stopPropagation()}

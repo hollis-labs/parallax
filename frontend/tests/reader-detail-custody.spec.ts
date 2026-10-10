@@ -16,6 +16,11 @@ declare global {
       }
     }
     heldAction?: () => boolean
+    readerDialog?: {
+      finalFocus: () => HTMLElement | false
+      activeTicket: () => number | null
+    }
+    heldFinalFocus?: () => HTMLElement | false
   }
 }
 
@@ -27,22 +32,25 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
   }) => {
     await page.goto("/reader-lifecycle.html")
     await expect(page.getByTestId("reader-detail-page")).toBeVisible()
-    await expect(page.getByTestId("current-fragment-id")).toHaveText("FRAG-002")
 
-    // 1. Initial fresh positive on source A (FRAG-002)
+    // 1. Initial state: FRAG-002 with revision REV-FRAG-002-01
+    await expect(page.getByTestId("current-fragment-id")).toHaveText("FRAG-002")
+    await expect(page.getByTestId("current-fragment-revision")).toHaveText("REV-FRAG-002-01")
+
     await expect
       .poll(() => page.evaluate(() => window.readerDetail?.handleBack() ?? false))
       .toBe(true)
 
-    // 2. Retain the DOM action callback from frame A
+    // 2. Retain the action callback from frame A
     await page.evaluate(() => {
       window.heldAction = window.readerDetail?.handleBack
     })
     expect(await page.evaluate(() => window.heldAction?.())).toBe(true)
 
-    // 3. Switch to source B (FRAG-003)
+    // 3. Switch to source B (FRAG-003, revision REV-FRAG-003-01)
     await page.getByRole("button", { name: "Toggle fixture source" }).click()
     await expect(page.getByTestId("current-fragment-id")).toHaveText("FRAG-003")
+    await expect(page.getByTestId("current-fragment-revision")).toHaveText("REV-FRAG-003-01")
 
     // 4. Stale callback from A must refuse in frame B
     expect(await page.evaluate(() => window.heldAction?.())).toBe(false)
@@ -55,6 +63,7 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
     // 5. Switch back to source A (FRAG-002)
     await page.getByRole("button", { name: "Toggle fixture source" }).click()
     await expect(page.getByTestId("current-fragment-id")).toHaveText("FRAG-002")
+    await expect(page.getByTestId("current-fragment-revision")).toHaveText("REV-FRAG-002-01")
 
     // 6. Non-revival: The callback from the FIRST activation of A MUST STILL RETURN FALSE
     expect(await page.evaluate(() => window.heldAction?.())).toBe(false)
@@ -99,6 +108,9 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
       .poll(() => page.evaluate(() => window.readerDetail?.handleBack() ?? false))
       .toBe(true)
     await page.getByRole("button", { name: "Back to Reader inbox" }).click()
+
+    // Assert SAME once-working held action captured before Activity retirement REMAINS FALSE after show
+    expect(await page.evaluate(() => window.heldAction?.())).toBe(false)
   })
 
   test("once-working retained action refuses committed root unmount retirement with fresh positive", async ({
@@ -127,14 +139,14 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
     await page.getByRole("button", { name: "Toggle fixture root" }).click()
     await expect(page.getByTestId("reader-detail-page")).toBeVisible()
 
-    // Non-revival: Held action from prior root mount remains permanently dead
-    expect(await page.evaluate(() => window.heldAction?.())).toBe(false)
-
     // Fresh action in remounted root works
     await expect
       .poll(() => page.evaluate(() => window.readerDetail?.handleBack() ?? false))
       .toBe(true)
     await page.getByRole("button", { name: "Back to Reader inbox" }).click()
+
+    // Assert SAME once-working held action from prior mount remains permanently dead
+    expect(await page.evaluate(() => window.heldAction?.())).toBe(false)
   })
 
   for (const role of ["dialog", "menu", "listbox"] as const) {
@@ -190,27 +202,41 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
     })
   }
 
-  test("MediaDialog finalFocus honors source generation and refuses steal when plain foreground owner is active", async ({
+  test("MediaDialog finalFocus binds to opening activation, refuses reopen revival, and yields to foreground/competing layers", async ({
     page,
   }) => {
     await page.goto("/?example=reader&fragmentId=FRAG-002&scope=inbox")
     await expect(page.getByTestId("reader-detail-page")).toBeVisible()
 
-    // 1. Open image preview dialog
     const zoomTrigger = page.getByRole("button", { name: /^View larger image/ })
+
+    // 1. Open dialog (opening 1)
     await zoomTrigger.click()
     const dialog = page.locator("[data-reader-dialog]")
     await expect(dialog).toBeVisible()
 
-    // 2. Normal close restores focus to opener
+    // Retain once-working finalFocus resolver from opening 1
+    await page.evaluate(() => {
+      window.heldFinalFocus = window.readerDialog?.finalFocus
+    })
+    expect(await page.evaluate(() => typeof window.heldFinalFocus === "function")).toBe(true)
+
+    // Normal close restores focus to opener and fulfills opening 1
     await page.keyboard.press("Escape")
     await expect(dialog).toBeHidden()
     await expect(zoomTrigger).toBeFocused()
 
-    // 3. Open dialog again, then focus a newer plain foreground owner
+    // Assert once-fulfilled opening 1 resolver is permanently dead (returns false)
+    expect(await page.evaluate(() => window.heldFinalFocus?.())).toBe(false)
+
+    // 2. Reopen dialog on same source (opening 2)
     await zoomTrigger.click()
     await expect(dialog).toBeVisible()
 
+    // Assert held resolver from opening 1 STILL returns false and does NOT revive on same-source reopen
+    expect(await page.evaluate(() => window.heldFinalFocus?.())).toBe(false)
+
+    // 3. Newer plain foreground owner active during close
     await page.evaluate(() => {
       const ext = document.createElement("input")
       ext.id = "plain-ext-owner"
@@ -221,19 +247,89 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
     const extInput = page.locator("#plain-ext-owner")
     await expect(extInput).toBeFocused()
 
-    // 4. Close dialog while plain foreground owner is active
+    // Close dialog while plain foreground owner is active
     await page.keyboard.press("Escape")
     await expect(dialog).toBeHidden()
 
-    // FinalFocus refusal: Focus must NOT be stolen back to zoomTrigger; remains on extInput
+    // Refusal: focus is NOT stolen back to zoomTrigger; remains on extInput
     await expect(extInput).toBeFocused()
     await extInput.evaluate((el) => el.remove())
+
+    // 4. Competing layer check: external competing modal prevents finalFocus return
+    await zoomTrigger.click()
+    await expect(dialog).toBeVisible()
+
+    await page.evaluate(() => {
+      const competing = document.createElement("div")
+      competing.id = "competing-modal"
+      competing.setAttribute("role", "dialog")
+      competing.style.position = "fixed"
+      competing.style.top = "0"
+      competing.style.left = "0"
+      competing.style.width = "100px"
+      competing.style.height = "100px"
+      document.body.appendChild(competing)
+    })
+
+    // Resolver refuses focus return when another dialog is open
+    expect(await page.evaluate(() => window.readerDialog?.finalFocus() ?? false)).toBe(false)
+    await page.locator("#competing-modal").evaluate((el) => el.remove())
+    await page.keyboard.press("Escape")
+    await expect(dialog).toBeHidden()
+  })
+
+  test("window ArrowLeft/ArrowRight record navigation enforces bounds, IME, modifiers, and editable target vetoes", async ({
+    page,
+  }) => {
+    await page.goto("/?example=reader&fragmentId=FRAG-002&scope=inbox")
+    await expect(page.getByTestId("reader-detail-page")).toBeVisible()
+
+    // Click inside reader page to ensure container focus
+    await page.getByRole("heading", { level: 1 }).click()
+
+    // 1. Arrow navigation works outside editable fields
+    await page.keyboard.press("ArrowRight")
+    await expect(page.getByText("REV-FRAG-003-01")).toBeVisible()
+
+    await page.keyboard.press("ArrowLeft")
+    await expect(page.getByText("REV-FRAG-002-01")).toBeVisible()
+
+    // 2. Modifier keys veto navigation
+    for (const mod of ["Shift", "Control", "Alt", "Meta"] as const) {
+      await page.keyboard.down(mod)
+      await page.keyboard.press("ArrowRight")
+      await page.keyboard.up(mod)
+      // Must stay on FRAG-002
+      await expect(page.getByText("REV-FRAG-002-01")).toBeVisible()
+    }
+
+    // 3. IME composition veto (isComposing or keyCode 229)
+    await page.evaluate(() => {
+      const imeEvent = new KeyboardEvent("keydown", {
+        key: "ArrowRight",
+        keyCode: 229,
+        bubbles: true,
+        cancelable: true,
+      })
+      window.dispatchEvent(imeEvent)
+    })
+    await expect(page.getByText("REV-FRAG-002-01")).toBeVisible()
+
+    // 4. Editable targets veto navigation
+    await page.evaluate(() => {
+      const input = document.createElement("input")
+      input.id = "test-editable-input"
+      document.body.appendChild(input)
+      input.focus()
+    })
+    await page.keyboard.press("ArrowRight")
+    await expect(page.getByText("REV-FRAG-002-01")).toBeVisible()
+    await page.locator("#test-editable-input").evaluate((el) => el.remove())
   })
 
   test("PM inert notes, tags, and state controls preserve read-only write boundary", async ({
     page,
   }) => {
-    // Collect network requests to verify NO unauthorized mutation requests
     const mutations: string[] = []
     page.on("request", (req) => {
       if (["POST", "PUT", "PATCH", "DELETE"].includes(req.method())) {
@@ -247,6 +343,16 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
     // Verify read-only badges / controls are visible
     await expect(page.getByText("Read-only specimen").first()).toBeVisible()
     await expect(page.getByText("Read-only tags")).toBeVisible()
+
+    // Verify notes textarea is read-only and no save button exists
+    const notesTextarea = page.locator("[data-reader-notes] textarea")
+    if ((await notesTextarea.count()) > 0) {
+      await expect(notesTextarea).toHaveAttribute("readonly", "")
+      await expect(page.getByRole("button", { name: /Save note|Add note/i })).toHaveCount(0)
+    }
+
+    // Verify no mutation announcements
+    await expect(page.getByText(/Saved locally|Note added/i)).toHaveCount(0)
 
     // Click refresh button in header
     await page.getByRole("button", { name: "Refresh" }).click()

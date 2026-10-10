@@ -12,6 +12,7 @@ import shlex
 import subprocess
 import sys
 import tarfile
+import tempfile
 
 root = Path.cwd().resolve()
 head = subprocess.check_output(["git", "rev-parse", f"{sys.argv[1]}^{{commit}}"], text=True).strip()
@@ -34,11 +35,19 @@ def sha(path):
 def tree(path):
     return {str(file.relative_to(path)): sha(file) for file in sorted(path.rglob("*")) if file.is_file()}
 
+tooling = {}
+if (root / ".scratch/libs").exists():
+    tooling["libs"] = tree(root / ".scratch/libs")
+if (root / ".scratch/tooling").exists():
+    for name in ["chromium", "libs", "fonts"]:
+        if (root / ".scratch/tooling" / name).exists():
+            tooling[name] = tree(root / ".scratch/tooling" / name)
+
 receipt = {"head": head, "mode": mode, "archive_sha256": sha(archive),
            "source_files": tree(stage), "stage": str(stage),
            "lock_sha256": sha(stage / "frontend/package-lock.json"),
            "archives": tree(stage / "third_party") if (stage / "third_party").exists() else {},
-           "tooling_bytes": {name: tree(root / ".scratch/tooling" / name) for name in ["chromium", "libs", "fonts"] if (root / ".scratch/tooling" / name).exists()},
+           "tooling_bytes": tooling,
            "fonts_conf_sha256": sha(root / ".scratch/tooling/fonts.conf") if (root / ".scratch/tooling/fonts.conf").exists() else None}
 (stage / ".scratch/tmp").mkdir(parents=True, exist_ok=True)
 if mode == "fresh":
@@ -95,8 +104,9 @@ else:
                        '"storybook":tree(stage/".scratch/storybook") if (stage/".scratch/storybook").exists() else {},'
                        '"go_binary_sha256":sha(stage/".scratch/parallax") if (stage/".scratch/parallax").exists() else None}\n'
                        '(proof/"receipt.json").write_text(json.dumps(receipt,indent=2)+"\\n")\n')
-    browser_tmp = Path(f"/home/chrispian/.cache/team-tmp/cw0097-b-{head[:7]}")
-    browser_tmp.mkdir(parents=True, exist_ok=True)
+    cache_dir = Path("/home/chrispian/.cache/team-tmp")
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    browser_tmp = Path(tempfile.mkdtemp(prefix=f"cw0097-b-{head[:7]}-", dir=cache_dir))
     receipt["owned_browser_tmp"] = str(browser_tmp)
     cleanup = proof / "cleanup.py"
     cleanup.write_text('from pathlib import Path\nimport json,shutil,sys\n'

@@ -238,7 +238,7 @@ export function GalleryRenderer({
         open={open}
         onOpenChange={setOpen}
         returnFocusRef={triggerRef}
-        sourceGeneration={item.fragment_id}
+        sourceGeneration={`${item.fragment_id}:${item.fragment_revision_id}`}
         title={item.display.title.value || "Captured gallery"}
         description={`${currentKind} ${boundedSelected + 1} of ${slots.length}`}
         onKeyDown={handleDialogKeyDown}

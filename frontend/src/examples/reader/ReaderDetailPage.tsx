@@ -144,32 +144,23 @@ export function ReaderDetailPage({
     onTrigger: () => {},
   })
 
-  // Monotonic ticket sequence for committed activation frames:
-  const activeTicketRef = useRef<number>(-1)
-  const isMountedRef = useRef(false)
-  const renderTicketRef = useRef<number>(0)
-  const currentGenRef = useRef(currentGeneration)
-
-  if (currentGenRef.current !== currentGeneration || activeTicketRef.current === -1) {
-    currentGenRef.current = currentGeneration
-    renderTicketRef.current = ++nextReaderActivationTicket
-  }
-
-  const myTicket = renderTicketRef.current
+  // Monotonic ticket sequence allocated strictly on layout effect commit:
+  const committedFrameRef = useRef<{ id: number; live: boolean } | null>(null)
 
   useLayoutEffect(() => {
-    isMountedRef.current = true
-    activeTicketRef.current = myTicket
+    const token = { id: ++nextReaderActivationTicket, live: true }
+    committedFrameRef.current = token
     return () => {
-      isMountedRef.current = false
-      if (activeTicketRef.current === myTicket) {
-        activeTicketRef.current = -1
+      token.live = false
+      if (committedFrameRef.current === token) {
+        committedFrameRef.current = null
       }
     }
-  }, [currentGeneration, myTicket])
+  }, [currentGeneration])
 
   function isAdmitted(targetPopup?: HTMLElement | null): boolean {
-    if (!isMountedRef.current || activeTicketRef.current !== myTicket) return false
+    const token = committedFrameRef.current
+    if (!token || !token.live) return false
     if (!shortcutFrame.isLive()) return false
     if (!rootRef.current?.isConnected || !visible(rootRef.current)) return false
     if (targetPopup) {
@@ -206,17 +197,56 @@ export function ReaderDetailPage({
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return
+    const token = committedFrameRef.current
+    if (!token) return
+
+    function isCommittedFrameLive(targetPopup?: HTMLElement | null): boolean {
+      if (!token.live || committedFrameRef.current !== token) return false
+      if (!shortcutFrame.isLive()) return false
+      if (!rootRef.current?.isConnected || !visible(rootRef.current)) return false
+      if (targetPopup) {
+        if (!currentLayer(targetPopup)) return false
+      } else {
+        if (!currentLayer(rootRef.current)) return false
+      }
+      return true
+    }
+
+    const boundBack = () => {
+      if (!isCommittedFrameLive()) return false
+      onBack()
+      return true
+    }
+
+    const boundRefresh = () => {
+      if (!isCommittedFrameLive() || !onRefresh) return false
+      onRefresh()
+      return true
+    }
+
+    const boundPrevious = () => {
+      if (!isCommittedFrameLive() || !navigation.availability.previous) return false
+      navigation.navigate(-1)
+      return true
+    }
+
+    const boundNext = () => {
+      if (!isCommittedFrameLive() || !navigation.availability.next) return false
+      navigation.navigate(1)
+      return true
+    }
+
     window.readerDetail = {
-      handleBack,
-      handleRefresh,
-      handlePrevious,
-      handleNext,
-      isAdmitted: (targetPopup) => isAdmitted(targetPopup),
+      handleBack: boundBack,
+      handleRefresh: boundRefresh,
+      handlePrevious: boundPrevious,
+      handleNext: boundNext,
+      isAdmitted: (targetPopup) => isCommittedFrameLive(targetPopup),
       fresh: {
-        Back: handleBack,
-        Refresh: handleRefresh,
-        Previous: handlePrevious,
-        Next: handleNext,
+        Back: boundBack,
+        Refresh: boundRefresh,
+        Previous: boundPrevious,
+        Next: boundNext,
       },
     }
   })

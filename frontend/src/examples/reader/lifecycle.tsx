@@ -7,11 +7,14 @@ import { readerFixture } from "./model"
 import { ReaderDetailPage } from "./ReaderDetailPage"
 import type { ReaderItem } from "./types"
 
-const FRAGMENTS: Record<string, ReaderItem> = {
-  "FRAG-002": readerFixture.inboxItems[0] as ReaderItem, // Image fragment
-  "FRAG-003": readerFixture.inboxItems[1] as ReaderItem, // Gallery fragment
-  "FRAG-001": readerFixture.inboxItems[2] as ReaderItem, // Article fragment
-}
+const allItems = [
+  ...(readerFixture.inboxItems as ReaderItem[]),
+  ...(readerFixture.pageOneItems as ReaderItem[]),
+]
+
+const FRAGMENTS: Record<string, ReaderItem> = Object.fromEntries(
+  allItems.map((item) => [item.fragment_id, item]),
+)
 
 export function ReaderLifecycleSpecimen() {
   const [visible, setVisible] = useState(true)
@@ -23,7 +26,7 @@ export function ReaderLifecycleSpecimen() {
     document.documentElement.dataset.mode = "dark"
   }, [])
 
-  const currentItem = FRAGMENTS[currentId]
+  const currentItem = FRAGMENTS[currentId] ?? allItems[0]
   const admittedIds = Object.keys(FRAGMENTS)
 
   return (
@@ -63,7 +66,13 @@ export function ReaderLifecycleSpecimen() {
           data-testid="current-fragment-id"
           className="rounded bg-panel-2 px-2 py-1 font-mono text-xs text-text-subtle"
         >
-          {currentId}
+          {currentItem.fragment_id}
+        </span>
+        <span
+          data-testid="current-fragment-revision"
+          className="rounded bg-panel-2 px-2 py-1 font-mono text-xs text-text-subtle"
+        >
+          {currentItem.fragment_revision_id}
         </span>
         <input
           aria-label="New plain foreground owner"

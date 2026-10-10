@@ -195,6 +195,7 @@ export function VideoRenderer({
         open={expanded}
         onOpenChange={setExpanded}
         returnFocusRef={expandRef}
+        sourceGeneration={`${item.fragment_id}:${item.fragment_revision_id}`}
         title={title}
         description="Inert video player preview"
       >
