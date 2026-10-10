@@ -1,0 +1,10 @@
+{
+  "task": "CW-20261010-0072",
+  "author": "task-design-kit-3 (Codex recovery)",
+  "head": "1a89b9d098242f45e7c440f4152cc9a6ab29ad54",
+  "tree": "cc5c11c3340e895a61fab07087dc8c5d538ac0eb",
+  "package": "@hollis-labs/design-app-runtime",
+  "version": "0.4.0",
+  "candidate": "unpublished isolated local candidate; not registry-equivalent 0.4.0",
+  "sha256": "81f76e5710faad3d92a9c8c6cbc4be2fdcc1248075abfc7c0aa910ae3e9b5081"
+}

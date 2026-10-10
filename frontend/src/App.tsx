@@ -1,4 +1,4 @@
-import { AppShell, Button, DetailDialog } from "@hollis-labs/design-components"
+import { AppShell, type AsideWidth, Button, DetailDialog } from "@hollis-labs/design-components"
 import { applyTheme, PageHeader } from "@hollis-labs/kit-dashboard"
 import { Panel } from "@hollis-labs/kit-dashboard/widgets"
 import {
@@ -8,7 +8,7 @@ import {
   usePluginSlots,
   WidgetRenderer,
 } from "@hollis-labs/plugin-host-ui/react"
-import { Layers, X } from "lucide-react"
+import { Layers, PanelRight, X } from "lucide-react"
 import { lazy, Suspense, useEffect, useRef, useState, useSyncExternalStore } from "react"
 import { AccountReview } from "./account-review/Review"
 import { adminAppearances } from "./admin-review/model"
@@ -187,6 +187,7 @@ export function Contributions({
   )
 }
 export function App() {
+  const asideReturnRef = useRef<HTMLButtonElement | null>(null)
   const params = new URLSearchParams(location.search)
   const pageScroll = useRef<HTMLDivElement>(null)
   const navigateRef = useRef<(name: string) => void>(() => {})
@@ -219,6 +220,17 @@ export function App() {
         : params.get("navigation") === "drawer"
           ? "drawer"
           : "rail",
+    ),
+    [asideEnabled, setAsideEnabled] = useState(
+      params.get("aside") === "1" || params.get("aside") === "true",
+    ),
+    [asideCollapsed, setAsideCollapsed] = useState(
+      params.get("asideCollapsed") === "1" || params.get("asideCollapsed") === "true",
+    ),
+    [asideWidth, setAsideWidth] = useState<AsideWidth>(
+      params.get("asideWidth") === "compact" || params.get("asideWidth") === "wide"
+        ? (params.get("asideWidth") as AsideWidth)
+        : "regular",
     ),
     [scenario, setScenario] = useState(normalizeScenario(params.get("scenario") ?? "populated")),
     [theme, setTheme] = useState(params.get("theme") ?? "p4-white"),
@@ -459,22 +471,69 @@ export function App() {
             >
               Review Workbench
             </Button>
+            {asideEnabled && asideCollapsed && (
+              <Button
+                size="sm"
+                variant="outline"
+                ref={asideReturnRef}
+                aria-label="Expand aside companion"
+                onClick={() => setAsideCollapsed(false)}
+              >
+                Expand aside
+              </Button>
+            )}
           </div>
           {navigation !== "rail" && <Navigation mode={navigation} items={navigationItems} />}
           <div className="review-controls">
             {page === "Layouts" && (
-              <label>
-                Navigation
-                <select
-                  aria-label="Navigation variant"
-                  value={navigation}
-                  onChange={(e) => setNavigation(e.target.value as NavigationMode)}
-                >
-                  <option>rail</option>
-                  <option>header</option>
-                  <option>drawer</option>
-                </select>
-              </label>
+              <>
+                <label>
+                  Navigation
+                  <select
+                    aria-label="Navigation variant"
+                    value={navigation}
+                    onChange={(e) => setNavigation(e.target.value as NavigationMode)}
+                  >
+                    <option>rail</option>
+                    <option>header</option>
+                    <option>drawer</option>
+                  </select>
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    aria-label="Aside companion"
+                    checked={asideEnabled}
+                    onChange={(e) => setAsideEnabled(e.target.checked)}
+                  />
+                  Aside companion
+                </label>
+                {asideEnabled && (
+                  <>
+                    <label>
+                      <input
+                        type="checkbox"
+                        aria-label="Collapse aside"
+                        checked={asideCollapsed}
+                        onChange={(e) => setAsideCollapsed(e.target.checked)}
+                      />
+                      Collapse aside
+                    </label>
+                    <label>
+                      Aside width
+                      <select
+                        aria-label="Aside width"
+                        value={asideWidth}
+                        onChange={(e) => setAsideWidth(e.target.value as AsideWidth)}
+                      >
+                        <option value="compact">compact</option>
+                        <option value="regular">regular</option>
+                        <option value="wide">wide</option>
+                      </select>
+                    </label>
+                  </>
+                )}
+              </>
             )}
             <label>
               Scenario
@@ -552,6 +611,68 @@ export function App() {
             )}
           </div>
         </div>
+      }
+      aside={
+        asideEnabled ? (
+          <div className="bg-surface p-4 text-fg" data-testid="aside-companion">
+            <div className="flex items-center justify-between border-b border-border pb-2">
+              <strong className="text-sm font-semibold">Operations Companion</strong>
+              <Button
+                size="sm"
+                variant="ghost"
+                aria-label="Collapse aside companion"
+                onClick={() => setAsideCollapsed(true)}
+              >
+                Collapse
+              </Button>
+            </div>
+            <div className="py-2 text-xs" data-testid="aside-scroll">
+              <p className="font-mono text-fg-muted">Seed: 4421 · 2026-10-04T14:30:00Z</p>
+              <div className="mt-2 space-y-2">
+                <div className="rounded border border-border p-2">
+                  <strong>Contextual Run Summary</strong>
+                  <p className="text-fg-muted">
+                    {selectedId ? `Active focus: ${selectedId}` : "No run selected"}
+                  </p>
+                </div>
+                <div className="rounded border border-border p-2">
+                  <strong>Channel Chat Mock</strong>
+                  <p className="text-fg-muted">Idiom-free chat child content fixture</p>
+                </div>
+                {Array.from({ length: 25 }, (_, i) => {
+                  const itemId = `aside-entry-${i + 1}`
+                  return (
+                    <div
+                      key={itemId}
+                      className="rounded border border-border/50 p-2 text-xs"
+                      data-testid={`aside-item-${i}`}
+                    >
+                      <span className="text-fg-muted">Companion entry #{i + 1}</span>: Standalone
+                      aside scroll item verification.
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
+        ) : undefined
+      }
+      asideFocusReturnTarget={() => asideReturnRef.current}
+      asideWidth={asideWidth}
+      asideCollapsed={asideCollapsed}
+      onAsideCollapsedChange={setAsideCollapsed}
+      asideLabel="Operations aside slot"
+      asideTrigger={
+        <Button
+          size="sm"
+          variant="outline"
+          aria-label="Open aside"
+          data-slot="app-shell-aside-trigger"
+          data-testid="app-shell-aside-trigger"
+        >
+          <PanelRight className="size-4" />
+          <span className="sr-only">Open aside</span>
+        </Button>
       }
     >
       {page === "Run Explorer" ? (

@@ -1,11 +1,12 @@
 import {
   AppShell,
+  type AppShellAsideProps,
   Button,
   OverlaySidebar,
   useControlledRecordNavigation,
 } from "@hollis-labs/design-components"
 import { SettingsProvenanceRenderer } from "@hollis-labs/kit-settings"
-import { useLayoutEffect, useRef, useState } from "react"
+import { type ReactNode, useLayoutEffect, useRef, useState } from "react"
 import { AccountReview } from "../../account-review/Review"
 import { DirectoryReview } from "../../directory-review/Review"
 import { settingsReviewModel } from "../../settings-review/model"
@@ -32,7 +33,11 @@ const titles = {
 export function AdministrationExample({
   state: provided = defaultAdministrationState,
   onChange,
+  shellAside,
+  asideToggle,
 }: {
+  shellAside?: AppShellAsideProps
+  asideToggle?: ReactNode
   state?: AdministrationState
   onChange?: (s: AdministrationState) => void
 }) {
@@ -189,10 +194,12 @@ export function AdministrationExample({
   const settings = settingsReviewModel("recorded")
   return (
     <AppShell
+      {...shellAside}
       className="administration-example"
       nav={<aside className="administration-sidebar">{nav}</aside>}
       header={
         <header className="administration-header">
+          {asideToggle}
           <div className="administration-mobile">
             <OverlaySidebar
               side="left"

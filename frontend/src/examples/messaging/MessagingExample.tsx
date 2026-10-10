@@ -1,5 +1,6 @@
 import {
   AppShell,
+  type AppShellAsideProps,
   Button,
   InspectionDialog,
   JsonViewer,
@@ -7,7 +8,7 @@ import {
 } from "@hollis-labs/design-components"
 import { ChatInput } from "@hollis-labs/kit-chat"
 import { StatusBadge } from "@hollis-labs/kit-dashboard"
-import { useLayoutEffect, useRef, useState } from "react"
+import { type ReactNode, useLayoutEffect, useRef, useState } from "react"
 import { createAdminPresentationSession } from "../../chimera/admin-session"
 import { FixtureAttachments } from "../../communications/Messaging"
 import {
@@ -23,7 +24,11 @@ import "./messaging.css"
 export function MessagingExample({
   state: provided = defaultMessagingState,
   onChange,
+  shellAside,
+  asideToggle,
 }: {
+  shellAside?: AppShellAsideProps
+  asideToggle?: ReactNode
   state?: MessagingState
   onChange?: (state: MessagingState) => void
 }) {
@@ -249,10 +254,12 @@ export function MessagingExample({
       : "Select a conversation to inspect supplied messages."
   return (
     <AppShell
+      {...shellAside}
       className="messaging-example"
       nav={<aside className="messaging-sidebar">{nav}</aside>}
       header={
         <header className="messaging-header">
+          {asideToggle}
           <div className="messaging-mobile">
             <OverlaySidebar
               side="left"

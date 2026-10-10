@@ -294,7 +294,8 @@
     },
     "importEvidence": [
       "frontend/src/examples/messaging/MessagingExample.tsx",
-      "frontend/src/examples/torque/TaskInspection.tsx"
+      "frontend/src/examples/torque/TaskInspection.tsx",
+      "frontend/src/layouts/AsideConsumers.stories.tsx"
     ]
   },
   {
@@ -582,8 +583,80 @@
       "frontend/src/examples/messaging/MessagingExample.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/examples/workspace/WorkspaceExample.tsx",
+      "frontend/src/layouts/AppShellAside.stories.tsx",
       "frontend/src/layouts/Comparison.stories.tsx",
       "frontend/src/run-explorer/Explorer.stories.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AppShellProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AsideWidth",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/App.tsx",
+      "frontend/src/layouts/AppShellAside.stories.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AppShellAsideProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/administration/AdministrationExample.tsx",
+      "frontend/src/examples/messaging/MessagingExample.tsx"
     ]
   },
   {
@@ -1872,6 +1945,8 @@
       "frontend/src/examples/torque/TaskInspection.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/examples/workspace/WorkspaceExample.tsx",
+      "frontend/src/layouts/AppShellAside.stories.tsx",
+      "frontend/src/layouts/AsideConsumers.stories.tsx",
       "frontend/src/layouts/Comparison.stories.tsx",
       "frontend/src/layouts/Comparison.tsx",
       "frontend/src/layouts/Navigation.tsx",
@@ -5060,7 +5135,8 @@
       "frontend/src/examples/torque/Standalone.tsx",
       "frontend/src/examples/torque/Torque.stories.tsx",
       "frontend/src/examples/workspace/Standalone.tsx",
-      "frontend/src/examples/workspace/Workspace.stories.tsx"
+      "frontend/src/examples/workspace/Workspace.stories.tsx",
+      "frontend/src/layouts/AsideConsumers.stories.tsx"
     ]
   },
   {
@@ -6999,7 +7075,8 @@
       "frontend/src/communications/Messaging.tsx",
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
-      "frontend/src/examples/messaging/MessagingExample.tsx"
+      "frontend/src/examples/messaging/MessagingExample.tsx",
+      "frontend/src/layouts/AsideConsumers.stories.tsx"
     ]
   },
   {
@@ -7078,7 +7155,8 @@
     "importEvidence": [
       "frontend/src/communications/Chat.tsx",
       "frontend/src/conversation-review/Review.tsx",
-      "frontend/src/examples/chat/ChatExample.tsx"
+      "frontend/src/examples/chat/ChatExample.tsx",
+      "frontend/src/layouts/AsideConsumers.stories.tsx"
     ]
   },
   {
@@ -8224,7 +8302,8 @@
     "importEvidence": [
       "frontend/src/communications/Chat.tsx",
       "frontend/src/conversation-review/Review.tsx",
-      "frontend/src/examples/chat/ChatExample.tsx"
+      "frontend/src/examples/chat/ChatExample.tsx",
+      "frontend/src/layouts/AsideConsumers.stories.tsx"
     ]
   },
   {
@@ -24023,6 +24102,214 @@
     "disposition": "deferred",
     "reason": "Public export tracked; no direct adoption or independent behavior proof.",
     "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-app-runtime",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "createAppShellAsideStore",
+    "category": "nonvisual-function",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/layouts.spec.ts"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/layouts/AppShellAside.stories.tsx",
+      "frontend/src/layouts/AsideConsumers.stories.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/design-app-runtime",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "parseAsidePreference",
+    "category": "nonvisual-function",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-app-runtime",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "createMemoryStorage",
+    "category": "nonvisual-function",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/layouts.spec.ts"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/layouts/AppShellAside.stories.tsx",
+      "frontend/src/layouts/AsideConsumers.stories.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/design-app-runtime",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "VALID_ASIDE_WIDTHS",
+    "category": "runtime-value",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-app-runtime",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AsideWidth",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-app-runtime",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AppShellAsidePreference",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/layouts.spec.ts"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/layouts/AppShellAside.stories.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/design-app-runtime",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AppShellAsideStoreOptions",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-app-runtime",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AppShellAsideStore",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-app-runtime",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "useAppShellAside",
+    "category": "nonvisual-function",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/layouts.spec.ts"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/layouts/AppShellAside.stories.tsx",
+      "frontend/src/layouts/AsideConsumers.stories.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/design-app-runtime",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "resolveAdmittedFocusTarget",
+    "category": "nonvisual-function",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-app-runtime",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "FocusReturnTargetOptions",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-app-runtime",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "UseAppShellAsideOptions",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-app-runtime",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "AppShellAsideHandle",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
     "evidence": {},
     "importEvidence": []
   }
