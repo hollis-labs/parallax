@@ -1260,6 +1260,29 @@
           "review-evidence-states--long"
         ]
       }
+    },
+    {
+      "package": "@hollis-labs/design-components",
+      "names": [
+        "InspectionDialog",
+        "InspectionDialogProps"
+      ],
+      "disposition": "partial",
+      "reason": "CW-20261010-0035 exact unpublished local0.4.0 candidate; Torque dashboard and Messaging chat consume bounded chrome. Focus/navigation/admission remain host policy. Independent manager review pending; registry0.4.0 does not imply this API.",
+      "nextAction": "Complete manager review and reconcile exact0036 candidate before combined consumption; publication and deployment are separate owner actions.",
+      "evidence": {
+        "pages": [
+          "docs/inspection-extraction.md"
+        ],
+        "stories": [
+          "frontend/src/examples/torque/Torque.stories.tsx",
+          "frontend/src/examples/messaging/Messaging.stories.tsx"
+        ],
+        "checks": [
+          "frontend/tests/torque-keyboard.spec.ts",
+          "frontend/tests/messaging-example.spec.ts"
+        ]
+      }
     }
   ]
 }

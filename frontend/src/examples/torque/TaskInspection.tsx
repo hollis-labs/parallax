@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogContent, DialogTitle } from "@hollis-labs/design-components"
+import { Button, InspectionDialog } from "@hollis-labs/design-components"
 import { type KeyboardEvent, useLayoutEffect, useRef } from "react"
 import type { OperationsModel, RunDetail } from "../../operations/model"
 import { ResourceNotice, RunDetailBody } from "../../operations/Views"
@@ -100,35 +100,32 @@ export function TaskInspection({
     navigate(e.key === "ArrowLeft" ? -1 : 1)
   }
   return (
-    <Dialog
+    <InspectionDialog
       open={open}
       onOpenChange={(next) => {
         if (!next) onClose()
       }}
-    >
-      <DialogContent
-        ref={popup}
-        className="torque-task-inspection"
-        widthClassName="torque-task-inspection-width"
-        initialFocus={title}
-        finalFocus={returnTarget}
-        onKeyDown={shortcut}
-        onCompositionStartCapture={() => {
-          composing.current = true
-        }}
-        onCompositionEndCapture={() => {
-          composing.current = false
-        }}
-      >
-        <header className="torque-inspection-header">
-          <DialogTitle ref={title} tabIndex={-1}>
-            Task and run inspection
-          </DialogTitle>
-          <p aria-live="polite">
-            {detail ? `${detail.task.id} / ${detail.run.id}` : "No admitted selection"}
-          </p>
-        </header>
-        <nav className="torque-inspection-navigation" aria-label="Inspection record navigation">
+      ref={popup}
+      className="torque-task-inspection"
+      initialFocus={title}
+      finalFocus={returnTarget}
+      onKeyDown={shortcut}
+      onCompositionStartCapture={() => {
+        composing.current = true
+      }}
+      onCompositionEndCapture={() => {
+        composing.current = false
+      }}
+      title="Task and run inspection"
+      titleProps={{ ref: title, tabIndex: -1 }}
+      meta={
+        <p aria-live="polite">
+          {detail ? `${detail.task.id} / ${detail.run.id}` : "No admitted selection"}
+        </p>
+      }
+      navigationLabel="Inspection record navigation"
+      navigation={
+        <>
           <Button
             variant="outline"
             size="sm"
@@ -153,55 +150,57 @@ export function TaskInspection({
           >
             Next task
           </Button>
-        </nav>
-        {/* Named overflow region supports native keyboard scrolling. */}
-        {/* biome-ignore lint/a11y/noNoninteractiveTabindex: Named evidence scroll owner. */}
-        <section className="torque-inspection-body" aria-label="Task evidence scroll" tabIndex={0}>
-          {!model.accessible ? (
-            <ResourceNotice model={model} />
-          ) : detail ? (
-            <>
-              <RunDetailBody
-                key={`${identity}/${detail.task.id}`}
-                detail={detail}
-                onIntent={onIntent}
-              />
-              <dl className="torque-inspection-metadata">
-                <dt>Fictional board status</dt>
-                <dd>
-                  {model.scenario === "unknown-status"
-                    ? detail.task.status
-                    : (metadata?.status ?? "Unknown")}
-                </dd>
-                <dt>Priority / executor</dt>
-                <dd>
-                  {metadata ? `P${metadata.priority} / ${metadata.executor}` : "Not provided"}
-                </dd>
-                <dt>Project / epic / sprint</dt>
-                <dd>
-                  {metadata
-                    ? `${metadata.project} / ${metadata.epic} / ${metadata.sprint}`
-                    : "Not provided"}
-                </dd>
-                <dt>Tag / mode</dt>
-                <dd>
-                  {metadata
-                    ? `${metadata.tag} / ${metadata.manual ? "manual" : "auto"}`
-                    : "Not provided"}
-                </dd>
-              </dl>
-            </>
-          ) : (
-            <p>No selected admitted task at this context. Close to choose a current task or run.</p>
-          )}
-        </section>
-        <footer className="torque-inspection-footer">
+        </>
+      }
+      bodyProps={{
+        className: "torque-inspection-body",
+        "aria-label": "Task evidence scroll",
+        tabIndex: 0,
+      }}
+      footer={
+        <>
           <span role="status">{intent || "Read-only fixture inspection"}</span>
           <Button size="sm" onClick={onClose}>
             Close record inspection
           </Button>
-        </footer>
-      </DialogContent>
-    </Dialog>
+        </>
+      }
+    >
+      {!model.accessible ? (
+        <ResourceNotice model={model} />
+      ) : detail ? (
+        <>
+          <RunDetailBody
+            key={`${identity}/${detail.task.id}`}
+            detail={detail}
+            onIntent={onIntent}
+          />
+          <dl className="torque-inspection-metadata">
+            <dt>Fictional board status</dt>
+            <dd>
+              {model.scenario === "unknown-status"
+                ? detail.task.status
+                : (metadata?.status ?? "Unknown")}
+            </dd>
+            <dt>Priority / executor</dt>
+            <dd>{metadata ? `P${metadata.priority} / ${metadata.executor}` : "Not provided"}</dd>
+            <dt>Project / epic / sprint</dt>
+            <dd>
+              {metadata
+                ? `${metadata.project} / ${metadata.epic} / ${metadata.sprint}`
+                : "Not provided"}
+            </dd>
+            <dt>Tag / mode</dt>
+            <dd>
+              {metadata
+                ? `${metadata.tag} / ${metadata.manual ? "manual" : "auto"}`
+                : "Not provided"}
+            </dd>
+          </dl>
+        </>
+      ) : (
+        <p>No selected admitted task at this context. Close to choose a current task or run.</p>
+      )}
+    </InspectionDialog>
   )
 }

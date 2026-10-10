@@ -1,7 +1,7 @@
 import {
   AppShell,
   Button,
-  DetailDialog,
+  InspectionDialog,
   JsonViewer,
   OverlaySidebar,
 } from "@hollis-labs/design-components"
@@ -42,6 +42,7 @@ export function MessagingExample({
       outcome: string
     } | null>(null),
     [lease, setLease] = useState(0)
+  const inspectionTitle = useRef<HTMLHeadingElement>(null)
   const life = useRef({ alive: false, lease: 0 }),
     rendered = useRef(identity),
     session = useRef<ReturnType<typeof createAdminPresentationSession> | null>(null),
@@ -563,11 +564,16 @@ export function MessagingExample({
         Immutable communications snapshot · {data.clock} · No message transport
       </footer>
       {inspection && (
-        <DetailDialog
+        <InspectionDialog
           title={inspection.title}
           meta={`${data.conversation?.id ?? ""} · ${data.clock}`}
           open
-          onClose={close}
+          onOpenChange={(next) => {
+            if (!next) close()
+          }}
+          initialFocus={inspectionTitle}
+          titleProps={{ ref: inspectionTitle, tabIndex: -1 }}
+          bodyProps={{ "aria-label": "Message inspection scroll", tabIndex: 0 }}
           footer={<Button onClick={close}>Close inspection</Button>}
         >
           <div className="messaging-inspector">
@@ -576,7 +582,7 @@ export function MessagingExample({
             <p role="status">{inspection.outcome}</p>
             <Button onClick={release}>Release oldest scripted outcome ({queued})</Button>
           </div>
-        </DetailDialog>
+        </InspectionDialog>
       )}
     </AppShell>
   )
