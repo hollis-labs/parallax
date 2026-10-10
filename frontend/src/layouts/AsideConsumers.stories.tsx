@@ -65,8 +65,12 @@ function AsideConsumer({
     asideTrigger: <Button aria-label="Open companion">Open companion</Button>,
     asideHeader: (
       <div className="flex flex-wrap gap-2 p-2">
-        <Button size="sm" aria-label="Collapse companion" onClick={() => aside.setCollapsed(true)}>Collapse</Button>
-        <Button size="sm" aria-label="Capture current callbacks" onClick={() => setHeld(aside)}>Capture</Button>
+        <Button size="sm" aria-label="Collapse companion" onClick={() => aside.setCollapsed(true)}>
+          Collapse
+        </Button>
+        <Button size="sm" aria-label="Capture current callbacks" onClick={() => setHeld(aside)}>
+          Capture
+        </Button>
         <Button
           size="sm"
           aria-label="Replace source"
@@ -77,8 +81,12 @@ function AsideConsumer({
         >
           Replace
         </Button>
-        <Button size="sm" aria-label="Revoke access" onClick={() => setAdmitted(false)}>Revoke</Button>
-        <Button size="sm" aria-label="Inspect specimen" onClick={() => setNested(true)}>Inspect</Button>
+        <Button size="sm" aria-label="Revoke access" onClick={() => setAdmitted(false)}>
+          Revoke
+        </Button>
+        <Button size="sm" aria-label="Inspect specimen" onClick={() => setNested(true)}>
+          Inspect
+        </Button>
       </div>
     ),
     aside: empty ? null : idiom === "messaging" ? (
