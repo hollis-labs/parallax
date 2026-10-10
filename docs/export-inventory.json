@@ -11,16 +11,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -204,6 +208,8 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/nil/Editor.tsx",
+      "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/nil-dialog-proof/Proof.tsx",
       "frontend/src/primitives/Gallery.tsx",
       "frontend/src/primitives/contracts.ts"
@@ -318,6 +324,9 @@
       "frontend/src/examples/flux-navigation/FluxNavigationExample.tsx",
       "frontend/src/examples/flux-navigation/Header.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
+      "frontend/src/examples/nil/Editor.tsx",
+      "frontend/src/examples/nil/Harness.tsx",
+      "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/examples/torque/TaskInspection.tsx",
       "frontend/src/flux-rail/Review.tsx",
@@ -648,16 +657,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -677,16 +690,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -945,16 +962,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -1251,16 +1272,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -1279,16 +1304,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -1424,19 +1453,24 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/layouts/Comparison.tsx",
       "frontend/src/operations-list-proof/Proof.tsx",
@@ -1468,16 +1502,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -1561,6 +1599,7 @@
     "importEvidence": [
       "frontend/src/appearance-review/Review.tsx",
       "frontend/src/appearance-review/contracts.ts",
+      "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/nil-dialog-proof/Appearance.tsx"
     ]
   },
@@ -1615,6 +1654,7 @@
     "importEvidence": [
       "frontend/src/appearance-review/Review.tsx",
       "frontend/src/appearance-review/contracts.ts",
+      "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/nil-dialog-proof/Appearance.tsx"
     ]
   },
@@ -1700,6 +1740,7 @@
     },
     "importEvidence": [
       "frontend/src/examples/administration/AdministrationExample.tsx",
+      "frontend/src/examples/nil/Editor.tsx",
       "frontend/src/examples/torque/TaskInspection.tsx",
       "frontend/src/nil-dialog-proof/Proof.tsx",
       "frontend/src/nil-dialog-proof/TorqueProof.tsx"
@@ -1808,21 +1849,27 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
       "frontend/src/examples/flux-navigation/Sidebar.tsx",
       "frontend/src/examples/flux-settings/sections/ShortcutsSection.tsx",
+      "frontend/src/examples/nil/Editor.tsx",
+      "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/nil-radial/Specimen.tsx"
     ]
   },
@@ -1851,16 +1898,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -1879,19 +1930,24 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/nil-dialog-proof/Proof.tsx"
     ]
   },
@@ -1920,16 +1976,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -1945,11 +2005,30 @@
     "name": "restoreAdmittedFocus",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/nil/NilExample.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2028,20 +2107,25 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
       "frontend/src/examples/messaging/MessagingExample.tsx",
+      "frontend/src/examples/nil/Editor.tsx",
       "frontend/src/examples/torque/TaskInspection.tsx",
       "frontend/src/nil-dialog-proof/LayerProof.tsx",
       "frontend/src/nil-radial/Specimen.tsx"
@@ -2124,20 +2208,26 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
       "frontend/src/examples/flux-navigation/FluxNavigationExample.tsx",
+      "frontend/src/examples/nil/Editor.tsx",
+      "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/examples/torque/Operations.tsx",
       "frontend/src/flux-rail/Review.tsx",
       "frontend/src/nil-radial/Specimen.tsx"
@@ -2181,19 +2271,24 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/examples/torque/Operations.tsx",
       "frontend/src/nil-dialog-proof/Proof.tsx"
     ]
@@ -2288,19 +2383,24 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/nil-dialog-proof/Proof.tsx",
       "frontend/src/nil-dialog-proof/TorqueProof.tsx"
     ]
@@ -2356,19 +2456,24 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/nil-dialog-proof/Proof.tsx"
     ]
   },
@@ -2384,19 +2489,24 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/nil-dialog-proof/Proof.tsx"
     ]
   },
@@ -2453,6 +2563,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/nil-radial/Specimen.tsx"
     ]
   },
@@ -2522,6 +2633,8 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/nil/Harness.tsx",
+      "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/nil-radial/Specimen.tsx"
     ]
   },
@@ -2537,19 +2650,24 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/nil-radial/Specimen.tsx"
     ]
   },
@@ -2578,16 +2696,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -2620,16 +2742,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -2648,16 +2774,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -2677,16 +2807,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -2705,16 +2839,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -2733,16 +2871,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -2800,16 +2942,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -2935,6 +3081,8 @@
       "frontend/src/examples/flux-navigation/Header.tsx",
       "frontend/src/examples/flux-navigation/Sidebar.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
+      "frontend/src/examples/nil/Editor.tsx",
+      "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/examples/reader/ReaderExample.tsx",
       "frontend/src/examples/reader/ReaderInlineActions.tsx",
@@ -3462,16 +3610,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -3758,16 +3910,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -3805,16 +3961,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -3839,16 +3999,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -3881,16 +4045,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -3936,16 +4104,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -3983,16 +4155,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -4028,16 +4204,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -4060,16 +4240,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -4117,16 +4301,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -4292,16 +4480,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -4399,16 +4591,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -4515,16 +4711,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -4543,16 +4743,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -4571,16 +4775,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -4697,16 +4905,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -4725,16 +4937,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -4766,16 +4982,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -4846,16 +5066,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -4874,16 +5098,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -4933,16 +5161,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -4987,16 +5219,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -5041,16 +5277,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -6314,16 +6554,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/operations/Views.tsx"
+        "frontend/src/operations/Views.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--mission-control"
+        "operations-controlled-views--mission-control",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -6929,16 +7173,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/operations/Views.tsx"
+        "frontend/src/operations/Views.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--mission-control"
+        "operations-controlled-views--mission-control",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -6957,16 +7205,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/operations/Views.tsx"
+        "frontend/src/operations/Views.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--mission-control"
+        "operations-controlled-views--mission-control",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -7060,6 +7312,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/operations-list-proof/Proof.tsx"
     ]
@@ -7089,16 +7342,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/operations/Views.tsx"
+        "frontend/src/operations/Views.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--mission-control"
+        "operations-controlled-views--mission-control",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -7130,16 +7387,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/operations/Views.tsx"
+        "frontend/src/operations/Views.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--mission-control"
+        "operations-controlled-views--mission-control",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -7414,16 +7675,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/operations/Views.tsx"
+        "frontend/src/operations/Views.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--mission-control"
+        "operations-controlled-views--mission-control",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
@@ -7761,16 +8026,20 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/operations/Views.tsx"
+        "frontend/src/operations/Views.tsx",
+        "frontend/src/examples/nil/NilExample.tsx"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--mission-control"
+        "operations-controlled-views--mission-control",
+        "app-examples-nil--operations"
       ]
     },
     "importEvidence": [
