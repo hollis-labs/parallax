@@ -35,6 +35,7 @@ All five compositions have a standalone finite entry and a fullscreen story in *
 | Messaging | `?example=messaging` | Independent communications snapshot | [MessagingExample](../frontend/src/examples/messaging/MessagingExample.tsx), [native proof](../frontend/tests/messaging-example.spec.ts) |
 | Administration | `?example=administration` | Independent administration snapshot | [AdministrationExample](../frontend/src/examples/administration/AdministrationExample.tsx), [native proof](../frontend/tests/administration-example.spec.ts) |
 | Workspace | `?example=workspace` | Independent developer snapshot, recordedAt evidence and original records-8 joins | [WorkspaceExample](../frontend/src/examples/workspace/WorkspaceExample.tsx), [native proof](../frontend/tests/workspace-example.spec.ts) |
+| Reader | `?example=reader` | Independent `fe.reader.list.v1` reader list snapshot | [ReaderExample](../frontend/src/examples/reader/ReaderExample.tsx), [native proof](../frontend/tests/reader-example.spec.ts) |
 
 The [Torque reference pack](torque-reference-profile.md), [Activity](torque-activity-reference.md) and [Mission/Usage](torque-mission-usage-reference.md) are accepted reference presentations. Legacy records-8/80 dashboard charts remain labelled adaptations. The [chat companion](chat-example-fixtures.md) supplies finite authored order/history and original message/source references for the accepted whole-chat screen; its untimed authored history and manual preview are never committed recorded messages.
 
