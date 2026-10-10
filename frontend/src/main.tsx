@@ -6,6 +6,7 @@ import { StandaloneDrawersReview } from "./drawers/Standalone"
 import { StandaloneAdministrationExample } from "./examples/administration/Standalone"
 import { StandaloneChatExample } from "./examples/chat/Standalone"
 import { FluxCardsGallery } from "./examples/flux-cards/Gallery"
+import { StandaloneFluxChat } from "./examples/flux-chat/Standalone"
 import { StandaloneMessagingExample } from "./examples/messaging/Standalone"
 import { StandaloneOpsShellExample } from "./examples/ops-shell/Standalone"
 import { StandaloneReaderExample } from "./examples/reader/Standalone"
@@ -18,7 +19,9 @@ const root = document.getElementById("root")
 if (!root) throw new Error("root element missing")
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
-    {new URLSearchParams(location.search).get("example") === "flux-cards" ? (
+    {new URLSearchParams(location.search).get("example") === "flux-chat" ? (
+      <StandaloneFluxChat />
+    ) : new URLSearchParams(location.search).get("example") === "flux-cards" ? (
       <FluxCardsGallery />
     ) : new URLSearchParams(location.search).get("example") === "flux-rail" ? (
       <StandaloneFluxRailReview />

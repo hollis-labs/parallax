@@ -11,16 +11,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -315,6 +332,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/flux-chat/FluxChat.tsx",
       "frontend/src/examples/flux-navigation/FluxNavigationExample.tsx",
       "frontend/src/examples/flux-navigation/Header.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
@@ -437,6 +455,7 @@
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/flux-cards/Cards.tsx",
       "frontend/src/examples/flux-cards/Gallery.tsx",
+      "frontend/src/examples/flux-chat/FluxChat.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
       "frontend/src/examples/workspace/WorkspaceExample.tsx",
       "frontend/src/observation-review/Review.tsx",
@@ -648,16 +667,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -677,16 +713,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -945,16 +998,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -1251,16 +1321,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -1279,16 +1366,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -1424,16 +1528,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -1468,16 +1589,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -1808,16 +1946,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -1851,16 +2006,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -1879,16 +2051,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -1920,19 +2109,37 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/flux-chat/FluxChat.tsx",
       "frontend/src/examples/flux-navigation/FluxNavigationExample.tsx",
       "frontend/src/examples/flux-navigation/Sidebar.tsx",
       "frontend/src/flux-rail/Review.tsx"
@@ -2028,16 +2235,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -2080,11 +2304,43 @@
     "name": "useShiftShift",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/flux-chat/FluxChat.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2124,19 +2380,37 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/flux-chat/FluxChat.tsx",
       "frontend/src/examples/flux-navigation/FluxNavigationExample.tsx",
       "frontend/src/examples/torque/Operations.tsx",
       "frontend/src/flux-rail/Review.tsx",
@@ -2181,16 +2455,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -2288,16 +2579,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -2356,16 +2664,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -2384,16 +2709,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -2537,16 +2879,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -2578,16 +2937,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -2620,16 +2996,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -2648,16 +3041,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -2677,16 +3087,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -2705,16 +3132,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -2733,16 +3177,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -2800,16 +3261,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -2931,6 +3409,9 @@
       "frontend/src/examples/flux-cards/Gallery.tsx",
       "frontend/src/examples/flux-cards/StreamStates.tsx",
       "frontend/src/examples/flux-cards/lifecycle.tsx",
+      "frontend/src/examples/flux-chat/Conversation.tsx",
+      "frontend/src/examples/flux-chat/FluxChat.tsx",
+      "frontend/src/examples/flux-chat/lifecycle.tsx",
       "frontend/src/examples/flux-navigation/FluxNavigationExample.tsx",
       "frontend/src/examples/flux-navigation/Header.tsx",
       "frontend/src/examples/flux-navigation/Sidebar.tsx",
@@ -3462,16 +3943,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -3758,21 +4256,39 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
       "frontend/src/examples/flux-cards/Gallery.tsx",
       "frontend/src/examples/flux-cards/lifecycle.tsx",
+      "frontend/src/examples/flux-chat/lifecycle.tsx",
       "frontend/src/examples/reader/ReaderExample.tsx",
       "frontend/src/examples/reader/ReaderVisual.tsx",
       "frontend/src/examples/torque/BoardIntent.tsx",
@@ -3805,21 +4321,39 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
       "frontend/src/examples/flux-cards/Gallery.tsx",
       "frontend/src/examples/flux-cards/lifecycle.tsx",
+      "frontend/src/examples/flux-chat/lifecycle.tsx",
       "frontend/src/examples/reader/ReaderExample.tsx",
       "frontend/src/examples/reader/ReaderVisual.tsx",
       "frontend/src/examples/torque/BoardIntent.tsx",
@@ -3839,16 +4373,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -3881,16 +4432,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -3936,21 +4504,39 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
       "frontend/src/examples/flux-cards/Gallery.tsx",
       "frontend/src/examples/flux-cards/lifecycle.tsx",
+      "frontend/src/examples/flux-chat/lifecycle.tsx",
       "frontend/src/examples/reader/ReaderExample.tsx",
       "frontend/src/examples/reader/ReaderVisual.tsx",
       "frontend/src/examples/torque/BoardIntent.tsx",
@@ -3983,20 +4569,38 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
       "frontend/src/examples/flux-cards/lifecycle.tsx",
+      "frontend/src/examples/flux-chat/lifecycle.tsx",
       "frontend/src/examples/flux-navigation/Header.tsx",
       "frontend/src/examples/flux-navigation/Sidebar.tsx",
       "frontend/src/examples/torque/Operations.tsx",
@@ -4028,20 +4632,38 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
       "frontend/src/examples/flux-cards/lifecycle.tsx",
+      "frontend/src/examples/flux-chat/lifecycle.tsx",
       "frontend/src/examples/flux-navigation/Header.tsx",
       "frontend/src/examples/flux-navigation/Sidebar.tsx",
       "frontend/src/examples/torque/Operations.tsx",
@@ -4060,20 +4682,38 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
       "frontend/src/examples/flux-cards/lifecycle.tsx",
+      "frontend/src/examples/flux-chat/lifecycle.tsx",
       "frontend/src/examples/flux-navigation/Header.tsx",
       "frontend/src/examples/flux-navigation/Sidebar.tsx",
       "frontend/src/examples/torque/Operations.tsx"
@@ -4117,20 +4757,38 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
       "frontend/src/examples/flux-cards/lifecycle.tsx",
+      "frontend/src/examples/flux-chat/lifecycle.tsx",
       "frontend/src/examples/flux-navigation/Header.tsx",
       "frontend/src/examples/flux-navigation/Sidebar.tsx",
       "frontend/src/examples/torque/Operations.tsx",
@@ -4292,16 +4950,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -4399,16 +5074,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -4515,16 +5207,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -4543,16 +5252,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -4571,16 +5297,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -4697,16 +5440,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -4725,16 +5485,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -4766,16 +5543,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -4846,16 +5640,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -4874,16 +5685,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -4933,16 +5761,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -4987,16 +5832,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -5041,16 +5903,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/lab.spec.ts"
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/operations/Operations.stories.tsx"
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
       ],
       "storyIds": [
-        "operations-controlled-views--primitives"
+        "operations-controlled-views--primitives",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -8403,6 +9282,7 @@
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/flux-cards/Gallery.tsx",
+      "frontend/src/examples/flux-chat/Conversation.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/layouts/AsideConsumers.stories.tsx"
@@ -8420,13 +9300,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -8486,6 +9385,7 @@
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/flux-cards/Gallery.tsx",
+      "frontend/src/examples/flux-chat/Conversation.tsx",
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/layouts/AsideConsumers.stories.tsx"
     ]
@@ -8502,13 +9402,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -8647,13 +9566,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -8685,13 +9623,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -9181,13 +10138,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -9258,13 +10234,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -9530,13 +10525,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -9557,13 +10571,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -9610,13 +10643,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -9807,17 +10859,37 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
-      "frontend/src/examples/flux-cards/Gallery.tsx"
+      "frontend/src/examples/flux-cards/Gallery.tsx",
+      "frontend/src/examples/flux-chat/Conversation.tsx"
     ]
   },
   {
@@ -9884,13 +10956,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -9898,6 +10989,7 @@
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/flux-cards/Gallery.tsx",
+      "frontend/src/examples/flux-chat/Conversation.tsx",
       "frontend/src/examples/ops-shell/model.ts",
       "frontend/src/layouts/AsideConsumers.stories.tsx"
     ]
@@ -9953,13 +11045,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -10610,13 +11721,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -10636,13 +11766,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -10662,13 +11811,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -10688,13 +11856,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -10727,13 +11914,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -10766,13 +11972,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -11129,13 +12354,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -11154,13 +12398,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -11192,13 +12455,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -12330,13 +13612,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -12356,13 +13657,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -12382,13 +13702,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -12408,13 +13747,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -12498,13 +13856,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -12524,13 +13901,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -12549,13 +13945,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -12574,13 +13989,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -12599,13 +14033,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -12624,13 +14077,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [
@@ -13338,13 +14810,32 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
+        "frontend/src/communications/Chat.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md"
       ],
       "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/tests/communications.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/communications/Communications.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial"
       ]
     },
     "importEvidence": [

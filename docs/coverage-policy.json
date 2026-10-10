@@ -6,16 +6,33 @@
       "package": "@hollis-labs/design-components",
       "evidence": {
         "pages": [
-          "frontend/src/App.tsx"
+          "frontend/src/App.tsx",
+          "frontend/src/examples/flux-chat/FluxChat.tsx",
+          "frontend/src/examples/flux-chat/Conversation.tsx",
+          "docs/flux-chat-composition.md"
         ],
         "checks": [
-          "frontend/tests/lab.spec.ts"
+          "frontend/tests/lab.spec.ts",
+          "frontend/tests/flux-chat.spec.ts",
+          "frontend/tests/flux-chat-custody.spec.ts"
         ],
         "stories": [
-          "frontend/src/operations/Operations.stories.tsx"
+          "frontend/src/operations/Operations.stories.tsx",
+          "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
         ],
         "storyIds": [
-          "operations-controlled-views--primitives"
+          "operations-controlled-views--primitives",
+          "examples-flux-chat--default",
+          "examples-flux-chat--workspace",
+          "examples-flux-chat--focus",
+          "examples-flux-chat--reading",
+          "examples-flux-chat--welcome",
+          "examples-flux-chat--loading",
+          "examples-flux-chat--empty",
+          "examples-flux-chat--unavailable",
+          "examples-flux-chat--denied",
+          "examples-flux-chat--locked",
+          "examples-flux-chat--partial"
         ]
       }
     },
@@ -40,13 +57,32 @@
       "package": "@hollis-labs/kit-chat",
       "evidence": {
         "pages": [
-          "frontend/src/communications/Chat.tsx"
+          "frontend/src/communications/Chat.tsx",
+          "frontend/src/examples/flux-chat/FluxChat.tsx",
+          "frontend/src/examples/flux-chat/Conversation.tsx",
+          "docs/flux-chat-composition.md"
         ],
         "checks": [
-          "frontend/tests/communications.spec.ts"
+          "frontend/tests/communications.spec.ts",
+          "frontend/tests/flux-chat.spec.ts",
+          "frontend/tests/flux-chat-custody.spec.ts"
         ],
         "stories": [
-          "frontend/src/communications/Communications.stories.tsx"
+          "frontend/src/communications/Communications.stories.tsx",
+          "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        ],
+        "storyIds": [
+          "examples-flux-chat--default",
+          "examples-flux-chat--workspace",
+          "examples-flux-chat--focus",
+          "examples-flux-chat--reading",
+          "examples-flux-chat--welcome",
+          "examples-flux-chat--loading",
+          "examples-flux-chat--empty",
+          "examples-flux-chat--unavailable",
+          "examples-flux-chat--denied",
+          "examples-flux-chat--locked",
+          "examples-flux-chat--partial"
         ]
       }
     },
