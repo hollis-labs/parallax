@@ -1822,7 +1822,8 @@
     },
     "importEvidence": [
       "frontend/src/examples/flux-navigation/Sidebar.tsx",
-      "frontend/src/examples/flux-settings/sections/ShortcutsSection.tsx"
+      "frontend/src/examples/flux-settings/sections/ShortcutsSection.tsx",
+      "frontend/src/nil-radial/Specimen.tsx"
     ]
   },
   {
@@ -2042,7 +2043,8 @@
     "importEvidence": [
       "frontend/src/examples/messaging/MessagingExample.tsx",
       "frontend/src/examples/torque/TaskInspection.tsx",
-      "frontend/src/nil-dialog-proof/LayerProof.tsx"
+      "frontend/src/nil-dialog-proof/LayerProof.tsx",
+      "frontend/src/nil-radial/Specimen.tsx"
     ]
   },
   {
@@ -2137,7 +2139,8 @@
     "importEvidence": [
       "frontend/src/examples/flux-navigation/FluxNavigationExample.tsx",
       "frontend/src/examples/torque/Operations.tsx",
-      "frontend/src/flux-rail/Review.tsx"
+      "frontend/src/flux-rail/Review.tsx",
+      "frontend/src/nil-radial/Specimen.tsx"
     ]
   },
   {
@@ -2415,6 +2418,146 @@
     "version": "0.4.0",
     "entry": ".",
     "name": "SearchAddToggleProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "useLongPress",
+    "category": "nonvisual-function",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "CW-20261010-0091 unpublished local candidate from landed KIT PR109. Exact KIT source/archive/installed bytes and bounded author native/emulation receipts independently reviewed; isolated Nil and message specimens exercise 13 named controls. This disposition tracks bounded local evidence, not exhaustive public-state, physical touch or OS IME coverage.",
+    "nextAction": "Retain named source/pin and acceptance receipts; extend evidence for additional public states or hardware contexts before claiming exhaustive coverage.",
+    "evidence": {
+      "pages": [
+        "frontend/src/nil-radial/Specimen.tsx",
+        "docs/nil-radial.md"
+      ],
+      "stories": [
+        "frontend/src/nil-radial/NilRadial.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/nil-radial.spec.ts"
+      ],
+      "storyIds": [
+        "behaviors-nil-radial--nil",
+        "behaviors-nil-radial--message"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/nil-radial/Specimen.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "LongPressGesture",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "UseLongPressOptions",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "UseLongPressResult",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "RadialMenu",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "CW-20261010-0091 unpublished local candidate from landed KIT PR109. Exact KIT source/archive/installed bytes and bounded author native/emulation receipts independently reviewed; isolated Nil and message specimens exercise 13 named controls. This disposition tracks bounded local evidence, not exhaustive public-state, physical touch or OS IME coverage.",
+    "nextAction": "Retain named source/pin and acceptance receipts; extend evidence for additional public states or hardware contexts before claiming exhaustive coverage.",
+    "evidence": {
+      "pages": [
+        "frontend/src/nil-radial/Specimen.tsx",
+        "docs/nil-radial.md"
+      ],
+      "stories": [
+        "frontend/src/nil-radial/NilRadial.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/nil-radial.spec.ts"
+      ],
+      "storyIds": [
+        "behaviors-nil-radial--nil",
+        "behaviors-nil-radial--message"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/nil-radial/Specimen.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "RadialMenuItem",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/nil-radial/Specimen.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "RadialMenuProps",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "deferred",

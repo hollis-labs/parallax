@@ -1385,6 +1385,35 @@
           "flux-stream-cards--progress-card-partial"
         ]
       }
+    },
+    {
+      "package": "@hollis-labs/design-components",
+      "names": [
+        "RadialMenu",
+        "useLongPress"
+      ],
+      "entries": [
+        "."
+      ],
+      "disposition": "partial",
+      "reason": "CW-20261010-0091 unpublished local candidate from landed KIT PR109. Exact KIT source/archive/installed bytes and bounded author native/emulation receipts independently reviewed; isolated Nil and message specimens exercise 13 named controls. This disposition tracks bounded local evidence, not exhaustive public-state, physical touch or OS IME coverage.",
+      "nextAction": "Retain named source/pin and acceptance receipts; extend evidence for additional public states or hardware contexts before claiming exhaustive coverage.",
+      "evidence": {
+        "pages": [
+          "frontend/src/nil-radial/Specimen.tsx",
+          "docs/nil-radial.md"
+        ],
+        "stories": [
+          "frontend/src/nil-radial/NilRadial.stories.tsx"
+        ],
+        "checks": [
+          "frontend/tests/nil-radial.spec.ts"
+        ],
+        "storyIds": [
+          "behaviors-nil-radial--nil",
+          "behaviors-nil-radial--message"
+        ]
+      }
     }
   ]
 }
