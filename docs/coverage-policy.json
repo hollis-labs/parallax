@@ -1345,6 +1345,46 @@
           "frontend/tests/ops-shell.spec.ts"
         ]
       }
+    },
+    {
+      "package": "@hollis-labs/kit-chat",
+      "names": [
+        "Envelope",
+        "EnvelopeHeader",
+        "EnvelopeBody",
+        "EnvelopeFooter",
+        "EnvelopeSection",
+        "ArtifactCard",
+        "DocumentCard",
+        "DiffCard",
+        "InfoCard",
+        "ListCard",
+        "MetricCard",
+        "ProgressCard",
+        "TableCard",
+        "TimelineCard"
+      ],
+      "disposition": "reviewed",
+      "reason": "Bounded local Flux stream candidates: complete/partial/empty/long operands, unsupported/source/access truth, fixed zero vs absent, original-index inert table action adaptation, native theme/narrow and candidate retirement checks. No exhaustive props, producer or owner visual acceptance.",
+      "nextAction": "Retain named local evidence; extraction requires owner review and DEC026 distinct second consumer.",
+      "evidence": {
+        "pages": [
+          "frontend/src/examples/flux-cards/Cards.tsx",
+          "frontend/src/examples/flux-cards/Gallery.tsx",
+          "docs/flux-cards-proposal.md"
+        ],
+        "stories": [
+          "frontend/src/examples/flux-cards/FluxCards.stories.tsx"
+        ],
+        "checks": [
+          "frontend/tests/flux-cards.spec.ts"
+        ],
+        "storyIds": [
+          "flux-stream-cards--approval-card-complete",
+          "flux-stream-cards--session-task-complete",
+          "flux-stream-cards--progress-card-partial"
+        ]
+      }
     }
   ]
 }
