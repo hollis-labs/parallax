@@ -212,8 +212,6 @@ func defaultActions() []ReaderCommandCapability {
 	return out
 }
 
-func floatPtr(f float64) *float64 { return &f }
-func intPtr(i int) *int             { return &i }
 
 // SVG data URI generator for self-contained inert media
 func svgDataURI(label, bg, fg string) string {
