@@ -1,0 +1,1518 @@
+{
+  "purpose": "proposed operands for CW-20261010-0083; no product-count guarantee",
+  "seed": 4421,
+  "reference_time": "2026-10-04T14:30:00Z",
+  "schema_reference": "github.com/hollis-labs/go-envelopes v0.4.0 authored manifest",
+  "sessions": [
+    {
+      "kind": "api",
+      "activity": "idle",
+      "session": {
+        "id": "fixture-session-1",
+        "short_code": "f1",
+        "title": "Fictional api / idle",
+        "custom_name": "",
+        "project_id": "fixture-project",
+        "context_type": null,
+        "context_id": null,
+        "provider": "fixture",
+        "model": "fictional-model",
+        "status": "active",
+        "runtime_state": null,
+        "halted_at": null,
+        "halted_reason": null,
+        "is_pinned": true,
+        "sort_order": 0,
+        "message_count": 3,
+        "tags": "[]",
+        "last_activity": "2026-10-04T14:20:00Z",
+        "created_at": "2026-10-04T13:00:00Z",
+        "metadata": "{}"
+      },
+      "presence_operands": {
+        "activeStream": false,
+        "pendingTool": false,
+        "cliActive": false
+      },
+      "reference_age_minutes": 10
+    },
+    {
+      "kind": "cli",
+      "activity": "online",
+      "session": {
+        "id": "fixture-session-2",
+        "short_code": "f2",
+        "title": "Fictional cli / online",
+        "custom_name": "",
+        "project_id": "fixture-project",
+        "context_type": null,
+        "context_id": null,
+        "provider": "pty-codex",
+        "model": "fictional-model",
+        "status": "active",
+        "runtime_state": "running",
+        "halted_at": null,
+        "halted_reason": null,
+        "is_pinned": false,
+        "sort_order": 1,
+        "message_count": 3,
+        "tags": "[]",
+        "last_activity": "2026-10-04T14:19:00Z",
+        "created_at": "2026-10-04T13:00:00Z",
+        "metadata": "{}"
+      },
+      "presence_operands": {
+        "activeStream": false,
+        "pendingTool": false,
+        "cliActive": false
+      },
+      "reference_age_minutes": 11
+    },
+    {
+      "kind": "durable",
+      "activity": "working",
+      "session": {
+        "id": "fixture-session-3",
+        "short_code": "f3",
+        "title": "Fictional durable / working",
+        "custom_name": "",
+        "project_id": "fixture-project",
+        "context_type": "durable_agent",
+        "context_id": "fixture-durable-3",
+        "provider": "fixture",
+        "model": "fictional-model",
+        "status": "active",
+        "runtime_state": null,
+        "halted_at": null,
+        "halted_reason": null,
+        "is_pinned": false,
+        "sort_order": 2,
+        "message_count": 3,
+        "tags": "[]",
+        "last_activity": "2026-10-04T14:18:00Z",
+        "created_at": "2026-10-04T13:00:00Z",
+        "metadata": "{}"
+      },
+      "presence_operands": {
+        "activeStream": true,
+        "pendingTool": false,
+        "cliActive": false
+      },
+      "reference_age_minutes": 12
+    },
+    {
+      "kind": "api",
+      "activity": "pending_action",
+      "session": {
+        "id": "fixture-session-4",
+        "short_code": "f4",
+        "title": "Fictional api / pending_action",
+        "custom_name": "",
+        "project_id": "fixture-project",
+        "context_type": null,
+        "context_id": null,
+        "provider": "fixture",
+        "model": "fictional-model",
+        "status": "active",
+        "runtime_state": null,
+        "halted_at": null,
+        "halted_reason": null,
+        "is_pinned": false,
+        "sort_order": 3,
+        "message_count": 3,
+        "tags": "[]",
+        "last_activity": "2026-10-04T14:17:00Z",
+        "created_at": "2026-10-04T13:00:00Z",
+        "metadata": "{}"
+      },
+      "presence_operands": {
+        "activeStream": false,
+        "pendingTool": true,
+        "cliActive": false
+      },
+      "reference_age_minutes": 13
+    },
+    {
+      "kind": "cli",
+      "activity": "failed",
+      "session": {
+        "id": "fixture-session-5",
+        "short_code": "f5",
+        "title": "Fictional cli / failed",
+        "custom_name": "",
+        "project_id": "fixture-project",
+        "context_type": null,
+        "context_id": null,
+        "provider": "pty-codex",
+        "model": "fictional-model",
+        "status": "failed",
+        "runtime_state": "failed",
+        "halted_at": null,
+        "halted_reason": null,
+        "is_pinned": false,
+        "sort_order": 4,
+        "message_count": 3,
+        "tags": "[]",
+        "last_activity": "2026-10-04T14:16:00Z",
+        "created_at": "2026-10-04T13:00:00Z",
+        "metadata": "{}"
+      },
+      "presence_operands": {
+        "activeStream": false,
+        "pendingTool": false,
+        "cliActive": false
+      },
+      "reference_age_minutes": 14
+    },
+    {
+      "kind": "durable",
+      "activity": "halted",
+      "session": {
+        "id": "fixture-session-6",
+        "short_code": "f6",
+        "title": "Fictional durable / halted",
+        "custom_name": "",
+        "project_id": "fixture-project",
+        "context_type": "durable_agent",
+        "context_id": "fixture-durable-6",
+        "provider": "fixture",
+        "model": "fictional-model",
+        "status": "active",
+        "runtime_state": null,
+        "halted_at": "2026-10-04T14:30:00Z",
+        "halted_reason": "Fictional halt",
+        "is_pinned": false,
+        "sort_order": 5,
+        "message_count": 3,
+        "tags": "[]",
+        "last_activity": "2026-10-04T14:15:00Z",
+        "created_at": "2026-10-04T13:00:00Z",
+        "metadata": "{}"
+      },
+      "presence_operands": {
+        "activeStream": false,
+        "pendingTool": false,
+        "cliActive": false
+      },
+      "reference_age_minutes": 15
+    },
+    {
+      "kind": "cli",
+      "activity": "stopped",
+      "session": {
+        "id": "fixture-session-7",
+        "short_code": "f7",
+        "title": "Fictional cli / stopped",
+        "custom_name": "",
+        "project_id": "fixture-project",
+        "context_type": null,
+        "context_id": null,
+        "provider": "pty-codex",
+        "model": "fictional-model",
+        "status": "stopped",
+        "runtime_state": null,
+        "halted_at": null,
+        "halted_reason": null,
+        "is_pinned": false,
+        "sort_order": 6,
+        "message_count": 3,
+        "tags": "[]",
+        "last_activity": "2026-10-04T14:14:00Z",
+        "created_at": "2026-10-04T13:00:00Z",
+        "metadata": "{}"
+      },
+      "presence_operands": {
+        "activeStream": false,
+        "pendingTool": false,
+        "cliActive": false
+      },
+      "reference_age_minutes": 16
+    },
+    {
+      "kind": "durable",
+      "activity": "archived",
+      "session": {
+        "id": "fixture-session-8",
+        "short_code": "f8",
+        "title": "Fictional durable / archived",
+        "custom_name": "",
+        "project_id": "fixture-project",
+        "context_type": "durable_agent",
+        "context_id": "fixture-durable-8",
+        "provider": "fixture",
+        "model": "fictional-model",
+        "status": "archived",
+        "runtime_state": null,
+        "halted_at": null,
+        "halted_reason": null,
+        "is_pinned": false,
+        "sort_order": 7,
+        "message_count": 3,
+        "tags": "[]",
+        "last_activity": "2026-10-04T14:13:00Z",
+        "created_at": "2026-10-04T13:00:00Z",
+        "metadata": "{}"
+      },
+      "presence_operands": {
+        "activeStream": false,
+        "pendingTool": false,
+        "cliActive": false
+      },
+      "reference_age_minutes": 17
+    }
+  ],
+  "messages": [
+    {
+      "id": "fixture-message-1",
+      "session_id": "fixture-session-1",
+      "agent_id": "fixture-agent",
+      "role": "user",
+      "content": "Review the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```",
+      "envelope": null,
+      "metadata": "{\"compacted\":true}",
+      "created_at": "2026-10-04T14:10:00Z"
+    },
+    {
+      "id": "fixture-message-2",
+      "session_id": "fixture-session-1",
+      "agent_id": "fixture-agent",
+      "role": "assistant",
+      "content": "# Fixture review\n\n| Item | State |\n|---|---|\n| Source | Read |\n\n> Fictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.",
+      "envelope": null,
+      "metadata": "{}",
+      "created_at": "2026-10-04T14:20:00Z"
+    },
+    {
+      "id": "fixture-message-3",
+      "session_id": "fixture-session-1",
+      "agent_id": "fixture-agent",
+      "role": "assistant",
+      "content": "Fictional information card.",
+      "envelope": "{\"kind\": \"envelope\", \"version\": 1, \"id\": \"fixture-info-card-complete\", \"type\": \"info-card\", \"data\": {\"title\": \"Fixture information\", \"body\": \"Fictional operands use a fixed reference clock.\", \"variant\": \"info\"}}",
+      "metadata": "{}",
+      "created_at": "2026-10-04T14:25:00Z"
+    }
+  ],
+  "thinking": {
+    "session_id": "fixture-session-1",
+    "streamingThinking": "Fictional reasoning preview",
+    "streamingNarration": "Reading fictional operands",
+    "streamingFinal": "**Fictional** final preview",
+    "isStreaming": true
+  },
+  "text_only": true,
+  "tool_calls": [
+    {
+      "id": "fixture-tool-running",
+      "tool": "fixture_read",
+      "status": "running",
+      "summary": "Fictional running",
+      "detail": "No execution occurred."
+    },
+    {
+      "id": "fixture-tool-done",
+      "tool": "fixture_read",
+      "status": "done",
+      "summary": "Fictional done",
+      "detail": "No execution occurred."
+    },
+    {
+      "id": "fixture-tool-error",
+      "tool": "fixture_read",
+      "status": "error",
+      "summary": "Fictional error",
+      "detail": "No execution occurred."
+    }
+  ],
+  "envelopes": [
+    {
+      "type": "document-viewer",
+      "schema_source": "manifest/schemas/document-viewer.schema.json",
+      "schema_sha256": "9941768b864886ecb4e26ed8564ffd3824ff07b4b84daed3b6cf26eb389bb7a4",
+      "required": [
+        "title",
+        "content"
+      ],
+      "complete": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-document-viewer-complete",
+        "type": "document-viewer",
+        "data": {
+          "title": "Fixture field notes",
+          "content": "# Review\n\nFictional notes, **never customer data**.",
+          "format": "markdown",
+          "sections": [
+            "Summary"
+          ]
+        }
+      },
+      "partial": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-document-viewer-partial",
+        "type": "document-viewer",
+        "data": {
+          "title": "Fixture field notes"
+        }
+      },
+      "partial_is_wire_valid": false,
+      "render_expectation": "observe native result; empty/fallback/failure is evidence, not assumed graceful success"
+    },
+    {
+      "type": "report-card",
+      "schema_source": "manifest/schemas/report-card.schema.json",
+      "schema_sha256": "6f3d46f979d6c01abf95155de104ccd71b34080a6358f71f785cd32d989b0124",
+      "required": [
+        "title",
+        "metrics"
+      ],
+      "complete": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-report-card-complete",
+        "type": "report-card",
+        "data": {
+          "title": "Fixture report",
+          "generated_at": "2026-10-04T14:30:00Z",
+          "metrics": [
+            {
+              "label": "Review progress",
+              "value": "42%",
+              "percent": 42
+            }
+          ],
+          "summary": "Fictional preparation only."
+        }
+      },
+      "partial": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-report-card-partial",
+        "type": "report-card",
+        "data": {
+          "title": "Fixture report"
+        }
+      },
+      "partial_is_wire_valid": false,
+      "render_expectation": "observe native result; empty/fallback/failure is evidence, not assumed graceful success"
+    },
+    {
+      "type": "error-report",
+      "schema_source": "manifest/schemas/error-report.schema.json",
+      "schema_sha256": "696005a73699766470905f8a7558b71138340934c05c496f3142184505f882a2",
+      "required": [
+        "code",
+        "message",
+        "giphy_query",
+        "timestamp"
+      ],
+      "complete": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-error-report-complete",
+        "type": "error-report",
+        "data": {
+          "code": "fixture_unavailable",
+          "message": "Fictional adapter unavailable",
+          "giphy_query": "",
+          "timestamp": "2026-10-04T14:30:00Z",
+          "details": {
+            "fixture_note": "No real provider was called."
+          }
+        }
+      },
+      "partial": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-error-report-partial",
+        "type": "error-report",
+        "data": {
+          "message": "Fictional adapter unavailable"
+        }
+      },
+      "partial_is_wire_valid": false,
+      "render_expectation": "observe native result; empty/fallback/failure is evidence, not assumed graceful success"
+    },
+    {
+      "type": "approval-card",
+      "schema_source": "manifest/schemas/approval-card.schema.json",
+      "schema_sha256": "7a145c3c10db3463c0ce59b6c61f41f43f00d0603fe8ac86e3364da51c81051a",
+      "required": [
+        "description"
+      ],
+      "complete": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-approval-card-complete",
+        "type": "approval-card",
+        "data": {
+          "description": "Inspect fictional notes",
+          "risk_level": "low",
+          "details": "Local specimen only."
+        }
+      },
+      "partial": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-approval-card-partial",
+        "type": "approval-card",
+        "data": {}
+      },
+      "partial_is_wire_valid": false,
+      "render_expectation": "observe native result; empty/fallback/failure is evidence, not assumed graceful success"
+    },
+    {
+      "type": "proposal-card",
+      "schema_source": "manifest/schemas/proposal-card.schema.json",
+      "schema_sha256": "89205cbee582ad2cc623411c7844bbb7f6122fbabba37e1501e5112fcf6cc1ec",
+      "required": [
+        "type",
+        "payload"
+      ],
+      "complete": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-proposal-card-complete",
+        "type": "proposal-card",
+        "data": {
+          "type": "create_task",
+          "payload": {
+            "title": "Fictional review",
+            "description": "Inert proposal."
+          },
+          "schema": {
+            "title": {
+              "type": "string",
+              "label": "Title",
+              "required": true
+            }
+          }
+        }
+      },
+      "partial": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-proposal-card-partial",
+        "type": "proposal-card",
+        "data": {}
+      },
+      "partial_is_wire_valid": false,
+      "render_expectation": "observe native result; empty/fallback/failure is evidence, not assumed graceful success"
+    },
+    {
+      "type": "info-card",
+      "schema_source": "manifest/schemas/info-card.schema.json",
+      "schema_sha256": "041049d4cccfc2760832a697d77c52d4e87f3119529a1b2bcd59f17329e88262",
+      "required": [
+        "title",
+        "body"
+      ],
+      "complete": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-info-card-complete",
+        "type": "info-card",
+        "data": {
+          "title": "Fixture information",
+          "body": "Fictional operands use a fixed reference clock.",
+          "variant": "info"
+        }
+      },
+      "partial": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-info-card-partial",
+        "type": "info-card",
+        "data": {
+          "title": "Fixture information"
+        }
+      },
+      "partial_is_wire_valid": false,
+      "render_expectation": "observe native result; empty/fallback/failure is evidence, not assumed graceful success"
+    },
+    {
+      "type": "list-card",
+      "schema_source": "manifest/schemas/list-card.schema.json",
+      "schema_sha256": "ef33259d521f845fa02452dcd1efde48b5fbde2d876effe8fd12c8904dc64146",
+      "required": [
+        "items"
+      ],
+      "complete": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-list-card-complete",
+        "type": "list-card",
+        "data": {
+          "title": "Fixture checklist",
+          "items": [
+            {
+              "id": "fixture-todo-1",
+              "label": "Review capture",
+              "status": "pending"
+            },
+            {
+              "id": "fixture-todo-2",
+              "label": "Read source",
+              "status": "done"
+            }
+          ]
+        }
+      },
+      "partial": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-list-card-partial",
+        "type": "list-card",
+        "data": {
+          "title": "Fixture checklist"
+        }
+      },
+      "partial_is_wire_valid": false,
+      "render_expectation": "observe native result; empty/fallback/failure is evidence, not assumed graceful success"
+    },
+    {
+      "type": "metric-card",
+      "schema_source": "manifest/schemas/metric-card.schema.json",
+      "schema_sha256": "0fe33ffe8da8d6b712434ec049d4d885b210316d24554904d78c5fa55c2d7ba0",
+      "required": [
+        "label",
+        "value"
+      ],
+      "complete": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-metric-card-complete",
+        "type": "metric-card",
+        "data": {
+          "label": "Fixture progress",
+          "value": "42",
+          "unit": "%",
+          "trend": "up",
+          "previous": "40",
+          "description": "Authored value, not measured runtime."
+        }
+      },
+      "partial": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-metric-card-partial",
+        "type": "metric-card",
+        "data": {
+          "label": "Fixture progress",
+          "description": "Authored value, not measured runtime."
+        }
+      },
+      "partial_is_wire_valid": false,
+      "render_expectation": "observe native result; empty/fallback/failure is evidence, not assumed graceful success"
+    },
+    {
+      "type": "progress-card",
+      "schema_source": "manifest/schemas/progress-card.schema.json",
+      "schema_sha256": "73f1c3d127eee33522ed90479315552e990f72b7adce7b1e5a9e53587efca8a3",
+      "required": [
+        "title",
+        "progress"
+      ],
+      "complete": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-progress-card-complete",
+        "type": "progress-card",
+        "data": {
+          "title": "Fixture preparation",
+          "progress": 42,
+          "status": "Reviewing",
+          "steps": [
+            {
+              "label": "Source read",
+              "done": true
+            },
+            {
+              "label": "Owner confirmation",
+              "done": false
+            }
+          ]
+        }
+      },
+      "partial": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-progress-card-partial",
+        "type": "progress-card",
+        "data": {
+          "title": "Fixture preparation"
+        }
+      },
+      "partial_is_wire_valid": false,
+      "render_expectation": "observe native result; empty/fallback/failure is evidence, not assumed graceful success"
+    },
+    {
+      "type": "confirmation-card",
+      "schema_source": "manifest/schemas/confirmation-card.schema.json",
+      "schema_sha256": "5d7c43123366aa7a5c7f47dfc7e15575391ec31454f7cbfd8f00787690bb187b",
+      "required": [
+        "title",
+        "message"
+      ],
+      "complete": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-confirmation-card-complete",
+        "type": "confirmation-card",
+        "data": {
+          "title": "Fixture confirmation",
+          "message": "Confirm fictional preview?",
+          "risk": "low",
+          "confirm_label": "Confirm",
+          "cancel_label": "Cancel"
+        }
+      },
+      "partial": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-confirmation-card-partial",
+        "type": "confirmation-card",
+        "data": {
+          "title": "Fixture confirmation"
+        }
+      },
+      "partial_is_wire_valid": false,
+      "render_expectation": "observe native result; empty/fallback/failure is evidence, not assumed graceful success"
+    },
+    {
+      "type": "table-card",
+      "schema_source": "manifest/schemas/table-card.schema.json",
+      "schema_sha256": "03565a19cf86a075d44ce7e49b7d2c0fb0895ae81500f59697893190bcdac2f0",
+      "required": [
+        "columns",
+        "rows"
+      ],
+      "complete": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-table-card-complete",
+        "type": "table-card",
+        "data": {
+          "title": "Fixture records",
+          "columns": [
+            {
+              "key": "name",
+              "label": "Name",
+              "sortable": true
+            },
+            {
+              "key": "state",
+              "label": "State"
+            }
+          ],
+          "rows": [
+            {
+              "name": "Fictional record A",
+              "state": "pending"
+            },
+            {
+              "name": "Fictional record B",
+              "state": "done"
+            }
+          ]
+        }
+      },
+      "partial": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-table-card-partial",
+        "type": "table-card",
+        "data": {
+          "title": "Fixture records"
+        }
+      },
+      "partial_is_wire_valid": false,
+      "render_expectation": "observe native result; empty/fallback/failure is evidence, not assumed graceful success"
+    },
+    {
+      "type": "timeline-card",
+      "schema_source": "manifest/schemas/timeline-card.schema.json",
+      "schema_sha256": "b8673ffef421bc372e73fab0bd9c8e493a9db7e10cb6a1aa67abddc21344ad36",
+      "required": [
+        "events"
+      ],
+      "complete": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-timeline-card-complete",
+        "type": "timeline-card",
+        "data": {
+          "title": "Fixture timeline",
+          "events": [
+            {
+              "timestamp": "2026-10-04T14:10:00Z",
+              "label": "Source read",
+              "status": "completed"
+            },
+            {
+              "timestamp": "2026-10-04T14:30:00Z",
+              "label": "Review pending",
+              "status": "active"
+            }
+          ]
+        }
+      },
+      "partial": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-timeline-card-partial",
+        "type": "timeline-card",
+        "data": {
+          "title": "Fixture timeline"
+        }
+      },
+      "partial_is_wire_valid": false,
+      "render_expectation": "observe native result; empty/fallback/failure is evidence, not assumed graceful success"
+    },
+    {
+      "type": "diff-card",
+      "schema_source": "manifest/schemas/diff-card.schema.json",
+      "schema_sha256": "612f965df08625f5fc1105e315eff75a7f332ff2970db7b59368f25dc0e4ebb4",
+      "required": [
+        "before",
+        "after"
+      ],
+      "complete": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-diff-card-complete",
+        "type": "diff-card",
+        "data": {
+          "title": "Fixture difference",
+          "before": {
+            "label": "Before",
+            "content": "old fictional copy"
+          },
+          "after": {
+            "label": "After",
+            "content": "new fictional copy"
+          },
+          "format": "text"
+        }
+      },
+      "partial": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-diff-card-partial",
+        "type": "diff-card",
+        "data": {
+          "title": "Fixture difference"
+        }
+      },
+      "partial_is_wire_valid": false,
+      "render_expectation": "observe native result; empty/fallback/failure is evidence, not assumed graceful success"
+    },
+    {
+      "type": "artifact-mini",
+      "schema_source": "manifest/schemas/artifact-mini.schema.json",
+      "schema_sha256": "78388a4bdf295dca637a36f4881654ae61127cab2b86215c5d2715bf1ac5de3f",
+      "required": [
+        "artifact_id",
+        "name",
+        "mime_type"
+      ],
+      "complete": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-artifact-mini-complete",
+        "type": "artifact-mini",
+        "data": {
+          "artifact_id": "fixture-artifact-1",
+          "name": "fictional-notes.md",
+          "mime_type": "text/markdown",
+          "size_bytes": 128,
+          "origin": "fixture"
+        }
+      },
+      "partial": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-artifact-mini-partial",
+        "type": "artifact-mini",
+        "data": {}
+      },
+      "partial_is_wire_valid": false,
+      "render_expectation": "observe native result; empty/fallback/failure is evidence, not assumed graceful success"
+    },
+    {
+      "type": "session-task",
+      "schema_source": "manifest/schemas/session-task.schema.json",
+      "schema_sha256": "b180b290f668fca830fc4b53eec0dcdeb8da4bb7187e9b252a42ef47f81bd9c1",
+      "required": [
+        "task_id",
+        "title",
+        "status"
+      ],
+      "complete": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-session-task-complete",
+        "type": "session-task",
+        "data": {
+          "task_id": "fixture-task-1",
+          "title": "Fictional preparation",
+          "status": "pending"
+        }
+      },
+      "partial": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-session-task-partial",
+        "type": "session-task",
+        "data": {
+          "title": "Fictional preparation"
+        }
+      },
+      "partial_is_wire_valid": false,
+      "render_expectation": "unsupported fallback; no frontend component"
+    },
+    {
+      "type": "subagent-spawn-approval",
+      "schema_source": "manifest/schemas/subagent-spawn-approval.schema.json",
+      "schema_sha256": "5d093a65ffc954dd322046f5f4dd9c12eb6cc55c8bbf3ed84a196c5f1bc76666",
+      "required": [
+        "run_id",
+        "role",
+        "prompt",
+        "mode"
+      ],
+      "complete": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-subagent-spawn-approval-complete",
+        "type": "subagent-spawn-approval",
+        "data": {
+          "run_id": "fixture-run-1",
+          "role": "fixture-reviewer",
+          "prompt": "Read fictional notes. Do not start a model.",
+          "mode": "sync",
+          "risk_level": "medium"
+        }
+      },
+      "partial": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-subagent-spawn-approval-partial",
+        "type": "subagent-spawn-approval",
+        "data": {}
+      },
+      "partial_is_wire_valid": false,
+      "render_expectation": "observe native result; empty/fallback/failure is evidence, not assumed graceful success"
+    },
+    {
+      "type": "chat-loop-terminated",
+      "schema_source": "manifest/schemas/chat-loop-terminated.schema.json",
+      "schema_sha256": "e25218184143a9e2fd61196fbc11dd4fb64b7cda920fdfd83b708b8815de1b71",
+      "required": [
+        "reason",
+        "code",
+        "iteration",
+        "consecutive_failures",
+        "timestamp"
+      ],
+      "complete": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-chat-loop-terminated-complete",
+        "type": "chat-loop-terminated",
+        "data": {
+          "reason": "Fictional iteration ceiling",
+          "code": "max_turns",
+          "iteration": 3,
+          "consecutive_failures": 0,
+          "timestamp": "2026-10-04T14:30:00Z"
+        }
+      },
+      "partial": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-chat-loop-terminated-partial",
+        "type": "chat-loop-terminated",
+        "data": {}
+      },
+      "partial_is_wire_valid": false,
+      "render_expectation": "observe native result; empty/fallback/failure is evidence, not assumed graceful success"
+    },
+    {
+      "type": "elicitation-prompt",
+      "schema_source": "manifest/schemas/elicitation-prompt.schema.json",
+      "schema_sha256": "b86a7034eb62624631a0d666d7476d1e7ddb4cf719bcf8f263914c005f6393d1",
+      "required": [
+        "elicitation_id",
+        "message",
+        "schema_type",
+        "origin",
+        "timeout_at"
+      ],
+      "complete": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-elicitation-prompt-complete",
+        "type": "elicitation-prompt",
+        "data": {
+          "elicitation_id": "fixture-elicitation-1",
+          "message": "Inspect fictional notes?",
+          "schema_type": "boolean",
+          "origin": "server",
+          "timeout_at": "2026-10-04T14:35:00Z"
+        }
+      },
+      "partial": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-elicitation-prompt-partial",
+        "type": "elicitation-prompt",
+        "data": {
+          "message": "Inspect fictional notes?"
+        }
+      },
+      "partial_is_wire_valid": false,
+      "render_expectation": "observe native result; empty/fallback/failure is evidence, not assumed graceful success"
+    }
+  ],
+  "approvals": [
+    {
+      "risk": "low",
+      "decision": "pending",
+      "envelope": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-approval-card-low-pending",
+        "type": "approval-card",
+        "data": {
+          "description": "Inspect fictional notes",
+          "risk_level": "low",
+          "details": "Local specimen only."
+        }
+      }
+    },
+    {
+      "risk": "low",
+      "decision": "approved",
+      "envelope": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-approval-card-low-approved",
+        "type": "approval-card",
+        "data": {
+          "description": "Inspect fictional notes",
+          "risk_level": "low",
+          "details": "Local specimen only."
+        },
+        "prior_response": {
+          "v": 1,
+          "kind": "approval-card",
+          "id": "fixture-approval-card-low-approved",
+          "status": "submitted",
+          "data": {
+            "approved": true
+          }
+        }
+      }
+    },
+    {
+      "risk": "low",
+      "decision": "rejected",
+      "envelope": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-approval-card-low-rejected",
+        "type": "approval-card",
+        "data": {
+          "description": "Inspect fictional notes",
+          "risk_level": "low",
+          "details": "Local specimen only."
+        },
+        "prior_response": {
+          "v": 1,
+          "kind": "approval-card",
+          "id": "fixture-approval-card-low-rejected",
+          "status": "submitted",
+          "data": {
+            "approved": false
+          }
+        }
+      }
+    },
+    {
+      "risk": "medium",
+      "decision": "pending",
+      "envelope": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-approval-card-medium-pending",
+        "type": "approval-card",
+        "data": {
+          "description": "Inspect fictional notes",
+          "risk_level": "medium",
+          "details": "Local specimen only."
+        }
+      }
+    },
+    {
+      "risk": "medium",
+      "decision": "approved",
+      "envelope": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-approval-card-medium-approved",
+        "type": "approval-card",
+        "data": {
+          "description": "Inspect fictional notes",
+          "risk_level": "medium",
+          "details": "Local specimen only."
+        },
+        "prior_response": {
+          "v": 1,
+          "kind": "approval-card",
+          "id": "fixture-approval-card-medium-approved",
+          "status": "submitted",
+          "data": {
+            "approved": true
+          }
+        }
+      }
+    },
+    {
+      "risk": "medium",
+      "decision": "rejected",
+      "envelope": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-approval-card-medium-rejected",
+        "type": "approval-card",
+        "data": {
+          "description": "Inspect fictional notes",
+          "risk_level": "medium",
+          "details": "Local specimen only."
+        },
+        "prior_response": {
+          "v": 1,
+          "kind": "approval-card",
+          "id": "fixture-approval-card-medium-rejected",
+          "status": "submitted",
+          "data": {
+            "approved": false
+          }
+        }
+      }
+    },
+    {
+      "risk": "high",
+      "decision": "pending",
+      "envelope": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-approval-card-high-pending",
+        "type": "approval-card",
+        "data": {
+          "description": "Inspect fictional notes",
+          "risk_level": "high",
+          "details": "Local specimen only."
+        }
+      }
+    },
+    {
+      "risk": "high",
+      "decision": "approved",
+      "envelope": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-approval-card-high-approved",
+        "type": "approval-card",
+        "data": {
+          "description": "Inspect fictional notes",
+          "risk_level": "high",
+          "details": "Local specimen only."
+        },
+        "prior_response": {
+          "v": 1,
+          "kind": "approval-card",
+          "id": "fixture-approval-card-high-approved",
+          "status": "submitted",
+          "data": {
+            "approved": true
+          }
+        }
+      }
+    },
+    {
+      "risk": "high",
+      "decision": "rejected",
+      "envelope": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-approval-card-high-rejected",
+        "type": "approval-card",
+        "data": {
+          "description": "Inspect fictional notes",
+          "risk_level": "high",
+          "details": "Local specimen only."
+        },
+        "prior_response": {
+          "v": 1,
+          "kind": "approval-card",
+          "id": "fixture-approval-card-high-rejected",
+          "status": "submitted",
+          "data": {
+            "approved": false
+          }
+        }
+      }
+    },
+    {
+      "risk": "low",
+      "decision": "pending",
+      "envelope": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-subagent-spawn-approval-low-pending",
+        "type": "subagent-spawn-approval",
+        "data": {
+          "run_id": "fixture-run-1",
+          "role": "fixture-reviewer",
+          "prompt": "Read fictional notes. Do not start a model.",
+          "mode": "sync",
+          "risk_level": "low"
+        }
+      }
+    },
+    {
+      "risk": "low",
+      "decision": "approved",
+      "envelope": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-subagent-spawn-approval-low-approved",
+        "type": "subagent-spawn-approval",
+        "data": {
+          "run_id": "fixture-run-1",
+          "role": "fixture-reviewer",
+          "prompt": "Read fictional notes. Do not start a model.",
+          "mode": "sync",
+          "risk_level": "low"
+        },
+        "prior_response": {
+          "v": 1,
+          "kind": "subagent-spawn-approval",
+          "id": "fixture-subagent-spawn-approval-low-approved",
+          "status": "submitted",
+          "data": {
+            "approved": true
+          }
+        }
+      }
+    },
+    {
+      "risk": "low",
+      "decision": "rejected",
+      "envelope": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-subagent-spawn-approval-low-rejected",
+        "type": "subagent-spawn-approval",
+        "data": {
+          "run_id": "fixture-run-1",
+          "role": "fixture-reviewer",
+          "prompt": "Read fictional notes. Do not start a model.",
+          "mode": "sync",
+          "risk_level": "low"
+        },
+        "prior_response": {
+          "v": 1,
+          "kind": "subagent-spawn-approval",
+          "id": "fixture-subagent-spawn-approval-low-rejected",
+          "status": "canceled",
+          "data": {
+            "reason": "Fictional rejection"
+          }
+        }
+      }
+    },
+    {
+      "risk": "medium",
+      "decision": "pending",
+      "envelope": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-subagent-spawn-approval-medium-pending",
+        "type": "subagent-spawn-approval",
+        "data": {
+          "run_id": "fixture-run-1",
+          "role": "fixture-reviewer",
+          "prompt": "Read fictional notes. Do not start a model.",
+          "mode": "sync",
+          "risk_level": "medium"
+        }
+      }
+    },
+    {
+      "risk": "medium",
+      "decision": "approved",
+      "envelope": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-subagent-spawn-approval-medium-approved",
+        "type": "subagent-spawn-approval",
+        "data": {
+          "run_id": "fixture-run-1",
+          "role": "fixture-reviewer",
+          "prompt": "Read fictional notes. Do not start a model.",
+          "mode": "sync",
+          "risk_level": "medium"
+        },
+        "prior_response": {
+          "v": 1,
+          "kind": "subagent-spawn-approval",
+          "id": "fixture-subagent-spawn-approval-medium-approved",
+          "status": "submitted",
+          "data": {
+            "approved": true
+          }
+        }
+      }
+    },
+    {
+      "risk": "medium",
+      "decision": "rejected",
+      "envelope": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-subagent-spawn-approval-medium-rejected",
+        "type": "subagent-spawn-approval",
+        "data": {
+          "run_id": "fixture-run-1",
+          "role": "fixture-reviewer",
+          "prompt": "Read fictional notes. Do not start a model.",
+          "mode": "sync",
+          "risk_level": "medium"
+        },
+        "prior_response": {
+          "v": 1,
+          "kind": "subagent-spawn-approval",
+          "id": "fixture-subagent-spawn-approval-medium-rejected",
+          "status": "canceled",
+          "data": {
+            "reason": "Fictional rejection"
+          }
+        }
+      }
+    },
+    {
+      "risk": "high",
+      "decision": "pending",
+      "envelope": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-subagent-spawn-approval-high-pending",
+        "type": "subagent-spawn-approval",
+        "data": {
+          "run_id": "fixture-run-1",
+          "role": "fixture-reviewer",
+          "prompt": "Read fictional notes. Do not start a model.",
+          "mode": "sync",
+          "risk_level": "high"
+        }
+      }
+    },
+    {
+      "risk": "high",
+      "decision": "approved",
+      "envelope": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-subagent-spawn-approval-high-approved",
+        "type": "subagent-spawn-approval",
+        "data": {
+          "run_id": "fixture-run-1",
+          "role": "fixture-reviewer",
+          "prompt": "Read fictional notes. Do not start a model.",
+          "mode": "sync",
+          "risk_level": "high"
+        },
+        "prior_response": {
+          "v": 1,
+          "kind": "subagent-spawn-approval",
+          "id": "fixture-subagent-spawn-approval-high-approved",
+          "status": "submitted",
+          "data": {
+            "approved": true
+          }
+        }
+      }
+    },
+    {
+      "risk": "high",
+      "decision": "rejected",
+      "envelope": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-subagent-spawn-approval-high-rejected",
+        "type": "subagent-spawn-approval",
+        "data": {
+          "run_id": "fixture-run-1",
+          "role": "fixture-reviewer",
+          "prompt": "Read fictional notes. Do not start a model.",
+          "mode": "sync",
+          "risk_level": "high"
+        },
+        "prior_response": {
+          "v": 1,
+          "kind": "subagent-spawn-approval",
+          "id": "fixture-subagent-spawn-approval-high-rejected",
+          "status": "canceled",
+          "data": {
+            "reason": "Fictional rejection"
+          }
+        }
+      }
+    }
+  ],
+  "widgets": {
+    "session-info": {
+      "source": "selected fictional session and fixture-project; named fixture agent"
+    },
+    "context-budget": {
+      "context_window": 32000,
+      "used": 8000,
+      "breakdown": {
+        "system": 2000,
+        "history": 5000,
+        "tools": 1000
+      }
+    },
+    "token-usage": {
+      "input_tokens": 5000,
+      "output_tokens": 3000,
+      "total_tokens": 8000,
+      "cost": 0,
+      "cost_label": "fictional zero, not unknown"
+    },
+    "observability": {
+      "sampled_at": "2026-10-04T14:30:00Z",
+      "executions": [
+        {
+          "id": "fixture-execution-1",
+          "status": "completed",
+          "duration_ms": 120
+        }
+      ]
+    },
+    "tools": {
+      "tools": [
+        {
+          "name": "fixture_read",
+          "description": "Inert fixture only",
+          "input_schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "servers": [
+        {
+          "name": "fixture-server",
+          "tool_count": 1,
+          "connected": false
+        }
+      ]
+    },
+    "agent-status": {
+      "agent_id": "fixture-agent",
+      "status": "idle"
+    },
+    "worker-status": {
+      "workers": [
+        {
+          "id": "fixture-worker",
+          "status": "idle",
+          "task": "Fictional preparation"
+        }
+      ]
+    },
+    "bookmarks": {
+      "records": [],
+      "evidence_state": "known_empty"
+    },
+    "unavailable": {
+      "records": null,
+      "evidence_state": "unavailable",
+      "reason": "fixture adapter does not supply this slice"
+    },
+    "unknown": {
+      "records": null,
+      "evidence_state": "unknown",
+      "reason": "no fictional operand declared"
+    },
+    "partial": {
+      "records": [
+        {
+          "id": "fixture-partial-widget"
+        }
+      ],
+      "evidence_state": "partial",
+      "missing": [
+        "status",
+        "sampled_at"
+      ]
+    }
+  },
+  "drawers": {
+    "working": [
+      "scratchpad",
+      "terminal-1",
+      "terminal-2",
+      "artifacts",
+      "runtime",
+      "session-context",
+      "card:fixture-info-card"
+    ],
+    "right": [
+      "widgets",
+      "work",
+      "workflows",
+      "inbox",
+      "artifacts"
+    ],
+    "primary": [
+      "documents",
+      "reports",
+      "diffs",
+      "tools",
+      "pins",
+      "pin:fixture-pinned-card"
+    ],
+    "pinned_content_kinds": [
+      "markdown",
+      "image",
+      "diff",
+      "scratchpad",
+      "artifact-mini",
+      "agent-envelope"
+    ],
+    "card_tab": {
+      "id": "card:fixture-info-card",
+      "label": "Fixture information",
+      "payload": {
+        "kind": "envelope",
+        "version": 1,
+        "id": "fixture-info-card-complete",
+        "type": "info-card",
+        "data": {
+          "title": "Fixture information",
+          "body": "Fictional operands use a fixed reference clock.",
+          "variant": "info"
+        }
+      },
+      "pinned": false,
+      "createdAt": 1791124200000
+    },
+    "terminal_commands": "inert strings only; never shell execution",
+    "runtime": "explicit unavailable unless local host-feed fixture is supplied"
+  }
+}
