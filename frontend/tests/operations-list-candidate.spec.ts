@@ -7,6 +7,7 @@ declare global {
   interface Window {
     operationsProof: OperationsProofDiagnostics
     retiredScope?: OperationsActionScope
+    selectAllRevealedIds?: string[]
   }
 }
 // The standalone HTML entry is served by Vite; the default suite's base URL is Go.
@@ -44,11 +45,38 @@ for (const consumer of ["torque", "runs"]) {
     const editor = page.getByRole("textbox", { name: "Independent editable pane" })
     await editor.fill("/")
     await expect(editor).toBeFocused()
-    const revealed = Number(
-      (await page.locator('[data-ops-count="revealed"]').innerText()).split(" ")[0],
-    )
+    // Snapshot the committed membership at the trusted click, after native reveal may advance.
+    await page.getByRole("checkbox", { name: "Select all revealed rows" }).evaluate((control) => {
+      control.addEventListener(
+        "click",
+        () => {
+          window.selectAllRevealedIds = Array.from(
+            document.querySelectorAll("[data-ops-row-id]"),
+            (row) => row.getAttribute("data-ops-row-id") as string,
+          )
+        },
+        { capture: true, once: true },
+      )
+    })
     await page.getByRole("checkbox", { name: "Select all revealed rows" }).check()
-    await expect(page.locator('[data-ops-count="selected"]')).toHaveText(`${revealed} selected`)
+    const selectedIds = await page.evaluate(() => window.selectAllRevealedIds ?? [])
+    expect(selectedIds.length).toBeGreaterThan(0)
+    await expect(page.locator('[data-ops-count="selected"]')).toHaveText(
+      `${selectedIds.length} selected`,
+    )
+    await expect
+      .poll(() =>
+        page
+          .locator("[data-ops-row-id]")
+          .evaluateAll((rows) =>
+            rows
+              .filter(
+                (row) => row.querySelector<HTMLInputElement>('input[type="checkbox"]')?.checked,
+              )
+              .map((row) => row.getAttribute("data-ops-row-id")),
+          ),
+      )
+      .toEqual(selectedIds)
     await search.fill("no-such-record")
     await expect(page.locator('[data-ops-count="selected"]')).toHaveText("0 selected")
     await search.fill("")
