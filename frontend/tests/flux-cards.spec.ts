@@ -409,9 +409,7 @@ test("queued return yields to replacement activation, layer and foreground focus
     }
     if (boundary === "layer") {
       await approve.click()
-      await expect
-        .poll(() => page.evaluate(() => !!document.activeElement?.closest('[role="dialog"]')))
-        .toBe(true)
+      await expect(page.getByRole("dialog").getByRole("button").first()).toBeFocused()
       await page.evaluate(() => (window as any).retainedClose())
       await expect(page.getByRole("dialog")).toBeVisible()
       await page.evaluate(() => {
