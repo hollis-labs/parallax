@@ -680,10 +680,14 @@ test.describe("Tether Sysop Overview Recreation", () => {
       settledLoadingTruthful: true,
       recoveredAfterOverlayRemoved: true,
       loadingAfterAStarted: true,
+      retainedRefreshARefused: true,
       loadingAfterBStarted: true,
+      domRefreshDisabledWhileBPending: true,
       bRemainsLoadingAfterAResolves: true,
+      domRefreshStillDisabledWhileBPending: true,
       refreshRefusedWhileBPending: true,
       bSettledLoadingFalse: true,
+      domRefreshEnabledAfterB: true,
       refreshRecoveredAfterB: true,
     })
   })

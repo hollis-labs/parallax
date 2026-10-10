@@ -191,7 +191,7 @@ export async function overviewLifecycleExercise() {
 
   // 5. Source replacement (variant change) retirement
   const heldBeforeVariantChange = getHandlers().__tetherOverviewActiveRefreshHandler!
-  flushSync(() => setVariantProp("degraded"))
+  flushSync(() => setVariantProp("degraded-reliability"))
   await settle()
   const refusedAfterVariantChange = heldBeforeVariantChange() === false
   const freshAfterVariantChange = getHandlers().__tetherOverviewActiveRefreshHandler!() === true
@@ -227,9 +227,10 @@ export async function overviewLifecycleExercise() {
   })
   await settle()
 
-  const pendingHandlers = getHandlers()
+  // Snapshot the retained callback to test veto under competing overlay
+  const retainedPendingRefresh = getHandlers().__tetherOverviewActiveRefreshHandler!
   flushSync(() => {
-    pendingHandlers.__tetherOverviewActiveRefreshHandler?.()
+    retainedPendingRefresh()
   })
   const initialPendingLoading =
     (window as unknown as { __tetherOverviewLoading?: boolean }).__tetherOverviewLoading === true
@@ -242,8 +243,8 @@ export async function overviewLifecycleExercise() {
   inFlightOverlay.textContent = "In flight overlay"
   document.body.append(inFlightOverlay)
 
-  // Verify background user action is vetoed while overlay is active
-  const backgroundEventVetoed = pendingHandlers.__tetherOverviewActiveRefreshHandler?.() === false
+  // Verify background user action is vetoed while overlay is active using retained callback
+  const backgroundEventVetoed = retainedPendingRefresh() === false
 
   // Now resolve the in-flight request
   resolveDeferred(overviewModel("standard"))
@@ -256,8 +257,9 @@ export async function overviewLifecycleExercise() {
 
   // Remove overlay
   inFlightOverlay.remove()
-  const recoveredAfterOverlayRemoved =
-    pendingHandlers.__tetherOverviewActiveRefreshHandler?.() === true
+  // Explicitly acquire fresh callback after overlay removed
+  const freshAfterOverlayRemoved = getHandlers().__tetherOverviewActiveRefreshHandler!
+  const recoveredAfterOverlayRemoved = freshAfterOverlayRemoved() === true
 
   flushSync(() => pendingRoot.unmount())
   pendingElement.remove()
@@ -306,27 +308,35 @@ export async function overviewLifecycleExercise() {
   })
   await settle()
 
-  // Start request A
-  const handlersBeforeSwitch = getHandlers()
+  // Start request A and snapshot retained callback A
+  const retainedRefreshA = getHandlers().__tetherOverviewActiveRefreshHandler!
   flushSync(() => {
-    handlersBeforeSwitch.__tetherOverviewActiveRefreshHandler?.()
+    retainedRefreshA()
   })
   const loadingAfterAStarted =
     (window as unknown as { __tetherOverviewLoading?: boolean }).__tetherOverviewLoading === true
 
   // Commit variant/source lease replacement
   flushSync(() => {
-    setDualVariant("degraded")
+    setDualVariant("degraded-reliability")
   })
   await settle()
 
-  // Start request B on new committed lease/variant
-  const handlersAfterSwitch = getHandlers()
+  // Retained callback A must refuse execution on superseded source/lease
+  const retainedRefreshARefused = retainedRefreshA() === false
+
+  // Trigger request B on new committed lease/variant
   flushSync(() => {
-    handlersAfterSwitch.__tetherOverviewActiveRefreshHandler?.()
+    getHandlers().__tetherOverviewActiveRefreshHandler?.()
   })
   const loadingAfterBStarted =
     (window as unknown as { __tetherOverviewLoading?: boolean }).__tetherOverviewLoading === true
+
+  // Real DOM Refresh button query
+  const domRefreshBtn = dualElement.querySelector<HTMLButtonElement>(
+    'button[aria-label="Refresh overview dashboard"]',
+  )
+  const domRefreshDisabledWhileBPending = domRefreshBtn?.disabled === true
 
   // Resolve A first (stale/superseded request)
   resolveA(overviewModel("standard"))
@@ -338,20 +348,23 @@ export async function overviewLifecycleExercise() {
   const bRemainsLoadingAfterAResolves =
     (window as unknown as { __tetherOverviewLoading?: boolean }).__tetherOverviewLoading === true
 
+  const domRefreshStillDisabledWhileBPending = domRefreshBtn?.disabled === true
   const refreshRefusedWhileBPending =
-    handlersAfterSwitch.__tetherOverviewActiveRefreshHandler?.() === false
+    getHandlers().__tetherOverviewActiveRefreshHandler?.() === false
 
   // Now resolve B (current active request)
-  resolveB(overviewModel("degraded"))
+  resolveB(overviewModel("degraded-reliability"))
   await settle()
   await new Promise((r) => setTimeout(r, 25))
 
-  // Fresh current request B settles loading = false
+  // Fresh current request B settles loading = false and DOM Refresh re-enabled
   const bSettledLoadingFalse =
     (window as unknown as { __tetherOverviewLoading?: boolean }).__tetherOverviewLoading === false
+  const domRefreshEnabledAfterB = domRefreshBtn?.disabled === false
 
-  const refreshRecoveredAfterB =
-    handlersAfterSwitch.__tetherOverviewActiveRefreshHandler?.() === true
+  // Explicitly acquire fresh callback after loading settles for fresh-positive recovery
+  const freshRefreshAfterB = getHandlers().__tetherOverviewActiveRefreshHandler!
+  const refreshRecoveredAfterB = freshRefreshAfterB() === true
 
   flushSync(() => dualRoot.unmount())
   dualElement.remove()
@@ -379,10 +392,14 @@ export async function overviewLifecycleExercise() {
     settledLoadingTruthful,
     recoveredAfterOverlayRemoved,
     loadingAfterAStarted,
+    retainedRefreshARefused,
     loadingAfterBStarted,
+    domRefreshDisabledWhileBPending,
     bRemainsLoadingAfterAResolves,
+    domRefreshStillDisabledWhileBPending,
     refreshRefusedWhileBPending,
     bSettledLoadingFalse,
+    domRefreshEnabledAfterB,
     refreshRecoveredAfterB,
   }
 }
