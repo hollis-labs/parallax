@@ -11,16 +11,16 @@
   "sources": {
     "docs/export-inventory.json": "8b9445865381f1b33aeaa1d66c2249af08df439391e48c9f5c5526216e5b4df0",
     "docs/tether-ai-dec073.md": "54538ecbb8a8c2ec56fbd307ffdf228579ebf125c09ff4164d43b083b6b6a2b9",
-    "docs/tether-ai-replay.py": "dd6cdaa869753d2ff08d0a93b26fc7d2bd33a5c2e80e0c3d41e97bf36f12238f",
+    "docs/tether-ai-replay.py": "3956146efb973c74974f3e7ddfb2d11097f18013347119d12ba6bf5b39da95aa",
     "frontend/playwright.tether-ai.config.ts": "d7dea188fa517e8377ae0b7a85d4b888409b8ec6b2212c17a56eed949ee549b2",
     "frontend/src/examples/tether-ai/AIGateway.stories.tsx": "35beb566ba5f9b9b85b130da8c26bc56e85fb8b8019a67ab24691f0d522e4305",
     "frontend/src/examples/tether-ai/Standalone.tsx": "7d2dcf6a875a30f95c435eff369ea9927980ad6af27800aeaec5f34a12bc33d1",
     "frontend/src/examples/tether-ai/main.tsx": "1961f4e8466316ae96967907700afb124e47c1c31a83490841f554bfab8ddbda",
     "frontend/src/examples/tether-ai/model.ts": "5f6abb93b1c0e093a2af152f95c57da2e6471b8e131a077994bcd6b21fb859d6",
     "frontend/src/main.tsx": "4b1df2571149c0085cd779ee43e71ffb8f65871818d5b8d1ac5e82d2ed333d49",
-    "frontend/src/tether-sysop/AIGatewayPage.tsx": "27fd502783c39002fd7cef3fd80dbaf69f69fe09376aaf9bc1c620c709ee0c3e",
+    "frontend/src/tether-sysop/AIGatewayPage.tsx": "99bc494f6973cda88bc7b9add10a9924084db7fd4b8c052a326d464fab33b9d4",
     "frontend/src/tether-sysop/tether-ai.css": "c900d76fb3b6c907fea70969645fcb079126845eb25eb10e9a24ce0cff60615e",
-    "frontend/tests/tether-ai.spec.ts": "61c9a981da7a12544dae64ccbae172babbe6b92690db60bbbfccc4d5cbee280f",
+    "frontend/tests/tether-ai.spec.ts": "98d0ec6f5b205e0971a72037db6b14a1628fb8b59c2ffb92ec6f789c2f697768",
     "frontend/tether-ai.html": "e38ce021f08ce6e1755f46624abe25119a4583f009f5b76091cb370bf874596a"
   },
   "installed_pins": {

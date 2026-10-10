@@ -882,24 +882,32 @@ export const activeAILeases = new Set<number>()
 export const retiredAILeases = new Set<number>()
 
 export function isElementVisibleAndActive(el: HTMLElement): boolean {
-  if (el.hidden || el.getAttribute("aria-hidden") === "true") return false
+  if (!el.isConnected) return false
+  if (el.hasAttribute("hidden") || el.closest("[hidden]")) return false
+  if (el.getAttribute("aria-hidden") === "true" || el.closest('[aria-hidden="true"]')) return false
   if (el.hasAttribute("inert") || el.closest("[inert]")) return false
-  if (el.closest('[aria-hidden="true"]')) return false
   if (el.closest("details:not([open])")) return false
+  if (el.closest("template")) return false
 
+  if (el.hasAttribute("data-closed") || el.closest("[data-closed]")) return false
+  if (el.hasAttribute("data-ending") || el.closest("[data-ending]")) return false
   if (el.getAttribute("data-state") === "closed" || el.closest('[data-state="closed"]')) {
     return false
   }
 
   if (typeof window !== "undefined" && typeof window.getComputedStyle === "function") {
-    const style = window.getComputedStyle(el)
-    if (
-      style.display === "none" ||
-      style.visibility === "hidden" ||
-      style.visibility === "collapse" ||
-      style.opacity === "0"
-    ) {
-      return false
+    let curr: HTMLElement | null = el
+    while (curr && curr !== document.documentElement) {
+      const style = window.getComputedStyle(curr)
+      if (
+        style.display === "none" ||
+        style.visibility === "hidden" ||
+        style.visibility === "collapse" ||
+        style.opacity === "0"
+      ) {
+        return false
+      }
+      curr = curr.parentElement
     }
   }
 
@@ -919,12 +927,11 @@ export function hasCompetingOverlay(activePopup?: HTMLElement | null): boolean {
   for (const el of Array.from(overlays)) {
     if (!isElementVisibleAndActive(el)) continue
     if (activePopup) {
-      if (el !== activePopup) {
-        return true
-      }
-    } else {
+      if (el === activePopup) continue
+      if (el.contains(activePopup)) continue
       return true
     }
+    return true
   }
   return false
 }
@@ -1037,13 +1044,29 @@ export function AIGatewayPage({
   const rootRef = useRef<HTMLDivElement | null>(null)
   const scrollRef = useRef<HTMLDivElement | null>(null)
 
-  // Track activation lease per mount and variant lifecycle
-  const [activationLease, setActivationLease] = useState<number>(() => {
-    const initial = ++globalAILeaseSeq
-    activeAILeases.add(initial)
-    return initial
-  })
-  const currentLeaseRef = useRef(activationLease)
+  // Bound popup DOM refs and entity/open tickets
+  const detailTicketRef = useRef(0)
+  const [detailTicket, setDetailTicket] = useState(0)
+  const detailDialogRef = useRef<HTMLDivElement | null>(null)
+  const detailViewRef = useRef<DetailView | null>(null)
+  detailViewRef.current = detailView
+
+  const providerTicketRef = useRef(0)
+  const [providerTicket, setProviderTicket] = useState(0)
+  const providerDialogRef = useRef<HTMLDivElement | null>(null)
+  const providerFormRef = useRef<ProviderFormState | null>(null)
+  providerFormRef.current = providerForm
+
+  const routeTicketRef = useRef(0)
+  const [routeTicket, setRouteTicket] = useState(0)
+  const routeDialogRef = useRef<HTMLDivElement | null>(null)
+  const routeFormRef = useRef<RouteFormState | null>(null)
+  routeFormRef.current = routeForm
+
+  // Track activation lease per mount and variant lifecycle:
+  // Allocate ONLY in committed effects, not in render initializers!
+  const [activationLease, setActivationLease] = useState<number>(0)
+  const currentLeaseRef = useRef(0)
   const requestSeqRef = useRef(0)
   const currentVariantRef = useRef(currentVariant)
   currentVariantRef.current = currentVariant
@@ -1065,17 +1088,26 @@ export function AIGatewayPage({
     }
   }, [currentVariant])
 
+  // Source & lease validity for async requests and subscriptions
+  const isSourceValid = useCallback((leaseToVerify: number): boolean => {
+    if (
+      leaseToVerify === 0 ||
+      !activeAILeases.has(leaseToVerify) ||
+      retiredAILeases.has(leaseToVerify) ||
+      leaseToVerify !== currentLeaseRef.current
+    ) {
+      return false
+    }
+    if (!rootRef.current?.isConnected || !document.contains(rootRef.current)) {
+      return false
+    }
+    return true
+  }, [])
+
+  // Event admission check (source validity PLUS overlay veto)
   const isAdmitted = useCallback(
     (leaseToVerify: number, popupContext?: HTMLElement | null): boolean => {
-      if (
-        leaseToVerify === 0 ||
-        !activeAILeases.has(leaseToVerify) ||
-        retiredAILeases.has(leaseToVerify) ||
-        leaseToVerify !== currentLeaseRef.current
-      ) {
-        return false
-      }
-      if (!rootRef.current?.isConnected || !document.contains(rootRef.current)) {
+      if (!isSourceValid(leaseToVerify)) {
         return false
       }
       if (hasCompetingOverlay(popupContext)) {
@@ -1083,13 +1115,13 @@ export function AIGatewayPage({
       }
       return true
     },
-    [],
+    [isSourceValid],
   )
 
   const api = useMemo(() => createTetherSysopMockApi(currentVariant), [currentVariant])
 
   const load = useCallback((): boolean => {
-    const capturedLease = activationLease
+    const capturedLease = currentLeaseRef.current
     if (!isAdmitted(capturedLease)) {
       return false
     }
@@ -1111,8 +1143,9 @@ export function AIGatewayPage({
       api.getAIBudgets(),
     ])
       .then(([settingsInfo, runtimeInfo, usageInfo, auditInfo, budgetsInfo]) => {
+        // Source validity check: do NOT veto on temporary overlays so loading cannot be stuck
         if (
-          !isAdmitted(capturedLease) ||
+          !isSourceValid(capturedLease) ||
           requestLease !== requestSeqRef.current ||
           capturedVariant !== currentVariantRef.current
         ) {
@@ -1153,7 +1186,7 @@ export function AIGatewayPage({
       })
       .catch((err: unknown) => {
         if (
-          !isAdmitted(capturedLease) ||
+          !isSourceValid(capturedLease) ||
           requestLease !== requestSeqRef.current ||
           capturedVariant !== currentVariantRef.current
         ) {
@@ -1163,7 +1196,7 @@ export function AIGatewayPage({
       })
       .finally(() => {
         if (
-          !isAdmitted(capturedLease) ||
+          !isSourceValid(capturedLease) ||
           requestLease !== requestSeqRef.current ||
           capturedVariant !== currentVariantRef.current
         ) {
@@ -1172,7 +1205,7 @@ export function AIGatewayPage({
         setLoading(false)
       })
     return true
-  }, [activationLease, api, currentVariant, forcedAppearance, forcedErrorMessage, isAdmitted])
+  }, [api, currentVariant, forcedAppearance, forcedErrorMessage, isAdmitted, isSourceValid])
 
   useEffect(() => {
     if (forcedAppearance === "error") {
@@ -1244,56 +1277,33 @@ export function AIGatewayPage({
     [activationLease, controlledTab, isAdmitted, onTabChange],
   )
 
-  // Register active DOM handlers and lease state on window for custody verification
-  useEffect(() => {
-    if (typeof window === "undefined") return
-
-    const w = window as unknown as {
-      __tetherAIActiveRefreshHandler?: () => boolean
-      __tetherAIActiveVariantHandler?: (next: OverviewVariantKey) => boolean
-      __tetherAIActiveTabHandler?: (next: AITabKey) => boolean
-      __tetherAIActiveLoadHandler?: () => boolean
-      __tetherAIActivationLease?: number
-      __tetherAIActiveLeases?: Set<number>
-      __tetherAIRetiredLeases?: Set<number>
-      __tetherAIRetainedCallback?: () => boolean
-      __tetherAICallbackHistory?: Array<() => boolean>
-    }
-    w.__tetherAIActiveRefreshHandler = handleRefresh
-    w.__tetherAIActiveVariantHandler = handleVariantChange
-    w.__tetherAIActiveTabHandler = handleTabChange
-    w.__tetherAIActiveLoadHandler = load
-    w.__tetherAIActivationLease = activationLease
-    w.__tetherAIActiveLeases = activeAILeases
-    w.__tetherAIRetiredLeases = retiredAILeases
-    w.__tetherAIRetainedCallback = handleRefresh
-
-    if (!w.__tetherAICallbackHistory) {
-      w.__tetherAICallbackHistory = []
-    }
-    w.__tetherAICallbackHistory.push(handleRefresh)
-  }, [activationLease, handleRefresh, handleTabChange, handleVariantChange, load])
-
   // Lazy-load provider catalog when form is opened
   useEffect(() => {
     const providerType = providerForm?.type.trim()
     if (!providerType || providerCatalogs[providerType]) return
     let cancelled = false
+    const ticket = providerTicketRef.current
     api
       .getAIProviderCatalog(providerType)
       .then((info) => {
-        const activeDialog = document.querySelector(
-          '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
-        ) as HTMLElement | null
-        if (!cancelled && isAdmitted(activationLease, activeDialog)) {
+        const ownedPopup = (providerDialogRef.current?.closest('[role="dialog"]') ??
+          providerDialogRef.current) as HTMLElement | null
+        if (
+          !cancelled &&
+          ticket === providerTicketRef.current &&
+          isAdmitted(currentLeaseRef.current, ownedPopup)
+        ) {
           setProviderCatalogs((current) => ({ ...current, [providerType]: info }))
         }
       })
       .catch((err: unknown) => {
-        const activeDialog = document.querySelector(
-          '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
-        ) as HTMLElement | null
-        if (!cancelled && isAdmitted(activationLease, activeDialog)) {
+        const ownedPopup = (providerDialogRef.current?.closest('[role="dialog"]') ??
+          providerDialogRef.current) as HTMLElement | null
+        if (
+          !cancelled &&
+          ticket === providerTicketRef.current &&
+          isAdmitted(currentLeaseRef.current, ownedPopup)
+        ) {
           setProviderCatalogs((current) => ({
             ...current,
             [providerType]: {
@@ -1307,7 +1317,7 @@ export function AIGatewayPage({
     return () => {
       cancelled = true
     }
-  }, [activationLease, api, isAdmitted, providerCatalogs, providerForm?.type])
+  }, [api, isAdmitted, providerCatalogs, providerForm?.type])
 
   // Keyboard navigation & shortcut guard
   useEffect(() => {
@@ -1432,143 +1442,285 @@ export function AIGatewayPage({
   ]
 
   const handleOpenDetail = useCallback(
-    (view: DetailView) => {
-      if (!isAdmitted(activationLease)) return
+    (view: DetailView): boolean => {
+      if (!isAdmitted(currentLeaseRef.current)) return false
+      detailTicketRef.current += 1
+      const ticket = detailTicketRef.current
+      setDetailTicket(ticket)
       setDetailView(view)
+      return true
     },
-    [activationLease, isAdmitted],
+    [isAdmitted],
   )
 
-  const handleCloseDetail = useCallback(() => {
-    const activeDialog = document.querySelector(
-      '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
-    ) as HTMLElement | null
-    if (!isAdmitted(activationLease, activeDialog)) return
+  const handleCloseDetail = useCallback((): boolean => {
+    const ticket = detailTicketRef.current
+    if (ticket === 0 || !detailViewRef.current) return false
+    const container = detailDialogRef.current
+    if (!container?.isConnected) return false
+    if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
+    const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
+    if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
+    detailTicketRef.current = 0
+    setDetailTicket(0)
     setDetailView(null)
-  }, [activationLease, isAdmitted])
+    return true
+  }, [isAdmitted])
 
-  const handleOpenAddProvider = useCallback(() => {
-    if (!isAdmitted(activationLease)) return
+  const handleOpenAddProvider = useCallback((): boolean => {
+    if (!isAdmitted(currentLeaseRef.current)) return false
+    providerTicketRef.current += 1
+    const ticket = providerTicketRef.current
+    setProviderTicket(ticket)
     setProviderForm(emptyProviderForm())
-  }, [activationLease, isAdmitted])
+    return true
+  }, [isAdmitted])
 
-  const handleOpenAddRoute = useCallback(() => {
-    if (!isAdmitted(activationLease)) return
+  const handleOpenAddRoute = useCallback((): boolean => {
+    if (!isAdmitted(currentLeaseRef.current)) return false
+    routeTicketRef.current += 1
+    const ticket = routeTicketRef.current
+    setRouteTicket(ticket)
     setRouteForm(emptyRouteForm())
-  }, [activationLease, isAdmitted])
+    return true
+  }, [isAdmitted])
 
   const handleEditProvider = useCallback(
-    (provider: AIProviderSettingsInfo) => {
-      const activeDialog = document.querySelector(
-        '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
-      ) as HTMLElement | null
-      if (!isAdmitted(activationLease, activeDialog)) return
-      setProviderForm(providerToForm(provider))
+    (provider: AIProviderSettingsInfo): boolean => {
+      const ticket = detailTicketRef.current
+      if (ticket === 0 || !detailViewRef.current) return false
+      const container = detailDialogRef.current
+      if (!container?.isConnected) return false
+      if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
+      const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
+      if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
+      detailTicketRef.current = 0
+      setDetailTicket(0)
       setDetailView(null)
+
+      providerTicketRef.current += 1
+      const pTicket = providerTicketRef.current
+      setProviderTicket(pTicket)
+      setProviderForm(providerToForm(provider))
+      return true
     },
-    [activationLease, isAdmitted],
+    [isAdmitted],
   )
 
   const handleEditRoute = useCallback(
-    (route: AIRouteSettingsInfo) => {
-      const activeDialog = document.querySelector(
-        '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
-      ) as HTMLElement | null
-      if (!isAdmitted(activationLease, activeDialog)) return
-      setRouteForm(routeToForm(route))
+    (route: AIRouteSettingsInfo): boolean => {
+      const ticket = detailTicketRef.current
+      if (ticket === 0 || !detailViewRef.current) return false
+      const container = detailDialogRef.current
+      if (!container?.isConnected) return false
+      if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
+      const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
+      if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
+      detailTicketRef.current = 0
+      setDetailTicket(0)
       setDetailView(null)
+
+      routeTicketRef.current += 1
+      const rTicket = routeTicketRef.current
+      setRouteTicket(rTicket)
+      setRouteForm(routeToForm(route))
+      return true
     },
-    [activationLease, isAdmitted],
+    [isAdmitted],
   )
 
-  const handleCloseProviderForm = useCallback(() => {
-    const activeDialog = document.querySelector(
-      '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
-    ) as HTMLElement | null
-    if (!isAdmitted(activationLease, activeDialog)) return
+  const handleCloseProviderForm = useCallback((): boolean => {
+    const ticket = providerTicketRef.current
+    if (ticket === 0 || !providerFormRef.current) return false
+    const container = providerDialogRef.current
+    if (!container?.isConnected) return false
+    if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
+    const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
+    if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
+    providerTicketRef.current = 0
+    setProviderTicket(0)
     setProviderForm(null)
-  }, [activationLease, isAdmitted])
+    return true
+  }, [isAdmitted])
 
-  const handleCloseRouteForm = useCallback(() => {
-    const activeDialog = document.querySelector(
-      '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
-    ) as HTMLElement | null
-    if (!isAdmitted(activationLease, activeDialog)) return
+  const handleCloseRouteForm = useCallback((): boolean => {
+    const ticket = routeTicketRef.current
+    if (ticket === 0 || !routeFormRef.current) return false
+    const container = routeDialogRef.current
+    if (!container?.isConnected) return false
+    if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
+    const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
+    if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
+    routeTicketRef.current = 0
+    setRouteTicket(0)
     setRouteForm(null)
-  }, [activationLease, isAdmitted])
+    return true
+  }, [isAdmitted])
 
   const handleProviderFormChange = useCallback(
-    (next: ProviderFormState | null) => {
-      const activeDialog = document.querySelector(
-        '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
-      ) as HTMLElement | null
-      if (!isAdmitted(activationLease, activeDialog)) return
+    (next: ProviderFormState | null): boolean => {
+      const ticket = providerTicketRef.current
+      if (ticket === 0 || !providerFormRef.current) return false
+      const container = providerDialogRef.current
+      if (!container?.isConnected) return false
+      if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
+      const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
+      if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
       setProviderForm(next)
+      return true
     },
-    [activationLease, isAdmitted],
+    [isAdmitted],
   )
 
   const handleRouteFormChange = useCallback(
-    (next: RouteFormState | null) => {
-      const activeDialog = document.querySelector(
-        '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
-      ) as HTMLElement | null
-      if (!isAdmitted(activationLease, activeDialog)) return
+    (next: RouteFormState | null): boolean => {
+      const ticket = routeTicketRef.current
+      if (ticket === 0 || !routeFormRef.current) return false
+      const container = routeDialogRef.current
+      if (!container?.isConnected) return false
+      if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
+      const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
+      if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
       setRouteForm(next)
+      return true
     },
-    [activationLease, isAdmitted],
+    [isAdmitted],
   )
 
   // Effectful write controls are INERT fixture specimens
-  const saveConfig = useCallback(() => {
-    if (!isAdmitted(activationLease)) return
+  const saveConfig = useCallback((): boolean => {
+    if (!isAdmitted(currentLeaseRef.current)) return false
     setMessage(
       "Fixture specimen: save is inert. Local drafts are demonstration-only and not persisted.",
     )
-  }, [activationLease, isAdmitted])
+    return true
+  }, [isAdmitted])
 
-  const reloadDaemon = useCallback(() => {
-    if (!isAdmitted(activationLease)) return
+  const reloadDaemon = useCallback((): boolean => {
+    if (!isAdmitted(currentLeaseRef.current)) return false
     setMessage("Fixture specimen: daemon reload is inert. Presentation and inspection only.")
-  }, [activationLease, isAdmitted])
+    return true
+  }, [isAdmitted])
 
-  const saveProvider = useCallback(() => {
-    const activeDialog = document.querySelector(
-      '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
-    ) as HTMLElement | null
-    if (!isAdmitted(activationLease, activeDialog)) return
+  const saveProvider = useCallback((): boolean => {
+    const ticket = providerTicketRef.current
+    if (ticket === 0 || !providerFormRef.current) return false
+    const container = providerDialogRef.current
+    if (!container?.isConnected) return false
+    if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
+    const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
+    if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
     setMessage("Fixture specimen: provider changes are inert and not persisted.")
-  }, [activationLease, isAdmitted])
+    return true
+  }, [isAdmitted])
 
   const deleteProvider = useCallback(
-    (_provider: AIProviderSettingsInfo) => {
-      const activeDialog = document.querySelector(
-        '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
-      ) as HTMLElement | null
-      if (!isAdmitted(activationLease, activeDialog)) return
+    (_provider: AIProviderSettingsInfo): boolean => {
+      const ticket = detailTicketRef.current
+      if (ticket === 0 || !detailViewRef.current) return false
+      const container = detailDialogRef.current
+      if (!container?.isConnected) return false
+      if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
+      const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
+      if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
       setMessage("Fixture specimen: provider deletion is inert and not persisted.")
+      return true
     },
-    [activationLease, isAdmitted],
+    [isAdmitted],
   )
 
-  const saveRoute = useCallback(() => {
-    const activeDialog = document.querySelector(
-      '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
-    ) as HTMLElement | null
-    if (!isAdmitted(activationLease, activeDialog)) return
+  const saveRoute = useCallback((): boolean => {
+    const ticket = routeTicketRef.current
+    if (ticket === 0 || !routeFormRef.current) return false
+    const container = routeDialogRef.current
+    if (!container?.isConnected) return false
+    if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
+    const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
+    if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
     setMessage("Fixture specimen: route changes are inert and not persisted.")
-  }, [activationLease, isAdmitted])
+    return true
+  }, [isAdmitted])
 
   const deleteRoute = useCallback(
-    (_route: AIRouteSettingsInfo) => {
-      const activeDialog = document.querySelector(
-        '[role="dialog"]:not([hidden]):not([aria-hidden="true"])',
-      ) as HTMLElement | null
-      if (!isAdmitted(activationLease, activeDialog)) return
+    (_route: AIRouteSettingsInfo): boolean => {
+      const ticket = detailTicketRef.current
+      if (ticket === 0 || !detailViewRef.current) return false
+      const container = detailDialogRef.current
+      if (!container?.isConnected) return false
+      if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
+      const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
+      if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
       setMessage("Fixture specimen: route deletion is inert and not persisted.")
+      return true
     },
-    [activationLease, isAdmitted],
+    [isAdmitted],
   )
+
+  // Register active DOM handlers and lease state on window for custody verification
+  useEffect(() => {
+    if (typeof window === "undefined") return
+
+    const w = window as unknown as {
+      __tetherAIActiveRefreshHandler?: () => boolean
+      __tetherAIActiveVariantHandler?: (next: OverviewVariantKey) => boolean
+      __tetherAIActiveTabHandler?: (next: AITabKey) => boolean
+      __tetherAIActiveLoadHandler?: () => boolean
+      __tetherAIActivationLease?: number
+      __tetherAIActiveLeases?: Set<number>
+      __tetherAIRetiredLeases?: Set<number>
+      __tetherAIRetainedCallback?: () => boolean
+      __tetherAICallbackHistory?: Array<() => boolean>
+      __tetherAIActiveCloseDetail?: () => boolean
+      __tetherAIActiveEditProvider?: (provider: AIProviderSettingsInfo) => boolean
+      __tetherAIActiveCloseProvider?: () => boolean
+      __tetherAIActiveSaveProvider?: () => boolean
+      __tetherAIActiveCloseRoute?: () => boolean
+      __tetherAIActiveSaveRoute?: () => boolean
+      __tetherAIDetailTicket?: number
+      __tetherAIProviderTicket?: number
+      __tetherAIRouteTicket?: number
+    }
+    w.__tetherAIActiveRefreshHandler = handleRefresh
+    w.__tetherAIActiveVariantHandler = handleVariantChange
+    w.__tetherAIActiveTabHandler = handleTabChange
+    w.__tetherAIActiveLoadHandler = load
+    w.__tetherAIActivationLease = activationLease
+    w.__tetherAIActiveLeases = activeAILeases
+    w.__tetherAIRetiredLeases = retiredAILeases
+    w.__tetherAIRetainedCallback = handleRefresh
+    w.__tetherAIActiveCloseDetail = detailView ? handleCloseDetail : undefined
+    w.__tetherAIActiveEditProvider = detailView ? handleEditProvider : undefined
+    w.__tetherAIActiveCloseProvider = providerForm ? handleCloseProviderForm : undefined
+    w.__tetherAIActiveSaveProvider = providerForm ? saveProvider : undefined
+    w.__tetherAIActiveCloseRoute = routeForm ? handleCloseRouteForm : undefined
+    w.__tetherAIActiveSaveRoute = routeForm ? saveRoute : undefined
+    w.__tetherAIDetailTicket = detailTicket
+    w.__tetherAIProviderTicket = providerTicket
+    w.__tetherAIRouteTicket = routeTicket
+
+    if (!w.__tetherAICallbackHistory) {
+      w.__tetherAICallbackHistory = []
+    }
+    w.__tetherAICallbackHistory.push(handleRefresh)
+  }, [
+    activationLease,
+    detailTicket,
+    detailView,
+    handleCloseDetail,
+    handleCloseProviderForm,
+    handleCloseRouteForm,
+    handleEditProvider,
+    handleRefresh,
+    handleTabChange,
+    handleVariantChange,
+    load,
+    providerForm,
+    providerTicket,
+    routeForm,
+    routeTicket,
+    saveProvider,
+    saveRoute,
+  ])
 
   const isReachable =
     currentVariant === "blocked-health" ? false : (settings?.runtime.daemon_reachable ?? true)
@@ -1965,6 +2117,8 @@ export function AIGatewayPage({
 
       <ProviderDialog
         form={providerForm}
+        ticket={providerTicket}
+        containerRef={providerDialogRef}
         catalog={providerForm ? providerCatalogs[providerForm.type] : undefined}
         onChange={handleProviderFormChange}
         onClose={handleCloseProviderForm}
@@ -1972,12 +2126,16 @@ export function AIGatewayPage({
       />
       <RouteDialog
         form={routeForm}
+        ticket={routeTicket}
+        containerRef={routeDialogRef}
         onChange={handleRouteFormChange}
         onClose={handleCloseRouteForm}
         onSave={saveRoute}
       />
       <AIDetailDialog
         detail={detailView}
+        ticket={detailTicket}
+        containerRef={detailDialogRef}
         onClose={handleCloseDetail}
         onEditProvider={handleEditProvider}
         onDeleteProvider={deleteProvider}
@@ -1990,12 +2148,16 @@ export function AIGatewayPage({
 
 function ProviderDialog({
   form,
+  ticket,
+  containerRef,
   catalog,
   onChange,
   onClose,
   onSave,
 }: {
   form: ProviderFormState | null
+  ticket: number
+  containerRef: React.RefObject<HTMLDivElement | null>
   catalog?: AIProviderCatalogInfo
   onChange: (next: ProviderFormState | null) => void
   onClose: () => void
@@ -2075,162 +2237,168 @@ function ProviderDialog({
         </div>
       }
     >
-      {form && (
-        <>
-          <DetailSection title="Provider">
-            <div className="grid gap-3">
-              <div className="grid gap-3 sm:grid-cols-[1fr_12rem_8rem]">
-                <FormField label="Provider ID">
-                  <input
-                    aria-label="Provider ID"
-                    className="tether-input"
-                    value={form.id}
-                    onChange={(event) => update({ id: event.target.value })}
-                    placeholder="provider-primary"
-                  />
-                </FormField>
-                <FormField label="Type">
-                  <select
-                    className="tether-select"
-                    value={form.type}
-                    onChange={(event) => update({ type: event.target.value })}
-                  >
-                    <option value="anthropic">anthropic</option>
-                    <option value="gemini">gemini</option>
-                    <option value="openai">openai</option>
-                    <option value="openai-compatible">openai-compatible</option>
-                  </select>
-                </FormField>
-                <FormField label="Enabled">
-                  <label className="flex h-8 items-center gap-2 border border-border bg-bg px-2 text-xs text-text-soft rounded-sm">
+      <div ref={containerRef} data-dialog-ticket={ticket} data-dialog-type="provider">
+        {form && (
+          <>
+            <DetailSection title="Provider">
+              <div className="grid gap-3">
+                <div className="grid gap-3 sm:grid-cols-[1fr_12rem_8rem]">
+                  <FormField label="Provider ID">
                     <input
-                      type="checkbox"
-                      checked={form.enabled}
-                      onChange={(event) => update({ enabled: event.target.checked })}
+                      aria-label="Provider ID"
+                      className="tether-input"
+                      value={form.id}
+                      onChange={(event) => update({ id: event.target.value })}
+                      placeholder="provider-primary"
                     />
-                    Enabled
-                  </label>
-                </FormField>
-              </div>
-              <div className="grid gap-3 sm:grid-cols-2">
-                <FormField label="Legacy single model">
-                  <input
-                    className="tether-input"
-                    value={form.model}
-                    onChange={(event) => update({ model: event.target.value })}
-                    placeholder="claude-sonnet-4-20250514"
-                  />
-                </FormField>
-                <FormField label="Default model">
-                  <div className="flex h-8 items-center">
-                    <Combobox
-                      items={defaultModelItems}
-                      value={form.defaultModel || null}
-                      onChange={(value) => update({ defaultModel: value ?? "" })}
-                      ariaLabel="Select default model"
-                      placeholder={
-                        form.models.length > 0 ? "Select default model" : "Add models first"
-                      }
-                      searchPlaceholder="Search selected models"
-                      emptyText="No selected models."
-                      clearable
-                    />
-                  </div>
-                </FormField>
-              </div>
-              <FormField label="Configured models">
-                <div className="grid gap-3">
-                  <TransferList
-                    items={catalogItems}
-                    selected={form.models}
-                    onChange={(next) =>
-                      update({
-                        models: next,
-                        defaultModel: next.includes(form.defaultModel)
-                          ? form.defaultModel
-                          : (next[0] ?? ""),
-                      })
-                    }
-                    availableTitle={
-                      catalog?.vendor_provider_name
-                        ? `${catalog.vendor_provider_name} suggestions`
-                        : "Available models"
-                    }
-                    selectedTitle="Configured models"
-                    emptyAvailableText={
-                      catalog?.error
-                        ? "Model catalog unavailable right now."
-                        : "No catalog models found for this provider type."
-                    }
-                    emptySelectedText="No configured models yet."
-                  />
-                  <div className="flex flex-col gap-2 sm:flex-row">
+                  </FormField>
+                  <FormField label="Type">
+                    <select
+                      className="tether-select"
+                      value={form.type}
+                      onChange={(event) => update({ type: event.target.value })}
+                    >
+                      <option value="anthropic">anthropic</option>
+                      <option value="gemini">gemini</option>
+                      <option value="openai">openai</option>
+                      <option value="openai-compatible">openai-compatible</option>
+                    </select>
+                  </FormField>
+                  <FormField label="Enabled">
+                    <label className="flex h-8 items-center gap-2 border border-border bg-bg px-2 text-xs text-text-soft rounded-sm">
+                      <input
+                        type="checkbox"
+                        checked={form.enabled}
+                        onChange={(event) => update({ enabled: event.target.checked })}
+                      />
+                      Enabled
+                    </label>
+                  </FormField>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <FormField label="Legacy single model">
                     <input
                       className="tether-input"
-                      value={customModel}
-                      onChange={(event) => setCustomModel(event.target.value)}
-                      placeholder="Add custom model ID for local or vendor-specific variants"
+                      value={form.model}
+                      onChange={(event) => update({ model: event.target.value })}
+                      placeholder="claude-sonnet-4-20250514"
                     />
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={addCustomModel}
-                      disabled={!customModel.trim()}
-                    >
-                      Add custom model
-                    </Button>
-                  </div>
-                  <div className="text-label text-text-subtle">
-                    {catalog?.error
-                      ? `Catalog lookup error: ${catalog.error}`
-                      : form.type === "gemini"
-                        ? catalog?.last_fetched_at
-                          ? `Gemini suggestions come from Google models.dev. Fetched ${formatRelativeTime(catalog.last_fetched_at)}.`
-                          : "Gemini suggestions come from Google models.dev when available."
-                        : form.type === "openai-compatible"
-                          ? "OpenAI-compatible uses the OpenAI catalog as a suggestion set. Add custom local model IDs when needed."
-                          : catalog?.last_fetched_at
-                            ? `Catalog data fetched ${formatRelativeTime(catalog.last_fetched_at)}.`
-                            : "Catalog suggestions come from models.dev when available."}
-                  </div>
+                  </FormField>
+                  <FormField label="Default model">
+                    <div className="flex h-8 items-center">
+                      <Combobox
+                        items={defaultModelItems}
+                        value={form.defaultModel || null}
+                        onChange={(value) => update({ defaultModel: value ?? "" })}
+                        ariaLabel="Select default model"
+                        placeholder={
+                          form.models.length > 0 ? "Select default model" : "Add models first"
+                        }
+                        searchPlaceholder="Search selected models"
+                        emptyText="No selected models."
+                        clearable
+                      />
+                    </div>
+                  </FormField>
                 </div>
-              </FormField>
-              <div className="grid gap-3 sm:grid-cols-2">
-                <FormField label="Secret ref">
-                  <input
-                    className="tether-input"
-                    value={form.secretRef}
-                    onChange={(event) => update({ secretRef: event.target.value })}
-                    placeholder="keychain://provider/account"
-                  />
+                <FormField label="Configured models">
+                  <div className="grid gap-3">
+                    <TransferList
+                      items={catalogItems}
+                      selected={form.models}
+                      onChange={(next) =>
+                        update({
+                          models: next,
+                          defaultModel: next.includes(form.defaultModel)
+                            ? form.defaultModel
+                            : (next[0] ?? ""),
+                        })
+                      }
+                      availableTitle={
+                        catalog?.vendor_provider_name
+                          ? `${catalog.vendor_provider_name} suggestions`
+                          : "Available models"
+                      }
+                      selectedTitle="Configured models"
+                      emptyAvailableText={
+                        catalog?.error
+                          ? "Model catalog unavailable right now."
+                          : "No catalog models found for this provider type."
+                      }
+                      emptySelectedText="No configured models yet."
+                    />
+                    <div className="flex flex-col gap-2 sm:flex-row">
+                      <input
+                        className="tether-input"
+                        value={customModel}
+                        onChange={(event) => setCustomModel(event.target.value)}
+                        placeholder="Add custom model ID for local or vendor-specific variants"
+                      />
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={addCustomModel}
+                        disabled={!customModel.trim()}
+                      >
+                        Add custom model
+                      </Button>
+                    </div>
+                    <div className="text-label text-text-subtle">
+                      {catalog?.error
+                        ? `Catalog lookup error: ${catalog.error}`
+                        : form.type === "gemini"
+                          ? catalog?.last_fetched_at
+                            ? `Gemini suggestions come from Google models.dev. Fetched ${formatRelativeTime(catalog.last_fetched_at)}.`
+                            : "Gemini suggestions come from Google models.dev when available."
+                          : form.type === "openai-compatible"
+                            ? "OpenAI-compatible uses the OpenAI catalog as a suggestion set. Add custom local model IDs when needed."
+                            : catalog?.last_fetched_at
+                              ? `Catalog data fetched ${formatRelativeTime(catalog.last_fetched_at)}.`
+                              : "Catalog suggestions come from models.dev when available."}
+                    </div>
+                  </div>
                 </FormField>
-                <FormField label="Base URL">
-                  <input
-                    className="tether-input"
-                    value={form.baseURL}
-                    onChange={(event) => update({ baseURL: event.target.value })}
-                    placeholder="http://127.0.0.1:11434/v1"
-                  />
-                </FormField>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <FormField label="Secret ref">
+                    <input
+                      className="tether-input"
+                      value={form.secretRef}
+                      onChange={(event) => update({ secretRef: event.target.value })}
+                      placeholder="keychain://provider/account"
+                    />
+                  </FormField>
+                  <FormField label="Base URL">
+                    <input
+                      className="tether-input"
+                      value={form.baseURL}
+                      onChange={(event) => update({ baseURL: event.target.value })}
+                      placeholder="http://127.0.0.1:11434/v1"
+                    />
+                  </FormField>
+                </div>
               </div>
-            </div>
-          </DetailSection>
-          <DetailSection title="Policy">
-            <PolicyFields value={form.policy} onChange={(next) => update({ policy: next })} />
-          </DetailSection>
-        </>
-      )}
+            </DetailSection>
+            <DetailSection title="Policy">
+              <PolicyFields value={form.policy} onChange={(next) => update({ policy: next })} />
+            </DetailSection>
+          </>
+        )}
+      </div>
     </DetailDialog>
   )
 }
 
 function RouteDialog({
   form,
+  ticket,
+  containerRef,
   onChange,
   onClose,
   onSave,
 }: {
   form: RouteFormState | null
+  ticket: number
+  containerRef: React.RefObject<HTMLDivElement | null>
   onChange: (next: RouteFormState | null) => void
   onClose: () => void
   onSave: () => void
@@ -2261,89 +2429,93 @@ function RouteDialog({
         </div>
       }
     >
-      {form && (
-        <>
-          <DetailSection title="Route">
-            <div className="grid gap-3">
-              <div className="grid gap-3 sm:grid-cols-2">
-                <FormField label="Provider">
-                  <input
-                    className="tether-input"
-                    value={form.provider}
-                    onChange={(event) => update({ provider: event.target.value })}
-                    placeholder="anthropic-primary"
-                  />
-                </FormField>
-                <FormField label="Model">
-                  <input
-                    className="tether-input"
-                    value={form.model}
-                    onChange={(event) => update({ model: event.target.value })}
-                    placeholder="claude-sonnet-4-20250514"
-                  />
-                </FormField>
+      <div ref={containerRef} data-dialog-ticket={ticket} data-dialog-type="route">
+        {form && (
+          <>
+            <DetailSection title="Route">
+              <div className="grid gap-3">
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <FormField label="Provider">
+                    <input
+                      className="tether-input"
+                      value={form.provider}
+                      onChange={(event) => update({ provider: event.target.value })}
+                      placeholder="anthropic-primary"
+                    />
+                  </FormField>
+                  <FormField label="Model">
+                    <input
+                      className="tether-input"
+                      value={form.model}
+                      onChange={(event) => update({ model: event.target.value })}
+                      placeholder="claude-sonnet-4-20250514"
+                    />
+                  </FormField>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <FormField label="Mode">
+                    <input
+                      className="tether-input"
+                      value={form.mode}
+                      onChange={(event) => update({ mode: event.target.value })}
+                      placeholder="summarize"
+                    />
+                  </FormField>
+                  <FormField label="Intent">
+                    <input
+                      className="tether-input"
+                      value={form.intent}
+                      onChange={(event) => update({ intent: event.target.value })}
+                      placeholder="support"
+                    />
+                  </FormField>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <FormField label="Requires tools">
+                    <select
+                      className="tether-select"
+                      value={form.requiresTools}
+                      onChange={(event) =>
+                        update({ requiresTools: event.target.value as BoolSelect })
+                      }
+                    >
+                      <option value="">unset</option>
+                      <option value="true">true</option>
+                      <option value="false">false</option>
+                    </select>
+                  </FormField>
+                  <FormField label="Requires reasoning">
+                    <select
+                      className="tether-select"
+                      value={form.requiresReasoning}
+                      onChange={(event) =>
+                        update({
+                          requiresReasoning: event.target.value as BoolSelect,
+                        })
+                      }
+                    >
+                      <option value="">unset</option>
+                      <option value="true">true</option>
+                      <option value="false">false</option>
+                    </select>
+                  </FormField>
+                </div>
               </div>
-              <div className="grid gap-3 sm:grid-cols-2">
-                <FormField label="Mode">
-                  <input
-                    className="tether-input"
-                    value={form.mode}
-                    onChange={(event) => update({ mode: event.target.value })}
-                    placeholder="summarize"
-                  />
-                </FormField>
-                <FormField label="Intent">
-                  <input
-                    className="tether-input"
-                    value={form.intent}
-                    onChange={(event) => update({ intent: event.target.value })}
-                    placeholder="support"
-                  />
-                </FormField>
-              </div>
-              <div className="grid gap-3 sm:grid-cols-2">
-                <FormField label="Requires tools">
-                  <select
-                    className="tether-select"
-                    value={form.requiresTools}
-                    onChange={(event) =>
-                      update({ requiresTools: event.target.value as BoolSelect })
-                    }
-                  >
-                    <option value="">unset</option>
-                    <option value="true">true</option>
-                    <option value="false">false</option>
-                  </select>
-                </FormField>
-                <FormField label="Requires reasoning">
-                  <select
-                    className="tether-select"
-                    value={form.requiresReasoning}
-                    onChange={(event) =>
-                      update({
-                        requiresReasoning: event.target.value as BoolSelect,
-                      })
-                    }
-                  >
-                    <option value="">unset</option>
-                    <option value="true">true</option>
-                    <option value="false">false</option>
-                  </select>
-                </FormField>
-              </div>
-            </div>
-          </DetailSection>
-          <DetailSection title="Policy">
-            <PolicyFields value={form.policy} onChange={(next) => update({ policy: next })} />
-          </DetailSection>
-        </>
-      )}
+            </DetailSection>
+            <DetailSection title="Policy">
+              <PolicyFields value={form.policy} onChange={(next) => update({ policy: next })} />
+            </DetailSection>
+          </>
+        )}
+      </div>
     </DetailDialog>
   )
 }
 
 function AIDetailDialog({
   detail,
+  ticket,
+  containerRef,
   onClose,
   onEditProvider,
   onDeleteProvider,
@@ -2351,6 +2523,8 @@ function AIDetailDialog({
   onDeleteRoute,
 }: {
   detail: DetailView | null
+  ticket: number
+  containerRef: React.RefObject<HTMLDivElement | null>
   onClose: () => void
   onEditProvider: (provider: AIProviderSettingsInfo) => void
   onDeleteProvider: (provider: AIProviderSettingsInfo) => void
@@ -2445,111 +2619,113 @@ function AIDetailDialog({
       }
       widthClassName="w-[760px] max-w-[calc(100vw-2rem)]"
     >
-      {provider && (
-        <>
-          <DetailSection title="Provider">
-            <dl className="grid grid-cols-[minmax(8rem,auto)_1fr] gap-x-4 gap-y-1.5 text-xs">
-              <DetailField label="ID">
-                <CopyableId id={provider.id} />
-              </DetailField>
-              <DetailField label="Type">{provider.type}</DetailField>
-              <DetailField label="Default model">
-                {provider.default_model || provider.model || "—"}
-              </DetailField>
-              <DetailField label="Models">{provider.models?.join(", ") || "—"}</DetailField>
-              <DetailField label="Secret ref">{provider.secret_ref || "—"}</DetailField>
-              <DetailField label="Base URL">{provider.base_url || "—"}</DetailField>
-            </dl>
-          </DetailSection>
-          <DetailSection title="Policy">
-            <p className="text-xs text-text-soft">{policySummary(provider.policy)}</p>
-          </DetailSection>
-        </>
-      )}
-
-      {route && (
-        <>
-          <DetailSection title="Route">
-            <dl className="grid grid-cols-[minmax(8rem,auto)_1fr] gap-x-4 gap-y-1.5 text-xs">
-              <DetailField label="Provider">{route.provider}</DetailField>
-              <DetailField label="Model">{route.model}</DetailField>
-              <DetailField label="Mode">{route.mode || "—"}</DetailField>
-              <DetailField label="Intent">{route.intent || "—"}</DetailField>
-              <DetailField label="Requires tools">
-                {String(route.requires_tools ?? "unset")}
-              </DetailField>
-              <DetailField label="Requires reasoning">
-                {String(route.requires_reasoning ?? "unset")}
-              </DetailField>
-            </dl>
-          </DetailSection>
-          <DetailSection title="Policy">
-            <p className="text-xs text-text-soft">{policySummary(route.policy)}</p>
-          </DetailSection>
-        </>
-      )}
-
-      {audit && (
-        <>
-          <DetailSection title="Event">
-            <dl className="grid grid-cols-[minmax(8rem,auto)_1fr] gap-x-4 gap-y-1.5 text-xs">
-              <DetailField label="Type">{audit.event_type}</DetailField>
-              <DetailField label="Request ID">{audit.request_id || "—"}</DetailField>
-              <DetailField label="Provider">{audit.provider || "—"}</DetailField>
-              <DetailField label="Model">{audit.model || "—"}</DetailField>
-              <DetailField label="Success">{audit.success ? "true" : "false"}</DetailField>
-              <DetailField label="Latency">{audit.latency_ms}ms</DetailField>
-              <DetailField label="Input tokens">{audit.input_tokens ?? 0}</DetailField>
-              <DetailField label="Output tokens">{audit.output_tokens ?? 0}</DetailField>
-              <DetailField label="Cost">{formatUSD(audit.estimated_cost_usd)}</DetailField>
-              <DetailField label="When">{audit.timestamp}</DetailField>
-            </dl>
-          </DetailSection>
-          <DetailSection title="Summaries">
-            <div className="space-y-3 text-xs text-text-soft">
-              <div>
-                <div className="mb-1 text-caption uppercase tracking-label text-text-subtle">
-                  Request
-                </div>
-                <p>{audit.request_summary || "—"}</p>
-              </div>
-              <div>
-                <div className="mb-1 text-caption uppercase tracking-label text-text-subtle">
-                  Response
-                </div>
-                <p>{audit.response_summary || audit.error || audit.refusal || "—"}</p>
-              </div>
-            </div>
-          </DetailSection>
-        </>
-      )}
-
-      {budget && (
-        <>
-          <DetailSection title="Budget">
-            <dl className="grid grid-cols-[minmax(8rem,auto)_1fr] gap-x-4 gap-y-1.5 text-xs">
-              <DetailField label="Provider">{budget.provider}</DetailField>
-              <DetailField label="Model">{budget.model}</DetailField>
-              <DetailField label="Window">{budget.usage_budget.window || "—"}</DetailField>
-              <DetailField label="Scope">{budget.usage_budget.scope || "—"}</DetailField>
-              <DetailField label="Max cost">
-                {formatUSD(budget.usage_budget.max_cost_usd)}
-              </DetailField>
-              <DetailField label="Spent">{formatUSD(budget.spent_cost_usd)}</DetailField>
-              <DetailField label="Remaining">{formatUSD(budget.remaining_cost_usd)}</DetailField>
-              <DetailField label="Window start">{budget.window_start}</DetailField>
-              <DetailField label="Filter">
-                <span className="font-mono text-label">{JSON.stringify(budget.filter)}</span>
-              </DetailField>
-            </dl>
-          </DetailSection>
-          {budget.error && (
-            <DetailSection title="Runtime note">
-              <p className="text-xs text-status-blocked">{budget.error}</p>
+      <div ref={containerRef} data-dialog-ticket={ticket} data-dialog-type="detail">
+        {provider && (
+          <>
+            <DetailSection title="Provider">
+              <dl className="grid grid-cols-[minmax(8rem,auto)_1fr] gap-x-4 gap-y-1.5 text-xs">
+                <DetailField label="ID">
+                  <CopyableId id={provider.id} />
+                </DetailField>
+                <DetailField label="Type">{provider.type}</DetailField>
+                <DetailField label="Default model">
+                  {provider.default_model || provider.model || "—"}
+                </DetailField>
+                <DetailField label="Models">{provider.models?.join(", ") || "—"}</DetailField>
+                <DetailField label="Secret ref">{provider.secret_ref || "—"}</DetailField>
+                <DetailField label="Base URL">{provider.base_url || "—"}</DetailField>
+              </dl>
             </DetailSection>
-          )}
-        </>
-      )}
+            <DetailSection title="Policy">
+              <p className="text-xs text-text-soft">{policySummary(provider.policy)}</p>
+            </DetailSection>
+          </>
+        )}
+
+        {route && (
+          <>
+            <DetailSection title="Route">
+              <dl className="grid grid-cols-[minmax(8rem,auto)_1fr] gap-x-4 gap-y-1.5 text-xs">
+                <DetailField label="Provider">{route.provider}</DetailField>
+                <DetailField label="Model">{route.model}</DetailField>
+                <DetailField label="Mode">{route.mode || "—"}</DetailField>
+                <DetailField label="Intent">{route.intent || "—"}</DetailField>
+                <DetailField label="Requires tools">
+                  {String(route.requires_tools ?? "unset")}
+                </DetailField>
+                <DetailField label="Requires reasoning">
+                  {String(route.requires_reasoning ?? "unset")}
+                </DetailField>
+              </dl>
+            </DetailSection>
+            <DetailSection title="Policy">
+              <p className="text-xs text-text-soft">{policySummary(route.policy)}</p>
+            </DetailSection>
+          </>
+        )}
+
+        {audit && (
+          <>
+            <DetailSection title="Event">
+              <dl className="grid grid-cols-[minmax(8rem,auto)_1fr] gap-x-4 gap-y-1.5 text-xs">
+                <DetailField label="Type">{audit.event_type}</DetailField>
+                <DetailField label="Request ID">{audit.request_id || "—"}</DetailField>
+                <DetailField label="Provider">{audit.provider || "—"}</DetailField>
+                <DetailField label="Model">{audit.model || "—"}</DetailField>
+                <DetailField label="Success">{audit.success ? "true" : "false"}</DetailField>
+                <DetailField label="Latency">{audit.latency_ms}ms</DetailField>
+                <DetailField label="Input tokens">{audit.input_tokens ?? 0}</DetailField>
+                <DetailField label="Output tokens">{audit.output_tokens ?? 0}</DetailField>
+                <DetailField label="Cost">{formatUSD(audit.estimated_cost_usd)}</DetailField>
+                <DetailField label="When">{audit.timestamp}</DetailField>
+              </dl>
+            </DetailSection>
+            <DetailSection title="Summaries">
+              <div className="space-y-3 text-xs text-text-soft">
+                <div>
+                  <div className="mb-1 text-caption uppercase tracking-label text-text-subtle">
+                    Request
+                  </div>
+                  <p>{audit.request_summary || "—"}</p>
+                </div>
+                <div>
+                  <div className="mb-1 text-caption uppercase tracking-label text-text-subtle">
+                    Response
+                  </div>
+                  <p>{audit.response_summary || audit.error || audit.refusal || "—"}</p>
+                </div>
+              </div>
+            </DetailSection>
+          </>
+        )}
+
+        {budget && (
+          <>
+            <DetailSection title="Budget">
+              <dl className="grid grid-cols-[minmax(8rem,auto)_1fr] gap-x-4 gap-y-1.5 text-xs">
+                <DetailField label="Provider">{budget.provider}</DetailField>
+                <DetailField label="Model">{budget.model}</DetailField>
+                <DetailField label="Window">{budget.usage_budget.window || "—"}</DetailField>
+                <DetailField label="Scope">{budget.usage_budget.scope || "—"}</DetailField>
+                <DetailField label="Max cost">
+                  {formatUSD(budget.usage_budget.max_cost_usd)}
+                </DetailField>
+                <DetailField label="Spent">{formatUSD(budget.spent_cost_usd)}</DetailField>
+                <DetailField label="Remaining">{formatUSD(budget.remaining_cost_usd)}</DetailField>
+                <DetailField label="Window start">{budget.window_start}</DetailField>
+                <DetailField label="Filter">
+                  <span className="font-mono text-label">{JSON.stringify(budget.filter)}</span>
+                </DetailField>
+              </dl>
+            </DetailSection>
+            {budget.error && (
+              <DetailSection title="Runtime note">
+                <p className="text-xs text-status-blocked">{budget.error}</p>
+              </DetailSection>
+            )}
+          </>
+        )}
+      </div>
     </DetailDialog>
   )
 }

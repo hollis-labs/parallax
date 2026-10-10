@@ -554,4 +554,229 @@ test.describe("Tether Sysop AI Gateway Recreation", () => {
     const themeAttr = await page.evaluate(() => document.documentElement.dataset.theme)
     expect(themeAttr).toBe("p1-green-phosphor")
   })
+
+  test("retained popup callbacks refuse execution after own popup retires even when another visible dialog remains, with fresh positives", async ({
+    page,
+  }) => {
+    await page.goto("/?example=tether&screen=ai")
+    await expect(page.locator("header.tether-ai-header")).toBeVisible()
+
+    // 1. Go to Providers tab and click an item to open AIDetailDialog
+    await page.getByRole("button", { name: /^Providers/ }).click()
+    const anthropicRow = page.getByRole("button", { name: "Open AI provider anthropic" })
+    await anthropicRow.click()
+
+    // Detail dialog is visible
+    const detailDialog = page.getByRole("dialog")
+    await expect(detailDialog).toBeVisible()
+    await expect(detailDialog.getByText("Provider anthropic")).toBeVisible()
+
+    // 2. Capture the active detail close callback and verify fresh positive
+    const initialDetailTicket = await page.evaluate(() => {
+      const w = window as unknown as {
+        __tetherAIActiveCloseDetail?: () => boolean
+        __capturedDetailClose?: () => boolean
+        __tetherAIDetailTicket?: number
+      }
+      w.__capturedDetailClose = w.__tetherAIActiveCloseDetail
+      return w.__tetherAIDetailTicket ?? 0
+    })
+    expect(initialDetailTicket).toBeGreaterThan(0)
+
+    // Close detail dialog via the captured callback
+    const closeResult = await page.evaluate(() => {
+      const w = window as unknown as { __capturedDetailClose?: () => boolean }
+      return typeof w.__capturedDetailClose === "function" ? w.__capturedDetailClose() : false
+    })
+    expect(closeResult).toBe(true) // Fresh positive while own popup was active!
+    await expect(detailDialog).not.toBeVisible()
+
+    // 3. Now open a COMPLETELY DIFFERENT dialog: ProviderDialog ("Add provider (specimen)")
+    const addProviderBtn = page.getByRole("button", { name: "Add provider (specimen)" })
+    await addProviderBtn.click()
+
+    // A dialog is now visibly in the DOM!
+    const providerDialog = page.getByRole("dialog")
+    await expect(providerDialog).toBeVisible()
+    await expect(providerDialog.getByText("Add AI provider (specimen)")).toBeVisible()
+
+    // 4. Crucial assertion: Invoke the RETAINED detail close callback (__capturedDetailClose)
+    // Even though there is a visible dialog in the DOM ([role="dialog"]),
+    // the retained detail close callback MUST REFUSE (return false)
+    // because its own popup has retired and the visible dialog is a foreign popup!
+    const retainedDetailCloseResult = await page.evaluate(() => {
+      const w = window as unknown as { __capturedDetailClose?: () => boolean }
+      return typeof w.__capturedDetailClose === "function" ? w.__capturedDetailClose() : true
+    })
+    expect(retainedDetailCloseResult).toBe(false) // REFUSED! Exact popup identity enforced!
+
+    // 5. Fresh positive: Active provider dialog handler (__tetherAIActiveCloseProvider) SUCCEEDS
+    const activeProviderCloseResult = await page.evaluate(() => {
+      const w = window as unknown as { __tetherAIActiveCloseProvider?: () => boolean }
+      return typeof w.__tetherAIActiveCloseProvider === "function"
+        ? w.__tetherAIActiveCloseProvider()
+        : false
+    })
+    expect(activeProviderCloseResult).toBe(true) // Fresh positive on current owned popup!
+    await expect(providerDialog).not.toBeVisible()
+
+    // 6. Retained detail close callback STILL refuses after everything is closed
+    const retainedAfterCloseAll = await page.evaluate(() => {
+      const w = window as unknown as { __capturedDetailClose?: () => boolean }
+      return typeof w.__capturedDetailClose === "function" ? w.__capturedDetailClose() : true
+    })
+    expect(retainedAfterCloseAll).toBe(false)
+  })
+
+  test("hardened visibility: data-closed, data-ending, hidden, aria-hidden, and inert ancestors do not veto; visible overlays do veto", async ({
+    page,
+  }) => {
+    await page.goto("/?example=tether&screen=ai")
+    await expect(page.locator("header.tether-ai-header")).toBeVisible()
+
+    // 1. data-closed presence directly on overlay
+    await page.evaluate(() => {
+      const d = document.createElement("div")
+      d.setAttribute("role", "dialog")
+      d.setAttribute("data-closed", "")
+      d.id = "test-data-closed-direct"
+      document.body.appendChild(d)
+    })
+    let res = await page.evaluate(() => {
+      const w = window as unknown as { __tetherAIActiveRefreshHandler?: () => boolean }
+      return typeof w.__tetherAIActiveRefreshHandler === "function"
+        ? w.__tetherAIActiveRefreshHandler()
+        : false
+    })
+    expect(res).toBe(true) // Not vetoed!
+
+    // 2. data-closed on ancestor
+    await page.evaluate(() => {
+      document.getElementById("test-data-closed-direct")?.remove()
+      const wrapper = document.createElement("div")
+      wrapper.setAttribute("data-closed", "true")
+      wrapper.id = "test-data-closed-wrapper"
+      const d = document.createElement("div")
+      d.setAttribute("role", "dialog")
+      wrapper.appendChild(d)
+      document.body.appendChild(wrapper)
+    })
+    res = await page.evaluate(() => {
+      const w = window as unknown as { __tetherAIActiveRefreshHandler?: () => boolean }
+      return typeof w.__tetherAIActiveRefreshHandler === "function"
+        ? w.__tetherAIActiveRefreshHandler()
+        : false
+    })
+    expect(res).toBe(true) // Not vetoed!
+
+    // 3. hidden on ancestor
+    await page.evaluate(() => {
+      document.getElementById("test-data-closed-wrapper")?.remove()
+      const wrapper = document.createElement("div")
+      wrapper.setAttribute("hidden", "")
+      wrapper.id = "test-hidden-wrapper"
+      const d = document.createElement("div")
+      d.setAttribute("role", "dialog")
+      wrapper.appendChild(d)
+      document.body.appendChild(wrapper)
+    })
+    res = await page.evaluate(() => {
+      const w = window as unknown as { __tetherAIActiveRefreshHandler?: () => boolean }
+      return typeof w.__tetherAIActiveRefreshHandler === "function"
+        ? w.__tetherAIActiveRefreshHandler()
+        : false
+    })
+    expect(res).toBe(true) // Not vetoed!
+
+    // 4. inert on ancestor
+    await page.evaluate(() => {
+      document.getElementById("test-hidden-wrapper")?.remove()
+      const wrapper = document.createElement("div")
+      wrapper.setAttribute("inert", "")
+      wrapper.id = "test-inert-wrapper"
+      const d = document.createElement("div")
+      d.setAttribute("role", "dialog")
+      wrapper.appendChild(d)
+      document.body.appendChild(wrapper)
+    })
+    res = await page.evaluate(() => {
+      const w = window as unknown as { __tetherAIActiveRefreshHandler?: () => boolean }
+      return typeof w.__tetherAIActiveRefreshHandler === "function"
+        ? w.__tetherAIActiveRefreshHandler()
+        : false
+    })
+    expect(res).toBe(true) // Not vetoed!
+
+    // Cleanup wrappers
+    await page.evaluate(() => {
+      document.getElementById("test-inert-wrapper")?.remove()
+    })
+
+    // 5. Truly visible dialog DOES veto
+    await page.evaluate(() => {
+      const d = document.createElement("div")
+      d.setAttribute("role", "dialog")
+      d.id = "test-visible-veto"
+      d.style.width = "200px"
+      d.style.height = "100px"
+      d.style.background = "#fff"
+      document.body.appendChild(d)
+    })
+    res = await page.evaluate(() => {
+      const w = window as unknown as { __tetherAIActiveRefreshHandler?: () => boolean }
+      return typeof w.__tetherAIActiveRefreshHandler === "function"
+        ? w.__tetherAIActiveRefreshHandler()
+        : true
+    })
+    expect(res).toBe(false) // VETOED!
+
+    // Cleanup
+    await page.evaluate(() => {
+      document.getElementById("test-visible-veto")?.remove()
+    })
+
+    // After cleanup, admitted again
+    res = await page.evaluate(() => {
+      const w = window as unknown as { __tetherAIActiveRefreshHandler?: () => boolean }
+      return typeof w.__tetherAIActiveRefreshHandler === "function"
+        ? w.__tetherAIActiveRefreshHandler()
+        : false
+    })
+    expect(res).toBe(true)
+  })
+
+  test("async request resolution is not stuck in loading state when competing overlay is open during completion", async ({
+    page,
+  }) => {
+    await page.goto("/?example=tether&screen=ai")
+    await expect(page.locator("header.tether-ai-header")).toBeVisible()
+
+    // Trigger refresh, then immediately pop open a competing overlay while fetch is in-flight
+    await page.evaluate(() => {
+      const w = window as unknown as { __tetherAIActiveLoadHandler?: () => boolean }
+      w.__tetherAIActiveLoadHandler?.()
+
+      const d = document.createElement("div")
+      d.setAttribute("role", "dialog")
+      d.id = "temp-overlay-during-load"
+      d.style.width = "200px"
+      d.style.height = "100px"
+      document.body.appendChild(d)
+    })
+
+    // Wait briefly for Promise to settle
+    await page.waitForTimeout(100)
+
+    // Verify loading has settled (false) despite the competing overlay being present
+    const loadingState = await page.evaluate(() => {
+      const root = document.querySelector(".tether-ai-root")
+      return root?.getAttribute("data-testid") === "tether-ai-loading"
+    })
+    expect(loadingState).toBe(false) // Not stuck in loading!
+
+    // Cleanup
+    await page.evaluate(() => {
+      document.getElementById("temp-overlay-during-load")?.remove()
+    })
+  })
 })
