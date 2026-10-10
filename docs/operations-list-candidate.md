@@ -1,10 +1,10 @@
 # CW-20261010-0073 operations-list local candidate
 
 This isolated candidate consumes OperationsListPage from the exact locally packed
-kit-dashboard archive named `hollis-labs-kit-dashboard-0.4.0-cw0073-reviewed-candidate.tgz`.
-Its SHA256 is `0c00d841552aa3663931528857da85a47d4e6705cd2066b834179c58bfd88dc7`
-and its source is design-kit commit `3a470ca7954d71ab141cb18c3e912abd65a8e7c6`
-(tree `4fe5961f5054dbf12e12592c1baeac03d4c09932`).
+kit-dashboard archive named `hollis-labs-kit-dashboard-0.4.0-cw0073-final-candidate.tgz`.
+Its SHA256 is `894defd92a6378f20ac65a8d329588d2972d3c6f00b5c1a57b58616c629f0a64`
+and its source is design-kit commit `cd3a90b16866548d6226c910e48f6f54177a3a40`
+(tree `4dd1b9c41d1445f07e4bc62839c80f30626731ba`).
 It is **not** the registry 0.4.0 archive. Source candidate, installed byte proof,
 registry release, upstream adoption and deployment are separate states.
 

@@ -11,7 +11,7 @@ proof.mkdir(parents=True, exist_ok=True)
 sha = lambda data: hashlib.sha256(data).hexdigest()
 packages = {}
 for name, filename in [
-    ('kit-dashboard', 'hollis-labs-kit-dashboard-0.4.0-cw0073-reviewed-candidate.tgz'),
+    ('kit-dashboard', 'hollis-labs-kit-dashboard-0.4.0-cw0073-final-candidate.tgz'),
     ('design-components', 'hollis-labs-design-components-0.4.0-cw0036.tgz'),
 ]:
     archive = root / 'third_party' / filename
