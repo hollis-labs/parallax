@@ -140,6 +140,7 @@ function MenuSlot({
   useLayoutEffect(() => {
     const lease = { live: accessible && !!generation && !!label }
     handoffLifetime.current = lease
+    setOpen(false)
     const clear = () => {
       gestureEpoch.current += 1
       handoff.current = null
@@ -357,21 +358,43 @@ function GroupFlyout({
   items,
   accessible,
   navigate,
+  generation,
 }: {
+  generation: unknown
   group: Group
   items: Item[]
   accessible: boolean
   navigate: (route: string, owner?: HTMLElement | null) => void
 }) {
   const popup = useRef<HTMLDivElement>(null)
-  const live = useShortcut({ key: "", enabled: false, onTrigger: () => {} }).isLive
+  const trigger = useRef<HTMLButtonElement>(null)
+  const [open, setOpen] = useState(false)
+  const live = useShortcut({
+    key: "",
+    enabled: false,
+    sourceGeneration: generation,
+    accessible,
+    onTrigger: () => {},
+  }).isLive
+  useLayoutEffect(() => {
+    setOpen(false)
+  }, [generation, accessible])
   return (
-    <DropdownMenu modal={false}>
+    <DropdownMenu
+      modal={false}
+      open={open}
+      onOpenChange={(value) => {
+        if (live() && accessible && (value ? !competingLayer() : !competingLayer([popup.current])))
+          setOpen(value)
+      }}
+    >
       <DropdownMenuTrigger
         render={
           <button
             type="button"
+            ref={trigger}
             data-nav-control
+            disabled={!accessible}
             aria-label={group.label}
             className="rounded-control p-3 hover:bg-surface-hover"
           />
@@ -379,7 +402,19 @@ function GroupFlyout({
       >
         <Icon group={group} />
       </DropdownMenuTrigger>
-      <DropdownMenuContent ref={popup} aria-label={`${group.label} flyout`}>
+      <DropdownMenuContent
+        ref={popup}
+        aria-label={`${group.label} flyout`}
+        finalFocus={() =>
+          live() &&
+          accessible &&
+          !competingLayer() &&
+          (document.activeElement === document.body ||
+            popup.current?.contains(document.activeElement))
+            ? trigger.current
+            : false
+        }
+      >
         {items.map((item) => (
           <DropdownMenuItem
             key={item.id}
@@ -401,7 +436,13 @@ function Nav({
   active,
   collapsed,
   navigate,
+  generation,
+  admitted,
+  ownedDrawer = false,
 }: {
+  generation: unknown
+  admitted: () => boolean
+  ownedDrawer?: boolean
   model: Fixture
   active?: Item
   collapsed: boolean
@@ -424,15 +465,19 @@ function Nav({
   useShortcut({
     key: "ArrowDown",
     scopeElement: () => root.current,
-    sourceGeneration: model,
-    isAdmitted: () => !!root.current?.contains(document.activeElement),
+    sourceGeneration: generation,
+    accessible: model.accessible,
+    preventWhenOverlayActive: !ownedDrawer,
+    isAdmitted: () => admitted() && !!root.current?.contains(document.activeElement),
     onTrigger: () => move(1),
   })
   useShortcut({
     key: "ArrowUp",
     scopeElement: () => root.current,
-    sourceGeneration: model,
-    isAdmitted: () => !!root.current?.contains(document.activeElement),
+    sourceGeneration: generation,
+    accessible: model.accessible,
+    preventWhenOverlayActive: !ownedDrawer,
+    isAdmitted: () => admitted() && !!root.current?.contains(document.activeElement),
     onTrigger: () => move(-1),
   })
   const groups = (footer: boolean) =>
@@ -445,6 +490,7 @@ function Nav({
             <GroupFlyout
               key={g.id}
               group={g}
+              generation={generation}
               items={children}
               accessible={model.accessible}
               navigate={navigate}
@@ -466,11 +512,13 @@ function Nav({
               aria-label={g.label}
               aria-expanded={!closed.includes(g.id)}
               className="flex w-full items-center gap-2 rounded-control px-3 py-2 text-caption font-semibold hover:bg-surface-hover"
-              onClick={() =>
+              disabled={!model.accessible}
+              onClick={() => {
+                if (!admitted()) return
                 setClosed((old) =>
                   old.includes(g.id) ? old.filter((id) => id !== g.id) : [...old, g.id],
                 )
-              }
+              }}
             >
               <Icon group={g} />
               {g.label}
@@ -487,7 +535,7 @@ function Nav({
                   disabled={!model.accessible || !!i.reason}
                   title={i.reason}
                   aria-current={active?.id === i.id ? "page" : undefined}
-                  className={`block w-full rounded-control py-2 pr-3 text-left text-caption ${i.parent ? "pl-8" : "pl-3"} ${active?.id === i.id ? "bg-brand-muted text-brand" : "hover:bg-surface-hover"}`}
+                  className={`block w-full rounded-control py-2 pr-3 text-left text-caption ${i.parent ? "pl-8" : "pl-3"} ${active?.id === i.id || active?.parent === i.id ? "bg-brand-muted text-brand" : "hover:bg-surface-hover"}`}
                   onClick={() => navigate(i.route)}
                 >
                   {i.label}
@@ -595,6 +643,8 @@ export function TachyonNav({
     [message, setMessage] = useState("No local action yet"),
     [modal, setModal] = useState(false),
     [nested, setNested] = useState(false)
+  const nestedPopup = useRef<HTMLDivElement>(null)
+  const nestedTrigger = useRef<HTMLButtonElement>(null)
   const modalOpener = useRef<HTMLElement | null>(null)
   const modalGeneration = useRef<unknown>(null)
   const drawerGeneration = useRef<unknown>(null)
@@ -706,6 +756,8 @@ export function TachyonNav({
   const navigation = (
     <Nav
       model={{ ...model, accessible: model.accessible && access && layer }}
+      generation={generation}
+      admitted={background}
       active={item}
       collapsed={rail}
       navigate={navigate}
@@ -747,7 +799,15 @@ export function TachyonNav({
                   fallbackTarget: () => heading.current,
                 }}
               >
-                <Nav model={model} active={item} collapsed={false} navigate={navigate} />
+                <Nav
+                  model={{ ...model, accessible: model.accessible && access && layer }}
+                  generation={generation}
+                  admitted={() => alive() && currentLayer(drawerPopup.current)}
+                  ownedDrawer
+                  active={item}
+                  collapsed={false}
+                  navigate={navigate}
+                />
               </OverlaySidebar>
             </div>
             <h1 ref={heading} tabIndex={-1} className="mr-auto font-semibold">
@@ -937,13 +997,37 @@ export function TachyonNav({
           <p>Local modal specimen. No provider, command transport, or receipt.</p>
           <input aria-label="Fixture details note" />
           <Button
+            ref={nestedTrigger}
             onClick={() => {
               if (alive() && currentLayer(popup.current)) setNested(true)
             }}
           >
             Open nested fixture
           </Button>
-          <InspectionDialog open={nested} onOpenChange={setNested} title="Nested fixture">
+          <InspectionDialog
+            ref={nestedPopup}
+            open={nested}
+            onOpenChange={(value) => {
+              if (
+                alive() &&
+                modalGeneration.current === generation &&
+                (value
+                  ? currentLayer(popup.current)
+                  : !competingLayer([popup.current, nestedPopup.current]) &&
+                    (!!nestedPopup.current?.contains(document.activeElement) ||
+                      document.activeElement === nestedTrigger.current ||
+                      document.activeElement === document.body))
+              )
+                setNested(value)
+            }}
+            title="Nested fixture"
+            returnFocus={{
+              trigger: () => nestedTrigger.current,
+              isAdmitted: () => alive() && modalGeneration.current === generation,
+              fallbackTarget: () => heading.current,
+              isFallbackAdmitted: () => alive() && modalGeneration.current === generation,
+            }}
+          >
             <div className="p-4">
               <input aria-label="Nested fixture note" />
             </div>

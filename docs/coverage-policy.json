@@ -10,18 +10,23 @@
           "frontend/src/examples/nil/NilExample.tsx",
           "frontend/src/examples/flux-chat/FluxChat.tsx",
           "frontend/src/examples/flux-chat/Conversation.tsx",
-          "docs/flux-chat-composition.md"
+          "docs/flux-chat-composition.md",
+          "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+          "docs/tachyon-nav-example.md"
         ],
         "checks": [
           "frontend/tests/lab.spec.ts",
           "frontend/tests/nil-example.spec.ts",
           "frontend/tests/flux-chat.spec.ts",
-          "frontend/tests/flux-chat-custody.spec.ts"
+          "frontend/tests/flux-chat-custody.spec.ts",
+          "frontend/tests/tachyon-nav.spec.ts",
+          "frontend/tests/tachyon-nav-custody.spec.ts"
         ],
         "stories": [
           "frontend/src/operations/Operations.stories.tsx",
           "frontend/src/examples/nil/Nil.stories.tsx",
-          "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+          "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+          "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
         ],
         "storyIds": [
           "operations-controlled-views--primitives",
@@ -36,7 +41,16 @@
           "examples-flux-chat--unavailable",
           "examples-flux-chat--denied",
           "examples-flux-chat--locked",
-          "examples-flux-chat--partial"
+          "examples-flux-chat--partial",
+          "examples-tachyon-navigation--grouped",
+          "examples-tachyon-navigation--left-sub-rail",
+          "examples-tachyon-navigation--hidden-routes",
+          "examples-tachyon-navigation--orphaned",
+          "examples-tachyon-navigation--retired",
+          "examples-tachyon-navigation--empty",
+          "examples-tachyon-navigation--denied",
+          "examples-tachyon-navigation--unavailable",
+          "examples-tachyon-navigation--degraded"
         ]
       }
     },
@@ -45,19 +59,33 @@
       "evidence": {
         "pages": [
           "frontend/src/operations/Views.tsx",
-          "frontend/src/examples/nil/NilExample.tsx"
+          "frontend/src/examples/nil/NilExample.tsx",
+          "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+          "docs/tachyon-nav-example.md"
         ],
         "checks": [
           "frontend/tests/lab.spec.ts",
-          "frontend/tests/nil-example.spec.ts"
+          "frontend/tests/nil-example.spec.ts",
+          "frontend/tests/tachyon-nav.spec.ts",
+          "frontend/tests/tachyon-nav-custody.spec.ts"
         ],
         "stories": [
           "frontend/src/operations/Operations.stories.tsx",
-          "frontend/src/examples/nil/Nil.stories.tsx"
+          "frontend/src/examples/nil/Nil.stories.tsx",
+          "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
         ],
         "storyIds": [
           "operations-controlled-views--mission-control",
-          "app-examples-nil--operations"
+          "app-examples-nil--operations",
+          "examples-tachyon-navigation--grouped",
+          "examples-tachyon-navigation--left-sub-rail",
+          "examples-tachyon-navigation--hidden-routes",
+          "examples-tachyon-navigation--orphaned",
+          "examples-tachyon-navigation--retired",
+          "examples-tachyon-navigation--empty",
+          "examples-tachyon-navigation--denied",
+          "examples-tachyon-navigation--unavailable",
+          "examples-tachyon-navigation--degraded"
         ]
       }
     },
@@ -229,10 +257,28 @@
       "package": "@hollis-labs/design-app-runtime",
       "evidence": {
         "pages": [
-          "frontend/src/App.tsx"
+          "frontend/src/App.tsx",
+          "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+          "docs/tachyon-nav-example.md"
         ],
         "checks": [
-          "frontend/tests/layouts.spec.ts"
+          "frontend/tests/layouts.spec.ts",
+          "frontend/tests/tachyon-nav.spec.ts",
+          "frontend/tests/tachyon-nav-custody.spec.ts"
+        ],
+        "stories": [
+          "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+        ],
+        "storyIds": [
+          "examples-tachyon-navigation--grouped",
+          "examples-tachyon-navigation--left-sub-rail",
+          "examples-tachyon-navigation--hidden-routes",
+          "examples-tachyon-navigation--orphaned",
+          "examples-tachyon-navigation--retired",
+          "examples-tachyon-navigation--empty",
+          "examples-tachyon-navigation--denied",
+          "examples-tachyon-navigation--unavailable",
+          "examples-tachyon-navigation--degraded"
         ]
       }
     }
@@ -1456,17 +1502,31 @@
       "evidence": {
         "pages": [
           "frontend/src/nil-radial/Specimen.tsx",
-          "docs/nil-radial.md"
+          "docs/nil-radial.md",
+          "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+          "docs/tachyon-nav-example.md"
         ],
         "stories": [
-          "frontend/src/nil-radial/NilRadial.stories.tsx"
+          "frontend/src/nil-radial/NilRadial.stories.tsx",
+          "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
         ],
         "checks": [
-          "frontend/tests/nil-radial.spec.ts"
+          "frontend/tests/nil-radial.spec.ts",
+          "frontend/tests/tachyon-nav.spec.ts",
+          "frontend/tests/tachyon-nav-custody.spec.ts"
         ],
         "storyIds": [
           "behaviors-nil-radial--nil",
-          "behaviors-nil-radial--message"
+          "behaviors-nil-radial--message",
+          "examples-tachyon-navigation--grouped",
+          "examples-tachyon-navigation--left-sub-rail",
+          "examples-tachyon-navigation--hidden-routes",
+          "examples-tachyon-navigation--orphaned",
+          "examples-tachyon-navigation--retired",
+          "examples-tachyon-navigation--empty",
+          "examples-tachyon-navigation--denied",
+          "examples-tachyon-navigation--unavailable",
+          "examples-tachyon-navigation--degraded"
         ]
       }
     }

@@ -167,7 +167,7 @@ test("touch handoff clears on cancellation/new gesture and preserves fresh tap/k
   await expect(page.getByRole("menu", { name: "Row 4421-alpha", exact: true })).toHaveCount(0)
   await trigger.press("Enter")
   await expect(page.getByRole("menu", { name: "Row 4421-alpha", exact: true })).toBeVisible()
-  await page.keyboard.press("ArrowDown")
+  await expect(page.getByRole("menuitem", { name: "Inspect fixture locally" })).toBeFocused()
   await page.keyboard.press("Enter")
   await expect(
     page.getByRole("status").filter({ hasText: "Fixture inspected locally" }),
