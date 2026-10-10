@@ -129,9 +129,11 @@ export function ResizableTabbedDrawer({
   // Keyboard resizing mechanics
   const onKeyDownHandle = (e: KeyboardEvent<HTMLDivElement>) => {
     if (isAlertActive) return
+    if (e.defaultPrevented || e.nativeEvent.isComposing || e.keyCode === 229) return
+    if (e.altKey || e.ctrlKey || e.metaKey) return
 
-    const step = 20
-    const largeStep = 60
+    const step = 16
+    const largeStep = 48
 
     if (e.key === "Enter" || e.key === " " || e.key === "Spacebar" || e.code === "Space") {
       e.preventDefault()
@@ -209,10 +211,11 @@ export function ResizableTabbedDrawer({
       onDoubleClick={onDoubleClick}
       onKeyDown={onKeyDownHandle}
       role="separator"
-      tabIndex={0}
+      tabIndex={isAlertActive ? -1 : 0}
+      aria-disabled={isAlertActive ? true : undefined}
       aria-orientation="horizontal"
       aria-valuenow={open ? Math.round(effectiveHeight) : 0}
-      aria-valuemin={minHeight}
+      aria-valuemin={0}
       aria-valuemax={maxHeight}
       aria-label={
         ariaLabel ??
@@ -273,7 +276,7 @@ export function ResizableTabbedDrawer({
           {/* Main content + optional sidebar */}
           <div
             className={`flex h-full min-h-0 min-w-0 flex-1 transition-opacity duration-200 ${
-              isAlertActive ? "opacity-30 pointer-events-none" : "opacity-100"
+              isAlertActive ? "opacity-30 pointer-events-none select-none" : "opacity-100"
             }`}
           >
             <main className="flex-1 min-w-0 min-h-0 overflow-y-auto overflow-x-hidden">

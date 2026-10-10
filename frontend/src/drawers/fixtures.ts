@@ -1,6 +1,7 @@
 import type { DrawerPinnedCard, DynamicCardTab } from "./types"
 
 export const FIXTURE_CLOCK = "2026-10-04T14:30:00Z"
+export const FIXTURE_CLOCK_MS = Date.parse(FIXTURE_CLOCK)
 export const FIXTURE_SEED = 4421
 
 export interface DocumentItem {
@@ -258,7 +259,7 @@ export const DRAWER_FIXTURES: Record<string, DrawerFixtureSet> = {
         },
         focused: false,
         pinned: false,
-        createdAt: 1728052200000,
+        createdAt: FIXTURE_CLOCK_MS,
       },
     ],
   },
@@ -343,7 +344,7 @@ export const DRAWER_FIXTURES: Record<string, DrawerFixtureSet> = {
         },
         focused: false,
         pinned: true,
-        createdAt: 1728052100000,
+        createdAt: FIXTURE_CLOCK_MS - 100000,
       },
     ],
   },
@@ -416,6 +417,35 @@ export const DRAWER_FIXTURES: Record<string, DrawerFixtureSet> = {
   },
 }
 
+export const UNAVAILABLE_FIXTURES: DrawerFixtureSet = {
+  sessionId: "UNAVAILABLE",
+  sessionTitle: "Session Unavailable",
+  documents: [],
+  reports: [],
+  diffs: [],
+  toolCalls: [],
+  pinnedCards: [],
+  scratchpadContent: "Session data unavailable.",
+  terminal1Output: ["[notice] session data unavailable"],
+  terminal2Output: [],
+  artifacts: [],
+  runtimeFeed: [],
+  tokenUsage: {
+    used: 0,
+    ceiling: 0,
+    estimatedCost: "$0.00",
+  },
+  contextSlots: [],
+  initialCardTabs: [],
+}
+
 export function getDrawerFixtures(sessionId: string): DrawerFixtureSet {
-  return DRAWER_FIXTURES[sessionId] ?? DRAWER_FIXTURES["CHAT-001"]
+  if (sessionId && sessionId in DRAWER_FIXTURES) {
+    return DRAWER_FIXTURES[sessionId]
+  }
+  return {
+    ...UNAVAILABLE_FIXTURES,
+    sessionId: sessionId || "UNKNOWN",
+    sessionTitle: sessionId ? `Session Unavailable (${sessionId})` : "Session Unavailable",
+  }
 }

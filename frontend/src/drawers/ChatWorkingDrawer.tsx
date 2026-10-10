@@ -10,7 +10,7 @@ import {
   Terminal,
   X,
 } from "lucide-react"
-import { useCallback, useEffect, useMemo, useRef } from "react"
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef } from "react"
 import { type DrawerFixtureSet, getDrawerFixtures } from "./fixtures"
 import { ResizableTabbedDrawer } from "./ResizableTabbedDrawer"
 import type { ChatDrawerTab, DynamicCardTab } from "./types"
@@ -33,7 +33,6 @@ export interface ChatWorkingDrawerProps {
   activeTab: string
   onSelectTab: (tab: string) => void
   cardTabs?: DynamicCardTab[]
-  onAppendCardTab?: (tab: DynamicCardTab) => void
   onRemoveCardTab?: (tabId: string) => void
   onTogglePinCardTab?: (tabId: string) => void
   developerMode?: boolean
@@ -105,33 +104,27 @@ export function ChatWorkingDrawer({
     return [...fixed, ...dynamic]
   }, [visibleFixedTabs, cardTabs, activeTab])
 
-  const handleCloseTab = useCallback(
-    (tabId: string) => {
-      if (!onRemoveCardTab) return
-      onRemoveCardTab(tabId)
-      if (activeTab === tabId) {
-        onSelectTab("scratchpad")
-      }
-    },
-    [onRemoveCardTab, activeTab, onSelectTab],
-  )
+  const alertDismissButtonRef = useRef<HTMLButtonElement>(null)
+  const wasAlertActiveRef = useRef(isAlertActive)
 
   const alertContent = isAlertActive ? (
     <div
-      className="p-4 rounded-panel border border-warning/40 bg-surface shadow-lg text-fg"
+      className="p-4 rounded-panel border border-warning/40 bg-surface shadow-lg text-fg focus:outline-none"
       role="alert"
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-desc"
     >
       <div className="flex items-start gap-3">
         <AlertTriangle className="size-5 text-warning shrink-0 mt-0.5" />
         <div className="flex-1 min-w-0">
-          <h3 className="text-sm font-semibold text-fg">
+          <h3 id="alert-dialog-title" className="text-sm font-semibold text-fg">
             {sessionTakeover
               ? "This session is now active in another tab"
               : circuitOpen
                 ? "Provider rate limited after multiple retries"
                 : "Session interrupted (service restarted)"}
           </h3>
-          <p className="text-caption text-fg-muted mt-1 leading-normal">
+          <p id="alert-dialog-desc" className="text-caption text-fg-muted mt-1 leading-normal">
             {sessionTakeover
               ? "The streaming connection moved to a newer tab. Reconnect here to resume."
               : circuitOpen
@@ -143,7 +136,7 @@ export function ChatWorkingDrawer({
               <button
                 type="button"
                 onClick={onRetryAlert}
-                className="flex items-center gap-1.5 px-3 py-1 rounded-control bg-primary text-bg font-medium text-caption hover:opacity-90 transition-opacity"
+                className="flex items-center gap-1.5 px-3 py-1 rounded-control bg-primary text-bg font-medium text-caption hover:opacity-90 transition-opacity focus-visible:ring-1 focus-visible:ring-primary"
               >
                 <RefreshCw className="size-3" />
                 Retry
@@ -151,9 +144,10 @@ export function ChatWorkingDrawer({
             )}
             {onDismissAlert && (
               <button
+                ref={alertDismissButtonRef}
                 type="button"
                 onClick={onDismissAlert}
-                className="px-3 py-1 rounded-control border border-border text-fg text-caption hover:bg-surface transition-colors"
+                className="px-3 py-1 rounded-control border border-border text-fg text-caption hover:bg-surface transition-colors focus-visible:ring-1 focus-visible:ring-primary"
               >
                 Dismiss
               </button>
@@ -164,9 +158,68 @@ export function ChatWorkingDrawer({
     </div>
   ) : null
 
+  useEffect(() => {
+    if (isAlertActive) {
+      alertDismissButtonRef.current?.focus()
+    } else if (wasAlertActiveRef.current && !isAlertActive) {
+      sidebarButtonRefs.current.get(activeTab)?.focus()
+    }
+    wasAlertActiveRef.current = isAlertActive
+  }, [isAlertActive, activeTab])
+
   const sidebarButtonRefs = useRef<Map<string, HTMLButtonElement>>(new Map())
+  const pendingSidebarFocusTabIdRef = useRef<string | null>(null)
+  const isMountedRef = useRef(true)
+
+  useEffect(() => {
+    isMountedRef.current = true
+    return () => {
+      isMountedRef.current = false
+      pendingSidebarFocusTabIdRef.current = null
+    }
+  }, [])
+
+  useLayoutEffect(() => {
+    if (!isMountedRef.current) return
+    void allTabs
+    const targetId = pendingSidebarFocusTabIdRef.current
+    if (!targetId) return
+    const btn = sidebarButtonRefs.current.get(targetId)
+    if (btn) {
+      pendingSidebarFocusTabIdRef.current = null
+      btn.focus()
+    }
+  }, [allTabs])
+
+  const handleCloseTab = useCallback(
+    (tabId: string) => {
+      if (!onRemoveCardTab) return
+      const removingIndex = allTabs.findIndex((t) => t.id === tabId)
+      const wasActive = activeTab === tabId
+      let nextFocusId: string | null = null
+
+      if (wasActive) {
+        const prevTab = allTabs[removingIndex - 1] ?? allTabs[removingIndex + 1]
+        nextFocusId = prevTab?.id || "scratchpad"
+        onSelectTab(nextFocusId)
+      } else {
+        const nextTab = allTabs[removingIndex + 1] ?? allTabs[removingIndex - 1]
+        nextFocusId = activeTab || nextTab?.id || "scratchpad"
+      }
+
+      pendingSidebarFocusTabIdRef.current = nextFocusId
+      onRemoveCardTab(tabId)
+    },
+    [onRemoveCardTab, activeTab, onSelectTab, allTabs],
+  )
 
   const handleSidebarKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (isAlertActive) return
+    if (e.defaultPrevented || e.nativeEvent.isComposing || e.keyCode === 229) return
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return
+    const target = e.target as HTMLElement | null
+    if (target?.getAttribute("role") !== "tab") return
+
     const activeIndex = allTabs.findIndex((t) => t.active)
     let nextIndex = -1
 
@@ -197,6 +250,7 @@ export function ChatWorkingDrawer({
     <div
       className="flex flex-col gap-0.5 p-1.5"
       role="tablist"
+      aria-orientation="vertical"
       aria-label="Working drawer tabs"
       onKeyDown={handleSidebarKeyDown}
     >
@@ -217,9 +271,19 @@ export function ChatWorkingDrawer({
             type="button"
             role="tab"
             id={`tab-working-${t.id}`}
+            aria-controls={`panel-working-${t.id}`}
             aria-selected={t.active}
-            tabIndex={t.active ? 0 : -1}
-            onClick={() => onSelectTab(t.id)}
+            tabIndex={isAlertActive ? -1 : t.active ? 0 : -1}
+            aria-disabled={isAlertActive ? true : undefined}
+            onClick={() => {
+              if (isAlertActive) return
+              onSelectTab(t.id)
+            }}
+            onKeyDown={(e) => {
+              if (isAlertActive) {
+                e.preventDefault()
+              }
+            }}
             title={t.label}
             className="flex-1 min-w-0 flex items-center gap-1.5 outline-none text-left truncate focus-visible:ring-1 focus-visible:ring-primary rounded-sm"
           >
@@ -278,7 +342,12 @@ export function ChatWorkingDrawer({
       title="Working Drawer"
       className={className}
     >
-      <div className="p-3 text-sm text-fg min-h-0 flex-1 flex flex-col h-full overflow-y-auto">
+      <div
+        role="tabpanel"
+        id={`panel-working-${activeTab}`}
+        aria-labelledby={`tab-working-${activeTab}`}
+        className="p-3 text-sm text-fg min-h-0 flex-1 flex flex-col h-full overflow-y-auto"
+      >
         {activeTab === "scratchpad" && <ScratchpadPanel content={fixtures.scratchpadContent} />}
         {activeTab === "terminal-1" && (
           <TerminalPanel title="Terminal 1" output={fixtures.terminal1Output} />

@@ -76,6 +76,11 @@ export function ChatDrawerTabStrip({
   }
 
   const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.defaultPrevented || e.nativeEvent.isComposing || e.keyCode === 229) return
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return
+    const target = e.target as HTMLElement | null
+    if (target?.getAttribute("role") !== "tab") return
+
     if (tabs.length === 0) return
     const activeIndex = tabs.findIndex((t) => t.active)
     let nextIndex = -1
@@ -102,20 +107,41 @@ export function ChatDrawerTabStrip({
     }
   }
 
+  const pendingFocusTabIdRef = useRef<string | null>(null)
+  const isMountedRef = useRef(true)
+
+  useEffect(() => {
+    isMountedRef.current = true
+    return () => {
+      isMountedRef.current = false
+      pendingFocusTabIdRef.current = null
+    }
+  }, [])
+
+  useLayoutEffect(() => {
+    if (!isMountedRef.current) return
+    void tabs
+    const targetId = pendingFocusTabIdRef.current
+    if (!targetId) return
+    const btn = tabButtonRefs.current.get(targetId)
+    if (btn) {
+      pendingFocusTabIdRef.current = null
+      btn.focus()
+    }
+  }, [tabs])
+
   const handleCloseTab = (id: string, index: number) => {
     if (!onClose) return
-    onClose(id)
-    // Return focus to adjacent tab if closed tab was active
+    // Return focus to adjacent tab after committed update if closed tab was active
     const activeTab = tabs.find((t) => t.active)
     if (activeTab?.id === id) {
       const nextTab = tabs[index + 1] ?? tabs[index - 1]
       if (nextTab) {
+        pendingFocusTabIdRef.current = nextTab.id
         onSelect(nextTab.id)
-        setTimeout(() => {
-          tabButtonRefs.current.get(nextTab.id)?.focus()
-        }, 0)
       }
     }
+    onClose(id)
   }
 
   return (

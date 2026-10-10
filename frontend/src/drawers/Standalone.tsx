@@ -9,7 +9,22 @@ export function StandaloneDrawersReview() {
       setParams(new URLSearchParams(window.location.search))
     }
     window.addEventListener("popstate", handlePopState)
-    return () => window.removeEventListener("popstate", handlePopState)
+
+    const rootEl = document.getElementById("root")
+    document.documentElement.style.minHeight = "100%"
+    document.documentElement.style.height = "auto"
+    document.body.style.minHeight = "100%"
+    document.body.style.height = "auto"
+    document.body.style.overflow = "auto"
+    if (rootEl) {
+      rootEl.style.minHeight = "100%"
+      rootEl.style.height = "auto"
+      rootEl.style.overflow = "visible"
+    }
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState)
+    }
   }, [])
 
   const initialSessionId = params.get("session") || "CHAT-001"
@@ -19,14 +34,12 @@ export function StandaloneDrawersReview() {
     params.get("developerMode") === "true" || params.get("developerMode") === "1"
 
   return (
-    <div className="w-screen h-screen overflow-hidden bg-bg text-fg">
-      <DrawersReview
-        key={`${initialSessionId}-${initialTheme}-${initialMode}`}
-        initialSessionId={initialSessionId}
-        initialTheme={initialTheme}
-        initialMode={initialMode}
-        developerModeDefault={developerModeDefault}
-      />
-    </div>
+    <DrawersReview
+      key={`${initialSessionId}-${initialTheme}-${initialMode}`}
+      initialSessionId={initialSessionId}
+      initialTheme={initialTheme}
+      initialMode={initialMode}
+      developerModeDefault={developerModeDefault}
+    />
   )
 }

@@ -90,6 +90,9 @@ export function ChatPrimaryDrawer({
 
   const handleTogglePin = (tabId: string) => {
     if (tabId.startsWith("pin:") && onUnpinCard) {
+      if (activeTab === tabId) {
+        onSelectTab("pins")
+      }
       onUnpinCard(tabId.slice(4))
     }
   }
@@ -112,7 +115,12 @@ export function ChatPrimaryDrawer({
       title="Primary Drawer"
       className={className}
     >
-      <div className="p-3 text-sm text-fg min-h-0 flex-1 flex flex-col">
+      <div
+        role="tabpanel"
+        id={`panel-${activeTab}`}
+        aria-labelledby={`tab-${activeTab}`}
+        className="p-3 text-sm text-fg min-h-0 flex-1 flex flex-col"
+      >
         {activeTab === "documents" && <DocumentsPanel documents={fixtures.documents} />}
         {activeTab === "reports" && <ReportsPanel reports={fixtures.reports} />}
         {activeTab === "diffs" && <DiffsPanel diffs={fixtures.diffs} />}

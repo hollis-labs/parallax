@@ -48,7 +48,9 @@ test.describe("Parallax Flux Drawers Candidate Suite", () => {
     // Switch tab in top drawer to Tools
     await toolTab.click()
     await expect(toolTab).toHaveAttribute("aria-selected", "true")
-    await expect(topDrawer.locator('[data-testid="drawer-body-top"]')).toContainText("fetch_system_metrics")
+    await expect(topDrawer.locator('[data-testid="drawer-body-top"]')).toContainText(
+      "fetch_system_metrics",
+    )
 
     await page.screenshot({ path: info.outputPath("drawers-desktop-overview.png") })
   })
@@ -234,8 +236,25 @@ test.describe("Parallax Flux Drawers Candidate Suite", () => {
     const closeBtn = dynamicTabItem.locator('button[aria-label*="Close tab"]')
     await closeBtn.click()
 
-    // Tab is removed from bottom drawer
+    // Tab is removed from bottom drawer (current-positive)
     await expect(dynamicTab).toHaveCount(0)
+
+    // Top Pins tab no longer contains Specimen 1 (current-positive)
+    await topPinsTab.click()
+    await expect(page.locator('[data-testid="drawer-body-top"]')).not.toContainText("Specimen 1")
+
+    // Stale-negative across session switch while replacement source is live:
+    const sessionSelect = page.getByRole("combobox", {
+      name: "Active session for drawer persistence",
+    })
+    await sessionSelect.selectOption("CHAT-002")
+    await expect(bottomDrawer.getByRole("tab", { name: /^Specimen 1/ })).toHaveCount(0)
+    await expect(page.locator('[data-testid="drawer-body-top"]')).not.toContainText("Specimen 1")
+
+    // Switch back to CHAT-001: retired card remains absent
+    await sessionSelect.selectOption("CHAT-001")
+    await expect(bottomDrawer.getByRole("tab", { name: /^Specimen 1/ })).toHaveCount(0)
+    await expect(page.locator('[data-testid="drawer-body-top"]')).not.toContainText("Specimen 1")
 
     await page.screenshot({ path: info.outputPath("drawers-dynamic-tabs.png") })
   })
@@ -344,11 +363,20 @@ test.describe("Parallax Flux Drawers Candidate Suite", () => {
       await expect(page.locator('[data-testid="drawer-handle-top"]')).toBeVisible()
       await expect(page.locator('[data-testid="drawer-handle-bottom"]')).toBeVisible()
 
+      if (vp.width === 390 && vp.height === 420) {
+        // Narrow-short viewport: verify native reachability / scroll ownership
+        const tail = page.locator('[data-testid="chat-composer-tail"]')
+        await tail.scrollIntoViewIfNeeded()
+        await expect(tail).toBeInViewport()
+      }
+
       await page.screenshot({ path: info.outputPath(`drawers-viewport-${vp.name}.png`) })
     }
   })
 
-  test("all 10 built-in themes and modes apply without error", async ({ page }) => {
+  test("all 10 built-in themes and modes apply without error with resolved tokens", async ({
+    page,
+  }) => {
     await page.setViewportSize({ width: 1440, height: 900 })
     await page.goto(entry)
 
@@ -370,10 +398,22 @@ test.describe("Parallax Flux Drawers Candidate Suite", () => {
 
     for (const theme of themes) {
       await themeSelect.selectOption(theme)
+      await expect(page.locator("html")).toHaveAttribute("data-theme", theme)
+
       await modeSelect.selectOption("dark")
-      await expect(page.locator('[data-testid="drawers-review"]')).toBeVisible()
+      await expect(page.locator("html")).toHaveAttribute("data-mode", "dark")
+      const darkBg = await page.evaluate(() =>
+        getComputedStyle(document.documentElement).getPropertyValue("--hl-bg").trim(),
+      )
+      expect(darkBg).toBeTruthy()
 
       await modeSelect.selectOption("light")
+      await expect(page.locator("html")).toHaveAttribute("data-mode", "light")
+      const lightBg = await page.evaluate(() =>
+        getComputedStyle(document.documentElement).getPropertyValue("--hl-bg").trim(),
+      )
+      expect(lightBg).toBeTruthy()
+
       await expect(page.locator('[data-testid="drawers-review"]')).toBeVisible()
     }
   })

@@ -19,26 +19,27 @@
 The candidate architecture in `frontend/src/drawers/` introduces four cleanly decoupled units:
 
 ### 2.1 `ResizableTabbedDrawer` (Unified Top/Bottom Primitive)
-- **File:** [`frontend/src/drawers/ResizableTabbedDrawer.tsx`](file:///home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0084/frontend/src/drawers/ResizableTabbedDrawer.tsx)
+- **File:** [`frontend/src/drawers/ResizableTabbedDrawer.tsx`](../frontend/src/drawers/ResizableTabbedDrawer.tsx)
 - **Role:** Unified container primitive supporting both `placement="top"` (Primary Drawer) and `placement="bottom"` (Working Drawer).
 - **Drag Mechanics:**
   - Pointer capture via `setPointerCapture(pointerId)` prevents pointer event loss across frames, iframes, and rapid mouse movements.
   - Dragging down expands the top drawer; dragging up expands the bottom drawer.
   - Min/max height bounding (`minHeight = 48`, `maxHeight = 600`).
-  - Auto-close threshold: dragging past `< 24px` collapses the drawer and stores the prior height for restoration.
-  - Double-click on the handle toggles open/close with instant height restoration.
+  - Auto-close threshold: dragging past `< 24px` collapses the drawer and resets height to default baseline (240px primary / 200px working) upon re-opening, matching Flux source behavior.
+  - Double-click on the handle toggles open/close state, restoring default baseline height if collapsed below minHeight.
 - **Accessibility & Keyboard Resizing:**
   - WAI-ARIA `role="separator"` with `tabIndex={0}`, `aria-orientation="horizontal"`, `aria-valuenow`, `aria-valuemin`, `aria-valuemax`.
-  - Arrow keys: `ArrowDown` / `ArrowUp` increment/decrement by 16px.
-  - Page keys: `PageDown` / `PageUp` increment/decrement by 48px.
+  - Arrow keys: `ArrowDown` / `ArrowUp` increment/decrement by 16px (aligned with 4px token grid scale).
+  - Page keys: `PageDown` / `PageUp` increment/decrement by 48px (aligned with 4px token grid scale).
   - Bounds keys: `End` expands to `maxHeight` (600px); `Home` collapses to `minHeight` (48px).
   - Toggle key: `Space` toggles open/close state.
   - Focus return: closing via close button (`X`) or auto-close automatically restores focus to the drag handle.
 - **Alert Simulation Overlay:**
-  - When active (e.g. Session Takeover, Circuit Open, Interrupted Turn), drawer body dims to `opacity-30` and pointer events are locked while alert banner is presented with `role="alert"`.
+  - When active (e.g. Session Takeover, Circuit Open, Interrupted Turn), drawer body dims to `opacity-30` with `inert` and `aria-hidden` attributes applied to background content and tab strips, blocking keyboard access to underlying tabs and pin controls.
+  - Alert dialog is presented as `role="alertdialog"` with `aria-modal="true"`, auto-focuses dismiss control on entry, and restores focus to the active tab upon dismissal.
 
 ### 2.2 `ChatDrawerTabStrip` (Dynamic Tab Navigation)
-- **File:** [`frontend/src/drawers/ChatDrawerTabStrip.tsx`](file:///home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0084/frontend/src/drawers/ChatDrawerTabStrip.tsx)
+- **File:** [`frontend/src/drawers/ChatDrawerTabStrip.tsx`](../frontend/src/drawers/ChatDrawerTabStrip.tsx)
 - **Role:** Dynamic horizontal tab strip with overflow pagination, running pip indicator, and close/pin actions.
 - **Features:**
   - Overflow measurement via `scrollLeft` / `scrollWidth` / `clientWidth` with Chevron left/right pagination controls.
@@ -48,11 +49,13 @@ The candidate architecture in `frontend/src/drawers/` introduces four cleanly de
   - Pinnable tabs: dynamic card tabs display a pin toggle (`Pin` / `PinOff`), sending pinned cards to the top drawer.
 
 ### 2.3 `useDrawerSessionStore` (Per-Session Persistence & Isolation)
-- **File:** [`frontend/src/drawers/useDrawerSessionStore.tsx`](file:///home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0084/frontend/src/drawers/useDrawerSessionStore.ts)
+- **File:** [`frontend/src/drawers/useDrawerSessionStore.ts`](../frontend/src/drawers/useDrawerSessionStore.ts)
 - **Role:** Session-keyed layout state store utilizing `localStorage` with fallback in-memory caching.
-- **Isolation Guarantee:**
+- **Isolation & Persistence Guarantee:**
   - Changes to drawer heights, open/closed states, active tabs, and pinned/card tabs in `CHAT-001` have zero side effects on `CHAT-002` or `CHAT-003`.
-  - Reactive subscriptions via React 19's `useSyncExternalStore` ensure multi-tab or cross-component reactivity without stale renders.
+  - Rehydration Policy (matching Flux `useLayoutStore` 232064c3): `localStorage` stores layout dimensions only (`open`, `height`, static `activeTab`). Transient dynamic card tabs and envelopes are in-memory session state and initialize empty on reload.
+  - Cross-Browser-Tab Reactivity: Subscribes to `window` `storage` events to synchronize layout updates across concurrent browser tabs.
+  - Stale Setter Retirement: `useDrawerSession` guards all state dispatchers with mounted and session identity checks, preventing old held setters from mutating stale sessions after switch or unmount.
 
 ### 2.4 Domain Adapters: `ChatPrimaryDrawer` & `ChatWorkingDrawer`
 - **Top Drawer (`ChatPrimaryDrawer`):**

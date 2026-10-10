@@ -8,7 +8,7 @@ import { Plus, RotateCcw, Shield, Terminal as TerminalIcon } from "lucide-react"
 import { useEffect, useState } from "react"
 import { ChatPrimaryDrawer } from "./ChatPrimaryDrawer"
 import { ChatWorkingDrawer } from "./ChatWorkingDrawer"
-import { DRAWER_FIXTURES } from "./fixtures"
+import { DRAWER_FIXTURES, FIXTURE_CLOCK_MS } from "./fixtures"
 import type { DynamicCardTab } from "./types"
 import { useDrawerSession } from "./useDrawerSessionStore"
 
@@ -63,10 +63,18 @@ export function DrawersReview({
   const session = useDrawerSession(sessionId)
 
   const handleAddDynamicCard = () => {
-    const id = `card:dynamic-specimen-${cardCounter}`
+    const existingNums = session.workingDrawer.cardTabs
+      .map((t) => {
+        const m = t.label.match(/Specimen (\d+)/)
+        return m ? Number.parseInt(m[1], 10) : 0
+      })
+      .filter((n) => !Number.isNaN(n))
+    const nextNum = existingNums.length > 0 ? Math.max(...existingNums) + 1 : cardCounter
+
+    const id = `card:dynamic-specimen-${nextNum}`
     const newTab: DynamicCardTab = {
       id,
-      label: `Specimen ${cardCounter}`,
+      label: `Specimen ${nextNum}`,
       payload: {
         specimenId: id,
         createdAt: "2026-10-04T14:30:00Z",
@@ -75,10 +83,10 @@ export function DrawersReview({
       },
       focused: true,
       pinned: false,
-      createdAt: 1728052200000 + cardCounter * 1000,
+      createdAt: FIXTURE_CLOCK_MS + nextNum * 1000,
     }
     session.appendCardTab(newTab)
-    setCardCounter((n) => n + 1)
+    setCardCounter(nextNum + 1)
   }
 
   return (
@@ -248,7 +256,7 @@ export function DrawersReview({
 
         {/* Central Mock Transcript Area */}
         <section
-          className="flex-1 my-3 p-4 rounded-panel border border-border/60 bg-surface/20 min-h-48 overflow-y-auto flex flex-col justify-between"
+          className="flex-1 my-3 p-4 rounded-panel border border-border/60 bg-surface/20 min-h-24 overflow-y-auto flex flex-col justify-between"
           aria-label="Conversation column preview"
         >
           <div className="space-y-3">
@@ -272,7 +280,10 @@ export function DrawersReview({
             </div>
           </div>
 
-          <div className="text-center text-micro text-fg-muted font-mono pt-4">
+          <div
+            data-testid="chat-composer-tail"
+            className="text-center text-micro text-fg-muted font-mono pt-4"
+          >
             Per-session layout persistence active · Session: {sessionId} · Primary:{" "}
             {session.primaryDrawer.open
               ? `${Math.round(session.primaryDrawer.height)}px`
