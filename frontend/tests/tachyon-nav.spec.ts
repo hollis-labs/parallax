@@ -166,3 +166,107 @@ for (const width of [1280, 390])
         .toBe(true)
       await page.screenshot({ path: info.outputPath(`shell-${width}-${height}.png`) })
     })
+
+test("owner metadata wins and top/left tab arrow navigation is addressable", async ({ page }) => {
+  await page.goto(`${entry}&scenario=owner-conflict#/work`)
+  await expect(page.locator('[data-owner="work-ops"][aria-label="Work group"]')).toBeVisible()
+  await expect(page.locator('[data-testid="tachyon-nav"]')).toContainText(
+    "Group metadata owner work-ops wins",
+  )
+  const sub = page.getByRole("navigation", { name: "Page sub-navigation" })
+  await sub.getByRole("tab", { name: "Tasks", exact: true }).focus()
+  await page.keyboard.press("ArrowRight")
+  await expect(page).toHaveURL(/#\/work\/board$/)
+  await page.getByLabel("Sub-nav variant").selectOption("left")
+  await sub.getByRole("tab", { name: "Board", exact: true }).focus()
+  await page.keyboard.press("ArrowUp")
+  await expect(page).toHaveURL(/#\/work$/)
+})
+async function settle(
+  page: import("@playwright/test").Page,
+  locator: import("@playwright/test").Locator,
+) {
+  await page.evaluate(() => document.fonts.ready)
+  await expect(locator).toBeVisible()
+  await expect
+    .poll(() =>
+      locator.evaluate((node) =>
+        node
+          .getAnimations({ subtree: true })
+          .every((animation) => animation.playState !== "running"),
+      ),
+    )
+    .toBe(true)
+  await expect
+    .poll(() =>
+      locator.evaluate(
+        (node) =>
+          new Promise<boolean>((done) => {
+            const first = node.getBoundingClientRect()
+            requestAnimationFrame(() =>
+              requestAnimationFrame(() => {
+                const next = node.getBoundingClientRect()
+                done(
+                  first.x === next.x &&
+                    first.y === next.y &&
+                    first.width === next.width &&
+                    first.height === next.height,
+                )
+              }),
+            )
+          }),
+      ),
+    )
+    .toBe(true)
+}
+for (const width of [1280, 390])
+  for (const mode of ["dark", "light"])
+    test(`settled route/action compositions ${width} ${mode}`, async ({ page }, info) => {
+      await page.setViewportSize({ width, height: 700 })
+      for (const [route, variant] of [
+        ["/work", "top"],
+        ["/observe", "left"],
+        ["/services/health", "top"],
+      ]) {
+        await page.goto(`${entry}&mode=${mode}&variant=${variant}#${route}`)
+        const pane = page.getByRole("region", { name: "Routed fixture page" })
+        await settle(page, pane)
+        await page.screenshot({
+          path: info.outputPath(`${route.replaceAll("/", "-")}-${variant}.png`),
+        })
+      }
+      const toolbar = page.getByRole("button", { name: "Page toolbar", exact: true })
+      await toolbar.click()
+      const menu = page.getByRole("menu", { name: "Page toolbar", exact: true })
+      await settle(page, menu)
+      await page.screenshot({ path: info.outputPath("page-menu.png") })
+      await menu.getByRole("menuitem", { name: "Open fixture details" }).click()
+      const dialog = page.getByRole("dialog", { name: "Fixture details", exact: true })
+      await settle(page, dialog)
+      await page.screenshot({ path: info.outputPath("details-dialog.png") })
+      await page.keyboard.press("Escape")
+      await expect(dialog).toHaveCount(0)
+    })
+test("portable stories use the same composition and no backend requests", async ({ page }) => {
+  const calls: string[] = []
+  page.on("request", (request) => {
+    if (/\/api\/|\/events|\/sse/.test(request.url())) calls.push(request.url())
+  })
+  for (const story of [
+    "grouped",
+    "left-sub-rail",
+    "hidden-routes",
+    "orphaned",
+    "retired",
+    "empty",
+    "denied",
+    "unavailable",
+    "degraded",
+  ]) {
+    await page.goto(
+      `http://127.0.0.1:18542/iframe.html?id=examples-tachyon-navigation--${story}&viewMode=story`,
+    )
+    await expect(page.getByTestId("tachyon-nav")).toBeVisible()
+  }
+  expect(calls).toEqual([])
+})

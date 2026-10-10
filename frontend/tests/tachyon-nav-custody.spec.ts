@@ -63,7 +63,8 @@ for (const role of ["dialog", "menu", "listbox"])
     expect(await page.evaluate(() => window.heldNav?.())).toBe(false)
     await expect(plain).toBeFocused()
     // Native focusout may close the popup; acquire an ordinary fresh opening.
-    await page.getByRole("button", { name: "Header menu", exact: true }).click()
+    if (!(await page.getByRole("menu", { name: "Header menu", exact: true }).count()))
+      await page.getByRole("button", { name: "Header menu", exact: true }).click()
     // Ordinary fresh click in the actual popup owns this action.
     await page
       .getByRole("menu", { name: "Header menu", exact: true })
