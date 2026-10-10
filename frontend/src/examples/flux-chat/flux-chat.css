@@ -1,0 +1,148 @@
+.flux-composed-host {
+  height: 100dvh;
+  min-width: 0;
+  color: var(--color-fg);
+  background: var(--color-bg);
+  font-family: var(--font-sans);
+}
+.flux-composed .chat-example-header {
+  gap: var(--spacing);
+  padding: calc(var(--spacing) * 2);
+}
+.flux-composed .chat-example-header > .flux-header-agent {
+  flex: 1;
+}
+.flux-composed.flux-left-hidden .chat-example-sidebar {
+  display: none;
+}
+.flux-composed .chat-example-main {
+  min-width: 0;
+  min-height: 0;
+}
+.flux-composed-conversation {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+}
+.flux-drawer-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing);
+  padding: var(--spacing);
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.flux-drawer-stack {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.flux-drawer-stack > [data-testid] {
+  flex-shrink: 0;
+}
+.flux-composed-transcript {
+  flex: 1;
+  min-height: calc(var(--spacing) * 32);
+  min-width: 0;
+}
+.flux-composed-composer {
+  flex-shrink: 0;
+  padding: calc(var(--spacing) * 2);
+  border-top: 1px solid var(--color-border);
+}
+.flux-composed-composer textarea {
+  min-height: calc(var(--spacing) * 12);
+  max-height: calc(var(--spacing) * 24);
+}
+.flux-composed-composer fieldset {
+  min-width: 0;
+}
+.flux-composed-composer [data-slot="chat-input-toolbar"] {
+  flex-wrap: wrap;
+}
+.flux-popup-body {
+  display: grid;
+  gap: calc(var(--spacing) * 3);
+  padding: calc(var(--spacing) * 4);
+  overflow-wrap: anywhere;
+}
+.flux-popup-body label {
+  display: grid;
+  gap: var(--spacing);
+}
+.flux-popup-body input,
+.flux-popup-body select {
+  min-width: 0;
+  max-width: 100%;
+  padding: calc(var(--spacing) * 2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface);
+  color: var(--color-fg);
+}
+.flux-search-results {
+  display: grid;
+  gap: var(--spacing);
+}
+.flux-search-results button {
+  height: auto;
+  min-height: calc(var(--spacing) * 10);
+  white-space: normal;
+  display: grid;
+  justify-content: start;
+  text-align: left;
+}
+.flux-search-results small {
+  color: var(--color-fg-muted);
+}
+.flux-welcome {
+  display: grid;
+  gap: calc(var(--spacing) * 3);
+  padding: calc(var(--spacing) * 6);
+}
+@media (max-width: 760px) {
+  .flux-composed .chat-example-header > .flux-header-agent {
+    flex-basis: calc(var(--spacing) * 24);
+  }
+  .flux-composed-composer {
+    font-size: var(--text-caption);
+  }
+  .flux-composed .chat-example-footer {
+    font-size: var(--text-micro);
+  }
+  .flux-drawer-controls button {
+    font-size: var(--text-caption);
+    padding-inline: var(--spacing);
+  }
+}
+@media (max-height: 480px) {
+  .flux-composed-composer textarea {
+    max-height: calc(var(--spacing) * 12);
+  }
+  .flux-composed .chat-example-header {
+    padding: var(--spacing);
+  }
+}
+.flux-composed-conversation {
+  overflow: hidden;
+}
+.flux-composed .chat-example-main {
+  overflow: hidden;
+}
+.flux-composed .chat-example-header {
+  background: var(--color-bg);
+}
+.flux-composed [data-slot="app-shell-aside-control"] {
+  display: none;
+}
+
+.flux-composed-transcript pre {
+  max-width: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
