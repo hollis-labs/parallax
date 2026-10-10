@@ -104,6 +104,9 @@ export function DrawersReview({
             className="px-2 py-1 rounded-control bg-bg border border-border text-fg font-mono text-caption"
             aria-label="Active session for drawer persistence"
           >
+            {!Object.hasOwn(DRAWER_FIXTURES, sessionId) && (
+              <option value={sessionId}>{sessionId} (Unavailable)</option>
+            )}
             {Object.keys(DRAWER_FIXTURES).map((id) => (
               <option key={id} value={id}>
                 {id} ({DRAWER_FIXTURES[id].sessionTitle})

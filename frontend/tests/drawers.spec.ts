@@ -520,6 +520,9 @@ test.describe("Parallax Flux Drawers Candidate Suite", () => {
     page,
   }) => {
     await page.goto("/?example=drawers&session=UNKNOWN")
+    await expect(
+      page.getByRole("combobox", { name: "Active session for drawer persistence" }),
+    ).toHaveValue("UNKNOWN")
     await expect(page.getByTestId("drawer-body-top")).toContainText(
       "Session data unavailable for UNKNOWN",
     )
