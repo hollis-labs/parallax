@@ -4,6 +4,7 @@ import {
   InspectionDialog,
   JsonViewer,
   OverlaySidebar,
+  useLayeredEscape,
 } from "@hollis-labs/design-components"
 import { ChatInput } from "@hollis-labs/kit-chat"
 import { StatusBadge } from "@hollis-labs/kit-dashboard"
@@ -43,6 +44,7 @@ export function MessagingExample({
     } | null>(null),
     [lease, setLease] = useState(0)
   const inspectionTitle = useRef<HTMLHeadingElement>(null)
+  const inspectionPopup = useRef<HTMLDivElement>(null)
   const life = useRef({ alive: false, lease: 0 }),
     rendered = useRef(identity),
     session = useRef<ReturnType<typeof createAdminPresentationSession> | null>(null),
@@ -77,6 +79,18 @@ export function MessagingExample({
       if (raf.current !== null) cancelAnimationFrame(raf.current)
     }
   }, [identity])
+
+  useLayeredEscape({
+    active: Boolean(inspection),
+    onEscape: () => {
+      close()
+      return "closed"
+    },
+    trigger: () => origin.current,
+    rootElement: () => inspectionPopup.current,
+    isLayerAdmitted: () => admitted(),
+    sourceGeneration: `${identity}:${token}`,
+  })
   const admitted = () =>
     life.current.alive && life.current.lease === token && rendered.current === identity
   function transition(fn: () => void) {
@@ -306,6 +320,22 @@ export function MessagingExample({
                     aria-label="Find messaging contacts"
                     value={state.query}
                     onChange={(e) => change({ query: e.target.value })}
+                    onKeyDown={(e) => {
+                      if (
+                        e.key === "Escape" &&
+                        !e.nativeEvent.isComposing &&
+                        e.nativeEvent.keyCode !== 229
+                      ) {
+                        if (state.query !== "") {
+                          e.preventDefault()
+                          e.stopPropagation()
+                          if (typeof e.nativeEvent?.stopImmediatePropagation === "function") {
+                            e.nativeEvent.stopImmediatePropagation()
+                          }
+                          change({ query: "" })
+                        }
+                      }
+                    }}
                   />
                 </label>
                 <p>
@@ -400,6 +430,22 @@ export function MessagingExample({
                   aria-label="Search messaging conversations"
                   value={state.query}
                   onChange={(e) => change({ query: e.target.value })}
+                  onKeyDown={(e) => {
+                    if (
+                      e.key === "Escape" &&
+                      !e.nativeEvent.isComposing &&
+                      e.nativeEvent.keyCode !== 229
+                    ) {
+                      if (state.query !== "") {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        if (typeof e.nativeEvent?.stopImmediatePropagation === "function") {
+                          e.nativeEvent.stopImmediatePropagation()
+                        }
+                        change({ query: "" })
+                      }
+                    }
+                  }}
                 />
               </label>
               {state.contact && (
@@ -567,8 +613,14 @@ export function MessagingExample({
         <InspectionDialog
           title={inspection.title}
           meta={`${data.conversation?.id ?? ""} · ${data.clock}`}
+          ref={inspectionPopup}
           open
-          onOpenChange={(next) => {
+          onOpenChange={(next, details) => {
+            if (details.reason === "escape-key") {
+              details.cancel()
+              details.allowPropagation()
+              return
+            }
             if (!next) close()
           }}
           initialFocus={inspectionTitle}

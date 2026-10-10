@@ -2,6 +2,7 @@ import {
   Button,
   InspectionDialog,
   useControlledRecordNavigation,
+  useLayeredEscape,
 } from "@hollis-labs/design-components"
 import { useRef } from "react"
 import type { OperationsModel, RunDetail } from "../../operations/model"
@@ -34,6 +35,7 @@ export function TaskInspection({
   intent: string
 }) {
   const title = useRef<HTMLHeadingElement>(null)
+  const popup = useRef<HTMLDivElement>(null)
   const identity = JSON.stringify([
     state.profile,
     state.scenario,
@@ -51,12 +53,33 @@ export function TaskInspection({
     boundaryPolicy: "wrap",
     onSelect,
   })
+
+  useLayeredEscape({
+    active: open,
+    accessible: model.accessible,
+    onEscape: () => {
+      onClose()
+      return "closed"
+    },
+    trigger: returnTarget,
+    rootElement: () => popup.current,
+    // The current empty shell still owns dismissal after an external source reset.
+    isLayerAdmitted: () => !detail || ids.includes(detail.task.id),
+    sourceGeneration: `${identity}:${detail?.task.id ?? ""}`,
+  })
+
   const position = navigation.position
   const metadata = detail ? operationsMetadata[detail.task.id] : undefined
   return (
     <InspectionDialog
+      ref={popup}
       open={open}
-      onOpenChange={(next) => {
+      onOpenChange={(next, details) => {
+        if (details.reason === "escape-key") {
+          details.cancel()
+          details.allowPropagation()
+          return
+        }
         if (!next) onClose()
       }}
       className="torque-task-inspection"
