@@ -178,6 +178,50 @@ export interface FluxSettingsShellProps {
   competing?: boolean
 }
 
+export function hasVisibleCompetingOverlay(): boolean {
+  if (typeof document === "undefined") return false
+
+  const candidates = document.querySelectorAll<HTMLElement>(
+    "[role='dialog'], [role='alertdialog'], [role='menu'], [role='listbox'], [data-competing-popup='true'], [data-competing-layer='true']",
+  )
+
+  for (const el of candidates) {
+    // 1. If explicitly hidden by standard attribute
+    if (el.hasAttribute("hidden")) continue
+    if (el.getAttribute("aria-hidden") === "true") continue
+
+    // 2. If data attributes indicate closed or ending state
+    if (el.getAttribute("data-closed") === "true" || el.getAttribute("data-closed") === "") continue
+    if (el.getAttribute("data-state") === "closed") continue
+    if (el.getAttribute("data-ending") === "true" || el.getAttribute("data-ending") === "") continue
+
+    // 3. Ancestor hidden or closed check
+    if (el.closest("[hidden], [aria-hidden='true'], [data-closed='true'], [data-state='closed']")) {
+      continue
+    }
+
+    // 4. Style checks (inline or computed: display: none, visibility: hidden, opacity: 0)
+    if (
+      el.style.display === "none" ||
+      el.style.visibility === "hidden" ||
+      el.style.opacity === "0"
+    ) {
+      continue
+    }
+    if (typeof window !== "undefined" && typeof window.getComputedStyle === "function") {
+      const style = window.getComputedStyle(el)
+      if (style.display === "none" || style.visibility === "hidden" || style.opacity === "0") {
+        continue
+      }
+    }
+
+    // Found an actual visible competing overlay
+    return true
+  }
+
+  return false
+}
+
 export function FluxSettingsShell({
   initialSection,
   initialTheme = THEME_CONCRETE_AND_SIGNAL,
@@ -263,13 +307,8 @@ export function FluxSettingsShell({
   })
 
   const isLive = useCallback(() => {
-    // 1. Guard against actual visible competing popups / dialogs in the document
-    if (typeof document !== "undefined") {
-      const activePopup = document.querySelector(
-        "[role='dialog']:not([aria-hidden='true']), [data-competing-popup='true'], [data-competing-layer='true']",
-      )
-      if (activePopup) return false
-    }
+    // 1. Guard against actual visible competing overlays (dialogs, menus, listboxes)
+    if (hasVisibleCompetingOverlay()) return false
 
     return (
       checkToken(thisFrameToken) &&

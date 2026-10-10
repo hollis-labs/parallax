@@ -160,17 +160,55 @@ export async function settingsLifecycleExercise() {
   const competingPopupIgnored = !prevented
   competingPopup.remove()
 
+  // Guard test: Competing menu in document refutes liveness and ignores roving
+  const competingMenu = document.createElement("div")
+  competingMenu.setAttribute("role", "menu")
+  document.body.append(competingMenu)
+  prevented = false
+  flushSync(() => currentOnKeyDown(createCurrentKeyEvent()))
+  const competingMenuIgnored = !prevented
+  competingMenu.remove()
+
   // Guard test: Fresh recovery after competing popup removal
   prevented = false
   flushSync(() => currentOnKeyDown(createCurrentKeyEvent()))
   const competingPopupRecovered = prevented
 
+  // Guard test: Hidden/closed dialog does NOT refute liveness
+  await settle()
+  const admittedNavButton = required(element.querySelector('button[role="tab"]'))
+  const admittedOnKeyDown = keyboardHandler(admittedNavButton)
+  const closedDialog = document.createElement("div")
+  closedDialog.setAttribute("role", "dialog")
+  closedDialog.setAttribute("data-closed", "true")
+  document.body.append(closedDialog)
+  prevented = false
+  flushSync(() =>
+    admittedOnKeyDown(
+      createCurrentKeyEvent({
+        currentTarget: admittedNavButton,
+        target: admittedNavButton,
+      }),
+    ),
+  )
+  const hiddenDialogAdmitted = prevented
+  closedDialog.remove()
+
   // Guard test: Retained roving handler refuses after source replacement
-  const heldRoving = currentOnKeyDown
+  await settle()
+  const heldNavButton = required(element.querySelector('button[role="tab"]'))
+  const heldRoving = keyboardHandler(heldNavButton)
   flushSync(() => setSourceProp("fixture-source-2"))
   await settle()
   prevented = false
-  flushSync(() => heldRoving(createCurrentKeyEvent()))
+  flushSync(() =>
+    heldRoving(
+      createCurrentKeyEvent({
+        currentTarget: heldNavButton,
+        target: heldNavButton,
+      }),
+    ),
+  )
   const retainedRovingRetired = !prevented
 
   // Guard test: Root detachment / target outside nav root
@@ -197,6 +235,8 @@ export async function settingsLifecycleExercise() {
     modifierIgnored,
     accessDeniedIgnored,
     competingPopupIgnored,
+    competingMenuIgnored,
+    hiddenDialogAdmitted,
     competingPopupRecovered,
     retainedRovingRetired,
     rootDetachedIgnored,

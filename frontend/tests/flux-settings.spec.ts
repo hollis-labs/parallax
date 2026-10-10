@@ -7,7 +7,15 @@ import {
   parseLayoutPreferences,
 } from "../src/examples/flux-settings/model"
 
-const entry = "/flux-settings.html"
+function getEntry(baseURL: string | undefined, suffix = ""): string {
+  if (process.env.FLUX_SETTINGS_BASE_URL) {
+    return `${process.env.FLUX_SETTINGS_BASE_URL}/flux-settings.html${suffix}`
+  }
+  if (!baseURL || baseURL.includes(":18541")) {
+    return `http://127.0.0.1:18545/flux-settings.html${suffix}`
+  }
+  return `/flux-settings.html${suffix}`
+}
 const repo = fileURLToPath(new URL("../../", import.meta.url))
 const screenshotDir = path.join(repo, ".scratch/flux-settings/screenshots")
 
@@ -36,11 +44,12 @@ test.beforeEach(async ({ page }) => {
 
 test("four representative sections render with grouped navigation and breadcrumbs", async ({
   page,
+  baseURL,
 }) => {
   const errors: string[] = []
   page.on("pageerror", (err) => errors.push(err.message))
 
-  await page.goto(entry)
+  await page.goto(getEntry(baseURL))
   await expect(page.locator('[data-flux-settings-shell="true"]')).toBeVisible()
 
   // Default section is appearance
@@ -77,12 +86,13 @@ test("four representative sections render with grouped navigation and breadcrumb
 
 test("deep hash linking, native back/forward, and deep reload preserve active section", async ({
   page,
+  baseURL,
 }) => {
   const errors: string[] = []
   page.on("pageerror", (err) => errors.push(err.message))
 
   // Direct deep link to #shortcuts
-  await page.goto(`${entry}#shortcuts`)
+  await page.goto(getEntry(baseURL, "#shortcuts"))
   await expect(page.locator('[data-section="shortcuts"]')).toBeVisible()
   await expect(page.getByRole("tab", { name: "Shortcuts" })).toHaveAttribute(
     "aria-selected",
@@ -112,8 +122,8 @@ test("deep hash linking, native back/forward, and deep reload preserve active se
   expect(errors).toEqual([])
 })
 
-test("roving keyboard navigation in sidebar", async ({ page }) => {
-  await page.goto(`${entry}#appearance`)
+test("roving keyboard navigation in sidebar", async ({ page, baseURL }) => {
+  await page.goto(getEntry(baseURL, "#appearance"))
   const appearanceTab = page.getByRole("tab", { name: "Appearance" })
   await appearanceTab.focus()
 
@@ -138,8 +148,11 @@ test("roving keyboard navigation in sidebar", async ({ page }) => {
   await expect(page.locator('[data-section="appearance"]')).toBeVisible()
 })
 
-test("appearance section: theme list, real token preview, and token editor", async ({ page }) => {
-  await page.goto(`${entry}#appearance`)
+test("appearance section: theme list, real token preview, and token editor", async ({
+  page,
+  baseURL,
+}) => {
+  await page.goto(getEntry(baseURL, "#appearance"))
   await expect(page.locator('[data-section="appearance"]')).toBeVisible()
 
   // Verify theme select contains Concrete & Signal (default)
@@ -192,8 +205,11 @@ test("appearance section: theme list, real token preview, and token editor", asy
   await expect(page.getByText("Unsaved edits")).toHaveCount(0)
 })
 
-test("layout section: validates preference controls and seam coordination", async ({ page }) => {
-  await page.goto(`${entry}#layout`)
+test("layout section: validates preference controls and seam coordination", async ({
+  page,
+  baseURL,
+}) => {
+  await page.goto(getEntry(baseURL, "#layout"))
   await expect(page.locator('[data-section="layout"]')).toBeVisible()
 
   // Preset selector
@@ -237,8 +253,9 @@ test("layout section: validates preference controls and seam coordination", asyn
 
 test("shortcuts section: guarded key capture, modifier lifecycle, and Escape cancellation", async ({
   page,
+  baseURL,
 }) => {
-  await page.goto(`${entry}#shortcuts`)
+  await page.goto(getEntry(baseURL, "#shortcuts"))
   await expect(page.locator('[data-section="shortcuts"]')).toBeVisible()
 
   // Find Toggle Sidebar shortcut row
@@ -272,6 +289,34 @@ test("shortcuts section: guarded key capture, modifier lifecycle, and Escape can
     name: "Recording shortcut for Toggle Sidebar",
   })
   await expect(captureBox).toBeVisible()
+  await expect(captureBox).toBeFocused()
+  await expect(page.getByText("Press keys…")).toBeVisible()
+
+  // Probe Tab reachability to Save button and native Enter activation
+  await page.keyboard.press("Control+Shift+P")
+  const saveBtn = sidebarRow.getByRole("button", { name: "Save Toggle Sidebar shortcut" })
+  await expect(saveBtn).toBeVisible()
+  await page.keyboard.press("Tab")
+  await expect(saveBtn).toBeFocused()
+  await page.keyboard.press("Enter")
+  await expect(saveBtn).toHaveCount(0)
+
+  // Probe Tab reachability to Cancel button and native Space activation
+  await sidebarRow.click()
+  await expect(captureBox).toBeFocused()
+  await page.keyboard.press("Control+Shift+K")
+  await expect(saveBtn).toBeVisible()
+  const cancelBtn = sidebarRow.getByRole("button", { name: "Cancel editing Toggle Sidebar" })
+  await expect(cancelBtn).toBeVisible()
+  await page.keyboard.press("Tab")
+  await expect(saveBtn).toBeFocused()
+  await page.keyboard.press("Tab")
+  await expect(cancelBtn).toBeFocused()
+  await page.keyboard.press("Space")
+  await expect(cancelBtn).toHaveCount(0)
+
+  // Re-enter capture mode for isolation negatives and retained retirement probes
+  await sidebarRow.click()
   await expect(captureBox).toBeFocused()
   await expect(page.getByText("Press keys…")).toBeVisible()
 
@@ -353,8 +398,8 @@ test("shortcuts section: guarded key capture, modifier lifecycle, and Escape can
   await page.getByRole("button", { name: "Reset All" }).click()
 })
 
-test("permissions section: policy mode and tool grants whitelist", async ({ page }) => {
-  await page.goto(`${entry}#permissions`)
+test("permissions section: policy mode and tool grants whitelist", async ({ page, baseURL }) => {
+  await page.goto(getEntry(baseURL, "#permissions"))
   await expect(page.locator('[data-section="permissions"]')).toBeVisible()
 
   // Change permission policy mode
@@ -389,10 +434,11 @@ test("permissions section: policy mode and tool grants whitelist", async ({ page
 
 test("responsive layout across viewports including narrow 390px and short 420px", async ({
   page,
+  baseURL,
 }) => {
   // 1. Desktop 1280x900
   await page.setViewportSize({ width: 1280, height: 900 })
-  await page.goto(`${entry}#appearance`)
+  await page.goto(getEntry(baseURL, "#appearance"))
   await page.waitForTimeout(100)
   await page.screenshot({
     path: path.join(screenshotDir, "desktop-1280x900-appearance.png"),
@@ -401,7 +447,7 @@ test("responsive layout across viewports including narrow 390px and short 420px"
 
   // 2. Desktop Short 1280x420
   await page.setViewportSize({ width: 1280, height: 420 })
-  await page.goto(`${entry}#layout`)
+  await page.goto(getEntry(baseURL, "#layout"))
   await page.waitForTimeout(100)
   await page.screenshot({
     path: path.join(screenshotDir, "desktop-1280x420-layout.png"),
@@ -410,7 +456,7 @@ test("responsive layout across viewports including narrow 390px and short 420px"
 
   // 3. Mobile Narrow 390x844
   await page.setViewportSize({ width: 390, height: 844 })
-  await page.goto(`${entry}#shortcuts`)
+  await page.goto(getEntry(baseURL, "#shortcuts"))
   await page.waitForTimeout(100)
   await page.screenshot({
     path: path.join(screenshotDir, "mobile-390x844-shortcuts.png"),
@@ -419,7 +465,7 @@ test("responsive layout across viewports including narrow 390px and short 420px"
 
   // 4. Mobile Narrow Short 390x420
   await page.setViewportSize({ width: 390, height: 420 })
-  await page.goto(`${entry}#permissions`)
+  await page.goto(getEntry(baseURL, "#permissions"))
   await page.waitForTimeout(100)
   await page.screenshot({
     path: path.join(screenshotDir, "mobile-390x420-permissions.png"),
@@ -429,8 +475,9 @@ test("responsive layout across viewports including narrow 390px and short 420px"
 
 test("host committed activation fence refuses uncommitted/historical targets and admits fresh-positive", async ({
   page,
+  baseURL,
 }) => {
-  await page.goto(`${entry}#layout`)
+  await page.goto(getEntry(baseURL, "#layout"))
   await expect(page.locator('[data-section="layout"]')).toBeVisible()
 
   // Attempt to activate historical/superseded sections (profile, wizard, agents, providers)
@@ -475,6 +522,7 @@ test("host committed activation fence refuses uncommitted/historical targets and
 
 test("layout section: rejects malformed persisted preferences with fallback to safe defaults", async ({
   page,
+  baseURL,
 }) => {
   // Test direct parsing rejection
   const corrupted = parseLayoutPreferences(MALFORMED_FIXTURE_PREFERENCES)
@@ -511,7 +559,7 @@ test("layout section: rejects malformed persisted preferences with fallback to s
   })
 
   // Load standalone in malformed-fallback scenario
-  await page.goto(`${entry}?scenario=malformed-fallback#layout`)
+  await page.goto(getEntry(baseURL, "?scenario=malformed-fallback#layout"))
   await expect(page.locator('[data-section="layout"]')).toBeVisible()
 
   // Malformed rejection notice is visible in the DOM
@@ -533,8 +581,9 @@ test("layout section: rejects malformed persisted preferences with fallback to s
 
 test("captured activation callback and roving navigation retire across source, access, and React Activity lifecycle", async ({
   page,
+  baseURL,
 }) => {
-  await page.goto(`${entry}#appearance`)
+  await page.goto(getEntry(baseURL, "#appearance"))
   await expect(page.locator('[data-section="appearance"]')).toBeVisible()
 
   // Capture callback from current live frame
@@ -624,6 +673,43 @@ test("captured activation callback and roving navigation retire across source, a
   expect(rovingPopupRefused).toBe(false)
   await page.evaluate(() => document.getElementById("competing-test-dialog")?.remove())
 
+  // Competing menu in document refutes liveness and ignores roving
+  await page.evaluate(() => {
+    const menu = document.createElement("div")
+    menu.id = "competing-test-menu"
+    menu.setAttribute("role", "menu")
+    document.body.append(menu)
+  })
+  const rovingMenuRefused = await page.evaluate(() => {
+    const w = window as any
+    const btn = document.querySelector('button[data-section-id="appearance"]')
+    return w.fluxSettings.currentFrame.handleSidebarKeyDown(
+      { key: "ArrowDown", currentTarget: btn, target: btn, nativeEvent: { isComposing: false } },
+      0,
+    )
+  })
+  expect(rovingMenuRefused).toBe(false)
+  await page.evaluate(() => document.getElementById("competing-test-menu")?.remove())
+
+  // Hidden/closed dialog does NOT refute liveness (current-positive)
+  await page.evaluate(() => {
+    const closed = document.createElement("div")
+    closed.id = "closed-test-dialog"
+    closed.setAttribute("role", "dialog")
+    closed.setAttribute("data-closed", "true")
+    document.body.append(closed)
+  })
+  const rovingClosedAdmitted = await page.evaluate(() => {
+    const w = window as any
+    const btn = document.querySelector('button[data-section-id="appearance"]')
+    return w.fluxSettings.currentFrame.handleSidebarKeyDown(
+      { key: "ArrowDown", currentTarget: btn, target: btn, nativeEvent: { isComposing: false } },
+      0,
+    )
+  })
+  expect(rovingClosedAdmitted).toBe(true)
+  await page.evaluate(() => document.getElementById("closed-test-dialog")?.remove())
+
   // Fresh roving recovery after popup removal
   const rovingRecovered = await page.evaluate(() => {
     const w = window as any
@@ -671,6 +757,8 @@ test("captured activation callback and roving navigation retire across source, a
     modifierIgnored: true,
     accessDeniedIgnored: true,
     competingPopupIgnored: true,
+    competingMenuIgnored: true,
+    hiddenDialogAdmitted: true,
     competingPopupRecovered: true,
     retainedRovingRetired: true,
     rootDetachedIgnored: true,

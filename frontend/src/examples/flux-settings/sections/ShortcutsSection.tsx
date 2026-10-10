@@ -24,7 +24,7 @@ interface ShortcutRowProps {
   isLive?: () => boolean
   conflict?: string
   onEdit: () => void
-  onSave: (binding: string) => boolean | void
+  onSave: (binding: string) => boolean | undefined
   onCancel: () => void
 }
 
@@ -77,11 +77,23 @@ function ShortcutRow({
       // 1. Lease guard: if row is disconnected, ignore
       if (!rowRef.current?.isConnected) return
 
-      // 2. Exact row-owned event target requirement:
-      // The event target MUST be contained within this exact shortcut row!
-      // Outside plain buttons, document.body, outside inputs, outside popups are rejected.
       const target = e.target as HTMLElement | null
-      if (!target || !rowRef.current.contains(target)) {
+
+      // Escape key cancels capture from anywhere within this shortcut row
+      if (e.key === "Escape") {
+        if (target && rowRef.current.contains(target)) {
+          e.preventDefault()
+          e.stopPropagation()
+          onCancel()
+          return
+        }
+      }
+
+      // 2. Exact capture-box surface requirement:
+      // Keystroke recording is strictly scoped to the exact capture surface (captureBoxRef)!
+      // If target is the Save button, Cancel button, outside plain buttons, body, or outside inputs:
+      // DO NOT intercept or consume! This allows native Enter, Space, and Tab on the action buttons.
+      if (!target || target !== captureBoxRef.current) {
         return
       }
 
@@ -91,22 +103,20 @@ function ShortcutRow({
         return
       }
 
+      // Allow Tab key to naturally navigate focus from captureBox to Save / Cancel buttons!
+      if (e.key === "Tab") {
+        return
+      }
+
       const parsed = parseKeyEvent(e)
       if (parsed === undefined) {
         // Modifier-only or active IME composition: do not consume, allow natural event flow
         return
       }
 
-      // Exact admitted row-owned event (or Escape cancellation): consume and handle
+      // Exact admitted capture event: consume and record
       e.preventDefault()
       e.stopPropagation()
-
-      if (parsed === null) {
-        // Escape cancels capture
-        onCancel()
-        return
-      }
-
       setCaptured(parsed)
     }
 
