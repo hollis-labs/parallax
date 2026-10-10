@@ -16,7 +16,7 @@ import {
   classifyPriorResponse,
   PromptCard,
 } from "@hollis-labs/kit-chat"
-import { type ReactNode, useLayoutEffect, useRef, useState } from "react"
+import { type ComponentProps, type ReactNode, useLayoutEffect, useRef, useState } from "react"
 import { createAdminPresentationSession } from "../../chimera/admin-session"
 import { chatPack, chatPackDetail, chatPackModel, chatPackStates } from "./model"
 import { type ChatExampleState, chatExampleHref } from "./routes"
@@ -40,6 +40,13 @@ export type ChatChrome = {
   header?: (context: ChatChromeContext) => ReactNode
   className?: string
   layout?: string
+  /** Full composition keeps this shell/navigation, replacing only its conversation region. */
+  conversation?: (context: ChatChromeContext) => ReactNode
+  aside?: Pick<
+    ComponentProps<typeof AppShell>,
+    keyof import("@hollis-labs/design-components").AppShellAsideProps
+  >
+  compact?: boolean
 }
 export function ChatExample({
   state = defaultChatState,
@@ -106,7 +113,7 @@ function ChatSurface({
   const data = chatPackModel(state.appearance),
     detail =
       chatPackDetail(data, state.session) ??
-      (data.sessions[0] ? chatPackDetail(data, data.sessions[0].id) : null)
+      (!chrome?.conversation && data.sessions[0] ? chatPackDetail(data, data.sessions[0].id) : null)
   const [draft, setDraft] = useState(""),
     [note, setNote] = useState(""),
     [count, setCount] = useState(
@@ -545,6 +552,7 @@ function ChatSurface({
   )
   return (
     <AppShell
+      {...chrome?.aside}
       className={`chat-example ${chrome?.className ?? ""} ${chrome?.layout ? `flux-layout-${chrome.layout}` : ""}`}
       nav={<aside className="chat-example-sidebar">{nav}</aside>}
       header={
@@ -573,99 +581,107 @@ function ChatSurface({
             <small>Snapshot · Review only</small>
           </div>
           {chrome?.header?.(chromeContext)}
-          <div className="chat-mobile-only">
+          {!chrome?.compact && (
+            <div className="chat-mobile-only">
+              <OverlaySidebar
+                side="right"
+                title="Chat evidence"
+                open={evidenceOpen}
+                onOpenChange={(v) => {
+                  if (v !== evidenceOpen) transition(() => setEvidenceOpen(v))
+                }}
+                trigger={
+                  <Button variant="outline" size="sm">
+                    Evidence
+                  </Button>
+                }
+              >
+                {evidence}
+              </OverlaySidebar>
+            </div>
+          )}
+          {!chrome?.compact && (
             <OverlaySidebar
               side="right"
-              title="Chat evidence"
-              open={evidenceOpen}
+              title="Chat fixture review"
+              open={reviewOpen}
               onOpenChange={(v) => {
-                if (v !== evidenceOpen) transition(() => setEvidenceOpen(v))
+                if (v !== reviewOpen) transition(() => setReviewOpen(v))
               }}
               trigger={
                 <Button variant="outline" size="sm">
-                  Evidence
+                  Review
                 </Button>
               }
             >
-              {evidence}
+              {review}
             </OverlaySidebar>
-          </div>
-          <OverlaySidebar
-            side="right"
-            title="Chat fixture review"
-            open={reviewOpen}
-            onOpenChange={(v) => {
-              if (v !== reviewOpen) transition(() => setReviewOpen(v))
-            }}
-            trigger={
-              <Button variant="outline" size="sm">
-                Review
-              </Button>
-            }
-          >
-            {review}
-          </OverlaySidebar>
+          )}
         </header>
       }
     >
       <div className="chat-example-main">
-        <section className="chat-conversation" aria-label="Current conversation">
-          <ChatStream
-            className="chat-transcript"
-            aria-label="Chat example transcript"
-            loading={state.appearance === "loading"}
-            items={items}
-            status={status}
-            empty={<p>{data.problem || "Known empty conversation · 0 supplied turns."}</p>}
-            history={
-              detail
-                ? {
-                    hasOlder: count < detail.turns.length,
-                    loading: false,
-                    onLoadOlder: () =>
-                      transition(() =>
-                        setCount((n) =>
-                          Math.min(n + detail.session.historyPageSize, detail.turns.length),
+        {chrome?.conversation ? (
+          chrome.conversation(chromeContext)
+        ) : (
+          <section className="chat-conversation" aria-label="Current conversation">
+            <ChatStream
+              className="chat-transcript"
+              aria-label="Chat example transcript"
+              loading={state.appearance === "loading"}
+              items={items}
+              status={status}
+              empty={<p>{data.problem || "Known empty conversation · 0 supplied turns."}</p>}
+              history={
+                detail
+                  ? {
+                      hasOlder: count < detail.turns.length,
+                      loading: false,
+                      onLoadOlder: () =>
+                        transition(() =>
+                          setCount((n) =>
+                            Math.min(n + detail.session.historyPageSize, detail.turns.length),
+                          ),
                         ),
-                      ),
-                  }
-                : undefined
-            }
-            jumpLabel="Jump to latest supplied turn"
-          />
-          {step > 0 && !busy && !stopped && (
-            <section className="chat-completed-preview" aria-label="Completed manual preview">
-              <p>Complete authored preview · uncommitted</p>
-              <p className="chat-turn-text">{detail?.session.previewChunks.join("")}</p>
-            </section>
-          )}
-          <div className="chat-composer">
-            <p>
-              {count} revealed / {detail?.turns.length ?? (data.accessible ? 0 : "Unknown")}{" "}
-              supplied turns. Draft inspection never sends or appends.
-            </p>
-            <ChatInput
-              aria-label="Local chat draft"
-              value={draft}
-              onValueChange={(v) => {
-                if (data.editable && detail) transition(() => setDraft(v))
-              }}
-              onSubmit={(value) =>
-                candidate(
-                  "Draft candidate",
-                  { session: detail?.session.id, text: value },
-                  () => !busy && !!draft.trim() && value === draft.trim(),
-                )
+                    }
+                  : undefined
               }
-              busy={busy}
-              disabled={!data.editable || !detail}
-              onStop={() => transition(() => setStopped(true))}
-              history={detail?.history}
-              placeholder="Write a local review draft…"
+              jumpLabel="Jump to latest supplied turn"
             />
-          </div>
-        </section>
-        <aside className="chat-evidence">{evidence}</aside>
+            {step > 0 && !busy && !stopped && (
+              <section className="chat-completed-preview" aria-label="Completed manual preview">
+                <p>Complete authored preview · uncommitted</p>
+                <p className="chat-turn-text">{detail?.session.previewChunks.join("")}</p>
+              </section>
+            )}
+            <div className="chat-composer">
+              <p>
+                {count} revealed / {detail?.turns.length ?? (data.accessible ? 0 : "Unknown")}{" "}
+                supplied turns. Draft inspection never sends or appends.
+              </p>
+              <ChatInput
+                aria-label="Local chat draft"
+                value={draft}
+                onValueChange={(v) => {
+                  if (data.editable && detail) transition(() => setDraft(v))
+                }}
+                onSubmit={(value) =>
+                  candidate(
+                    "Draft candidate",
+                    { session: detail?.session.id, text: value },
+                    () => !busy && !!draft.trim() && value === draft.trim(),
+                  )
+                }
+                busy={busy}
+                disabled={!data.editable || !detail}
+                onStop={() => transition(() => setStopped(true))}
+                history={detail?.history}
+                placeholder="Write a local review draft…"
+              />
+            </div>
+          </section>
+        )}
+        {!chrome?.compact && <aside className="chat-evidence">{evidence}</aside>}
       </div>
       <footer className="chat-example-footer">
         No transport · Immutable snapshot · {chatPack.clock}
