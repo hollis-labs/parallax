@@ -36,18 +36,23 @@ States include 5-card skeleton loading, empty state (`No fragments in {scope}`),
 
 ### Primary Source Contracts & Evidence
 
-- **Primary Source Codebase:** `apps/fragments-engine/apps/sysop`
-  - Page entry: `src/pages/ReaderPage.tsx`
-  - Card component: `src/components/ReaderCard.tsx`
-  - Data types: `src/types/reader.ts`
+- **Primary Source Codebase:** `apps/fragments-engine` (commit `eabdfb9e7a06048d95b4d32198eecfc9261f7764`, tree `00f535c776569372d3a1c23e23b31a0e3b0dd4b2`)
+  - List entry: `apps/sysop/src/pages/ReaderPage.tsx`
+  - Detail page (primary nav target): `apps/sysop/src/pages/ReaderDetailPage.tsx`
+  - Card component: `apps/sysop/src/components/reader/ReaderCard.tsx`
+  - Reader lib & contracts: `apps/sysop/src/lib/reader.ts`
+  - Schema contract: `contracts/browser-capture-reader/v1/schema/reader-list.schema.json`
 - **Parallax Fixture Generator:** `internal/scenarios/reader.go` & `internal/scenarios/reader_test.go`
   - Family: `fe.reader.list.v1`
   - Output: `frontend/src/fixtures/reader-example.json`
 - **Parallax Implementation:** `frontend/src/examples/reader/`
-  - `ReaderExample.tsx`: Single-column list, scope tabs, pagination, modal integration
-  - `ReaderCard.tsx`: Compound card with button/dialog semantics, provenance spine, interactive tabs
-  - `ReaderVisual.tsx`: Multi-format media renderer (image, gallery, video)
-  - `ReaderDetail.tsx`: In-place inspection dialog with multi-axis summary
-  - `model.ts`: State normalization, 10-theme registry, and scope definitions
+  - `ReaderExample.tsx`: Single-column list, scope tabs, pagination, and inline inspection dialog modal
+  - `ReaderCard.tsx`: Compound card with button/dialog popup-trigger semantics, provenance spine, interactive tabs
+  - `ReaderVisual.tsx`: Multi-format media renderer (image, gallery, video) with preview modal
+  - `ReaderProvenanceSpine.tsx`: 3-segment operational provenance spine (`triage`, `enrichment`, `media`)
+  - `ReaderStateSummary.tsx`: 5-axis operational summary (`Triage`, `Routing`, `Materialization`, `Enrichment`, `Media`)
+  - `ReaderInlineActions.tsx`: Effect pills (`acquire`, `route`, `materialize`) and reading position popovers
+  - `ReaderNotes.tsx`: Curated and capture note editors with immediate synchronous save and zero timers
+  - `model.ts`: State normalization, 10 public themes registry, UTC date formatting, operational tally derivation, and scope definitions
   - `Standalone.tsx`: Standalone harness with popstate and URL synchronization
 
