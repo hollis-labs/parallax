@@ -103,6 +103,6 @@ test("portable About consumes the same family manifest without a Go or plugin re
     page
       .getByRole("region", { name: "Bundled fixture-family contracts", exact: true })
       .getByRole("article"),
-  ).toHaveCount(6)
+  ).toHaveCount(fixtureContracts.families.length)
   expect(calls).toEqual([])
 })
