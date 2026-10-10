@@ -1,5 +1,7 @@
 import { Copy, Download, RotateCcw, Sparkles, X } from "lucide-react"
+import type { CSSProperties } from "react"
 import { useEffect, useMemo, useRef, useState } from "react"
+import { useCommittedFrame } from "../committed-frame"
 import {
   BUILTIN_THEMES,
   THEME_CONCRETE_AND_SIGNAL,
@@ -28,6 +30,8 @@ interface AppearanceSectionProps {
   onThemeChange: (theme: Theme) => void
   onModeChange: (mode: ThemeMode) => void
   readOnly?: boolean
+  isLive?: () => boolean
+  fixtureOnly?: boolean
 }
 
 export function AppearanceSection({
@@ -36,7 +40,12 @@ export function AppearanceSection({
   onThemeChange,
   onModeChange,
   readOnly = false,
+  isLive,
+  fixtureOnly = false,
 }: AppearanceSectionProps) {
+  const { frameToken, checkToken } = useCommittedFrame()
+  const admitted = () => checkToken(frameToken) && (!isLive || isLive())
+  const [exportNotice, setExportNotice] = useState("")
   const [draft, setDraft] = useState<Theme>(theme)
   const [activeTab, setActiveTab] = useState<"preview" | "tokens">("preview")
   const [openTokenKey, setOpenTokenKey] = useState<TokenKey | null>(null)
@@ -49,13 +58,14 @@ export function AppearanceSection({
 
   const resolvedMode: "dark" | "light" = useMemo(() => {
     if (mode === "system") {
+      if (fixtureOnly) return "dark"
       if (typeof window !== "undefined" && window.matchMedia) {
         return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
       }
       return "dark"
     }
     return mode
-  }, [mode])
+  }, [mode, fixtureOnly])
 
   const activeTokens: TokenValues = draft.tokens[resolvedMode]
   const isBuiltin = !!draft.builtin
@@ -69,7 +79,7 @@ export function AppearanceSection({
   const customThemeSeqRef = useRef(0)
 
   const handleSelectTheme = (id: string) => {
-    if (readOnly) return
+    if (readOnly || !admitted()) return
     const selected = allThemes.find((t) => t.id === id)
     if (selected) {
       onThemeChange(selected)
@@ -78,7 +88,7 @@ export function AppearanceSection({
   }
 
   const handleDuplicate = () => {
-    if (readOnly) return
+    if (readOnly || !admitted()) return
     customThemeSeqRef.current += 1
     const copyId = `custom-${draft.id}-4421-${customThemeSeqRef.current}`
     const copy: Theme = {
@@ -97,19 +107,19 @@ export function AppearanceSection({
   }
 
   const handleReset = () => {
-    if (readOnly) return
+    if (readOnly || !admitted()) return
     setDraft(theme)
     onThemeChange(theme)
   }
 
   const handleResetToDefault = () => {
-    if (readOnly) return
+    if (readOnly || !admitted()) return
     setDraft(THEME_CONCRETE_AND_SIGNAL)
     onThemeChange(THEME_CONCRETE_AND_SIGNAL)
   }
 
   const handleTokenChange = (key: TokenKey, value: string) => {
-    if (isBuiltin || readOnly) return
+    if (isBuiltin || readOnly || !admitted()) return
     const updated: Theme = {
       ...draft,
       tokens: {
@@ -124,6 +134,11 @@ export function AppearanceSection({
   }
 
   const handleExport = () => {
+    if (!admitted()) return
+    if (fixtureOnly) {
+      setExportNotice("Theme export preview retained locally; no file downloaded.")
+      return
+    }
     const json = JSON.stringify(draft, null, 2)
     const blob = new Blob([json], { type: "application/json" })
     const url = URL.createObjectURL(blob)
@@ -135,7 +150,17 @@ export function AppearanceSection({
   }
 
   return (
-    <div className="space-y-6" data-section="appearance">
+    <div
+      className="space-y-6"
+      data-section="appearance"
+      style={
+        fixtureOnly
+          ? (Object.fromEntries(
+              Object.entries(activeTokens).map(([key, value]) => [`--color-${key}`, value]),
+            ) as CSSProperties)
+          : undefined
+      }
+    >
       <PanelHeader
         title="Appearance"
         description="Theme palettes, live token specimen preview, and token-bound color editing."
@@ -180,6 +205,28 @@ export function AppearanceSection({
         }
       />
 
+      {fixtureOnly && (
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            disabled={!isDirty || readOnly}
+            onClick={() => {
+              if (
+                !admitted() ||
+                readOnly ||
+                !isDirty ||
+                Object.values(draft.tokens[resolvedMode]).some((v) => !CSS.supports("color", v))
+              )
+                return
+              onThemeChange(draft)
+              setExportNotice("Theme saved to this local fixture only.")
+            }}
+          >
+            Save theme fixture
+          </button>
+          <p role="status">{exportNotice}</p>
+        </div>
+      )}
       {/* Theme Selection Card */}
       <SCard title="Active Theme" meta={isBuiltin ? "Built-in (Read-only)" : "Custom (Editable)"}>
         <SRow
@@ -203,7 +250,12 @@ export function AppearanceSection({
           </div>
         </SRow>
         <SRow label="Color Mode" description="Light, Dark, or snap to Operating System preference">
-          <ThemeSeg value={mode} onChange={onModeChange} />
+          <ThemeSeg
+            value={mode}
+            onChange={(next) => {
+              if (admitted() && !readOnly) onModeChange(next)
+            }}
+          />
         </SRow>
       </SCard>
 
@@ -212,7 +264,9 @@ export function AppearanceSection({
         <div className="flex items-center gap-1">
           <button
             type="button"
-            onClick={() => setActiveTab("preview")}
+            onClick={() => {
+              if (admitted()) setActiveTab("preview")
+            }}
             className={`px-3 py-1.5 text-xs font-medium rounded-control cursor-pointer transition-colors ${
               activeTab === "preview"
                 ? "bg-surface text-fg shadow-xs"
@@ -223,7 +277,9 @@ export function AppearanceSection({
           </button>
           <button
             type="button"
-            onClick={() => setActiveTab("tokens")}
+            onClick={() => {
+              if (admitted()) setActiveTab("tokens")
+            }}
             className={`px-3 py-1.5 text-xs font-medium rounded-control cursor-pointer transition-colors ${
               activeTab === "tokens"
                 ? "bg-surface text-fg shadow-xs"
@@ -407,6 +463,7 @@ export function AppearanceSection({
                           type="button"
                           disabled={isBuiltin || readOnly}
                           onClick={() => {
+                            if (!admitted() || readOnly || isBuiltin) return
                             if (isOpen) {
                               setOpenTokenKey(null)
                             } else {
@@ -450,7 +507,9 @@ export function AppearanceSection({
                               <span className="text-xs font-medium text-fg">{meta.label}</span>
                               <button
                                 type="button"
-                                onClick={() => setOpenTokenKey(null)}
+                                onClick={() => {
+                                  if (admitted()) setOpenTokenKey(null)
+                                }}
                                 className="text-fg-faint hover:text-fg cursor-pointer p-0.5 rounded-sm"
                               >
                                 <X className="w-3.5 h-3.5" />
@@ -469,6 +528,7 @@ export function AppearanceSection({
                                       : undefined
                                 }
                                 onChange={(e) => {
+                                  if (!admitted() || readOnly) return
                                   setColorInput(e.target.value)
                                   handleTokenChange(meta.key, e.target.value)
                                 }}
@@ -478,6 +538,7 @@ export function AppearanceSection({
                                 type="text"
                                 value={colorInput}
                                 onChange={(e) => {
+                                  if (!admitted() || readOnly) return
                                   setColorInput(e.target.value)
                                   handleTokenChange(meta.key, e.target.value)
                                 }}
@@ -497,6 +558,7 @@ export function AppearanceSection({
                                     key={hex}
                                     type="button"
                                     onClick={() => {
+                                      if (!admitted() || readOnly) return
                                       setColorInput(hex)
                                       handleTokenChange(meta.key, hex)
                                     }}

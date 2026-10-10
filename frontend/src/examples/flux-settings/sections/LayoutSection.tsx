@@ -1,5 +1,6 @@
 import { RotateCcw } from "lucide-react"
 import { useMemo, useState } from "react"
+import { useCommittedFrame } from "../committed-frame"
 import {
   BOTTOM_DRAWER_TAB_OPTIONS,
   DEFAULT_LAYOUT_PREFERENCES,
@@ -16,10 +17,18 @@ import { PanelHeader, SCard, SRow, SSelect, SToggle } from "../primitives"
 interface LayoutSectionProps {
   preferences: LayoutPreferences
   onChange: (prefs: LayoutPreferences) => void
+  isLive?: () => boolean
   readOnly?: boolean
 }
 
-export function LayoutSection({ preferences, onChange, readOnly = false }: LayoutSectionProps) {
+export function LayoutSection({
+  preferences,
+  onChange,
+  readOnly = false,
+  isLive = () => true,
+}: LayoutSectionProps) {
+  const frame = useCommittedFrame()
+  const live = () => frame.checkToken(frame.frameToken) && isLive()
   const [_draft, setDraft] = useState<LayoutPreferences>(preferences)
 
   const isDefault = useMemo(
@@ -28,7 +37,7 @@ export function LayoutSection({ preferences, onChange, readOnly = false }: Layou
   )
 
   const update = (patch: Partial<LayoutPreferences>) => {
-    if (readOnly) return
+    if (!live() || readOnly) return
     const candidate = { ...preferences, ...patch }
     const validated = validateLayoutPreferences(candidate)
     if (!validated.valid) return
@@ -37,7 +46,7 @@ export function LayoutSection({ preferences, onChange, readOnly = false }: Layou
   }
 
   const handleReset = () => {
-    if (readOnly) return
+    if (!live() || readOnly) return
     setDraft(DEFAULT_LAYOUT_PREFERENCES)
     onChange(DEFAULT_LAYOUT_PREFERENCES)
   }
