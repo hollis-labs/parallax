@@ -315,6 +315,55 @@ test("shortcuts section: guarded key capture, modifier lifecycle, and Escape can
   await page.keyboard.press("Space")
   await expect(cancelBtn).toHaveCount(0)
 
+  // Probe Escape cancellation from Save button (Escape allowed from admitted action buttons)
+  await sidebarRow.click()
+  await expect(captureBox).toBeFocused()
+  await page.keyboard.press("Control+Shift+J")
+  await expect(saveBtn).toBeVisible()
+  await page.keyboard.press("Tab")
+  await expect(saveBtn).toBeFocused()
+  await page.keyboard.press("Escape")
+  await expect(saveBtn).toHaveCount(0)
+  await expect(page.getByText("Press keys…")).toHaveCount(0)
+
+  // Probe IME composing Escape negative: composition does NOT cancel capture
+  await sidebarRow.click()
+  await expect(captureBox).toBeFocused()
+  await page.evaluate(() => {
+    const box = document.querySelector('button[aria-label^="Recording shortcut"]')
+    if (!box) throw new Error("Missing capture box")
+    const event = new KeyboardEvent("keydown", {
+      key: "Escape",
+      keyCode: 229,
+      bubbles: true,
+      cancelable: true,
+    })
+    Object.defineProperty(event, "isComposing", { value: true })
+    box.dispatchEvent(event)
+  })
+  // Capture mode remains active
+  await expect(page.getByText("Press keys…")).toBeVisible()
+  await page.keyboard.press("Escape")
+  await expect(page.getByText("Press keys…")).toHaveCount(0)
+
+  // Probe competing overlay negative: key events are NOT consumed when competing overlay is active
+  await sidebarRow.click()
+  await expect(captureBox).toBeFocused()
+  await page.evaluate(() => {
+    const overlay = document.createElement("div")
+    overlay.id = "competing-overlay-shortcut"
+    overlay.setAttribute("role", "dialog")
+    document.body.append(overlay)
+  })
+  // Dispatch Escape and key chords while competing overlay is present
+  await page.keyboard.press("Escape")
+  // Still in capture mode because competing overlay suppressed admission!
+  await expect(page.getByText("Press keys…")).toBeVisible()
+  await page.evaluate(() => document.getElementById("competing-overlay-shortcut")?.remove())
+  // After overlay removal, Escape cancels cleanly
+  await page.keyboard.press("Escape")
+  await expect(page.getByText("Press keys…")).toHaveCount(0)
+
   // Re-enter capture mode for isolation negatives and retained retirement probes
   await sidebarRow.click()
   await expect(captureBox).toBeFocused()
@@ -691,12 +740,12 @@ test("captured activation callback and roving navigation retire across source, a
   expect(rovingMenuRefused).toBe(false)
   await page.evaluate(() => document.getElementById("competing-test-menu")?.remove())
 
-  // Hidden/closed dialog does NOT refute liveness (current-positive)
+  // Hidden/closed dialog with empty marker does NOT refute liveness (current-positive)
   await page.evaluate(() => {
     const closed = document.createElement("div")
     closed.id = "closed-test-dialog"
     closed.setAttribute("role", "dialog")
-    closed.setAttribute("data-closed", "true")
+    closed.setAttribute("data-closed", "")
     document.body.append(closed)
   })
   const rovingClosedAdmitted = await page.evaluate(() => {
@@ -709,6 +758,27 @@ test("captured activation callback and roving navigation retire across source, a
   })
   expect(rovingClosedAdmitted).toBe(true)
   await page.evaluate(() => document.getElementById("closed-test-dialog")?.remove())
+
+  // Descendant in closed ancestor with empty marker does NOT refute liveness (current-positive)
+  await page.evaluate(() => {
+    const ancestor = document.createElement("div")
+    ancestor.id = "closed-ancestor-test"
+    ancestor.setAttribute("data-closed", "")
+    const nested = document.createElement("div")
+    nested.setAttribute("role", "dialog")
+    ancestor.append(nested)
+    document.body.append(ancestor)
+  })
+  const rovingAncestorAdmitted = await page.evaluate(() => {
+    const w = window as any
+    const btn = document.querySelector('button[data-section-id="appearance"]')
+    return w.fluxSettings.currentFrame.handleSidebarKeyDown(
+      { key: "ArrowDown", currentTarget: btn, target: btn, nativeEvent: { isComposing: false } },
+      0,
+    )
+  })
+  expect(rovingAncestorAdmitted).toBe(true)
+  await page.evaluate(() => document.getElementById("closed-ancestor-test")?.remove())
 
   // Fresh roving recovery after popup removal
   const rovingRecovered = await page.evaluate(() => {
@@ -759,6 +829,7 @@ test("captured activation callback and roving navigation retire across source, a
     competingPopupIgnored: true,
     competingMenuIgnored: true,
     hiddenDialogAdmitted: true,
+    emptyMarkerDescendantAdmitted: true,
     competingPopupRecovered: true,
     retainedRovingRetired: true,
     rootDetachedIgnored: true,

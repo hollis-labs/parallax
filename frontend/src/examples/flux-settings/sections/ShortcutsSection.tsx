@@ -1,3 +1,4 @@
+import { isComposingEvent } from "@hollis-labs/design-components"
 import { Check, Keyboard, Lock, RotateCcw, X } from "lucide-react"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import {
@@ -74,32 +75,40 @@ function ShortcutRow({
     captureBoxRef.current?.focus()
 
     function handleKeyDown(e: KeyboardEvent) {
-      // 1. Lease guard: if row is disconnected, ignore
+      // 1. Root / lease guard: if row is disconnected, ignore
       if (!rowRef.current?.isConnected) return
 
+      // 2. Exact row-owned event target requirement:
+      // The event target MUST originate within this exact shortcut row.
       const target = e.target as HTMLElement | null
-
-      // Escape key cancels capture from anywhere within this shortcut row
-      if (e.key === "Escape") {
-        if (target && rowRef.current.contains(target)) {
-          e.preventDefault()
-          e.stopPropagation()
-          onCancel()
-          return
-        }
-      }
-
-      // 2. Exact capture-box surface requirement:
-      // Keystroke recording is strictly scoped to the exact capture surface (captureBoxRef)!
-      // If target is the Save button, Cancel button, outside plain buttons, body, or outside inputs:
-      // DO NOT intercept or consume! This allows native Enter, Space, and Tab on the action buttons.
-      if (!target || target !== captureBoxRef.current) {
+      if (!target || !rowRef.current.contains(target)) {
         return
       }
 
       // 3. Current host / row admission lease:
-      // If row is readOnly or host frame admission/lease is false or retired, refuse to consume
+      // If row is readOnly or host frame admission/lease is false or retired, refuse to consume/cancel
       if (readOnly || (isLive && !isLive())) {
+        return
+      }
+
+      // 4. Composition guard: active IME composition or keyCode 229 suppresses consume/cancel
+      if (isComposingEvent(e)) {
+        return
+      }
+
+      // 5. Escape key cancels capture from anywhere within this admitted shortcut row
+      if (e.key === "Escape") {
+        e.preventDefault()
+        e.stopPropagation()
+        onCancel()
+        return
+      }
+
+      // 6. Exact capture-box surface requirement:
+      // Keystroke recording is strictly scoped to the exact capture surface (captureBoxRef)!
+      // If target is the Save button, Cancel button, outside plain buttons, body, or outside inputs:
+      // DO NOT intercept or consume! This allows native Enter, Space, and Tab on the action buttons.
+      if (target !== captureBoxRef.current) {
         return
       }
 

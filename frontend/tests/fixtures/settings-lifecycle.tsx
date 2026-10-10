@@ -180,7 +180,7 @@ export async function settingsLifecycleExercise() {
   const admittedOnKeyDown = keyboardHandler(admittedNavButton)
   const closedDialog = document.createElement("div")
   closedDialog.setAttribute("role", "dialog")
-  closedDialog.setAttribute("data-closed", "true")
+  closedDialog.setAttribute("data-closed", "")
   document.body.append(closedDialog)
   prevented = false
   flushSync(() =>
@@ -193,6 +193,28 @@ export async function settingsLifecycleExercise() {
   )
   const hiddenDialogAdmitted = prevented
   closedDialog.remove()
+
+  // Guard test: Descendant inside closed ancestor with empty data-closed marker admits liveness
+  await settle()
+  const descendantNavButton = required(element.querySelector('button[role="tab"]'))
+  const descendantOnKeyDown = keyboardHandler(descendantNavButton)
+  const closedAncestor = document.createElement("div")
+  closedAncestor.setAttribute("data-closed", "")
+  const nestedDialog = document.createElement("div")
+  nestedDialog.setAttribute("role", "dialog")
+  closedAncestor.append(nestedDialog)
+  document.body.append(closedAncestor)
+  prevented = false
+  flushSync(() =>
+    descendantOnKeyDown(
+      createCurrentKeyEvent({
+        currentTarget: descendantNavButton,
+        target: descendantNavButton,
+      }),
+    ),
+  )
+  const emptyMarkerDescendantAdmitted = prevented
+  closedAncestor.remove()
 
   // Guard test: Retained roving handler refuses after source replacement
   await settle()
@@ -237,6 +259,7 @@ export async function settingsLifecycleExercise() {
     competingPopupIgnored,
     competingMenuIgnored,
     hiddenDialogAdmitted,
+    emptyMarkerDescendantAdmitted,
     competingPopupRecovered,
     retainedRovingRetired,
     rootDetachedIgnored,

@@ -186,17 +186,21 @@ export function hasVisibleCompetingOverlay(): boolean {
   )
 
   for (const el of candidates) {
-    // 1. If explicitly hidden by standard attribute
-    if (el.hasAttribute("hidden")) continue
+    // 1. If explicitly hidden or inert by standard attribute
+    if (el.hasAttribute("hidden") || el.hasAttribute("inert")) continue
     if (el.getAttribute("aria-hidden") === "true") continue
 
-    // 2. If data attributes indicate closed or ending state
-    if (el.getAttribute("data-closed") === "true" || el.getAttribute("data-closed") === "") continue
+    // 2. If data attributes indicate closed or ending state (attribute presence matches empty markers)
+    if (el.hasAttribute("data-closed")) continue
     if (el.getAttribute("data-state") === "closed") continue
-    if (el.getAttribute("data-ending") === "true" || el.getAttribute("data-ending") === "") continue
+    if (el.hasAttribute("data-ending")) continue
 
-    // 3. Ancestor hidden or closed check
-    if (el.closest("[hidden], [aria-hidden='true'], [data-closed='true'], [data-state='closed']")) {
+    // 3. Ancestor hidden, inert, or closed check (attribute presence matches empty markers)
+    if (
+      el.closest(
+        "[hidden], [inert], [aria-hidden='true'], [data-closed], [data-state='closed'], [data-ending]",
+      )
+    ) {
       continue
     }
 
