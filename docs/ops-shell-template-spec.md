@@ -72,8 +72,12 @@ merged as `37fcb187ffcfe886b39e941fd16e0f3fe1d0d17d` from reviewed
 at `1dc83f98098a93ecf300dc5b3999bfe542efc7a7` (02:41:10Z), from reviewed
 `62c066cfe6a6547969e85745d969929240e3dcb6`, tree
 `d1e6241b9fb735ccce3b627bf913515574e72c61` (GitHub state re-read by this task).
-[Parallax chrome PR 5](https://github.com/hollis-labs/parallax/pull/5) was open at
-`8a8c8c4cd3f286148fbad7b2db5f0678a41febb1`. Re-derive delivery before adoption.
+[Parallax chrome PR 5](https://github.com/hollis-labs/parallax/pull/5) subsequently
+merged as `706e90b3bfb7f9df2a329217ca45d0eb01403511` from final head
+`efeed11c0bef85a8af86cd3ded85ad5f4643ed33` (GitHub state re-read by this task).
+The original API receipt named `8a8c8c4cd3f286148fbad7b2db5f0678a41febb1`;
+that is historical consumer evidence, not the final head. Combined navigation
+re-consumption remains a separate author receipt. Re-derive before adoption.
 
 * -0035: public-root `InspectionDialog` / `InspectionDialogProps`, separate from
   legacy DetailDialog. Controlled `open`, `onOpenChange`, `title`, `meta`,
@@ -358,9 +362,12 @@ Rendering a fixture “accepted” must never claim real delivery.
 
 ## 5. Reuse boundaries, tokens and themes
 
-Extract generic geometry/filter registry/table projection orchestration into
-existing design-components/kit-dashboard only after owner review and -0074
-proof. Torque adapter retains status vocabulary, source graph/cutoff, filters,
+After owner review of this -0070 spec/anatomy, implement -0072/-0073 candidates
+in existing design-components/kit-dashboard with appropriate primitive and
+second-consumer proof. Then -0074 consumes those released or exact local
+candidates for the integrated example and owner review before release/adoption
+acceptance as applicable. -0074 depends on -0072/-0073; it is not a prerequisite
+for its own dependencies. Torque adapter retains status vocabulary, source graph/cutoff, filters,
 menus, task/run links and business intent. Reuse dense visual anatomy and
 rowInteractiveProps semantics; do not move Torque's domain CSS/models upstream.
 Host adapters belong to Chimera; thin recipe wiring to Folio; transport stays
@@ -455,9 +462,11 @@ reference **2026-10-04T14:30:00Z**, no fixture network or `Date.now()`, no real
 customer/trackers/model CLI. Synthetic IME diagnostics must be labelled; native
 OS IME and physical touch remain separate until exercised.
 
-Required review sequence: exact proposal technical review → owner review in
-Parallax (record concrete defaults accepted/changed) → extraction/API work with
-actual -0035/-0036 delivery receipts → released consumption/adoption proofs.
+Required review sequence: exact proposal technical review → owner review of
+-0070 spec/anatomy in Parallax (record concrete defaults accepted/changed) →
+-0072/-0073 candidate implementation with actual -0035/-0036 delivery receipts
+and primitive/second-consumer proof → -0074 integrated example consuming those
+candidates, with owner review → release/adoption acceptance proofs as applicable.
 No npm publishing/tags/version/credentials/deploy, or implementation of
 -0069/-0071/-0075/-0078/-0079/-0080/-0082 under this task. Any merge of these docs
 does not authorize those actions or satisfy downstream owner acceptance.
