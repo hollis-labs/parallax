@@ -184,9 +184,7 @@ for (const boundary of ["replace", "access", "layer", "remount"] as const) {
     ).toBe(true)
     await page.evaluate((key) => window.opsShell[key]?.(), boundary)
     await expect
-      .poll(() =>
-        page.evaluate(() => window.opsShell.asideHandles.at(-1) !== window.heldAside),
-      )
+      .poll(() => page.evaluate(() => window.opsShell.asideHandles.at(-1) !== window.heldAside))
       .toBe(true)
     expect(
       await page.evaluate(() =>
