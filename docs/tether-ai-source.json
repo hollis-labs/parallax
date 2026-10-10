@@ -1,0 +1,80 @@
+{
+  "task": "CW-20261010-0100",
+  "workstream": "parallax-tether-ai",
+  "tether_specimen": {
+    "origin": "https://github.com/hollis-labs/tether.git",
+    "commit": "3e9e7a42783d4e3df52db25e50e40e05bff4c8c4",
+    "file": "apps/sysop/frontend/src/pages/ai.tsx",
+    "sha256": "7a241ec4ab8e286ece847c29ccb62e9fdfeb0cccfb991df3fd3ca5e188219636",
+    "loc": 1725
+  },
+  "sources": {
+    "docs/export-inventory.json": "f631bd405b6d16b185273443d8d946bbd811468da2fb9f5205b1a2a892db1d58",
+    "docs/tether-ai-dec073.md": "54538ecbb8a8c2ec56fbd307ffdf228579ebf125c09ff4164d43b083b6b6a2b9",
+    "docs/tether-ai-replay.py": "5c4b009aa80622aefceb19af629bcb58d3c849c436191f3165bf81dd528dfa3a",
+    "frontend/playwright.tether-ai.config.ts": "d7dea188fa517e8377ae0b7a85d4b888409b8ec6b2212c17a56eed949ee549b2",
+    "frontend/src/examples/tether-ai/AIGateway.stories.tsx": "35beb566ba5f9b9b85b130da8c26bc56e85fb8b8019a67ab24691f0d522e4305",
+    "frontend/src/examples/tether-ai/Standalone.tsx": "7d2dcf6a875a30f95c435eff369ea9927980ad6af27800aeaec5f34a12bc33d1",
+    "frontend/src/examples/tether-ai/main.tsx": "1961f4e8466316ae96967907700afb124e47c1c31a83490841f554bfab8ddbda",
+    "frontend/src/examples/tether-ai/model.ts": "5f6abb93b1c0e093a2af152f95c57da2e6471b8e131a077994bcd6b21fb859d6",
+    "frontend/src/main.tsx": "339ba176c5a76170e671dcdbe29591c028871c89f9cd0193fd04a4c629519c62",
+    "frontend/src/tether-sysop/AIGatewayPage.tsx": "d4fe3babade9d96b4db85a606c3d15b0a7446d37a527995f6c4f82835a20163c",
+    "frontend/src/tether-sysop/tether-ai.css": "c900d76fb3b6c907fea70969645fcb079126845eb25eb10e9a24ce0cff60615e",
+    "frontend/tests/fixtures/ai-lifecycle.tsx": "3b319c480191556065cd9ef199b23f58b24c082f4e6dbe824cb02ad53422c940",
+    "frontend/tests/tether-ai.spec.ts": "89927c9674bea6a7690b95d0ceabc203d0096f3780117c69fc0fe2e7c51884b8",
+    "frontend/tether-ai.html": "e38ce021f08ce6e1755f46624abe25119a4583f009f5b76091cb370bf874596a"
+  },
+  "installed_pins": {
+    "package_json_sha256": "b9ea2f314a5355beb2178653fa803bbd455b923ebe04361a8933773de32f5b9d",
+    "package_lock_sha256": "b201a8294c1bb9e8b412aef544d9a0a2d4b895b3884476aa795e6988ee3c82b3",
+    "file_archives": {
+      "@hollis-labs/design-app-runtime": {
+        "specifier": "file:../third_party/hollis-labs-design-app-runtime-0.4.0-cw0074-0652600-sealed.tgz",
+        "sha256": "2dd65c8a0e5cbc2a40f39e5f31e6311a8cfcf1cd5010cfc74afb58833ab95136"
+      },
+      "@hollis-labs/design-components": {
+        "specifier": "file:../third_party/hollis-labs-design-components-0.4.0-cw0091-candidate.tgz",
+        "sha256": "69bf5e74eb0aadc2d64e38590df78e4cf5f435277fb3e30faa4078da77fd4a16"
+      },
+      "@hollis-labs/kit-account": {
+        "specifier": "file:../third_party/hollis-labs-kit-account-0.0.0.tgz",
+        "sha256": "3c69fd3041bb4a2d040d8b5d46ba9d5a26028388ee35030ff6d93deabc951e7f"
+      },
+      "@hollis-labs/kit-code": {
+        "specifier": "file:../third_party/hollis-labs-kit-code-0.0.0.tgz",
+        "sha256": "4a6ae51c227993c385063451b0ce3d48805b3b5d2b816f06614f5f1656dfd845"
+      },
+      "@hollis-labs/kit-dashboard": {
+        "specifier": "file:../third_party/hollis-labs-kit-dashboard-0.4.0-cw0073-final-candidate.tgz",
+        "sha256": "894defd92a6378f20ac65a8d329588d2972d3c6f00b5c1a57b58616c629f0a64"
+      },
+      "@hollis-labs/kit-voice": {
+        "specifier": "file:../third_party/hollis-labs-kit-voice-0.0.0.tgz",
+        "sha256": "e70d3086775f337c3badc95c40e41d1300d826d62f0edb083952e250d1dd827a"
+      },
+      "@hollis-labs/kit-workflow": {
+        "specifier": "file:../third_party/hollis-labs-kit-workflow-0.0.0.tgz",
+        "sha256": "0989b3617dbedc4d32071462b130c490a8cfa309be4c6a8308628ec665fcf8e9"
+      },
+      "@hollis-labs/plugin-host-ui": {
+        "specifier": "file:../third_party/hollis-labs-plugin-host-ui-0.1.0.tgz",
+        "sha256": "360c4bd74df7369d57af74151bba0ff0739b31b5c67499f1c01c15cefb4b24b0"
+      }
+    }
+  },
+  "tooling": {
+    "fonts_conf_sha256": "3efc059e2655b07c66d465e5dc3014ec9b617f2355cf5f719a79fd4d78b087c7",
+    "chromium_headless_shell_sha256": "ded93a9c9a53a1ae040f08124badcca95c938e9d5015ff340c3b5538c41bf39e"
+  },
+  "assigned_ports": {
+    "go": 19021,
+    "storybook": 19022,
+    "playwright_vite": 19025
+  },
+  "routing_alignment": {
+    "dec073_route": "/?example=tether&screen=ai",
+    "standalone_route": "/?example=tether-ai"
+  },
+  "proof_location": ".scratch/evidence/CW-20261010-0100",
+  "ownerVisualApproval": false
+}

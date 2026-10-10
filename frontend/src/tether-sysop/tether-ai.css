@@ -1,0 +1,247 @@
+.tether-ai-root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+}
+
+.tether-ai-header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg);
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+  gap: calc(var(--spacing) * 3);
+  flex-wrap: wrap;
+}
+
+.tether-ai-header-left {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.tether-ai-caption {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-fg-muted);
+  margin: 0;
+}
+
+.tether-ai-catalog-root {
+  margin-top: calc(var(--spacing) * 0.5);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-fg-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tether-ai-links {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 1.5);
+  flex-wrap: wrap;
+}
+
+.tether-id-link {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 1);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  color: var(--color-fg-muted);
+  text-decoration: none;
+  background: var(--color-surface);
+  transition:
+    color 0.15s,
+    border-color 0.15s,
+    background-color 0.15s;
+}
+
+.tether-id-link:hover,
+.tether-id-link:focus-visible {
+  color: var(--color-fg);
+  border-color: var(--color-border);
+  background: var(--color-surface-hover);
+  outline: none;
+}
+
+.tether-ai-header-right {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+  flex-wrap: wrap;
+}
+
+.tether-ai-filters {
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg);
+  padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 4);
+  font-size: 11px;
+}
+
+.tether-ai-filters-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--spacing) * 2);
+}
+
+.tether-ai-specimen-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 1);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-warning);
+  color: var(--color-warning);
+  background: var(--color-surface);
+}
+
+.tether-metric-grid {
+  display: grid;
+  gap: calc(var(--spacing) * 3);
+}
+
+.tether-metric-card {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  padding: calc(var(--spacing) * 3);
+}
+
+.tether-metric-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-fg-muted);
+}
+
+.tether-metric-value {
+  margin-top: calc(var(--spacing) * 1);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-fg);
+}
+
+.tether-metric-sub {
+  margin-top: calc(var(--spacing) * 1);
+  font-size: 11px;
+  color: var(--color-fg-secondary);
+}
+
+.tether-section-box {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  padding: calc(var(--spacing) * 4);
+}
+
+.tether-section-title {
+  margin-bottom: calc(var(--spacing) * 3);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-fg);
+}
+
+.tether-input {
+  height: 2rem;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  padding: 0 calc(var(--spacing) * 2);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-fg);
+  border-radius: var(--radius-sm);
+  outline: none;
+}
+
+.tether-input:focus {
+  border-color: var(--color-border);
+  outline: 1px solid var(--color-ring);
+}
+
+.tether-textarea {
+  min-height: 5rem;
+  width: 100%;
+  resize: vertical;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 2);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-fg);
+  border-radius: var(--radius-sm);
+  outline: none;
+}
+
+.tether-textarea:focus {
+  border-color: var(--color-border);
+  outline: 1px solid var(--color-ring);
+}
+
+.tether-select {
+  height: 2rem;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  padding: 0 calc(var(--spacing) * 2);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-fg);
+  border-radius: var(--radius-sm);
+  outline: none;
+}
+
+.tether-select:focus {
+  border-color: var(--color-border);
+  outline: 1px solid var(--color-ring);
+}
+
+.tether-breakdown-table-box {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.tether-breakdown-title {
+  border-bottom: 1px solid var(--color-border);
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-fg-muted);
+}
+
+.tether-empty-box {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--spacing) * 6);
+  background: var(--color-bg);
+}
