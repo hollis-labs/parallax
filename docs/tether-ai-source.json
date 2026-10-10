@@ -21,7 +21,7 @@
     "frontend/src/tether-sysop/AIGatewayPage.tsx": "d4fe3babade9d96b4db85a606c3d15b0a7446d37a527995f6c4f82835a20163c",
     "frontend/src/tether-sysop/tether-ai.css": "c900d76fb3b6c907fea70969645fcb079126845eb25eb10e9a24ce0cff60615e",
     "frontend/tests/fixtures/ai-lifecycle.tsx": "3b319c480191556065cd9ef199b23f58b24c082f4e6dbe824cb02ad53422c940",
-    "frontend/tests/tether-ai.spec.ts": "9ab5dd758a6427ebb87402557c672f2da31425d473b4fc2fefe73e3a6e9aba35",
+    "frontend/tests/tether-ai.spec.ts": "89927c9674bea6a7690b95d0ceabc203d0096f3780117c69fc0fe2e7c51884b8",
     "frontend/tether-ai.html": "e38ce021f08ce6e1755f46624abe25119a4583f009f5b76091cb370bf874596a"
   },
   "installed_pins": {

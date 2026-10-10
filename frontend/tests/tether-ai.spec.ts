@@ -925,7 +925,11 @@ test.describe("Tether Sysop AI Gateway Recreation", () => {
   }) => {
     const sourceBase =
       process.env.TETHER_AI_SOURCE_URL ||
-      (baseURL?.includes(":19021") ? "http://127.0.0.1:19025" : baseURL || "http://127.0.0.1:19025")
+      (baseURL?.includes(":18541")
+        ? "http://127.0.0.1:18545"
+        : baseURL?.includes(":19021")
+          ? "http://127.0.0.1:19025"
+          : baseURL || "http://127.0.0.1:19025")
     await page.setViewportSize({ width: 1280, height: 800 })
     await page.goto(`${sourceBase}/?example=tether&screen=ai`)
     await expect(page.locator("header.tether-ai-header")).toBeVisible()
