@@ -312,6 +312,7 @@
     },
     "importEvidence": [
       "frontend/src/examples/messaging/MessagingExample.tsx",
+      "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/examples/torque/TaskInspection.tsx",
       "frontend/src/layouts/AsideConsumers.stories.tsx",
       "frontend/src/operations-list-proof/Proof.tsx"
@@ -600,6 +601,7 @@
       "frontend/src/examples/administration/AdministrationExample.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
+      "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/examples/workspace/WorkspaceExample.tsx",
       "frontend/src/layouts/AppShellAside.stories.tsx",
@@ -705,6 +707,7 @@
       "frontend/src/examples/administration/AdministrationExample.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
+      "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/examples/workspace/WorkspaceExample.tsx",
       "frontend/src/layouts/Comparison.tsx",
@@ -1417,6 +1420,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/layouts/Comparison.tsx",
       "frontend/src/operations-list-proof/Proof.tsx",
       "frontend/src/run-explorer/Explorer.tsx"
@@ -2383,6 +2387,7 @@
       "frontend/src/examples/administration/AdministrationExample.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
+      "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/examples/reader/ReaderExample.tsx",
       "frontend/src/examples/reader/ReaderInlineActions.tsx",
       "frontend/src/examples/reader/ReaderVisual.tsx",
@@ -6386,24 +6391,30 @@
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "partial",
-    "reason": "Exact local CW-20261010-0073 candidate, actual Torque modal and proposed Run Explorer inline adapters. Native bounded contract proof; independent manager review and registry release are separate.",
+    "reason": "Exact local CW-20261010-0073 candidate, actual Torque modal and proposed Run Explorer inline adapters. Native bounded contract proof; independent manager review and registry release are separate. CW-20261010-0074 composes one AppShell, fixture chat and generic Run Explorer projection with inline/modal review modes.",
     "nextAction": "Review exact candidate source and installed proof; promote only within reviewed bounded contract, never claim existing Run Explorer inline parity or registry publication.",
     "evidence": {
       "pages": [
-        "frontend/src/operations-list-proof/Proof.tsx"
+        "frontend/src/operations-list-proof/Proof.tsx",
+        "frontend/src/examples/ops-shell/OpsShellExample.tsx"
       ],
       "stories": [
-        "frontend/src/operations-list-proof/OperationsList.stories.tsx"
+        "frontend/src/operations-list-proof/OperationsList.stories.tsx",
+        "frontend/src/examples/ops-shell/OpsShell.stories.tsx"
       ],
       "storyIds": [
         "operations-generic-list-candidate--torque-modal",
-        "operations-generic-list-candidate--run-evidence-inline"
+        "operations-generic-list-candidate--run-evidence-inline",
+        "templates-operations-shell--run-explorer-inline",
+        "templates-operations-shell--run-explorer-modal"
       ],
       "checks": [
-        "frontend/tests/operations-list-candidate.spec.ts"
+        "frontend/tests/operations-list-candidate.spec.ts",
+        "frontend/tests/ops-shell.spec.ts"
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/operations-list-proof/Proof.tsx"
     ]
   },
@@ -6486,6 +6497,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/operations-list-proof/Proof.tsx"
     ]
   },
@@ -7741,6 +7753,7 @@
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
+      "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/layouts/AsideConsumers.stories.tsx"
     ]
   },
@@ -7821,6 +7834,7 @@
       "frontend/src/communications/Chat.tsx",
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
+      "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/layouts/AsideConsumers.stories.tsx"
     ]
   },
@@ -8968,6 +8982,7 @@
       "frontend/src/communications/Chat.tsx",
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
+      "frontend/src/examples/ops-shell/model.ts",
       "frontend/src/layouts/AsideConsumers.stories.tsx"
     ]
   },
@@ -24807,6 +24822,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/layouts/AppShellAside.stories.tsx",
       "frontend/src/layouts/AsideConsumers.stories.tsx"
     ]
@@ -24843,6 +24859,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/layouts/AppShellAside.stories.tsx",
       "frontend/src/layouts/AsideConsumers.stories.tsx"
     ]
@@ -24940,6 +24957,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/layouts/AppShellAside.stories.tsx",
       "frontend/src/layouts/AsideConsumers.stories.tsx"
     ]
