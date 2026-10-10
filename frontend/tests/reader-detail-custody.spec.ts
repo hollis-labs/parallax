@@ -229,14 +229,27 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
     // Assert once-fulfilled opening 1 resolver is permanently dead (returns false)
     expect(await page.evaluate(() => window.heldFinalFocus?.())).toBe(false)
 
-    // 2. Reopen dialog on same source (opening 2)
+    // 2. Reopen dialog on same source (opening 2, C)
     await zoomTrigger.click()
     await expect(dialog).toBeVisible()
+    const opening2Ticket = await page.evaluate(() => window.readerDialog?.activeTicket())
+    expect(opening2Ticket).toBeTruthy()
 
     // Assert held resolver from opening 1 STILL returns false and does NOT revive on same-source reopen
     expect(await page.evaluate(() => window.heldFinalFocus?.())).toBe(false)
 
+    // Assert C remains live and was NOT cancelled by invoking the stale resolver
+    expect(await page.evaluate(() => window.readerDialog?.activeTicket())).toBe(opening2Ticket)
+
+    // Fresh ordinary close of C still restores focus
+    await page.keyboard.press("Escape")
+    await expect(dialog).toBeHidden()
+    await expect(zoomTrigger).toBeFocused()
+
     // 3. Newer plain foreground owner active during close
+    await zoomTrigger.click()
+    await expect(dialog).toBeVisible()
+
     await page.evaluate(() => {
       const ext = document.createElement("input")
       ext.id = "plain-ext-owner"
@@ -276,6 +289,105 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
     await page.locator("#competing-modal").evaluate((el) => el.remove())
     await page.keyboard.press("Escape")
     await expect(dialog).toBeHidden()
+  })
+
+  test("MediaDialog retires across source transition and React Activity hide/show, refuses revival, and supports fresh native-close positive", async ({
+    page,
+  }) => {
+    await page.goto("/reader-lifecycle.html")
+    await expect(page.getByTestId("reader-detail-page")).toBeVisible()
+    await expect(page.getByTestId("current-fragment-id")).toHaveText("FRAG-002")
+
+    const zoomTrigger2 = page.getByRole("button", { name: /^View larger image/ })
+    const dialog = page.locator("[data-reader-dialog]")
+
+    // 1. Source transition: Open on FRAG-002
+    await zoomTrigger2.click()
+    await expect(dialog).toBeVisible()
+
+    await page.evaluate(() => {
+      window.heldSourceResolver = window.readerDialog?.finalFocus
+    })
+
+    // Switch source while dialog was opened
+    await page.evaluate(() => {
+      const btn = Array.from(document.querySelectorAll("button")).find((b) =>
+        b.textContent?.includes("Toggle fixture source"),
+      )
+      btn?.click()
+    })
+    await expect(page.getByTestId("current-fragment-id")).toHaveText("FRAG-003")
+
+    // Stale resolver from FRAG-002 must refuse on FRAG-003
+    expect(await page.evaluate(() => window.heldSourceResolver?.())).toBe(false)
+
+    // Open fresh dialog on FRAG-003 (gallery renderer)
+    const zoomTrigger3 = page.getByRole("button", { name: /View gallery|Open gallery/ })
+    await zoomTrigger3.click()
+    await expect(dialog).toBeVisible()
+    const frag3Ticket = await page.evaluate(() => window.readerDialog?.activeTicket())
+    expect(frag3Ticket).toBeTruthy()
+
+    // Old FRAG-002 resolver still refuses and does NOT cancel FRAG-003
+    expect(await page.evaluate(() => window.heldSourceResolver?.())).toBe(false)
+    expect(await page.evaluate(() => window.readerDialog?.activeTicket())).toBe(frag3Ticket)
+
+    // Fresh native close on FRAG-003 restores focus
+    await page.keyboard.press("Escape")
+    await expect(dialog).toBeHidden()
+    await expect(zoomTrigger3).toBeFocused()
+
+    // Switch back to FRAG-002
+    await page.evaluate(() => {
+      const btn = Array.from(document.querySelectorAll("button")).find((b) =>
+        b.textContent?.includes("Toggle fixture source"),
+      )
+      btn?.click()
+    })
+    await expect(page.getByTestId("current-fragment-id")).toHaveText("FRAG-002")
+
+    // 2. React Activity hide/show: Open on FRAG-002
+    await zoomTrigger2.click()
+    await expect(dialog).toBeVisible()
+
+    await page.evaluate(() => {
+      window.heldActivityResolver = window.readerDialog?.finalFocus
+    })
+
+    // Toggle Activity to hidden
+    await page.evaluate(() => {
+      const btn = Array.from(document.querySelectorAll("button")).find((b) =>
+        b.textContent?.includes("Toggle fixture Activity"),
+      )
+      btn?.click()
+    })
+
+    // Stale resolver while Activity is hidden must refuse
+    expect(await page.evaluate(() => window.heldActivityResolver?.())).toBe(false)
+
+    // Toggle Activity back to visible
+    await page.evaluate(() => {
+      const btn = Array.from(document.querySelectorAll("button")).find((b) =>
+        b.textContent?.includes("Toggle fixture Activity"),
+      )
+      btn?.click()
+    })
+
+    // Non-revival: Stale resolver still returns false after show
+    expect(await page.evaluate(() => window.heldActivityResolver?.())).toBe(false)
+
+    // Close the retired dialog that was open prior to Activity hide
+    await page.keyboard.press("Escape")
+    await expect(dialog).toBeHidden()
+
+    // Fresh dialog opening on restored Activity works
+    await zoomTrigger2.click()
+    await expect(dialog).toBeVisible()
+
+    // Fresh native close restores focus
+    await page.keyboard.press("Escape")
+    await expect(dialog).toBeHidden()
+    await expect(zoomTrigger2).toBeFocused()
   })
 
   test("window ArrowLeft/ArrowRight record navigation enforces bounds, IME, modifiers, and editable target vetoes", async ({

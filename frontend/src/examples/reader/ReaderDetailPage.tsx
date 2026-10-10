@@ -197,57 +197,23 @@ export function ReaderDetailPage({
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return
-    const token = committedFrameRef.current
-    if (!token) return
-
-    function isCommittedFrameLive(targetPopup?: HTMLElement | null): boolean {
-      if (!token.live || committedFrameRef.current !== token) return false
-      if (!shortcutFrame.isLive()) return false
-      if (!rootRef.current?.isConnected || !visible(rootRef.current)) return false
-      if (targetPopup) {
-        if (!currentLayer(targetPopup)) return false
-      } else {
-        if (!currentLayer(rootRef.current)) return false
-      }
-      return true
-    }
-
-    const boundBack = () => {
-      if (!isCommittedFrameLive()) return false
-      onBack()
-      return true
-    }
-
-    const boundRefresh = () => {
-      if (!isCommittedFrameLive() || !onRefresh) return false
-      onRefresh()
-      return true
-    }
-
-    const boundPrevious = () => {
-      if (!isCommittedFrameLive() || !navigation.availability.previous) return false
-      navigation.navigate(-1)
-      return true
-    }
-
-    const boundNext = () => {
-      if (!isCommittedFrameLive() || !navigation.availability.next) return false
-      navigation.navigate(1)
-      return true
-    }
-
     window.readerDetail = {
-      handleBack: boundBack,
-      handleRefresh: boundRefresh,
-      handlePrevious: boundPrevious,
-      handleNext: boundNext,
-      isAdmitted: (targetPopup) => isCommittedFrameLive(targetPopup),
+      handleBack,
+      handleRefresh,
+      handlePrevious,
+      handleNext,
+      isAdmitted: (targetPopup) => isAdmitted(targetPopup),
       fresh: {
-        Back: boundBack,
-        Refresh: boundRefresh,
-        Previous: boundPrevious,
-        Next: boundNext,
+        Back: handleBack,
+        Refresh: handleRefresh,
+        Previous: handlePrevious,
+        Next: handleNext,
       },
+    }
+    return () => {
+      if (window.readerDetail?.handleBack === handleBack) {
+        window.readerDetail = undefined
+      }
     }
   })
 

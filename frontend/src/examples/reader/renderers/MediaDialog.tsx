@@ -57,18 +57,17 @@ export function MediaDialog({
 }: MediaDialogProps) {
   const dialogRef = useRef<HTMLDivElement>(null)
   const currentActivationRef = useRef<DialogActivation | null>(null)
+  const currentResolverRef = useRef<(() => HTMLElement | false) | null>(null)
 
   const resolveFinalFocus = (boundActivation: DialogActivation | null): HTMLElement | false => {
     if (!boundActivation || !boundActivation.alive) {
       return false
     }
-    if (currentActivationRef.current !== boundActivation) {
-      return false
-    }
-    // Fulfill and permanently retire this activation
+    // Fulfill and permanently retire ONLY this specific bound activation
     boundActivation.alive = false
     if (currentActivationRef.current === boundActivation) {
       currentActivationRef.current = null
+      currentResolverRef.current = null
     }
 
     if (sourceGeneration !== undefined && boundActivation.sourceGeneration !== sourceGeneration) {
@@ -122,25 +121,34 @@ export function MediaDialog({
         alive: true,
       }
       currentActivationRef.current = activation
+      const openingResolver = () => resolveFinalFocus(activation)
+      currentResolverRef.current = openingResolver
 
       if (typeof window !== "undefined") {
         window.readerDialog = {
-          finalFocus: () => resolveFinalFocus(activation),
+          finalFocus: openingResolver,
           activeTicket: () => (activation.alive ? activation.ticket : null),
         }
       }
     }
   }, [open, sourceGeneration, returnFocusRef])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     return () => {
-      // Activity retirement, root unmount, or source change
-      if (currentActivationRef.current) {
-        currentActivationRef.current.alive = false
-        currentActivationRef.current = null
-      }
-      if (typeof window !== "undefined") {
-        window.readerDialog = undefined
+      // Capture the exact source token this layout effect owns
+      const active = currentActivationRef.current
+      if (active && active.sourceGeneration === sourceGeneration) {
+        active.alive = false
+        if (currentActivationRef.current === active) {
+          currentActivationRef.current = null
+          currentResolverRef.current = null
+        }
+        if (
+          typeof window !== "undefined" &&
+          window.readerDialog?.activeTicket() === active.ticket
+        ) {
+          window.readerDialog = undefined
+        }
       }
     }
   }, [sourceGeneration])
@@ -151,10 +159,7 @@ export function MediaDialog({
         ref={dialogRef}
         data-reader-dialog
         className="max-h-[calc(100dvh-1rem)] max-w-4xl overflow-hidden p-0 motion-reduce:animate-none border border-border bg-panel shadow-xl"
-        finalFocus={() => {
-          const current = currentActivationRef.current
-          return resolveFinalFocus(current)
-        }}
+        finalFocus={() => (currentResolverRef.current ? currentResolverRef.current() : false)}
         aria-label={title}
         onClick={(event) => event.stopPropagation()}
         onKeyDown={onKeyDown}

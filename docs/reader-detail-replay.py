@@ -43,11 +43,51 @@ if (root / ".scratch/tooling").exists():
         if (root / ".scratch/tooling" / name).exists():
             tooling[name] = tree(root / ".scratch/tooling" / name)
 
-receipt = {"head": head, "mode": mode, "archive_sha256": sha(archive),
+chromium_path = Path("/home/chrispian/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome")
+node_path = Path("/home/chrispian/.local/node/bin/node")
+npm_path = Path("/home/chrispian/.local/node/bin/npm")
+fonts_path = Path("/usr/share/fonts/truetype/dejavu")
+
+prerequisites = {
+    "node": {
+        "path": str(node_path),
+        "sha256": sha(node_path) if node_path.exists() else None,
+        "attribution": "shared toolchain"
+    },
+    "npm": {
+        "path": str(npm_path),
+        "sha256": sha(npm_path) if npm_path.exists() else None,
+        "attribution": "shared toolchain"
+    },
+    "chromium": {
+        "path": str(chromium_path),
+        "sha256": sha(chromium_path) if chromium_path.exists() else None,
+        "attribution": "shared playwright cache"
+    },
+    "libs": {
+        "path": str(root / ".scratch/libs"),
+        "sha256_tree": tree(root / ".scratch/libs") if (root / ".scratch/libs").exists() else {},
+        "attribution": "retained task worktree"
+    },
+    "fonts": {
+        "path": str(fonts_path),
+        "sha256_tree": tree(fonts_path) if fonts_path.exists() else {},
+        "attribution": "system shared fonts"
+    }
+}
+
+actual_tree = subprocess.check_output(["git", "rev-parse", f"{head}^{{tree}}"], text=True).strip()
+
+receipt = {"head": head,
+           "tree": actual_tree,
+           "ancestor": "5dfcde6bef7fc96b0c0dbd1b8efbc7717eeaa4bc",
+           "mode": mode,
+           "archive_sha256": sha(archive),
            "source_files": tree(stage), "stage": str(stage),
            "lock_sha256": sha(stage / "frontend/package-lock.json"),
            "archives": tree(stage / "third_party") if (stage / "third_party").exists() else {},
            "tooling_bytes": tooling,
+           "prerequisites": prerequisites,
            "fonts_conf_sha256": sha(root / ".scratch/tooling/fonts.conf") if (root / ".scratch/tooling/fonts.conf").exists() else None}
 (stage / ".scratch/tmp").mkdir(parents=True, exist_ok=True)
 if mode == "fresh":
