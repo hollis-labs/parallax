@@ -85,6 +85,9 @@ export async function overviewLifecycleExercise() {
   // 4a. Visible competing dialog vetoes
   const competingDialog = document.createElement("div")
   competingDialog.setAttribute("role", "dialog")
+  competingDialog.style.width = "200px"
+  competingDialog.style.height = "100px"
+  competingDialog.textContent = "Modal dialog overlay"
   document.body.append(competingDialog)
   const competingDialogVeto = freshRefresh() === false
   competingDialog.remove()
@@ -92,6 +95,9 @@ export async function overviewLifecycleExercise() {
   // 4b. Visible competing menu vetoes
   const competingMenu = document.createElement("div")
   competingMenu.setAttribute("role", "menu")
+  competingMenu.style.width = "200px"
+  competingMenu.style.height = "100px"
+  competingMenu.textContent = "Visible Menu"
   document.body.append(competingMenu)
   const competingMenuVeto = freshRefresh() === false
   competingMenu.remove()
@@ -99,6 +105,9 @@ export async function overviewLifecycleExercise() {
   // 4c. Visible competing listbox vetoes
   const competingListbox = document.createElement("div")
   competingListbox.setAttribute("role", "listbox")
+  competingListbox.style.width = "200px"
+  competingListbox.style.height = "100px"
+  competingListbox.textContent = "Visible Listbox"
   document.body.append(competingListbox)
   const competingListboxVeto = freshRefresh() === false
   competingListbox.remove()
@@ -111,6 +120,8 @@ export async function overviewLifecycleExercise() {
   const closedDialog = document.createElement("div")
   closedDialog.setAttribute("role", "dialog")
   closedDialog.setAttribute("data-closed", "")
+  closedDialog.style.width = "200px"
+  closedDialog.style.height = "100px"
   document.body.append(closedDialog)
   const dataClosedAdmitted = freshRefresh() === true
   await settle()
@@ -121,6 +132,8 @@ export async function overviewLifecycleExercise() {
   closedAncestor.setAttribute("data-closed", "")
   const nestedDialog = document.createElement("div")
   nestedDialog.setAttribute("role", "dialog")
+  nestedDialog.style.width = "200px"
+  nestedDialog.style.height = "100px"
   closedAncestor.append(nestedDialog)
   document.body.append(closedAncestor)
   const dataClosedAncestorAdmitted = freshRefresh() === true
@@ -132,11 +145,49 @@ export async function overviewLifecycleExercise() {
   hiddenAncestor.setAttribute("hidden", "")
   const hiddenNestedDialog = document.createElement("div")
   hiddenNestedDialog.setAttribute("role", "dialog")
+  hiddenNestedDialog.style.width = "200px"
+  hiddenNestedDialog.style.height = "100px"
   hiddenAncestor.append(hiddenNestedDialog)
   document.body.append(hiddenAncestor)
   const hiddenAncestorAdmitted = freshRefresh() === true
   await settle()
   hiddenAncestor.remove()
+
+  // 4h. Dialog with display:none ancestor does not veto (negative visibility control)
+  const displayNoneAncestor = document.createElement("div")
+  displayNoneAncestor.style.display = "none"
+  const nestedNoneDialog = document.createElement("div")
+  nestedNoneDialog.setAttribute("role", "dialog")
+  nestedNoneDialog.style.width = "200px"
+  nestedNoneDialog.style.height = "100px"
+  displayNoneAncestor.append(nestedNoneDialog)
+  document.body.append(displayNoneAncestor)
+  const displayNoneAncestorAdmitted = freshRefresh() === true
+  await settle()
+  displayNoneAncestor.remove()
+
+  // 4i. Dialog with opacity:0 ancestor does not veto (negative visibility control)
+  const opacityZeroAncestor = document.createElement("div")
+  opacityZeroAncestor.style.opacity = "0"
+  const nestedOpacityDialog = document.createElement("div")
+  nestedOpacityDialog.setAttribute("role", "dialog")
+  nestedOpacityDialog.style.width = "200px"
+  nestedOpacityDialog.style.height = "100px"
+  opacityZeroAncestor.append(nestedOpacityDialog)
+  document.body.append(opacityZeroAncestor)
+  const opacityZeroAncestorAdmitted = freshRefresh() === true
+  await settle()
+  opacityZeroAncestor.remove()
+
+  // 4j. Dialog with 0x0 geometry does not veto (negative visibility control)
+  const zeroRectDialog = document.createElement("div")
+  zeroRectDialog.setAttribute("role", "dialog")
+  zeroRectDialog.style.width = "0px"
+  zeroRectDialog.style.height = "0px"
+  document.body.append(zeroRectDialog)
+  const zeroRectDialogAdmitted = freshRefresh() === true
+  await settle()
+  zeroRectDialog.remove()
 
   // 5. Source replacement (variant change) retirement
   const heldBeforeVariantChange = getHandlers().__tetherOverviewActiveRefreshHandler!
@@ -186,6 +237,9 @@ export async function overviewLifecycleExercise() {
   // Insert competing overlay while request is in flight
   const inFlightOverlay = document.createElement("div")
   inFlightOverlay.setAttribute("role", "dialog")
+  inFlightOverlay.style.width = "200px"
+  inFlightOverlay.style.height = "100px"
+  inFlightOverlay.textContent = "In flight overlay"
   document.body.append(inFlightOverlay)
 
   // Verify background user action is vetoed while overlay is active
@@ -221,6 +275,9 @@ export async function overviewLifecycleExercise() {
     dataClosedAdmitted,
     dataClosedAncestorAdmitted,
     hiddenAncestorAdmitted,
+    displayNoneAncestorAdmitted,
+    opacityZeroAncestorAdmitted,
+    zeroRectDialogAdmitted,
     refusedAfterVariantChange,
     freshAfterVariantChange,
     initialPendingLoading,

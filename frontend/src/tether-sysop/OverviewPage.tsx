@@ -94,20 +94,34 @@ export function isElementVisibleAndActive(el: HTMLElement): boolean {
     return false
   }
 
-  if (el.style.display === "none" || el.style.visibility === "hidden" || el.style.opacity === "0") {
-    return false
+  if (typeof window !== "undefined") {
+    let curr: HTMLElement | null = el
+    while (curr) {
+      if (
+        curr.style.display === "none" ||
+        curr.style.visibility === "hidden" ||
+        curr.style.opacity === "0"
+      ) {
+        return false
+      }
+      if (typeof window.getComputedStyle === "function") {
+        const style = window.getComputedStyle(curr)
+        if (
+          style.display === "none" ||
+          style.visibility === "hidden" ||
+          style.visibility === "collapse" ||
+          style.opacity === "0"
+        ) {
+          return false
+        }
+      }
+      curr = curr.parentElement
+    }
   }
 
-  if (typeof window !== "undefined" && typeof window.getComputedStyle === "function") {
-    const style = window.getComputedStyle(el)
-    if (
-      style.display === "none" ||
-      style.visibility === "hidden" ||
-      style.visibility === "collapse" ||
-      style.opacity === "0"
-    ) {
-      return false
-    }
+  const rect = el.getBoundingClientRect()
+  if (rect.width === 0 && rect.height === 0) {
+    return false
   }
 
   return true

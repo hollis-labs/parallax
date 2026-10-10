@@ -417,6 +417,60 @@ test.describe("Tether Sysop Overview Recreation", () => {
     expect(cb2WithHiddenAncestor).toBe(true)
     await page.evaluate(() => document.getElementById("hidden-ancestor-specimen")?.remove())
 
+    // 5e. Test display:none ancestor does NOT spuriously veto cb2 (negative visibility control):
+    await page.evaluate(() => {
+      const noneAncestor = document.createElement("div")
+      noneAncestor.setAttribute("id", "none-ancestor-specimen")
+      noneAncestor.style.display = "none"
+      const nestedDialog = document.createElement("div")
+      nestedDialog.setAttribute("role", "dialog")
+      nestedDialog.style.width = "200px"
+      nestedDialog.style.height = "100px"
+      noneAncestor.appendChild(nestedDialog)
+      document.body.appendChild(noneAncestor)
+    })
+    const cb2WithNoneAncestor = await page.evaluate(() => {
+      const w = window as unknown as { __capturedRefreshCb2?: () => boolean }
+      return typeof w.__capturedRefreshCb2 === "function" ? w.__capturedRefreshCb2() : false
+    })
+    expect(cb2WithNoneAncestor).toBe(true)
+    await page.evaluate(() => document.getElementById("none-ancestor-specimen")?.remove())
+
+    // 5f. Test opacity:0 ancestor does NOT spuriously veto cb2 (negative visibility control):
+    await page.evaluate(() => {
+      const opacAncestor = document.createElement("div")
+      opacAncestor.setAttribute("id", "opac-ancestor-specimen")
+      opacAncestor.style.opacity = "0"
+      const nestedDialog = document.createElement("div")
+      nestedDialog.setAttribute("role", "dialog")
+      nestedDialog.style.width = "200px"
+      nestedDialog.style.height = "100px"
+      opacAncestor.appendChild(nestedDialog)
+      document.body.appendChild(opacAncestor)
+    })
+    const cb2WithOpacAncestor = await page.evaluate(() => {
+      const w = window as unknown as { __capturedRefreshCb2?: () => boolean }
+      return typeof w.__capturedRefreshCb2 === "function" ? w.__capturedRefreshCb2() : false
+    })
+    expect(cb2WithOpacAncestor).toBe(true)
+    await page.evaluate(() => document.getElementById("opac-ancestor-specimen")?.remove())
+
+    // 5g. Test 0x0 geometry dialog does NOT spuriously veto cb2 (negative visibility control):
+    await page.evaluate(() => {
+      const zeroDialog = document.createElement("div")
+      zeroDialog.setAttribute("role", "dialog")
+      zeroDialog.setAttribute("id", "zero-dialog-specimen")
+      zeroDialog.style.width = "0px"
+      zeroDialog.style.height = "0px"
+      document.body.appendChild(zeroDialog)
+    })
+    const cb2WithZeroDialog = await page.evaluate(() => {
+      const w = window as unknown as { __capturedRefreshCb2?: () => boolean }
+      return typeof w.__capturedRefreshCb2 === "function" ? w.__capturedRefreshCb2() : false
+    })
+    expect(cb2WithZeroDialog).toBe(true)
+    await page.evaluate(() => document.getElementById("zero-dialog-specimen")?.remove())
+
     // 6. Test visible competing overlay veto:
     // 6a. Visible dialog veto:
     await page.evaluate(() => {
@@ -612,6 +666,9 @@ test.describe("Tether Sysop Overview Recreation", () => {
       dataClosedAdmitted: true,
       dataClosedAncestorAdmitted: true,
       hiddenAncestorAdmitted: true,
+      displayNoneAncestorAdmitted: true,
+      opacityZeroAncestorAdmitted: true,
+      zeroRectDialogAdmitted: true,
       refusedAfterVariantChange: true,
       freshAfterVariantChange: true,
       initialPendingLoading: true,
