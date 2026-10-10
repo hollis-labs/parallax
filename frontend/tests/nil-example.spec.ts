@@ -188,6 +188,23 @@ test("palette input-owned cursor, static filter geometry, no matches and foregro
   await page.getByRole("button", { name: "Quick search", exact: true }).click()
   const query = page.getByRole("combobox", { name: "Search query", exact: true })
   await expect(query).toBeFocused()
+  await page.evaluate(() => document.fonts.ready)
+  await expect
+    .poll(() =>
+      page
+        .getByRole("dialog", { name: "Search Nil", exact: true })
+        .evaluate(
+          (node) =>
+            !node.hasAttribute("data-starting-style") &&
+            !node.hasAttribute("data-ending-style") &&
+            node
+              .getAnimations({ subtree: true })
+              .every(
+                (animation) => animation.playState === "finished" || animation.playState === "idle",
+              ),
+        ),
+    )
+    .toBe(true)
   const filter = page.getByRole("radiogroup", { name: "Filter result types" }),
     before = await filter.boundingBox()
   const cursor = await query.getAttribute("aria-activedescendant")
