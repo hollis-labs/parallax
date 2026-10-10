@@ -79,7 +79,7 @@ prerequisites = {
 try:
     ancestor = subprocess.check_output(["git", "merge-base", head, "origin/main"], text=True).strip()
 except Exception:
-    ancestor = json.loads((root / "docs/reader-detail-source.json").read_text()).get("ancestor", "3198f07cd154aeefaf87a3875225c56c2f0fec3c")
+    ancestor = json.loads((root / "docs/reader-detail-source.json").read_text()).get("ancestor", "3198f07c8e88e6244fef22df8f35017983b3ce23")
 
 actual_tree = subprocess.check_output(["git", "rev-parse", f"{head}^{{tree}}"], text=True).strip()
 

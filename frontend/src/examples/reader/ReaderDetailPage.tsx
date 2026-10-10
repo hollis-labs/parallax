@@ -145,10 +145,10 @@ export function ReaderDetailPage({
   })
 
   // Monotonic ticket sequence allocated strictly on layout effect commit:
-  const committedFrameRef = useRef<{ id: number; live: boolean } | null>(null)
+  const committedFrameRef = useRef<{ id: number; live: boolean; generation: string } | null>(null)
 
   useLayoutEffect(() => {
-    const token = { id: ++nextReaderActivationTicket, live: true }
+    const token = { id: ++nextReaderActivationTicket, live: true, generation: currentGeneration }
     committedFrameRef.current = token
     return () => {
       token.live = false
@@ -160,7 +160,7 @@ export function ReaderDetailPage({
 
   function isAdmitted(targetPopup?: HTMLElement | null): boolean {
     const token = committedFrameRef.current
-    if (!token || !token.live) return false
+    if (!token || !token.live || token.generation !== currentGeneration) return false
     if (!shortcutFrame.isLive()) return false
     if (!rootRef.current?.isConnected || !visible(rootRef.current)) return false
     if (targetPopup) {
