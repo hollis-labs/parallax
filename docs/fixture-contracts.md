@@ -1,6 +1,6 @@
 # Supplied fixture families and complete examples
 
-The generated [family manifest](../frontend/src/fixtures/family-contracts.json) describes the six supplied artifacts. `make fixtures` regenerates it from the same Go generators as the JSON consumed by the app and portable stories. The Go freshness check compares artifact identity and every listed array count, then verifies validation and adapter pointers. Counts are bundled inventory, not filtered or admitted result totals.
+The generated [family manifest](../frontend/src/fixtures/family-contracts.json) describes the supplied artifacts. `make fixtures` regenerates it from the same Go generators as the JSON consumed by the app and portable stories. The Go freshness check compares artifact identity and every listed array count, then verifies validation and adapter pointers. Counts are bundled inventory, not filtered or admitted result totals.
 
 | Family | Dataset / generator | Supplied profiles | Evidence boundary |
 |---|---|---|---|
@@ -10,6 +10,7 @@ The generated [family manifest](../frontend/src/fixtures/family-contracts.json) 
 | Observations | observations/v1 / parallax/v5 | Declared five-resource review label | Bounded resource receipts at observedAt; retrospective samples at their own exact UTC timestamps |
 | Developer | developer/v1 / parallax/v6 | Declared file/graph review label | Recorded evidence at recordedAt; authored proposals remain explicitly separate |
 | Voice | voice/v1 / parallax/v7 | Declared two-clip review label | Independent synthetic-media snapshot; authored timed text is not speech transcription |
+| Tether Sysop | tether-sysop/v1 / parallax/v10 | Bundled control plane and operations dashboard | Independent full snapshot joined to operations/v2 sessions; 24h retrospective window |
 
 Every artifact supplies seed 4421 and its own fixed reference clock, 2026-10-04T14:30:00Z. Their equal clocks do not make communication, administration or voice snapshots follow an operations cutoff. The manifest records actual coverage windows where supplied, and the developer recordedAt boundary. Presentation appearances and authored specimens are not persisted historical profiles. Administration now carries additive generator metadata; its existing v1 records and business relationships are unchanged.
 
@@ -21,7 +22,7 @@ The generators' existing validators own record, foreign-key, timestamp, parent-s
 
 The actual Torque shell and the fullscreen portable Torque composition consume this definition. Routes and reset defaults derive from it. Both display original reference clock separately from projected cutoff. The actual reviewed plugin host receives the same admitted family/profile/reference/source token alongside its existing projected counts and cutoff. Native selection admission remains in the operations model and finite route adapter: excluded records are cleared; ordinary navigation retains a currently admitted selection. One `.torque-page` owns ordinary page scroll; Runs uses the released operations page body instead; navigation and record dialogs have explicit bounded owners.
 
-Torque About exposes the same six-family matrix with native relationship/coverage disclosures. These are documentation and inspectable records, with no fetching or business effects. Portable About mounts no Go API or plugin delivery.
+Torque About exposes the fixture-family matrix with native relationship/coverage disclosures. These are documentation and inspectable records, with no fetching or business effects. Portable About mounts no Go API or plugin delivery.
 
 ## Accepted whole-app consumers and remaining limits
 

@@ -1,0 +1,5883 @@
+{
+  "version": "tether-sysop/v1",
+  "generator": "parallax/v10",
+  "operationsVersion": "operations/v2",
+  "seed": 4421,
+  "clock": "2026-10-04T14:30:00Z",
+  "observedSince": "2026-10-03T14:30:00Z",
+  "overview": {
+    "sessions": {
+      "total": 8,
+      "running": 2,
+      "ended": 6,
+      "success_pct": 66,
+      "failure_pct": 33,
+      "avg_seconds": 90,
+      "recent_24h": 8,
+      "trend": [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1],
+      "by_state": [
+        {
+          "name": "done",
+          "count": 4
+        },
+        {
+          "name": "failed",
+          "count": 2
+        },
+        {
+          "name": "running",
+          "count": 2
+        }
+      ],
+      "by_provider": [
+        {
+          "name": "claude",
+          "count": 3
+        },
+        {
+          "name": "codex",
+          "count": 3
+        },
+        {
+          "name": "agy",
+          "count": 2
+        }
+      ],
+      "by_project": [
+        {
+          "name": "parallax",
+          "count": 4
+        },
+        {
+          "name": "tangent",
+          "count": 2
+        },
+        {
+          "name": "tether",
+          "count": 2
+        }
+      ]
+    },
+    "tool_calls": {
+      "total": 30,
+      "ok": 29,
+      "errors": 1,
+      "success_pct": 96,
+      "p50_ms": 210,
+      "p95_ms": 1450,
+      "avg_ms": 461,
+      "recent_1h": 2,
+      "slow_calls": 4,
+      "sessions": 8,
+      "top_tools": [
+        {
+          "name": "fixture.inspect",
+          "count": 5
+        },
+        {
+          "name": "git_status",
+          "count": 5
+        },
+        {
+          "name": "read_file",
+          "count": 5
+        },
+        {
+          "name": "replace_file_content",
+          "count": 5
+        },
+        {
+          "name": "run_command",
+          "count": 5
+        }
+      ],
+      "top_errors": [
+        {
+          "name": "run_command",
+          "count": 1
+        }
+      ],
+      "by_server": [
+        {
+          "name": "mcp-fs",
+          "count": 8
+        },
+        {
+          "name": "native",
+          "count": 8
+        },
+        {
+          "name": "mcp-eval",
+          "count": 7
+        },
+        {
+          "name": "mcp-git",
+          "count": 7
+        }
+      ],
+      "latency": [
+        {
+          "name": "10-99ms",
+          "count": 10
+        },
+        {
+          "name": "100-499ms",
+          "count": 12
+        },
+        {
+          "name": "500-999ms",
+          "count": 4
+        },
+        {
+          "name": "\u003e=1s",
+          "count": 4
+        }
+      ],
+      "trend": [2, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 2]
+    },
+    "messages": {
+      "total": 24,
+      "unread": 0,
+      "archived": 4,
+      "recent_24h": 24,
+      "by_kind": [
+        {
+          "name": "turn",
+          "count": 14
+        },
+        {
+          "name": "notice",
+          "count": 8
+        },
+        {
+          "name": "system",
+          "count": 2
+        }
+      ],
+      "by_scope": [
+        {
+          "name": "agent",
+          "count": 15
+        },
+        {
+          "name": "user",
+          "count": 6
+        },
+        {
+          "name": "group",
+          "count": 3
+        }
+      ],
+      "trend": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    },
+    "events": {
+      "total": 64,
+      "recent_1h": 22,
+      "latest_seq": 64,
+      "by_scope": [
+        {
+          "name": "agent",
+          "count": 13
+        },
+        {
+          "name": "router",
+          "count": 13
+        },
+        {
+          "name": "session",
+          "count": 13
+        },
+        {
+          "name": "system",
+          "count": 13
+        },
+        {
+          "name": "mesh",
+          "count": 12
+        }
+      ],
+      "by_kind": [
+        {
+          "name": "agent.registered",
+          "count": 4
+        },
+        {
+          "name": "catalog.reloaded",
+          "count": 4
+        },
+        {
+          "name": "route.resolved",
+          "count": 4
+        },
+        {
+          "name": "agent.heartbeat",
+          "count": 3
+        },
+        {
+          "name": "agent.skill_invoked",
+          "count": 3
+        },
+        {
+          "name": "agent.state_changed",
+          "count": 3
+        },
+        {
+          "name": "budget.evaluated",
+          "count": 3
+        },
+        {
+          "name": "cache.hit",
+          "count": 3
+        }
+      ],
+      "trend": [3, 3, 2, 3, 3, 2, 3, 2, 3, 3, 2, 3, 3, 2, 3, 2, 3, 3, 2, 3, 3, 2, 3, 3]
+    },
+    "ai": {
+      "configured_providers": 4,
+      "enabled_providers": 3,
+      "routes": 6,
+      "requests": 140,
+      "successes": 136,
+      "errors": 4,
+      "budget_rejections": 1,
+      "input_tokens": 384000,
+      "output_tokens": 96000,
+      "estimated_cost_usd": 1.84,
+      "by_provider": [
+        {
+          "name": "anthropic",
+          "count": 70
+        },
+        {
+          "name": "google",
+          "count": 45
+        },
+        {
+          "name": "openai",
+          "count": 25
+        }
+      ],
+      "by_model": [
+        {
+          "name": "claude-3-7-sonnet",
+          "count": 55
+        },
+        {
+          "name": "gemini-2.0-flash",
+          "count": 30
+        },
+        {
+          "name": "gpt-4o",
+          "count": 20
+        },
+        {
+          "name": "claude-3-5-haiku",
+          "count": 15
+        },
+        {
+          "name": "gemini-2.5-pro",
+          "count": 15
+        },
+        {
+          "name": "gpt-4o-mini",
+          "count": 5
+        }
+      ],
+      "by_event_type": [
+        {
+          "name": "completion",
+          "count": 95
+        },
+        {
+          "name": "chat",
+          "count": 40
+        },
+        {
+          "name": "embeddings",
+          "count": 5
+        },
+        {
+          "name": "refusal",
+          "count": 1
+        },
+        {
+          "name": "budget_rejection",
+          "count": 1
+        }
+      ],
+      "trend": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    },
+    "catalog": {
+      "projects": 4,
+      "agents": 8,
+      "providers": 4,
+      "launches": 8
+    },
+    "health": {
+      "status": "ok",
+      "catalog_root": "/home/chrispian/.tether/catalog"
+    }
+  },
+  "overviewVariants": {
+    "blocked-health": {
+      "sessions": {
+        "total": 8,
+        "running": 2,
+        "ended": 6,
+        "success_pct": 66,
+        "failure_pct": 33,
+        "avg_seconds": 90,
+        "recent_24h": 8,
+        "trend": [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1],
+        "by_state": [
+          {
+            "name": "done",
+            "count": 4
+          },
+          {
+            "name": "failed",
+            "count": 2
+          },
+          {
+            "name": "running",
+            "count": 2
+          }
+        ],
+        "by_provider": [
+          {
+            "name": "claude",
+            "count": 3
+          },
+          {
+            "name": "codex",
+            "count": 3
+          },
+          {
+            "name": "agy",
+            "count": 2
+          }
+        ],
+        "by_project": [
+          {
+            "name": "parallax",
+            "count": 4
+          },
+          {
+            "name": "tangent",
+            "count": 2
+          },
+          {
+            "name": "tether",
+            "count": 2
+          }
+        ]
+      },
+      "tool_calls": {
+        "total": 30,
+        "ok": 29,
+        "errors": 1,
+        "success_pct": 96,
+        "p50_ms": 210,
+        "p95_ms": 1450,
+        "avg_ms": 461,
+        "recent_1h": 2,
+        "slow_calls": 4,
+        "sessions": 8,
+        "top_tools": [
+          {
+            "name": "fixture.inspect",
+            "count": 5
+          },
+          {
+            "name": "git_status",
+            "count": 5
+          },
+          {
+            "name": "read_file",
+            "count": 5
+          },
+          {
+            "name": "replace_file_content",
+            "count": 5
+          },
+          {
+            "name": "run_command",
+            "count": 5
+          }
+        ],
+        "top_errors": [
+          {
+            "name": "run_command",
+            "count": 1
+          }
+        ],
+        "by_server": [
+          {
+            "name": "mcp-fs",
+            "count": 8
+          },
+          {
+            "name": "native",
+            "count": 8
+          },
+          {
+            "name": "mcp-eval",
+            "count": 7
+          },
+          {
+            "name": "mcp-git",
+            "count": 7
+          }
+        ],
+        "latency": [
+          {
+            "name": "10-99ms",
+            "count": 10
+          },
+          {
+            "name": "100-499ms",
+            "count": 12
+          },
+          {
+            "name": "500-999ms",
+            "count": 4
+          },
+          {
+            "name": "\u003e=1s",
+            "count": 4
+          }
+        ],
+        "trend": [2, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 2]
+      },
+      "messages": {
+        "total": 24,
+        "unread": 0,
+        "archived": 4,
+        "recent_24h": 24,
+        "by_kind": [
+          {
+            "name": "turn",
+            "count": 14
+          },
+          {
+            "name": "notice",
+            "count": 8
+          },
+          {
+            "name": "system",
+            "count": 2
+          }
+        ],
+        "by_scope": [
+          {
+            "name": "agent",
+            "count": 15
+          },
+          {
+            "name": "user",
+            "count": 6
+          },
+          {
+            "name": "group",
+            "count": 3
+          }
+        ],
+        "trend": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+      },
+      "events": {
+        "total": 64,
+        "recent_1h": 22,
+        "latest_seq": 64,
+        "by_scope": [
+          {
+            "name": "agent",
+            "count": 13
+          },
+          {
+            "name": "router",
+            "count": 13
+          },
+          {
+            "name": "session",
+            "count": 13
+          },
+          {
+            "name": "system",
+            "count": 13
+          },
+          {
+            "name": "mesh",
+            "count": 12
+          }
+        ],
+        "by_kind": [
+          {
+            "name": "agent.registered",
+            "count": 4
+          },
+          {
+            "name": "catalog.reloaded",
+            "count": 4
+          },
+          {
+            "name": "route.resolved",
+            "count": 4
+          },
+          {
+            "name": "agent.heartbeat",
+            "count": 3
+          },
+          {
+            "name": "agent.skill_invoked",
+            "count": 3
+          },
+          {
+            "name": "agent.state_changed",
+            "count": 3
+          },
+          {
+            "name": "budget.evaluated",
+            "count": 3
+          },
+          {
+            "name": "cache.hit",
+            "count": 3
+          }
+        ],
+        "trend": [3, 3, 2, 3, 3, 2, 3, 2, 3, 3, 2, 3, 3, 2, 3, 2, 3, 3, 2, 3, 3, 2, 3, 3]
+      },
+      "ai": {
+        "configured_providers": 4,
+        "enabled_providers": 3,
+        "routes": 6,
+        "requests": 140,
+        "successes": 136,
+        "errors": 4,
+        "budget_rejections": 1,
+        "input_tokens": 384000,
+        "output_tokens": 96000,
+        "estimated_cost_usd": 1.84,
+        "by_provider": [
+          {
+            "name": "anthropic",
+            "count": 70
+          },
+          {
+            "name": "google",
+            "count": 45
+          },
+          {
+            "name": "openai",
+            "count": 25
+          }
+        ],
+        "by_model": [
+          {
+            "name": "claude-3-7-sonnet",
+            "count": 55
+          },
+          {
+            "name": "gemini-2.0-flash",
+            "count": 30
+          },
+          {
+            "name": "gpt-4o",
+            "count": 20
+          },
+          {
+            "name": "claude-3-5-haiku",
+            "count": 15
+          },
+          {
+            "name": "gemini-2.5-pro",
+            "count": 15
+          },
+          {
+            "name": "gpt-4o-mini",
+            "count": 5
+          }
+        ],
+        "by_event_type": [
+          {
+            "name": "completion",
+            "count": 95
+          },
+          {
+            "name": "chat",
+            "count": 40
+          },
+          {
+            "name": "embeddings",
+            "count": 5
+          },
+          {
+            "name": "refusal",
+            "count": 1
+          },
+          {
+            "name": "budget_rejection",
+            "count": 1
+          }
+        ],
+        "trend": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+      },
+      "catalog": {
+        "projects": 4,
+        "agents": 8,
+        "providers": 4,
+        "launches": 8
+      },
+      "health": {
+        "status": "blocked",
+        "catalog_root": "/home/chrispian/.tether/catalog",
+        "error": "catalog root inaccessible: permission denied /home/chrispian/.tether/catalog"
+      }
+    },
+    "combined-adverse": {
+      "sessions": {
+        "total": 8,
+        "running": 2,
+        "ended": 6,
+        "success_pct": 45,
+        "failure_pct": 55,
+        "avg_seconds": 90,
+        "recent_24h": 8,
+        "trend": [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1],
+        "by_state": [
+          {
+            "name": "done",
+            "count": 4
+          },
+          {
+            "name": "failed",
+            "count": 2
+          },
+          {
+            "name": "running",
+            "count": 2
+          }
+        ],
+        "by_provider": [
+          {
+            "name": "claude",
+            "count": 3
+          },
+          {
+            "name": "codex",
+            "count": 3
+          },
+          {
+            "name": "agy",
+            "count": 2
+          }
+        ],
+        "by_project": [
+          {
+            "name": "parallax",
+            "count": 4
+          },
+          {
+            "name": "tangent",
+            "count": 2
+          },
+          {
+            "name": "tether",
+            "count": 2
+          }
+        ]
+      },
+      "tool_calls": {
+        "total": 30,
+        "ok": 27,
+        "errors": 3,
+        "success_pct": 90,
+        "p50_ms": 210,
+        "p95_ms": 1450,
+        "avg_ms": 461,
+        "recent_1h": 2,
+        "slow_calls": 4,
+        "sessions": 8,
+        "top_tools": [
+          {
+            "name": "fixture.inspect",
+            "count": 5
+          },
+          {
+            "name": "git_status",
+            "count": 5
+          },
+          {
+            "name": "read_file",
+            "count": 5
+          },
+          {
+            "name": "replace_file_content",
+            "count": 5
+          },
+          {
+            "name": "run_command",
+            "count": 5
+          }
+        ],
+        "top_errors": [
+          {
+            "name": "run_command",
+            "count": 1
+          }
+        ],
+        "by_server": [
+          {
+            "name": "mcp-fs",
+            "count": 8
+          },
+          {
+            "name": "native",
+            "count": 8
+          },
+          {
+            "name": "mcp-eval",
+            "count": 7
+          },
+          {
+            "name": "mcp-git",
+            "count": 7
+          }
+        ],
+        "latency": [
+          {
+            "name": "10-99ms",
+            "count": 10
+          },
+          {
+            "name": "100-499ms",
+            "count": 12
+          },
+          {
+            "name": "500-999ms",
+            "count": 4
+          },
+          {
+            "name": "\u003e=1s",
+            "count": 4
+          }
+        ],
+        "trend": [2, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 2]
+      },
+      "messages": {
+        "total": 24,
+        "unread": 7,
+        "archived": 4,
+        "recent_24h": 24,
+        "by_kind": [
+          {
+            "name": "turn",
+            "count": 14
+          },
+          {
+            "name": "notice",
+            "count": 8
+          },
+          {
+            "name": "system",
+            "count": 2
+          }
+        ],
+        "by_scope": [
+          {
+            "name": "agent",
+            "count": 15
+          },
+          {
+            "name": "user",
+            "count": 6
+          },
+          {
+            "name": "group",
+            "count": 3
+          }
+        ],
+        "trend": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+      },
+      "events": {
+        "total": 64,
+        "recent_1h": 22,
+        "latest_seq": 64,
+        "by_scope": [
+          {
+            "name": "agent",
+            "count": 13
+          },
+          {
+            "name": "router",
+            "count": 13
+          },
+          {
+            "name": "session",
+            "count": 13
+          },
+          {
+            "name": "system",
+            "count": 13
+          },
+          {
+            "name": "mesh",
+            "count": 12
+          }
+        ],
+        "by_kind": [
+          {
+            "name": "agent.registered",
+            "count": 4
+          },
+          {
+            "name": "catalog.reloaded",
+            "count": 4
+          },
+          {
+            "name": "route.resolved",
+            "count": 4
+          },
+          {
+            "name": "agent.heartbeat",
+            "count": 3
+          },
+          {
+            "name": "agent.skill_invoked",
+            "count": 3
+          },
+          {
+            "name": "agent.state_changed",
+            "count": 3
+          },
+          {
+            "name": "budget.evaluated",
+            "count": 3
+          },
+          {
+            "name": "cache.hit",
+            "count": 3
+          }
+        ],
+        "trend": [3, 3, 2, 3, 3, 2, 3, 2, 3, 3, 2, 3, 3, 2, 3, 2, 3, 3, 2, 3, 3, 2, 3, 3]
+      },
+      "ai": {
+        "configured_providers": 4,
+        "enabled_providers": 3,
+        "routes": 6,
+        "requests": 140,
+        "successes": 136,
+        "errors": 4,
+        "budget_rejections": 1,
+        "input_tokens": 384000,
+        "output_tokens": 96000,
+        "estimated_cost_usd": 1.84,
+        "by_provider": [
+          {
+            "name": "anthropic",
+            "count": 70
+          },
+          {
+            "name": "google",
+            "count": 45
+          },
+          {
+            "name": "openai",
+            "count": 25
+          }
+        ],
+        "by_model": [
+          {
+            "name": "claude-3-7-sonnet",
+            "count": 55
+          },
+          {
+            "name": "gemini-2.0-flash",
+            "count": 30
+          },
+          {
+            "name": "gpt-4o",
+            "count": 20
+          },
+          {
+            "name": "claude-3-5-haiku",
+            "count": 15
+          },
+          {
+            "name": "gemini-2.5-pro",
+            "count": 15
+          },
+          {
+            "name": "gpt-4o-mini",
+            "count": 5
+          }
+        ],
+        "by_event_type": [
+          {
+            "name": "completion",
+            "count": 95
+          },
+          {
+            "name": "chat",
+            "count": 40
+          },
+          {
+            "name": "embeddings",
+            "count": 5
+          },
+          {
+            "name": "refusal",
+            "count": 1
+          },
+          {
+            "name": "budget_rejection",
+            "count": 1
+          }
+        ],
+        "trend": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+      },
+      "catalog": {
+        "projects": 4,
+        "agents": 8,
+        "providers": 4,
+        "launches": 8
+      },
+      "health": {
+        "status": "blocked",
+        "catalog_root": "/home/chrispian/.tether/catalog",
+        "error": "catalog corrupted: unexpected EOF in provider schema"
+      }
+    },
+    "degraded-reliability": {
+      "sessions": {
+        "total": 8,
+        "running": 2,
+        "ended": 6,
+        "success_pct": 45,
+        "failure_pct": 55,
+        "avg_seconds": 90,
+        "recent_24h": 8,
+        "trend": [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1],
+        "by_state": [
+          {
+            "name": "done",
+            "count": 4
+          },
+          {
+            "name": "failed",
+            "count": 2
+          },
+          {
+            "name": "running",
+            "count": 2
+          }
+        ],
+        "by_provider": [
+          {
+            "name": "claude",
+            "count": 3
+          },
+          {
+            "name": "codex",
+            "count": 3
+          },
+          {
+            "name": "agy",
+            "count": 2
+          }
+        ],
+        "by_project": [
+          {
+            "name": "parallax",
+            "count": 4
+          },
+          {
+            "name": "tangent",
+            "count": 2
+          },
+          {
+            "name": "tether",
+            "count": 2
+          }
+        ]
+      },
+      "tool_calls": {
+        "total": 30,
+        "ok": 27,
+        "errors": 3,
+        "success_pct": 90,
+        "p50_ms": 210,
+        "p95_ms": 1450,
+        "avg_ms": 461,
+        "recent_1h": 2,
+        "slow_calls": 4,
+        "sessions": 8,
+        "top_tools": [
+          {
+            "name": "fixture.inspect",
+            "count": 5
+          },
+          {
+            "name": "git_status",
+            "count": 5
+          },
+          {
+            "name": "read_file",
+            "count": 5
+          },
+          {
+            "name": "replace_file_content",
+            "count": 5
+          },
+          {
+            "name": "run_command",
+            "count": 5
+          }
+        ],
+        "top_errors": [
+          {
+            "name": "run_command",
+            "count": 1
+          }
+        ],
+        "by_server": [
+          {
+            "name": "mcp-fs",
+            "count": 8
+          },
+          {
+            "name": "native",
+            "count": 8
+          },
+          {
+            "name": "mcp-eval",
+            "count": 7
+          },
+          {
+            "name": "mcp-git",
+            "count": 7
+          }
+        ],
+        "latency": [
+          {
+            "name": "10-99ms",
+            "count": 10
+          },
+          {
+            "name": "100-499ms",
+            "count": 12
+          },
+          {
+            "name": "500-999ms",
+            "count": 4
+          },
+          {
+            "name": "\u003e=1s",
+            "count": 4
+          }
+        ],
+        "trend": [2, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 2]
+      },
+      "messages": {
+        "total": 24,
+        "unread": 7,
+        "archived": 4,
+        "recent_24h": 24,
+        "by_kind": [
+          {
+            "name": "turn",
+            "count": 14
+          },
+          {
+            "name": "notice",
+            "count": 8
+          },
+          {
+            "name": "system",
+            "count": 2
+          }
+        ],
+        "by_scope": [
+          {
+            "name": "agent",
+            "count": 15
+          },
+          {
+            "name": "user",
+            "count": 6
+          },
+          {
+            "name": "group",
+            "count": 3
+          }
+        ],
+        "trend": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+      },
+      "events": {
+        "total": 64,
+        "recent_1h": 22,
+        "latest_seq": 64,
+        "by_scope": [
+          {
+            "name": "agent",
+            "count": 13
+          },
+          {
+            "name": "router",
+            "count": 13
+          },
+          {
+            "name": "session",
+            "count": 13
+          },
+          {
+            "name": "system",
+            "count": 13
+          },
+          {
+            "name": "mesh",
+            "count": 12
+          }
+        ],
+        "by_kind": [
+          {
+            "name": "agent.registered",
+            "count": 4
+          },
+          {
+            "name": "catalog.reloaded",
+            "count": 4
+          },
+          {
+            "name": "route.resolved",
+            "count": 4
+          },
+          {
+            "name": "agent.heartbeat",
+            "count": 3
+          },
+          {
+            "name": "agent.skill_invoked",
+            "count": 3
+          },
+          {
+            "name": "agent.state_changed",
+            "count": 3
+          },
+          {
+            "name": "budget.evaluated",
+            "count": 3
+          },
+          {
+            "name": "cache.hit",
+            "count": 3
+          }
+        ],
+        "trend": [3, 3, 2, 3, 3, 2, 3, 2, 3, 3, 2, 3, 3, 2, 3, 2, 3, 3, 2, 3, 3, 2, 3, 3]
+      },
+      "ai": {
+        "configured_providers": 4,
+        "enabled_providers": 3,
+        "routes": 6,
+        "requests": 140,
+        "successes": 136,
+        "errors": 4,
+        "budget_rejections": 1,
+        "input_tokens": 384000,
+        "output_tokens": 96000,
+        "estimated_cost_usd": 1.84,
+        "by_provider": [
+          {
+            "name": "anthropic",
+            "count": 70
+          },
+          {
+            "name": "google",
+            "count": 45
+          },
+          {
+            "name": "openai",
+            "count": 25
+          }
+        ],
+        "by_model": [
+          {
+            "name": "claude-3-7-sonnet",
+            "count": 55
+          },
+          {
+            "name": "gemini-2.0-flash",
+            "count": 30
+          },
+          {
+            "name": "gpt-4o",
+            "count": 20
+          },
+          {
+            "name": "claude-3-5-haiku",
+            "count": 15
+          },
+          {
+            "name": "gemini-2.5-pro",
+            "count": 15
+          },
+          {
+            "name": "gpt-4o-mini",
+            "count": 5
+          }
+        ],
+        "by_event_type": [
+          {
+            "name": "completion",
+            "count": 95
+          },
+          {
+            "name": "chat",
+            "count": 40
+          },
+          {
+            "name": "embeddings",
+            "count": 5
+          },
+          {
+            "name": "refusal",
+            "count": 1
+          },
+          {
+            "name": "budget_rejection",
+            "count": 1
+          }
+        ],
+        "trend": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+      },
+      "catalog": {
+        "projects": 4,
+        "agents": 8,
+        "providers": 4,
+        "launches": 8
+      },
+      "health": {
+        "status": "degraded",
+        "catalog_root": "/home/chrispian/.tether/catalog",
+        "error": "proxy event error rate above threshold (10%)"
+      }
+    }
+  },
+  "ai": {
+    "settings": {
+      "config": {
+        "policy": {
+          "allow_reasoning": true,
+          "allow_tools": true,
+          "max_output_tokens": 8192,
+          "max_cost_usd": 25,
+          "usage_budget": {
+            "max_cost_usd": 10,
+            "window": "24h",
+            "scope": "session"
+          }
+        },
+        "default_provider_order": ["anthropic", "google", "openai", "local"],
+        "providers": [
+          {
+            "id": "anthropic",
+            "type": "anthropic",
+            "model": "claude-3-7-sonnet",
+            "models": ["claude-3-7-sonnet", "claude-3-5-haiku"],
+            "default_model": "claude-3-7-sonnet",
+            "secret_ref": "env://ANTHROPIC_API_KEY",
+            "enabled": true,
+            "policy": {
+              "allow_reasoning": true,
+              "allow_tools": true,
+              "max_output_tokens": 8192,
+              "max_cost_usd": 15
+            }
+          },
+          {
+            "id": "google",
+            "type": "google",
+            "model": "gemini-2.0-flash",
+            "models": ["gemini-2.0-flash", "gemini-2.5-pro"],
+            "default_model": "gemini-2.0-flash",
+            "secret_ref": "env://GEMINI_API_KEY",
+            "enabled": true,
+            "policy": {
+              "allow_reasoning": true,
+              "allow_tools": true,
+              "max_output_tokens": 8192,
+              "max_cost_usd": 10
+            }
+          },
+          {
+            "id": "openai",
+            "type": "openai",
+            "model": "gpt-4o",
+            "models": ["gpt-4o", "gpt-4o-mini"],
+            "default_model": "gpt-4o",
+            "secret_ref": "env://OPENAI_API_KEY",
+            "enabled": true,
+            "policy": {
+              "allow_reasoning": false,
+              "allow_tools": true,
+              "max_output_tokens": 4096,
+              "max_cost_usd": 10
+            }
+          },
+          {
+            "id": "local",
+            "type": "local",
+            "model": "llama3.3",
+            "models": ["llama3.3", "qwen2.5-coder"],
+            "default_model": "llama3.3",
+            "base_url": "http://localhost:11434",
+            "enabled": false,
+            "policy": {
+              "allow_reasoning": false,
+              "allow_tools": false,
+              "max_output_tokens": 4096,
+              "max_cost_usd": 0
+            }
+          }
+        ],
+        "routes": [
+          {
+            "provider": "anthropic",
+            "model": "claude-3-7-sonnet",
+            "mode": "code",
+            "intent": "primary code and reasoning",
+            "requires_reasoning": true,
+            "requires_tools": true
+          },
+          {
+            "provider": "google",
+            "model": "gemini-2.0-flash",
+            "mode": "fast",
+            "intent": "quick search and targeted edits",
+            "requires_reasoning": false,
+            "requires_tools": true
+          },
+          {
+            "provider": "openai",
+            "model": "gpt-4o",
+            "mode": "structured",
+            "intent": "schema transforms and data parsing",
+            "requires_reasoning": false,
+            "requires_tools": false
+          },
+          {
+            "provider": "google",
+            "model": "gemini-2.5-pro",
+            "mode": "pro",
+            "intent": "architecture and planning",
+            "requires_reasoning": true,
+            "requires_tools": true
+          },
+          {
+            "provider": "anthropic",
+            "model": "claude-3-5-haiku",
+            "mode": "triage",
+            "intent": "quick triage and classification",
+            "requires_reasoning": false,
+            "requires_tools": false
+          },
+          {
+            "provider": "local",
+            "model": "llama3.3",
+            "mode": "offline",
+            "intent": "airgapped processing",
+            "requires_reasoning": false,
+            "requires_tools": false
+          }
+        ]
+      },
+      "runtime": {
+        "daemon_reachable": true,
+        "providers": 4,
+        "models": 8,
+        "routes": 6
+      }
+    },
+    "runtime": {
+      "providers": [
+        {
+          "id": "anthropic",
+          "type": "anthropic",
+          "default_model": "claude-3-7-sonnet",
+          "models": ["claude-3-7-sonnet", "claude-3-5-haiku"]
+        },
+        {
+          "id": "google",
+          "type": "google",
+          "default_model": "gemini-2.0-flash",
+          "models": ["gemini-2.0-flash", "gemini-2.5-pro"]
+        },
+        {
+          "id": "openai",
+          "type": "openai",
+          "default_model": "gpt-4o",
+          "models": ["gpt-4o", "gpt-4o-mini"]
+        },
+        {
+          "id": "local",
+          "type": "local",
+          "default_model": "llama3.3",
+          "models": ["llama3.3", "qwen2.5-coder"],
+          "base_url": "http://localhost:11434"
+        }
+      ],
+      "models": [
+        {
+          "configured_provider_id": "anthropic",
+          "vendor_provider_id": "anthropic",
+          "id": "claude-3-7-sonnet",
+          "name": "Claude 3.7 Sonnet",
+          "family": "claude-3",
+          "context_window": 200000,
+          "max_output_tokens": 8192,
+          "input_modalities": ["text", "image"],
+          "output_modalities": ["text"]
+        },
+        {
+          "configured_provider_id": "anthropic",
+          "vendor_provider_id": "anthropic",
+          "id": "claude-3-5-haiku",
+          "name": "Claude 3.5 Haiku",
+          "family": "claude-3",
+          "context_window": 200000,
+          "max_output_tokens": 8192,
+          "input_modalities": ["text"],
+          "output_modalities": ["text"]
+        },
+        {
+          "configured_provider_id": "google",
+          "vendor_provider_id": "google",
+          "id": "gemini-2.0-flash",
+          "name": "Gemini 2.0 Flash",
+          "family": "gemini-2",
+          "context_window": 1000000,
+          "max_output_tokens": 8192,
+          "input_modalities": ["text", "image"],
+          "output_modalities": ["text"]
+        },
+        {
+          "configured_provider_id": "google",
+          "vendor_provider_id": "google",
+          "id": "gemini-2.5-pro",
+          "name": "Gemini 2.5 Pro",
+          "family": "gemini-2",
+          "context_window": 1000000,
+          "max_output_tokens": 8192,
+          "input_modalities": ["text", "image"],
+          "output_modalities": ["text"]
+        },
+        {
+          "configured_provider_id": "openai",
+          "vendor_provider_id": "openai",
+          "id": "gpt-4o",
+          "name": "GPT-4o",
+          "family": "gpt-4",
+          "context_window": 128000,
+          "max_output_tokens": 4096,
+          "input_modalities": ["text", "image"],
+          "output_modalities": ["text"]
+        },
+        {
+          "configured_provider_id": "openai",
+          "vendor_provider_id": "openai",
+          "id": "gpt-4o-mini",
+          "name": "GPT-4o Mini",
+          "family": "gpt-4",
+          "context_window": 128000,
+          "max_output_tokens": 4096,
+          "input_modalities": ["text"],
+          "output_modalities": ["text"]
+        },
+        {
+          "configured_provider_id": "local",
+          "vendor_provider_id": "ollama",
+          "id": "llama3.3",
+          "name": "Llama 3.3 70B",
+          "family": "llama",
+          "context_window": 128000,
+          "max_output_tokens": 4096,
+          "input_modalities": ["text"],
+          "output_modalities": ["text"]
+        },
+        {
+          "configured_provider_id": "local",
+          "vendor_provider_id": "ollama",
+          "id": "qwen2.5-coder",
+          "name": "Qwen 2.5 Coder 32B",
+          "family": "qwen",
+          "context_window": 32000,
+          "max_output_tokens": 4096,
+          "input_modalities": ["text"],
+          "output_modalities": ["text"]
+        }
+      ],
+      "routes": [
+        {
+          "provider": "anthropic",
+          "model": "claude-3-7-sonnet",
+          "mode": "code",
+          "intent": "primary code and reasoning",
+          "requires_reasoning": true,
+          "requires_tools": true,
+          "allow_reasoning": true,
+          "allow_tools": true
+        },
+        {
+          "provider": "google",
+          "model": "gemini-2.0-flash",
+          "mode": "fast",
+          "intent": "quick search and targeted edits",
+          "requires_reasoning": false,
+          "requires_tools": true,
+          "allow_tools": true
+        },
+        {
+          "provider": "openai",
+          "model": "gpt-4o",
+          "mode": "structured",
+          "intent": "schema transforms and data parsing",
+          "requires_reasoning": false,
+          "requires_tools": false,
+          "allow_tools": true
+        },
+        {
+          "provider": "google",
+          "model": "gemini-2.5-pro",
+          "mode": "pro",
+          "intent": "architecture and planning",
+          "requires_reasoning": true,
+          "requires_tools": true,
+          "allow_reasoning": true,
+          "allow_tools": true
+        },
+        {
+          "provider": "anthropic",
+          "model": "claude-3-5-haiku",
+          "mode": "triage",
+          "intent": "quick triage and classification",
+          "requires_reasoning": false,
+          "requires_tools": false,
+          "allow_tools": true
+        },
+        {
+          "provider": "local",
+          "model": "llama3.3",
+          "mode": "offline",
+          "intent": "airgapped processing",
+          "requires_reasoning": false,
+          "requires_tools": false
+        }
+      ]
+    },
+    "usage": {
+      "summary": {
+        "requests": 140,
+        "successes": 136,
+        "errors": 4,
+        "latency_ms": 620,
+        "input_tokens": 384000,
+        "output_tokens": 96000,
+        "cache_read_tokens": 150000,
+        "cache_write_tokens": 35000,
+        "reasoning_tokens": 18000,
+        "estimated_cost_usd": 1.84,
+        "by_provider": [
+          {
+            "key": "anthropic",
+            "requests": 70,
+            "successes": 68,
+            "errors": 2,
+            "latency_ms": 820,
+            "input_tokens": 220000,
+            "output_tokens": 55000,
+            "cache_read_tokens": 90000,
+            "cache_write_tokens": 20000,
+            "reasoning_tokens": 12000,
+            "estimated_cost_usd": 1.15
+          },
+          {
+            "key": "google",
+            "requests": 45,
+            "successes": 44,
+            "errors": 1,
+            "latency_ms": 410,
+            "input_tokens": 114000,
+            "output_tokens": 28000,
+            "cache_read_tokens": 45000,
+            "cache_write_tokens": 10000,
+            "reasoning_tokens": 4000,
+            "estimated_cost_usd": 0.35
+          },
+          {
+            "key": "openai",
+            "requests": 25,
+            "successes": 24,
+            "errors": 1,
+            "latency_ms": 550,
+            "input_tokens": 50000,
+            "output_tokens": 13000,
+            "cache_read_tokens": 15000,
+            "cache_write_tokens": 5000,
+            "reasoning_tokens": 2000,
+            "estimated_cost_usd": 0.34
+          }
+        ],
+        "by_model": [
+          {
+            "key": "claude-3-7-sonnet",
+            "requests": 55,
+            "successes": 54,
+            "errors": 1,
+            "latency_ms": 920,
+            "input_tokens": 180000,
+            "output_tokens": 45000,
+            "estimated_cost_usd": 0.95
+          },
+          {
+            "key": "claude-3-5-haiku",
+            "requests": 15,
+            "successes": 14,
+            "errors": 1,
+            "latency_ms": 450,
+            "input_tokens": 40000,
+            "output_tokens": 10000,
+            "estimated_cost_usd": 0.2
+          },
+          {
+            "key": "gemini-2.0-flash",
+            "requests": 30,
+            "successes": 30,
+            "errors": 0,
+            "latency_ms": 320,
+            "input_tokens": 64000,
+            "output_tokens": 16000,
+            "estimated_cost_usd": 0.12
+          },
+          {
+            "key": "gemini-2.5-pro",
+            "requests": 15,
+            "successes": 14,
+            "errors": 1,
+            "latency_ms": 590,
+            "input_tokens": 50000,
+            "output_tokens": 12000,
+            "estimated_cost_usd": 0.23
+          },
+          {
+            "key": "gpt-4o",
+            "requests": 20,
+            "successes": 19,
+            "errors": 1,
+            "latency_ms": 580,
+            "input_tokens": 42000,
+            "output_tokens": 11000,
+            "estimated_cost_usd": 0.3
+          },
+          {
+            "key": "gpt-4o-mini",
+            "requests": 5,
+            "successes": 5,
+            "errors": 0,
+            "latency_ms": 430,
+            "input_tokens": 8000,
+            "output_tokens": 2000,
+            "estimated_cost_usd": 0.04
+          }
+        ],
+        "by_operation": [
+          {
+            "key": "completion",
+            "requests": 95,
+            "successes": 93,
+            "errors": 2,
+            "latency_ms": 600
+          },
+          {
+            "key": "chat",
+            "requests": 40,
+            "successes": 39,
+            "errors": 1,
+            "latency_ms": 640
+          },
+          {
+            "key": "embeddings",
+            "requests": 5,
+            "successes": 4,
+            "errors": 1,
+            "latency_ms": 310
+          }
+        ]
+      }
+    },
+    "audit": {
+      "events": [
+        {
+          "id": 1,
+          "event_type": "chat",
+          "request_id": "req-0001",
+          "session_id": "SESSION-001",
+          "caller_id": "agent-001",
+          "operation": "chat",
+          "provider": "google",
+          "model": "gemini-2.0-flash",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 250,
+          "success": true,
+          "input_tokens": 1500,
+          "output_tokens": 350,
+          "cache_read_tokens": 400,
+          "cache_write_tokens": 100,
+          "reasoning_tokens": 80,
+          "estimated_cost_usd": 0.012,
+          "request_summary": "Request 1: inspect and resolve task context",
+          "response_summary": "Response 1: completed analysis without error",
+          "timestamp": "2026-10-03T19:20:00Z"
+        },
+        {
+          "id": 2,
+          "event_type": "completion",
+          "request_id": "req-0002",
+          "session_id": "SESSION-002",
+          "caller_id": "agent-002",
+          "operation": "completion",
+          "provider": "anthropic",
+          "model": "claude-3-7-sonnet",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 287,
+          "success": true,
+          "input_tokens": 1620,
+          "output_tokens": 395,
+          "cache_read_tokens": 420,
+          "cache_write_tokens": 110,
+          "reasoning_tokens": 95,
+          "estimated_cost_usd": 0.015,
+          "request_summary": "Request 2: inspect and resolve task context",
+          "response_summary": "Response 2: completed analysis without error",
+          "timestamp": "2026-10-03T20:10:00Z"
+        },
+        {
+          "id": 3,
+          "event_type": "completion",
+          "request_id": "req-0003",
+          "session_id": "SESSION-003",
+          "caller_id": "agent-003",
+          "operation": "completion",
+          "provider": "anthropic",
+          "model": "claude-3-7-sonnet",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 324,
+          "success": true,
+          "input_tokens": 1740,
+          "output_tokens": 440,
+          "cache_read_tokens": 440,
+          "cache_write_tokens": 120,
+          "reasoning_tokens": 110,
+          "estimated_cost_usd": 0.018000000000000002,
+          "request_summary": "Request 3: inspect and resolve task context",
+          "response_summary": "Response 3: completed analysis without error",
+          "timestamp": "2026-10-03T21:00:00Z"
+        },
+        {
+          "id": 4,
+          "event_type": "chat",
+          "request_id": "req-0004",
+          "session_id": "SESSION-004",
+          "caller_id": "agent-004",
+          "operation": "chat",
+          "provider": "google",
+          "model": "gemini-2.0-flash",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 361,
+          "success": true,
+          "input_tokens": 1860,
+          "output_tokens": 485,
+          "cache_read_tokens": 460,
+          "cache_write_tokens": 130,
+          "reasoning_tokens": 125,
+          "estimated_cost_usd": 0.021,
+          "request_summary": "Request 4: inspect and resolve task context",
+          "response_summary": "Response 4: completed analysis without error",
+          "timestamp": "2026-10-03T21:50:00Z"
+        },
+        {
+          "id": 5,
+          "event_type": "completion",
+          "request_id": "req-0005",
+          "session_id": "SESSION-005",
+          "caller_id": "agent-001",
+          "operation": "completion",
+          "provider": "anthropic",
+          "model": "claude-3-7-sonnet",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 398,
+          "success": true,
+          "input_tokens": 1980,
+          "output_tokens": 530,
+          "cache_read_tokens": 480,
+          "cache_write_tokens": 140,
+          "reasoning_tokens": 140,
+          "estimated_cost_usd": 0.024,
+          "request_summary": "Request 5: inspect and resolve task context",
+          "response_summary": "Response 5: completed analysis without error",
+          "timestamp": "2026-10-03T22:40:00Z"
+        },
+        {
+          "id": 6,
+          "event_type": "completion",
+          "request_id": "req-0006",
+          "session_id": "SESSION-006",
+          "caller_id": "agent-002",
+          "operation": "completion",
+          "provider": "openai",
+          "model": "gpt-4o",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 435,
+          "success": true,
+          "input_tokens": 2100,
+          "output_tokens": 575,
+          "cache_read_tokens": 500,
+          "cache_write_tokens": 150,
+          "reasoning_tokens": 155,
+          "estimated_cost_usd": 0.027,
+          "request_summary": "Request 6: inspect and resolve task context",
+          "response_summary": "Response 6: completed analysis without error",
+          "timestamp": "2026-10-03T23:30:00Z"
+        },
+        {
+          "id": 7,
+          "event_type": "chat",
+          "request_id": "req-0007",
+          "session_id": "SESSION-007",
+          "caller_id": "agent-003",
+          "operation": "chat",
+          "provider": "google",
+          "model": "gemini-2.0-flash",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 472,
+          "success": true,
+          "input_tokens": 2220,
+          "output_tokens": 620,
+          "cache_read_tokens": 520,
+          "cache_write_tokens": 160,
+          "reasoning_tokens": 170,
+          "estimated_cost_usd": 0.030000000000000002,
+          "request_summary": "Request 7: inspect and resolve task context",
+          "response_summary": "Response 7: completed analysis without error",
+          "timestamp": "2026-10-04T00:20:00Z"
+        },
+        {
+          "id": 8,
+          "event_type": "completion",
+          "request_id": "req-0008",
+          "session_id": "SESSION-008",
+          "caller_id": "agent-004",
+          "operation": "completion",
+          "provider": "anthropic",
+          "model": "claude-3-7-sonnet",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 509,
+          "success": true,
+          "input_tokens": 2340,
+          "output_tokens": 665,
+          "cache_read_tokens": 540,
+          "cache_write_tokens": 170,
+          "reasoning_tokens": 185,
+          "estimated_cost_usd": 0.033,
+          "request_summary": "Request 8: inspect and resolve task context",
+          "response_summary": "Response 8: completed analysis without error",
+          "timestamp": "2026-10-04T01:10:00Z"
+        },
+        {
+          "id": 9,
+          "event_type": "completion",
+          "request_id": "req-0009",
+          "session_id": "SESSION-001",
+          "caller_id": "agent-001",
+          "operation": "completion",
+          "provider": "anthropic",
+          "model": "claude-3-7-sonnet",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 546,
+          "success": true,
+          "input_tokens": 2460,
+          "output_tokens": 710,
+          "cache_read_tokens": 560,
+          "cache_write_tokens": 180,
+          "reasoning_tokens": 200,
+          "estimated_cost_usd": 0.036000000000000004,
+          "request_summary": "Request 9: inspect and resolve task context",
+          "response_summary": "Response 9: completed analysis without error",
+          "timestamp": "2026-10-04T02:00:00Z"
+        },
+        {
+          "id": 10,
+          "event_type": "chat",
+          "request_id": "req-0010",
+          "session_id": "SESSION-002",
+          "caller_id": "agent-002",
+          "operation": "chat",
+          "provider": "google",
+          "model": "gemini-2.0-flash",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 583,
+          "success": true,
+          "input_tokens": 2580,
+          "output_tokens": 755,
+          "cache_read_tokens": 580,
+          "cache_write_tokens": 190,
+          "reasoning_tokens": 215,
+          "estimated_cost_usd": 0.039,
+          "request_summary": "Request 10: inspect and resolve task context",
+          "response_summary": "Response 10: completed analysis without error",
+          "timestamp": "2026-10-04T02:50:00Z"
+        },
+        {
+          "id": 11,
+          "event_type": "completion",
+          "request_id": "req-0011",
+          "session_id": "SESSION-003",
+          "caller_id": "agent-003",
+          "operation": "completion",
+          "provider": "openai",
+          "model": "gpt-4o",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 620,
+          "success": true,
+          "input_tokens": 2700,
+          "output_tokens": 800,
+          "cache_read_tokens": 600,
+          "cache_write_tokens": 200,
+          "reasoning_tokens": 230,
+          "estimated_cost_usd": 0.041999999999999996,
+          "request_summary": "Request 11: inspect and resolve task context",
+          "response_summary": "Response 11: completed analysis without error",
+          "timestamp": "2026-10-04T03:40:00Z"
+        },
+        {
+          "id": 12,
+          "event_type": "refusal",
+          "request_id": "req-0012",
+          "session_id": "SESSION-004",
+          "caller_id": "agent-004",
+          "operation": "chat",
+          "provider": "anthropic",
+          "model": "claude-3-7-sonnet",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 657,
+          "success": false,
+          "refusal": "Refusal: safety policy denied unreviewed tool execution",
+          "input_tokens": 2820,
+          "output_tokens": 845,
+          "cache_read_tokens": 620,
+          "cache_write_tokens": 210,
+          "reasoning_tokens": 245,
+          "estimated_cost_usd": 0.045,
+          "request_summary": "Request 12: inspect and resolve task context",
+          "response_summary": "Response 12: completed analysis without error",
+          "timestamp": "2026-10-04T04:30:00Z"
+        },
+        {
+          "id": 13,
+          "event_type": "chat",
+          "request_id": "req-0013",
+          "session_id": "SESSION-005",
+          "caller_id": "agent-001",
+          "operation": "chat",
+          "provider": "google",
+          "model": "gemini-2.0-flash",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 694,
+          "success": true,
+          "input_tokens": 2940,
+          "output_tokens": 890,
+          "cache_read_tokens": 640,
+          "cache_write_tokens": 220,
+          "reasoning_tokens": 260,
+          "estimated_cost_usd": 0.048,
+          "request_summary": "Request 13: inspect and resolve task context",
+          "response_summary": "Response 13: completed analysis without error",
+          "timestamp": "2026-10-04T05:20:00Z"
+        },
+        {
+          "id": 14,
+          "event_type": "completion",
+          "request_id": "req-0014",
+          "session_id": "SESSION-006",
+          "caller_id": "agent-002",
+          "operation": "completion",
+          "provider": "anthropic",
+          "model": "claude-3-7-sonnet",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 731,
+          "success": true,
+          "input_tokens": 3060,
+          "output_tokens": 935,
+          "cache_read_tokens": 660,
+          "cache_write_tokens": 230,
+          "reasoning_tokens": 275,
+          "estimated_cost_usd": 0.051000000000000004,
+          "request_summary": "Request 14: inspect and resolve task context",
+          "response_summary": "Response 14: completed analysis without error",
+          "timestamp": "2026-10-04T06:10:00Z"
+        },
+        {
+          "id": 15,
+          "event_type": "completion",
+          "request_id": "req-0015",
+          "session_id": "SESSION-007",
+          "caller_id": "agent-003",
+          "operation": "completion",
+          "provider": "anthropic",
+          "model": "claude-3-7-sonnet",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 768,
+          "success": true,
+          "input_tokens": 3180,
+          "output_tokens": 980,
+          "cache_read_tokens": 680,
+          "cache_write_tokens": 240,
+          "reasoning_tokens": 290,
+          "estimated_cost_usd": 0.054000000000000006,
+          "request_summary": "Request 15: inspect and resolve task context",
+          "response_summary": "Response 15: completed analysis without error",
+          "timestamp": "2026-10-04T07:00:00Z"
+        },
+        {
+          "id": 16,
+          "event_type": "chat",
+          "request_id": "req-0016",
+          "session_id": "SESSION-008",
+          "caller_id": "agent-004",
+          "operation": "chat",
+          "provider": "google",
+          "model": "gemini-2.0-flash",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 805,
+          "success": true,
+          "input_tokens": 3300,
+          "output_tokens": 1025,
+          "cache_read_tokens": 700,
+          "cache_write_tokens": 250,
+          "reasoning_tokens": 305,
+          "estimated_cost_usd": 0.056999999999999995,
+          "request_summary": "Request 16: inspect and resolve task context",
+          "response_summary": "Response 16: completed analysis without error",
+          "timestamp": "2026-10-04T07:50:00Z"
+        },
+        {
+          "id": 17,
+          "event_type": "completion",
+          "request_id": "req-0017",
+          "session_id": "SESSION-001",
+          "caller_id": "agent-001",
+          "operation": "completion",
+          "provider": "anthropic",
+          "model": "claude-3-7-sonnet",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 842,
+          "success": true,
+          "input_tokens": 3420,
+          "output_tokens": 1070,
+          "cache_read_tokens": 720,
+          "cache_write_tokens": 260,
+          "reasoning_tokens": 320,
+          "estimated_cost_usd": 0.06,
+          "request_summary": "Request 17: inspect and resolve task context",
+          "response_summary": "Response 17: completed analysis without error",
+          "timestamp": "2026-10-04T08:40:00Z"
+        },
+        {
+          "id": 18,
+          "event_type": "budget_rejection",
+          "request_id": "req-0018",
+          "session_id": "SESSION-002",
+          "caller_id": "agent-002",
+          "operation": "completion",
+          "provider": "anthropic",
+          "model": "claude-3-7-sonnet",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 879,
+          "success": false,
+          "error": "budget limit $2.50 exceeded for session SESSION-002",
+          "input_tokens": 3540,
+          "output_tokens": 1115,
+          "cache_read_tokens": 740,
+          "cache_write_tokens": 270,
+          "reasoning_tokens": 335,
+          "estimated_cost_usd": 0.063,
+          "request_summary": "Request 18: inspect and resolve task context",
+          "response_summary": "Response 18: completed analysis without error",
+          "timestamp": "2026-10-04T09:30:00Z"
+        },
+        {
+          "id": 19,
+          "event_type": "chat",
+          "request_id": "req-0019",
+          "session_id": "SESSION-003",
+          "caller_id": "agent-003",
+          "operation": "chat",
+          "provider": "google",
+          "model": "gemini-2.0-flash",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 916,
+          "success": true,
+          "input_tokens": 3660,
+          "output_tokens": 1160,
+          "cache_read_tokens": 760,
+          "cache_write_tokens": 280,
+          "reasoning_tokens": 350,
+          "estimated_cost_usd": 0.066,
+          "request_summary": "Request 19: inspect and resolve task context",
+          "response_summary": "Response 19: completed analysis without error",
+          "timestamp": "2026-10-04T10:20:00Z"
+        },
+        {
+          "id": 20,
+          "event_type": "completion",
+          "request_id": "req-0020",
+          "session_id": "SESSION-004",
+          "caller_id": "agent-004",
+          "operation": "completion",
+          "provider": "anthropic",
+          "model": "claude-3-7-sonnet",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 953,
+          "success": true,
+          "input_tokens": 3780,
+          "output_tokens": 1205,
+          "cache_read_tokens": 780,
+          "cache_write_tokens": 290,
+          "reasoning_tokens": 365,
+          "estimated_cost_usd": 0.069,
+          "request_summary": "Request 20: inspect and resolve task context",
+          "response_summary": "Response 20: completed analysis without error",
+          "timestamp": "2026-10-04T11:10:00Z"
+        },
+        {
+          "id": 21,
+          "event_type": "completion",
+          "request_id": "req-0021",
+          "session_id": "SESSION-005",
+          "caller_id": "agent-001",
+          "operation": "completion",
+          "provider": "openai",
+          "model": "gpt-4o",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 990,
+          "success": true,
+          "input_tokens": 3900,
+          "output_tokens": 1250,
+          "cache_read_tokens": 800,
+          "cache_write_tokens": 300,
+          "reasoning_tokens": 380,
+          "estimated_cost_usd": 0.072,
+          "request_summary": "Request 21: inspect and resolve task context",
+          "response_summary": "Response 21: completed analysis without error",
+          "timestamp": "2026-10-04T12:00:00Z"
+        },
+        {
+          "id": 22,
+          "event_type": "chat",
+          "request_id": "req-0022",
+          "session_id": "SESSION-006",
+          "caller_id": "agent-002",
+          "operation": "chat",
+          "provider": "google",
+          "model": "gemini-2.0-flash",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 277,
+          "success": true,
+          "input_tokens": 4020,
+          "output_tokens": 1295,
+          "cache_read_tokens": 820,
+          "cache_write_tokens": 310,
+          "reasoning_tokens": 395,
+          "estimated_cost_usd": 0.075,
+          "request_summary": "Request 22: inspect and resolve task context",
+          "response_summary": "Response 22: completed analysis without error",
+          "timestamp": "2026-10-04T12:50:00Z"
+        },
+        {
+          "id": 23,
+          "event_type": "completion",
+          "request_id": "req-0023",
+          "session_id": "SESSION-007",
+          "caller_id": "agent-003",
+          "operation": "completion",
+          "provider": "anthropic",
+          "model": "claude-3-7-sonnet",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 314,
+          "success": true,
+          "input_tokens": 4140,
+          "output_tokens": 1340,
+          "cache_read_tokens": 840,
+          "cache_write_tokens": 320,
+          "reasoning_tokens": 410,
+          "estimated_cost_usd": 0.078,
+          "request_summary": "Request 23: inspect and resolve task context",
+          "response_summary": "Response 23: completed analysis without error",
+          "timestamp": "2026-10-04T13:40:00Z"
+        },
+        {
+          "id": 24,
+          "event_type": "completion",
+          "request_id": "req-0024",
+          "session_id": "SESSION-008",
+          "caller_id": "agent-004",
+          "operation": "completion",
+          "provider": "anthropic",
+          "model": "claude-3-7-sonnet",
+          "policy_version": "ai-policy-v1",
+          "latency_ms": 351,
+          "success": true,
+          "input_tokens": 4260,
+          "output_tokens": 1385,
+          "cache_read_tokens": 860,
+          "cache_write_tokens": 330,
+          "reasoning_tokens": 425,
+          "estimated_cost_usd": 0.081,
+          "request_summary": "Request 24: inspect and resolve task context",
+          "response_summary": "Response 24: completed analysis without error",
+          "timestamp": "2026-10-04T14:30:00Z"
+        }
+      ],
+      "count": 24
+    },
+    "budgets": {
+      "budgets": [
+        {
+          "provider": "anthropic",
+          "model": "claude-3-7-sonnet",
+          "mode": "code",
+          "intent": "primary reasoning",
+          "usage_budget": {
+            "max_cost_usd": 10,
+            "window": "24h",
+            "scope": "global"
+          },
+          "window_start": "2026-10-03T14:30:00Z",
+          "spent_cost_usd": 4.82,
+          "remaining_cost_usd": 5.18,
+          "exhausted": false,
+          "filter": {
+            "provider": "anthropic",
+            "model": "claude-3-7-sonnet"
+          }
+        },
+        {
+          "provider": "google",
+          "model": "gemini-2.0-flash",
+          "mode": "fast",
+          "intent": "quick edits",
+          "usage_budget": {
+            "max_cost_usd": 5,
+            "window": "24h",
+            "scope": "global"
+          },
+          "window_start": "2026-10-03T14:30:00Z",
+          "spent_cost_usd": 1.12,
+          "remaining_cost_usd": 3.88,
+          "exhausted": false,
+          "filter": {
+            "provider": "google",
+            "model": "gemini-2.0-flash"
+          }
+        },
+        {
+          "provider": "openai",
+          "model": "gpt-4o",
+          "mode": "structured",
+          "intent": "schema transforms",
+          "usage_budget": {
+            "max_cost_usd": 2.5,
+            "window": "24h",
+            "scope": "session"
+          },
+          "window_start": "2026-10-03T14:30:00Z",
+          "spent_cost_usd": 2.5,
+          "remaining_cost_usd": 0,
+          "exhausted": true,
+          "filter": {
+            "provider": "openai",
+            "model": "gpt-4o"
+          }
+        },
+        {
+          "provider": "google",
+          "model": "gemini-2.5-pro",
+          "mode": "pro",
+          "intent": "planning and architecture",
+          "usage_budget": {
+            "max_cost_usd": 5,
+            "window": "7d",
+            "scope": "project"
+          },
+          "window_start": "2026-09-27T14:30:00Z",
+          "spent_cost_usd": 2.3,
+          "remaining_cost_usd": 2.7,
+          "exhausted": false,
+          "filter": {
+            "provider": "google",
+            "model": "gemini-2.5-pro"
+          }
+        }
+      ],
+      "count": 4
+    },
+    "catalog": [
+      {
+        "provider_type": "anthropic",
+        "vendor_provider_id": "anthropic",
+        "vendor_provider_name": "Anthropic",
+        "models": [
+          {
+            "id": "claude-3-7-sonnet",
+            "name": "Claude 3.7 Sonnet",
+            "family": "claude-3",
+            "context_window": 200000,
+            "max_output_tokens": 8192,
+            "input_modalities": ["text", "image"],
+            "output_modalities": ["text"],
+            "supports_tools": true,
+            "supports_reasoning": true,
+            "supports_attachments": true,
+            "input_cost_usd_per_mtok": 3,
+            "output_cost_usd_per_mtok": 15
+          },
+          {
+            "id": "claude-3-5-haiku",
+            "name": "Claude 3.5 Haiku",
+            "family": "claude-3",
+            "context_window": 200000,
+            "max_output_tokens": 8192,
+            "input_modalities": ["text"],
+            "output_modalities": ["text"],
+            "supports_tools": true,
+            "input_cost_usd_per_mtok": 0.8,
+            "output_cost_usd_per_mtok": 4
+          }
+        ],
+        "last_fetched_at": "2026-10-04T12:30:00Z",
+        "from_cache_only": true
+      },
+      {
+        "provider_type": "google",
+        "vendor_provider_id": "google",
+        "vendor_provider_name": "Google Cloud Vertex / AI Studio",
+        "models": [
+          {
+            "id": "gemini-2.0-flash",
+            "name": "Gemini 2.0 Flash",
+            "family": "gemini-2",
+            "context_window": 1000000,
+            "max_output_tokens": 8192,
+            "input_modalities": ["text", "image"],
+            "output_modalities": ["text"],
+            "supports_tools": true,
+            "supports_reasoning": true,
+            "supports_attachments": true,
+            "input_cost_usd_per_mtok": 0.1,
+            "output_cost_usd_per_mtok": 0.4
+          },
+          {
+            "id": "gemini-2.5-pro",
+            "name": "Gemini 2.5 Pro",
+            "family": "gemini-2",
+            "context_window": 1000000,
+            "max_output_tokens": 8192,
+            "input_modalities": ["text", "image"],
+            "output_modalities": ["text"],
+            "supports_tools": true,
+            "supports_reasoning": true,
+            "supports_attachments": true,
+            "input_cost_usd_per_mtok": 1.25,
+            "output_cost_usd_per_mtok": 5
+          }
+        ],
+        "last_fetched_at": "2026-10-04T12:30:00Z",
+        "from_cache_only": true
+      }
+    ]
+  },
+  "activity": {
+    "events": {
+      "events": [
+        {
+          "seq": 1,
+          "at": "2026-10-03T14:52:30Z",
+          "scope": "session",
+          "session_id": "SESSION-001",
+          "kind": "session.started",
+          "payload": "{\"seq\":1,\"scope\":\"session\",\"kind\":\"session.started\",\"session_id\":\"SESSION-001\",\"tokens\":100}"
+        },
+        {
+          "seq": 2,
+          "at": "2026-10-03T15:15:00Z",
+          "scope": "agent",
+          "kind": "agent.registered",
+          "payload": "{\"seq\":2,\"scope\":\"agent\",\"kind\":\"agent.registered\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 3,
+          "at": "2026-10-03T15:37:30Z",
+          "scope": "system",
+          "kind": "catalog.reloaded",
+          "payload": "{\"seq\":3,\"scope\":\"system\",\"kind\":\"catalog.reloaded\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 4,
+          "at": "2026-10-03T16:00:00Z",
+          "scope": "router",
+          "kind": "route.resolved",
+          "payload": "{\"seq\":4,\"scope\":\"router\",\"kind\":\"route.resolved\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 5,
+          "at": "2026-10-03T16:22:30Z",
+          "scope": "mesh",
+          "kind": "envelope.routed",
+          "payload": "{\"seq\":5,\"scope\":\"mesh\",\"kind\":\"envelope.routed\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 6,
+          "at": "2026-10-03T16:45:00Z",
+          "scope": "session",
+          "session_id": "SESSION-006",
+          "kind": "turn.created",
+          "payload": "{\"seq\":6,\"scope\":\"session\",\"kind\":\"turn.created\",\"session_id\":\"SESSION-006\",\"tokens\":225}"
+        },
+        {
+          "seq": 7,
+          "at": "2026-10-03T17:07:30Z",
+          "scope": "agent",
+          "session_id": "SESSION-007",
+          "kind": "agent.heartbeat",
+          "payload": "{\"seq\":7,\"scope\":\"agent\",\"kind\":\"agent.heartbeat\",\"session_id\":\"SESSION-007\",\"tokens\":250}"
+        },
+        {
+          "seq": 8,
+          "at": "2026-10-03T17:30:00Z",
+          "scope": "system",
+          "kind": "daemon.started",
+          "payload": "{\"seq\":8,\"scope\":\"system\",\"kind\":\"daemon.started\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 9,
+          "at": "2026-10-03T17:52:30Z",
+          "scope": "router",
+          "kind": "provider.dispatched",
+          "payload": "{\"seq\":9,\"scope\":\"router\",\"kind\":\"provider.dispatched\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 10,
+          "at": "2026-10-03T18:15:00Z",
+          "scope": "mesh",
+          "kind": "peer.discovered",
+          "payload": "{\"seq\":10,\"scope\":\"mesh\",\"kind\":\"peer.discovered\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 11,
+          "at": "2026-10-03T18:37:30Z",
+          "scope": "session",
+          "session_id": "SESSION-003",
+          "kind": "turn.completed",
+          "payload": "{\"seq\":11,\"scope\":\"session\",\"kind\":\"turn.completed\",\"session_id\":\"SESSION-003\",\"tokens\":350}"
+        },
+        {
+          "seq": 12,
+          "at": "2026-10-03T19:00:00Z",
+          "scope": "agent",
+          "kind": "agent.skill_invoked",
+          "payload": "{\"seq\":12,\"scope\":\"agent\",\"kind\":\"agent.skill_invoked\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 13,
+          "at": "2026-10-03T19:22:30Z",
+          "scope": "system",
+          "kind": "mcp.server_connected",
+          "payload": "{\"seq\":13,\"scope\":\"system\",\"kind\":\"mcp.server_connected\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 14,
+          "at": "2026-10-03T19:45:00Z",
+          "scope": "router",
+          "kind": "budget.evaluated",
+          "payload": "{\"seq\":14,\"scope\":\"router\",\"kind\":\"budget.evaluated\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 15,
+          "at": "2026-10-03T20:07:30Z",
+          "scope": "mesh",
+          "kind": "lease.renewed",
+          "payload": "{\"seq\":15,\"scope\":\"mesh\",\"kind\":\"lease.renewed\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 16,
+          "at": "2026-10-03T20:30:00Z",
+          "scope": "session",
+          "session_id": "SESSION-008",
+          "kind": "session.checkpoint",
+          "payload": "{\"seq\":16,\"scope\":\"session\",\"kind\":\"session.checkpoint\",\"session_id\":\"SESSION-008\",\"tokens\":475}"
+        },
+        {
+          "seq": 17,
+          "at": "2026-10-03T20:52:30Z",
+          "scope": "agent",
+          "session_id": "SESSION-001",
+          "kind": "agent.state_changed",
+          "payload": "{\"seq\":17,\"scope\":\"agent\",\"kind\":\"agent.state_changed\",\"session_id\":\"SESSION-001\",\"tokens\":500}"
+        },
+        {
+          "seq": 18,
+          "at": "2026-10-03T21:15:00Z",
+          "scope": "system",
+          "kind": "system.resource_action",
+          "payload": "{\"seq\":18,\"scope\":\"system\",\"kind\":\"system.resource_action\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 19,
+          "at": "2026-10-03T21:37:30Z",
+          "scope": "router",
+          "kind": "cache.hit",
+          "payload": "{\"seq\":19,\"scope\":\"router\",\"kind\":\"cache.hit\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 20,
+          "at": "2026-10-03T22:00:00Z",
+          "scope": "mesh",
+          "kind": "partition.fenced",
+          "payload": "{\"seq\":20,\"scope\":\"mesh\",\"kind\":\"partition.fenced\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 21,
+          "at": "2026-10-03T22:22:30Z",
+          "scope": "session",
+          "session_id": "SESSION-005",
+          "kind": "session.ended",
+          "payload": "{\"seq\":21,\"scope\":\"session\",\"kind\":\"session.ended\",\"session_id\":\"SESSION-005\",\"tokens\":600}"
+        },
+        {
+          "seq": 22,
+          "at": "2026-10-03T22:45:00Z",
+          "scope": "agent",
+          "kind": "agent.registered",
+          "payload": "{\"seq\":22,\"scope\":\"agent\",\"kind\":\"agent.registered\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 23,
+          "at": "2026-10-03T23:07:30Z",
+          "scope": "system",
+          "kind": "catalog.reloaded",
+          "payload": "{\"seq\":23,\"scope\":\"system\",\"kind\":\"catalog.reloaded\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 24,
+          "at": "2026-10-03T23:30:00Z",
+          "scope": "router",
+          "kind": "route.resolved",
+          "payload": "{\"seq\":24,\"scope\":\"router\",\"kind\":\"route.resolved\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 25,
+          "at": "2026-10-03T23:52:30Z",
+          "scope": "mesh",
+          "kind": "envelope.routed",
+          "payload": "{\"seq\":25,\"scope\":\"mesh\",\"kind\":\"envelope.routed\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 26,
+          "at": "2026-10-04T00:15:00Z",
+          "scope": "session",
+          "session_id": "SESSION-002",
+          "kind": "session.started",
+          "payload": "{\"seq\":26,\"scope\":\"session\",\"kind\":\"session.started\",\"session_id\":\"SESSION-002\",\"tokens\":725}"
+        },
+        {
+          "seq": 27,
+          "at": "2026-10-04T00:37:30Z",
+          "scope": "agent",
+          "session_id": "SESSION-003",
+          "kind": "agent.heartbeat",
+          "payload": "{\"seq\":27,\"scope\":\"agent\",\"kind\":\"agent.heartbeat\",\"session_id\":\"SESSION-003\",\"tokens\":750}"
+        },
+        {
+          "seq": 28,
+          "at": "2026-10-04T01:00:00Z",
+          "scope": "system",
+          "kind": "daemon.started",
+          "payload": "{\"seq\":28,\"scope\":\"system\",\"kind\":\"daemon.started\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 29,
+          "at": "2026-10-04T01:22:30Z",
+          "scope": "router",
+          "kind": "provider.dispatched",
+          "payload": "{\"seq\":29,\"scope\":\"router\",\"kind\":\"provider.dispatched\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 30,
+          "at": "2026-10-04T01:45:00Z",
+          "scope": "mesh",
+          "kind": "peer.discovered",
+          "payload": "{\"seq\":30,\"scope\":\"mesh\",\"kind\":\"peer.discovered\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 31,
+          "at": "2026-10-04T02:07:30Z",
+          "scope": "session",
+          "session_id": "SESSION-007",
+          "kind": "turn.created",
+          "payload": "{\"seq\":31,\"scope\":\"session\",\"kind\":\"turn.created\",\"session_id\":\"SESSION-007\",\"tokens\":850}"
+        },
+        {
+          "seq": 32,
+          "at": "2026-10-04T02:30:00Z",
+          "scope": "agent",
+          "kind": "agent.skill_invoked",
+          "payload": "{\"seq\":32,\"scope\":\"agent\",\"kind\":\"agent.skill_invoked\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 33,
+          "at": "2026-10-04T02:52:30Z",
+          "scope": "system",
+          "kind": "mcp.server_connected",
+          "payload": "{\"seq\":33,\"scope\":\"system\",\"kind\":\"mcp.server_connected\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 34,
+          "at": "2026-10-04T03:15:00Z",
+          "scope": "router",
+          "kind": "budget.evaluated",
+          "payload": "{\"seq\":34,\"scope\":\"router\",\"kind\":\"budget.evaluated\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 35,
+          "at": "2026-10-04T03:37:30Z",
+          "scope": "mesh",
+          "kind": "lease.renewed",
+          "payload": "{\"seq\":35,\"scope\":\"mesh\",\"kind\":\"lease.renewed\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 36,
+          "at": "2026-10-04T04:00:00Z",
+          "scope": "session",
+          "session_id": "SESSION-004",
+          "kind": "turn.completed",
+          "payload": "{\"seq\":36,\"scope\":\"session\",\"kind\":\"turn.completed\",\"session_id\":\"SESSION-004\",\"tokens\":975}"
+        },
+        {
+          "seq": 37,
+          "at": "2026-10-04T04:22:30Z",
+          "scope": "agent",
+          "session_id": "SESSION-005",
+          "kind": "agent.state_changed",
+          "payload": "{\"seq\":37,\"scope\":\"agent\",\"kind\":\"agent.state_changed\",\"session_id\":\"SESSION-005\",\"tokens\":1000}"
+        },
+        {
+          "seq": 38,
+          "at": "2026-10-04T04:45:00Z",
+          "scope": "system",
+          "kind": "system.resource_action",
+          "payload": "{\"seq\":38,\"scope\":\"system\",\"kind\":\"system.resource_action\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 39,
+          "at": "2026-10-04T05:07:30Z",
+          "scope": "router",
+          "kind": "cache.hit",
+          "payload": "{\"seq\":39,\"scope\":\"router\",\"kind\":\"cache.hit\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 40,
+          "at": "2026-10-04T05:30:00Z",
+          "scope": "mesh",
+          "kind": "partition.fenced",
+          "payload": "{\"seq\":40,\"scope\":\"mesh\",\"kind\":\"partition.fenced\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 41,
+          "at": "2026-10-04T05:52:30Z",
+          "scope": "session",
+          "session_id": "SESSION-001",
+          "kind": "session.checkpoint",
+          "payload": "{\"seq\":41,\"scope\":\"session\",\"kind\":\"session.checkpoint\",\"session_id\":\"SESSION-001\",\"tokens\":1100}"
+        },
+        {
+          "seq": 42,
+          "at": "2026-10-04T06:15:00Z",
+          "scope": "agent",
+          "kind": "agent.registered",
+          "payload": "{\"seq\":42,\"scope\":\"agent\",\"kind\":\"agent.registered\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 43,
+          "at": "2026-10-04T06:37:30Z",
+          "scope": "system",
+          "kind": "catalog.reloaded",
+          "payload": "{\"seq\":43,\"scope\":\"system\",\"kind\":\"catalog.reloaded\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 44,
+          "at": "2026-10-04T07:00:00Z",
+          "scope": "router",
+          "kind": "route.resolved",
+          "payload": "{\"seq\":44,\"scope\":\"router\",\"kind\":\"route.resolved\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 45,
+          "at": "2026-10-04T07:22:30Z",
+          "scope": "mesh",
+          "kind": "envelope.routed",
+          "payload": "{\"seq\":45,\"scope\":\"mesh\",\"kind\":\"envelope.routed\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 46,
+          "at": "2026-10-04T07:45:00Z",
+          "scope": "session",
+          "session_id": "SESSION-006",
+          "kind": "session.ended",
+          "payload": "{\"seq\":46,\"scope\":\"session\",\"kind\":\"session.ended\",\"session_id\":\"SESSION-006\",\"tokens\":1225}"
+        },
+        {
+          "seq": 47,
+          "at": "2026-10-04T08:07:30Z",
+          "scope": "agent",
+          "session_id": "SESSION-007",
+          "kind": "agent.heartbeat",
+          "payload": "{\"seq\":47,\"scope\":\"agent\",\"kind\":\"agent.heartbeat\",\"session_id\":\"SESSION-007\",\"tokens\":1250}"
+        },
+        {
+          "seq": 48,
+          "at": "2026-10-04T08:30:00Z",
+          "scope": "system",
+          "kind": "daemon.started",
+          "payload": "{\"seq\":48,\"scope\":\"system\",\"kind\":\"daemon.started\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 49,
+          "at": "2026-10-04T08:52:30Z",
+          "scope": "router",
+          "kind": "provider.dispatched",
+          "payload": "{\"seq\":49,\"scope\":\"router\",\"kind\":\"provider.dispatched\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 50,
+          "at": "2026-10-04T09:15:00Z",
+          "scope": "mesh",
+          "kind": "peer.discovered",
+          "payload": "{\"seq\":50,\"scope\":\"mesh\",\"kind\":\"peer.discovered\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 51,
+          "at": "2026-10-04T09:37:30Z",
+          "scope": "session",
+          "session_id": "SESSION-003",
+          "kind": "session.started",
+          "payload": "{\"seq\":51,\"scope\":\"session\",\"kind\":\"session.started\",\"session_id\":\"SESSION-003\",\"tokens\":1350}"
+        },
+        {
+          "seq": 52,
+          "at": "2026-10-04T10:00:00Z",
+          "scope": "agent",
+          "kind": "agent.skill_invoked",
+          "payload": "{\"seq\":52,\"scope\":\"agent\",\"kind\":\"agent.skill_invoked\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 53,
+          "at": "2026-10-04T10:22:30Z",
+          "scope": "system",
+          "kind": "mcp.server_connected",
+          "payload": "{\"seq\":53,\"scope\":\"system\",\"kind\":\"mcp.server_connected\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 54,
+          "at": "2026-10-04T10:45:00Z",
+          "scope": "router",
+          "kind": "budget.evaluated",
+          "payload": "{\"seq\":54,\"scope\":\"router\",\"kind\":\"budget.evaluated\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 55,
+          "at": "2026-10-04T11:07:30Z",
+          "scope": "mesh",
+          "kind": "lease.renewed",
+          "payload": "{\"seq\":55,\"scope\":\"mesh\",\"kind\":\"lease.renewed\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 56,
+          "at": "2026-10-04T11:30:00Z",
+          "scope": "session",
+          "session_id": "SESSION-008",
+          "kind": "turn.created",
+          "payload": "{\"seq\":56,\"scope\":\"session\",\"kind\":\"turn.created\",\"session_id\":\"SESSION-008\",\"tokens\":1475}"
+        },
+        {
+          "seq": 57,
+          "at": "2026-10-04T11:52:30Z",
+          "scope": "agent",
+          "session_id": "SESSION-001",
+          "kind": "agent.state_changed",
+          "payload": "{\"seq\":57,\"scope\":\"agent\",\"kind\":\"agent.state_changed\",\"session_id\":\"SESSION-001\",\"tokens\":1500}"
+        },
+        {
+          "seq": 58,
+          "at": "2026-10-04T12:15:00Z",
+          "scope": "system",
+          "kind": "system.resource_action",
+          "payload": "{\"seq\":58,\"scope\":\"system\",\"kind\":\"system.resource_action\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 59,
+          "at": "2026-10-04T12:37:30Z",
+          "scope": "router",
+          "kind": "cache.hit",
+          "payload": "{\"seq\":59,\"scope\":\"router\",\"kind\":\"cache.hit\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 60,
+          "at": "2026-10-04T13:00:00Z",
+          "scope": "mesh",
+          "kind": "partition.fenced",
+          "payload": "{\"seq\":60,\"scope\":\"mesh\",\"kind\":\"partition.fenced\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 61,
+          "at": "2026-10-04T13:22:30Z",
+          "scope": "session",
+          "session_id": "SESSION-005",
+          "kind": "turn.completed",
+          "payload": "{\"seq\":61,\"scope\":\"session\",\"kind\":\"turn.completed\",\"session_id\":\"SESSION-005\",\"tokens\":1600}"
+        },
+        {
+          "seq": 62,
+          "at": "2026-10-04T13:45:00Z",
+          "scope": "agent",
+          "kind": "agent.registered",
+          "payload": "{\"seq\":62,\"scope\":\"agent\",\"kind\":\"agent.registered\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 63,
+          "at": "2026-10-04T14:07:30Z",
+          "scope": "system",
+          "kind": "catalog.reloaded",
+          "payload": "{\"seq\":63,\"scope\":\"system\",\"kind\":\"catalog.reloaded\",\"status\":\"admitted\",\"deterministic\":true}"
+        },
+        {
+          "seq": 64,
+          "at": "2026-10-04T14:30:00Z",
+          "scope": "router",
+          "kind": "route.resolved",
+          "payload": "{\"seq\":64,\"scope\":\"router\",\"kind\":\"route.resolved\",\"status\":\"admitted\",\"deterministic\":true}"
+        }
+      ],
+      "total": 64
+    },
+    "tool_calls": {
+      "tool_calls": [
+        {
+          "id": 1,
+          "session_id": "SESSION-001",
+          "server": "native",
+          "tool_name": "read_file",
+          "args_schema_fp": "fp-read_file-v1",
+          "duration_ms": 12,
+          "ok": true,
+          "timestamp": "2026-10-03T21:06:00Z",
+          "payload": "{\"tool\":\"read_file\",\"server\":\"native\",\"ok\":true,\"duration_ms\":12}"
+        },
+        {
+          "id": 2,
+          "session_id": "SESSION-002",
+          "server": "mcp-fs",
+          "tool_name": "run_command",
+          "args_schema_fp": "fp-run_command-v1",
+          "duration_ms": 18,
+          "ok": true,
+          "timestamp": "2026-10-03T21:42:00Z",
+          "payload": "{\"tool\":\"run_command\",\"server\":\"mcp-fs\",\"ok\":true,\"duration_ms\":18}"
+        },
+        {
+          "id": 3,
+          "session_id": "SESSION-003",
+          "server": "mcp-git",
+          "tool_name": "replace_file_content",
+          "args_schema_fp": "fp-replace_file_content-v1",
+          "duration_ms": 25,
+          "ok": true,
+          "timestamp": "2026-10-03T22:18:00Z",
+          "payload": "{\"tool\":\"replace_file_content\",\"server\":\"mcp-git\",\"ok\":true,\"duration_ms\":25}"
+        },
+        {
+          "id": 4,
+          "session_id": "SESSION-004",
+          "server": "mcp-eval",
+          "tool_name": "fixture.inspect",
+          "args_schema_fp": "fp-fixture.inspect-v1",
+          "duration_ms": 42,
+          "ok": true,
+          "timestamp": "2026-10-03T22:54:00Z",
+          "payload": "{\"tool\":\"fixture.inspect\",\"server\":\"mcp-eval\",\"ok\":true,\"duration_ms\":42}"
+        },
+        {
+          "id": 5,
+          "session_id": "SESSION-005",
+          "server": "native",
+          "tool_name": "view_file",
+          "args_schema_fp": "fp-view_file-v1",
+          "duration_ms": 55,
+          "ok": true,
+          "timestamp": "2026-10-03T23:30:00Z",
+          "payload": "{\"tool\":\"view_file\",\"server\":\"native\",\"ok\":true,\"duration_ms\":55}"
+        },
+        {
+          "id": 6,
+          "session_id": "SESSION-006",
+          "server": "mcp-fs",
+          "tool_name": "git_status",
+          "args_schema_fp": "fp-git_status-v1",
+          "duration_ms": 68,
+          "ok": true,
+          "timestamp": "2026-10-04T00:06:00Z",
+          "payload": "{\"tool\":\"git_status\",\"server\":\"mcp-fs\",\"ok\":true,\"duration_ms\":68}"
+        },
+        {
+          "id": 7,
+          "session_id": "SESSION-007",
+          "server": "mcp-git",
+          "tool_name": "read_file",
+          "args_schema_fp": "fp-read_file-v1",
+          "duration_ms": 74,
+          "ok": true,
+          "timestamp": "2026-10-04T00:42:00Z",
+          "payload": "{\"tool\":\"read_file\",\"server\":\"mcp-git\",\"ok\":true,\"duration_ms\":74}"
+        },
+        {
+          "id": 8,
+          "session_id": "SESSION-008",
+          "server": "mcp-eval",
+          "tool_name": "run_command",
+          "args_schema_fp": "fp-run_command-v1",
+          "duration_ms": 82,
+          "ok": false,
+          "error": "file not found: config/missing.yaml",
+          "timestamp": "2026-10-04T01:18:00Z",
+          "payload": "{\"tool\":\"run_command\",\"server\":\"mcp-eval\",\"ok\":false,\"duration_ms\":82}"
+        },
+        {
+          "id": 9,
+          "session_id": "SESSION-001",
+          "server": "native",
+          "tool_name": "replace_file_content",
+          "args_schema_fp": "fp-replace_file_content-v1",
+          "duration_ms": 89,
+          "ok": true,
+          "timestamp": "2026-10-04T01:54:00Z",
+          "payload": "{\"tool\":\"replace_file_content\",\"server\":\"native\",\"ok\":true,\"duration_ms\":89}"
+        },
+        {
+          "id": 10,
+          "session_id": "SESSION-002",
+          "server": "mcp-fs",
+          "tool_name": "fixture.inspect",
+          "args_schema_fp": "fp-fixture.inspect-v1",
+          "duration_ms": 95,
+          "ok": true,
+          "timestamp": "2026-10-04T02:30:00Z",
+          "payload": "{\"tool\":\"fixture.inspect\",\"server\":\"mcp-fs\",\"ok\":true,\"duration_ms\":95}"
+        },
+        {
+          "id": 11,
+          "session_id": "SESSION-003",
+          "server": "mcp-git",
+          "tool_name": "view_file",
+          "args_schema_fp": "fp-view_file-v1",
+          "duration_ms": 110,
+          "ok": true,
+          "timestamp": "2026-10-04T03:06:00Z",
+          "payload": "{\"tool\":\"view_file\",\"server\":\"mcp-git\",\"ok\":true,\"duration_ms\":110}"
+        },
+        {
+          "id": 12,
+          "session_id": "SESSION-004",
+          "server": "mcp-eval",
+          "tool_name": "git_status",
+          "args_schema_fp": "fp-git_status-v1",
+          "duration_ms": 135,
+          "ok": true,
+          "timestamp": "2026-10-04T03:42:00Z",
+          "payload": "{\"tool\":\"git_status\",\"server\":\"mcp-eval\",\"ok\":true,\"duration_ms\":135}"
+        },
+        {
+          "id": 13,
+          "session_id": "SESSION-005",
+          "server": "native",
+          "tool_name": "read_file",
+          "args_schema_fp": "fp-read_file-v1",
+          "duration_ms": 160,
+          "ok": true,
+          "timestamp": "2026-10-04T04:18:00Z",
+          "payload": "{\"tool\":\"read_file\",\"server\":\"native\",\"ok\":true,\"duration_ms\":160}"
+        },
+        {
+          "id": 14,
+          "session_id": "SESSION-006",
+          "server": "mcp-fs",
+          "tool_name": "run_command",
+          "args_schema_fp": "fp-run_command-v1",
+          "duration_ms": 185,
+          "ok": true,
+          "timestamp": "2026-10-04T04:54:00Z",
+          "payload": "{\"tool\":\"run_command\",\"server\":\"mcp-fs\",\"ok\":true,\"duration_ms\":185}"
+        },
+        {
+          "id": 15,
+          "session_id": "SESSION-007",
+          "server": "mcp-git",
+          "tool_name": "replace_file_content",
+          "args_schema_fp": "fp-replace_file_content-v1",
+          "duration_ms": 210,
+          "ok": true,
+          "timestamp": "2026-10-04T05:30:00Z",
+          "payload": "{\"tool\":\"replace_file_content\",\"server\":\"mcp-git\",\"ok\":true,\"duration_ms\":210}"
+        },
+        {
+          "id": 16,
+          "session_id": "SESSION-008",
+          "server": "mcp-eval",
+          "tool_name": "fixture.inspect",
+          "args_schema_fp": "fp-fixture.inspect-v1",
+          "duration_ms": 245,
+          "ok": true,
+          "timestamp": "2026-10-04T06:06:00Z",
+          "payload": "{\"tool\":\"fixture.inspect\",\"server\":\"mcp-eval\",\"ok\":true,\"duration_ms\":245}"
+        },
+        {
+          "id": 17,
+          "session_id": "SESSION-001",
+          "server": "native",
+          "tool_name": "view_file",
+          "args_schema_fp": "fp-view_file-v1",
+          "duration_ms": 280,
+          "ok": true,
+          "timestamp": "2026-10-04T06:42:00Z",
+          "payload": "{\"tool\":\"view_file\",\"server\":\"native\",\"ok\":true,\"duration_ms\":280}"
+        },
+        {
+          "id": 18,
+          "session_id": "SESSION-002",
+          "server": "mcp-fs",
+          "tool_name": "git_status",
+          "args_schema_fp": "fp-git_status-v1",
+          "duration_ms": 320,
+          "ok": true,
+          "timestamp": "2026-10-04T07:18:00Z",
+          "payload": "{\"tool\":\"git_status\",\"server\":\"mcp-fs\",\"ok\":true,\"duration_ms\":320}"
+        },
+        {
+          "id": 19,
+          "session_id": "SESSION-003",
+          "server": "mcp-git",
+          "tool_name": "read_file",
+          "args_schema_fp": "fp-read_file-v1",
+          "duration_ms": 360,
+          "ok": true,
+          "timestamp": "2026-10-04T07:54:00Z",
+          "payload": "{\"tool\":\"read_file\",\"server\":\"mcp-git\",\"ok\":true,\"duration_ms\":360}"
+        },
+        {
+          "id": 20,
+          "session_id": "SESSION-004",
+          "server": "mcp-eval",
+          "tool_name": "run_command",
+          "args_schema_fp": "fp-run_command-v1",
+          "duration_ms": 410,
+          "ok": true,
+          "timestamp": "2026-10-04T08:30:00Z",
+          "payload": "{\"tool\":\"run_command\",\"server\":\"mcp-eval\",\"ok\":true,\"duration_ms\":410}"
+        },
+        {
+          "id": 21,
+          "session_id": "SESSION-005",
+          "server": "native",
+          "tool_name": "replace_file_content",
+          "args_schema_fp": "fp-replace_file_content-v1",
+          "duration_ms": 450,
+          "ok": true,
+          "timestamp": "2026-10-04T09:06:00Z",
+          "payload": "{\"tool\":\"replace_file_content\",\"server\":\"native\",\"ok\":true,\"duration_ms\":450}"
+        },
+        {
+          "id": 22,
+          "session_id": "SESSION-006",
+          "server": "mcp-fs",
+          "tool_name": "fixture.inspect",
+          "args_schema_fp": "fp-fixture.inspect-v1",
+          "duration_ms": 480,
+          "ok": true,
+          "timestamp": "2026-10-04T09:42:00Z",
+          "payload": "{\"tool\":\"fixture.inspect\",\"server\":\"mcp-fs\",\"ok\":true,\"duration_ms\":480}"
+        },
+        {
+          "id": 23,
+          "session_id": "SESSION-007",
+          "server": "mcp-git",
+          "tool_name": "view_file",
+          "args_schema_fp": "fp-view_file-v1",
+          "duration_ms": 520,
+          "ok": true,
+          "timestamp": "2026-10-04T10:18:00Z",
+          "payload": "{\"tool\":\"view_file\",\"server\":\"mcp-git\",\"ok\":true,\"duration_ms\":520}"
+        },
+        {
+          "id": 24,
+          "session_id": "SESSION-008",
+          "server": "mcp-eval",
+          "tool_name": "git_status",
+          "args_schema_fp": "fp-git_status-v1",
+          "duration_ms": 640,
+          "ok": true,
+          "timestamp": "2026-10-04T10:54:00Z",
+          "payload": "{\"tool\":\"git_status\",\"server\":\"mcp-eval\",\"ok\":true,\"duration_ms\":640}"
+        },
+        {
+          "id": 25,
+          "session_id": "SESSION-001",
+          "server": "native",
+          "tool_name": "read_file",
+          "args_schema_fp": "fp-read_file-v1",
+          "duration_ms": 780,
+          "ok": true,
+          "timestamp": "2026-10-04T11:30:00Z",
+          "payload": "{\"tool\":\"read_file\",\"server\":\"native\",\"ok\":true,\"duration_ms\":780}"
+        },
+        {
+          "id": 26,
+          "session_id": "SESSION-002",
+          "server": "mcp-fs",
+          "tool_name": "run_command",
+          "args_schema_fp": "fp-run_command-v1",
+          "duration_ms": 890,
+          "ok": true,
+          "timestamp": "2026-10-04T12:06:00Z",
+          "payload": "{\"tool\":\"run_command\",\"server\":\"mcp-fs\",\"ok\":true,\"duration_ms\":890}"
+        },
+        {
+          "id": 27,
+          "session_id": "SESSION-003",
+          "server": "mcp-git",
+          "tool_name": "replace_file_content",
+          "args_schema_fp": "fp-replace_file_content-v1",
+          "duration_ms": 1150,
+          "ok": true,
+          "timestamp": "2026-10-04T12:42:00Z",
+          "payload": "{\"tool\":\"replace_file_content\",\"server\":\"mcp-git\",\"ok\":true,\"duration_ms\":1150}"
+        },
+        {
+          "id": 28,
+          "session_id": "SESSION-004",
+          "server": "mcp-eval",
+          "tool_name": "fixture.inspect",
+          "args_schema_fp": "fp-fixture.inspect-v1",
+          "duration_ms": 1450,
+          "ok": true,
+          "timestamp": "2026-10-04T13:18:00Z",
+          "payload": "{\"tool\":\"fixture.inspect\",\"server\":\"mcp-eval\",\"ok\":true,\"duration_ms\":1450}"
+        },
+        {
+          "id": 29,
+          "session_id": "SESSION-005",
+          "server": "native",
+          "tool_name": "view_file",
+          "args_schema_fp": "fp-view_file-v1",
+          "duration_ms": 2100,
+          "ok": true,
+          "timestamp": "2026-10-04T13:54:00Z",
+          "payload": "{\"tool\":\"view_file\",\"server\":\"native\",\"ok\":true,\"duration_ms\":2100}"
+        },
+        {
+          "id": 30,
+          "session_id": "SESSION-006",
+          "server": "mcp-fs",
+          "tool_name": "git_status",
+          "args_schema_fp": "fp-git_status-v1",
+          "duration_ms": 2400,
+          "ok": true,
+          "timestamp": "2026-10-04T14:30:00Z",
+          "payload": "{\"tool\":\"git_status\",\"server\":\"mcp-fs\",\"ok\":true,\"duration_ms\":2400}"
+        }
+      ],
+      "total": 30
+    },
+    "scopes": [
+      {
+        "scope": "session",
+        "event_count": 13,
+        "session_count": 8,
+        "kind_count": 5,
+        "latest_at": "2026-10-04T13:22:30Z",
+        "latest_kind": "turn.completed",
+        "latest_seq": 61,
+        "kinds": [
+          {
+            "name": "session.started",
+            "count": 3
+          },
+          {
+            "name": "turn.completed",
+            "count": 3
+          },
+          {
+            "name": "turn.created",
+            "count": 3
+          },
+          {
+            "name": "session.checkpoint",
+            "count": 2
+          },
+          {
+            "name": "session.ended",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "scope": "agent",
+        "event_count": 13,
+        "session_count": 4,
+        "kind_count": 4,
+        "latest_at": "2026-10-04T13:45:00Z",
+        "latest_kind": "agent.registered",
+        "latest_seq": 62,
+        "kinds": [
+          {
+            "name": "agent.registered",
+            "count": 4
+          },
+          {
+            "name": "agent.heartbeat",
+            "count": 3
+          },
+          {
+            "name": "agent.skill_invoked",
+            "count": 3
+          },
+          {
+            "name": "agent.state_changed",
+            "count": 3
+          }
+        ]
+      },
+      {
+        "scope": "system",
+        "event_count": 13,
+        "session_count": 0,
+        "kind_count": 4,
+        "latest_at": "2026-10-04T14:07:30Z",
+        "latest_kind": "catalog.reloaded",
+        "latest_seq": 63,
+        "kinds": [
+          {
+            "name": "catalog.reloaded",
+            "count": 4
+          },
+          {
+            "name": "daemon.started",
+            "count": 3
+          },
+          {
+            "name": "mcp.server_connected",
+            "count": 3
+          },
+          {
+            "name": "system.resource_action",
+            "count": 3
+          }
+        ]
+      },
+      {
+        "scope": "router",
+        "event_count": 13,
+        "session_count": 0,
+        "kind_count": 4,
+        "latest_at": "2026-10-04T14:30:00Z",
+        "latest_kind": "route.resolved",
+        "latest_seq": 64,
+        "kinds": [
+          {
+            "name": "route.resolved",
+            "count": 4
+          },
+          {
+            "name": "budget.evaluated",
+            "count": 3
+          },
+          {
+            "name": "cache.hit",
+            "count": 3
+          },
+          {
+            "name": "provider.dispatched",
+            "count": 3
+          }
+        ]
+      },
+      {
+        "scope": "mesh",
+        "event_count": 12,
+        "session_count": 0,
+        "kind_count": 4,
+        "latest_at": "2026-10-04T13:00:00Z",
+        "latest_kind": "partition.fenced",
+        "latest_seq": 60,
+        "kinds": [
+          {
+            "name": "envelope.routed",
+            "count": 3
+          },
+          {
+            "name": "lease.renewed",
+            "count": 3
+          },
+          {
+            "name": "partition.fenced",
+            "count": 3
+          },
+          {
+            "name": "peer.discovered",
+            "count": 3
+          }
+        ]
+      }
+    ]
+  },
+  "registry": {
+    "rows": [
+      {
+        "urn": "msg://agent/agent-mux/agt_knoibzkhsk",
+        "kind": "agent",
+        "tether_instance_id": "tether-main",
+        "display_name": "sup-agent-os",
+        "title": "Agent-OS Run Supervisor",
+        "role": "supervisor",
+        "description": "Monitors run health, gate transitions, and unblocks agents across the team.",
+        "avatar": "https://avatar.nanite.cloud/sup-agent-os.png",
+        "project": "tether",
+        "status": "active",
+        "callback": {
+          "scheme": "file",
+          "target": "/home/chrispian/.tether/run/sup-agent-os.sock"
+        },
+        "health_status": "healthy",
+        "last_seen_at": "2026-10-04T14:28:00Z",
+        "host_address": "127.0.0.1",
+        "last_updated_by": "sysop-ui",
+        "capabilities": ["session.read", "session.control", "message.write", "registry.read"],
+        "skills": [
+          {
+            "name": "run-orchestration",
+            "learned_at": "2026-09-10T12:00:00Z",
+            "via": "bootstrap",
+            "level": "expert"
+          },
+          {
+            "name": "gate-monitoring",
+            "learned_at": "2026-09-10T12:00:00Z",
+            "via": "bootstrap",
+            "level": "expert"
+          }
+        ],
+        "links": [
+          {
+            "kind": "repo",
+            "target": "https://github.com/hollis-labs/agent-os"
+          },
+          {
+            "kind": "doc",
+            "target": "https://agent-os.nanite.cloud/briefs/supervisor"
+          }
+        ],
+        "created_at": "2026-09-04T14:30:00Z",
+        "updated_at": "2026-10-04T14:20:00Z"
+      },
+      {
+        "urn": "msg://agent/agent-mux/agt_slyrwdryt6",
+        "kind": "agent",
+        "tether_instance_id": "tether-main",
+        "display_name": "architect",
+        "title": "System Architect",
+        "role": "architect",
+        "description": "Designs wave decomposition, ADR alignments, and cross-monorepo interfaces.",
+        "avatar": "https://avatar.nanite.cloud/architect.png",
+        "project": "tether",
+        "status": "active",
+        "callback": {
+          "scheme": "file",
+          "target": "/home/chrispian/.tether/run/architect.sock"
+        },
+        "health_status": "healthy",
+        "last_seen_at": "2026-10-04T14:25:00Z",
+        "host_address": "127.0.0.1",
+        "last_updated_by": "sysop-ui",
+        "capabilities": ["architecture.plan", "adr.author", "registry.write"],
+        "skills": [
+          {
+            "name": "system-design",
+            "learned_at": "2026-09-01T08:00:00Z",
+            "via": "bootstrap",
+            "level": "expert"
+          }
+        ],
+        "links": [
+          {
+            "kind": "tesseract",
+            "target": "tesseract://project/hollis-labs/memory/decisions"
+          }
+        ],
+        "created_at": "2026-09-04T14:30:00Z",
+        "updated_at": "2026-10-04T14:10:00Z"
+      },
+      {
+        "urn": "msg://agent/agent-mux/agt_h6i20mqrcn",
+        "kind": "agent",
+        "tether_instance_id": "tether-main",
+        "display_name": "launch-agent-os",
+        "title": "Agent-OS Execution Lead",
+        "role": "lead",
+        "description": "Chrispian's proxy: approves merges, releases, and directs next tasks.",
+        "avatar": "https://avatar.nanite.cloud/launch-agent-os.png",
+        "project": "tether",
+        "status": "active",
+        "callback": {
+          "scheme": "file",
+          "target": "/home/chrispian/.tether/run/lead.sock"
+        },
+        "health_status": "healthy",
+        "last_seen_at": "2026-10-04T14:29:00Z",
+        "host_address": "127.0.0.1",
+        "last_updated_by": "sysop-ui",
+        "capabilities": ["pr.merge", "release.tag", "service.restart", "tangent.approve"],
+        "skills": [
+          {
+            "name": "release-management",
+            "learned_at": "2026-09-05T09:00:00Z",
+            "via": "bootstrap",
+            "level": "expert"
+          }
+        ],
+        "links": [
+          {
+            "kind": "torque",
+            "target": "https://torque.nanite.cloud"
+          }
+        ],
+        "created_at": "2026-09-04T14:30:00Z",
+        "updated_at": "2026-10-04T14:25:00Z"
+      },
+      {
+        "urn": "msg://agent/agent-mux/agt_d7rr0npkcj",
+        "kind": "agent",
+        "tether_instance_id": "tether-main",
+        "display_name": "launch-worker-1",
+        "title": "Worker-1 Orchestrator",
+        "role": "orchestrator",
+        "description": "Manages independent task worker assignments and execution on worker-1.",
+        "avatar": "https://avatar.nanite.cloud/launch-worker-1.png",
+        "project": "parallax",
+        "status": "active",
+        "callback": {
+          "scheme": "file",
+          "target": "/home/chrispian/.tether/run/worker-1.sock"
+        },
+        "health_status": "healthy",
+        "last_seen_at": "2026-10-04T14:27:00Z",
+        "host_address": "worker-1",
+        "last_updated_by": "sysop-ui",
+        "capabilities": ["task.assign", "task.review", "worktree.manage"],
+        "skills": [
+          {
+            "name": "task-dispatch",
+            "learned_at": "2026-10-01T10:00:00Z",
+            "via": "bootstrap",
+            "level": "advanced"
+          }
+        ],
+        "links": [
+          {
+            "kind": "assignment",
+            "target": "/home/chrispian/dev/agent-os/team/assignments/parallax-tether-fixtures.md"
+          }
+        ],
+        "created_at": "2026-09-24T14:30:00Z",
+        "updated_at": "2026-10-04T14:15:00Z"
+      },
+      {
+        "urn": "msg://agent/agent-mux/agt_pdhoohh4tx",
+        "kind": "agent",
+        "tether_instance_id": "tether-main",
+        "display_name": "task-parallax-4",
+        "title": "Tether Fixtures Task Agent",
+        "role": "task",
+        "description": "Implements the tether-sysop/v1 fixture family and validation contracts.",
+        "avatar": "https://avatar.nanite.cloud/task-parallax-4.png",
+        "project": "parallax",
+        "status": "active",
+        "callback": {
+          "scheme": "file",
+          "target": "/home/chrispian/.tether/run/task-parallax-4.sock"
+        },
+        "health_status": "healthy",
+        "last_seen_at": "2026-10-04T14:30:00Z",
+        "host_address": "worker-1",
+        "last_updated_by": "sysop-ui",
+        "capabilities": ["fixture.generate", "fixture.validate", "git.commit"],
+        "skills": [
+          {
+            "name": "go-testing",
+            "learned_at": "2026-10-04T12:00:00Z",
+            "via": "bootstrap",
+            "level": "expert"
+          },
+          {
+            "name": "contract-verification",
+            "learned_at": "2026-10-04T12:00:00Z",
+            "via": "bootstrap",
+            "level": "expert"
+          }
+        ],
+        "links": [
+          {
+            "kind": "worktree",
+            "target": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0098"
+          }
+        ],
+        "created_at": "2026-10-04T12:30:00Z",
+        "updated_at": "2026-10-04T14:30:00Z"
+      },
+      {
+        "urn": "msg://agent/agent-mux/agt_wpc7vpvyyw",
+        "kind": "agent",
+        "tether_instance_id": "tether-main",
+        "display_name": "task-parallax-1",
+        "title": "Flux Fidelity Task Agent",
+        "role": "task",
+        "description": "Executes Flux chat card recreation and tokens fidelity verification.",
+        "avatar": "https://avatar.nanite.cloud/task-parallax-1.png",
+        "project": "parallax",
+        "status": "active",
+        "callback": {
+          "scheme": "file",
+          "target": "/home/chrispian/.tether/run/task-parallax-1.sock"
+        },
+        "health_status": "healthy",
+        "last_seen_at": "2026-10-04T14:23:00Z",
+        "host_address": "worker-1",
+        "last_updated_by": "sysop-ui",
+        "capabilities": ["ui.recreation", "tokens.check"],
+        "skills": [
+          {
+            "name": "design-kit",
+            "learned_at": "2026-10-04T12:00:00Z",
+            "via": "bootstrap",
+            "level": "proficient"
+          }
+        ],
+        "links": [
+          {
+            "kind": "worktree",
+            "target": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0083"
+          }
+        ],
+        "created_at": "2026-10-04T11:30:00Z",
+        "updated_at": "2026-10-04T14:20:00Z"
+      },
+      {
+        "urn": "msg://agent/agent-mux/agt_olddeprecated1",
+        "kind": "agent",
+        "tether_instance_id": "tether-main",
+        "display_name": "task-legacy-runner",
+        "title": "Legacy Process Runner (Deprecated)",
+        "role": "task",
+        "description": "Pre-vNext raw process runner; replaced by sandboxed container executor.",
+        "avatar": "https://avatar.nanite.cloud/legacy.png",
+        "project": "tether",
+        "status": "deprecated",
+        "callback": {
+          "scheme": "file",
+          "target": "/home/chrispian/.tether/run/legacy.sock"
+        },
+        "health_status": "inactive",
+        "last_seen_at": "2026-09-20T14:30:00Z",
+        "host_address": "agent-os",
+        "last_updated_by": "sysop-migration",
+        "capabilities": ["process.exec"],
+        "skills": [
+          {
+            "name": "bash-runner",
+            "learned_at": "2026-08-01T00:00:00Z",
+            "via": "historical",
+            "level": "deprecated"
+          }
+        ],
+        "links": [
+          {
+            "kind": "adr",
+            "target": "tesseract://project/tether/knowledge/adr/0049"
+          }
+        ],
+        "created_at": "2026-08-05T14:30:00Z",
+        "updated_at": "2026-09-20T14:30:00Z"
+      },
+      {
+        "urn": "msg://agent/agent-mux/agt_olddeprecated2",
+        "kind": "agent",
+        "tether_instance_id": "tether-main",
+        "display_name": "agent-shim-v1",
+        "title": "V1 Compatibility Shim (Deprecated)",
+        "role": "shim",
+        "description": "Early Wave-0 inter-runtime compatibility translator; retired per Clean Breaks policy.",
+        "avatar": "https://avatar.nanite.cloud/shim.png",
+        "project": "tangent",
+        "status": "deprecated",
+        "callback": {
+          "scheme": "http",
+          "target": "http://127.0.0.1:8999/shim"
+        },
+        "health_status": "inactive",
+        "last_seen_at": "2026-09-13T14:30:00Z",
+        "host_address": "agent-os",
+        "last_updated_by": "sysop-migration",
+        "capabilities": ["wire.translate"],
+        "skills": [
+          {
+            "name": "format-conversion",
+            "learned_at": "2026-07-15T00:00:00Z",
+            "via": "historical",
+            "level": "deprecated"
+          }
+        ],
+        "links": [
+          {
+            "kind": "adr",
+            "target": "tesseract://project/tether/knowledge/adr/0050"
+          }
+        ],
+        "created_at": "2026-07-21T14:30:00Z",
+        "updated_at": "2026-09-13T14:30:00Z"
+      },
+      {
+        "urn": "msg://project/hollis-labs/tether",
+        "kind": "project",
+        "tether_instance_id": "tether-main",
+        "display_name": "tether",
+        "title": "Tether Local Agent Session Control Plane",
+        "role": "runtime",
+        "description": "Local daemon owning session lifecycle, sandboxed execution, messaging, and proxy tools.",
+        "avatar": "https://avatar.nanite.cloud/proj-tether.png",
+        "status": "active",
+        "callback": {
+          "scheme": "http",
+          "target": "http://127.0.0.1:8947/api"
+        },
+        "health_status": "healthy",
+        "last_seen_at": "2026-10-04T14:29:00Z",
+        "host_address": "127.0.0.1",
+        "last_updated_by": "sysop-ui",
+        "capabilities": ["session.control", "mcp.proxy", "messaging.broker", "ai.gateway"],
+        "links": [
+          {
+            "kind": "repo",
+            "target": "https://github.com/hollis-labs/tether"
+          },
+          {
+            "kind": "docs",
+            "target": "https://tether.nanite.cloud"
+          }
+        ],
+        "created_at": "2026-08-25T14:30:00Z",
+        "updated_at": "2026-10-04T14:25:00Z"
+      },
+      {
+        "urn": "msg://project/hollis-labs/parallax",
+        "kind": "project",
+        "tether_instance_id": "tether-main",
+        "display_name": "parallax",
+        "title": "Parallax UI \u0026 Fixture Framework",
+        "role": "application",
+        "description": "Component showcase, deterministic presentation fixture generators, and recreation workbench.",
+        "avatar": "https://avatar.nanite.cloud/proj-parallax.png",
+        "status": "active",
+        "callback": {
+          "scheme": "http",
+          "target": "http://127.0.0.1:5173"
+        },
+        "health_status": "healthy",
+        "last_seen_at": "2026-10-04T14:30:00Z",
+        "host_address": "worker-1",
+        "last_updated_by": "sysop-ui",
+        "capabilities": ["fixtures.generate", "components.showcase", "stories.render"],
+        "links": [
+          {
+            "kind": "repo",
+            "target": "https://github.com/hollis-labs/parallax"
+          }
+        ],
+        "created_at": "2026-09-04T14:30:00Z",
+        "updated_at": "2026-10-04T14:30:00Z"
+      },
+      {
+        "urn": "msg://project/hollis-labs/tangent",
+        "kind": "project",
+        "tether_instance_id": "tether-main",
+        "display_name": "tangent",
+        "title": "Tangent Agent Workspace \u0026 Inbox",
+        "role": "application",
+        "description": "Desktop UI for agent oversight, approval queues, messaging turns, and review workflows.",
+        "avatar": "https://avatar.nanite.cloud/proj-tangent.png",
+        "status": "active",
+        "callback": {
+          "scheme": "http",
+          "target": "http://127.0.0.1:8080"
+        },
+        "health_status": "healthy",
+        "last_seen_at": "2026-10-04T14:22:00Z",
+        "host_address": "127.0.0.1",
+        "last_updated_by": "sysop-ui",
+        "capabilities": ["inbox.render", "approval.review", "plugins.host"],
+        "links": [
+          {
+            "kind": "repo",
+            "target": "https://github.com/hollis-labs/tangent"
+          }
+        ],
+        "created_at": "2026-09-04T14:30:00Z",
+        "updated_at": "2026-10-04T14:18:00Z"
+      },
+      {
+        "urn": "msg://project/hollis-labs/legacy-archived",
+        "kind": "project",
+        "tether_instance_id": "tether-main",
+        "display_name": "legacy-prototype",
+        "title": "Early Wave-0 Monolithic Runner (Archived)",
+        "role": "prototype",
+        "description": "Historical prototype codebase; archived and replaced by modular substrate services.",
+        "avatar": "https://avatar.nanite.cloud/proj-archived.png",
+        "status": "deprecated",
+        "callback": {
+          "scheme": "file",
+          "target": "/dev/null"
+        },
+        "health_status": "inactive",
+        "last_seen_at": "2026-09-04T14:30:00Z",
+        "host_address": "agent-os",
+        "last_updated_by": "sysop-migration",
+        "links": [
+          {
+            "kind": "archive",
+            "target": "https://github.com/hollis-labs/legacy-prototype"
+          }
+        ],
+        "created_at": "2026-07-06T14:30:00Z",
+        "updated_at": "2026-09-04T14:30:00Z"
+      }
+    ]
+  },
+  "events": [
+    {
+      "seq": 1,
+      "at": "2026-10-03T14:52:30Z",
+      "scope": "session",
+      "session_id": "SESSION-001",
+      "kind": "session.started",
+      "payload": "{\"seq\":1,\"scope\":\"session\",\"kind\":\"session.started\",\"session_id\":\"SESSION-001\",\"tokens\":100}"
+    },
+    {
+      "seq": 2,
+      "at": "2026-10-03T15:15:00Z",
+      "scope": "agent",
+      "kind": "agent.registered",
+      "payload": "{\"seq\":2,\"scope\":\"agent\",\"kind\":\"agent.registered\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 3,
+      "at": "2026-10-03T15:37:30Z",
+      "scope": "system",
+      "kind": "catalog.reloaded",
+      "payload": "{\"seq\":3,\"scope\":\"system\",\"kind\":\"catalog.reloaded\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 4,
+      "at": "2026-10-03T16:00:00Z",
+      "scope": "router",
+      "kind": "route.resolved",
+      "payload": "{\"seq\":4,\"scope\":\"router\",\"kind\":\"route.resolved\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 5,
+      "at": "2026-10-03T16:22:30Z",
+      "scope": "mesh",
+      "kind": "envelope.routed",
+      "payload": "{\"seq\":5,\"scope\":\"mesh\",\"kind\":\"envelope.routed\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 6,
+      "at": "2026-10-03T16:45:00Z",
+      "scope": "session",
+      "session_id": "SESSION-006",
+      "kind": "turn.created",
+      "payload": "{\"seq\":6,\"scope\":\"session\",\"kind\":\"turn.created\",\"session_id\":\"SESSION-006\",\"tokens\":225}"
+    },
+    {
+      "seq": 7,
+      "at": "2026-10-03T17:07:30Z",
+      "scope": "agent",
+      "session_id": "SESSION-007",
+      "kind": "agent.heartbeat",
+      "payload": "{\"seq\":7,\"scope\":\"agent\",\"kind\":\"agent.heartbeat\",\"session_id\":\"SESSION-007\",\"tokens\":250}"
+    },
+    {
+      "seq": 8,
+      "at": "2026-10-03T17:30:00Z",
+      "scope": "system",
+      "kind": "daemon.started",
+      "payload": "{\"seq\":8,\"scope\":\"system\",\"kind\":\"daemon.started\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 9,
+      "at": "2026-10-03T17:52:30Z",
+      "scope": "router",
+      "kind": "provider.dispatched",
+      "payload": "{\"seq\":9,\"scope\":\"router\",\"kind\":\"provider.dispatched\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 10,
+      "at": "2026-10-03T18:15:00Z",
+      "scope": "mesh",
+      "kind": "peer.discovered",
+      "payload": "{\"seq\":10,\"scope\":\"mesh\",\"kind\":\"peer.discovered\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 11,
+      "at": "2026-10-03T18:37:30Z",
+      "scope": "session",
+      "session_id": "SESSION-003",
+      "kind": "turn.completed",
+      "payload": "{\"seq\":11,\"scope\":\"session\",\"kind\":\"turn.completed\",\"session_id\":\"SESSION-003\",\"tokens\":350}"
+    },
+    {
+      "seq": 12,
+      "at": "2026-10-03T19:00:00Z",
+      "scope": "agent",
+      "kind": "agent.skill_invoked",
+      "payload": "{\"seq\":12,\"scope\":\"agent\",\"kind\":\"agent.skill_invoked\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 13,
+      "at": "2026-10-03T19:22:30Z",
+      "scope": "system",
+      "kind": "mcp.server_connected",
+      "payload": "{\"seq\":13,\"scope\":\"system\",\"kind\":\"mcp.server_connected\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 14,
+      "at": "2026-10-03T19:45:00Z",
+      "scope": "router",
+      "kind": "budget.evaluated",
+      "payload": "{\"seq\":14,\"scope\":\"router\",\"kind\":\"budget.evaluated\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 15,
+      "at": "2026-10-03T20:07:30Z",
+      "scope": "mesh",
+      "kind": "lease.renewed",
+      "payload": "{\"seq\":15,\"scope\":\"mesh\",\"kind\":\"lease.renewed\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 16,
+      "at": "2026-10-03T20:30:00Z",
+      "scope": "session",
+      "session_id": "SESSION-008",
+      "kind": "session.checkpoint",
+      "payload": "{\"seq\":16,\"scope\":\"session\",\"kind\":\"session.checkpoint\",\"session_id\":\"SESSION-008\",\"tokens\":475}"
+    },
+    {
+      "seq": 17,
+      "at": "2026-10-03T20:52:30Z",
+      "scope": "agent",
+      "session_id": "SESSION-001",
+      "kind": "agent.state_changed",
+      "payload": "{\"seq\":17,\"scope\":\"agent\",\"kind\":\"agent.state_changed\",\"session_id\":\"SESSION-001\",\"tokens\":500}"
+    },
+    {
+      "seq": 18,
+      "at": "2026-10-03T21:15:00Z",
+      "scope": "system",
+      "kind": "system.resource_action",
+      "payload": "{\"seq\":18,\"scope\":\"system\",\"kind\":\"system.resource_action\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 19,
+      "at": "2026-10-03T21:37:30Z",
+      "scope": "router",
+      "kind": "cache.hit",
+      "payload": "{\"seq\":19,\"scope\":\"router\",\"kind\":\"cache.hit\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 20,
+      "at": "2026-10-03T22:00:00Z",
+      "scope": "mesh",
+      "kind": "partition.fenced",
+      "payload": "{\"seq\":20,\"scope\":\"mesh\",\"kind\":\"partition.fenced\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 21,
+      "at": "2026-10-03T22:22:30Z",
+      "scope": "session",
+      "session_id": "SESSION-005",
+      "kind": "session.ended",
+      "payload": "{\"seq\":21,\"scope\":\"session\",\"kind\":\"session.ended\",\"session_id\":\"SESSION-005\",\"tokens\":600}"
+    },
+    {
+      "seq": 22,
+      "at": "2026-10-03T22:45:00Z",
+      "scope": "agent",
+      "kind": "agent.registered",
+      "payload": "{\"seq\":22,\"scope\":\"agent\",\"kind\":\"agent.registered\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 23,
+      "at": "2026-10-03T23:07:30Z",
+      "scope": "system",
+      "kind": "catalog.reloaded",
+      "payload": "{\"seq\":23,\"scope\":\"system\",\"kind\":\"catalog.reloaded\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 24,
+      "at": "2026-10-03T23:30:00Z",
+      "scope": "router",
+      "kind": "route.resolved",
+      "payload": "{\"seq\":24,\"scope\":\"router\",\"kind\":\"route.resolved\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 25,
+      "at": "2026-10-03T23:52:30Z",
+      "scope": "mesh",
+      "kind": "envelope.routed",
+      "payload": "{\"seq\":25,\"scope\":\"mesh\",\"kind\":\"envelope.routed\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 26,
+      "at": "2026-10-04T00:15:00Z",
+      "scope": "session",
+      "session_id": "SESSION-002",
+      "kind": "session.started",
+      "payload": "{\"seq\":26,\"scope\":\"session\",\"kind\":\"session.started\",\"session_id\":\"SESSION-002\",\"tokens\":725}"
+    },
+    {
+      "seq": 27,
+      "at": "2026-10-04T00:37:30Z",
+      "scope": "agent",
+      "session_id": "SESSION-003",
+      "kind": "agent.heartbeat",
+      "payload": "{\"seq\":27,\"scope\":\"agent\",\"kind\":\"agent.heartbeat\",\"session_id\":\"SESSION-003\",\"tokens\":750}"
+    },
+    {
+      "seq": 28,
+      "at": "2026-10-04T01:00:00Z",
+      "scope": "system",
+      "kind": "daemon.started",
+      "payload": "{\"seq\":28,\"scope\":\"system\",\"kind\":\"daemon.started\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 29,
+      "at": "2026-10-04T01:22:30Z",
+      "scope": "router",
+      "kind": "provider.dispatched",
+      "payload": "{\"seq\":29,\"scope\":\"router\",\"kind\":\"provider.dispatched\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 30,
+      "at": "2026-10-04T01:45:00Z",
+      "scope": "mesh",
+      "kind": "peer.discovered",
+      "payload": "{\"seq\":30,\"scope\":\"mesh\",\"kind\":\"peer.discovered\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 31,
+      "at": "2026-10-04T02:07:30Z",
+      "scope": "session",
+      "session_id": "SESSION-007",
+      "kind": "turn.created",
+      "payload": "{\"seq\":31,\"scope\":\"session\",\"kind\":\"turn.created\",\"session_id\":\"SESSION-007\",\"tokens\":850}"
+    },
+    {
+      "seq": 32,
+      "at": "2026-10-04T02:30:00Z",
+      "scope": "agent",
+      "kind": "agent.skill_invoked",
+      "payload": "{\"seq\":32,\"scope\":\"agent\",\"kind\":\"agent.skill_invoked\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 33,
+      "at": "2026-10-04T02:52:30Z",
+      "scope": "system",
+      "kind": "mcp.server_connected",
+      "payload": "{\"seq\":33,\"scope\":\"system\",\"kind\":\"mcp.server_connected\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 34,
+      "at": "2026-10-04T03:15:00Z",
+      "scope": "router",
+      "kind": "budget.evaluated",
+      "payload": "{\"seq\":34,\"scope\":\"router\",\"kind\":\"budget.evaluated\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 35,
+      "at": "2026-10-04T03:37:30Z",
+      "scope": "mesh",
+      "kind": "lease.renewed",
+      "payload": "{\"seq\":35,\"scope\":\"mesh\",\"kind\":\"lease.renewed\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 36,
+      "at": "2026-10-04T04:00:00Z",
+      "scope": "session",
+      "session_id": "SESSION-004",
+      "kind": "turn.completed",
+      "payload": "{\"seq\":36,\"scope\":\"session\",\"kind\":\"turn.completed\",\"session_id\":\"SESSION-004\",\"tokens\":975}"
+    },
+    {
+      "seq": 37,
+      "at": "2026-10-04T04:22:30Z",
+      "scope": "agent",
+      "session_id": "SESSION-005",
+      "kind": "agent.state_changed",
+      "payload": "{\"seq\":37,\"scope\":\"agent\",\"kind\":\"agent.state_changed\",\"session_id\":\"SESSION-005\",\"tokens\":1000}"
+    },
+    {
+      "seq": 38,
+      "at": "2026-10-04T04:45:00Z",
+      "scope": "system",
+      "kind": "system.resource_action",
+      "payload": "{\"seq\":38,\"scope\":\"system\",\"kind\":\"system.resource_action\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 39,
+      "at": "2026-10-04T05:07:30Z",
+      "scope": "router",
+      "kind": "cache.hit",
+      "payload": "{\"seq\":39,\"scope\":\"router\",\"kind\":\"cache.hit\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 40,
+      "at": "2026-10-04T05:30:00Z",
+      "scope": "mesh",
+      "kind": "partition.fenced",
+      "payload": "{\"seq\":40,\"scope\":\"mesh\",\"kind\":\"partition.fenced\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 41,
+      "at": "2026-10-04T05:52:30Z",
+      "scope": "session",
+      "session_id": "SESSION-001",
+      "kind": "session.checkpoint",
+      "payload": "{\"seq\":41,\"scope\":\"session\",\"kind\":\"session.checkpoint\",\"session_id\":\"SESSION-001\",\"tokens\":1100}"
+    },
+    {
+      "seq": 42,
+      "at": "2026-10-04T06:15:00Z",
+      "scope": "agent",
+      "kind": "agent.registered",
+      "payload": "{\"seq\":42,\"scope\":\"agent\",\"kind\":\"agent.registered\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 43,
+      "at": "2026-10-04T06:37:30Z",
+      "scope": "system",
+      "kind": "catalog.reloaded",
+      "payload": "{\"seq\":43,\"scope\":\"system\",\"kind\":\"catalog.reloaded\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 44,
+      "at": "2026-10-04T07:00:00Z",
+      "scope": "router",
+      "kind": "route.resolved",
+      "payload": "{\"seq\":44,\"scope\":\"router\",\"kind\":\"route.resolved\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 45,
+      "at": "2026-10-04T07:22:30Z",
+      "scope": "mesh",
+      "kind": "envelope.routed",
+      "payload": "{\"seq\":45,\"scope\":\"mesh\",\"kind\":\"envelope.routed\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 46,
+      "at": "2026-10-04T07:45:00Z",
+      "scope": "session",
+      "session_id": "SESSION-006",
+      "kind": "session.ended",
+      "payload": "{\"seq\":46,\"scope\":\"session\",\"kind\":\"session.ended\",\"session_id\":\"SESSION-006\",\"tokens\":1225}"
+    },
+    {
+      "seq": 47,
+      "at": "2026-10-04T08:07:30Z",
+      "scope": "agent",
+      "session_id": "SESSION-007",
+      "kind": "agent.heartbeat",
+      "payload": "{\"seq\":47,\"scope\":\"agent\",\"kind\":\"agent.heartbeat\",\"session_id\":\"SESSION-007\",\"tokens\":1250}"
+    },
+    {
+      "seq": 48,
+      "at": "2026-10-04T08:30:00Z",
+      "scope": "system",
+      "kind": "daemon.started",
+      "payload": "{\"seq\":48,\"scope\":\"system\",\"kind\":\"daemon.started\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 49,
+      "at": "2026-10-04T08:52:30Z",
+      "scope": "router",
+      "kind": "provider.dispatched",
+      "payload": "{\"seq\":49,\"scope\":\"router\",\"kind\":\"provider.dispatched\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 50,
+      "at": "2026-10-04T09:15:00Z",
+      "scope": "mesh",
+      "kind": "peer.discovered",
+      "payload": "{\"seq\":50,\"scope\":\"mesh\",\"kind\":\"peer.discovered\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 51,
+      "at": "2026-10-04T09:37:30Z",
+      "scope": "session",
+      "session_id": "SESSION-003",
+      "kind": "session.started",
+      "payload": "{\"seq\":51,\"scope\":\"session\",\"kind\":\"session.started\",\"session_id\":\"SESSION-003\",\"tokens\":1350}"
+    },
+    {
+      "seq": 52,
+      "at": "2026-10-04T10:00:00Z",
+      "scope": "agent",
+      "kind": "agent.skill_invoked",
+      "payload": "{\"seq\":52,\"scope\":\"agent\",\"kind\":\"agent.skill_invoked\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 53,
+      "at": "2026-10-04T10:22:30Z",
+      "scope": "system",
+      "kind": "mcp.server_connected",
+      "payload": "{\"seq\":53,\"scope\":\"system\",\"kind\":\"mcp.server_connected\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 54,
+      "at": "2026-10-04T10:45:00Z",
+      "scope": "router",
+      "kind": "budget.evaluated",
+      "payload": "{\"seq\":54,\"scope\":\"router\",\"kind\":\"budget.evaluated\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 55,
+      "at": "2026-10-04T11:07:30Z",
+      "scope": "mesh",
+      "kind": "lease.renewed",
+      "payload": "{\"seq\":55,\"scope\":\"mesh\",\"kind\":\"lease.renewed\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 56,
+      "at": "2026-10-04T11:30:00Z",
+      "scope": "session",
+      "session_id": "SESSION-008",
+      "kind": "turn.created",
+      "payload": "{\"seq\":56,\"scope\":\"session\",\"kind\":\"turn.created\",\"session_id\":\"SESSION-008\",\"tokens\":1475}"
+    },
+    {
+      "seq": 57,
+      "at": "2026-10-04T11:52:30Z",
+      "scope": "agent",
+      "session_id": "SESSION-001",
+      "kind": "agent.state_changed",
+      "payload": "{\"seq\":57,\"scope\":\"agent\",\"kind\":\"agent.state_changed\",\"session_id\":\"SESSION-001\",\"tokens\":1500}"
+    },
+    {
+      "seq": 58,
+      "at": "2026-10-04T12:15:00Z",
+      "scope": "system",
+      "kind": "system.resource_action",
+      "payload": "{\"seq\":58,\"scope\":\"system\",\"kind\":\"system.resource_action\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 59,
+      "at": "2026-10-04T12:37:30Z",
+      "scope": "router",
+      "kind": "cache.hit",
+      "payload": "{\"seq\":59,\"scope\":\"router\",\"kind\":\"cache.hit\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 60,
+      "at": "2026-10-04T13:00:00Z",
+      "scope": "mesh",
+      "kind": "partition.fenced",
+      "payload": "{\"seq\":60,\"scope\":\"mesh\",\"kind\":\"partition.fenced\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 61,
+      "at": "2026-10-04T13:22:30Z",
+      "scope": "session",
+      "session_id": "SESSION-005",
+      "kind": "turn.completed",
+      "payload": "{\"seq\":61,\"scope\":\"session\",\"kind\":\"turn.completed\",\"session_id\":\"SESSION-005\",\"tokens\":1600}"
+    },
+    {
+      "seq": 62,
+      "at": "2026-10-04T13:45:00Z",
+      "scope": "agent",
+      "kind": "agent.registered",
+      "payload": "{\"seq\":62,\"scope\":\"agent\",\"kind\":\"agent.registered\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 63,
+      "at": "2026-10-04T14:07:30Z",
+      "scope": "system",
+      "kind": "catalog.reloaded",
+      "payload": "{\"seq\":63,\"scope\":\"system\",\"kind\":\"catalog.reloaded\",\"status\":\"admitted\",\"deterministic\":true}"
+    },
+    {
+      "seq": 64,
+      "at": "2026-10-04T14:30:00Z",
+      "scope": "router",
+      "kind": "route.resolved",
+      "payload": "{\"seq\":64,\"scope\":\"router\",\"kind\":\"route.resolved\",\"status\":\"admitted\",\"deterministic\":true}"
+    }
+  ],
+  "toolCalls": [
+    {
+      "id": 1,
+      "session_id": "SESSION-001",
+      "server": "native",
+      "tool_name": "read_file",
+      "args_schema_fp": "fp-read_file-v1",
+      "duration_ms": 12,
+      "ok": true,
+      "timestamp": "2026-10-03T21:06:00Z",
+      "payload": "{\"tool\":\"read_file\",\"server\":\"native\",\"ok\":true,\"duration_ms\":12}"
+    },
+    {
+      "id": 2,
+      "session_id": "SESSION-002",
+      "server": "mcp-fs",
+      "tool_name": "run_command",
+      "args_schema_fp": "fp-run_command-v1",
+      "duration_ms": 18,
+      "ok": true,
+      "timestamp": "2026-10-03T21:42:00Z",
+      "payload": "{\"tool\":\"run_command\",\"server\":\"mcp-fs\",\"ok\":true,\"duration_ms\":18}"
+    },
+    {
+      "id": 3,
+      "session_id": "SESSION-003",
+      "server": "mcp-git",
+      "tool_name": "replace_file_content",
+      "args_schema_fp": "fp-replace_file_content-v1",
+      "duration_ms": 25,
+      "ok": true,
+      "timestamp": "2026-10-03T22:18:00Z",
+      "payload": "{\"tool\":\"replace_file_content\",\"server\":\"mcp-git\",\"ok\":true,\"duration_ms\":25}"
+    },
+    {
+      "id": 4,
+      "session_id": "SESSION-004",
+      "server": "mcp-eval",
+      "tool_name": "fixture.inspect",
+      "args_schema_fp": "fp-fixture.inspect-v1",
+      "duration_ms": 42,
+      "ok": true,
+      "timestamp": "2026-10-03T22:54:00Z",
+      "payload": "{\"tool\":\"fixture.inspect\",\"server\":\"mcp-eval\",\"ok\":true,\"duration_ms\":42}"
+    },
+    {
+      "id": 5,
+      "session_id": "SESSION-005",
+      "server": "native",
+      "tool_name": "view_file",
+      "args_schema_fp": "fp-view_file-v1",
+      "duration_ms": 55,
+      "ok": true,
+      "timestamp": "2026-10-03T23:30:00Z",
+      "payload": "{\"tool\":\"view_file\",\"server\":\"native\",\"ok\":true,\"duration_ms\":55}"
+    },
+    {
+      "id": 6,
+      "session_id": "SESSION-006",
+      "server": "mcp-fs",
+      "tool_name": "git_status",
+      "args_schema_fp": "fp-git_status-v1",
+      "duration_ms": 68,
+      "ok": true,
+      "timestamp": "2026-10-04T00:06:00Z",
+      "payload": "{\"tool\":\"git_status\",\"server\":\"mcp-fs\",\"ok\":true,\"duration_ms\":68}"
+    },
+    {
+      "id": 7,
+      "session_id": "SESSION-007",
+      "server": "mcp-git",
+      "tool_name": "read_file",
+      "args_schema_fp": "fp-read_file-v1",
+      "duration_ms": 74,
+      "ok": true,
+      "timestamp": "2026-10-04T00:42:00Z",
+      "payload": "{\"tool\":\"read_file\",\"server\":\"mcp-git\",\"ok\":true,\"duration_ms\":74}"
+    },
+    {
+      "id": 8,
+      "session_id": "SESSION-008",
+      "server": "mcp-eval",
+      "tool_name": "run_command",
+      "args_schema_fp": "fp-run_command-v1",
+      "duration_ms": 82,
+      "ok": false,
+      "error": "file not found: config/missing.yaml",
+      "timestamp": "2026-10-04T01:18:00Z",
+      "payload": "{\"tool\":\"run_command\",\"server\":\"mcp-eval\",\"ok\":false,\"duration_ms\":82}"
+    },
+    {
+      "id": 9,
+      "session_id": "SESSION-001",
+      "server": "native",
+      "tool_name": "replace_file_content",
+      "args_schema_fp": "fp-replace_file_content-v1",
+      "duration_ms": 89,
+      "ok": true,
+      "timestamp": "2026-10-04T01:54:00Z",
+      "payload": "{\"tool\":\"replace_file_content\",\"server\":\"native\",\"ok\":true,\"duration_ms\":89}"
+    },
+    {
+      "id": 10,
+      "session_id": "SESSION-002",
+      "server": "mcp-fs",
+      "tool_name": "fixture.inspect",
+      "args_schema_fp": "fp-fixture.inspect-v1",
+      "duration_ms": 95,
+      "ok": true,
+      "timestamp": "2026-10-04T02:30:00Z",
+      "payload": "{\"tool\":\"fixture.inspect\",\"server\":\"mcp-fs\",\"ok\":true,\"duration_ms\":95}"
+    },
+    {
+      "id": 11,
+      "session_id": "SESSION-003",
+      "server": "mcp-git",
+      "tool_name": "view_file",
+      "args_schema_fp": "fp-view_file-v1",
+      "duration_ms": 110,
+      "ok": true,
+      "timestamp": "2026-10-04T03:06:00Z",
+      "payload": "{\"tool\":\"view_file\",\"server\":\"mcp-git\",\"ok\":true,\"duration_ms\":110}"
+    },
+    {
+      "id": 12,
+      "session_id": "SESSION-004",
+      "server": "mcp-eval",
+      "tool_name": "git_status",
+      "args_schema_fp": "fp-git_status-v1",
+      "duration_ms": 135,
+      "ok": true,
+      "timestamp": "2026-10-04T03:42:00Z",
+      "payload": "{\"tool\":\"git_status\",\"server\":\"mcp-eval\",\"ok\":true,\"duration_ms\":135}"
+    },
+    {
+      "id": 13,
+      "session_id": "SESSION-005",
+      "server": "native",
+      "tool_name": "read_file",
+      "args_schema_fp": "fp-read_file-v1",
+      "duration_ms": 160,
+      "ok": true,
+      "timestamp": "2026-10-04T04:18:00Z",
+      "payload": "{\"tool\":\"read_file\",\"server\":\"native\",\"ok\":true,\"duration_ms\":160}"
+    },
+    {
+      "id": 14,
+      "session_id": "SESSION-006",
+      "server": "mcp-fs",
+      "tool_name": "run_command",
+      "args_schema_fp": "fp-run_command-v1",
+      "duration_ms": 185,
+      "ok": true,
+      "timestamp": "2026-10-04T04:54:00Z",
+      "payload": "{\"tool\":\"run_command\",\"server\":\"mcp-fs\",\"ok\":true,\"duration_ms\":185}"
+    },
+    {
+      "id": 15,
+      "session_id": "SESSION-007",
+      "server": "mcp-git",
+      "tool_name": "replace_file_content",
+      "args_schema_fp": "fp-replace_file_content-v1",
+      "duration_ms": 210,
+      "ok": true,
+      "timestamp": "2026-10-04T05:30:00Z",
+      "payload": "{\"tool\":\"replace_file_content\",\"server\":\"mcp-git\",\"ok\":true,\"duration_ms\":210}"
+    },
+    {
+      "id": 16,
+      "session_id": "SESSION-008",
+      "server": "mcp-eval",
+      "tool_name": "fixture.inspect",
+      "args_schema_fp": "fp-fixture.inspect-v1",
+      "duration_ms": 245,
+      "ok": true,
+      "timestamp": "2026-10-04T06:06:00Z",
+      "payload": "{\"tool\":\"fixture.inspect\",\"server\":\"mcp-eval\",\"ok\":true,\"duration_ms\":245}"
+    },
+    {
+      "id": 17,
+      "session_id": "SESSION-001",
+      "server": "native",
+      "tool_name": "view_file",
+      "args_schema_fp": "fp-view_file-v1",
+      "duration_ms": 280,
+      "ok": true,
+      "timestamp": "2026-10-04T06:42:00Z",
+      "payload": "{\"tool\":\"view_file\",\"server\":\"native\",\"ok\":true,\"duration_ms\":280}"
+    },
+    {
+      "id": 18,
+      "session_id": "SESSION-002",
+      "server": "mcp-fs",
+      "tool_name": "git_status",
+      "args_schema_fp": "fp-git_status-v1",
+      "duration_ms": 320,
+      "ok": true,
+      "timestamp": "2026-10-04T07:18:00Z",
+      "payload": "{\"tool\":\"git_status\",\"server\":\"mcp-fs\",\"ok\":true,\"duration_ms\":320}"
+    },
+    {
+      "id": 19,
+      "session_id": "SESSION-003",
+      "server": "mcp-git",
+      "tool_name": "read_file",
+      "args_schema_fp": "fp-read_file-v1",
+      "duration_ms": 360,
+      "ok": true,
+      "timestamp": "2026-10-04T07:54:00Z",
+      "payload": "{\"tool\":\"read_file\",\"server\":\"mcp-git\",\"ok\":true,\"duration_ms\":360}"
+    },
+    {
+      "id": 20,
+      "session_id": "SESSION-004",
+      "server": "mcp-eval",
+      "tool_name": "run_command",
+      "args_schema_fp": "fp-run_command-v1",
+      "duration_ms": 410,
+      "ok": true,
+      "timestamp": "2026-10-04T08:30:00Z",
+      "payload": "{\"tool\":\"run_command\",\"server\":\"mcp-eval\",\"ok\":true,\"duration_ms\":410}"
+    },
+    {
+      "id": 21,
+      "session_id": "SESSION-005",
+      "server": "native",
+      "tool_name": "replace_file_content",
+      "args_schema_fp": "fp-replace_file_content-v1",
+      "duration_ms": 450,
+      "ok": true,
+      "timestamp": "2026-10-04T09:06:00Z",
+      "payload": "{\"tool\":\"replace_file_content\",\"server\":\"native\",\"ok\":true,\"duration_ms\":450}"
+    },
+    {
+      "id": 22,
+      "session_id": "SESSION-006",
+      "server": "mcp-fs",
+      "tool_name": "fixture.inspect",
+      "args_schema_fp": "fp-fixture.inspect-v1",
+      "duration_ms": 480,
+      "ok": true,
+      "timestamp": "2026-10-04T09:42:00Z",
+      "payload": "{\"tool\":\"fixture.inspect\",\"server\":\"mcp-fs\",\"ok\":true,\"duration_ms\":480}"
+    },
+    {
+      "id": 23,
+      "session_id": "SESSION-007",
+      "server": "mcp-git",
+      "tool_name": "view_file",
+      "args_schema_fp": "fp-view_file-v1",
+      "duration_ms": 520,
+      "ok": true,
+      "timestamp": "2026-10-04T10:18:00Z",
+      "payload": "{\"tool\":\"view_file\",\"server\":\"mcp-git\",\"ok\":true,\"duration_ms\":520}"
+    },
+    {
+      "id": 24,
+      "session_id": "SESSION-008",
+      "server": "mcp-eval",
+      "tool_name": "git_status",
+      "args_schema_fp": "fp-git_status-v1",
+      "duration_ms": 640,
+      "ok": true,
+      "timestamp": "2026-10-04T10:54:00Z",
+      "payload": "{\"tool\":\"git_status\",\"server\":\"mcp-eval\",\"ok\":true,\"duration_ms\":640}"
+    },
+    {
+      "id": 25,
+      "session_id": "SESSION-001",
+      "server": "native",
+      "tool_name": "read_file",
+      "args_schema_fp": "fp-read_file-v1",
+      "duration_ms": 780,
+      "ok": true,
+      "timestamp": "2026-10-04T11:30:00Z",
+      "payload": "{\"tool\":\"read_file\",\"server\":\"native\",\"ok\":true,\"duration_ms\":780}"
+    },
+    {
+      "id": 26,
+      "session_id": "SESSION-002",
+      "server": "mcp-fs",
+      "tool_name": "run_command",
+      "args_schema_fp": "fp-run_command-v1",
+      "duration_ms": 890,
+      "ok": true,
+      "timestamp": "2026-10-04T12:06:00Z",
+      "payload": "{\"tool\":\"run_command\",\"server\":\"mcp-fs\",\"ok\":true,\"duration_ms\":890}"
+    },
+    {
+      "id": 27,
+      "session_id": "SESSION-003",
+      "server": "mcp-git",
+      "tool_name": "replace_file_content",
+      "args_schema_fp": "fp-replace_file_content-v1",
+      "duration_ms": 1150,
+      "ok": true,
+      "timestamp": "2026-10-04T12:42:00Z",
+      "payload": "{\"tool\":\"replace_file_content\",\"server\":\"mcp-git\",\"ok\":true,\"duration_ms\":1150}"
+    },
+    {
+      "id": 28,
+      "session_id": "SESSION-004",
+      "server": "mcp-eval",
+      "tool_name": "fixture.inspect",
+      "args_schema_fp": "fp-fixture.inspect-v1",
+      "duration_ms": 1450,
+      "ok": true,
+      "timestamp": "2026-10-04T13:18:00Z",
+      "payload": "{\"tool\":\"fixture.inspect\",\"server\":\"mcp-eval\",\"ok\":true,\"duration_ms\":1450}"
+    },
+    {
+      "id": 29,
+      "session_id": "SESSION-005",
+      "server": "native",
+      "tool_name": "view_file",
+      "args_schema_fp": "fp-view_file-v1",
+      "duration_ms": 2100,
+      "ok": true,
+      "timestamp": "2026-10-04T13:54:00Z",
+      "payload": "{\"tool\":\"view_file\",\"server\":\"native\",\"ok\":true,\"duration_ms\":2100}"
+    },
+    {
+      "id": 30,
+      "session_id": "SESSION-006",
+      "server": "mcp-fs",
+      "tool_name": "git_status",
+      "args_schema_fp": "fp-git_status-v1",
+      "duration_ms": 2400,
+      "ok": true,
+      "timestamp": "2026-10-04T14:30:00Z",
+      "payload": "{\"tool\":\"git_status\",\"server\":\"mcp-fs\",\"ok\":true,\"duration_ms\":2400}"
+    }
+  ],
+  "scopes": [
+    {
+      "scope": "session",
+      "event_count": 13,
+      "session_count": 8,
+      "kind_count": 5,
+      "latest_at": "2026-10-04T13:22:30Z",
+      "latest_kind": "turn.completed",
+      "latest_seq": 61,
+      "kinds": [
+        {
+          "name": "session.started",
+          "count": 3
+        },
+        {
+          "name": "turn.completed",
+          "count": 3
+        },
+        {
+          "name": "turn.created",
+          "count": 3
+        },
+        {
+          "name": "session.checkpoint",
+          "count": 2
+        },
+        {
+          "name": "session.ended",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "scope": "agent",
+      "event_count": 13,
+      "session_count": 4,
+      "kind_count": 4,
+      "latest_at": "2026-10-04T13:45:00Z",
+      "latest_kind": "agent.registered",
+      "latest_seq": 62,
+      "kinds": [
+        {
+          "name": "agent.registered",
+          "count": 4
+        },
+        {
+          "name": "agent.heartbeat",
+          "count": 3
+        },
+        {
+          "name": "agent.skill_invoked",
+          "count": 3
+        },
+        {
+          "name": "agent.state_changed",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "scope": "system",
+      "event_count": 13,
+      "session_count": 0,
+      "kind_count": 4,
+      "latest_at": "2026-10-04T14:07:30Z",
+      "latest_kind": "catalog.reloaded",
+      "latest_seq": 63,
+      "kinds": [
+        {
+          "name": "catalog.reloaded",
+          "count": 4
+        },
+        {
+          "name": "daemon.started",
+          "count": 3
+        },
+        {
+          "name": "mcp.server_connected",
+          "count": 3
+        },
+        {
+          "name": "system.resource_action",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "scope": "router",
+      "event_count": 13,
+      "session_count": 0,
+      "kind_count": 4,
+      "latest_at": "2026-10-04T14:30:00Z",
+      "latest_kind": "route.resolved",
+      "latest_seq": 64,
+      "kinds": [
+        {
+          "name": "route.resolved",
+          "count": 4
+        },
+        {
+          "name": "budget.evaluated",
+          "count": 3
+        },
+        {
+          "name": "cache.hit",
+          "count": 3
+        },
+        {
+          "name": "provider.dispatched",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "scope": "mesh",
+      "event_count": 12,
+      "session_count": 0,
+      "kind_count": 4,
+      "latest_at": "2026-10-04T13:00:00Z",
+      "latest_kind": "partition.fenced",
+      "latest_seq": 60,
+      "kinds": [
+        {
+          "name": "envelope.routed",
+          "count": 3
+        },
+        {
+          "name": "lease.renewed",
+          "count": 3
+        },
+        {
+          "name": "partition.fenced",
+          "count": 3
+        },
+        {
+          "name": "peer.discovered",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "registryRows": [
+    {
+      "urn": "msg://agent/agent-mux/agt_knoibzkhsk",
+      "kind": "agent",
+      "tether_instance_id": "tether-main",
+      "display_name": "sup-agent-os",
+      "title": "Agent-OS Run Supervisor",
+      "role": "supervisor",
+      "description": "Monitors run health, gate transitions, and unblocks agents across the team.",
+      "avatar": "https://avatar.nanite.cloud/sup-agent-os.png",
+      "project": "tether",
+      "status": "active",
+      "callback": {
+        "scheme": "file",
+        "target": "/home/chrispian/.tether/run/sup-agent-os.sock"
+      },
+      "health_status": "healthy",
+      "last_seen_at": "2026-10-04T14:28:00Z",
+      "host_address": "127.0.0.1",
+      "last_updated_by": "sysop-ui",
+      "capabilities": ["session.read", "session.control", "message.write", "registry.read"],
+      "skills": [
+        {
+          "name": "run-orchestration",
+          "learned_at": "2026-09-10T12:00:00Z",
+          "via": "bootstrap",
+          "level": "expert"
+        },
+        {
+          "name": "gate-monitoring",
+          "learned_at": "2026-09-10T12:00:00Z",
+          "via": "bootstrap",
+          "level": "expert"
+        }
+      ],
+      "links": [
+        {
+          "kind": "repo",
+          "target": "https://github.com/hollis-labs/agent-os"
+        },
+        {
+          "kind": "doc",
+          "target": "https://agent-os.nanite.cloud/briefs/supervisor"
+        }
+      ],
+      "created_at": "2026-09-04T14:30:00Z",
+      "updated_at": "2026-10-04T14:20:00Z"
+    },
+    {
+      "urn": "msg://agent/agent-mux/agt_slyrwdryt6",
+      "kind": "agent",
+      "tether_instance_id": "tether-main",
+      "display_name": "architect",
+      "title": "System Architect",
+      "role": "architect",
+      "description": "Designs wave decomposition, ADR alignments, and cross-monorepo interfaces.",
+      "avatar": "https://avatar.nanite.cloud/architect.png",
+      "project": "tether",
+      "status": "active",
+      "callback": {
+        "scheme": "file",
+        "target": "/home/chrispian/.tether/run/architect.sock"
+      },
+      "health_status": "healthy",
+      "last_seen_at": "2026-10-04T14:25:00Z",
+      "host_address": "127.0.0.1",
+      "last_updated_by": "sysop-ui",
+      "capabilities": ["architecture.plan", "adr.author", "registry.write"],
+      "skills": [
+        {
+          "name": "system-design",
+          "learned_at": "2026-09-01T08:00:00Z",
+          "via": "bootstrap",
+          "level": "expert"
+        }
+      ],
+      "links": [
+        {
+          "kind": "tesseract",
+          "target": "tesseract://project/hollis-labs/memory/decisions"
+        }
+      ],
+      "created_at": "2026-09-04T14:30:00Z",
+      "updated_at": "2026-10-04T14:10:00Z"
+    },
+    {
+      "urn": "msg://agent/agent-mux/agt_h6i20mqrcn",
+      "kind": "agent",
+      "tether_instance_id": "tether-main",
+      "display_name": "launch-agent-os",
+      "title": "Agent-OS Execution Lead",
+      "role": "lead",
+      "description": "Chrispian's proxy: approves merges, releases, and directs next tasks.",
+      "avatar": "https://avatar.nanite.cloud/launch-agent-os.png",
+      "project": "tether",
+      "status": "active",
+      "callback": {
+        "scheme": "file",
+        "target": "/home/chrispian/.tether/run/lead.sock"
+      },
+      "health_status": "healthy",
+      "last_seen_at": "2026-10-04T14:29:00Z",
+      "host_address": "127.0.0.1",
+      "last_updated_by": "sysop-ui",
+      "capabilities": ["pr.merge", "release.tag", "service.restart", "tangent.approve"],
+      "skills": [
+        {
+          "name": "release-management",
+          "learned_at": "2026-09-05T09:00:00Z",
+          "via": "bootstrap",
+          "level": "expert"
+        }
+      ],
+      "links": [
+        {
+          "kind": "torque",
+          "target": "https://torque.nanite.cloud"
+        }
+      ],
+      "created_at": "2026-09-04T14:30:00Z",
+      "updated_at": "2026-10-04T14:25:00Z"
+    },
+    {
+      "urn": "msg://agent/agent-mux/agt_d7rr0npkcj",
+      "kind": "agent",
+      "tether_instance_id": "tether-main",
+      "display_name": "launch-worker-1",
+      "title": "Worker-1 Orchestrator",
+      "role": "orchestrator",
+      "description": "Manages independent task worker assignments and execution on worker-1.",
+      "avatar": "https://avatar.nanite.cloud/launch-worker-1.png",
+      "project": "parallax",
+      "status": "active",
+      "callback": {
+        "scheme": "file",
+        "target": "/home/chrispian/.tether/run/worker-1.sock"
+      },
+      "health_status": "healthy",
+      "last_seen_at": "2026-10-04T14:27:00Z",
+      "host_address": "worker-1",
+      "last_updated_by": "sysop-ui",
+      "capabilities": ["task.assign", "task.review", "worktree.manage"],
+      "skills": [
+        {
+          "name": "task-dispatch",
+          "learned_at": "2026-10-01T10:00:00Z",
+          "via": "bootstrap",
+          "level": "advanced"
+        }
+      ],
+      "links": [
+        {
+          "kind": "assignment",
+          "target": "/home/chrispian/dev/agent-os/team/assignments/parallax-tether-fixtures.md"
+        }
+      ],
+      "created_at": "2026-09-24T14:30:00Z",
+      "updated_at": "2026-10-04T14:15:00Z"
+    },
+    {
+      "urn": "msg://agent/agent-mux/agt_pdhoohh4tx",
+      "kind": "agent",
+      "tether_instance_id": "tether-main",
+      "display_name": "task-parallax-4",
+      "title": "Tether Fixtures Task Agent",
+      "role": "task",
+      "description": "Implements the tether-sysop/v1 fixture family and validation contracts.",
+      "avatar": "https://avatar.nanite.cloud/task-parallax-4.png",
+      "project": "parallax",
+      "status": "active",
+      "callback": {
+        "scheme": "file",
+        "target": "/home/chrispian/.tether/run/task-parallax-4.sock"
+      },
+      "health_status": "healthy",
+      "last_seen_at": "2026-10-04T14:30:00Z",
+      "host_address": "worker-1",
+      "last_updated_by": "sysop-ui",
+      "capabilities": ["fixture.generate", "fixture.validate", "git.commit"],
+      "skills": [
+        {
+          "name": "go-testing",
+          "learned_at": "2026-10-04T12:00:00Z",
+          "via": "bootstrap",
+          "level": "expert"
+        },
+        {
+          "name": "contract-verification",
+          "learned_at": "2026-10-04T12:00:00Z",
+          "via": "bootstrap",
+          "level": "expert"
+        }
+      ],
+      "links": [
+        {
+          "kind": "worktree",
+          "target": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0098"
+        }
+      ],
+      "created_at": "2026-10-04T12:30:00Z",
+      "updated_at": "2026-10-04T14:30:00Z"
+    },
+    {
+      "urn": "msg://agent/agent-mux/agt_wpc7vpvyyw",
+      "kind": "agent",
+      "tether_instance_id": "tether-main",
+      "display_name": "task-parallax-1",
+      "title": "Flux Fidelity Task Agent",
+      "role": "task",
+      "description": "Executes Flux chat card recreation and tokens fidelity verification.",
+      "avatar": "https://avatar.nanite.cloud/task-parallax-1.png",
+      "project": "parallax",
+      "status": "active",
+      "callback": {
+        "scheme": "file",
+        "target": "/home/chrispian/.tether/run/task-parallax-1.sock"
+      },
+      "health_status": "healthy",
+      "last_seen_at": "2026-10-04T14:23:00Z",
+      "host_address": "worker-1",
+      "last_updated_by": "sysop-ui",
+      "capabilities": ["ui.recreation", "tokens.check"],
+      "skills": [
+        {
+          "name": "design-kit",
+          "learned_at": "2026-10-04T12:00:00Z",
+          "via": "bootstrap",
+          "level": "proficient"
+        }
+      ],
+      "links": [
+        {
+          "kind": "worktree",
+          "target": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0083"
+        }
+      ],
+      "created_at": "2026-10-04T11:30:00Z",
+      "updated_at": "2026-10-04T14:20:00Z"
+    },
+    {
+      "urn": "msg://agent/agent-mux/agt_olddeprecated1",
+      "kind": "agent",
+      "tether_instance_id": "tether-main",
+      "display_name": "task-legacy-runner",
+      "title": "Legacy Process Runner (Deprecated)",
+      "role": "task",
+      "description": "Pre-vNext raw process runner; replaced by sandboxed container executor.",
+      "avatar": "https://avatar.nanite.cloud/legacy.png",
+      "project": "tether",
+      "status": "deprecated",
+      "callback": {
+        "scheme": "file",
+        "target": "/home/chrispian/.tether/run/legacy.sock"
+      },
+      "health_status": "inactive",
+      "last_seen_at": "2026-09-20T14:30:00Z",
+      "host_address": "agent-os",
+      "last_updated_by": "sysop-migration",
+      "capabilities": ["process.exec"],
+      "skills": [
+        {
+          "name": "bash-runner",
+          "learned_at": "2026-08-01T00:00:00Z",
+          "via": "historical",
+          "level": "deprecated"
+        }
+      ],
+      "links": [
+        {
+          "kind": "adr",
+          "target": "tesseract://project/tether/knowledge/adr/0049"
+        }
+      ],
+      "created_at": "2026-08-05T14:30:00Z",
+      "updated_at": "2026-09-20T14:30:00Z"
+    },
+    {
+      "urn": "msg://agent/agent-mux/agt_olddeprecated2",
+      "kind": "agent",
+      "tether_instance_id": "tether-main",
+      "display_name": "agent-shim-v1",
+      "title": "V1 Compatibility Shim (Deprecated)",
+      "role": "shim",
+      "description": "Early Wave-0 inter-runtime compatibility translator; retired per Clean Breaks policy.",
+      "avatar": "https://avatar.nanite.cloud/shim.png",
+      "project": "tangent",
+      "status": "deprecated",
+      "callback": {
+        "scheme": "http",
+        "target": "http://127.0.0.1:8999/shim"
+      },
+      "health_status": "inactive",
+      "last_seen_at": "2026-09-13T14:30:00Z",
+      "host_address": "agent-os",
+      "last_updated_by": "sysop-migration",
+      "capabilities": ["wire.translate"],
+      "skills": [
+        {
+          "name": "format-conversion",
+          "learned_at": "2026-07-15T00:00:00Z",
+          "via": "historical",
+          "level": "deprecated"
+        }
+      ],
+      "links": [
+        {
+          "kind": "adr",
+          "target": "tesseract://project/tether/knowledge/adr/0050"
+        }
+      ],
+      "created_at": "2026-07-21T14:30:00Z",
+      "updated_at": "2026-09-13T14:30:00Z"
+    },
+    {
+      "urn": "msg://project/hollis-labs/tether",
+      "kind": "project",
+      "tether_instance_id": "tether-main",
+      "display_name": "tether",
+      "title": "Tether Local Agent Session Control Plane",
+      "role": "runtime",
+      "description": "Local daemon owning session lifecycle, sandboxed execution, messaging, and proxy tools.",
+      "avatar": "https://avatar.nanite.cloud/proj-tether.png",
+      "status": "active",
+      "callback": {
+        "scheme": "http",
+        "target": "http://127.0.0.1:8947/api"
+      },
+      "health_status": "healthy",
+      "last_seen_at": "2026-10-04T14:29:00Z",
+      "host_address": "127.0.0.1",
+      "last_updated_by": "sysop-ui",
+      "capabilities": ["session.control", "mcp.proxy", "messaging.broker", "ai.gateway"],
+      "links": [
+        {
+          "kind": "repo",
+          "target": "https://github.com/hollis-labs/tether"
+        },
+        {
+          "kind": "docs",
+          "target": "https://tether.nanite.cloud"
+        }
+      ],
+      "created_at": "2026-08-25T14:30:00Z",
+      "updated_at": "2026-10-04T14:25:00Z"
+    },
+    {
+      "urn": "msg://project/hollis-labs/parallax",
+      "kind": "project",
+      "tether_instance_id": "tether-main",
+      "display_name": "parallax",
+      "title": "Parallax UI \u0026 Fixture Framework",
+      "role": "application",
+      "description": "Component showcase, deterministic presentation fixture generators, and recreation workbench.",
+      "avatar": "https://avatar.nanite.cloud/proj-parallax.png",
+      "status": "active",
+      "callback": {
+        "scheme": "http",
+        "target": "http://127.0.0.1:5173"
+      },
+      "health_status": "healthy",
+      "last_seen_at": "2026-10-04T14:30:00Z",
+      "host_address": "worker-1",
+      "last_updated_by": "sysop-ui",
+      "capabilities": ["fixtures.generate", "components.showcase", "stories.render"],
+      "links": [
+        {
+          "kind": "repo",
+          "target": "https://github.com/hollis-labs/parallax"
+        }
+      ],
+      "created_at": "2026-09-04T14:30:00Z",
+      "updated_at": "2026-10-04T14:30:00Z"
+    },
+    {
+      "urn": "msg://project/hollis-labs/tangent",
+      "kind": "project",
+      "tether_instance_id": "tether-main",
+      "display_name": "tangent",
+      "title": "Tangent Agent Workspace \u0026 Inbox",
+      "role": "application",
+      "description": "Desktop UI for agent oversight, approval queues, messaging turns, and review workflows.",
+      "avatar": "https://avatar.nanite.cloud/proj-tangent.png",
+      "status": "active",
+      "callback": {
+        "scheme": "http",
+        "target": "http://127.0.0.1:8080"
+      },
+      "health_status": "healthy",
+      "last_seen_at": "2026-10-04T14:22:00Z",
+      "host_address": "127.0.0.1",
+      "last_updated_by": "sysop-ui",
+      "capabilities": ["inbox.render", "approval.review", "plugins.host"],
+      "links": [
+        {
+          "kind": "repo",
+          "target": "https://github.com/hollis-labs/tangent"
+        }
+      ],
+      "created_at": "2026-09-04T14:30:00Z",
+      "updated_at": "2026-10-04T14:18:00Z"
+    },
+    {
+      "urn": "msg://project/hollis-labs/legacy-archived",
+      "kind": "project",
+      "tether_instance_id": "tether-main",
+      "display_name": "legacy-prototype",
+      "title": "Early Wave-0 Monolithic Runner (Archived)",
+      "role": "prototype",
+      "description": "Historical prototype codebase; archived and replaced by modular substrate services.",
+      "avatar": "https://avatar.nanite.cloud/proj-archived.png",
+      "status": "deprecated",
+      "callback": {
+        "scheme": "file",
+        "target": "/dev/null"
+      },
+      "health_status": "inactive",
+      "last_seen_at": "2026-09-04T14:30:00Z",
+      "host_address": "agent-os",
+      "last_updated_by": "sysop-migration",
+      "links": [
+        {
+          "kind": "archive",
+          "target": "https://github.com/hollis-labs/legacy-prototype"
+        }
+      ],
+      "created_at": "2026-07-06T14:30:00Z",
+      "updated_at": "2026-09-04T14:30:00Z"
+    }
+  ],
+  "aiProviders": [
+    {
+      "id": "anthropic",
+      "type": "anthropic",
+      "model": "claude-3-7-sonnet",
+      "models": ["claude-3-7-sonnet", "claude-3-5-haiku"],
+      "default_model": "claude-3-7-sonnet",
+      "secret_ref": "env://ANTHROPIC_API_KEY",
+      "enabled": true,
+      "policy": {
+        "allow_reasoning": true,
+        "allow_tools": true,
+        "max_output_tokens": 8192,
+        "max_cost_usd": 15
+      }
+    },
+    {
+      "id": "google",
+      "type": "google",
+      "model": "gemini-2.0-flash",
+      "models": ["gemini-2.0-flash", "gemini-2.5-pro"],
+      "default_model": "gemini-2.0-flash",
+      "secret_ref": "env://GEMINI_API_KEY",
+      "enabled": true,
+      "policy": {
+        "allow_reasoning": true,
+        "allow_tools": true,
+        "max_output_tokens": 8192,
+        "max_cost_usd": 10
+      }
+    },
+    {
+      "id": "openai",
+      "type": "openai",
+      "model": "gpt-4o",
+      "models": ["gpt-4o", "gpt-4o-mini"],
+      "default_model": "gpt-4o",
+      "secret_ref": "env://OPENAI_API_KEY",
+      "enabled": true,
+      "policy": {
+        "allow_reasoning": false,
+        "allow_tools": true,
+        "max_output_tokens": 4096,
+        "max_cost_usd": 10
+      }
+    },
+    {
+      "id": "local",
+      "type": "local",
+      "model": "llama3.3",
+      "models": ["llama3.3", "qwen2.5-coder"],
+      "default_model": "llama3.3",
+      "base_url": "http://localhost:11434",
+      "enabled": false,
+      "policy": {
+        "allow_reasoning": false,
+        "allow_tools": false,
+        "max_output_tokens": 4096,
+        "max_cost_usd": 0
+      }
+    }
+  ],
+  "aiRoutes": [
+    {
+      "provider": "anthropic",
+      "model": "claude-3-7-sonnet",
+      "mode": "code",
+      "intent": "primary code and reasoning",
+      "requires_reasoning": true,
+      "requires_tools": true
+    },
+    {
+      "provider": "google",
+      "model": "gemini-2.0-flash",
+      "mode": "fast",
+      "intent": "quick search and targeted edits",
+      "requires_reasoning": false,
+      "requires_tools": true
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4o",
+      "mode": "structured",
+      "intent": "schema transforms and data parsing",
+      "requires_reasoning": false,
+      "requires_tools": false
+    },
+    {
+      "provider": "google",
+      "model": "gemini-2.5-pro",
+      "mode": "pro",
+      "intent": "architecture and planning",
+      "requires_reasoning": true,
+      "requires_tools": true
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-3-5-haiku",
+      "mode": "triage",
+      "intent": "quick triage and classification",
+      "requires_reasoning": false,
+      "requires_tools": false
+    },
+    {
+      "provider": "local",
+      "model": "llama3.3",
+      "mode": "offline",
+      "intent": "airgapped processing",
+      "requires_reasoning": false,
+      "requires_tools": false
+    }
+  ],
+  "aiAuditEvents": [
+    {
+      "id": 1,
+      "event_type": "chat",
+      "request_id": "req-0001",
+      "session_id": "SESSION-001",
+      "caller_id": "agent-001",
+      "operation": "chat",
+      "provider": "google",
+      "model": "gemini-2.0-flash",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 250,
+      "success": true,
+      "input_tokens": 1500,
+      "output_tokens": 350,
+      "cache_read_tokens": 400,
+      "cache_write_tokens": 100,
+      "reasoning_tokens": 80,
+      "estimated_cost_usd": 0.012,
+      "request_summary": "Request 1: inspect and resolve task context",
+      "response_summary": "Response 1: completed analysis without error",
+      "timestamp": "2026-10-03T19:20:00Z"
+    },
+    {
+      "id": 2,
+      "event_type": "completion",
+      "request_id": "req-0002",
+      "session_id": "SESSION-002",
+      "caller_id": "agent-002",
+      "operation": "completion",
+      "provider": "anthropic",
+      "model": "claude-3-7-sonnet",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 287,
+      "success": true,
+      "input_tokens": 1620,
+      "output_tokens": 395,
+      "cache_read_tokens": 420,
+      "cache_write_tokens": 110,
+      "reasoning_tokens": 95,
+      "estimated_cost_usd": 0.015,
+      "request_summary": "Request 2: inspect and resolve task context",
+      "response_summary": "Response 2: completed analysis without error",
+      "timestamp": "2026-10-03T20:10:00Z"
+    },
+    {
+      "id": 3,
+      "event_type": "completion",
+      "request_id": "req-0003",
+      "session_id": "SESSION-003",
+      "caller_id": "agent-003",
+      "operation": "completion",
+      "provider": "anthropic",
+      "model": "claude-3-7-sonnet",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 324,
+      "success": true,
+      "input_tokens": 1740,
+      "output_tokens": 440,
+      "cache_read_tokens": 440,
+      "cache_write_tokens": 120,
+      "reasoning_tokens": 110,
+      "estimated_cost_usd": 0.018000000000000002,
+      "request_summary": "Request 3: inspect and resolve task context",
+      "response_summary": "Response 3: completed analysis without error",
+      "timestamp": "2026-10-03T21:00:00Z"
+    },
+    {
+      "id": 4,
+      "event_type": "chat",
+      "request_id": "req-0004",
+      "session_id": "SESSION-004",
+      "caller_id": "agent-004",
+      "operation": "chat",
+      "provider": "google",
+      "model": "gemini-2.0-flash",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 361,
+      "success": true,
+      "input_tokens": 1860,
+      "output_tokens": 485,
+      "cache_read_tokens": 460,
+      "cache_write_tokens": 130,
+      "reasoning_tokens": 125,
+      "estimated_cost_usd": 0.021,
+      "request_summary": "Request 4: inspect and resolve task context",
+      "response_summary": "Response 4: completed analysis without error",
+      "timestamp": "2026-10-03T21:50:00Z"
+    },
+    {
+      "id": 5,
+      "event_type": "completion",
+      "request_id": "req-0005",
+      "session_id": "SESSION-005",
+      "caller_id": "agent-001",
+      "operation": "completion",
+      "provider": "anthropic",
+      "model": "claude-3-7-sonnet",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 398,
+      "success": true,
+      "input_tokens": 1980,
+      "output_tokens": 530,
+      "cache_read_tokens": 480,
+      "cache_write_tokens": 140,
+      "reasoning_tokens": 140,
+      "estimated_cost_usd": 0.024,
+      "request_summary": "Request 5: inspect and resolve task context",
+      "response_summary": "Response 5: completed analysis without error",
+      "timestamp": "2026-10-03T22:40:00Z"
+    },
+    {
+      "id": 6,
+      "event_type": "completion",
+      "request_id": "req-0006",
+      "session_id": "SESSION-006",
+      "caller_id": "agent-002",
+      "operation": "completion",
+      "provider": "openai",
+      "model": "gpt-4o",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 435,
+      "success": true,
+      "input_tokens": 2100,
+      "output_tokens": 575,
+      "cache_read_tokens": 500,
+      "cache_write_tokens": 150,
+      "reasoning_tokens": 155,
+      "estimated_cost_usd": 0.027,
+      "request_summary": "Request 6: inspect and resolve task context",
+      "response_summary": "Response 6: completed analysis without error",
+      "timestamp": "2026-10-03T23:30:00Z"
+    },
+    {
+      "id": 7,
+      "event_type": "chat",
+      "request_id": "req-0007",
+      "session_id": "SESSION-007",
+      "caller_id": "agent-003",
+      "operation": "chat",
+      "provider": "google",
+      "model": "gemini-2.0-flash",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 472,
+      "success": true,
+      "input_tokens": 2220,
+      "output_tokens": 620,
+      "cache_read_tokens": 520,
+      "cache_write_tokens": 160,
+      "reasoning_tokens": 170,
+      "estimated_cost_usd": 0.030000000000000002,
+      "request_summary": "Request 7: inspect and resolve task context",
+      "response_summary": "Response 7: completed analysis without error",
+      "timestamp": "2026-10-04T00:20:00Z"
+    },
+    {
+      "id": 8,
+      "event_type": "completion",
+      "request_id": "req-0008",
+      "session_id": "SESSION-008",
+      "caller_id": "agent-004",
+      "operation": "completion",
+      "provider": "anthropic",
+      "model": "claude-3-7-sonnet",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 509,
+      "success": true,
+      "input_tokens": 2340,
+      "output_tokens": 665,
+      "cache_read_tokens": 540,
+      "cache_write_tokens": 170,
+      "reasoning_tokens": 185,
+      "estimated_cost_usd": 0.033,
+      "request_summary": "Request 8: inspect and resolve task context",
+      "response_summary": "Response 8: completed analysis without error",
+      "timestamp": "2026-10-04T01:10:00Z"
+    },
+    {
+      "id": 9,
+      "event_type": "completion",
+      "request_id": "req-0009",
+      "session_id": "SESSION-001",
+      "caller_id": "agent-001",
+      "operation": "completion",
+      "provider": "anthropic",
+      "model": "claude-3-7-sonnet",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 546,
+      "success": true,
+      "input_tokens": 2460,
+      "output_tokens": 710,
+      "cache_read_tokens": 560,
+      "cache_write_tokens": 180,
+      "reasoning_tokens": 200,
+      "estimated_cost_usd": 0.036000000000000004,
+      "request_summary": "Request 9: inspect and resolve task context",
+      "response_summary": "Response 9: completed analysis without error",
+      "timestamp": "2026-10-04T02:00:00Z"
+    },
+    {
+      "id": 10,
+      "event_type": "chat",
+      "request_id": "req-0010",
+      "session_id": "SESSION-002",
+      "caller_id": "agent-002",
+      "operation": "chat",
+      "provider": "google",
+      "model": "gemini-2.0-flash",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 583,
+      "success": true,
+      "input_tokens": 2580,
+      "output_tokens": 755,
+      "cache_read_tokens": 580,
+      "cache_write_tokens": 190,
+      "reasoning_tokens": 215,
+      "estimated_cost_usd": 0.039,
+      "request_summary": "Request 10: inspect and resolve task context",
+      "response_summary": "Response 10: completed analysis without error",
+      "timestamp": "2026-10-04T02:50:00Z"
+    },
+    {
+      "id": 11,
+      "event_type": "completion",
+      "request_id": "req-0011",
+      "session_id": "SESSION-003",
+      "caller_id": "agent-003",
+      "operation": "completion",
+      "provider": "openai",
+      "model": "gpt-4o",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 620,
+      "success": true,
+      "input_tokens": 2700,
+      "output_tokens": 800,
+      "cache_read_tokens": 600,
+      "cache_write_tokens": 200,
+      "reasoning_tokens": 230,
+      "estimated_cost_usd": 0.041999999999999996,
+      "request_summary": "Request 11: inspect and resolve task context",
+      "response_summary": "Response 11: completed analysis without error",
+      "timestamp": "2026-10-04T03:40:00Z"
+    },
+    {
+      "id": 12,
+      "event_type": "refusal",
+      "request_id": "req-0012",
+      "session_id": "SESSION-004",
+      "caller_id": "agent-004",
+      "operation": "chat",
+      "provider": "anthropic",
+      "model": "claude-3-7-sonnet",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 657,
+      "success": false,
+      "refusal": "Refusal: safety policy denied unreviewed tool execution",
+      "input_tokens": 2820,
+      "output_tokens": 845,
+      "cache_read_tokens": 620,
+      "cache_write_tokens": 210,
+      "reasoning_tokens": 245,
+      "estimated_cost_usd": 0.045,
+      "request_summary": "Request 12: inspect and resolve task context",
+      "response_summary": "Response 12: completed analysis without error",
+      "timestamp": "2026-10-04T04:30:00Z"
+    },
+    {
+      "id": 13,
+      "event_type": "chat",
+      "request_id": "req-0013",
+      "session_id": "SESSION-005",
+      "caller_id": "agent-001",
+      "operation": "chat",
+      "provider": "google",
+      "model": "gemini-2.0-flash",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 694,
+      "success": true,
+      "input_tokens": 2940,
+      "output_tokens": 890,
+      "cache_read_tokens": 640,
+      "cache_write_tokens": 220,
+      "reasoning_tokens": 260,
+      "estimated_cost_usd": 0.048,
+      "request_summary": "Request 13: inspect and resolve task context",
+      "response_summary": "Response 13: completed analysis without error",
+      "timestamp": "2026-10-04T05:20:00Z"
+    },
+    {
+      "id": 14,
+      "event_type": "completion",
+      "request_id": "req-0014",
+      "session_id": "SESSION-006",
+      "caller_id": "agent-002",
+      "operation": "completion",
+      "provider": "anthropic",
+      "model": "claude-3-7-sonnet",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 731,
+      "success": true,
+      "input_tokens": 3060,
+      "output_tokens": 935,
+      "cache_read_tokens": 660,
+      "cache_write_tokens": 230,
+      "reasoning_tokens": 275,
+      "estimated_cost_usd": 0.051000000000000004,
+      "request_summary": "Request 14: inspect and resolve task context",
+      "response_summary": "Response 14: completed analysis without error",
+      "timestamp": "2026-10-04T06:10:00Z"
+    },
+    {
+      "id": 15,
+      "event_type": "completion",
+      "request_id": "req-0015",
+      "session_id": "SESSION-007",
+      "caller_id": "agent-003",
+      "operation": "completion",
+      "provider": "anthropic",
+      "model": "claude-3-7-sonnet",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 768,
+      "success": true,
+      "input_tokens": 3180,
+      "output_tokens": 980,
+      "cache_read_tokens": 680,
+      "cache_write_tokens": 240,
+      "reasoning_tokens": 290,
+      "estimated_cost_usd": 0.054000000000000006,
+      "request_summary": "Request 15: inspect and resolve task context",
+      "response_summary": "Response 15: completed analysis without error",
+      "timestamp": "2026-10-04T07:00:00Z"
+    },
+    {
+      "id": 16,
+      "event_type": "chat",
+      "request_id": "req-0016",
+      "session_id": "SESSION-008",
+      "caller_id": "agent-004",
+      "operation": "chat",
+      "provider": "google",
+      "model": "gemini-2.0-flash",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 805,
+      "success": true,
+      "input_tokens": 3300,
+      "output_tokens": 1025,
+      "cache_read_tokens": 700,
+      "cache_write_tokens": 250,
+      "reasoning_tokens": 305,
+      "estimated_cost_usd": 0.056999999999999995,
+      "request_summary": "Request 16: inspect and resolve task context",
+      "response_summary": "Response 16: completed analysis without error",
+      "timestamp": "2026-10-04T07:50:00Z"
+    },
+    {
+      "id": 17,
+      "event_type": "completion",
+      "request_id": "req-0017",
+      "session_id": "SESSION-001",
+      "caller_id": "agent-001",
+      "operation": "completion",
+      "provider": "anthropic",
+      "model": "claude-3-7-sonnet",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 842,
+      "success": true,
+      "input_tokens": 3420,
+      "output_tokens": 1070,
+      "cache_read_tokens": 720,
+      "cache_write_tokens": 260,
+      "reasoning_tokens": 320,
+      "estimated_cost_usd": 0.06,
+      "request_summary": "Request 17: inspect and resolve task context",
+      "response_summary": "Response 17: completed analysis without error",
+      "timestamp": "2026-10-04T08:40:00Z"
+    },
+    {
+      "id": 18,
+      "event_type": "budget_rejection",
+      "request_id": "req-0018",
+      "session_id": "SESSION-002",
+      "caller_id": "agent-002",
+      "operation": "completion",
+      "provider": "anthropic",
+      "model": "claude-3-7-sonnet",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 879,
+      "success": false,
+      "error": "budget limit $2.50 exceeded for session SESSION-002",
+      "input_tokens": 3540,
+      "output_tokens": 1115,
+      "cache_read_tokens": 740,
+      "cache_write_tokens": 270,
+      "reasoning_tokens": 335,
+      "estimated_cost_usd": 0.063,
+      "request_summary": "Request 18: inspect and resolve task context",
+      "response_summary": "Response 18: completed analysis without error",
+      "timestamp": "2026-10-04T09:30:00Z"
+    },
+    {
+      "id": 19,
+      "event_type": "chat",
+      "request_id": "req-0019",
+      "session_id": "SESSION-003",
+      "caller_id": "agent-003",
+      "operation": "chat",
+      "provider": "google",
+      "model": "gemini-2.0-flash",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 916,
+      "success": true,
+      "input_tokens": 3660,
+      "output_tokens": 1160,
+      "cache_read_tokens": 760,
+      "cache_write_tokens": 280,
+      "reasoning_tokens": 350,
+      "estimated_cost_usd": 0.066,
+      "request_summary": "Request 19: inspect and resolve task context",
+      "response_summary": "Response 19: completed analysis without error",
+      "timestamp": "2026-10-04T10:20:00Z"
+    },
+    {
+      "id": 20,
+      "event_type": "completion",
+      "request_id": "req-0020",
+      "session_id": "SESSION-004",
+      "caller_id": "agent-004",
+      "operation": "completion",
+      "provider": "anthropic",
+      "model": "claude-3-7-sonnet",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 953,
+      "success": true,
+      "input_tokens": 3780,
+      "output_tokens": 1205,
+      "cache_read_tokens": 780,
+      "cache_write_tokens": 290,
+      "reasoning_tokens": 365,
+      "estimated_cost_usd": 0.069,
+      "request_summary": "Request 20: inspect and resolve task context",
+      "response_summary": "Response 20: completed analysis without error",
+      "timestamp": "2026-10-04T11:10:00Z"
+    },
+    {
+      "id": 21,
+      "event_type": "completion",
+      "request_id": "req-0021",
+      "session_id": "SESSION-005",
+      "caller_id": "agent-001",
+      "operation": "completion",
+      "provider": "openai",
+      "model": "gpt-4o",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 990,
+      "success": true,
+      "input_tokens": 3900,
+      "output_tokens": 1250,
+      "cache_read_tokens": 800,
+      "cache_write_tokens": 300,
+      "reasoning_tokens": 380,
+      "estimated_cost_usd": 0.072,
+      "request_summary": "Request 21: inspect and resolve task context",
+      "response_summary": "Response 21: completed analysis without error",
+      "timestamp": "2026-10-04T12:00:00Z"
+    },
+    {
+      "id": 22,
+      "event_type": "chat",
+      "request_id": "req-0022",
+      "session_id": "SESSION-006",
+      "caller_id": "agent-002",
+      "operation": "chat",
+      "provider": "google",
+      "model": "gemini-2.0-flash",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 277,
+      "success": true,
+      "input_tokens": 4020,
+      "output_tokens": 1295,
+      "cache_read_tokens": 820,
+      "cache_write_tokens": 310,
+      "reasoning_tokens": 395,
+      "estimated_cost_usd": 0.075,
+      "request_summary": "Request 22: inspect and resolve task context",
+      "response_summary": "Response 22: completed analysis without error",
+      "timestamp": "2026-10-04T12:50:00Z"
+    },
+    {
+      "id": 23,
+      "event_type": "completion",
+      "request_id": "req-0023",
+      "session_id": "SESSION-007",
+      "caller_id": "agent-003",
+      "operation": "completion",
+      "provider": "anthropic",
+      "model": "claude-3-7-sonnet",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 314,
+      "success": true,
+      "input_tokens": 4140,
+      "output_tokens": 1340,
+      "cache_read_tokens": 840,
+      "cache_write_tokens": 320,
+      "reasoning_tokens": 410,
+      "estimated_cost_usd": 0.078,
+      "request_summary": "Request 23: inspect and resolve task context",
+      "response_summary": "Response 23: completed analysis without error",
+      "timestamp": "2026-10-04T13:40:00Z"
+    },
+    {
+      "id": 24,
+      "event_type": "completion",
+      "request_id": "req-0024",
+      "session_id": "SESSION-008",
+      "caller_id": "agent-004",
+      "operation": "completion",
+      "provider": "anthropic",
+      "model": "claude-3-7-sonnet",
+      "policy_version": "ai-policy-v1",
+      "latency_ms": 351,
+      "success": true,
+      "input_tokens": 4260,
+      "output_tokens": 1385,
+      "cache_read_tokens": 860,
+      "cache_write_tokens": 330,
+      "reasoning_tokens": 425,
+      "estimated_cost_usd": 0.081,
+      "request_summary": "Request 24: inspect and resolve task context",
+      "response_summary": "Response 24: completed analysis without error",
+      "timestamp": "2026-10-04T14:30:00Z"
+    }
+  ],
+  "aiBudgets": [
+    {
+      "provider": "anthropic",
+      "model": "claude-3-7-sonnet",
+      "mode": "code",
+      "intent": "primary reasoning",
+      "usage_budget": {
+        "max_cost_usd": 10,
+        "window": "24h",
+        "scope": "global"
+      },
+      "window_start": "2026-10-03T14:30:00Z",
+      "spent_cost_usd": 4.82,
+      "remaining_cost_usd": 5.18,
+      "exhausted": false,
+      "filter": {
+        "provider": "anthropic",
+        "model": "claude-3-7-sonnet"
+      }
+    },
+    {
+      "provider": "google",
+      "model": "gemini-2.0-flash",
+      "mode": "fast",
+      "intent": "quick edits",
+      "usage_budget": {
+        "max_cost_usd": 5,
+        "window": "24h",
+        "scope": "global"
+      },
+      "window_start": "2026-10-03T14:30:00Z",
+      "spent_cost_usd": 1.12,
+      "remaining_cost_usd": 3.88,
+      "exhausted": false,
+      "filter": {
+        "provider": "google",
+        "model": "gemini-2.0-flash"
+      }
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4o",
+      "mode": "structured",
+      "intent": "schema transforms",
+      "usage_budget": {
+        "max_cost_usd": 2.5,
+        "window": "24h",
+        "scope": "session"
+      },
+      "window_start": "2026-10-03T14:30:00Z",
+      "spent_cost_usd": 2.5,
+      "remaining_cost_usd": 0,
+      "exhausted": true,
+      "filter": {
+        "provider": "openai",
+        "model": "gpt-4o"
+      }
+    },
+    {
+      "provider": "google",
+      "model": "gemini-2.5-pro",
+      "mode": "pro",
+      "intent": "planning and architecture",
+      "usage_budget": {
+        "max_cost_usd": 5,
+        "window": "7d",
+        "scope": "project"
+      },
+      "window_start": "2026-09-27T14:30:00Z",
+      "spent_cost_usd": 2.3,
+      "remaining_cost_usd": 2.7,
+      "exhausted": false,
+      "filter": {
+        "provider": "google",
+        "model": "gemini-2.5-pro"
+      }
+    }
+  ]
+}
