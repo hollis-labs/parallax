@@ -1,4 +1,5 @@
 import { defineConfig } from "@playwright/test"
+const port = Number(process.env.OPS_PORT ?? 18773)
 export default defineConfig({
   testDir: "./tests",
   testMatch: "operations-list-candidate.spec.ts",
@@ -9,14 +10,14 @@ export default defineConfig({
     ["json", { outputFile: "../.scratch/operations-list/browser-results.json" }],
   ],
   use: {
-    baseURL: "http://127.0.0.1:18773",
+    baseURL: `http://127.0.0.1:${port}`,
     headless: true,
     launchOptions: { executablePath: process.env.OPS_CHROMIUM, args: ["--no-sandbox"] },
     screenshot: "only-on-failure",
   },
   webServer: {
-    command: "npm run dev -- --host 127.0.0.1 --port 18773 --strictPort",
-    url: "http://127.0.0.1:18773/operations-list.html",
+    command: `npm run dev -- --host 127.0.0.1 --port ${port} --strictPort`,
+    url: `http://127.0.0.1:${port}/operations-list.html`,
     reuseExistingServer: false,
   },
 })
