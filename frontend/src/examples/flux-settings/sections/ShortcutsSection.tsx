@@ -26,7 +26,7 @@ interface ShortcutRowProps {
   conflict?: string
   onEdit: () => void
   onSave: (binding: string) => boolean | undefined
-  onCancel: () => void
+  onCancel: () => boolean
 }
 
 function renderKeyBadges(binding: string, prefix: string, active = false) {
@@ -66,6 +66,11 @@ function ShortcutRow({
     return false
   }, [readOnly, isLive, captured, onSave])
 
+  const handleGuardedCancel = useCallback((): boolean => {
+    if (readOnly || (isLive && !isLive())) return false
+    return onCancel()
+  }, [readOnly, isLive, onCancel])
+
   useEffect(() => {
     if (!isEditing) {
       setCaptured(null)
@@ -100,7 +105,7 @@ function ShortcutRow({
       if (e.key === "Escape") {
         e.preventDefault()
         e.stopPropagation()
-        onCancel()
+        handleGuardedCancel()
         return
       }
 
@@ -131,7 +136,7 @@ function ShortcutRow({
 
     window.addEventListener("keydown", handleKeyDown, true)
     return () => window.removeEventListener("keydown", handleKeyDown, true)
-  }, [isEditing, readOnly, isLive, onCancel])
+  }, [isEditing, readOnly, isLive, handleGuardedCancel])
 
   // Publish active capture lease to window diagnostics when editing
   useEffect(() => {
@@ -142,7 +147,7 @@ function ShortcutRow({
         isLive: () => !readOnly && (!isLive || isLive()),
         captured,
         save: handleCommitSave,
-        cancel: onCancel,
+        cancel: handleGuardedCancel,
       }
     }
     return () => {
@@ -150,7 +155,7 @@ function ShortcutRow({
         window.fluxSettings.currentCapture = undefined
       }
     }
-  }, [isEditing, def.key, readOnly, isLive, captured, handleCommitSave, onCancel])
+  }, [isEditing, def.key, readOnly, isLive, captured, handleCommitSave, handleGuardedCancel])
 
   return (
     <div ref={rowRef} data-shortcut-row={def.key} className="w-full">
@@ -202,7 +207,7 @@ function ShortcutRow({
               aria-label={`Cancel editing ${def.label}`}
               onClick={(e) => {
                 e.stopPropagation()
-                onCancel()
+                handleGuardedCancel()
               }}
               className="inline-flex items-center justify-center w-6 h-6 rounded-sm bg-surface text-fg-muted hover:text-fg cursor-pointer transition-colors"
             >
@@ -255,6 +260,15 @@ export function ShortcutsSection({
       return true
     },
     [shortcuts, onChange, readOnly, isLive],
+  )
+
+  const handleCancel = useCallback(
+    (key: string): boolean => {
+      if (readOnly || (isLive && !isLive())) return false
+      setEditingKey((current) => (current === key ? null : current))
+      return true
+    },
+    [readOnly, isLive],
   )
 
   const handleResetAll = useCallback((): boolean => {
@@ -316,7 +330,7 @@ export function ShortcutsSection({
                 conflict={conflicts[def.key]}
                 onEdit={() => setEditingKey(def.key)}
                 onSave={(b) => handleSave(def.key, b)}
-                onCancel={() => setEditingKey(null)}
+                onCancel={() => handleCancel(def.key)}
               />
             ))}
           </SCard>

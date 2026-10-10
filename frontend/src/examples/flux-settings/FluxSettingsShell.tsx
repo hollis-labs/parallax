@@ -148,7 +148,7 @@ export interface FluxSettingsDiagnostics {
     isLive: () => boolean
     captured: string | null
     save: () => boolean
-    cancel: () => void
+    cancel: () => boolean
   }
   diagnostics: {
     malformedRejected: boolean

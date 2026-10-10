@@ -80,8 +80,57 @@ export async function settingsLifecycleExercise() {
   flushSync(() => setSourceProp("fixture-source-1"))
   await settle()
   const refusedAfterSourceReplace = heldBeforeReplace("shortcuts") === false
-  const freshAfterSourceReplace =
-    currentDiagnostics().currentFrame.activateSection("shortcuts") === true
+  let freshAfterSourceReplace = false
+  flushSync(() => {
+    freshAfterSourceReplace =
+      currentDiagnostics().currentFrame.activateSection("shortcuts") === true
+  })
+  await settle()
+
+  function ensureShortcutEditing(): NonNullable<
+    ReturnType<typeof currentDiagnostics>["currentCapture"]
+  > {
+    if (!currentDiagnostics().currentCapture) {
+      const row = required(element.querySelector('[data-shortcut-key="toggle_left_sidebar"]'))
+      flushSync(() => (row as HTMLElement).click())
+    }
+    return required(currentDiagnostics().currentCapture)
+  }
+
+  // 4b. Shortcut capture cancel retirement across Activity, source, and access
+  const initialCapture = ensureShortcutEditing()
+  const heldCancel = initialCapture.cancel
+
+  // Refused while Activity mode="hidden"
+  flushSync(() => setActivityMode("hidden"))
+  await settle()
+  const cancelRefusedWhileHidden = heldCancel() === false
+
+  // Reactivated mode="visible": old retained cancel remains retired
+  flushSync(() => setActivityMode("visible"))
+  await settle()
+  const cancelRemainsRetired = heldCancel() === false
+
+  // Refused after source replacement
+  const captureBeforeReplace = ensureShortcutEditing()
+  const cancelBeforeReplace = captureBeforeReplace.cancel
+  flushSync(() => setSourceProp("fixture-source-cancel-test"))
+  await settle()
+  const cancelRefusedAfterSourceReplace = cancelBeforeReplace() === false
+
+  // Refused when access is denied
+  const captureBeforeAccess = ensureShortcutEditing()
+  const cancelBeforeAccess = captureBeforeAccess.cancel
+  flushSync(() => setAccessProp(false))
+  await settle()
+  const cancelRefusedWhenAccessDenied = cancelBeforeAccess() === false
+
+  // Fresh cancel positive recovers and returns true
+  flushSync(() => setAccessProp(true))
+  await settle()
+  const freshCapture = ensureShortcutEditing()
+  const freshCancelPositive = freshCapture.cancel() === true
+  await settle()
 
   // 5. Access denial retirement
   const frameBeforeAccessDeny = currentDiagnostics().currentFrame
@@ -252,6 +301,11 @@ export async function settingsLifecycleExercise() {
     freshRecovery,
     refusedAfterSourceReplace,
     freshAfterSourceReplace,
+    cancelRefusedWhileHidden,
+    cancelRemainsRetired,
+    cancelRefusedAfterSourceReplace,
+    cancelRefusedWhenAccessDenied,
+    freshCancelPositive,
     refusedWhenAccessDenied,
     imeIgnored,
     modifierIgnored,

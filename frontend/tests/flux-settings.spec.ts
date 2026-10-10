@@ -431,14 +431,38 @@ test("shortcuts section: guarded key capture, modifier lifecycle, and Escape can
     return {
       isLive: w.heldCapture?.isLive(),
       saveResult: w.heldCapture?.save(),
+      cancelResult: w.heldCapture?.cancel(),
     }
   })
   expect(captureRetired.isLive).toBe(false)
   expect(captureRetired.saveResult).toBe(false)
+  expect(captureRetired.cancelResult).toBe(false)
+
+  // Proves retained once-working cancel refuses and cannot cancel the current active edit in the fresh frame
+  const retainedProbeCancelBtn = sidebarRow.getByRole("button", {
+    name: "Cancel editing Toggle Sidebar",
+  })
+  await expect(retainedProbeCancelBtn).toBeVisible()
+  const retainedCancelRefusal = await page.evaluate(() => {
+    const w = window as any
+    return w.heldCapture?.cancel()
+  })
+  expect(retainedCancelRefusal).toBe(false)
+  // Edit mode remains active in fresh frame because retained cancel was refused
+  await expect(retainedProbeCancelBtn).toBeVisible()
+
+  // Fresh cancel positive on active edit returns true and clears edit mode
+  const freshCancelPositive = await page.evaluate(() => {
+    const w = window as any
+    return w.fluxSettings.currentCapture?.cancel()
+  })
+  expect(freshCancelPositive).toBe(true)
+  await expect(retainedProbeCancelBtn).toHaveCount(0)
 
   // Re-enter and save key in fresh frame
   await sidebarRow.click()
   await captureBox.focus()
+  await expect(page.getByText("Press keys…")).toBeVisible()
   await page.keyboard.press("Control+Shift+P")
   await page.getByRole("button", { name: "Save Toggle Sidebar shortcut" }).click()
   await expect(page.getByText("Press keys…")).toHaveCount(0)
@@ -822,6 +846,11 @@ test("captured activation callback and roving navigation retire across source, a
     freshRecovery: true,
     refusedAfterSourceReplace: true,
     freshAfterSourceReplace: true,
+    cancelRefusedWhileHidden: true,
+    cancelRemainsRetired: true,
+    cancelRefusedAfterSourceReplace: true,
+    cancelRefusedWhenAccessDenied: true,
+    freshCancelPositive: true,
     refusedWhenAccessDenied: true,
     imeIgnored: true,
     modifierIgnored: true,
