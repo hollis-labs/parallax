@@ -56,17 +56,16 @@ if mode == "fresh":
     receipt["installed_hollis_bytes"] = tree(stage / "frontend/node_modules/@hollis-labs")
     receipt["exit_code"] = 0
 else:
-    receipt["dependency_mode"] = "retained owned npm-ci installation and exact emitted build; no fresh-install claim"
+    receipt["dependency_mode"] = "retained owned npm-ci installation; original emitted hashes retained, port-mapped artifacts rebuilt; no fresh-install claim"
     (stage / "frontend/node_modules").symlink_to(root / "frontend/node_modules", target_is_directory=True)
-    (stage / ".scratch/storybook").symlink_to(root / ".scratch/storybook", target_is_directory=True)
-    (stage / ".scratch/parallax").symlink_to(root / ".scratch/parallax")
     receipt["installed_hollis_bytes"] = tree(root / "frontend/node_modules/@hollis-labs")
     receipt["storybook_bytes"] = tree(root / ".scratch/storybook")
     receipt["webui_bytes"] = tree(root / "internal/webui/dist")
     receipt["go_binary_sha256"] = sha(root / ".scratch/parallax")
     receipt["port_map"] = {"18541": "18951", "18542": "18952", "18545": "18955"}
     receipt["mapped_files"] = {}
-    for file in [stage / "frontend/playwright.config.ts", *sorted((stage / "frontend/tests").glob("*.ts"))]:
+    for file in [stage / "frontend/playwright.config.ts", stage / "frontend/src/workbench/catalog.ts",
+                 *sorted((stage / "frontend/tests").glob("*.ts"))]:
         original = file.read_text()
         mapped = original
         for old, new in receipt["port_map"].items():
@@ -82,6 +81,17 @@ else:
                        'export default defineConfig({...base, testDir:"./frontend/tests", workers:2, outputDir:"../results", '
                        'use:{...base.use, launchOptions:{executablePath:process.env.OWN_CHROMIUM,args:["--no-sandbox"]}}})\n')
     receipt["tool_override_sha256"] = sha(wrapper)
+    # The Workbench localhost admission list is part of the port-only mapping.
+    # Rebuild its app and portable-story artifacts; retain original emitted hashes above.
+    capture = proof / "capture-emitted.py"
+    capture.write_text('from pathlib import Path\nimport hashlib,json\n'
+                       'proof=Path(__file__).parent\nstage=proof/"stage"\n'
+                       'def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()\n'
+                       'def tree(p): return {str(f.relative_to(p)):sha(f) for f in sorted(p.rglob("*")) if f.is_file()}\n'
+                       'receipt=json.loads((proof/"receipt.json").read_text())\n'
+                       'receipt["mapped_emitted"]={"webui":tree(stage/"internal/webui/dist"),'
+                       '"storybook":tree(stage/".scratch/storybook"),"go_binary_sha256":sha(stage/".scratch/parallax")}\n'
+                       '(proof/"receipt.json").write_text(json.dumps(receipt,indent=2)+"\\n")\n')
     browser_tmp = Path(f"/home/chrispian/.cache/team-tmp/cw0088-b-{head[:7]}")
     browser_tmp.mkdir(parents=True, exist_ok=False)
     receipt["owned_browser_tmp"] = str(browser_tmp)
@@ -91,7 +101,13 @@ else:
                 f"export OWN_CHROMIUM={quote(str(root / '.scratch/tooling/chromium/chrome-headless-shell'))}",
                 f"export LD_LIBRARY_PATH={quote(str(root / '.scratch/tooling/libs'))}",
                 f"export FONTCONFIG_FILE={quote(str(root / '.scratch/tooling/fonts.conf'))}",
-                "frontend/node_modules/.bin/playwright test --config owned-native.config.mts"]
+                f"export GOCACHE={quote(str(root / '.scratch/gocache'))}",
+                f"export GOMODCACHE={quote(str(root / '.scratch/gomodcache'))}",
+                f"npm run build --prefix frontend > {quote(str(proof / 'build.log'))} 2>&1",
+                f"STORYBOOK_DISABLE_TELEMETRY=1 npm run build-storybook --prefix frontend >> {quote(str(proof / 'build.log'))} 2>&1",
+                f"go build -o .scratch/parallax ./cmd/parallax >> {quote(str(proof / 'build.log'))} 2>&1",
+                f"python3 {quote(str(capture))}",
+                'frontend/node_modules/.bin/playwright test --config owned-native.config.mts "$@"']
     (proof / "run.sh").write_text("\n".join(commands) + "\n")
 (proof / "receipt.json").write_text(json.dumps(receipt, indent=2) + "\n")
 print(json.dumps({"head": head, "mode": mode, "proof": str(proof), "archive_sha256": receipt["archive_sha256"]}))
