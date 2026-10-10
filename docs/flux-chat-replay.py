@@ -82,9 +82,12 @@ else:
                        'export default defineConfig({...base, testDir:"./frontend/tests", workers:2, outputDir:"../results", '
                        'use:{...base.use, launchOptions:{executablePath:process.env.OWN_CHROMIUM,args:["--no-sandbox"]}}})\n')
     receipt["tool_override_sha256"] = sha(wrapper)
+    browser_tmp = Path("/home/chrispian/.cache/team-tmp/cw0088-browser")
+    browser_tmp.mkdir(parents=True, exist_ok=False)
+    receipt["owned_browser_tmp"] = str(browser_tmp)
     quote = shlex.quote
     commands = ["#!/usr/bin/env bash", "set -euo pipefail", f"cd {quote(str(stage))}",
-                f"export TMPDIR={quote(str(stage / '.scratch/tmp'))}", "export CI=true",
+                f"export TMPDIR={quote(str(browser_tmp))}", "export CI=true",
                 f"export OWN_CHROMIUM={quote(str(root / '.scratch/tooling/chromium/chrome-headless-shell'))}",
                 f"export LD_LIBRARY_PATH={quote(str(root / '.scratch/tooling/libs'))}",
                 f"export FONTCONFIG_FILE={quote(str(root / '.scratch/tooling/fonts.conf'))}",
