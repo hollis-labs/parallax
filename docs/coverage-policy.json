@@ -1356,8 +1356,8 @@
         "."
       ],
       "disposition": "partial",
-      "reason": "CW-20261010-0091 unpublished local candidate. Source-derived Nil radial and separate message idiom have bounded author mouse/keyboard/lifecycle and Chromium touch-emulation evidence; independent exact-source acceptance is pending.",
-      "nextAction": "Review exact source/archive/installed bytes and final named controls before marking reviewed; physical touch and OS IME remain untested.",
+      "reason": "CW-20261010-0091 unpublished local candidate from landed KIT PR109. Exact KIT source/archive/installed bytes and bounded author native/emulation receipts independently reviewed; isolated Nil and message specimens pass 13 controls. Paired consumer source/pin acceptance remains pending; no physical touch or OS IME claim.",
+      "nextAction": "Complete paired configured gate and independent consumer source/pin review before marking reviewed; physical touch and OS IME remain untested.",
       "evidence": {
         "pages": [
           "frontend/src/nil-radial/Specimen.tsx",
