@@ -79,13 +79,22 @@
       "package": "@hollis-labs/kit-settings",
       "evidence": {
         "pages": [
-          "frontend/src/administration/Admin.tsx"
+          "frontend/src/administration/Admin.tsx",
+          "frontend/src/examples/flux-settings/composition/Composition.tsx",
+          "frontend/src/examples/flux-settings/composition/ScalarForm.tsx"
         ],
         "checks": [
-          "frontend/tests/administration.spec.ts"
+          "frontend/tests/administration.spec.ts",
+          "frontend/tests/flux-composition.spec.ts"
         ],
         "stories": [
-          "frontend/src/administration/Administration.stories.tsx"
+          "frontend/src/administration/Administration.stories.tsx",
+          "frontend/src/examples/flux-settings/composition/Composition.stories.tsx"
+        ],
+        "storyIds": [
+          "templates-flux-settings-composition--profile",
+          "templates-flux-settings-composition--preferences",
+          "templates-flux-settings-composition--plugins"
         ]
       }
     },

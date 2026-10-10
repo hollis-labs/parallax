@@ -57,6 +57,9 @@ export function SettingsReview({
   }
   return (
     <section className="settings-review" aria-label="Controlled settings review">
+      <p>
+        <a href="/?example=flux-settings#profile">Review the Flux settings fixture composition</a>
+      </p>
       <div className="gallery-controls">
         <label>
           Settings appearance{" "}

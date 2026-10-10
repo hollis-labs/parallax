@@ -383,6 +383,9 @@ export function AdministrationExample({
               <section aria-label="Desired settings provenance">
                 <h2>Immutable desired settings</h2>
                 <p>
+                  <a href="/?example=flux-settings#profile">Flux settings fixture composition</a>
+                </p>
+                <p>
                   Supplied default/environment/file/override provenance and restart metadata. These
                   are desired values, not a successful runtime observation. Application policy is
                   read-only; Save/Reset/Apply/Check actions are omitted.
