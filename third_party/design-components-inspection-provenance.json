@@ -1,0 +1,21 @@
+{
+  "task": "CW-20261010-0035",
+  "package": "@hollis-labs/design-components",
+  "workspaceVersion": "0.4.0",
+  "registryPublished": false,
+  "archive": "hollis-labs-design-components-0.4.0-cw0035-d1ac13e4854d.tgz",
+  "sha256": "d1ac13e4854d36299878a7218461a7cf47768ed3b330ad49e45cdd535fade425",
+  "sourceRepository": "https://github.com/hollis-labs/design-kit",
+  "sourceHead": "f90f113f8420f3e9ff6b0853b58baeab7effdf20",
+  "sourceTree": "e76f0a1daa882dcef994cbc94db554a231d9b05e",
+  "sourcePackage": "packages/design-components",
+  "sourcePR": "https://github.com/hollis-labs/design-kit/pull/101",
+  "publicExportHashes": {
+    "dist/components/inspection-dialog.js": "3ee4a561e927dd77d213d39a58e5d35a88bb0065f57608665d45d32f4337b880",
+    "dist/src/components/inspection-dialog.d.ts": "d538ece254f5bae8199ac429f27b11ec666e67309a1c4ee58f0cb38a163b0842",
+    "dist/index.js": "de32f36b35b800b4b314fb764c96cfd93e8e478ee5c2f6fe4277fecefec2582c",
+    "dist/src/index.d.ts": "59e36868b86929f7cd12efeb07f62785086b7659776f23b223151e7f65b90a85"
+  },
+  "recipe": "npm ci; build design-tokens and design-components; npm pack -w @hollis-labs/design-components --ignore-scripts; final repack after full root gate was byte-identical",
+  "note": "Unpublished local candidate, distinct from registry0.4.0; no release/tag/deploy. Final combined chrome/navigation candidate requires actual sibling landing and normal reconciliation."
+}
