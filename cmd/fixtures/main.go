@@ -12,6 +12,9 @@ func main() {
 	if err := scenarios.WriteTorque("frontend/src/fixtures/operations-torque.json", "frontend/src/fixtures/torque-reference.json"); err != nil {
 		log.Fatal(err)
 	}
+	if err := scenarios.WriteTetherSysop("frontend/src/fixtures/tether-sysop.json"); err != nil {
+		log.Fatal(err)
+	}
 	if err := scenarios.WriteFamilyContracts("frontend/src/fixtures/family-contracts.json"); err != nil {
 		log.Fatal(err)
 	}

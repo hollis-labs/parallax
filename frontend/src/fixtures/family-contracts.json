@@ -322,6 +322,52 @@
       "remaining": [
         "No recorded speech/video/capture family; no such capability is needed for current app milestones"
       ]
+    },
+    {
+      "id": "tether-sysop",
+      "version": "tether-sysop/v1",
+      "generator": "parallax/v10",
+      "seed": 4421,
+      "referenceClock": "2026-10-04T14:30:00Z",
+      "policy": "independent full snapshot with authentic fixture-local sessions",
+      "projections": ["snapshot", "prefix"],
+      "profiles": [
+        {
+          "label": "bundled tether sysop dashboard and control plane",
+          "labelKind": "declared review label; not artifact history",
+          "artifact": "frontend/src/fixtures/tether-sysop.json",
+          "counts": {
+            "aiAuditEvents": 24,
+            "aiBudgets": 4,
+            "aiProviders": 4,
+            "aiRoutes": 6,
+            "events": 64,
+            "registryRows": 12,
+            "scopes": 5,
+            "toolCalls": 30
+          },
+          "from": "2026-10-03T14:30:00Z",
+          "to": "2026-10-04T14:30:00Z"
+        }
+      ],
+      "joins": [
+        "activity.session_id and ai.audit.session_id → fixture-local sessions (sess-001 through sess-008)",
+        "overview.sessions → fixture-local sessions run and session status distributions",
+        "ai.routes.provider and ai.budgets.provider → ai.settings.providers",
+        "registry.agent.project → registry.project.display_name"
+      ],
+      "unknownPolicy": "Missing values remain explicit null/omitted; known 0 is distinguished from missing telemetry. Future activity is withheld.",
+      "resourcePolicy": "Deterministic presentation fixtures only; no live daemon, network calls, polling, SSE, or model execution.",
+      "validators": [
+        "internal/scenarios/tether_sysop.go",
+        "internal/scenarios/tether_sysop_validate.go",
+        "internal/scenarios/tether_sysop_test.go"
+      ],
+      "adapters": ["frontend/src/fixtures/tether-sysop.json", "frontend/src/tether-sysop/model.ts"],
+      "remaining": [
+        "Page implementations (0099 overview, 0100 ai, 0101 activity, 0102 registry) are separate tasks",
+        "No live mutation or daemon socket connection"
+      ]
     }
   ]
 }

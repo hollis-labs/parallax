@@ -20,8 +20,8 @@ func TestFamilyManifestMatchesArtifactsAndPointers(t *testing.T) {
 	if !reflect.DeepEqual(bundled, expected) {
 		t.Fatal("family contract manifest stale: make fixtures")
 	}
-	if len(bundled.Families) != 6 {
-		t.Fatal("expected six supplied families")
+	if len(bundled.Families) != 7 {
+		t.Fatal("expected seven supplied families")
 	}
 	for _, f := range bundled.Families {
 		for _, p := range f.Profiles {
