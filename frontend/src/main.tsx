@@ -14,6 +14,7 @@ import { StandaloneOpsShellExample } from "./examples/ops-shell/Standalone"
 import { StandaloneReaderExample } from "./examples/reader/Standalone"
 import { StandaloneTachyonNav } from "./examples/tachyon-nav/Standalone"
 import { StandaloneTetherExample } from "./examples/tether/Standalone"
+import { StandaloneTetherAIExample } from "./examples/tether-ai/Standalone"
 import { StandaloneTorqueExample } from "./examples/torque/Standalone"
 import { StandaloneWorkspaceExample } from "./examples/workspace/Standalone"
 import { StandaloneFluxRailReview } from "./flux-rail/Review"
@@ -25,6 +26,10 @@ ReactDOM.createRoot(root).render(
   <React.StrictMode>
     {new URLSearchParams(location.search).get("example") === "tachyon-nav" ? (
       <StandaloneTachyonNav />
+    ) : new URLSearchParams(location.search).get("example") === "tether-ai" ||
+      (new URLSearchParams(location.search).get("example") === "tether" &&
+        new URLSearchParams(location.search).get("screen") === "ai") ? (
+      <StandaloneTetherAIExample />
     ) : new URLSearchParams(location.search).get("example") === "tether" ? (
       <StandaloneTetherExample />
     ) : new URLSearchParams(location.search).get("example") === "flux-settings" ? (
