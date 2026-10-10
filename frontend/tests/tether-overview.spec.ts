@@ -102,7 +102,7 @@ test.describe("Tether Sysop Overview Recreation", () => {
     await expect(main).toBeVisible()
     const mainBox = await main.boundingBox()
     expect(mainBox).toBeTruthy()
-    expect(mainBox!.height).toBeGreaterThan(200)
+    expect(mainBox?.height).toBeGreaterThan(200)
     await page.screenshot({ path: testInfo.outputPath("tether-overview-short-420.png") })
   })
 
@@ -201,50 +201,156 @@ test.describe("Tether Sysop Overview Recreation", () => {
     // Verify Tab is not blocked
     expect(active1).not.toBeNull()
     expect(active2).not.toBeNull()
+
+    // Test that Shift+R does NOT trigger refresh
+    let refreshed = false
+    await page.exposeFunction("__testRefreshWatcher", () => {
+      refreshed = true
+    })
+    await page.keyboard.press("Shift+KeyR")
+    expect(refreshed).toBe(false)
   })
 
-  test("retained callbacks refuse execution after unmount with fresh positives", async ({
+  test("retained callbacks refuse execution across in-page variant changes and competing overlays with fresh positives", async ({
     page,
   }) => {
     await page.goto("/?example=tether&screen=overview")
+    await expect(page.locator("header.tether-overview-header")).toBeVisible()
 
-    // Callback is admitted while mounted
-    const beforeResult = await page.evaluate(() => {
-      const cb = (window as unknown as { __tetherOverviewRetainedCallback?: () => boolean })
-        .__tetherOverviewRetainedCallback
-      return cb ? cb() : false
+    // 1. Capture callback reference cb1 while on variant standard
+    const initialAdmission = await page.evaluate(() => {
+      const w = window as unknown as {
+        __tetherOverviewRetainedCallback?: () => boolean
+        __capturedCb1?: () => boolean
+      }
+      w.__capturedCb1 = w.__tetherOverviewRetainedCallback
+      return typeof w.__capturedCb1 === "function" ? w.__capturedCb1() : false
     })
-    expect(beforeResult).toBe(true)
+    expect(initialAdmission).toBe(true) // Fresh positive on initial mounted callback
 
-    // Navigate away to unmount the overview component
-    await page.goto("/?example=torque")
+    // 2. Switch variant in-page (SAME document, NO page.goto)
+    const select = page.getByRole("combobox", { name: "Dataset variant" })
+    await select.selectOption("blocked-health")
+    await expect(page).toHaveURL(/variant=blocked-health/)
 
-    // Calling the retained callback on window must now return false (refused)
-    const afterResult = await page.evaluate(() => {
-      const cb = (window as unknown as { __tetherOverviewRetainedCallback?: () => boolean })
-        .__tetherOverviewRetainedCallback
-      return cb ? cb() : false
+    // 3. Verify that the SAME captured callback cb1 permanently refuses execution now that variant replaced the lease
+    const cb1AfterVariantChange = await page.evaluate(() => {
+      const w = window as unknown as { __capturedCb1?: () => boolean }
+      return typeof w.__capturedCb1 === "function" ? w.__capturedCb1() : true
     })
-    expect(afterResult).toBe(false)
+    expect(cb1AfterVariantChange).toBe(false) // Permanently refused!
+
+    // 4. Verify fresh positive for the newly registered active callback cb2
+    const cb2Result = await page.evaluate(() => {
+      const w = window as unknown as {
+        __tetherOverviewRetainedCallback?: () => boolean
+        __capturedCb2?: () => boolean
+      }
+      w.__capturedCb2 = w.__tetherOverviewRetainedCallback
+      return typeof w.__capturedCb2 === "function" ? w.__capturedCb2() : false
+    })
+    expect(cb2Result).toBe(true) // Fresh positive on cb2!
+
+    // 5. Test competing overlay veto:
+    // Opening a competing foreground dialog/menu/listbox must refuse background actions
+    await page.evaluate(() => {
+      const dialog = document.createElement("div")
+      dialog.setAttribute("role", "dialog")
+      dialog.setAttribute("id", "competing-overlay-specimen")
+      dialog.textContent = "Modal dialog overlay"
+      document.body.appendChild(dialog)
+    })
+
+    const cb2WithOverlay = await page.evaluate(() => {
+      const w = window as unknown as { __capturedCb2?: () => boolean }
+      return typeof w.__capturedCb2 === "function" ? w.__capturedCb2() : true
+    })
+    expect(cb2WithOverlay).toBe(false) // Vetoed by competing overlay!
+
+    // Dismiss competing overlay
+    await page.evaluate(() => {
+      document.getElementById("competing-overlay-specimen")?.remove()
+    })
+
+    // Once overlay is removed, cb2 is admitted again
+    const cb2AfterDismiss = await page.evaluate(() => {
+      const w = window as unknown as { __capturedCb2?: () => boolean }
+      return typeof w.__capturedCb2 === "function" ? w.__capturedCb2() : false
+    })
+    expect(cb2AfterDismiss).toBe(true)
+
+    // 6. Test connected root guard:
+    // If root container is disconnected from active document, callback refuses
+    await page.evaluate(() => {
+      const root = document.querySelector(".tether-overview-root")
+      if (root?.parentElement) {
+        const w = window as unknown as { __savedParent?: HTMLElement; __savedRoot?: HTMLElement }
+        w.__savedParent = root.parentElement
+        w.__savedRoot = root as HTMLElement
+        root.remove()
+      }
+    })
+
+    const cb2Disconnected = await page.evaluate(() => {
+      const w = window as unknown as { __capturedCb2?: () => boolean }
+      return typeof w.__capturedCb2 === "function" ? w.__capturedCb2() : true
+    })
+    expect(cb2Disconnected).toBe(false) // Refused because root is disconnected!
+
+    // Restore root
+    await page.evaluate(() => {
+      const w = window as unknown as { __savedParent?: HTMLElement; __savedRoot?: HTMLElement }
+      if (w.__savedParent && w.__savedRoot) {
+        w.__savedParent.appendChild(w.__savedRoot)
+      }
+    })
+
+    // 7. Verify that cb1 STILL refuses (never revives across transitions)
+    const cb1NeverRevives = await page.evaluate(() => {
+      const w = window as unknown as { __capturedCb1?: () => boolean }
+      return typeof w.__capturedCb1 === "function" ? w.__capturedCb1() : true
+    })
+    expect(cb1NeverRevives).toBe(false)
   })
 
-  test("forced appearance states: loading and error states render distinctly without misleading success", async ({
+  test("forced appearance states: empty, loading and error states render distinctly without misleading success", async ({
     page,
   }, testInfo) => {
     await page.setViewportSize({ width: 1280, height: 800 })
 
-    // Error state
-    await page.goto("/?example=tether&screen=overview&appearance=error")
-    const emptyState = page.locator(".empty-state")
+    // 1. Explicit Empty state
+    await page.goto("/?example=tether&screen=overview&appearance=empty")
+    const emptyState = page.locator(
+      "div.tether-overview-empty[data-testid='tether-overview-empty']",
+    )
     await expect(emptyState).toBeVisible()
-    await expect(emptyState.getByText("Could not load overview").first()).toBeVisible()
+    await expect(emptyState.getByText("No overview telemetry")).toBeVisible()
+    await expect(
+      emptyState.getByText("No Tether session, tool, message, or AI activity recorded."),
+    ).toBeVisible()
+    // Verify that eleven metric panels are NOT rendered in empty state
+    await expect(page.locator("section[data-panel='Activity Signal']")).not.toBeVisible()
+    await expect(page.locator("section[data-panel='Sessions']")).not.toBeVisible()
+    await page.screenshot({ path: testInfo.outputPath("tether-overview-empty.png") })
+
+    // 2. Error state
+    await page.goto("/?example=tether&screen=overview&appearance=error")
+    const errorState = page.locator(
+      "div.tether-overview-empty[data-testid='tether-overview-error']",
+    )
+    await expect(errorState).toBeVisible()
+    await expect(errorState.getByText("Could not load overview").first()).toBeVisible()
+    await expect(page.locator("section[data-panel='Activity Signal']")).not.toBeVisible()
     await page.screenshot({ path: testInfo.outputPath("tether-overview-error.png") })
 
-    // Loading state
+    // 3. Loading state
     await page.goto("/?example=tether&screen=overview&appearance=loading")
-    const loadingState = page.locator(".empty-state[aria-busy='true']")
+    const loadingState = page.locator(
+      "div.tether-overview-empty[data-testid='tether-overview-loading'][aria-busy='true']",
+    )
     await expect(loadingState).toBeVisible()
     await expect(loadingState.getByText("Loading overview...")).toBeVisible()
+    await expect(page.locator("section[data-panel='Activity Signal']")).not.toBeVisible()
     await page.screenshot({ path: testInfo.outputPath("tether-overview-loading.png") })
   })
 

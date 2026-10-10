@@ -76,6 +76,18 @@ function DataList({ title, items }: { title: string; items: NameCount[] }) {
   )
 }
 
+// Monotonic frame lease sequence counter and permanently retired leases across lifecycle and variant transitions
+let globalFrameLeaseSeq = 0
+const retiredLeases = new Set<number>()
+
+function hasCompetingOverlay(): boolean {
+  if (typeof document === "undefined") return false
+  const overlay = document.querySelector(
+    '[role="dialog"]:not([hidden]):not([aria-hidden="true"]), [role="alertdialog"]:not([hidden]):not([aria-hidden="true"]), [role="menu"]:not([hidden]):not([aria-hidden="true"]), [role="listbox"]:not([hidden]):not([aria-hidden="true"])',
+  )
+  return overlay !== null
+}
+
 export interface OverviewPageProps {
   initialVariant?: OverviewVariantKey
   variant?: OverviewVariantKey
@@ -118,38 +130,69 @@ export function OverviewPage({
   })
   const [loading, setLoading] = useState(forcedAppearance === "loading")
 
-  // Monotonic lease & committed retirement guard to refuse retired callbacks
-  const leaseRef = useRef(0)
-  const retiredRef = useRef(false)
-  const instanceLeaseRef = useRef(0)
+  const rootRef = useRef<HTMLDivElement>(null)
+  const currentFrameLeaseRef = useRef(0)
+  const requestSeqRef = useRef(0)
+  const currentVariantRef = useRef(currentVariant)
+  currentVariantRef.current = currentVariant
 
+  // Monotonic committed lease: advances on mount and variant/source replacement; retires old lease permanently
   useLayoutEffect(() => {
-    retiredRef.current = false
-    const lease = ++leaseRef.current
-    instanceLeaseRef.current = lease
-    return () => {
-      retiredRef.current = true
-      instanceLeaseRef.current = 0
-    }
-  }, [])
+    void currentVariant
+    const frameLease = ++globalFrameLeaseSeq
+    currentFrameLeaseRef.current = frameLease
 
-  const isAdmitted = useCallback(
-    () =>
-      !retiredRef.current &&
-      instanceLeaseRef.current !== 0 &&
-      instanceLeaseRef.current === leaseRef.current,
-    [],
-  )
+    return () => {
+      retiredLeases.add(frameLease)
+      if (currentFrameLeaseRef.current === frameLease) {
+        currentFrameLeaseRef.current = 0
+      }
+    }
+  }, [currentVariant])
+
+  const isAdmitted = useCallback(() => {
+    const lease = currentFrameLeaseRef.current
+    if (lease === 0 || retiredLeases.has(lease)) return false
+    if (!rootRef.current?.isConnected || !document.contains(rootRef.current)) {
+      return false
+    }
+    if (hasCompetingOverlay()) return false
+    return true
+  }, [])
 
   const api = useMemo(() => createTetherSysopMockApi(currentVariant), [currentVariant])
 
   const load = useCallback(() => {
-    if (!isAdmitted()) return
+    const capturedFrameLease = currentFrameLeaseRef.current
+    if (
+      capturedFrameLease === 0 ||
+      retiredLeases.has(capturedFrameLease) ||
+      !rootRef.current?.isConnected ||
+      !document.contains(rootRef.current) ||
+      hasCompetingOverlay()
+    ) {
+      return
+    }
+
+    const requestLease = ++requestSeqRef.current
+    const requestedVariant = currentVariant
+
     setLoading(true)
     api
       .getOverview()
       .then((info) => {
-        if (!isAdmitted()) return
+        // Promise completion must match the captured request, active frame lease, and variant
+        if (
+          capturedFrameLease !== currentFrameLeaseRef.current ||
+          retiredLeases.has(capturedFrameLease) ||
+          requestLease !== requestSeqRef.current ||
+          requestedVariant !== currentVariantRef.current ||
+          !rootRef.current?.isConnected ||
+          !document.contains(rootRef.current)
+        ) {
+          return
+        }
+
         if (forcedAppearance === "empty") {
           setData(null)
           setError(null)
@@ -162,14 +205,30 @@ export function OverviewPage({
         }
       })
       .catch((err: unknown) => {
-        if (!isAdmitted()) return
+        if (
+          capturedFrameLease !== currentFrameLeaseRef.current ||
+          retiredLeases.has(capturedFrameLease) ||
+          requestLease !== requestSeqRef.current ||
+          requestedVariant !== currentVariantRef.current ||
+          !rootRef.current?.isConnected ||
+          !document.contains(rootRef.current)
+        ) {
+          return
+        }
         setError(err instanceof Error ? err.message : String(err))
       })
       .finally(() => {
-        if (!isAdmitted()) return
+        if (
+          capturedFrameLease !== currentFrameLeaseRef.current ||
+          retiredLeases.has(capturedFrameLease) ||
+          requestLease !== requestSeqRef.current ||
+          requestedVariant !== currentVariantRef.current
+        ) {
+          return
+        }
         setLoading(false)
       })
-  }, [api, isAdmitted, forcedAppearance, forcedErrorMessage])
+  }, [api, currentVariant, forcedAppearance, forcedErrorMessage])
 
   useEffect(() => {
     if (forcedAppearance === "error") {
@@ -192,20 +251,40 @@ export function OverviewPage({
     load()
   }, [load, forcedAppearance, forcedErrorMessage])
 
-  // Retain callback for verification testing
+  // Retain callback for verification testing with non-reviving lease and admission guards
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      ;(
-        window as unknown as { __tetherOverviewRetainedCallback?: () => void }
-      ).__tetherOverviewRetainedCallback = () => {
-        if (!isAdmitted()) {
-          return false
-        }
-        load()
-        return true
+    void currentVariant
+    if (typeof window === "undefined") return
+
+    const capturedFrameLease = currentFrameLeaseRef.current
+
+    const registeredCallback = (): boolean => {
+      if (
+        capturedFrameLease === 0 ||
+        capturedFrameLease !== currentFrameLeaseRef.current ||
+        retiredLeases.has(capturedFrameLease) ||
+        !rootRef.current?.isConnected ||
+        !document.contains(rootRef.current) ||
+        hasCompetingOverlay()
+      ) {
+        return false
       }
+      load()
+      return true
     }
-  }, [isAdmitted, load])
+
+    const w = window as unknown as {
+      __tetherOverviewRetainedCallback?: () => boolean
+      __tetherOverviewActiveCallback?: () => boolean
+      __tetherOverviewCallbackHistory?: Array<() => boolean>
+    }
+    w.__tetherOverviewRetainedCallback = registeredCallback
+    w.__tetherOverviewActiveCallback = registeredCallback
+    if (!w.__tetherOverviewCallbackHistory) {
+      w.__tetherOverviewCallbackHistory = []
+    }
+    w.__tetherOverviewCallbackHistory.push(registeredCallback)
+  }, [currentVariant, load])
 
   const handleVariantChange = useCallback(
     (next: OverviewVariantKey) => {
@@ -227,24 +306,49 @@ export function OverviewPage({
   // Keyboard navigation & shortcut guard
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      // Shortcuts / IME 229 / modifier branches refuse without blocking native Tab
+      // Modifiers / IME 229 refuse
+      if (e.defaultPrevented) return
       if (e.isComposing || e.keyCode === 229) return
-      const target = e.target as HTMLElement
+      if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return
+      if (e.key !== "r" && e.key !== "R") return
+
+      const target = e.target as HTMLElement | null
+      if (target) {
+        if (
+          target instanceof HTMLInputElement ||
+          target instanceof HTMLTextAreaElement ||
+          target instanceof HTMLSelectElement ||
+          target.isContentEditable ||
+          target.closest?.('[contenteditable="true"]')
+        ) {
+          return
+        }
+        if (rootRef.current && target.ownerDocument !== rootRef.current.ownerDocument) {
+          return
+        }
+      }
+
+      if (hasCompetingOverlay()) return
+
       if (
-        target instanceof HTMLInputElement ||
-        target instanceof HTMLTextAreaElement ||
-        target instanceof HTMLSelectElement
+        currentFrameLeaseRef.current === 0 ||
+        retiredLeases.has(currentFrameLeaseRef.current) ||
+        !rootRef.current ||
+        !rootRef.current.isConnected ||
+        !document.contains(rootRef.current) ||
+        loading
       ) {
         return
       }
-      if ((e.key === "r" || e.key === "R") && !e.ctrlKey && !e.metaKey && !e.altKey) {
-        e.preventDefault()
-        handleRefresh()
-      }
+
+      // Consume only admitted actions
+      e.preventDefault()
+      handleRefresh()
     }
+
     window.addEventListener("keydown", onKeyDown)
     return () => window.removeEventListener("keydown", onKeyDown)
-  }, [handleRefresh])
+  }, [handleRefresh, loading])
 
   const s = data?.sessions
   const t = data?.tool_calls
@@ -267,13 +371,17 @@ export function OverviewPage({
     [t?.trend, m?.trend],
   )
   const activityTotal = sumSeries(activitySeries)
-  const unreadRate = m ? rate(m.unread, m.total) : "0%"
-  const errorRate = t ? rate(t.errors, t.total) : "0%"
-  const aiSuccessRate = a ? rate(a.successes, a.requests) : "0%"
+  const unreadRate = m ? rate(m.unread, m.total) : "—"
+  const errorRate = t ? rate(t.errors, t.total) : "—"
+  const aiSuccessRate = a ? rate(a.successes, a.requests) : "—"
 
   if (error && !data) {
     return (
-      <div className="tether-overview-empty empty-state">
+      <div
+        ref={rootRef}
+        className="tether-overview-empty empty-state"
+        data-testid="tether-overview-error"
+      >
         <EmptyState variant="error" title="Could not load overview" description={error} />
       </div>
     )
@@ -281,7 +389,12 @@ export function OverviewPage({
 
   if (loading && !data) {
     return (
-      <div className="tether-overview-empty empty-state" aria-busy="true">
+      <div
+        ref={rootRef}
+        className="tether-overview-empty empty-state"
+        aria-busy="true"
+        data-testid="tether-overview-loading"
+      >
         <EmptyState
           variant="empty"
           title="Loading overview..."
@@ -291,8 +404,24 @@ export function OverviewPage({
     )
   }
 
+  if (forcedAppearance === "empty" || (!data && !loading && !error)) {
+    return (
+      <div
+        ref={rootRef}
+        className="tether-overview-empty empty-state"
+        data-testid="tether-overview-empty"
+      >
+        <EmptyState
+          variant="empty"
+          title="No overview telemetry"
+          description="No Tether session, tool, message, or AI activity recorded."
+        />
+      </div>
+    )
+  }
+
   return (
-    <div className="tether-overview-root">
+    <div ref={rootRef} className="tether-overview-root">
       {/* Header strip: caption, catalog root in mono, status badge, Refresh, variant and identity links */}
       <header className="tether-overview-header">
         <div className="tether-overview-header-left">
@@ -381,35 +510,35 @@ export function OverviewPage({
             <Panel
               title="Activity Signal"
               icon={<Activity className="size-3.5" />}
-              meta={`${compact(activityTotal)} sampled events`}
+              meta={s || t || m || e ? `${compact(activityTotal)} sampled events` : undefined}
             >
               <KpiGrid cols="grid-cols-2 md:grid-cols-6">
                 <Kpi
                   label="Sessions"
-                  value={compact(s?.total ?? 0)}
-                  sub={`${s?.recent_24h ?? 0} / 24h`}
+                  value={s ? compact(s.total) : "—"}
+                  sub={s ? `${s.recent_24h} / 24h` : "—"}
                 />
                 <Kpi
                   label="Tool Calls"
-                  value={compact(t?.total ?? 0)}
-                  sub={`${t?.recent_1h ?? 0} / 1h`}
+                  value={t ? compact(t.total) : "—"}
+                  sub={t ? `${t.recent_1h} / 1h` : "—"}
                 />
                 <Kpi
                   label="Messages"
-                  value={compact(m?.total ?? 0)}
-                  sub={`${m?.recent_24h ?? 0} / 24h`}
+                  value={m ? compact(m.total) : "—"}
+                  sub={m ? `${m.recent_24h} / 24h` : "—"}
                 />
                 <Kpi
                   label="Events"
-                  value={compact(e?.total ?? 0)}
-                  sub={`${e?.recent_1h ?? 0} / 1h`}
+                  value={e ? compact(e.total) : "—"}
+                  sub={e ? `${e.recent_1h} / 1h` : "—"}
                 />
                 <Kpi
                   label="Success"
-                  value={t ? `${t.success_pct}%` : "..."}
-                  sub={`${errorRate} errors`}
+                  value={t ? `${t.success_pct}%` : "—"}
+                  sub={t ? `${errorRate} errors` : "—"}
                 />
-                <Kpi label="Unread" value={unreadRate} sub={`${m?.unread ?? 0} messages`} />
+                <Kpi label="Unread" value={unreadRate} sub={m ? `${m.unread} messages` : "—"} />
               </KpiGrid>
               <SignalBars
                 data={runtimeSeries}
@@ -421,16 +550,24 @@ export function OverviewPage({
               <div className="grid md:grid-cols-4">
                 <MiniTrend
                   label="Sessions"
-                  value={sumSeries(s?.trend ?? [])}
+                  value={s ? sumSeries(s.trend) : "—"}
                   data={s?.trend ?? []}
                 />
-                <MiniTrend label="Tools" value={sumSeries(t?.trend ?? [])} data={t?.trend ?? []} />
+                <MiniTrend
+                  label="Tools"
+                  value={t ? sumSeries(t.trend) : "—"}
+                  data={t?.trend ?? []}
+                />
                 <MiniTrend
                   label="Messages"
-                  value={sumSeries(m?.trend ?? [])}
+                  value={m ? sumSeries(m.trend) : "—"}
                   data={m?.trend ?? []}
                 />
-                <MiniTrend label="Events" value={sumSeries(e?.trend ?? [])} data={e?.trend ?? []} />
+                <MiniTrend
+                  label="Events"
+                  value={e ? sumSeries(e.trend) : "—"}
+                  data={e?.trend ?? []}
+                />
               </div>
             </Panel>
           </section>
@@ -439,26 +576,34 @@ export function OverviewPage({
             <Panel title="Intelligence" icon={<Gauge className="size-3.5" />}>
               <IntelligenceRow
                 label="Tool reliability"
-                value={t ? `${t.success_pct}%` : "..."}
-                status={t && t.success_pct < 95 ? "blocked" : "done"}
+                value={t ? `${t.success_pct}%` : "—"}
+                status={t ? (t.success_pct < 95 ? "blocked" : "done") : "unknown"}
               />
               <IntelligenceRow
                 label="Session completion"
-                value={s ? `${s.success_pct}%` : "..."}
-                status={s && s.success_pct < 50 ? "blocked" : "done"}
+                value={s ? `${s.success_pct}%` : "—"}
+                status={s ? (s.success_pct < 50 ? "blocked" : "done") : "unknown"}
               />
               <IntelligenceRow
                 label="Slow tool calls"
-                value={t?.slow_calls ?? "..."}
-                status={t && t.slow_calls > 0 ? "doing" : "done"}
+                value={t ? t.slow_calls : "—"}
+                status={t ? (t.slow_calls > 0 ? "doing" : "done") : "unknown"}
               />
               <IntelligenceRow
                 label="Inbox pressure"
                 value={unreadRate}
-                status={m && m.unread > 0 ? "inbox" : "done"}
+                status={m ? (m.unread > 0 ? "inbox" : "done") : "unknown"}
               />
-              <IntelligenceRow label="Top tool" value={topLabel(t?.top_tools)} status="indexed" />
-              <IntelligenceRow label="Top event" value={topLabel(e?.by_kind)} status="indexed" />
+              <IntelligenceRow
+                label="Top tool"
+                value={t ? topLabel(t.top_tools) : "—"}
+                status={t ? "indexed" : "unknown"}
+              />
+              <IntelligenceRow
+                label="Top event"
+                value={e ? topLabel(e.by_kind) : "—"}
+                status={e ? "indexed" : "unknown"}
+              />
             </Panel>
           </section>
         </div>
@@ -470,25 +615,27 @@ export function OverviewPage({
               title="Sessions"
               icon={<TerminalSquare className="size-3.5" />}
               meta={
-                <span>
-                  {s?.running ?? 0} running
-                  {showIdentityLinks && (
-                    <a
-                      href="/?view=Run+Explorer"
-                      className="tether-panel-action"
-                      title="View sessions in Run Explorer"
-                    >
-                      Explorer
-                    </a>
-                  )}
-                </span>
+                s ? (
+                  <span>
+                    {s.running} running
+                    {showIdentityLinks && (
+                      <a
+                        href="/?view=Run+Explorer"
+                        className="tether-panel-action"
+                        title="View sessions in Run Explorer"
+                      >
+                        Explorer
+                      </a>
+                    )}
+                  </span>
+                ) : undefined
               }
             >
               <KpiGrid>
-                <Kpi label="Ended" value={s?.ended ?? 0} />
-                <Kpi label="Failed" value={s ? `${s.failure_pct}%` : "..."} />
-                <Kpi label="Avg Time" value={s ? formatDuration(s.avg_seconds) : "..."} />
-                <Kpi label="Projects" value={s?.by_project?.length ?? 0} />
+                <Kpi label="Ended" value={s ? s.ended : "—"} />
+                <Kpi label="Failed" value={s ? `${s.failure_pct}%` : "—"} />
+                <Kpi label="Avg Time" value={s ? formatDuration(s.avg_seconds) : "—"} />
+                <Kpi label="Projects" value={s?.by_project?.length ?? "—"} />
               </KpiGrid>
               <div className="grid md:grid-cols-2 xl:grid-cols-1">
                 <div className="tether-panel-section-b">
@@ -504,15 +651,15 @@ export function OverviewPage({
             <Panel
               title="Tool Calls"
               icon={<Plug className="size-3.5" />}
-              meta={`${t?.sessions ?? 0} sessions`}
+              meta={t ? `${t.sessions} sessions` : undefined}
             >
               <KpiGrid>
-                <Kpi label="p50" value={t ? `${t.p50_ms}ms` : "..."} />
-                <Kpi label="p95" value={t ? `${t.p95_ms}ms` : "..."} />
-                <Kpi label="Avg" value={t ? `${t.avg_ms}ms` : "..."} />
+                <Kpi label="p50" value={t ? `${t.p50_ms}ms` : "—"} />
+                <Kpi label="p95" value={t ? `${t.p95_ms}ms` : "—"} />
+                <Kpi label="Avg" value={t ? `${t.avg_ms}ms` : "—"} />
                 <Kpi
                   label="Errors"
-                  value={t?.errors ?? 0}
+                  value={t ? t.errors : "—"}
                   accent={t && t.errors > 0 ? "var(--color-status-blocked)" : undefined}
                 />
               </KpiGrid>
@@ -529,12 +676,12 @@ export function OverviewPage({
               <KpiGrid>
                 <Kpi
                   label="Unread"
-                  value={m?.unread ?? 0}
+                  value={m ? m.unread : "—"}
                   accent={m && m.unread > 0 ? "var(--color-status-inbox)" : undefined}
                 />
-                <Kpi label="Archived" value={m?.archived ?? 0} />
-                <Kpi label="Recent" value={m?.recent_24h ?? 0} />
-                <Kpi label="Kinds" value={m?.by_kind?.length ?? 0} />
+                <Kpi label="Archived" value={m ? m.archived : "—"} />
+                <Kpi label="Recent" value={m ? m.recent_24h : "—"} />
+                <Kpi label="Kinds" value={m?.by_kind?.length ?? "—"} />
               </KpiGrid>
               <div className="tether-panel-section-b">
                 <div className="tether-section-header">Scope mix</div>
@@ -548,17 +695,17 @@ export function OverviewPage({
             <Panel
               title="AI Gateway"
               icon={<BrainCircuit className="size-3.5" />}
-              meta={`${a?.enabled_providers ?? 0} providers live`}
+              meta={a ? `${a.enabled_providers} providers live` : undefined}
             >
               <KpiGrid>
-                <Kpi label="Requests" value={compact(a?.requests ?? 0)} />
+                <Kpi label="Requests" value={a ? compact(a.requests) : "—"} />
                 <Kpi label="Success" value={aiSuccessRate} />
                 <Kpi
                   label="Budget rejects"
-                  value={a?.budget_rejections ?? 0}
+                  value={a ? a.budget_rejections : "—"}
                   accent={a && a.budget_rejections > 0 ? "var(--color-status-blocked)" : undefined}
                 />
-                <Kpi label="Spend" value={a ? `$${a.estimated_cost_usd.toFixed(2)}` : "..."} />
+                <Kpi label="Spend" value={a ? `$${a.estimated_cost_usd.toFixed(2)}` : "—"} />
               </KpiGrid>
               <div className="tether-panel-section-b">
                 <div className="tether-section-header">AI activity</div>
@@ -576,25 +723,27 @@ export function OverviewPage({
               title="Event Bus"
               icon={<Database className="size-3.5" />}
               meta={
-                <span>
-                  {e ? `seq ${e.latest_seq}` : undefined}
-                  {showIdentityLinks && (
-                    <a
-                      href="/?view=Event+Ledger"
-                      className="tether-panel-action"
-                      title="View events in Event Ledger"
-                    >
-                      Ledger
-                    </a>
-                  )}
-                </span>
+                e ? (
+                  <span>
+                    {`seq ${e.latest_seq}`}
+                    {showIdentityLinks && (
+                      <a
+                        href="/?view=Event+Ledger"
+                        className="tether-panel-action"
+                        title="View events in Event Ledger"
+                      >
+                        Ledger
+                      </a>
+                    )}
+                  </span>
+                ) : undefined
               }
             >
               <KpiGrid>
-                <Kpi label="Total" value={compact(e?.total ?? 0)} />
-                <Kpi label="1h" value={e?.recent_1h ?? 0} />
-                <Kpi label="Scopes" value={e?.by_scope?.length ?? 0} />
-                <Kpi label="Kinds" value={e?.by_kind?.length ?? 0} />
+                <Kpi label="Total" value={e ? compact(e.total) : "—"} />
+                <Kpi label="1h" value={e ? e.recent_1h : "—"} />
+                <Kpi label="Scopes" value={e?.by_scope?.length ?? "—"} />
+                <Kpi label="Kinds" value={e?.by_kind?.length ?? "—"} />
               </KpiGrid>
               <div className="tether-panel-section-b">
                 <div className="tether-section-header">Scope mix</div>
@@ -624,10 +773,10 @@ export function OverviewPage({
               }
             >
               <KpiGrid cols="grid-cols-2 md:grid-cols-4">
-                <Kpi label="Projects" value={c?.projects ?? "..."} />
-                <Kpi label="Agents" value={c?.agents ?? "..."} />
-                <Kpi label="Providers" value={c?.providers ?? "..."} />
-                <Kpi label="Launches" value={c?.launches ?? "..."} />
+                <Kpi label="Projects" value={c ? c.projects : "—"} />
+                <Kpi label="Agents" value={c ? c.agents : "—"} />
+                <Kpi label="Providers" value={c ? c.providers : "—"} />
+                <Kpi label="Launches" value={c ? c.launches : "—"} />
               </KpiGrid>
               <DataList title="Session projects" items={s?.by_project ?? []} />
             </Panel>
@@ -636,10 +785,10 @@ export function OverviewPage({
           <section data-panel="MCP Servers">
             <Panel title="MCP Servers" icon={<Plug className="size-3.5" />}>
               <KpiGrid cols="grid-cols-2 md:grid-cols-4">
-                <Kpi label="Servers" value={t?.by_server?.length ?? 0} />
-                <Kpi label="Calls" value={compact(t?.total ?? 0)} />
-                <Kpi label="Errors" value={t?.errors ?? 0} />
-                <Kpi label="Slow" value={t?.slow_calls ?? 0} />
+                <Kpi label="Servers" value={t?.by_server?.length ?? "—"} />
+                <Kpi label="Calls" value={t ? compact(t.total) : "—"} />
+                <Kpi label="Errors" value={t ? t.errors : "—"} />
+                <Kpi label="Slow" value={t ? t.slow_calls : "—"} />
               </KpiGrid>
               <DataList title="Server volume" items={t?.by_server ?? []} />
             </Panel>
@@ -650,10 +799,10 @@ export function OverviewPage({
           <section data-panel="AI Cost Report">
             <Panel title="AI Cost Report" icon={<BrainCircuit className="size-3.5" />}>
               <KpiGrid cols="grid-cols-2 md:grid-cols-4">
-                <Kpi label="Configured" value={a?.configured_providers ?? 0} />
-                <Kpi label="Routes" value={a?.routes ?? 0} />
-                <Kpi label="Input" value={compact(a?.input_tokens ?? 0)} />
-                <Kpi label="Output" value={compact(a?.output_tokens ?? 0)} />
+                <Kpi label="Configured" value={a ? a.configured_providers : "—"} />
+                <Kpi label="Routes" value={a ? a.routes : "—"} />
+                <Kpi label="Input" value={a ? compact(a.input_tokens) : "—"} />
+                <Kpi label="Output" value={a ? compact(a.output_tokens) : "—"} />
               </KpiGrid>
               <div className="tether-panel-section-b">
                 <div className="tether-section-header">Model volume</div>
@@ -662,12 +811,12 @@ export function OverviewPage({
               <div className="grid md:grid-cols-2">
                 <MiniTrend
                   label="AI requests"
-                  value={sumSeries(a?.trend ?? [])}
+                  value={a ? sumSeries(a.trend) : "—"}
                   data={a?.trend ?? []}
                 />
                 <MiniTrend
                   label="Budget rejects"
-                  value={a?.budget_rejections ?? 0}
+                  value={a ? a.budget_rejections : "—"}
                   data={a?.trend ?? []}
                 />
               </div>
@@ -678,29 +827,35 @@ export function OverviewPage({
             <Panel title="AI Operators" icon={<Gauge className="size-3.5" />}>
               <IntelligenceRow
                 label="Provider coverage"
-                value={`${a?.enabled_providers ?? 0}/${a?.configured_providers ?? 0}`}
-                status={a && a.enabled_providers < a.configured_providers ? "doing" : "done"}
+                value={a ? `${a.enabled_providers}/${a.configured_providers}` : "—"}
+                status={
+                  a ? (a.enabled_providers < a.configured_providers ? "doing" : "done") : "unknown"
+                }
               />
               <IntelligenceRow
                 label="Route coverage"
-                value={a?.routes ?? 0}
-                status={a && a.routes === 0 ? "doing" : "done"}
+                value={a ? a.routes : "—"}
+                status={a ? (a.routes === 0 ? "doing" : "done") : "unknown"}
               />
               <IntelligenceRow
                 label="Top provider"
-                value={topLabel(a?.by_provider)}
-                status="indexed"
+                value={a ? topLabel(a.by_provider) : "—"}
+                status={a ? "indexed" : "unknown"}
               />
-              <IntelligenceRow label="Top model" value={topLabel(a?.by_model)} status="indexed" />
+              <IntelligenceRow
+                label="Top model"
+                value={a ? topLabel(a.by_model) : "—"}
+                status={a ? "indexed" : "unknown"}
+              />
               <IntelligenceRow
                 label="Budget pressure"
-                value={a?.budget_rejections ?? 0}
-                status={a && a.budget_rejections > 0 ? "blocked" : "done"}
+                value={a ? a.budget_rejections : "—"}
+                status={a ? (a.budget_rejections > 0 ? "blocked" : "done") : "unknown"}
               />
               <IntelligenceRow
                 label="Spend"
-                value={a ? `$${a.estimated_cost_usd.toFixed(2)}` : "..."}
-                status="indexed"
+                value={a ? `$${a.estimated_cost_usd.toFixed(2)}` : "—"}
+                status={a ? "indexed" : "unknown"}
               />
             </Panel>
           </section>

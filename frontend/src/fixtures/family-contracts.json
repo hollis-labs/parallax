@@ -373,7 +373,7 @@
         "frontend/tests/tether-overview.spec.ts"
       ],
       "remaining": [
-        "Page implementations (0100 ai, 0101 activity, 0102 registry) are separate tasks; 0099 overview is landed",
+        "Page implementations (0100 ai, 0101 activity, 0102 registry) are separate tasks; 0099 overview in review PR26",
         "No live mutation or daemon socket connection"
       ]
     }

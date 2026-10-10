@@ -5,8 +5,24 @@
 - **Project:** Parallax (`PRJ-20261004-0003`, `EP-20261010-0006`)
 - **Authority:** `PM01a12388-09fc-7ca4-8f09-e00c95cb06d4`, tracker relay `01M4HV1FTKSY20B9RKVPNY683E`
 - **Parent Task:** CW-20261010-0098 (landed merge `71a1dd9`, fixture SHA `25dfb04`, parent record `01M4J12YMWXHRW2Q1JRMS7ZPS9`)
-- **Upstream Source Primary:** `apps/sysop/frontend/src/pages/overview.tsx` (389 LOC) in `apps/tether`
-- **Design Tokens:** `@hollis-labs/design-tokens`, `@hollis-labs/kit-dashboard`
+- **Upstream Primary Readback:**
+  - Upstream Repository: `/home/chrispian/dev/hollis-labs/apps/tether`
+  - Upstream HEAD Commit: `3e9e7a42783d4e3df52db25e50e40e05bff4c8c4`
+  - Upstream Tree Hash: `a506862471eaf4a16917e44b4ec035229377ad98`
+  - Upstream File Commit: `4c07bf4c63633fe9ddfdf5d8246974f8e752db7b`
+  - Upstream File Path: `apps/sysop/frontend/src/pages/overview.tsx` (389 LOC)
+  - Upstream File SHA256: `ade631e0c33b782fbc05b7860e99ab0fbb318e56f018a13e51ca9e84b07233c3`
+- **Design Tokens & Styling Fidelity:**
+  - `@hollis-labs/design-tokens` & `@hollis-labs/kit-dashboard`
+  - Full public token mapping in `tether-sysop.css`:
+    - `11px` -> `var(--text-label)`
+    - `10px` -> `var(--text-caption)`
+    - `12px` -> `var(--text-xs)`
+    - `0.18em` / `0.16em` -> `var(--tracking-label)`
+    - `2px 8px` -> `calc(var(--spacing) * 0.5) calc(var(--spacing) * 2)`
+    - `gap: 6px` -> `calc(var(--spacing) * 1.5)`
+    - Borders -> `var(--color-border)`
+    - Status tones -> `var(--color-status-*)`
 
 ---
 
