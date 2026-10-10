@@ -5,6 +5,7 @@ declare global {
   interface Window {
     tachyonNav: typeof diagnostics
     heldNav?: () => boolean
+    heldHandoff?: () => boolean
   }
 }
 test.use({ baseURL: `http://127.0.0.1:${process.env.TACHYON_NAV_PORT ?? 18545}` })
@@ -99,4 +100,83 @@ test("right-click context and synthetic CDP hold use public background hook", as
   await expect(
     page.getByRole("status").filter({ hasText: "Fixture inspected locally" }),
   ).toBeVisible()
+})
+
+async function holdRelease(page: import("@playwright/test").Page) {
+  const trigger = page.getByRole("button", { name: "Row 4421-alpha", exact: true })
+  await trigger.scrollIntoViewIfNeeded()
+  const box = await trigger.boundingBox()
+  if (!box) throw new Error("Missing touch trigger")
+  const cdp = await page.context().newCDPSession(page)
+  await cdp.send("Input.dispatchTouchEvent", {
+    type: "touchStart",
+    touchPoints: [{ x: box.x + box.width / 2, y: box.y + box.height / 2 }],
+  })
+  await expect(page.getByRole("menu", { name: "Row 4421-alpha", exact: true })).toHaveAttribute(
+    "data-open",
+    "",
+  )
+  await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] })
+  await expect(page.getByRole("menu", { name: "Row 4421-alpha", exact: true })).toHaveAttribute(
+    "data-open",
+    "",
+  )
+  await expect.poll(() => page.evaluate(() => window.tachyonNav.handoff?.())).toBe(true)
+  return { trigger, cdp }
+}
+for (const boundary of ["source", "access", "root", "Activity"] as const)
+  test(`touch handoff once works then refuses committed ${boundary} retirement without revival`, async ({
+    page,
+  }) => {
+    await page.goto("/tachyon-nav-lifecycle.html#/work")
+    await holdRelease(page)
+    await page.evaluate(() => {
+      window.heldHandoff = window.tachyonNav.handoff
+    })
+    const name = boundary === "source" ? "Replace fixture source" : `Toggle fixture ${boundary}`
+    // Activation has no new pointer gesture: this isolates committed retirement.
+    await page
+      .getByRole("button", { name, exact: true })
+      .evaluate((el: HTMLButtonElement) => el.click())
+    await expect.poll(() => page.evaluate(() => window.heldHandoff?.())).toBe(false)
+    if (boundary !== "source")
+      await page
+        .getByRole("button", { name, exact: true })
+        .evaluate((el: HTMLButtonElement) => el.click())
+    await holdRelease(page)
+    expect(await page.evaluate(() => window.heldHandoff?.())).toBe(false)
+  })
+test("touch handoff clears on cancellation/new gesture and preserves fresh tap/keyboard", async ({
+  page,
+}) => {
+  await page.goto("/?example=tachyon-nav#/work")
+  const { trigger } = await holdRelease(page)
+  await page.evaluate(() => {
+    window.heldHandoff = window.tachyonNav.handoff
+    document.dispatchEvent(new Event("touchcancel", { bubbles: true }))
+  })
+  expect(await page.evaluate(() => window.heldHandoff?.())).toBe(false)
+  await page.keyboard.press("Escape")
+  await expect(trigger).toBeFocused()
+  await trigger.click()
+  await expect(page.getByRole("menu", { name: "Row 4421-alpha", exact: true })).toHaveAttribute(
+    "data-open",
+    "",
+  )
+  await trigger.click()
+  await expect(page.getByRole("menu", { name: "Row 4421-alpha", exact: true })).toHaveCount(0)
+  await trigger.press("Enter")
+  await expect(page.getByRole("menu", { name: "Row 4421-alpha", exact: true })).toBeVisible()
+  await page.keyboard.press("ArrowDown")
+  await page.keyboard.press("Enter")
+  await expect(
+    page.getByRole("status").filter({ hasText: "Fixture inspected locally" }),
+  ).toBeVisible()
+  await holdRelease(page)
+  await page.evaluate(() => {
+    window.heldHandoff = window.tachyonNav.handoff
+  })
+  await trigger.click()
+  expect(await page.evaluate(() => window.heldHandoff?.())).toBe(false)
+  await expect(page.getByRole("menu", { name: "Row 4421-alpha", exact: true })).toHaveCount(0)
 })

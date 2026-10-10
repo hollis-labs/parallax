@@ -177,6 +177,11 @@ test("owner metadata wins and top/left tab arrow navigation is addressable", asy
   await sub.getByRole("tab", { name: "Tasks", exact: true }).focus()
   await page.keyboard.press("ArrowRight")
   await expect(page).toHaveURL(/#\/work\/board$/)
+  await expect(sub.getByRole("tab", { name: "Board", exact: true })).toHaveAttribute(
+    "aria-selected",
+    "true",
+  )
+  await expect(sub.getByRole("tab", { name: "Board", exact: true })).toBeFocused()
   await page.getByLabel("Sub-nav variant").selectOption("left")
   await sub.getByRole("tab", { name: "Board", exact: true }).focus()
   await page.keyboard.press("ArrowUp")
@@ -269,4 +274,47 @@ test("portable stories use the same composition and no backend requests", async 
     await expect(page.getByTestId("tachyon-nav")).toBeVisible()
   }
   expect(calls).toEqual([])
+})
+
+test("subnav refuses IME/229/modifier and competing owner while editable composition updates", async ({
+  page,
+}) => {
+  await page.goto(`${entry}#/work`)
+  const tasks = page.getByRole("tab", { name: "Tasks", exact: true })
+  await tasks.focus()
+  for (const detail of [
+    { isComposing: true },
+    { keyCode: 229 },
+    { ctrlKey: true },
+    { altKey: true },
+    { metaKey: true },
+    { shiftKey: true },
+  ]) {
+    await tasks.evaluate(
+      (el, detail) =>
+        el.dispatchEvent(
+          new KeyboardEvent("keydown", {
+            key: "ArrowRight",
+            bubbles: true,
+            cancelable: true,
+            ...detail,
+          }),
+        ),
+      detail,
+    )
+    await expect(page).toHaveURL(/#\/work$/)
+    await expect(tasks).toBeFocused()
+  }
+  await page.evaluate(() => {
+    const owner = document.createElement("div")
+    owner.id = "tab-owner"
+    owner.setAttribute("role", "dialog")
+    owner.textContent = "New owner"
+    document.body.append(owner)
+  })
+  await tasks.press("ArrowRight")
+  await expect(page).toHaveURL(/#\/work$/)
+  await page.locator("#tab-owner").evaluate((el) => el.remove())
+  await tasks.press("ArrowRight")
+  await expect(page).toHaveURL(/#\/work\/board$/)
 })

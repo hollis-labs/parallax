@@ -1,3 +1,4 @@
+import { Tabs as BaseTabs } from "@base-ui/react/tabs"
 import {
   createAppShellAsideStore,
   createMemoryStorage,
@@ -12,7 +13,6 @@ import {
   DropdownMenuTrigger,
   InspectionDialog,
   OverlaySidebar,
-  Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
@@ -53,6 +53,7 @@ export const diagnostics: {
   replace?: () => void
   access?: () => void
   layer?: () => void
+  handoff?: () => boolean
   fresh: Record<string, () => boolean>
 } = { actions: [], retained: [], fresh: {} }
 const icons = {
@@ -94,9 +95,24 @@ function MenuSlot({
     accessible,
     onTrigger: () => {},
   }).isLive
+  // Only the compatibility mouse press belonging to this exact fired touch is handed off.
+  // The public hook still owns threshold, cancellation, and release-click suppression.
+  const handoff = useRef<{
+    target: HTMLElement
+    pointerId: number
+    generation: unknown
+    lease: { live: boolean }
+    released: boolean
+    gestureEpoch: number
+  } | null>(null)
+  const gestureEpoch = useRef(0)
+  const handoffLifetime = useRef<{ live: boolean } | null>(null)
   const openedGeneration = useRef(generation)
   useLayoutEffect(() => {
-    if (openedGeneration.current !== generation || !accessible) setOpen(false)
+    if (openedGeneration.current !== generation || !accessible) {
+      handoff.current = null
+      setOpen(false)
+    }
   }, [generation, accessible])
   const admitted = () =>
     live() && accessible && openedGeneration.current === generation && currentLayer(popup.current)
@@ -105,11 +121,51 @@ function MenuSlot({
     activationGeneration: label,
     accessible,
     isAdmitted: () => live() && accessible && !competingLayer(),
-    onLongPress: () => {
+    onLongPress: (gesture) => {
+      handoff.current =
+        gesture.pointerType === "touch" && handoffLifetime.current?.live
+          ? {
+              target: gesture.target,
+              pointerId: gesture.pointerId,
+              generation,
+              lease: handoffLifetime.current,
+              released: false,
+              gestureEpoch: gestureEpoch.current,
+            }
+          : null
       openedGeneration.current = generation
       setOpen(true)
     },
   })
+  useLayoutEffect(() => {
+    const lease = { live: accessible && !!generation && !!label }
+    handoffLifetime.current = lease
+    const clear = () => {
+      gestureEpoch.current += 1
+      handoff.current = null
+    }
+    const release = (event: PointerEvent) => {
+      if (handoff.current?.pointerId === event.pointerId && event.target === handoff.current.target)
+        handoff.current.released = true
+      else clear()
+    }
+    document.addEventListener("pointerdown", clear, true)
+    document.addEventListener("pointerup", release, true)
+    document.addEventListener("pointercancel", clear, true)
+    document.addEventListener("touchcancel", clear, true)
+    document.addEventListener("scroll", clear, true)
+    window.addEventListener("blur", clear)
+    return () => {
+      lease.live = false
+      clear()
+      document.removeEventListener("pointerdown", clear, true)
+      document.removeEventListener("pointerup", release, true)
+      document.removeEventListener("pointercancel", clear, true)
+      document.removeEventListener("touchcancel", clear, true)
+      document.removeEventListener("scroll", clear, true)
+      window.removeEventListener("blur", clear)
+    }
+  }, [generation, accessible, label])
   useLayoutEffect(() => {
     const handle = () => {
       if (!admitted()) return false
@@ -148,6 +204,33 @@ function MenuSlot({
             {...(context
               ? {
                   ...press.bindings,
+                  onMouseDownCapture: (event: React.MouseEvent) => {
+                    const held = handoff.current
+                    const native = event.nativeEvent as MouseEvent & {
+                      sourceCapabilities?: { firesTouchEvents: boolean } | null
+                    }
+                    if (!held || !native.sourceCapabilities?.firesTouchEvents) return
+                    handoff.current = null
+                    // React releases currentTarget after dispatch; retain the physical target.
+                    const physicalTarget = event.currentTarget
+                    const physicalEventTarget = event.target as Node
+                    const retained = () =>
+                      held.target === physicalTarget &&
+                      held.target.contains(physicalEventTarget) &&
+                      held.generation === generation &&
+                      held.lease.live &&
+                      held.released &&
+                      held.gestureEpoch === gestureEpoch.current &&
+                      live() &&
+                      accessible &&
+                      openedGeneration.current === generation &&
+                      currentLayer(popup.current)
+                    diagnostics.handoff = retained
+                    if (retained()) {
+                      event.preventDefault()
+                      event.stopPropagation()
+                    }
+                  },
                   onContextMenu: (event: React.MouseEvent) => {
                     if (live() && accessible && !competingLayer()) {
                       event.preventDefault()
@@ -446,16 +529,33 @@ function PageNavigation({
   const active = tabs.find((t) => `#${t.route}` === hash.split("?")[0])?.route ?? tabs[0]?.route
   if (!active) return <div className="mt-4">{children}</div>
   return (
-    <Tabs
+    <BaseTabs.Root
       value={active}
       onValueChange={(value) => {
         if (typeof value === "string") navigate(value)
       }}
       orientation={variant === "top" ? "horizontal" : "vertical"}
-      className={`mt-4 flex gap-4 ${variant === "top" ? "flex-col" : "flex-col sm:flex-row"}`}
+      data-slot="tabs"
+      data-orientation={variant === "top" ? "horizontal" : "vertical"}
+      className={`group/tabs mt-4 flex gap-4 ${variant === "top" ? "flex-col" : "flex-col sm:flex-row"}`}
     >
       <nav aria-label="Page sub-navigation">
         <TabsList
+          activateOnFocus
+          onKeyDownCapture={(event) => {
+            if (
+              event.nativeEvent.isComposing ||
+              event.keyCode === 229 ||
+              event.altKey ||
+              event.ctrlKey ||
+              event.metaKey ||
+              event.shiftKey ||
+              competingLayer()
+            ) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+          }}
           variant="line"
           className={variant === "left" ? "flex flex-col" : "flex flex-wrap"}
         >
@@ -474,7 +574,7 @@ function PageNavigation({
       <TabsContent value={active} className="min-w-0 flex-1">
         {children}
       </TabsContent>
-    </Tabs>
+    </BaseTabs.Root>
   )
 }
 export function TachyonNav({

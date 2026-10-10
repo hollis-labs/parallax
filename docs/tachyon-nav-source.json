@@ -18,10 +18,22 @@
     "plugins/config-ops/capabilities.json": "8f5f8a91af9ffa55f3255911e965b9f2237fc089f7b25be9cc609b3e214d2d32"
   },
   "landings": {
-    "ADR": "df893d55",
-    "contract": "e382338d",
-    "routing": "e33d52be",
-    "projection": "97f0ad6"
+    "ADR": {
+      "merge": "df893d55f4271ee6220ff6a6aa9f7fc374d7b28d",
+      "tree": "ffa333dee32c302ffdd44c570496d8774f6a886f"
+    },
+    "contract": {
+      "merge": "e382338d4cfc9b47e62037cdaf6d0c2abcc1079c",
+      "tree": "79cefd5c3eec3863b3e7dbbf880416182a34fd53"
+    },
+    "routing": {
+      "merge": "e33d52bee47ad1a59c4714ac158b687d81a1e829",
+      "tree": "85ca52752dd3fbd0996d9a09477787fc971a2bb7"
+    },
+    "projection": {
+      "merge": "97f0ad6d81d5592c26ba8aa4fad99f30848ca118",
+      "tree": "015c104326c5b56e0bc7cef82461bfa281f5d63a"
+    }
   },
   "ownerVisualApproval": false
 }
