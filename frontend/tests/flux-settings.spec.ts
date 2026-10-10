@@ -2,6 +2,10 @@ import fs from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { expect, test } from "@playwright/test"
+import {
+  MALFORMED_FIXTURE_PREFERENCES,
+  parseLayoutPreferences,
+} from "../src/examples/flux-settings/model"
 
 const entry = "/flux-settings.html"
 const repo = fileURLToPath(new URL("../../", import.meta.url))
@@ -154,6 +158,17 @@ test("appearance section: theme list, real token preview, and token editor", asy
   // Duplicate theme to create an editable custom theme
   await page.getByRole("button", { name: "Duplicate", exact: true }).click()
   await expect(page.getByText("Custom (Editable)")).toBeVisible()
+  const themeId1 = await page.evaluate(
+    () => (window as unknown as { fluxSettings: { activeTheme: string } }).fluxSettings.activeTheme,
+  )
+  expect(themeId1).toBe("custom-nanite-default-4421-1")
+
+  // Duplicate again to verify sequence counter increments across renders
+  await page.getByRole("button", { name: "Duplicate", exact: true }).click()
+  const themeId2 = await page.evaluate(
+    () => (window as unknown as { fluxSettings: { activeTheme: string } }).fluxSettings.activeTheme,
+  )
+  expect(themeId2).toBe("custom-custom-nanite-default-4421-1-4421-2")
 
   // Open token editor popover for brand
   const brandRow = page
@@ -250,6 +265,27 @@ test("shortcuts section: guarded key capture, modifier lifecycle, and Escape can
   await sidebarRow.click()
   await page.keyboard.press("Control+Shift+P")
   await page.getByRole("button", { name: "Save Toggle Sidebar shortcut" }).click()
+
+  // Enter capture mode again to verify scoped non-swallowing of external inputs
+  await sidebarRow.click()
+  await expect(page.getByText("Press keys…")).toBeVisible()
+
+  await page.evaluate(() => {
+    const input = document.createElement("input")
+    input.id = "test-unrelated-editor"
+    document.body.append(input)
+    input.focus()
+  })
+  await page.keyboard.type("safe-typing")
+  const inputVal = await page.evaluate(
+    () => (document.getElementById("test-unrelated-editor") as HTMLInputElement)?.value,
+  )
+  expect(inputVal).toBe("safe-typing")
+  await page.evaluate(() => document.getElementById("test-unrelated-editor")?.remove())
+
+  // Cancel editing
+  await page.getByRole("button", { name: "Cancel editing Toggle Sidebar" }).click()
+  await expect(page.getByText("Press keys…")).toHaveCount(0)
 
   // Reset All shortcuts
   await page.getByRole("button", { name: "Reset All" }).click()
@@ -373,4 +409,156 @@ test("host committed activation fence refuses uncommitted/historical targets and
   })
   expect(admitted).toBe(true)
   await expect(page.locator('[data-section="permissions"]')).toBeVisible()
+})
+
+test("layout section: rejects malformed persisted preferences with fallback to safe defaults", async ({
+  page,
+}) => {
+  // Test direct parsing rejection
+  const corrupted = parseLayoutPreferences(MALFORMED_FIXTURE_PREFERENCES)
+  const badVersion = parseLayoutPreferences({ version: 99, toolCallDisplayMode: "minimal" })
+  const badMode = parseLayoutPreferences({
+    version: 1,
+    toolCallDisplayMode: "invalid_mode" as any,
+    toolDrawerRetention: 15,
+    defaultBottomDrawerTab: "scratchpad",
+    preset: "default",
+    headerChipsVisible: true,
+    compactCompanion: false,
+  })
+  const negativeRetention = parseLayoutPreferences({
+    version: 1,
+    toolCallDisplayMode: "minimal",
+    toolDrawerRetention: -5,
+    defaultBottomDrawerTab: "scratchpad",
+    preset: "default",
+    headerChipsVisible: true,
+    compactCompanion: false,
+  })
+
+  expect({
+    corrupted: corrupted === null,
+    badVersion: badVersion === null,
+    badMode: badMode === null,
+    negativeRetention: negativeRetention === null,
+  }).toEqual({
+    corrupted: true,
+    badVersion: true,
+    badMode: true,
+    negativeRetention: true,
+  })
+
+  // Load standalone in malformed-fallback scenario
+  await page.goto(`${entry}?scenario=malformed-fallback#layout`)
+  await expect(page.locator('[data-section="layout"]')).toBeVisible()
+
+  // Malformed rejection notice is visible in the DOM
+  await expect(page.locator('[data-testid="malformed-fallback-notice"]')).toBeVisible()
+  const diag = await page.evaluate(
+    () =>
+      (
+        window as unknown as {
+          fluxSettings: { diagnostics: { malformedRejected: boolean } }
+        }
+      ).fluxSettings.diagnostics,
+  )
+  expect(diag.malformedRejected).toBe(true)
+
+  // Default layout preferences are preserved safely
+  const presetSelect = page.getByLabel("Active Preset", { exact: false })
+  await expect(presetSelect).toHaveValue("default")
+})
+
+test("captured activation callback and roving navigation retire across source, access, and React Activity lifecycle", async ({
+  page,
+}) => {
+  await page.goto(`${entry}#appearance`)
+  await expect(page.locator('[data-section="appearance"]')).toBeVisible()
+
+  // Capture callback from current live frame
+  const initialFramePositive = await page.evaluate(() => {
+    const w = window as unknown as {
+      fluxSettings: {
+        currentFrame: { activateSection: (s: string) => boolean }
+      }
+      heldActivate?: (s: string) => boolean
+    }
+    w.heldActivate = w.fluxSettings.currentFrame.activateSection
+    return w.heldActivate("layout")
+  })
+  expect(initialFramePositive).toBe(true)
+  await expect(page.locator('[data-section="layout"]')).toBeVisible()
+
+  // Click "Replace source" in host header controls
+  await page.getByRole("button", { name: "Replace source", exact: true }).click()
+
+  // Retained callback refuses invocation after retirement
+  const retainedRefusal = await page.evaluate(() => {
+    return (
+      window as unknown as {
+        heldActivate: (s: string) => boolean
+      }
+    ).heldActivate("shortcuts")
+  })
+  expect(retainedRefusal).toBe(false)
+  // Section did not change to shortcuts
+  await expect(page.locator('[data-section="shortcuts"]')).toHaveCount(0)
+
+  // Fresh frame recovers and admits target
+  const freshAdmitted = await page.evaluate(() => {
+    return (
+      window as unknown as {
+        fluxSettings: {
+          currentFrame: { activateSection: (s: string) => boolean }
+        }
+      }
+    ).fluxSettings.currentFrame.activateSection("shortcuts")
+  })
+  expect(freshAdmitted).toBe(true)
+  await expect(page.locator('[data-section="shortcuts"]')).toBeVisible()
+
+  // Access denial disables activation
+  const accessCheckbox = page.getByRole("checkbox", { name: "Access admitted" })
+  await accessCheckbox.uncheck()
+  const accessDenied = await page.evaluate(() => {
+    return (
+      window as unknown as {
+        fluxSettings: {
+          currentFrame: { activateSection: (s: string) => boolean }
+        }
+      }
+    ).fluxSettings.currentFrame.activateSection("appearance")
+  })
+  expect(accessDenied).toBe(false)
+
+  // Re-admit access
+  await accessCheckbox.check()
+  const reAdmitted = await page.evaluate(() => {
+    return (
+      window as unknown as {
+        fluxSettings: {
+          currentFrame: { activateSection: (s: string) => boolean }
+        }
+      }
+    ).fluxSettings.currentFrame.activateSection("appearance")
+  })
+  expect(reAdmitted).toBe(true)
+
+  // Exercise React Activity lifecycle fixture
+  const lifecycle = await page.evaluate(async () => {
+    const path = "/tests/fixtures/settings-lifecycle.tsx"
+    return (await import(path)).settingsLifecycleExercise()
+  })
+  expect(lifecycle).toEqual({
+    positiveInitial: true,
+    refusedWhileHidden: true,
+    retainedRemainsRetired: true,
+    freshRecovery: true,
+    refusedAfterSourceReplace: true,
+    freshAfterSourceReplace: true,
+    refusedWhenAccessDenied: true,
+    imeIgnored: true,
+    modifierIgnored: true,
+    accessDeniedIgnored: true,
+  })
 })

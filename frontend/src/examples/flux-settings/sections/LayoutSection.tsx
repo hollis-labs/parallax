@@ -9,6 +9,7 @@ import {
   type LayoutPresetKey,
   TOOL_DISPLAY_OPTIONS,
   type ToolCallDisplayMode,
+  validateLayoutPreferences,
 } from "../model"
 import { PanelHeader, SCard, SRow, SSelect, SToggle } from "../primitives"
 
@@ -28,9 +29,11 @@ export function LayoutSection({ preferences, onChange, readOnly = false }: Layou
 
   const update = (patch: Partial<LayoutPreferences>) => {
     if (readOnly) return
-    const updated = { ...preferences, ...patch }
-    setDraft(updated)
-    onChange(updated)
+    const candidate = { ...preferences, ...patch }
+    const validated = validateLayoutPreferences(candidate)
+    if (!validated.valid) return
+    setDraft(validated.value)
+    onChange(validated.value)
   }
 
   const handleReset = () => {

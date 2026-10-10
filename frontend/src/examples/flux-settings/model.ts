@@ -419,28 +419,79 @@ export const DEFAULT_LAYOUT_PREFERENCES: LayoutPreferences = {
 export const layoutStorageKey = "parallax:flux-settings:layout:v1"
 
 export function parseLayoutPreferences(raw: unknown): LayoutPreferences | null {
-  if (!raw || typeof raw !== "object") return null
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) return null
   const v = raw as Partial<LayoutPreferences>
   if (v.version !== 1) return null
+
   const validModes: ToolCallDisplayMode[] = ["indicator", "minimal", "compact", "full"]
-  const mode = validModes.includes(v.toolCallDisplayMode as ToolCallDisplayMode)
-    ? (v.toolCallDisplayMode as ToolCallDisplayMode)
-    : "minimal"
-  const retention = typeof v.toolDrawerRetention === "number" ? v.toolDrawerRetention : 15
-  const tab = typeof v.defaultBottomDrawerTab === "string" ? v.defaultBottomDrawerTab : "scratchpad"
-  const preset: LayoutPresetKey =
-    typeof v.preset === "string" && Object.hasOwn(LAYOUT_PRESETS, v.preset)
-      ? (v.preset as LayoutPresetKey)
-      : "default"
+  if (
+    !v.toolCallDisplayMode ||
+    !validModes.includes(v.toolCallDisplayMode as ToolCallDisplayMode)
+  ) {
+    return null
+  }
+
+  if (
+    typeof v.toolDrawerRetention !== "number" ||
+    Number.isNaN(v.toolDrawerRetention) ||
+    v.toolDrawerRetention < 1 ||
+    v.toolDrawerRetention > 100
+  ) {
+    return null
+  }
+
+  if (typeof v.defaultBottomDrawerTab !== "string" || !v.defaultBottomDrawerTab.trim()) {
+    return null
+  }
+
+  if (typeof v.preset !== "string" || !Object.hasOwn(LAYOUT_PRESETS, v.preset)) {
+    return null
+  }
+
+  if (typeof v.headerChipsVisible !== "boolean" || typeof v.compactCompanion !== "boolean") {
+    return null
+  }
+
   return {
     version: 1,
-    toolCallDisplayMode: mode,
-    toolDrawerRetention: retention,
-    defaultBottomDrawerTab: tab,
-    preset,
-    headerChipsVisible: v.headerChipsVisible ?? true,
-    compactCompanion: v.compactCompanion ?? false,
+    toolCallDisplayMode: v.toolCallDisplayMode as ToolCallDisplayMode,
+    toolDrawerRetention: v.toolDrawerRetention,
+    defaultBottomDrawerTab: v.defaultBottomDrawerTab,
+    preset: v.preset as LayoutPresetKey,
+    headerChipsVisible: v.headerChipsVisible,
+    compactCompanion: v.compactCompanion,
   }
+}
+
+export interface ValidationResult<T> {
+  valid: boolean
+  value: T
+  error?: string
+}
+
+export function validateLayoutPreferences(raw: unknown): ValidationResult<LayoutPreferences> {
+  const parsed = parseLayoutPreferences(raw)
+  if (parsed === null) {
+    return {
+      valid: false,
+      value: DEFAULT_LAYOUT_PREFERENCES,
+      error: "Malformed layout preference: corrupted fields or invalid version schema rejected",
+    }
+  }
+  return {
+    valid: true,
+    value: parsed,
+  }
+}
+
+export const MALFORMED_FIXTURE_PREFERENCES = {
+  version: 99,
+  toolCallDisplayMode: "corrupted_mode_unknown",
+  toolDrawerRetention: -999,
+  preset: "corrupted_preset",
+  defaultBottomDrawerTab: "",
+  headerChipsVisible: "invalid_bool",
+  compactCompanion: null,
 }
 
 export function layoutPreferencesStorage(): ScopedStorage<LayoutPreferences> {

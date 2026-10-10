@@ -1,5 +1,5 @@
 import { Copy, Download, RotateCcw, Sparkles, X } from "lucide-react"
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import {
   BUILTIN_THEMES,
   THEME_CONCRETE_AND_SIGNAL,
@@ -66,7 +66,7 @@ export function AppearanceSection({
 
   const allThemes = useMemo(() => [...BUILTIN_THEMES, ...customThemes], [customThemes])
 
-  let customThemeSeq = 0
+  const customThemeSeqRef = useRef(0)
 
   const handleSelectTheme = (id: string) => {
     if (readOnly) return
@@ -79,8 +79,8 @@ export function AppearanceSection({
 
   const handleDuplicate = () => {
     if (readOnly) return
-    customThemeSeq += 1
-    const copyId = `custom-${draft.id}-4421-${customThemeSeq}`
+    customThemeSeqRef.current += 1
+    const copyId = `custom-${draft.id}-4421-${customThemeSeqRef.current}`
     const copy: Theme = {
       ...draft,
       id: copyId,

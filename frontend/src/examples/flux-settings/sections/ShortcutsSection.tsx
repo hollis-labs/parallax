@@ -1,5 +1,5 @@
 import { Check, Keyboard, Lock, RotateCcw, X } from "lucide-react"
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import {
   FIXTURE_PLUGIN_SHORTCUTS,
   formatKeyBinding,
@@ -51,6 +51,8 @@ function ShortcutRow({
   onCancel,
 }: ShortcutRowProps) {
   const [captured, setCaptured] = useState<string | null>(null)
+  const rowRef = useRef<HTMLDivElement>(null)
+  const captureBoxRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!isEditing) {
@@ -58,7 +60,24 @@ function ShortcutRow({
       return
     }
 
+    captureBoxRef.current?.focus()
+
     function handleKeyDown(e: KeyboardEvent) {
+      // Lease guard: if row is disconnected, ignore
+      if (!rowRef.current?.isConnected) return
+
+      // Scoped guard: if event originates from an unrelated input, textarea, editor,
+      // or inside a popup/layer outside this editing row, do NOT intercept or consume
+      const target = e.target as HTMLElement | null
+      if (target && !rowRef.current.contains(target)) {
+        if (
+          target.matches("input, textarea, select, [contenteditable='true']") ||
+          target.closest("[role='dialog'], [role='menu'], [data-nested-layer]")
+        ) {
+          return
+        }
+      }
+
       const parsed = parseKeyEvent(e)
       if (parsed === undefined) {
         // Modifier-only or active IME composition: do not consume, allow natural event flow
@@ -83,67 +102,73 @@ function ShortcutRow({
   }, [isEditing, onCancel])
 
   return (
-    <SRow
-      data-shortcut-key={def.key}
-      label={def.label}
-      description={def.description}
-      className={`transition-colors ${
-        isEditing
-          ? "bg-primary-muted ring-1 ring-primary/40 ring-inset"
-          : readOnly
-            ? "opacity-80"
-            : "cursor-pointer hover:bg-surface/60"
-      }`}
-      onClick={isEditing || readOnly ? undefined : onEdit}
-    >
-      {isEditing ? (
-        <div className="flex items-center gap-2">
-          {captured ? (
-            <>
-              <KbdGroup>{renderKeyBadges(captured, "cap", true)}</KbdGroup>
-              <button
-                type="button"
-                aria-label={`Save ${def.label} shortcut`}
-                onClick={(e) => {
-                  e.stopPropagation()
-                  onSave(captured)
-                }}
-                className="inline-flex items-center justify-center w-6 h-6 rounded-sm bg-success-muted text-success hover:bg-success hover:text-success-fg cursor-pointer transition-colors"
-              >
-                <Check className="w-3.5 h-3.5" />
-              </button>
-            </>
-          ) : (
-            <span className="text-xs text-fg-muted font-mono italic animate-pulse">
-              Press keys…
-            </span>
-          )}
-          <button
-            type="button"
-            aria-label={`Cancel editing ${def.label}`}
-            onClick={(e) => {
-              e.stopPropagation()
-              onCancel()
-            }}
-            className="inline-flex items-center justify-center w-6 h-6 rounded-sm bg-surface text-fg-muted hover:text-fg cursor-pointer transition-colors"
+    <div ref={rowRef} data-shortcut-row={def.key} className="w-full">
+      <SRow
+        data-shortcut-key={def.key}
+        label={def.label}
+        description={def.description}
+        className={`transition-colors ${
+          isEditing
+            ? "bg-primary-muted ring-1 ring-primary/40 ring-inset"
+            : readOnly
+              ? "opacity-80"
+              : "cursor-pointer hover:bg-surface/60"
+        }`}
+        onClick={isEditing || readOnly ? undefined : onEdit}
+      >
+        {isEditing ? (
+          <div
+            ref={captureBoxRef}
+            title={`Recording shortcut for ${def.label}`}
+            className="flex items-center gap-2 outline-none"
           >
-            <X className="w-3.5 h-3.5" />
-          </button>
-        </div>
-      ) : (
-        <div className="flex items-center gap-2">
-          {conflict && (
-            <span
-              className="text-caption font-mono text-warning bg-warning-muted px-1.5 py-0.5 rounded-xs"
-              title={`Conflicts with: ${conflict}`}
+            {captured ? (
+              <>
+                <KbdGroup>{renderKeyBadges(captured, "cap", true)}</KbdGroup>
+                <button
+                  type="button"
+                  aria-label={`Save ${def.label} shortcut`}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    onSave(captured)
+                  }}
+                  className="inline-flex items-center justify-center w-6 h-6 rounded-sm bg-success-muted text-success hover:bg-success hover:text-success-fg cursor-pointer transition-colors"
+                >
+                  <Check className="w-3.5 h-3.5" />
+                </button>
+              </>
+            ) : (
+              <span className="text-xs text-fg-muted font-mono italic animate-pulse">
+                Press keys…
+              </span>
+            )}
+            <button
+              type="button"
+              aria-label={`Cancel editing ${def.label}`}
+              onClick={(e) => {
+                e.stopPropagation()
+                onCancel()
+              }}
+              className="inline-flex items-center justify-center w-6 h-6 rounded-sm bg-surface text-fg-muted hover:text-fg cursor-pointer transition-colors"
             >
-              Conflict
-            </span>
-          )}
-          <KbdGroup>{renderKeyBadges(binding, def.key, false)}</KbdGroup>
-        </div>
-      )}
-    </SRow>
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        ) : (
+          <div className="flex items-center gap-2">
+            {conflict && (
+              <span
+                className="text-caption font-mono text-warning bg-warning-muted px-1.5 py-0.5 rounded-xs"
+                title={`Conflicts with: ${conflict}`}
+              >
+                Conflict
+              </span>
+            )}
+            <KbdGroup>{renderKeyBadges(binding, def.key, false)}</KbdGroup>
+          </div>
+        )}
+      </SRow>
+    </div>
   )
 }
 

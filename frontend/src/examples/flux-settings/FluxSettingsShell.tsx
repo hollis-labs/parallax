@@ -1,10 +1,19 @@
 import type { LucideIcon } from "lucide-react"
 import { ChevronRight, Keyboard, Menu, Palette, Shield, SlidersHorizontal, X } from "lucide-react"
-import { useCallback, useEffect, useMemo, useState } from "react"
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react"
 import {
   DEFAULT_LAYOUT_PREFERENCES,
   FIXTURE_TOOL_GRANTS,
   type LayoutPreferences,
+  MALFORMED_FIXTURE_PREFERENCES,
   type PermissionMode,
   referenceClock,
   SHORTCUT_DEFS,
@@ -13,6 +22,7 @@ import {
   type Theme,
   type ThemeMode,
   type ToolGrantItem,
+  validateLayoutPreferences,
 } from "./model"
 import { AppearanceSection } from "./sections/AppearanceSection"
 import { LayoutSection } from "./sections/LayoutSection"
@@ -61,6 +71,52 @@ export function getSectionFromHash(): SettingsSectionId {
   return "appearance"
 }
 
+export function useCommittedFrame(): {
+  isCommittedLive: () => boolean
+  frameToken: object
+  checkToken: (t: object) => boolean
+} {
+  const [store] = useState(() => {
+    let currentToken: object | null = null
+    return {
+      snapshot: () => currentToken,
+      subscribe: (notify: () => void) => {
+        const token = {}
+        currentToken = token
+        notify()
+        return () => {
+          if (currentToken === token) currentToken = null
+        }
+      },
+    }
+  })
+  const committedToken = useSyncExternalStore(store.subscribe, store.snapshot, () => null)
+  const currentRenderToken = {}
+  const layoutTokenRef = useRef<object | null>(null)
+  useLayoutEffect(() => {
+    layoutTokenRef.current = currentRenderToken
+    return () => {
+      layoutTokenRef.current = null
+    }
+  })
+  return {
+    isCommittedLive: () => committedToken !== null && store.snapshot() === committedToken,
+    frameToken: currentRenderToken,
+    checkToken: (t: object) =>
+      committedToken !== null &&
+      store.snapshot() === committedToken &&
+      layoutTokenRef.current === t,
+  }
+}
+
+export interface FluxSettingsFrame {
+  source: string
+  access: boolean
+  layer: boolean
+  isLive: () => boolean
+  activateSection: (target: string) => boolean
+}
+
 export interface FluxSettingsDiagnostics {
   identity: string
   referenceClock: string
@@ -79,6 +135,19 @@ export interface FluxSettingsDiagnostics {
     refusals: number
     lastRefused: string | null
   }
+  source: string
+  access: boolean
+  layer: boolean
+  isLive: () => boolean
+  frames: FluxSettingsFrame[]
+  currentFrame?: FluxSettingsFrame
+  diagnostics: {
+    malformedRejected: boolean
+    malformedNotice: string | null
+    shortcutsCount: number
+    toolsCount: number
+    readOnly: boolean
+  }
 }
 
 declare global {
@@ -93,6 +162,11 @@ export interface FluxSettingsShellProps {
   initialMode?: ThemeMode
   initialScenario?: "populated" | "read-only" | "empty-search" | "malformed-fallback"
   portable?: boolean
+  source?: string
+  access?: boolean
+  layer?: boolean
+  nested?: boolean
+  competing?: boolean
 }
 
 export function FluxSettingsShell({
@@ -101,19 +175,64 @@ export function FluxSettingsShell({
   initialMode = "dark",
   initialScenario = "populated",
   portable = false,
+  source: sourceProp,
+  access: accessProp,
+  layer: layerProp,
+  nested = false,
+  competing = false,
 }: FluxSettingsShellProps) {
+  const [sourceEpoch, setEpoch] = useState(0)
+  const [accessState, setAccess] = useState(accessProp ?? true)
+  const [layerState, setLayer] = useState(layerProp ?? true)
+
+  const effectiveAccess = accessProp !== undefined ? accessProp : accessState
+  const effectiveLayer = layerProp !== undefined ? layerProp : layerState
+  const currentSource = sourceProp ?? `flux-settings-src-${sourceEpoch}`
+
+  const { frameToken: thisFrameToken, checkToken } = useCommittedFrame()
+
+  const hostLiveRef = useRef({
+    source: currentSource,
+    access: effectiveAccess,
+    layer: effectiveLayer,
+  })
+  hostLiveRef.current = {
+    source: currentSource,
+    access: effectiveAccess,
+    layer: effectiveLayer,
+  }
+
+  const frameSource = currentSource
+
+  const navRef = useRef<HTMLElement>(null)
+  const framesRef = useRef<FluxSettingsFrame[]>([])
+
   const [activeSection, setActiveSection] = useState<SettingsSectionId>(() => {
     return initialSection ?? getSectionFromHash()
   })
   const [theme, setTheme] = useState<Theme>(initialTheme)
   const [mode, setMode] = useState<ThemeMode>(initialMode)
+
+  const [malformedNotice, setMalformedNotice] = useState<string | null>(null)
   const [layoutPrefs, setLayoutPrefs] = useState<LayoutPreferences>(() => {
     if (initialScenario === "malformed-fallback") {
-      // Simulate fallback from invalid persisted layout
-      return { ...DEFAULT_LAYOUT_PREFERENCES, toolCallDisplayMode: "minimal" }
+      const validated = validateLayoutPreferences(MALFORMED_FIXTURE_PREFERENCES)
+      if (!validated.valid) {
+        return validated.value
+      }
     }
     return DEFAULT_LAYOUT_PREFERENCES
   })
+
+  useEffect(() => {
+    if (initialScenario === "malformed-fallback") {
+      const validated = validateLayoutPreferences(MALFORMED_FIXTURE_PREFERENCES)
+      if (!validated.valid) {
+        setMalformedNotice(validated.error ?? "Malformed layout preference rejected")
+      }
+    }
+  }, [initialScenario])
+
   const [shortcuts, setShortcuts] = useState<Record<string, string>>(() => {
     const map: Record<string, string> = {}
     for (const def of SHORTCUT_DEFS) map[def.key] = def.default
@@ -128,40 +247,65 @@ export function FluxSettingsShell({
 
   const isReadOnly = initialScenario === "read-only"
 
-  // Host committed section activation fence:
-  // - Enforces admission to only the 4 DEC-080 scoped sections: "appearance", "layout", "shortcuts", "permissions"
-  // - Rejects unknown or historical sections (e.g., profile, providers, agents, wizard), retaining current section
-  // - Tracks refusal counts and last-refused target for diagnostics
   const [fenceStats, setFenceStats] = useState({
     activations: 1,
     refusals: 0,
     lastRefused: null as string | null,
   })
 
-  const activateSection = useCallback((target: string): boolean => {
-    const validSections: SettingsSectionId[] = ["appearance", "layout", "shortcuts", "permissions"]
-    if (!validSections.includes(target as SettingsSectionId)) {
-      // Retained-old refusal: refuse uncommitted target, retain current section
+  const isLive = useCallback(() => {
+    return (
+      checkToken(thisFrameToken) &&
+      hostLiveRef.current.source === frameSource &&
+      hostLiveRef.current.access &&
+      hostLiveRef.current.layer &&
+      !nested &&
+      !competing
+    )
+  }, [checkToken, thisFrameToken, frameSource, nested, competing])
+
+  const activateSection = useCallback(
+    (target: string): boolean => {
+      if (!isLive()) {
+        // Retained-old refusal: callback called after retirement or loss of access/layer
+        setFenceStats((prev) => ({
+          ...prev,
+          refusals: prev.refusals + 1,
+          lastRefused: `retired:${target}`,
+        }))
+        return false
+      }
+
+      const validSections: SettingsSectionId[] = [
+        "appearance",
+        "layout",
+        "shortcuts",
+        "permissions",
+      ]
+      if (!validSections.includes(target as SettingsSectionId)) {
+        // Retained-old refusal: refuse uncommitted target, retain current section
+        setFenceStats((prev) => ({
+          ...prev,
+          refusals: prev.refusals + 1,
+          lastRefused: target,
+        }))
+        return false
+      }
+
+      const admitted = target as SettingsSectionId
+      setActiveSection(admitted)
+      if (typeof window !== "undefined") {
+        window.location.hash = admitted
+      }
+      setMobileNavOpen(false)
       setFenceStats((prev) => ({
         ...prev,
-        refusals: prev.refusals + 1,
-        lastRefused: target,
+        activations: prev.activations + 1,
       }))
-      return false
-    }
-
-    const admitted = target as SettingsSectionId
-    setActiveSection(admitted)
-    if (typeof window !== "undefined") {
-      window.location.hash = admitted
-    }
-    setMobileNavOpen(false)
-    setFenceStats((prev) => ({
-      ...prev,
-      activations: prev.activations + 1,
-    }))
-    return true
-  }, [])
+      return true
+    },
+    [isLive],
+  )
 
   // Listen to hash changes for deep linking and back/forward
   useEffect(() => {
@@ -186,32 +330,47 @@ export function FluxSettingsShell({
   const allNavItems = useMemo(() => NAV_GROUPS.flatMap((g) => g.items), [])
 
   const handleSidebarKeyDown = (e: React.KeyboardEvent, index: number) => {
+    // 1. Guard admission and live state
+    if (!isLive()) return
+    // 2. Guard IME composition and modifiers
+    if (e.nativeEvent.isComposing || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return
+    // 3. Current-root guard: ensure target is within navRef
+    if (!navRef.current?.contains(e.currentTarget as Node)) return
+
     let nextIdx = -1
     if (e.key === "ArrowDown") {
-      e.preventDefault()
       nextIdx = (index + 1) % allNavItems.length
     } else if (e.key === "ArrowUp") {
-      e.preventDefault()
       nextIdx = (index - 1 + allNavItems.length) % allNavItems.length
     } else if (e.key === "Home") {
-      e.preventDefault()
       nextIdx = 0
     } else if (e.key === "End") {
-      e.preventDefault()
       nextIdx = allNavItems.length - 1
     }
+
     if (nextIdx >= 0) {
+      e.preventDefault()
+      e.stopPropagation()
       const target = allNavItems[nextIdx]
       activateSection(target.id)
-      const btn = document.querySelector<HTMLButtonElement>(
-        `nav[aria-label="Settings navigation"] button[data-section-id="${target.id}"]`,
+      const btn = navRef.current?.querySelector<HTMLButtonElement>(
+        `button[data-section-id="${target.id}"]`,
       )
       btn?.focus()
     }
   }
 
   // Diagnostics for Playwright testing
-  useEffect(() => {
+  useLayoutEffect(() => {
+    const frame: FluxSettingsFrame = {
+      source: currentSource,
+      access: accessState,
+      layer: layerState,
+      isLive,
+      activateSection,
+    }
+    framesRef.current.push(frame)
+
     window.fluxSettings = {
       identity: settingsIdentity,
       referenceClock,
@@ -226,19 +385,21 @@ export function FluxSettingsShell({
       activateSection,
       setSection: activateSection,
       fenceStats,
+      source: currentSource,
+      access: accessState,
+      layer: layerState,
+      isLive,
+      frames: framesRef.current,
+      currentFrame: frame,
+      diagnostics: {
+        malformedRejected: malformedNotice !== null,
+        malformedNotice,
+        shortcutsCount: Object.keys(shortcuts).length,
+        toolsCount: tools.length,
+        readOnly: isReadOnly,
+      },
     }
-  }, [
-    activeSection,
-    theme,
-    mode,
-    layoutPrefs,
-    permMode,
-    tools,
-    shortcuts,
-    allNavItems,
-    activateSection,
-    fenceStats,
-  ])
+  })
 
   return (
     <div
@@ -247,6 +408,9 @@ export function FluxSettingsShell({
       data-active-section={activeSection}
       data-theme={theme.id}
       data-mode={mode}
+      data-source={currentSource}
+      data-access={accessState ? "admitted" : "denied"}
+      data-layer={layerState ? "active" : "inactive"}
       data-portable={portable ? "true" : undefined}
     >
       {/* Top Inspection & Status Bar */}
@@ -268,6 +432,38 @@ export function FluxSettingsShell({
         </div>
 
         <div className="flex items-center gap-3">
+          {/* Host source/access/layer controls */}
+          <div className="flex items-center gap-2 text-xs font-mono text-fg-muted border-r border-border-subtle pr-3">
+            <label className="flex items-center gap-1 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={accessState}
+                onChange={(e) => setAccess(e.target.checked)}
+                aria-label="Access admitted"
+                className="cursor-pointer"
+              />
+              <span className="hidden sm:inline">Access</span>
+            </label>
+            <label className="flex items-center gap-1 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={layerState}
+                onChange={(e) => setLayer(e.target.checked)}
+                aria-label="Layer active"
+                className="cursor-pointer"
+              />
+              <span className="hidden sm:inline">Layer</span>
+            </label>
+            <button
+              type="button"
+              onClick={() => setEpoch((n) => n + 1)}
+              className="px-1.5 py-0.5 rounded-xs bg-surface hover:bg-surface-hover text-fg text-label border border-border-subtle cursor-pointer"
+              aria-label="Replace source"
+            >
+              Replace source
+            </button>
+          </div>
+
           <div className="flex items-center gap-1.5 font-mono text-label text-fg-faint">
             <span className="w-1.5 h-1.5 rounded-full bg-success" />
             <span>Seed 4421</span>
@@ -283,6 +479,7 @@ export function FluxSettingsShell({
       <div className="flex-1 flex min-h-0 relative">
         {/* Navigation Sidebar */}
         <nav
+          ref={navRef}
           aria-label="Settings navigation"
           className={`${
             mobileNavOpen
@@ -336,6 +533,18 @@ export function FluxSettingsShell({
 
         {/* Content Area with Breadcrumb Header */}
         <main className="flex-1 flex flex-col min-w-0 bg-bg">
+          {/* Malformed layout preference rejection notice */}
+          {malformedNotice && (
+            <div
+              data-testid="malformed-fallback-notice"
+              role="alert"
+              className="bg-warning-muted border-b border-warning/30 px-6 py-2.5 text-xs text-warning flex items-center justify-between"
+            >
+              <span>{malformedNotice}</span>
+              <span className="font-mono text-caption uppercase">Default layout restored</span>
+            </div>
+          )}
+
           {/* Breadcrumb Header */}
           <div className="h-12 px-6 flex items-center gap-1.5 border-b border-border-subtle shrink-0">
             <span className="font-mono text-label text-fg-faint uppercase tracking-wider">
