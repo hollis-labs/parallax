@@ -642,9 +642,13 @@ test.describe("Tether Sysop Overview Recreation", () => {
 
   test("React Activity lifecycle and preserved-state effect retirement across hide/show with in-flight overlay completion", async ({
     page,
+    baseURL,
   }) => {
+    const sourceBase =
+      process.env.TETHER_OVERVIEW_SOURCE_URL ||
+      (baseURL?.includes(":18541") ? "http://127.0.0.1:18545" : baseURL || "http://127.0.0.1:18545")
     await page.setViewportSize({ width: 1280, height: 800 })
-    await page.goto("/?example=tether&screen=overview")
+    await page.goto(`${sourceBase}/?example=tether&screen=overview`)
     await expect(page.locator("header.tether-overview-header")).toBeVisible()
 
     const results = await page.evaluate(async () => {
