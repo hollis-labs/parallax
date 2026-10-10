@@ -29,21 +29,16 @@ export function ReaderNoteEditor({
     }
   }, [kind, serverCuratedNote])
 
-  useEffect(() => {
-    if (kind !== "curated" || !dirty || draft === serverCuratedNote) return
-    const timer = setTimeout(() => {
-      onCommand({
-        fragment_id: item.fragment_id,
-        command: "update_curated_note",
-        body_markdown: draft,
-      })
-      setDirty(false)
-      setStatus("Saved locally")
-      const clear = setTimeout(() => setStatus(""), 2000)
-      return () => clearTimeout(clear)
-    }, 750)
-    return () => clearTimeout(timer)
-  }, [dirty, draft, item.fragment_id, kind, onCommand, serverCuratedNote])
+  function saveCuratedNote() {
+    if (!dirty || draft === serverCuratedNote) return
+    onCommand({
+      fragment_id: item.fragment_id,
+      command: "update_curated_note",
+      body_markdown: draft,
+    })
+    setDirty(false)
+    setStatus("Saved locally")
+  }
 
   function saveCaptureNote() {
     const text = draft.trim()
@@ -57,22 +52,14 @@ export function ReaderNoteEditor({
     setDraft("")
     setDirty(false)
     setStatus("Note added")
-    setTimeout(() => setStatus(""), 2000)
   }
 
   function handleBlur(event: FocusEvent<HTMLTextAreaElement>) {
     if (event.currentTarget.contains(event.relatedTarget)) return
     if (kind === "capture") {
       saveCaptureNote()
-    } else if (dirty && draft !== serverCuratedNote) {
-      onCommand({
-        fragment_id: item.fragment_id,
-        command: "update_curated_note",
-        body_markdown: draft,
-      })
-      setDirty(false)
-      setStatus("Saved locally")
-      setTimeout(() => setStatus(""), 2000)
+    } else {
+      saveCuratedNote()
     }
   }
 
@@ -95,6 +82,7 @@ export function ReaderNoteEditor({
           if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
             e.preventDefault()
             if (kind === "capture") saveCaptureNote()
+            else saveCuratedNote()
           }
         }}
         maxLength={kind === "curated" ? 524288 : 65536}
@@ -104,19 +92,13 @@ export function ReaderNoteEditor({
         )}
         placeholder={
           kind === "curated"
-            ? "Keep the durable working note here"
+            ? "Keep the durable working note here (Ctrl/Cmd+Enter or blur to save)"
             : "Add context from this reading pass (Ctrl/Cmd+Enter to save)"
         }
         aria-label={kind === "curated" ? "Curated note" : "Capture note"}
       />
       <div className="mt-1 flex min-h-5 items-center justify-between text-label text-text-subtle">
-        <span>
-          {status
-            ? status
-            : kind === "curated"
-              ? "Saves automatically"
-              : "Press Ctrl/Cmd+Enter or leave field to save"}
-        </span>
+        <span>{status ? status : "Press Ctrl/Cmd+Enter or leave field to save"}</span>
       </div>
 
       {kind === "capture" && captureNotes.length > 0 && (

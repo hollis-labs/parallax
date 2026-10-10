@@ -69,6 +69,7 @@ export function ReaderCard({ item, onOpen, onCommand, mediaSlot, cardRef }: Read
       aria-label={`Inspect fragment: ${item.display.title.value || "untitled fragment"}`}
       data-testid="reader-card"
       data-fragment-id={item.fragment_id}
+      data-reader-fragment-id={item.fragment_id}
       onClick={openFromPointer}
       onKeyDown={openFromKeyboard}
     >
@@ -161,9 +162,7 @@ export function ReaderCard({ item, onOpen, onCommand, mediaSlot, cardRef }: Read
       ) : (
         <div className="pt-4" data-reader-nav-exclude>
           <ReaderNoteEditor
-            key={`${activeTab}-${
-              activeTab === "curated" ? (item.curated_note?.revision ?? 0) : "append"
-            }`}
+            key={activeTab}
             item={item}
             onCommand={onCommand}
             kind={activeTab}

@@ -191,6 +191,42 @@ test.describe("Reader Example Standalone", () => {
     const removeBtn = card.getByRole("button", { name: "Remove tag custom-tag", exact: true })
     await removeBtn.click()
     await expect(card.locator("[data-reader-tags]")).not.toContainText("custom-tag")
+
+    // Curated note mutation (zero-timer immediate save)
+    const curatedTab = card.getByRole("tab", { name: "Curated note", exact: true })
+    await curatedTab.click()
+    const curatedArea = card.getByRole("textbox", { name: "Curated note" })
+    await curatedArea.fill("Updated durable note content for verification")
+    await curatedArea.press("Control+Enter")
+    await expect(card.locator("[data-reader-notes]")).toContainText("Saved locally")
+
+    // Capture note append
+    const captureTab = card.getByRole("tab", { name: "Capture note", exact: true })
+    await captureTab.click()
+    const captureArea = card.getByRole("textbox", { name: "Capture note" })
+    await captureArea.fill("New field observation captured during review pass")
+    await captureArea.press("Control+Enter")
+    await expect(card.locator("[data-reader-notes]")).toContainText("Note added")
+    await expect(card.locator("[data-reader-notes]")).toContainText(
+      "New field observation captured during review pass",
+    )
+
+    // Switch back to content tab
+    await card.getByRole("tab", { name: "Content", exact: true }).click()
+
+    // Request asset acquisition on card with reference-only media (FRAG-005)
+    const refCard = page.locator('[data-testid="reader-card"][data-fragment-id="FRAG-005"]')
+    await expect(refCard.locator('[data-testid="reader-state-media"] dd')).toHaveText(
+      "1 referenced",
+    )
+    const acquireBtn = refCard.locator('button[data-reader-inline-action="acquire"]')
+    await acquireBtn.click()
+    const acquirePopover = page.locator(
+      '[data-reader-inline-action="acquire"][data-reader-inline-action-command="request_asset_acquisition"]',
+    )
+    await expect(acquirePopover).toBeVisible()
+    await acquirePopover.getByRole("button", { name: "Load media" }).click()
+    await expect(refCard.locator('[data-testid="reader-state-media"] dd')).toHaveText("1 pending")
   })
 
   test("loading, empty, and initial error states with retry", async ({ page }, info) => {

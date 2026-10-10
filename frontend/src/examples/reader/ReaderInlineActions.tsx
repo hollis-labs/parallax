@@ -167,6 +167,9 @@ export function ReaderActionPill({
               compact ? "min-h-8 px-2.5 text-label" : "min-h-9 px-3 text-xs",
             )}
             aria-label={meta.title}
+            data-reader-inline-action={
+              command === "request_asset_acquisition" ? "acquire" : undefined
+            }
             data-reader-nav-exclude
             onClick={(e) => e.stopPropagation()}
           />
@@ -179,7 +182,8 @@ export function ReaderActionPill({
         align="end"
         sideOffset={8}
         className="w-[min(22rem,calc(100vw-1.5rem))] rounded-sm border border-border bg-panel p-0 shadow-lg motion-reduce:animate-none"
-        data-reader-inline-action={command}
+        data-reader-inline-action={command === "request_asset_acquisition" ? "acquire" : command}
+        data-reader-inline-action-command={command}
         data-reader-nav-exclude
         onClick={(e) => e.stopPropagation()}
       >

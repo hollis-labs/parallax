@@ -3,6 +3,7 @@ import type {
   ReaderCapabilityCoverage,
   ReaderCommand,
   ReaderItem,
+  ReaderMediaItem,
   ReaderReadingPosition,
   ReaderScope,
 } from "./types"
@@ -131,10 +132,11 @@ export function publishedLabel(value: string | undefined): string | undefined {
   if (!value) return undefined
   const date = new Date(value)
   if (Number.isNaN(date.getTime())) return undefined
-  return new Intl.DateTimeFormat(undefined, {
+  return new Intl.DateTimeFormat("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric",
+    timeZone: "UTC",
   }).format(date)
 }
 
@@ -290,6 +292,16 @@ export function isReaderVisualRenderer(renderer: string): boolean {
   return renderer === "image" || renderer === "gallery" || renderer === "video"
 }
 
+export function deriveAcquisitionTally(media: ReaderMediaItem[]): Record<string, number> {
+  const tally: Record<string, number> = { pending: 0, available: 0, reference_only: 0, failed: 0 }
+  for (const m of media) {
+    for (const v of m.variants) {
+      tally[v.acquisition_state] = (tally[v.acquisition_state] ?? 0) + 1
+    }
+  }
+  return tally
+}
+
 // Local fictional fixture mutations
 export function executeReaderCommand(items: ReaderItem[], command: ReaderCommand): ReaderItem[] {
   return items.map((item) => {
@@ -374,19 +386,12 @@ export function executeReaderCommand(items: ReaderItem[], command: ReaderCommand
             }),
           }
         })
-        const pendingCount = media.reduce(
-          (acc, m) => acc + m.variants.filter((v) => v.acquisition_state === "pending").length,
-          0,
-        )
         return {
           ...item,
           media,
           operations: {
             ...item.operations,
-            acquisition: {
-              ...item.operations.acquisition,
-              pending: pendingCount,
-            },
+            acquisition: deriveAcquisitionTally(media),
           },
         }
       }
