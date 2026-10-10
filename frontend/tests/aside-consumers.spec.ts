@@ -73,7 +73,9 @@ for (const idiom of ["messaging-companion", "administration-inspector"]) {
       await expect(input).toBeFocused()
     }
     await page.getByRole("button", { name: "Inspect specimen" }).click()
-    await expect(page.getByRole("dialog", { name: "Nested specimen" })).toBeVisible()
+    const nestedDialog = page.getByRole("dialog", { name: "Nested specimen" })
+    await expect(nestedDialog).toBeVisible()
+    await expect(nestedDialog.getByRole("button", { name: "Finish inspection" })).toBeFocused()
     await page.keyboard.press("Escape")
     await expect(page.getByRole("dialog", { name: "Nested specimen" })).toHaveCount(0)
     await expect(overlay).toBeVisible()
