@@ -24647,11 +24647,20 @@
     "name": "createScopedStorage",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/layouts.spec.ts"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/flux-settings/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-app-runtime",
@@ -24673,11 +24682,20 @@
     "name": "ScopedStorage",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/layouts.spec.ts"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/flux-settings/model.ts"
+    ]
   },
   {
     "package": "@hollis-labs/design-app-runtime",
