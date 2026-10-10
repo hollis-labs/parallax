@@ -11,6 +11,7 @@ import { commands, envelopeFor, files, identities, referenceTime } from "../flux
 import { StreamBanner, ThinkingIndicator, ToolDisplay } from "../flux-cards/StreamStates"
 import { useAdmission } from "../flux-navigation/admission"
 import { diagnostics, type FluxState } from "./model"
+import { competingLayer } from "./ownership"
 
 export function FluxConversation({
   state,
@@ -64,16 +65,7 @@ export function FluxConversation({
   const currentBusy = useRef(busy)
   currentBusy.current = busy
   const canAct = (effect: () => void) =>
-    layer === "base" &&
-    !Array.from(
-      document.querySelectorAll<HTMLElement>('[role="dialog"],[role="alertdialog"],[role="menu"]'),
-    ).some(
-      (owner) =>
-        owner.hasAttribute("data-open") &&
-        !!owner.getClientRects().length &&
-        getComputedStyle(owner).visibility !== "hidden",
-    ) &&
-    frame.run(effect)
+    layer === "base" && !competingLayer([], input.current) && frame.run(effect)
   const candidate = (label: string, value: unknown) => {
     if (!editable) return false
     return canAct(() => inspect(label, value))

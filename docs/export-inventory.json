@@ -18,7 +18,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -673,7 +674,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -718,7 +720,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -1002,7 +1005,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -1324,7 +1328,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -1368,7 +1373,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -1529,7 +1535,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -1589,7 +1596,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -1945,7 +1953,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -2004,7 +2013,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -2048,7 +2058,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -2105,7 +2116,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -2230,7 +2242,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -2303,7 +2316,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -2373,7 +2387,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -2447,7 +2462,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -2570,7 +2586,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -2654,7 +2671,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -2698,7 +2716,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -2867,7 +2886,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -2924,7 +2944,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -2982,7 +3003,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -3026,7 +3048,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -3071,7 +3094,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -3115,7 +3139,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -3159,7 +3184,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -3242,7 +3268,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -3923,7 +3950,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -4235,7 +4263,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -4299,7 +4328,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -4350,7 +4380,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -4408,7 +4439,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -4479,7 +4511,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -4543,7 +4576,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -4605,7 +4639,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -4654,7 +4689,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -4728,7 +4764,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -4920,7 +4957,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -5043,7 +5081,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -5175,7 +5214,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -5219,7 +5259,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -5263,7 +5304,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -5405,7 +5447,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -5449,7 +5492,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -5506,7 +5550,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -5602,7 +5647,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -5646,7 +5692,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -5721,7 +5768,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -5791,7 +5839,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -5861,7 +5910,8 @@
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
@@ -9257,7 +9307,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -9358,7 +9409,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -9521,7 +9573,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -9577,7 +9630,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -10091,7 +10145,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -10186,7 +10241,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -10476,7 +10532,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -10521,7 +10578,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -10592,7 +10650,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -10807,7 +10866,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -10903,7 +10963,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -10991,7 +11052,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -11666,7 +11728,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -11710,7 +11773,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -11754,7 +11818,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -11798,7 +11863,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -11855,7 +11921,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -11912,7 +11979,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -12293,7 +12361,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -12336,7 +12405,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -12392,7 +12462,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -13548,7 +13619,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -13592,7 +13664,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -13636,7 +13709,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -13680,7 +13754,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -13788,7 +13863,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -13832,7 +13908,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -13875,7 +13952,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -13918,7 +13996,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -13961,7 +14040,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -14004,7 +14084,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",
@@ -14736,7 +14817,8 @@
       ],
       "checks": [
         "frontend/tests/communications.spec.ts",
-        "frontend/tests/flux-chat.spec.ts"
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/communications/Communications.stories.tsx",

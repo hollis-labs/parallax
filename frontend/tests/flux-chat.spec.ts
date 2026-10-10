@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs"
-import { expect, type Page, test } from "@playwright/test"
+import { expect, type Locator, type Page, test } from "@playwright/test"
 
 const identities: string[] = JSON.parse(
   readFileSync(new URL("../src/examples/flux-cards/operands.json", import.meta.url), "utf8"),
@@ -23,6 +23,29 @@ async function settle(page: Page) {
       requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
     )
   })
+}
+async function settlePopup(popup: Locator) {
+  await expect(popup).toBeVisible()
+  await expect(popup).toHaveCSS("opacity", "1")
+  await popup.evaluate(async (node) => {
+    const animations = node
+      .getAnimations({ subtree: true })
+      .filter(
+        (animation) =>
+          animation.effect?.getComputedTiming().iterations !== Number.POSITIVE_INFINITY,
+      )
+    await Promise.all(animations.map((animation) => animation.finished.catch(() => {})))
+  })
+  let previous = ""
+  let stable = 0
+  await expect
+    .poll(async () => {
+      const current = JSON.stringify(await popup.boundingBox())
+      stable = current === previous && current !== "null" ? stable + 1 : 0
+      previous = current
+      return stable
+    })
+    .toBeGreaterThanOrEqual(3)
 }
 function lifecycleEntry() {
   const base = new URL(String(test.info().project.use.baseURL))
@@ -398,6 +421,11 @@ for (const mode of ["dark", "light"]) {
       await expect(popup).toHaveAttribute("data-theme", theme)
       await expect(popup).toHaveAttribute("data-mode", mode)
       await expect(page.getByLabel("Filter commands")).toBeFocused()
+      await settlePopup(popup)
+      await page.screenshot({
+        path: info.outputPath(`popup-${theme}-${mode}.png`),
+        animations: "disabled",
+      })
       await page.keyboard.press("Escape")
       await expect(popup).toBeHidden()
       if (theme === "nanite-default") {
@@ -406,7 +434,11 @@ for (const mode of ["dark", "light"]) {
         const rail = page.getByRole("dialog", { name: "Flux right rail", exact: true })
         await expect(rail).toHaveAttribute("data-theme", theme)
         await expect(rail).toHaveAttribute("data-mode", mode)
-        await page.screenshot({ path: info.outputPath(`rail-${theme}-${mode}-390.png`) })
+        await settlePopup(rail)
+        await page.screenshot({
+          path: info.outputPath(`rail-${theme}-${mode}-390.png`),
+          animations: "disabled",
+        })
         await page.keyboard.press("Escape")
         await expect(rail).toBeHidden()
         await page.setViewportSize({ width: 1280, height: 900 })

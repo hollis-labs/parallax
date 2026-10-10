@@ -33,6 +33,7 @@ import { type Preset, presets, type SessionRow, sessions } from "../flux-navigat
 import { FluxSidebar } from "../flux-navigation/Sidebar"
 import { FluxConversation } from "./Conversation"
 import { diagnostics, type FluxState, fluxState, sourceIdentity } from "./model"
+import { competingLayer, currentLayer, visible } from "./ownership"
 import "../flux-navigation/navigation.css"
 import "../flux-cards/flux-cards.css"
 import "./flux-chat.css"
@@ -133,6 +134,10 @@ function FluxHost({
   const focusTicket = popupSerial.current
   const base = () => layer === "base" && !foreignLayer(root.current)
   const run = (job: () => void) => base() && frame.run(job)
+  const popupRun = (job: () => void) =>
+    !!popup &&
+    currentLayer(popup === "layout" ? layoutRoot.current : popupRoot.current) &&
+    frame.run(job)
   function open(kind: typeof popup, label?: string, value?: unknown) {
     return run(() => {
       origin.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
@@ -149,8 +154,22 @@ function FluxHost({
     if (layer === "base") return open("inspect", label, value)
     const foreground = document.activeElement
     if (!(foreground instanceof HTMLElement) || !visible(foreground)) return false
-    const owner = foreground.closest('[data-flux-rail-source],.flux-context-menu,[role="menu"]')
-    if (!owner) return false
+    const railOwner = foreground.closest<HTMLElement>("[data-flux-rail-source]")
+    const owner =
+      layer === "aside"
+        ? (railOwner?.closest<HTMLElement>('[role="dialog"]') ?? railOwner)
+        : foreground.closest<HTMLElement>('.flux-context-menu,[role="menu"]')
+    if (!owner || !currentLayer(owner)) return false
+    if (layer === "menu") {
+      const owned = Array.from(root.current?.querySelectorAll("[aria-controls]") ?? []).some(
+        (trigger) => trigger.getAttribute("aria-controls") === owner.id && !!owner.id,
+      )
+      if (!owned) return false
+    } else if (
+      foreground.closest("[data-flux-rail-source]")?.getAttribute("data-flux-rail-source") !==
+      source
+    )
+      return false
     return frame.run(() => {
       origin.current = foreground
       popupSerial.current++
@@ -187,11 +206,12 @@ function FluxHost({
     return target
   }
   function close() {
-    frame.run(() => setPopup(null))
+    popupRun(() => setPopup(null))
   }
   function select(target: SessionRow) {
     if (!accessible || !rows.some((item) => item.id === target.id)) return
-    frame.run(() => {
+    const selectRun = layer === "base" ? run : popup === "search" ? popupRun : () => false
+    selectRun(() => {
       setPopup(null)
       change({
         ...state,
@@ -210,7 +230,7 @@ function FluxHost({
     : []
   function preset(value: Preset) {
     if (!Object.hasOwn(presets, value)) return
-    frame.run(() => {
+    popupRun(() => {
       setLeft(presets[value].left)
       setRight(presets[value].right)
       setChips(presets[value].chips)
@@ -355,11 +375,12 @@ function FluxHost({
         source
     )
       return false
+    const rail = foreground.closest<HTMLElement>("[data-flux-rail-source]")
+    if (!currentLayer(rail?.closest<HTMLElement>('[role="dialog"]') ?? rail)) return false
     return frame.run(job)
   }
   const configure = (next: FluxState) => {
-    if (popup === "review" && popupRoot.current?.contains(document.activeElement))
-      frame.run(() => change(next))
+    if (popup === "review") popupRun(() => change(next))
   }
   useLayoutEffect(() => {
     if (popup !== "layout") return
@@ -383,7 +404,8 @@ function FluxHost({
     "Welcome screen",
   ].filter((name) => name.toLowerCase().includes(filter.toLowerCase()))
   function command(name: string) {
-    frame.run(() => {
+    if (popup !== "palette" || !paletteCommands.includes(name)) return
+    popupRun(() => {
       setPopup(null)
       if (name === "Search chats") {
         popupSerial.current++
@@ -408,6 +430,17 @@ function FluxHost({
       // Wait for the native closing layer to release ownership. This lease is
       // cancelled on every committed source/layer/root change.
       if (!frame.run(() => {})) return
+      const foreground = document.activeElement
+      if (
+        foreground instanceof HTMLElement &&
+        foreground !== document.body &&
+        foreground !== origin.current &&
+        !popupRoot.current?.contains(foreground) &&
+        visible(foreground)
+      ) {
+        setPending(null)
+        return
+      }
       const editor = root.current?.querySelector<HTMLTextAreaElement>(
         "textarea[aria-label='Flux local draft']",
       )
@@ -648,7 +681,7 @@ function FluxHost({
                 ref={searchInput}
                 aria-label={popup === "search" ? "Search chat fixtures" : "Filter commands"}
                 value={filter}
-                onChange={(event) => frame.run(() => setFilter(event.target.value))}
+                onChange={(event) => popupRun(() => setFilter(event.target.value))}
                 onKeyDown={(event) => {
                   if (event.nativeEvent.isComposing || event.keyCode === 229) return
                   if (event.key === "ArrowDown") {
@@ -723,8 +756,7 @@ function FluxHost({
             <JsonViewer value={inspection?.value} />
             <Button
               onClick={() => {
-                if (popupRoot.current?.contains(document.activeElement))
-                  frame.run(() => diagnostics.effects.push(source))
+                popupRun(() => diagnostics.effects.push(source))
               }}
             >
               Inspect local intent
@@ -814,7 +846,7 @@ function FluxHost({
                 <option>light</option>
               </select>
             </label>
-            <Button onClick={() => frame.run(replace)}>Replace fixture source</Button>
+            <Button onClick={() => popupRun(replace)}>Replace fixture source</Button>
             <Button onClick={() => configure({ ...state, welcome: !state.welcome })}>
               Toggle welcome screen
             </Button>
@@ -831,18 +863,11 @@ function FluxHost({
     </div>
   )
 }
-export function visible(target: HTMLElement) {
-  return (
-    target.isConnected &&
-    !!target.getClientRects().length &&
-    getComputedStyle(target).visibility !== "hidden" &&
-    !target.closest('[inert],[aria-hidden="true"]')
-  )
-}
 function foreignLayer(host: HTMLElement | null) {
-  return Array.from(
-    document.querySelectorAll<HTMLElement>('[role="dialog"], [role="alertdialog"], [role="menu"]'),
-  ).some((item) => item.hasAttribute("data-open") && visible(item) && !host?.contains(item))
+  return competingLayer(
+    [],
+    host?.querySelector<HTMLTextAreaElement>("textarea[aria-label='Flux local draft']") ?? null,
+  )
 }
 
 function RailTheme({

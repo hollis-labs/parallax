@@ -95,8 +95,22 @@ else:
     browser_tmp = Path(f"/home/chrispian/.cache/team-tmp/cw0088-b-{head[:7]}")
     browser_tmp.mkdir(parents=True, exist_ok=False)
     receipt["owned_browser_tmp"] = str(browser_tmp)
+    cleanup = proof / "cleanup.py"
+    cleanup.write_text('from pathlib import Path\nimport json,shutil,sys\n'
+                       f'profile=Path({str(browser_tmp)!r})\n'
+                       'error=None\ntry:\n    shutil.rmtree(profile)\n'
+                       'except FileNotFoundError:\n    pass\n'
+                       'except OSError as caught:\n    error=str(caught)\n'
+                       'receipt={"replay_exit_code":int(sys.argv[1]),"owned_browser_tmp":str(profile),'
+                       '"removed":not profile.exists(),"cleanup_error":error}\n'
+                       '(Path(__file__).parent/"cleanup-receipt.json").write_text(json.dumps(receipt,indent=2)+"\\n")\n'
+                       'raise SystemExit(1 if error else 0)\n')
     quote = shlex.quote
     commands = ["#!/usr/bin/env bash", "set -euo pipefail", f"cd {quote(str(stage))}",
+                "cleanup_owned() {", "  replay_status=$?", "  trap - EXIT",
+                f'  if python3 {quote(str(cleanup))} "$replay_status"; then cleanup_status=0; else cleanup_status=$?; fi',
+                '  if [[ "$replay_status" -eq 0 && "$cleanup_status" -ne 0 ]]; then exit "$cleanup_status"; fi',
+                '  exit "$replay_status"', "}", "trap cleanup_owned EXIT",
                 f"export TMPDIR={quote(str(browser_tmp))}", "export CI=true",
                 f"export OWN_CHROMIUM={quote(str(root / '.scratch/tooling/chromium/chrome-headless-shell'))}",
                 f"export LD_LIBRARY_PATH={quote(str(root / '.scratch/tooling/libs'))}",
