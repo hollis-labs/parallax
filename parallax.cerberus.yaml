@@ -1,0 +1,42 @@
+# Source proposal only. Register and deploy after operator approval.
+kind: cerberus-project/v1
+owner: parallax
+namespace: local
+
+project:
+  id: parallax
+  name: Parallax
+  description: Fixture-only GUI laboratory with an embedded frontend.
+
+resources:
+  - id: parallax-uat
+    name: Parallax UAT
+    project: parallax
+    type: process
+    connector: local
+    tags: [uat, gui, go, artifact]
+    config:
+      dir: .
+      build_strategy:
+        kind: make_standard
+        source:
+          root: .
+        rules:
+          target: build
+          output: .scratch/parallax
+      command: ["./.scratch/parallax"]
+      mode: os_service
+      supervisor: auto
+      run_from: artifact
+      install_after_build: false
+      auto_start: false
+      auto_restart: true
+      restart_delay: 2s
+      port: 18441
+      url: http://127.0.0.1:18441/
+      env:
+        LISTEN_ADDR: 127.0.0.1:18441
+      health_check:
+        url: http://127.0.0.1:18441/healthz
+        timeout: 5s
+        interval: 30s
