@@ -227,7 +227,9 @@ for (const kind of ["menu", "handoff"] as const)
   })
 
 for (const boundary of ["source", "access", "root", "Activity"] as const)
-  test(`review: retained drawer shortcut refuses ${boundary} retirement with fresh positive`, async ({ page }) => {
+  test(`review: retained drawer shortcut refuses ${boundary} retirement with fresh positive`, async ({
+    page,
+  }) => {
     await page.setViewportSize({ width: 390, height: 420 })
     await page.goto("/tachyon-nav-lifecycle.html#/work")
     const modules = page.getByRole("button", { name: "Modules", exact: true })
@@ -243,18 +245,23 @@ for (const boundary of ["source", "access", "root", "Activity"] as const)
       const shortcut = window.tachyonNav.navigation.drawer
       window.heldNav = shortcut.trigger
       window.heldDrawerLive = shortcut.isLive
-      const prevented = new KeyboardEvent("keydown", {key:"ArrowDown", cancelable:true})
+      const prevented = new KeyboardEvent("keydown", { key: "ArrowDown", cancelable: true })
       prevented.preventDefault()
-      if(shortcut.trigger(prevented)) throw new Error("defaultPrevented shortcut admitted")
+      if (shortcut.trigger(prevented)) throw new Error("defaultPrevented shortcut admitted")
     })
     expect(await page.evaluate(() => window.heldNav?.())).toBe(true)
     await expect(ops).toBeFocused()
     expect(await page.evaluate(() => window.heldDrawerLive?.())).toBe(true)
     const control = boundary === "source" ? "Replace fixture source" : `Toggle fixture ${boundary}`
-    await page.getByRole("button", {name:control, exact:true}).evaluate((el: HTMLButtonElement) => el.click())
+    await page
+      .getByRole("button", { name: control, exact: true, includeHidden: true })
+      .evaluate((el: HTMLButtonElement) => el.click())
     await expect.poll(() => page.evaluate(() => window.heldDrawerLive?.())).toBe(false)
     expect(await page.evaluate(() => window.heldNav?.())).toBe(false)
-    if(boundary !== "source") await page.getByRole("button", {name:control, exact:true}).evaluate((el: HTMLButtonElement) => el.click())
+    if (boundary !== "source")
+      await page
+        .getByRole("button", { name: control, exact: true, includeHidden: true })
+        .evaluate((el: HTMLButtonElement) => el.click())
     await modules.click()
     await agents.focus()
     await page.keyboard.press("ArrowDown")
