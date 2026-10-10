@@ -1345,6 +1345,35 @@
           "frontend/tests/ops-shell.spec.ts"
         ]
       }
+    },
+    {
+      "package": "@hollis-labs/design-components",
+      "names": [
+        "RadialMenu",
+        "useLongPress"
+      ],
+      "entries": [
+        "."
+      ],
+      "disposition": "partial",
+      "reason": "CW-20261010-0091 unpublished local candidate. Source-derived Nil radial and separate message idiom have bounded author mouse/keyboard/lifecycle and Chromium touch-emulation evidence; independent exact-source acceptance is pending.",
+      "nextAction": "Review exact source/archive/installed bytes and final named controls before marking reviewed; physical touch and OS IME remain untested.",
+      "evidence": {
+        "pages": [
+          "frontend/src/nil-radial/Specimen.tsx",
+          "docs/nil-radial.md"
+        ],
+        "stories": [
+          "frontend/src/nil-radial/NilRadial.stories.tsx"
+        ],
+        "checks": [
+          "frontend/tests/nil-radial.spec.ts"
+        ],
+        "storyIds": [
+          "behaviors-nil-radial--nil",
+          "behaviors-nil-radial--message"
+        ]
+      }
     }
   ]
 }
