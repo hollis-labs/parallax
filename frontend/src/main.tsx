@@ -11,6 +11,7 @@ import { StandaloneOpsShellExample } from "./examples/ops-shell/Standalone"
 import { StandaloneReaderExample } from "./examples/reader/Standalone"
 import { StandaloneTorqueExample } from "./examples/torque/Standalone"
 import { StandaloneWorkspaceExample } from "./examples/workspace/Standalone"
+import { StandaloneFluxRailReview } from "./flux-rail/Review"
 import "./index.css"
 
 const root = document.getElementById("root")
@@ -19,6 +20,8 @@ ReactDOM.createRoot(root).render(
   <React.StrictMode>
     {new URLSearchParams(location.search).get("example") === "flux-cards" ? (
       <FluxCardsGallery />
+    ) : new URLSearchParams(location.search).get("example") === "flux-rail" ? (
+      <StandaloneFluxRailReview />
     ) : new URLSearchParams(location.search).get("example") === "ops-shell" ? (
       <StandaloneOpsShellExample />
     ) : new URLSearchParams(location.search).get("example") === "reader" ? (
