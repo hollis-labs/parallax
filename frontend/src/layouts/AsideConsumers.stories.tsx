@@ -65,18 +65,20 @@ function AsideConsumer({
     asideTrigger: <Button aria-label="Open companion">Open companion</Button>,
     asideHeader: (
       <div className="flex flex-wrap gap-2 p-2">
-        <Button onClick={() => aside.setCollapsed(true)}>Collapse companion</Button>
-        <Button onClick={() => setHeld(aside)}>Capture current callbacks</Button>
+        <Button size="sm" aria-label="Collapse companion" onClick={() => aside.setCollapsed(true)}>Collapse</Button>
+        <Button size="sm" aria-label="Capture current callbacks" onClick={() => setHeld(aside)}>Capture</Button>
         <Button
+          size="sm"
+          aria-label="Replace source"
           onClick={() => {
             setGeneration((v) => v + 1)
             setDraft("")
           }}
         >
-          Replace source
+          Replace
         </Button>
-        <Button onClick={() => setAdmitted(false)}>Revoke access</Button>
-        <Button onClick={() => setNested(true)}>Inspect specimen</Button>
+        <Button size="sm" aria-label="Revoke access" onClick={() => setAdmitted(false)}>Revoke</Button>
+        <Button size="sm" aria-label="Inspect specimen" onClick={() => setNested(true)}>Inspect</Button>
       </div>
     ),
     aside: empty ? null : idiom === "messaging" ? (

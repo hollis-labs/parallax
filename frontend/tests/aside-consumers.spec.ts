@@ -55,7 +55,7 @@ for (const idiom of ["messaging-companion", "administration-inspector"]) {
     if (!footerBox) throw new Error("Missing footer geometry")
     expect(footerBox.y + footerBox.height).toBeLessThanOrEqual(420)
     if (idiom === "messaging-companion") {
-      const input = page.getByRole("textbox", { name: "Companion draft" })
+      const input = page.getByRole("combobox", { name: "Companion draft" })
       await input.fill("fixture")
       await input.press("/")
       await input.press("ArrowLeft")
@@ -97,7 +97,7 @@ test("empty adoption starts collapsed and expands a truly empty region", async (
   await expect(page.locator('[data-slot="app-shell-aside"]')).toHaveCount(0)
   await page.getByRole("button", { name: "Toggle companion" }).click()
   await expect(page.locator('[data-slot="app-shell-aside-body"]')).toBeEmpty()
-  await expect(page.getByRole("textbox", { name: "Companion draft" })).toHaveCount(0)
+  await expect(page.getByRole("combobox", { name: "Companion draft" })).toHaveCount(0)
 })
 
 test("both actual idioms: ten public themes, light/dark, desktop and narrow evidence", async ({
