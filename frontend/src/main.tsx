@@ -13,6 +13,7 @@ import { NilExample } from "./examples/nil/NilExample"
 import { StandaloneOpsShellExample } from "./examples/ops-shell/Standalone"
 import { StandaloneReaderExample } from "./examples/reader/Standalone"
 import { StandaloneTachyonNav } from "./examples/tachyon-nav/Standalone"
+import { StandaloneTetherExample } from "./examples/tether/Standalone"
 import { StandaloneTetherAIExample } from "./examples/tether-ai/Standalone"
 import { StandaloneTorqueExample } from "./examples/torque/Standalone"
 import { StandaloneWorkspaceExample } from "./examples/workspace/Standalone"
@@ -29,6 +30,8 @@ ReactDOM.createRoot(root).render(
       (new URLSearchParams(location.search).get("example") === "tether" &&
         new URLSearchParams(location.search).get("screen") === "ai") ? (
       <StandaloneTetherAIExample />
+    ) : new URLSearchParams(location.search).get("example") === "tether" ? (
+      <StandaloneTetherExample />
     ) : new URLSearchParams(location.search).get("example") === "flux-settings" ? (
       <StandaloneFluxSettingsComposition />
     ) : new URLSearchParams(location.search).get("example") === "nil" ? (
