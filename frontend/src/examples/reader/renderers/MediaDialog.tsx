@@ -10,6 +10,8 @@ import {
 import { X } from "lucide-react"
 import type { KeyboardEvent, ReactNode, RefObject } from "react"
 
+import { competingLayer } from "../../flux-chat/ownership"
+
 export interface MediaDialogProps {
   open: boolean
   onOpenChange: (open: boolean) => void
@@ -36,7 +38,13 @@ export function MediaDialog({
       <DialogContent
         data-reader-dialog
         className="max-h-[calc(100dvh-1rem)] max-w-4xl overflow-hidden p-0 motion-reduce:animate-none border border-border bg-panel shadow-xl"
-        finalFocus={() => returnFocusRef?.current ?? null}
+        finalFocus={() => {
+          const target = returnFocusRef?.current
+          if (target?.isConnected && !competingLayer([target])) {
+            return target
+          }
+          return null
+        }}
         aria-label={title}
         onClick={(event) => event.stopPropagation()}
         onKeyDown={onKeyDown}

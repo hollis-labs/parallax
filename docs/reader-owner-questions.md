@@ -88,8 +88,14 @@
 * **Proposed Default:** Rendered as inert, accessible local placeholders with no external network requests, third-party iframes, or blob streams. Local media relies exclusively on self-contained SVG data URIs.
 * **Rationale:** Prevents network flakiness, sandbox CSP violations, tracker leakage, and non-deterministic behavior in automated test environments.
 
-### 14. Detail Page Local Fictional Command Execution & Manual Refresh
+### 14. Detail Page PM Inert Writes & Specimen Boundary
 
-* **Question:** How are reading progress, notes, tags, and action pills mutated on the detail page?
-* **Proposed Default:** Mutations execute in-memory against local fixture state (`localItemOverrides`), synchronously updating title, tags, notes, reading progress, and operational tallies without persistent side-effects or network timers. The "Refresh" button in the header resets declared local presentation.
-* **Rationale:** Maintains strict fidelity with the standalone interactive paradigm while avoiding backend side-effects or unauthenticated writes.
+* **Question:** How are reading progress, notes, tags, and media materialization handled on the detail page?
+* **Proposed Default:** Strict PM inert write boundary is enforced. Notes, tags, reading progress, and media materialization are presented as read-only fictional specimens with explicit "Read-only specimen" labels and fenced callbacks. Simulated mutations are completely disallowed (not merely network-free). Note textareas are `readOnly` with no local saving or "Saved locally" / "Note added" toast announcements. Tags render without add/delete controls. The header "Refresh" button re-synchronizes the admitted state.
+* **Rationale:** Adheres to supervisor review directive (CW-20261010-0097) preventing false impressions of state persistence, while preserving taxonomy, typography, and visual layout parity.
+
+### 15. Committed Admission & Lifecycle Leases (Custody Proof)
+
+* **Question:** How do detail page actions, window keyboard navigation, and dialogs guard against stale callbacks and competing foreground layers?
+* **Proposed Default:** All detail actions (Back, Refresh, Previous, Next navigation) require captured committed lifecycle admission (`alive`, `generation`, `access`, `layer`, `activity`) and current-layer foreground check (`currentLayer(root)`). If an unregistered dialog, menu, listbox, or outside foreground owner is active, background callbacks strictly refuse. Stale DOM callbacks retained across retirement boundaries never revive.
+* **Rationale:** Guarantees custody safety across React StrictMode, Concurrent Mode, route changes, and nested modal overlays matching Tachyon Nav and Flux Chat contracts.

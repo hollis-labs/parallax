@@ -8,9 +8,10 @@ import {
 } from "@hollis-labs/design-components"
 import { Copy, ExternalLink, RefreshCw } from "lucide-react"
 import { type ReactNode, useEffect, useMemo, useRef, useState } from "react"
+import { currentLayer } from "../flux-chat/ownership"
 import { readerPlainTextExcerpt, safeReaderSourceHref, sourceHost, sourceLabel } from "./model"
 import { ReaderDetailHeader } from "./ReaderDetailHeader"
-import { ReaderActionPill, ReaderEffectActions, ReaderReadingControls } from "./ReaderInlineActions"
+import { ReaderReadingControls } from "./ReaderInlineActions"
 import { ReaderNotes } from "./ReaderNotes"
 import { ReaderStateSummary } from "./ReaderStateSummary"
 import { ReaderTags } from "./ReaderTags"
@@ -69,13 +70,36 @@ export function ReaderQuickActionSeam({ children }: { children?: ReactNode }) {
   )
 }
 
+declare global {
+  interface Window {
+    readerDetail?: {
+      fresh: {
+        Back?: () => boolean
+        Refresh?: () => boolean
+        Previous?: () => boolean
+        Next?: () => boolean
+      }
+      lifecycle?: {
+        alive: boolean
+        lease: number
+        generation: string
+        access: boolean
+        layer: boolean
+        activity: boolean
+      }
+      retire?: (boundary: "source" | "access" | "layer" | "root" | "Activity") => void
+      restore?: (boundary: "source" | "access" | "layer" | "root" | "Activity") => void
+    }
+  }
+}
+
 export function ReaderDetailPage({
   item,
   scope = "inbox",
   admittedIds = [],
   onBack,
   onNavigate,
-  onCommand,
+  onCommand: _onCommand,
   onRefresh,
   loading = false,
   error,
@@ -88,6 +112,7 @@ export function ReaderDetailPage({
 }: ReaderDetailPageProps) {
   const [copyStatus, setCopyStatus] = useState<string>()
   const scrollRef = useRef<HTMLDivElement>(null)
+  const rootRef = useRef<HTMLDivElement>(null)
 
   const pin = useMemo<ReaderRevisionPin | undefined>(
     () =>
@@ -110,6 +135,113 @@ export function ReaderDetailPage({
     onSelect: (nextId) => onNavigate(nextId),
   })
 
+  const [, setLifecycleEpoch] = useState(0)
+  // Captured committed source/root/Activity admission and lifecycle lease
+  const currentGeneration = `${scope}:${item?.fragment_id ?? ""}:${item?.fragment_revision_id ?? ""}`
+  const lifecycle = useRef({
+    alive: true,
+    lease: 1,
+    generation: currentGeneration,
+    access: true,
+    layer: true,
+    activity: true,
+  })
+
+  // Synchronize generation when props change
+  lifecycle.current.generation = currentGeneration
+
+  useEffect(() => {
+    lifecycle.current.alive = true
+    return () => {
+      lifecycle.current.alive = false
+      lifecycle.current.lease++
+    }
+  }, [])
+
+  const capturedLease = lifecycle.current.lease
+  const capturedGeneration = currentGeneration
+
+  function isAdmitted(targetPopup?: HTMLElement | null): boolean {
+    if (!lifecycle.current.alive) return false
+    if (lifecycle.current.lease !== capturedLease) return false
+    if (lifecycle.current.generation !== capturedGeneration) return false
+    if (!lifecycle.current.access || !lifecycle.current.layer || !lifecycle.current.activity)
+      return false
+    if (!rootRef.current?.isConnected) return false
+    if (targetPopup) {
+      if (!currentLayer(targetPopup)) return false
+    } else {
+      if (!currentLayer(rootRef.current)) return false
+    }
+    return true
+  }
+
+  function handleBack() {
+    if (!isAdmitted()) return false
+    onBack()
+    return true
+  }
+
+  function handleRefresh() {
+    if (!isAdmitted() || !onRefresh) return false
+    onRefresh()
+    return true
+  }
+
+  function handlePrevious() {
+    if (!isAdmitted() || !navigation.availability.previous) return false
+    navigation.navigate(-1)
+    return true
+  }
+
+  function handleNext() {
+    if (!isAdmitted() || !navigation.availability.next) return false
+    navigation.navigate(1)
+    return true
+  }
+
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    window.readerDetail = {
+      fresh: {
+        Back: () => isAdmitted() && !!onBack,
+        Refresh: () => isAdmitted() && !!onRefresh,
+        Previous: () => isAdmitted() && navigation.availability.previous,
+        Next: () => isAdmitted() && navigation.availability.next,
+      },
+      lifecycle: lifecycle.current,
+      retire: (boundary: "source" | "access" | "layer" | "root" | "Activity") => {
+        lifecycle.current.lease++
+        if (boundary === "source") {
+          lifecycle.current.generation = "retired-source"
+        } else if (boundary === "access") {
+          lifecycle.current.access = false
+        } else if (boundary === "layer") {
+          lifecycle.current.layer = false
+        } else if (boundary === "Activity") {
+          lifecycle.current.activity = false
+        } else if (boundary === "root") {
+          lifecycle.current.alive = false
+        }
+      },
+      restore: (boundary: "source" | "access" | "layer" | "root" | "Activity") => {
+        lifecycle.current.lease++
+        if (boundary === "source") {
+          lifecycle.current.generation = currentGeneration
+        } else if (boundary === "access") {
+          lifecycle.current.access = true
+        } else if (boundary === "layer") {
+          lifecycle.current.layer = true
+        } else if (boundary === "Activity") {
+          lifecycle.current.activity = true
+        } else if (boundary === "root") {
+          lifecycle.current.alive = true
+        }
+        setLifecycleEpoch((e) => e + 1)
+      },
+    }
+  })
+
   useEffect(() => {
     function onKeyDown(event: globalThis.KeyboardEvent) {
       if (
@@ -124,6 +256,8 @@ export function ReaderDetailPage({
       if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return
       if (event.isComposing || event.keyCode === 229) return
 
+      if (!isAdmitted()) return
+
       const target = event.target
       if (
         target instanceof Element &&
@@ -134,15 +268,24 @@ export function ReaderDetailPage({
       ) {
         return
       }
-      // Veto if any open dialog exists on the page
-      if (document.querySelector('[role="dialog"], [role="alertdialog"]')) return
+
+      // Require owned root focus or body focus within container
+      const active = document.activeElement
+      if (!rootRef.current || !active) return
+      if (active !== document.body && !rootRef.current.contains(active)) {
+        return
+      }
 
       const direction = event.key === "ArrowLeft" ? -1 : 1
       const available =
         direction === -1 ? navigation.availability.previous : navigation.availability.next
       if (!available) return
       event.preventDefault()
-      navigation.navigate(direction)
+      if (direction === -1) {
+        handlePrevious()
+      } else {
+        handleNext()
+      }
     }
 
     window.addEventListener("keydown", onKeyDown)
@@ -162,23 +305,19 @@ export function ReaderDetailPage({
   const header = (
     <ReaderDetailHeader
       title={item?.display.title.value || (loading ? "Loading fragment" : "Reader item")}
-      onBack={onBack}
-      onPrevious={navigation.availability.previous ? () => navigation.navigate(-1) : undefined}
-      onNext={navigation.availability.next ? () => navigation.navigate(1) : undefined}
+      onBack={handleBack}
+      onPrevious={navigation.availability.previous ? handlePrevious : undefined}
+      onNext={navigation.availability.next ? handleNext : undefined}
       hasPrevious={navigation.availability.previous}
       hasNext={navigation.availability.next}
-      readingState={
-        item ? <ReaderReadingControls item={item} onCommand={onCommand} compact /> : undefined
-      }
+      readingState={item ? <ReaderReadingControls item={item} readOnly compact /> : undefined}
       actions={
         <>
           {item &&
             pin &&
             (renderActions ? (
               <ReaderQuickActionSeam>{renderActions(item, pin)}</ReaderQuickActionSeam>
-            ) : (
-              <ReaderEffectActions key={item.fragment_id} item={item} onCommand={onCommand} />
-            ))}
+            ) : null)}
           <Button
             variant="outline"
             size="sm"
@@ -193,7 +332,7 @@ export function ReaderDetailPage({
             variant="outline"
             size="sm"
             className="min-h-11 sm:min-h-8"
-            onClick={onRefresh}
+            onClick={handleRefresh}
             disabled={loading}
           >
             <RefreshCw
@@ -214,6 +353,8 @@ export function ReaderDetailPage({
 
   return (
     <div
+      ref={rootRef}
+      data-testid="reader-detail-page"
       className={`reader-example min-h-screen bg-bg text-fg ${mode === "light" ? "light" : "dark"}`}
       data-theme={theme}
       data-mode={mode}
@@ -264,7 +405,6 @@ export function ReaderDetailPage({
             pin={pin}
             sourceHref={sourceHref}
             renderContent={renderContent}
-            onCommand={onCommand}
           />
         )}
       </DetailPageLayout>
@@ -277,13 +417,11 @@ function ReaderDetailBody({
   pin,
   sourceHref,
   renderContent,
-  onCommand,
 }: {
   item: ReaderItem
   pin: ReaderRevisionPin
   sourceHref?: string
   renderContent?: ReaderDetailPageProps["renderContent"]
-  onCommand: (command: ReaderCommand) => void
 }) {
   const body = item.article.preview_markdown
   const summaryIsBody = isReaderBodyBackedText(item.display.summary.value, body)
@@ -330,7 +468,7 @@ function ReaderDetailBody({
             Title from {item.display.title.source}; summary from {item.display.summary.source}
           </p>
           <div className="mt-4">
-            <ReaderTags item={item} onCommand={onCommand} />
+            <ReaderTags item={item} readOnly />
           </div>
         </div>
 
@@ -357,11 +495,15 @@ function ReaderDetailBody({
                   Load an available representation to preview it here.
                 </p>
               </div>
-              <ReaderActionPill
-                item={item}
-                onCommand={onCommand}
-                command="request_asset_acquisition"
-              />
+              <Button
+                variant="outline"
+                size="sm"
+                disabled
+                className="min-h-8 cursor-default text-text-subtle opacity-70"
+                title="Asset acquisition requests are inert specimens"
+              >
+                Load media (Inert specimen)
+              </Button>
             </div>
           )}
         {renderContent ? (
@@ -374,7 +516,7 @@ function ReaderDetailBody({
       <ReaderStateSummary item={item} />
 
       <section className="border-t border-border pt-6">
-        <ReaderNotes item={item} onCommand={onCommand} />
+        <ReaderNotes item={item} readOnly />
       </section>
     </div>
   )
