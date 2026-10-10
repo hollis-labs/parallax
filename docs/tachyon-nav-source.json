@@ -1,0 +1,39 @@
+{
+  "head": "97f0ad6d81d5592c26ba8aa4fad99f30848ca118",
+  "tree": "015c104326c5b56e0bc7cef82461bfa281f5d63a",
+  "files": {
+    "docs/adr/002-plugin-pages-navigation-menus.md": "71a4f1ea776b606657e667a6f52a72ae5056b6016a87b500bf0ef782c32efdcc",
+    "internal/contract/nav.go": "3c02d74d0db2dc0d3f3e1f06d06362b4fc003465f2c45155fdcc9a7a956b8fd0",
+    "internal/contract/nav_normalization.go": "b19bc61513306fd1c344b52a55690aed90ac637720a0f78bf959bdbe2c5f4c8d",
+    "internal/plugins/nav.go": "607f34d400fcf6a43f122c147e8d17c4bd212b6ba211145f1b9dac762f3ff46a",
+    "frontend/src/pages/registry.ts": "f3ec6bd6fe9de573c9da568549ee0c2f6fe8e78e2ca3420c603c2b48d5872e88",
+    "frontend/src/routing/routes.ts": "0b35a9148661dc009558ecdb2055e4572166edff0bb6bc088994185ed5834900",
+    "plugins/agent-ops/capabilities.json": "33711ea197433f2a9f21316c636410463046f697f993a614115ce281be35c308",
+    "plugins/launch-ops/capabilities.json": "7864ac588c0f97d1599a23b64d51ba45c502023e392149f434ec51854e334ef7",
+    "plugins/session-ops/capabilities.json": "7862687ef7b71530fa8c4d5325c46403fb4052f90c4b7b7acd4e6f1d45c50ada",
+    "plugins/observe-ops/capabilities.json": "8ff9fa4128217d2f53b6683db4d7b4c30ab0b0303d5991e05edee523317e19e8",
+    "plugins/work-ops/capabilities.json": "a992c71d50cf14d2317e868e21728d19d8d0d915c57da5cf203599919a5b96e8",
+    "plugins/service-ops/capabilities.json": "adb4cb4e7d40c885911ff6f2169c6b9a09e5df6643ab6d8c7af9261e2094e362",
+    "plugins/scm-ops/capabilities.json": "ecfea8ed1299c8559d50ac1344a8141e5ab4e1a7683f6b089ae25c3b48e03ad4",
+    "plugins/config-ops/capabilities.json": "8f5f8a91af9ffa55f3255911e965b9f2237fc089f7b25be9cc609b3e214d2d32"
+  },
+  "landings": {
+    "ADR": {
+      "merge": "df893d55f4271ee6220ff6a6aa9f7fc374d7b28d",
+      "tree": "ffa333dee32c302ffdd44c570496d8774f6a886f"
+    },
+    "contract": {
+      "merge": "e382338d4cfc9b47e62037cdaf6d0c2abcc1079c",
+      "tree": "79cefd5c3eec3863b3e7dbbf880416182a34fd53"
+    },
+    "routing": {
+      "merge": "e33d52bee47ad1a59c4714ac158b687d81a1e829",
+      "tree": "85ca52752dd3fbd0996d9a09477787fc971a2bb7"
+    },
+    "projection": {
+      "merge": "97f0ad6d81d5592c26ba8aa4fad99f30848ca118",
+      "tree": "015c104326c5b56e0bc7cef82461bfa281f5d63a"
+    }
+  },
+  "ownerVisualApproval": false
+}

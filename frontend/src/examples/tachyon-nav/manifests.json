@@ -1,0 +1,281 @@
+[
+  {
+    "owner": "agent-ops",
+    "groups": [
+      {
+        "id": "agents",
+        "label": "Agents",
+        "icon": "users",
+        "priority": 100
+      }
+    ],
+    "items": [
+      {
+        "id": "agent_list",
+        "label": "Agent Ops",
+        "group": "agents",
+        "route": "/agents",
+        "requires_verb": "agent_list",
+        "priority": 100
+      },
+      {
+        "id": "agent_durable_sessions",
+        "label": "Durable Sessions",
+        "group": "agents",
+        "route": "/agents/durable",
+        "requires_verb": "agent_list",
+        "priority": 200
+      }
+    ],
+    "verbs": [
+      "agent_create",
+      "agent_read",
+      "agent_update",
+      "agent_delete",
+      "agent_list",
+      "agent_grant",
+      "agent_revoke",
+      "agent_grants",
+      "agent_capabilities",
+      "agent_reflex_create",
+      "agent_reflex_update",
+      "agent_reflex_delete",
+      "agent_reflex_list",
+      "agent_approve",
+      "agent_launch"
+    ]
+  },
+  {
+    "owner": "launch-ops",
+    "groups": [
+      {
+        "id": "execution",
+        "label": "Execution",
+        "icon": "play",
+        "priority": 200
+      }
+    ],
+    "items": [
+      {
+        "id": "launch_list",
+        "label": "Launches",
+        "group": "execution",
+        "route": "/launches",
+        "requires_verb": "launch_list",
+        "priority": 100
+      }
+    ],
+    "verbs": [
+      "launch_prepare",
+      "launch_execute",
+      "launch_cancel",
+      "launch_read",
+      "launch_list",
+      "launch_status"
+    ]
+  },
+  {
+    "owner": "session-ops",
+    "groups": [
+      {
+        "id": "sessions",
+        "label": "Sessions",
+        "icon": "terminal",
+        "priority": 300
+      }
+    ],
+    "items": [
+      {
+        "id": "session_list",
+        "label": "Active Sessions",
+        "group": "sessions",
+        "route": "/sessions",
+        "requires_verb": "session_list",
+        "priority": 100
+      },
+      {
+        "id": "session_history",
+        "label": "Session History",
+        "group": "sessions",
+        "route": "/sessions/history",
+        "requires_verb": "session_history",
+        "priority": 200
+      }
+    ],
+    "verbs": [
+      "session_create",
+      "session_read",
+      "session_list",
+      "session_attach",
+      "session_stop",
+      "session_submit",
+      "session_history"
+    ]
+  },
+  {
+    "owner": "observe-ops",
+    "groups": [
+      {
+        "id": "observability",
+        "label": "Observability",
+        "icon": "activity",
+        "priority": 400
+      }
+    ],
+    "items": [
+      {
+        "id": "observe_activity",
+        "label": "Activity",
+        "group": "observability",
+        "route": "/observe",
+        "requires_verb": "observe_activity",
+        "priority": 100
+      },
+      {
+        "id": "observe_logs",
+        "label": "Logs",
+        "group": "observability",
+        "route": "/observe/logs",
+        "requires_verb": "observe_logs",
+        "priority": 200
+      },
+      {
+        "id": "observe_metrics",
+        "label": "Metrics",
+        "group": "observability",
+        "route": "/observe/metrics",
+        "requires_verb": "observe_metrics",
+        "priority": 300
+      }
+    ],
+    "verbs": [
+      "observe_activity",
+      "observe_logs",
+      "observe_metrics",
+      "observe_events",
+      "observe_status",
+      "observe_subscribe"
+    ]
+  },
+  {
+    "owner": "work-ops",
+    "groups": [
+      {
+        "id": "work",
+        "label": "Work",
+        "icon": "clipboard-list",
+        "priority": 500
+      }
+    ],
+    "items": [
+      {
+        "id": "work_list",
+        "label": "Tasks",
+        "group": "work",
+        "route": "/work",
+        "requires_verb": "work_list",
+        "priority": 100
+      },
+      {
+        "id": "work_board",
+        "label": "Board",
+        "group": "work",
+        "route": "/work/board",
+        "requires_verb": "work_list",
+        "priority": 200
+      }
+    ],
+    "verbs": [
+      "work_create",
+      "work_read",
+      "work_update",
+      "work_list",
+      "work_search",
+      "work_assign",
+      "work_transition",
+      "work_comment"
+    ]
+  },
+  {
+    "owner": "service-ops",
+    "groups": [
+      {
+        "id": "services",
+        "label": "Services",
+        "icon": "server",
+        "priority": 600
+      }
+    ],
+    "items": [
+      {
+        "id": "service_list",
+        "label": "All Services",
+        "group": "services",
+        "route": "/services",
+        "requires_verb": "service_list",
+        "priority": 100
+      },
+      {
+        "id": "service_health",
+        "label": "Health",
+        "group": "services",
+        "route": "/services/health",
+        "requires_verb": "service_health",
+        "priority": 200
+      }
+    ],
+    "verbs": ["service_list", "service_read", "service_status", "service_health"]
+  },
+  {
+    "owner": "scm-ops",
+    "groups": [
+      {
+        "id": "source",
+        "label": "Source Control",
+        "icon": "git-branch",
+        "priority": 700
+      }
+    ],
+    "items": [
+      {
+        "id": "scm_repos",
+        "label": "Repositories",
+        "group": "source",
+        "route": "/scm",
+        "requires_verb": "scm_list",
+        "priority": 100
+      },
+      {
+        "id": "scm_activity",
+        "label": "Activity",
+        "group": "source",
+        "route": "/scm/activity",
+        "requires_verb": "scm_activity",
+        "priority": 200
+      }
+    ],
+    "verbs": ["scm_list", "scm_read", "scm_activity", "scm_status", "scm_diff"]
+  },
+  {
+    "owner": "config-ops",
+    "groups": [
+      {
+        "id": "settings",
+        "label": "Settings",
+        "icon": "settings",
+        "priority": 900
+      }
+    ],
+    "items": [
+      {
+        "id": "config_list",
+        "label": "Configuration",
+        "group": "settings",
+        "route": "/settings",
+        "requires_verb": "config_list",
+        "priority": 100
+      }
+    ],
+    "verbs": ["config_schema", "config_get", "config_list", "config_set", "config_reset"]
+  }
+]

@@ -15,18 +15,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -41,7 +46,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -347,6 +361,7 @@
       "frontend/src/examples/nil/Harness.tsx",
       "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
+      "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/examples/torque/TaskInspection.tsx",
       "frontend/src/flux-rail/Review.tsx",
       "frontend/src/layouts/AsideConsumers.stories.tsx",
@@ -644,6 +659,7 @@
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
+      "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/examples/workspace/WorkspaceExample.tsx",
       "frontend/src/flux-rail/Review.tsx",
@@ -681,18 +697,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -707,7 +728,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -731,18 +761,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -757,7 +792,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -793,6 +837,7 @@
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
+      "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/examples/workspace/WorkspaceExample.tsx",
       "frontend/src/layouts/Comparison.tsx",
@@ -1020,18 +1065,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -1046,7 +1096,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -1348,18 +1407,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -1374,7 +1438,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -1397,18 +1470,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -1423,7 +1501,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -1563,18 +1650,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -1589,7 +1681,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -1629,18 +1730,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -1655,7 +1761,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -1993,18 +2108,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -2019,7 +2139,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -2060,18 +2189,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -2086,7 +2220,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -2109,18 +2252,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -2135,7 +2283,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -2172,18 +2329,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -2198,7 +2360,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -2224,18 +2395,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -2250,7 +2426,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -2338,18 +2523,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -2364,7 +2554,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -2417,18 +2616,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -2443,7 +2647,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -2492,18 +2705,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -2518,7 +2736,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -2526,6 +2753,7 @@
       "frontend/src/examples/flux-navigation/FluxNavigationExample.tsx",
       "frontend/src/examples/nil/Editor.tsx",
       "frontend/src/examples/nil/NilExample.tsx",
+      "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/examples/torque/Operations.tsx",
       "frontend/src/flux-rail/Review.tsx",
       "frontend/src/nil-radial/Specimen.tsx"
@@ -2573,18 +2801,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -2599,7 +2832,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -2702,18 +2944,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -2728,7 +2975,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -2792,18 +3048,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -2818,7 +3079,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -2842,18 +3112,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -2868,7 +3143,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -2915,21 +3199,36 @@
     "evidence": {
       "pages": [
         "frontend/src/nil-radial/Specimen.tsx",
-        "docs/nil-radial.md"
+        "docs/nil-radial.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "stories": [
-        "frontend/src/nil-radial/NilRadial.stories.tsx"
+        "frontend/src/nil-radial/NilRadial.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "checks": [
-        "frontend/tests/nil-radial.spec.ts"
+        "frontend/tests/nil-radial.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "storyIds": [
         "behaviors-nil-radial--nil",
-        "behaviors-nil-radial--message"
+        "behaviors-nil-radial--message",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
       "frontend/src/examples/nil/NilExample.tsx",
+      "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/nil-radial/Specimen.tsx"
     ]
   },
@@ -2985,17 +3284,31 @@
     "evidence": {
       "pages": [
         "frontend/src/nil-radial/Specimen.tsx",
-        "docs/nil-radial.md"
+        "docs/nil-radial.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "stories": [
-        "frontend/src/nil-radial/NilRadial.stories.tsx"
+        "frontend/src/nil-radial/NilRadial.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "checks": [
-        "frontend/tests/nil-radial.spec.ts"
+        "frontend/tests/nil-radial.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "storyIds": [
         "behaviors-nil-radial--nil",
-        "behaviors-nil-radial--message"
+        "behaviors-nil-radial--message",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -3020,18 +3333,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -3046,7 +3364,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -3083,18 +3410,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -3109,7 +3441,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -3146,18 +3487,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -3172,7 +3518,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -3195,18 +3550,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -3221,7 +3581,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -3245,18 +3614,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -3271,7 +3645,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -3294,18 +3677,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -3320,7 +3708,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -3343,18 +3740,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -3369,7 +3771,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -3431,18 +3842,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -3457,7 +3873,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -3592,6 +4017,8 @@
       "frontend/src/examples/reader/ReaderExample.tsx",
       "frontend/src/examples/reader/ReaderInlineActions.tsx",
       "frontend/src/examples/reader/ReaderVisual.tsx",
+      "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+      "frontend/src/examples/tachyon-nav/lifecycle.tsx",
       "frontend/src/examples/torque/BoardIntent.tsx",
       "frontend/src/examples/torque/Mission.tsx",
       "frontend/src/examples/torque/ReferenceEvidence.tsx",
@@ -4120,18 +4547,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -4146,7 +4578,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -4437,18 +4878,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -4463,7 +4909,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -4506,18 +4961,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -4532,7 +4992,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -4562,18 +5031,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -4588,7 +5062,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -4625,18 +5108,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -4651,7 +5139,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -4701,18 +5198,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -4727,7 +5229,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -4770,18 +5281,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -4796,7 +5312,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -4804,6 +5329,7 @@
       "frontend/src/examples/flux-chat/lifecycle.tsx",
       "frontend/src/examples/flux-navigation/Header.tsx",
       "frontend/src/examples/flux-navigation/Sidebar.tsx",
+      "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/examples/torque/Operations.tsx",
       "frontend/src/flux-rail/Review.tsx"
     ]
@@ -4837,18 +5363,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -4863,7 +5394,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -4871,6 +5411,7 @@
       "frontend/src/examples/flux-chat/lifecycle.tsx",
       "frontend/src/examples/flux-navigation/Header.tsx",
       "frontend/src/examples/flux-navigation/Sidebar.tsx",
+      "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/examples/torque/Operations.tsx",
       "frontend/src/flux-rail/Review.tsx"
     ]
@@ -4891,18 +5432,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -4917,7 +5463,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -4925,6 +5480,7 @@
       "frontend/src/examples/flux-chat/lifecycle.tsx",
       "frontend/src/examples/flux-navigation/Header.tsx",
       "frontend/src/examples/flux-navigation/Sidebar.tsx",
+      "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/examples/torque/Operations.tsx"
     ]
   },
@@ -4970,18 +5526,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -4996,7 +5557,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -5004,6 +5574,7 @@
       "frontend/src/examples/flux-chat/lifecycle.tsx",
       "frontend/src/examples/flux-navigation/Header.tsx",
       "frontend/src/examples/flux-navigation/Sidebar.tsx",
+      "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/examples/torque/Operations.tsx",
       "frontend/src/flux-rail/Review.tsx"
     ]
@@ -5167,18 +5738,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -5193,7 +5769,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -5295,18 +5880,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -5321,7 +5911,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -5432,18 +6031,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -5458,7 +6062,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -5481,18 +6094,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -5507,7 +6125,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -5530,18 +6157,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -5556,7 +6188,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -5677,18 +6318,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -5703,7 +6349,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -5726,18 +6381,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -5752,7 +6412,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -5788,18 +6457,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -5814,7 +6488,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -5889,18 +6572,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -5915,7 +6603,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -5938,18 +6635,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -5964,7 +6666,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -6018,18 +6729,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -6044,7 +6760,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -6093,18 +6818,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -6119,7 +6849,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -6168,18 +6907,23 @@
         "frontend/src/examples/nil/NilExample.tsx",
         "frontend/src/examples/flux-chat/FluxChat.tsx",
         "frontend/src/examples/flux-chat/Conversation.tsx",
-        "docs/flux-chat-composition.md"
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
         "frontend/tests/nil-example.spec.ts",
         "frontend/tests/flux-chat.spec.ts",
-        "frontend/tests/flux-chat-custody.spec.ts"
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
         "frontend/src/examples/nil/Nil.stories.tsx",
-        "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--primitives",
@@ -6194,7 +6938,16 @@
         "examples-flux-chat--unavailable",
         "examples-flux-chat--denied",
         "examples-flux-chat--locked",
-        "examples-flux-chat--partial"
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -6711,6 +7464,7 @@
     },
     "importEvidence": [
       "frontend/src/directory-review/Review.tsx",
+      "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/ops-dashboard/Dashboard.tsx"
     ]
   },
@@ -6753,6 +7507,7 @@
     },
     "importEvidence": [
       "frontend/src/directory-review/Review.tsx",
+      "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/ops-dashboard/Dashboard.tsx"
     ]
   },
@@ -6795,6 +7550,7 @@
     },
     "importEvidence": [
       "frontend/src/directory-review/Review.tsx",
+      "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/ops-dashboard/Dashboard.tsx"
     ]
   },
@@ -7460,19 +8216,33 @@
     "evidence": {
       "pages": [
         "frontend/src/operations/Views.tsx",
-        "frontend/src/examples/nil/NilExample.tsx"
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/nil-example.spec.ts"
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
-        "frontend/src/examples/nil/Nil.stories.tsx"
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--mission-control",
-        "app-examples-nil--operations"
+        "app-examples-nil--operations",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -8081,19 +8851,33 @@
     "evidence": {
       "pages": [
         "frontend/src/operations/Views.tsx",
-        "frontend/src/examples/nil/NilExample.tsx"
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/nil-example.spec.ts"
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
-        "frontend/src/examples/nil/Nil.stories.tsx"
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--mission-control",
-        "app-examples-nil--operations"
+        "app-examples-nil--operations",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -8113,19 +8897,33 @@
     "evidence": {
       "pages": [
         "frontend/src/operations/Views.tsx",
-        "frontend/src/examples/nil/NilExample.tsx"
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/nil-example.spec.ts"
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
-        "frontend/src/examples/nil/Nil.stories.tsx"
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--mission-control",
-        "app-examples-nil--operations"
+        "app-examples-nil--operations",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -8221,6 +9019,7 @@
     "importEvidence": [
       "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
+      "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/operations-list-proof/Proof.tsx"
     ]
   },
@@ -8250,19 +9049,33 @@
     "evidence": {
       "pages": [
         "frontend/src/operations/Views.tsx",
-        "frontend/src/examples/nil/NilExample.tsx"
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/nil-example.spec.ts"
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
-        "frontend/src/examples/nil/Nil.stories.tsx"
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--mission-control",
-        "app-examples-nil--operations"
+        "app-examples-nil--operations",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -8295,19 +9108,33 @@
     "evidence": {
       "pages": [
         "frontend/src/operations/Views.tsx",
-        "frontend/src/examples/nil/NilExample.tsx"
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/nil-example.spec.ts"
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
-        "frontend/src/examples/nil/Nil.stories.tsx"
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--mission-control",
-        "app-examples-nil--operations"
+        "app-examples-nil--operations",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -8583,19 +9410,33 @@
     "evidence": {
       "pages": [
         "frontend/src/operations/Views.tsx",
-        "frontend/src/examples/nil/NilExample.tsx"
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/nil-example.spec.ts"
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
-        "frontend/src/examples/nil/Nil.stories.tsx"
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--mission-control",
-        "app-examples-nil--operations"
+        "app-examples-nil--operations",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -8937,19 +9778,33 @@
     "evidence": {
       "pages": [
         "frontend/src/operations/Views.tsx",
-        "frontend/src/examples/nil/NilExample.tsx"
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
         "frontend/tests/lab.spec.ts",
-        "frontend/tests/nil-example.spec.ts"
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
       ],
       "stories": [
         "frontend/src/operations/Operations.stories.tsx",
-        "frontend/src/examples/nil/Nil.stories.tsx"
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
       ],
       "storyIds": [
         "operations-controlled-views--mission-control",
-        "app-examples-nil--operations"
+        "app-examples-nil--operations",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -27070,10 +27925,28 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
-        "frontend/tests/layouts.spec.ts"
+        "frontend/tests/layouts.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -27248,10 +28121,28 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
-        "frontend/tests/layouts.spec.ts"
+        "frontend/tests/layouts.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -27478,10 +28369,28 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
-        "frontend/tests/layouts.spec.ts"
+        "frontend/tests/layouts.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -27514,10 +28423,28 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
-        "frontend/tests/layouts.spec.ts"
+        "frontend/tests/layouts.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -27551,10 +28478,28 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
-        "frontend/tests/layouts.spec.ts"
+        "frontend/tests/layouts.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -27677,10 +28622,28 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
-        "frontend/tests/layouts.spec.ts"
+        "frontend/tests/layouts.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -27777,14 +28740,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
-        "frontend/tests/layouts.spec.ts"
+        "frontend/tests/layouts.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
+      "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/layouts/AppShellAside.stories.tsx",
       "frontend/src/layouts/AsideConsumers.stories.tsx"
     ]
@@ -27814,15 +28796,34 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
-        "frontend/tests/layouts.spec.ts"
+        "frontend/tests/layouts.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
       "frontend/src/examples/flux-navigation/FluxNavigationExample.tsx",
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
+      "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/layouts/AppShellAside.stories.tsx",
       "frontend/src/layouts/AsideConsumers.stories.tsx"
     ]
@@ -27865,10 +28866,28 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
-        "frontend/tests/layouts.spec.ts"
+        "frontend/tests/layouts.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
@@ -27913,14 +28932,33 @@
     "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
     "evidence": {
       "pages": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
       ],
       "checks": [
-        "frontend/tests/layouts.spec.ts"
+        "frontend/tests/layouts.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
       ]
     },
     "importEvidence": [
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
+      "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/layouts/AppShellAside.stories.tsx",
       "frontend/src/layouts/AsideConsumers.stories.tsx"
     ]
