@@ -10,19 +10,15 @@
       "total": 8,
       "running": 2,
       "ended": 6,
-      "success_pct": 66,
-      "failure_pct": 33,
-      "avg_seconds": 90,
+      "success_pct": 83,
+      "failure_pct": 16,
+      "avg_seconds": 13800,
       "recent_24h": 8,
-      "trend": [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1],
+      "trend": [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1],
       "by_state": [
         {
-          "name": "done",
-          "count": 4
-        },
-        {
-          "name": "failed",
-          "count": 2
+          "name": "ended",
+          "count": 6
         },
         {
           "name": "running",
@@ -68,7 +64,7 @@
       "avg_ms": 461,
       "recent_1h": 2,
       "slow_calls": 4,
-      "sessions": 8,
+      "sessions": 7,
       "top_tools": [
         {
           "name": "fixture.inspect",
@@ -172,7 +168,7 @@
     },
     "events": {
       "total": 64,
-      "recent_1h": 22,
+      "recent_1h": 3,
       "latest_seq": 64,
       "by_scope": [
         {
@@ -324,19 +320,15 @@
         "total": 8,
         "running": 2,
         "ended": 6,
-        "success_pct": 66,
-        "failure_pct": 33,
-        "avg_seconds": 90,
+        "success_pct": 83,
+        "failure_pct": 16,
+        "avg_seconds": 13800,
         "recent_24h": 8,
-        "trend": [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1],
+        "trend": [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1],
         "by_state": [
           {
-            "name": "done",
-            "count": 4
-          },
-          {
-            "name": "failed",
-            "count": 2
+            "name": "ended",
+            "count": 6
           },
           {
             "name": "running",
@@ -382,7 +374,7 @@
         "avg_ms": 461,
         "recent_1h": 2,
         "slow_calls": 4,
-        "sessions": 8,
+        "sessions": 7,
         "top_tools": [
           {
             "name": "fixture.inspect",
@@ -486,7 +478,7 @@
       },
       "events": {
         "total": 64,
-        "recent_1h": 22,
+        "recent_1h": 3,
         "latest_seq": 64,
         "by_scope": [
           {
@@ -640,17 +632,13 @@
         "ended": 6,
         "success_pct": 45,
         "failure_pct": 55,
-        "avg_seconds": 90,
+        "avg_seconds": 13800,
         "recent_24h": 8,
-        "trend": [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1],
+        "trend": [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1],
         "by_state": [
           {
-            "name": "done",
-            "count": 4
-          },
-          {
-            "name": "failed",
-            "count": 2
+            "name": "ended",
+            "count": 6
           },
           {
             "name": "running",
@@ -696,7 +684,7 @@
         "avg_ms": 461,
         "recent_1h": 2,
         "slow_calls": 4,
-        "sessions": 8,
+        "sessions": 7,
         "top_tools": [
           {
             "name": "fixture.inspect",
@@ -800,7 +788,7 @@
       },
       "events": {
         "total": 64,
-        "recent_1h": 22,
+        "recent_1h": 3,
         "latest_seq": 64,
         "by_scope": [
           {
@@ -954,17 +942,13 @@
         "ended": 6,
         "success_pct": 45,
         "failure_pct": 55,
-        "avg_seconds": 90,
+        "avg_seconds": 13800,
         "recent_24h": 8,
-        "trend": [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1],
+        "trend": [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1],
         "by_state": [
           {
-            "name": "done",
-            "count": 4
-          },
-          {
-            "name": "failed",
-            "count": 2
+            "name": "ended",
+            "count": 6
           },
           {
             "name": "running",
@@ -1010,7 +994,7 @@
         "avg_ms": 461,
         "recent_1h": 2,
         "slow_calls": 4,
-        "sessions": 8,
+        "sessions": 7,
         "top_tools": [
           {
             "name": "fixture.inspect",
@@ -1114,7 +1098,7 @@
       },
       "events": {
         "total": 64,
-        "recent_1h": 22,
+        "recent_1h": 3,
         "latest_seq": 64,
         "by_scope": [
           {
@@ -1261,6 +1245,129 @@
         "error": "proxy event error rate above threshold (10%)"
       }
     }
+  },
+  "sessions": {
+    "sessions": [
+      {
+        "id": "sess-001",
+        "launch_id": "launch-parallax-review",
+        "project_id": "parallax",
+        "logical_agent_id": "agent-001",
+        "provider_id": "claude",
+        "provider_kind": "anthropic",
+        "workspace": "/home/chrispian/dev/hollis-labs/worktrees/parallax/review",
+        "state": "ended",
+        "pid": 4101,
+        "exit_code": 0,
+        "created_at": "2026-10-03T14:30:00Z",
+        "updated_at": "2026-10-03T18:30:00Z",
+        "ended_at": "2026-10-03T18:30:00Z"
+      },
+      {
+        "id": "sess-002",
+        "launch_id": "launch-tether-daemon",
+        "project_id": "tether",
+        "logical_agent_id": "agent-002",
+        "provider_id": "codex",
+        "provider_kind": "openai",
+        "workspace": "/home/chrispian/dev/hollis-labs/tether",
+        "state": "ended",
+        "pid": 4102,
+        "exit_code": 0,
+        "created_at": "2026-10-03T18:30:00Z",
+        "updated_at": "2026-10-03T22:30:00Z",
+        "ended_at": "2026-10-03T22:30:00Z"
+      },
+      {
+        "id": "sess-003",
+        "launch_id": "launch-tangent-proxy",
+        "project_id": "tangent",
+        "logical_agent_id": "agent-003",
+        "provider_id": "agy",
+        "provider_kind": "google",
+        "workspace": "/home/chrispian/dev/hollis-labs/tangent",
+        "state": "ended",
+        "pid": 4103,
+        "exit_code": 1,
+        "created_at": "2026-10-03T22:30:00Z",
+        "updated_at": "2026-10-04T02:30:00Z",
+        "ended_at": "2026-10-04T02:30:00Z"
+      },
+      {
+        "id": "sess-004",
+        "launch_id": "launch-parallax-fixtures",
+        "project_id": "parallax",
+        "logical_agent_id": "agent-001",
+        "provider_id": "claude",
+        "provider_kind": "anthropic",
+        "workspace": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
+        "state": "ended",
+        "pid": 4104,
+        "exit_code": 0,
+        "created_at": "2026-10-04T02:30:00Z",
+        "updated_at": "2026-10-04T06:30:00Z",
+        "ended_at": "2026-10-04T06:30:00Z"
+      },
+      {
+        "id": "sess-005",
+        "launch_id": "launch-tether-registry",
+        "project_id": "tether",
+        "logical_agent_id": "agent-004",
+        "provider_id": "codex",
+        "provider_kind": "openai",
+        "workspace": "/home/chrispian/dev/hollis-labs/tether",
+        "state": "ended",
+        "pid": 4105,
+        "exit_code": 0,
+        "created_at": "2026-10-04T06:30:00Z",
+        "updated_at": "2026-10-04T10:30:00Z",
+        "ended_at": "2026-10-04T10:30:00Z"
+      },
+      {
+        "id": "sess-006",
+        "launch_id": "launch-tangent-bridge",
+        "project_id": "tangent",
+        "logical_agent_id": "agent-003",
+        "provider_id": "agy",
+        "provider_kind": "google",
+        "workspace": "/home/chrispian/dev/hollis-labs/tangent",
+        "state": "ended",
+        "pid": 4106,
+        "exit_code": 0,
+        "created_at": "2026-10-04T10:30:00Z",
+        "updated_at": "2026-10-04T13:30:00Z",
+        "ended_at": "2026-10-04T13:30:00Z"
+      },
+      {
+        "id": "sess-007",
+        "launch_id": "launch-parallax-runner",
+        "project_id": "parallax",
+        "logical_agent_id": "agent-001",
+        "provider_id": "claude",
+        "provider_kind": "anthropic",
+        "workspace": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
+        "state": "running",
+        "pid": 4107,
+        "created_at": "2026-10-04T12:30:00Z",
+        "updated_at": "2026-10-04T14:20:00Z"
+      },
+      {
+        "id": "sess-008",
+        "launch_id": "launch-parallax-gate",
+        "project_id": "parallax",
+        "logical_agent_id": "agent-002",
+        "provider_id": "codex",
+        "provider_kind": "openai",
+        "workspace": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
+        "state": "running",
+        "pid": 4108,
+        "created_at": "2026-10-04T14:00:00Z",
+        "updated_at": "2026-10-04T14:28:00Z"
+      }
+    ],
+    "total": 8,
+    "running": 2,
+    "ended": 6
   },
   "ai": {
     "settings": {
@@ -1524,7 +1631,13 @@
           "requires_reasoning": true,
           "requires_tools": true,
           "allow_reasoning": true,
-          "allow_tools": true
+          "allow_tools": true,
+          "usage_budget": {
+            "level": "route",
+            "max_cost_usd": 10,
+            "window": "24h",
+            "scope": "session"
+          }
         },
         {
           "provider": "google",
@@ -1719,8 +1832,8 @@
           "id": 1,
           "event_type": "chat",
           "request_id": "req-0001",
-          "session_id": "SESSION-001",
-          "caller_id": "agent-001",
+          "session_id": "sess-002",
+          "caller_id": "sysop",
           "operation": "chat",
           "provider": "google",
           "model": "gemini-2.0-flash",
@@ -1741,8 +1854,8 @@
           "id": 2,
           "event_type": "completion",
           "request_id": "req-0002",
-          "session_id": "SESSION-002",
-          "caller_id": "agent-002",
+          "session_id": "sess-002",
+          "caller_id": "architect",
           "operation": "completion",
           "provider": "anthropic",
           "model": "claude-3-7-sonnet",
@@ -1763,8 +1876,8 @@
           "id": 3,
           "event_type": "completion",
           "request_id": "req-0003",
-          "session_id": "SESSION-003",
-          "caller_id": "agent-003",
+          "session_id": "sess-002",
+          "caller_id": "launch-agent-os",
           "operation": "completion",
           "provider": "anthropic",
           "model": "claude-3-7-sonnet",
@@ -1785,8 +1898,8 @@
           "id": 4,
           "event_type": "chat",
           "request_id": "req-0004",
-          "session_id": "SESSION-004",
-          "caller_id": "agent-004",
+          "session_id": "sess-002",
+          "caller_id": "launch-worker-1",
           "operation": "chat",
           "provider": "google",
           "model": "gemini-2.0-flash",
@@ -1807,8 +1920,8 @@
           "id": 5,
           "event_type": "completion",
           "request_id": "req-0005",
-          "session_id": "SESSION-005",
-          "caller_id": "agent-001",
+          "session_id": "sess-003",
+          "caller_id": "task-parallax-4",
           "operation": "completion",
           "provider": "anthropic",
           "model": "claude-3-7-sonnet",
@@ -1829,8 +1942,8 @@
           "id": 6,
           "event_type": "completion",
           "request_id": "req-0006",
-          "session_id": "SESSION-006",
-          "caller_id": "agent-002",
+          "session_id": "sess-003",
+          "caller_id": "task-reader",
           "operation": "completion",
           "provider": "openai",
           "model": "gpt-4o",
@@ -1851,8 +1964,8 @@
           "id": 7,
           "event_type": "chat",
           "request_id": "req-0007",
-          "session_id": "SESSION-007",
-          "caller_id": "agent-003",
+          "session_id": "sess-003",
+          "caller_id": "task-legacy-runner",
           "operation": "chat",
           "provider": "google",
           "model": "gemini-2.0-flash",
@@ -1873,8 +1986,8 @@
           "id": 8,
           "event_type": "completion",
           "request_id": "req-0008",
-          "session_id": "SESSION-008",
-          "caller_id": "agent-004",
+          "session_id": "sess-003",
+          "caller_id": "agent-shim-v1",
           "operation": "completion",
           "provider": "anthropic",
           "model": "claude-3-7-sonnet",
@@ -1895,8 +2008,8 @@
           "id": 9,
           "event_type": "completion",
           "request_id": "req-0009",
-          "session_id": "SESSION-001",
-          "caller_id": "agent-001",
+          "session_id": "sess-003",
+          "caller_id": "sysop",
           "operation": "completion",
           "provider": "anthropic",
           "model": "claude-3-7-sonnet",
@@ -1917,8 +2030,8 @@
           "id": 10,
           "event_type": "chat",
           "request_id": "req-0010",
-          "session_id": "SESSION-002",
-          "caller_id": "agent-002",
+          "session_id": "sess-004",
+          "caller_id": "architect",
           "operation": "chat",
           "provider": "google",
           "model": "gemini-2.0-flash",
@@ -1939,8 +2052,8 @@
           "id": 11,
           "event_type": "completion",
           "request_id": "req-0011",
-          "session_id": "SESSION-003",
-          "caller_id": "agent-003",
+          "session_id": "sess-004",
+          "caller_id": "launch-agent-os",
           "operation": "completion",
           "provider": "openai",
           "model": "gpt-4o",
@@ -1961,8 +2074,8 @@
           "id": 12,
           "event_type": "refusal",
           "request_id": "req-0012",
-          "session_id": "SESSION-004",
-          "caller_id": "agent-004",
+          "session_id": "sess-004",
+          "caller_id": "launch-worker-1",
           "operation": "chat",
           "provider": "anthropic",
           "model": "claude-3-7-sonnet",
@@ -1984,8 +2097,8 @@
           "id": 13,
           "event_type": "chat",
           "request_id": "req-0013",
-          "session_id": "SESSION-005",
-          "caller_id": "agent-001",
+          "session_id": "sess-004",
+          "caller_id": "task-parallax-4",
           "operation": "chat",
           "provider": "google",
           "model": "gemini-2.0-flash",
@@ -2006,8 +2119,8 @@
           "id": 14,
           "event_type": "completion",
           "request_id": "req-0014",
-          "session_id": "SESSION-006",
-          "caller_id": "agent-002",
+          "session_id": "sess-004",
+          "caller_id": "task-reader",
           "operation": "completion",
           "provider": "anthropic",
           "model": "claude-3-7-sonnet",
@@ -2028,8 +2141,8 @@
           "id": 15,
           "event_type": "completion",
           "request_id": "req-0015",
-          "session_id": "SESSION-007",
-          "caller_id": "agent-003",
+          "session_id": "sess-005",
+          "caller_id": "task-legacy-runner",
           "operation": "completion",
           "provider": "anthropic",
           "model": "claude-3-7-sonnet",
@@ -2050,8 +2163,8 @@
           "id": 16,
           "event_type": "chat",
           "request_id": "req-0016",
-          "session_id": "SESSION-008",
-          "caller_id": "agent-004",
+          "session_id": "sess-005",
+          "caller_id": "agent-shim-v1",
           "operation": "chat",
           "provider": "google",
           "model": "gemini-2.0-flash",
@@ -2072,8 +2185,8 @@
           "id": 17,
           "event_type": "completion",
           "request_id": "req-0017",
-          "session_id": "SESSION-001",
-          "caller_id": "agent-001",
+          "session_id": "sess-005",
+          "caller_id": "sysop",
           "operation": "completion",
           "provider": "anthropic",
           "model": "claude-3-7-sonnet",
@@ -2094,15 +2207,15 @@
           "id": 18,
           "event_type": "budget_rejection",
           "request_id": "req-0018",
-          "session_id": "SESSION-002",
-          "caller_id": "agent-002",
+          "session_id": "sess-005",
+          "caller_id": "architect",
           "operation": "completion",
           "provider": "anthropic",
           "model": "claude-3-7-sonnet",
           "policy_version": "ai-policy-v1",
           "latency_ms": 879,
           "success": false,
-          "error": "budget limit $2.50 exceeded for session SESSION-002",
+          "error": "budget limit $2.50 exceeded for session sess-005",
           "input_tokens": 3540,
           "output_tokens": 1115,
           "cache_read_tokens": 740,
@@ -2117,8 +2230,8 @@
           "id": 19,
           "event_type": "chat",
           "request_id": "req-0019",
-          "session_id": "SESSION-003",
-          "caller_id": "agent-003",
+          "session_id": "sess-005",
+          "caller_id": "launch-agent-os",
           "operation": "chat",
           "provider": "google",
           "model": "gemini-2.0-flash",
@@ -2139,8 +2252,8 @@
           "id": 20,
           "event_type": "completion",
           "request_id": "req-0020",
-          "session_id": "SESSION-004",
-          "caller_id": "agent-004",
+          "session_id": "sess-006",
+          "caller_id": "launch-worker-1",
           "operation": "completion",
           "provider": "anthropic",
           "model": "claude-3-7-sonnet",
@@ -2161,8 +2274,8 @@
           "id": 21,
           "event_type": "completion",
           "request_id": "req-0021",
-          "session_id": "SESSION-005",
-          "caller_id": "agent-001",
+          "session_id": "sess-006",
+          "caller_id": "task-parallax-4",
           "operation": "completion",
           "provider": "openai",
           "model": "gpt-4o",
@@ -2183,8 +2296,8 @@
           "id": 22,
           "event_type": "chat",
           "request_id": "req-0022",
-          "session_id": "SESSION-006",
-          "caller_id": "agent-002",
+          "session_id": "sess-007",
+          "caller_id": "task-reader",
           "operation": "chat",
           "provider": "google",
           "model": "gemini-2.0-flash",
@@ -2205,8 +2318,8 @@
           "id": 23,
           "event_type": "completion",
           "request_id": "req-0023",
-          "session_id": "SESSION-007",
-          "caller_id": "agent-003",
+          "session_id": "sess-007",
+          "caller_id": "task-legacy-runner",
           "operation": "completion",
           "provider": "anthropic",
           "model": "claude-3-7-sonnet",
@@ -2227,8 +2340,8 @@
           "id": 24,
           "event_type": "completion",
           "request_id": "req-0024",
-          "session_id": "SESSION-008",
-          "caller_id": "agent-004",
+          "session_id": "sess-008",
+          "caller_id": "agent-shim-v1",
           "operation": "completion",
           "provider": "anthropic",
           "model": "claude-3-7-sonnet",
@@ -2256,6 +2369,7 @@
           "mode": "code",
           "intent": "primary reasoning",
           "usage_budget": {
+            "level": "route",
             "max_cost_usd": 10,
             "window": "24h",
             "scope": "global"
@@ -2275,6 +2389,7 @@
           "mode": "fast",
           "intent": "quick edits",
           "usage_budget": {
+            "level": "route",
             "max_cost_usd": 5,
             "window": "24h",
             "scope": "global"
@@ -2294,6 +2409,7 @@
           "mode": "structured",
           "intent": "schema transforms",
           "usage_budget": {
+            "level": "session",
             "max_cost_usd": 2.5,
             "window": "24h",
             "scope": "session"
@@ -2313,6 +2429,7 @@
           "mode": "pro",
           "intent": "planning and architecture",
           "usage_budget": {
+            "level": "project",
             "max_cost_usd": 5,
             "window": "7d",
             "scope": "project"
@@ -2411,9 +2528,9 @@
           "seq": 1,
           "at": "2026-10-03T14:52:30Z",
           "scope": "session",
-          "session_id": "SESSION-001",
+          "session_id": "sess-001",
           "kind": "session.started",
-          "payload": "{\"seq\":1,\"scope\":\"session\",\"kind\":\"session.started\",\"session_id\":\"SESSION-001\",\"tokens\":100}"
+          "payload": "{\"seq\":1,\"scope\":\"session\",\"kind\":\"session.started\",\"session_id\":\"sess-001\",\"tokens\":100}"
         },
         {
           "seq": 2,
@@ -2447,17 +2564,17 @@
           "seq": 6,
           "at": "2026-10-03T16:45:00Z",
           "scope": "session",
-          "session_id": "SESSION-006",
+          "session_id": "sess-001",
           "kind": "turn.created",
-          "payload": "{\"seq\":6,\"scope\":\"session\",\"kind\":\"turn.created\",\"session_id\":\"SESSION-006\",\"tokens\":225}"
+          "payload": "{\"seq\":6,\"scope\":\"session\",\"kind\":\"turn.created\",\"session_id\":\"sess-001\",\"tokens\":225}"
         },
         {
           "seq": 7,
           "at": "2026-10-03T17:07:30Z",
           "scope": "agent",
-          "session_id": "SESSION-007",
+          "session_id": "sess-001",
           "kind": "agent.heartbeat",
-          "payload": "{\"seq\":7,\"scope\":\"agent\",\"kind\":\"agent.heartbeat\",\"session_id\":\"SESSION-007\",\"tokens\":250}"
+          "payload": "{\"seq\":7,\"scope\":\"agent\",\"kind\":\"agent.heartbeat\",\"session_id\":\"sess-001\",\"tokens\":250}"
         },
         {
           "seq": 8,
@@ -2484,9 +2601,9 @@
           "seq": 11,
           "at": "2026-10-03T18:37:30Z",
           "scope": "session",
-          "session_id": "SESSION-003",
+          "session_id": "sess-002",
           "kind": "turn.completed",
-          "payload": "{\"seq\":11,\"scope\":\"session\",\"kind\":\"turn.completed\",\"session_id\":\"SESSION-003\",\"tokens\":350}"
+          "payload": "{\"seq\":11,\"scope\":\"session\",\"kind\":\"turn.completed\",\"session_id\":\"sess-002\",\"tokens\":350}"
         },
         {
           "seq": 12,
@@ -2520,17 +2637,17 @@
           "seq": 16,
           "at": "2026-10-03T20:30:00Z",
           "scope": "session",
-          "session_id": "SESSION-008",
+          "session_id": "sess-002",
           "kind": "session.checkpoint",
-          "payload": "{\"seq\":16,\"scope\":\"session\",\"kind\":\"session.checkpoint\",\"session_id\":\"SESSION-008\",\"tokens\":475}"
+          "payload": "{\"seq\":16,\"scope\":\"session\",\"kind\":\"session.checkpoint\",\"session_id\":\"sess-002\",\"tokens\":475}"
         },
         {
           "seq": 17,
           "at": "2026-10-03T20:52:30Z",
           "scope": "agent",
-          "session_id": "SESSION-001",
+          "session_id": "sess-002",
           "kind": "agent.state_changed",
-          "payload": "{\"seq\":17,\"scope\":\"agent\",\"kind\":\"agent.state_changed\",\"session_id\":\"SESSION-001\",\"tokens\":500}"
+          "payload": "{\"seq\":17,\"scope\":\"agent\",\"kind\":\"agent.state_changed\",\"session_id\":\"sess-002\",\"tokens\":500}"
         },
         {
           "seq": 18,
@@ -2557,9 +2674,9 @@
           "seq": 21,
           "at": "2026-10-03T22:22:30Z",
           "scope": "session",
-          "session_id": "SESSION-005",
+          "session_id": "sess-002",
           "kind": "session.ended",
-          "payload": "{\"seq\":21,\"scope\":\"session\",\"kind\":\"session.ended\",\"session_id\":\"SESSION-005\",\"tokens\":600}"
+          "payload": "{\"seq\":21,\"scope\":\"session\",\"kind\":\"session.ended\",\"session_id\":\"sess-002\",\"tokens\":600}"
         },
         {
           "seq": 22,
@@ -2593,17 +2710,17 @@
           "seq": 26,
           "at": "2026-10-04T00:15:00Z",
           "scope": "session",
-          "session_id": "SESSION-002",
+          "session_id": "sess-003",
           "kind": "session.started",
-          "payload": "{\"seq\":26,\"scope\":\"session\",\"kind\":\"session.started\",\"session_id\":\"SESSION-002\",\"tokens\":725}"
+          "payload": "{\"seq\":26,\"scope\":\"session\",\"kind\":\"session.started\",\"session_id\":\"sess-003\",\"tokens\":725}"
         },
         {
           "seq": 27,
           "at": "2026-10-04T00:37:30Z",
           "scope": "agent",
-          "session_id": "SESSION-003",
+          "session_id": "sess-003",
           "kind": "agent.heartbeat",
-          "payload": "{\"seq\":27,\"scope\":\"agent\",\"kind\":\"agent.heartbeat\",\"session_id\":\"SESSION-003\",\"tokens\":750}"
+          "payload": "{\"seq\":27,\"scope\":\"agent\",\"kind\":\"agent.heartbeat\",\"session_id\":\"sess-003\",\"tokens\":750}"
         },
         {
           "seq": 28,
@@ -2630,9 +2747,9 @@
           "seq": 31,
           "at": "2026-10-04T02:07:30Z",
           "scope": "session",
-          "session_id": "SESSION-007",
+          "session_id": "sess-003",
           "kind": "turn.created",
-          "payload": "{\"seq\":31,\"scope\":\"session\",\"kind\":\"turn.created\",\"session_id\":\"SESSION-007\",\"tokens\":850}"
+          "payload": "{\"seq\":31,\"scope\":\"session\",\"kind\":\"turn.created\",\"session_id\":\"sess-003\",\"tokens\":850}"
         },
         {
           "seq": 32,
@@ -2666,17 +2783,17 @@
           "seq": 36,
           "at": "2026-10-04T04:00:00Z",
           "scope": "session",
-          "session_id": "SESSION-004",
+          "session_id": "sess-004",
           "kind": "turn.completed",
-          "payload": "{\"seq\":36,\"scope\":\"session\",\"kind\":\"turn.completed\",\"session_id\":\"SESSION-004\",\"tokens\":975}"
+          "payload": "{\"seq\":36,\"scope\":\"session\",\"kind\":\"turn.completed\",\"session_id\":\"sess-004\",\"tokens\":975}"
         },
         {
           "seq": 37,
           "at": "2026-10-04T04:22:30Z",
           "scope": "agent",
-          "session_id": "SESSION-005",
+          "session_id": "sess-004",
           "kind": "agent.state_changed",
-          "payload": "{\"seq\":37,\"scope\":\"agent\",\"kind\":\"agent.state_changed\",\"session_id\":\"SESSION-005\",\"tokens\":1000}"
+          "payload": "{\"seq\":37,\"scope\":\"agent\",\"kind\":\"agent.state_changed\",\"session_id\":\"sess-004\",\"tokens\":1000}"
         },
         {
           "seq": 38,
@@ -2703,9 +2820,9 @@
           "seq": 41,
           "at": "2026-10-04T05:52:30Z",
           "scope": "session",
-          "session_id": "SESSION-001",
+          "session_id": "sess-004",
           "kind": "session.checkpoint",
-          "payload": "{\"seq\":41,\"scope\":\"session\",\"kind\":\"session.checkpoint\",\"session_id\":\"SESSION-001\",\"tokens\":1100}"
+          "payload": "{\"seq\":41,\"scope\":\"session\",\"kind\":\"session.checkpoint\",\"session_id\":\"sess-004\",\"tokens\":1100}"
         },
         {
           "seq": 42,
@@ -2739,17 +2856,17 @@
           "seq": 46,
           "at": "2026-10-04T07:45:00Z",
           "scope": "session",
-          "session_id": "SESSION-006",
+          "session_id": "sess-005",
           "kind": "session.ended",
-          "payload": "{\"seq\":46,\"scope\":\"session\",\"kind\":\"session.ended\",\"session_id\":\"SESSION-006\",\"tokens\":1225}"
+          "payload": "{\"seq\":46,\"scope\":\"session\",\"kind\":\"session.ended\",\"session_id\":\"sess-005\",\"tokens\":1225}"
         },
         {
           "seq": 47,
           "at": "2026-10-04T08:07:30Z",
           "scope": "agent",
-          "session_id": "SESSION-007",
+          "session_id": "sess-005",
           "kind": "agent.heartbeat",
-          "payload": "{\"seq\":47,\"scope\":\"agent\",\"kind\":\"agent.heartbeat\",\"session_id\":\"SESSION-007\",\"tokens\":1250}"
+          "payload": "{\"seq\":47,\"scope\":\"agent\",\"kind\":\"agent.heartbeat\",\"session_id\":\"sess-005\",\"tokens\":1250}"
         },
         {
           "seq": 48,
@@ -2776,9 +2893,9 @@
           "seq": 51,
           "at": "2026-10-04T09:37:30Z",
           "scope": "session",
-          "session_id": "SESSION-003",
+          "session_id": "sess-005",
           "kind": "session.started",
-          "payload": "{\"seq\":51,\"scope\":\"session\",\"kind\":\"session.started\",\"session_id\":\"SESSION-003\",\"tokens\":1350}"
+          "payload": "{\"seq\":51,\"scope\":\"session\",\"kind\":\"session.started\",\"session_id\":\"sess-005\",\"tokens\":1350}"
         },
         {
           "seq": 52,
@@ -2812,17 +2929,17 @@
           "seq": 56,
           "at": "2026-10-04T11:30:00Z",
           "scope": "session",
-          "session_id": "SESSION-008",
+          "session_id": "sess-006",
           "kind": "turn.created",
-          "payload": "{\"seq\":56,\"scope\":\"session\",\"kind\":\"turn.created\",\"session_id\":\"SESSION-008\",\"tokens\":1475}"
+          "payload": "{\"seq\":56,\"scope\":\"session\",\"kind\":\"turn.created\",\"session_id\":\"sess-006\",\"tokens\":1475}"
         },
         {
           "seq": 57,
           "at": "2026-10-04T11:52:30Z",
           "scope": "agent",
-          "session_id": "SESSION-001",
+          "session_id": "sess-006",
           "kind": "agent.state_changed",
-          "payload": "{\"seq\":57,\"scope\":\"agent\",\"kind\":\"agent.state_changed\",\"session_id\":\"SESSION-001\",\"tokens\":1500}"
+          "payload": "{\"seq\":57,\"scope\":\"agent\",\"kind\":\"agent.state_changed\",\"session_id\":\"sess-006\",\"tokens\":1500}"
         },
         {
           "seq": 58,
@@ -2849,9 +2966,9 @@
           "seq": 61,
           "at": "2026-10-04T13:22:30Z",
           "scope": "session",
-          "session_id": "SESSION-005",
+          "session_id": "sess-007",
           "kind": "turn.completed",
-          "payload": "{\"seq\":61,\"scope\":\"session\",\"kind\":\"turn.completed\",\"session_id\":\"SESSION-005\",\"tokens\":1600}"
+          "payload": "{\"seq\":61,\"scope\":\"session\",\"kind\":\"turn.completed\",\"session_id\":\"sess-007\",\"tokens\":1600}"
         },
         {
           "seq": 62,
@@ -2881,7 +2998,7 @@
       "tool_calls": [
         {
           "id": 1,
-          "session_id": "SESSION-001",
+          "session_id": "sess-002",
           "server": "native",
           "tool_name": "read_file",
           "args_schema_fp": "fp-read_file-v1",
@@ -2892,7 +3009,7 @@
         },
         {
           "id": 2,
-          "session_id": "SESSION-002",
+          "session_id": "sess-002",
           "server": "mcp-fs",
           "tool_name": "run_command",
           "args_schema_fp": "fp-run_command-v1",
@@ -2903,7 +3020,7 @@
         },
         {
           "id": 3,
-          "session_id": "SESSION-003",
+          "session_id": "sess-002",
           "server": "mcp-git",
           "tool_name": "replace_file_content",
           "args_schema_fp": "fp-replace_file_content-v1",
@@ -2914,7 +3031,7 @@
         },
         {
           "id": 4,
-          "session_id": "SESSION-004",
+          "session_id": "sess-003",
           "server": "mcp-eval",
           "tool_name": "fixture.inspect",
           "args_schema_fp": "fp-fixture.inspect-v1",
@@ -2925,7 +3042,7 @@
         },
         {
           "id": 5,
-          "session_id": "SESSION-005",
+          "session_id": "sess-003",
           "server": "native",
           "tool_name": "view_file",
           "args_schema_fp": "fp-view_file-v1",
@@ -2936,7 +3053,7 @@
         },
         {
           "id": 6,
-          "session_id": "SESSION-006",
+          "session_id": "sess-003",
           "server": "mcp-fs",
           "tool_name": "git_status",
           "args_schema_fp": "fp-git_status-v1",
@@ -2947,7 +3064,7 @@
         },
         {
           "id": 7,
-          "session_id": "SESSION-007",
+          "session_id": "sess-003",
           "server": "mcp-git",
           "tool_name": "read_file",
           "args_schema_fp": "fp-read_file-v1",
@@ -2958,7 +3075,7 @@
         },
         {
           "id": 8,
-          "session_id": "SESSION-008",
+          "session_id": "sess-003",
           "server": "mcp-eval",
           "tool_name": "run_command",
           "args_schema_fp": "fp-run_command-v1",
@@ -2970,7 +3087,7 @@
         },
         {
           "id": 9,
-          "session_id": "SESSION-001",
+          "session_id": "sess-003",
           "server": "native",
           "tool_name": "replace_file_content",
           "args_schema_fp": "fp-replace_file_content-v1",
@@ -2981,7 +3098,7 @@
         },
         {
           "id": 10,
-          "session_id": "SESSION-002",
+          "session_id": "sess-004",
           "server": "mcp-fs",
           "tool_name": "fixture.inspect",
           "args_schema_fp": "fp-fixture.inspect-v1",
@@ -2992,7 +3109,7 @@
         },
         {
           "id": 11,
-          "session_id": "SESSION-003",
+          "session_id": "sess-004",
           "server": "mcp-git",
           "tool_name": "view_file",
           "args_schema_fp": "fp-view_file-v1",
@@ -3003,7 +3120,7 @@
         },
         {
           "id": 12,
-          "session_id": "SESSION-004",
+          "session_id": "sess-004",
           "server": "mcp-eval",
           "tool_name": "git_status",
           "args_schema_fp": "fp-git_status-v1",
@@ -3014,7 +3131,7 @@
         },
         {
           "id": 13,
-          "session_id": "SESSION-005",
+          "session_id": "sess-004",
           "server": "native",
           "tool_name": "read_file",
           "args_schema_fp": "fp-read_file-v1",
@@ -3025,7 +3142,7 @@
         },
         {
           "id": 14,
-          "session_id": "SESSION-006",
+          "session_id": "sess-004",
           "server": "mcp-fs",
           "tool_name": "run_command",
           "args_schema_fp": "fp-run_command-v1",
@@ -3036,7 +3153,7 @@
         },
         {
           "id": 15,
-          "session_id": "SESSION-007",
+          "session_id": "sess-004",
           "server": "mcp-git",
           "tool_name": "replace_file_content",
           "args_schema_fp": "fp-replace_file_content-v1",
@@ -3047,7 +3164,7 @@
         },
         {
           "id": 16,
-          "session_id": "SESSION-008",
+          "session_id": "sess-004",
           "server": "mcp-eval",
           "tool_name": "fixture.inspect",
           "args_schema_fp": "fp-fixture.inspect-v1",
@@ -3058,7 +3175,7 @@
         },
         {
           "id": 17,
-          "session_id": "SESSION-001",
+          "session_id": "sess-005",
           "server": "native",
           "tool_name": "view_file",
           "args_schema_fp": "fp-view_file-v1",
@@ -3069,7 +3186,7 @@
         },
         {
           "id": 18,
-          "session_id": "SESSION-002",
+          "session_id": "sess-005",
           "server": "mcp-fs",
           "tool_name": "git_status",
           "args_schema_fp": "fp-git_status-v1",
@@ -3080,7 +3197,7 @@
         },
         {
           "id": 19,
-          "session_id": "SESSION-003",
+          "session_id": "sess-005",
           "server": "mcp-git",
           "tool_name": "read_file",
           "args_schema_fp": "fp-read_file-v1",
@@ -3091,7 +3208,7 @@
         },
         {
           "id": 20,
-          "session_id": "SESSION-004",
+          "session_id": "sess-005",
           "server": "mcp-eval",
           "tool_name": "run_command",
           "args_schema_fp": "fp-run_command-v1",
@@ -3102,7 +3219,7 @@
         },
         {
           "id": 21,
-          "session_id": "SESSION-005",
+          "session_id": "sess-005",
           "server": "native",
           "tool_name": "replace_file_content",
           "args_schema_fp": "fp-replace_file_content-v1",
@@ -3113,7 +3230,7 @@
         },
         {
           "id": 22,
-          "session_id": "SESSION-006",
+          "session_id": "sess-005",
           "server": "mcp-fs",
           "tool_name": "fixture.inspect",
           "args_schema_fp": "fp-fixture.inspect-v1",
@@ -3124,7 +3241,7 @@
         },
         {
           "id": 23,
-          "session_id": "SESSION-007",
+          "session_id": "sess-005",
           "server": "mcp-git",
           "tool_name": "view_file",
           "args_schema_fp": "fp-view_file-v1",
@@ -3135,7 +3252,7 @@
         },
         {
           "id": 24,
-          "session_id": "SESSION-008",
+          "session_id": "sess-006",
           "server": "mcp-eval",
           "tool_name": "git_status",
           "args_schema_fp": "fp-git_status-v1",
@@ -3146,7 +3263,7 @@
         },
         {
           "id": 25,
-          "session_id": "SESSION-001",
+          "session_id": "sess-006",
           "server": "native",
           "tool_name": "read_file",
           "args_schema_fp": "fp-read_file-v1",
@@ -3157,7 +3274,7 @@
         },
         {
           "id": 26,
-          "session_id": "SESSION-002",
+          "session_id": "sess-006",
           "server": "mcp-fs",
           "tool_name": "run_command",
           "args_schema_fp": "fp-run_command-v1",
@@ -3168,7 +3285,7 @@
         },
         {
           "id": 27,
-          "session_id": "SESSION-003",
+          "session_id": "sess-007",
           "server": "mcp-git",
           "tool_name": "replace_file_content",
           "args_schema_fp": "fp-replace_file_content-v1",
@@ -3179,7 +3296,7 @@
         },
         {
           "id": 28,
-          "session_id": "SESSION-004",
+          "session_id": "sess-007",
           "server": "mcp-eval",
           "tool_name": "fixture.inspect",
           "args_schema_fp": "fp-fixture.inspect-v1",
@@ -3190,7 +3307,7 @@
         },
         {
           "id": 29,
-          "session_id": "SESSION-005",
+          "session_id": "sess-007",
           "server": "native",
           "tool_name": "view_file",
           "args_schema_fp": "fp-view_file-v1",
@@ -3201,7 +3318,7 @@
         },
         {
           "id": 30,
-          "session_id": "SESSION-006",
+          "session_id": "sess-008",
           "server": "mcp-fs",
           "tool_name": "git_status",
           "args_schema_fp": "fp-git_status-v1",
@@ -3217,7 +3334,7 @@
       {
         "scope": "session",
         "event_count": 13,
-        "session_count": 8,
+        "session_count": 7,
         "kind_count": 5,
         "latest_at": "2026-10-04T13:22:30Z",
         "latest_kind": "turn.completed",
@@ -3248,7 +3365,7 @@
       {
         "scope": "agent",
         "event_count": 13,
-        "session_count": 4,
+        "session_count": 6,
         "kind_count": 4,
         "latest_at": "2026-10-04T13:45:00Z",
         "latest_kind": "agent.registered",
@@ -3353,7 +3470,130 @@
           }
         ]
       }
-    ]
+    ],
+    "sessions": {
+      "sessions": [
+        {
+          "id": "sess-001",
+          "launch_id": "launch-parallax-review",
+          "project_id": "parallax",
+          "logical_agent_id": "agent-001",
+          "provider_id": "claude",
+          "provider_kind": "anthropic",
+          "workspace": "/home/chrispian/dev/hollis-labs/worktrees/parallax/review",
+          "state": "ended",
+          "pid": 4101,
+          "exit_code": 0,
+          "created_at": "2026-10-03T14:30:00Z",
+          "updated_at": "2026-10-03T18:30:00Z",
+          "ended_at": "2026-10-03T18:30:00Z"
+        },
+        {
+          "id": "sess-002",
+          "launch_id": "launch-tether-daemon",
+          "project_id": "tether",
+          "logical_agent_id": "agent-002",
+          "provider_id": "codex",
+          "provider_kind": "openai",
+          "workspace": "/home/chrispian/dev/hollis-labs/tether",
+          "state": "ended",
+          "pid": 4102,
+          "exit_code": 0,
+          "created_at": "2026-10-03T18:30:00Z",
+          "updated_at": "2026-10-03T22:30:00Z",
+          "ended_at": "2026-10-03T22:30:00Z"
+        },
+        {
+          "id": "sess-003",
+          "launch_id": "launch-tangent-proxy",
+          "project_id": "tangent",
+          "logical_agent_id": "agent-003",
+          "provider_id": "agy",
+          "provider_kind": "google",
+          "workspace": "/home/chrispian/dev/hollis-labs/tangent",
+          "state": "ended",
+          "pid": 4103,
+          "exit_code": 1,
+          "created_at": "2026-10-03T22:30:00Z",
+          "updated_at": "2026-10-04T02:30:00Z",
+          "ended_at": "2026-10-04T02:30:00Z"
+        },
+        {
+          "id": "sess-004",
+          "launch_id": "launch-parallax-fixtures",
+          "project_id": "parallax",
+          "logical_agent_id": "agent-001",
+          "provider_id": "claude",
+          "provider_kind": "anthropic",
+          "workspace": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
+          "state": "ended",
+          "pid": 4104,
+          "exit_code": 0,
+          "created_at": "2026-10-04T02:30:00Z",
+          "updated_at": "2026-10-04T06:30:00Z",
+          "ended_at": "2026-10-04T06:30:00Z"
+        },
+        {
+          "id": "sess-005",
+          "launch_id": "launch-tether-registry",
+          "project_id": "tether",
+          "logical_agent_id": "agent-004",
+          "provider_id": "codex",
+          "provider_kind": "openai",
+          "workspace": "/home/chrispian/dev/hollis-labs/tether",
+          "state": "ended",
+          "pid": 4105,
+          "exit_code": 0,
+          "created_at": "2026-10-04T06:30:00Z",
+          "updated_at": "2026-10-04T10:30:00Z",
+          "ended_at": "2026-10-04T10:30:00Z"
+        },
+        {
+          "id": "sess-006",
+          "launch_id": "launch-tangent-bridge",
+          "project_id": "tangent",
+          "logical_agent_id": "agent-003",
+          "provider_id": "agy",
+          "provider_kind": "google",
+          "workspace": "/home/chrispian/dev/hollis-labs/tangent",
+          "state": "ended",
+          "pid": 4106,
+          "exit_code": 0,
+          "created_at": "2026-10-04T10:30:00Z",
+          "updated_at": "2026-10-04T13:30:00Z",
+          "ended_at": "2026-10-04T13:30:00Z"
+        },
+        {
+          "id": "sess-007",
+          "launch_id": "launch-parallax-runner",
+          "project_id": "parallax",
+          "logical_agent_id": "agent-001",
+          "provider_id": "claude",
+          "provider_kind": "anthropic",
+          "workspace": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
+          "state": "running",
+          "pid": 4107,
+          "created_at": "2026-10-04T12:30:00Z",
+          "updated_at": "2026-10-04T14:20:00Z"
+        },
+        {
+          "id": "sess-008",
+          "launch_id": "launch-parallax-gate",
+          "project_id": "parallax",
+          "logical_agent_id": "agent-002",
+          "provider_id": "codex",
+          "provider_kind": "openai",
+          "workspace": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
+          "state": "running",
+          "pid": 4108,
+          "created_at": "2026-10-04T14:00:00Z",
+          "updated_at": "2026-10-04T14:28:00Z"
+        }
+      ],
+      "total": 8,
+      "running": 2,
+      "ended": 6
+    }
   },
   "registry": {
     "rows": [
@@ -3791,9 +4031,9 @@
       "seq": 1,
       "at": "2026-10-03T14:52:30Z",
       "scope": "session",
-      "session_id": "SESSION-001",
+      "session_id": "sess-001",
       "kind": "session.started",
-      "payload": "{\"seq\":1,\"scope\":\"session\",\"kind\":\"session.started\",\"session_id\":\"SESSION-001\",\"tokens\":100}"
+      "payload": "{\"seq\":1,\"scope\":\"session\",\"kind\":\"session.started\",\"session_id\":\"sess-001\",\"tokens\":100}"
     },
     {
       "seq": 2,
@@ -3827,17 +4067,17 @@
       "seq": 6,
       "at": "2026-10-03T16:45:00Z",
       "scope": "session",
-      "session_id": "SESSION-006",
+      "session_id": "sess-001",
       "kind": "turn.created",
-      "payload": "{\"seq\":6,\"scope\":\"session\",\"kind\":\"turn.created\",\"session_id\":\"SESSION-006\",\"tokens\":225}"
+      "payload": "{\"seq\":6,\"scope\":\"session\",\"kind\":\"turn.created\",\"session_id\":\"sess-001\",\"tokens\":225}"
     },
     {
       "seq": 7,
       "at": "2026-10-03T17:07:30Z",
       "scope": "agent",
-      "session_id": "SESSION-007",
+      "session_id": "sess-001",
       "kind": "agent.heartbeat",
-      "payload": "{\"seq\":7,\"scope\":\"agent\",\"kind\":\"agent.heartbeat\",\"session_id\":\"SESSION-007\",\"tokens\":250}"
+      "payload": "{\"seq\":7,\"scope\":\"agent\",\"kind\":\"agent.heartbeat\",\"session_id\":\"sess-001\",\"tokens\":250}"
     },
     {
       "seq": 8,
@@ -3864,9 +4104,9 @@
       "seq": 11,
       "at": "2026-10-03T18:37:30Z",
       "scope": "session",
-      "session_id": "SESSION-003",
+      "session_id": "sess-002",
       "kind": "turn.completed",
-      "payload": "{\"seq\":11,\"scope\":\"session\",\"kind\":\"turn.completed\",\"session_id\":\"SESSION-003\",\"tokens\":350}"
+      "payload": "{\"seq\":11,\"scope\":\"session\",\"kind\":\"turn.completed\",\"session_id\":\"sess-002\",\"tokens\":350}"
     },
     {
       "seq": 12,
@@ -3900,17 +4140,17 @@
       "seq": 16,
       "at": "2026-10-03T20:30:00Z",
       "scope": "session",
-      "session_id": "SESSION-008",
+      "session_id": "sess-002",
       "kind": "session.checkpoint",
-      "payload": "{\"seq\":16,\"scope\":\"session\",\"kind\":\"session.checkpoint\",\"session_id\":\"SESSION-008\",\"tokens\":475}"
+      "payload": "{\"seq\":16,\"scope\":\"session\",\"kind\":\"session.checkpoint\",\"session_id\":\"sess-002\",\"tokens\":475}"
     },
     {
       "seq": 17,
       "at": "2026-10-03T20:52:30Z",
       "scope": "agent",
-      "session_id": "SESSION-001",
+      "session_id": "sess-002",
       "kind": "agent.state_changed",
-      "payload": "{\"seq\":17,\"scope\":\"agent\",\"kind\":\"agent.state_changed\",\"session_id\":\"SESSION-001\",\"tokens\":500}"
+      "payload": "{\"seq\":17,\"scope\":\"agent\",\"kind\":\"agent.state_changed\",\"session_id\":\"sess-002\",\"tokens\":500}"
     },
     {
       "seq": 18,
@@ -3937,9 +4177,9 @@
       "seq": 21,
       "at": "2026-10-03T22:22:30Z",
       "scope": "session",
-      "session_id": "SESSION-005",
+      "session_id": "sess-002",
       "kind": "session.ended",
-      "payload": "{\"seq\":21,\"scope\":\"session\",\"kind\":\"session.ended\",\"session_id\":\"SESSION-005\",\"tokens\":600}"
+      "payload": "{\"seq\":21,\"scope\":\"session\",\"kind\":\"session.ended\",\"session_id\":\"sess-002\",\"tokens\":600}"
     },
     {
       "seq": 22,
@@ -3973,17 +4213,17 @@
       "seq": 26,
       "at": "2026-10-04T00:15:00Z",
       "scope": "session",
-      "session_id": "SESSION-002",
+      "session_id": "sess-003",
       "kind": "session.started",
-      "payload": "{\"seq\":26,\"scope\":\"session\",\"kind\":\"session.started\",\"session_id\":\"SESSION-002\",\"tokens\":725}"
+      "payload": "{\"seq\":26,\"scope\":\"session\",\"kind\":\"session.started\",\"session_id\":\"sess-003\",\"tokens\":725}"
     },
     {
       "seq": 27,
       "at": "2026-10-04T00:37:30Z",
       "scope": "agent",
-      "session_id": "SESSION-003",
+      "session_id": "sess-003",
       "kind": "agent.heartbeat",
-      "payload": "{\"seq\":27,\"scope\":\"agent\",\"kind\":\"agent.heartbeat\",\"session_id\":\"SESSION-003\",\"tokens\":750}"
+      "payload": "{\"seq\":27,\"scope\":\"agent\",\"kind\":\"agent.heartbeat\",\"session_id\":\"sess-003\",\"tokens\":750}"
     },
     {
       "seq": 28,
@@ -4010,9 +4250,9 @@
       "seq": 31,
       "at": "2026-10-04T02:07:30Z",
       "scope": "session",
-      "session_id": "SESSION-007",
+      "session_id": "sess-003",
       "kind": "turn.created",
-      "payload": "{\"seq\":31,\"scope\":\"session\",\"kind\":\"turn.created\",\"session_id\":\"SESSION-007\",\"tokens\":850}"
+      "payload": "{\"seq\":31,\"scope\":\"session\",\"kind\":\"turn.created\",\"session_id\":\"sess-003\",\"tokens\":850}"
     },
     {
       "seq": 32,
@@ -4046,17 +4286,17 @@
       "seq": 36,
       "at": "2026-10-04T04:00:00Z",
       "scope": "session",
-      "session_id": "SESSION-004",
+      "session_id": "sess-004",
       "kind": "turn.completed",
-      "payload": "{\"seq\":36,\"scope\":\"session\",\"kind\":\"turn.completed\",\"session_id\":\"SESSION-004\",\"tokens\":975}"
+      "payload": "{\"seq\":36,\"scope\":\"session\",\"kind\":\"turn.completed\",\"session_id\":\"sess-004\",\"tokens\":975}"
     },
     {
       "seq": 37,
       "at": "2026-10-04T04:22:30Z",
       "scope": "agent",
-      "session_id": "SESSION-005",
+      "session_id": "sess-004",
       "kind": "agent.state_changed",
-      "payload": "{\"seq\":37,\"scope\":\"agent\",\"kind\":\"agent.state_changed\",\"session_id\":\"SESSION-005\",\"tokens\":1000}"
+      "payload": "{\"seq\":37,\"scope\":\"agent\",\"kind\":\"agent.state_changed\",\"session_id\":\"sess-004\",\"tokens\":1000}"
     },
     {
       "seq": 38,
@@ -4083,9 +4323,9 @@
       "seq": 41,
       "at": "2026-10-04T05:52:30Z",
       "scope": "session",
-      "session_id": "SESSION-001",
+      "session_id": "sess-004",
       "kind": "session.checkpoint",
-      "payload": "{\"seq\":41,\"scope\":\"session\",\"kind\":\"session.checkpoint\",\"session_id\":\"SESSION-001\",\"tokens\":1100}"
+      "payload": "{\"seq\":41,\"scope\":\"session\",\"kind\":\"session.checkpoint\",\"session_id\":\"sess-004\",\"tokens\":1100}"
     },
     {
       "seq": 42,
@@ -4119,17 +4359,17 @@
       "seq": 46,
       "at": "2026-10-04T07:45:00Z",
       "scope": "session",
-      "session_id": "SESSION-006",
+      "session_id": "sess-005",
       "kind": "session.ended",
-      "payload": "{\"seq\":46,\"scope\":\"session\",\"kind\":\"session.ended\",\"session_id\":\"SESSION-006\",\"tokens\":1225}"
+      "payload": "{\"seq\":46,\"scope\":\"session\",\"kind\":\"session.ended\",\"session_id\":\"sess-005\",\"tokens\":1225}"
     },
     {
       "seq": 47,
       "at": "2026-10-04T08:07:30Z",
       "scope": "agent",
-      "session_id": "SESSION-007",
+      "session_id": "sess-005",
       "kind": "agent.heartbeat",
-      "payload": "{\"seq\":47,\"scope\":\"agent\",\"kind\":\"agent.heartbeat\",\"session_id\":\"SESSION-007\",\"tokens\":1250}"
+      "payload": "{\"seq\":47,\"scope\":\"agent\",\"kind\":\"agent.heartbeat\",\"session_id\":\"sess-005\",\"tokens\":1250}"
     },
     {
       "seq": 48,
@@ -4156,9 +4396,9 @@
       "seq": 51,
       "at": "2026-10-04T09:37:30Z",
       "scope": "session",
-      "session_id": "SESSION-003",
+      "session_id": "sess-005",
       "kind": "session.started",
-      "payload": "{\"seq\":51,\"scope\":\"session\",\"kind\":\"session.started\",\"session_id\":\"SESSION-003\",\"tokens\":1350}"
+      "payload": "{\"seq\":51,\"scope\":\"session\",\"kind\":\"session.started\",\"session_id\":\"sess-005\",\"tokens\":1350}"
     },
     {
       "seq": 52,
@@ -4192,17 +4432,17 @@
       "seq": 56,
       "at": "2026-10-04T11:30:00Z",
       "scope": "session",
-      "session_id": "SESSION-008",
+      "session_id": "sess-006",
       "kind": "turn.created",
-      "payload": "{\"seq\":56,\"scope\":\"session\",\"kind\":\"turn.created\",\"session_id\":\"SESSION-008\",\"tokens\":1475}"
+      "payload": "{\"seq\":56,\"scope\":\"session\",\"kind\":\"turn.created\",\"session_id\":\"sess-006\",\"tokens\":1475}"
     },
     {
       "seq": 57,
       "at": "2026-10-04T11:52:30Z",
       "scope": "agent",
-      "session_id": "SESSION-001",
+      "session_id": "sess-006",
       "kind": "agent.state_changed",
-      "payload": "{\"seq\":57,\"scope\":\"agent\",\"kind\":\"agent.state_changed\",\"session_id\":\"SESSION-001\",\"tokens\":1500}"
+      "payload": "{\"seq\":57,\"scope\":\"agent\",\"kind\":\"agent.state_changed\",\"session_id\":\"sess-006\",\"tokens\":1500}"
     },
     {
       "seq": 58,
@@ -4229,9 +4469,9 @@
       "seq": 61,
       "at": "2026-10-04T13:22:30Z",
       "scope": "session",
-      "session_id": "SESSION-005",
+      "session_id": "sess-007",
       "kind": "turn.completed",
-      "payload": "{\"seq\":61,\"scope\":\"session\",\"kind\":\"turn.completed\",\"session_id\":\"SESSION-005\",\"tokens\":1600}"
+      "payload": "{\"seq\":61,\"scope\":\"session\",\"kind\":\"turn.completed\",\"session_id\":\"sess-007\",\"tokens\":1600}"
     },
     {
       "seq": 62,
@@ -4258,7 +4498,7 @@
   "toolCalls": [
     {
       "id": 1,
-      "session_id": "SESSION-001",
+      "session_id": "sess-002",
       "server": "native",
       "tool_name": "read_file",
       "args_schema_fp": "fp-read_file-v1",
@@ -4269,7 +4509,7 @@
     },
     {
       "id": 2,
-      "session_id": "SESSION-002",
+      "session_id": "sess-002",
       "server": "mcp-fs",
       "tool_name": "run_command",
       "args_schema_fp": "fp-run_command-v1",
@@ -4280,7 +4520,7 @@
     },
     {
       "id": 3,
-      "session_id": "SESSION-003",
+      "session_id": "sess-002",
       "server": "mcp-git",
       "tool_name": "replace_file_content",
       "args_schema_fp": "fp-replace_file_content-v1",
@@ -4291,7 +4531,7 @@
     },
     {
       "id": 4,
-      "session_id": "SESSION-004",
+      "session_id": "sess-003",
       "server": "mcp-eval",
       "tool_name": "fixture.inspect",
       "args_schema_fp": "fp-fixture.inspect-v1",
@@ -4302,7 +4542,7 @@
     },
     {
       "id": 5,
-      "session_id": "SESSION-005",
+      "session_id": "sess-003",
       "server": "native",
       "tool_name": "view_file",
       "args_schema_fp": "fp-view_file-v1",
@@ -4313,7 +4553,7 @@
     },
     {
       "id": 6,
-      "session_id": "SESSION-006",
+      "session_id": "sess-003",
       "server": "mcp-fs",
       "tool_name": "git_status",
       "args_schema_fp": "fp-git_status-v1",
@@ -4324,7 +4564,7 @@
     },
     {
       "id": 7,
-      "session_id": "SESSION-007",
+      "session_id": "sess-003",
       "server": "mcp-git",
       "tool_name": "read_file",
       "args_schema_fp": "fp-read_file-v1",
@@ -4335,7 +4575,7 @@
     },
     {
       "id": 8,
-      "session_id": "SESSION-008",
+      "session_id": "sess-003",
       "server": "mcp-eval",
       "tool_name": "run_command",
       "args_schema_fp": "fp-run_command-v1",
@@ -4347,7 +4587,7 @@
     },
     {
       "id": 9,
-      "session_id": "SESSION-001",
+      "session_id": "sess-003",
       "server": "native",
       "tool_name": "replace_file_content",
       "args_schema_fp": "fp-replace_file_content-v1",
@@ -4358,7 +4598,7 @@
     },
     {
       "id": 10,
-      "session_id": "SESSION-002",
+      "session_id": "sess-004",
       "server": "mcp-fs",
       "tool_name": "fixture.inspect",
       "args_schema_fp": "fp-fixture.inspect-v1",
@@ -4369,7 +4609,7 @@
     },
     {
       "id": 11,
-      "session_id": "SESSION-003",
+      "session_id": "sess-004",
       "server": "mcp-git",
       "tool_name": "view_file",
       "args_schema_fp": "fp-view_file-v1",
@@ -4380,7 +4620,7 @@
     },
     {
       "id": 12,
-      "session_id": "SESSION-004",
+      "session_id": "sess-004",
       "server": "mcp-eval",
       "tool_name": "git_status",
       "args_schema_fp": "fp-git_status-v1",
@@ -4391,7 +4631,7 @@
     },
     {
       "id": 13,
-      "session_id": "SESSION-005",
+      "session_id": "sess-004",
       "server": "native",
       "tool_name": "read_file",
       "args_schema_fp": "fp-read_file-v1",
@@ -4402,7 +4642,7 @@
     },
     {
       "id": 14,
-      "session_id": "SESSION-006",
+      "session_id": "sess-004",
       "server": "mcp-fs",
       "tool_name": "run_command",
       "args_schema_fp": "fp-run_command-v1",
@@ -4413,7 +4653,7 @@
     },
     {
       "id": 15,
-      "session_id": "SESSION-007",
+      "session_id": "sess-004",
       "server": "mcp-git",
       "tool_name": "replace_file_content",
       "args_schema_fp": "fp-replace_file_content-v1",
@@ -4424,7 +4664,7 @@
     },
     {
       "id": 16,
-      "session_id": "SESSION-008",
+      "session_id": "sess-004",
       "server": "mcp-eval",
       "tool_name": "fixture.inspect",
       "args_schema_fp": "fp-fixture.inspect-v1",
@@ -4435,7 +4675,7 @@
     },
     {
       "id": 17,
-      "session_id": "SESSION-001",
+      "session_id": "sess-005",
       "server": "native",
       "tool_name": "view_file",
       "args_schema_fp": "fp-view_file-v1",
@@ -4446,7 +4686,7 @@
     },
     {
       "id": 18,
-      "session_id": "SESSION-002",
+      "session_id": "sess-005",
       "server": "mcp-fs",
       "tool_name": "git_status",
       "args_schema_fp": "fp-git_status-v1",
@@ -4457,7 +4697,7 @@
     },
     {
       "id": 19,
-      "session_id": "SESSION-003",
+      "session_id": "sess-005",
       "server": "mcp-git",
       "tool_name": "read_file",
       "args_schema_fp": "fp-read_file-v1",
@@ -4468,7 +4708,7 @@
     },
     {
       "id": 20,
-      "session_id": "SESSION-004",
+      "session_id": "sess-005",
       "server": "mcp-eval",
       "tool_name": "run_command",
       "args_schema_fp": "fp-run_command-v1",
@@ -4479,7 +4719,7 @@
     },
     {
       "id": 21,
-      "session_id": "SESSION-005",
+      "session_id": "sess-005",
       "server": "native",
       "tool_name": "replace_file_content",
       "args_schema_fp": "fp-replace_file_content-v1",
@@ -4490,7 +4730,7 @@
     },
     {
       "id": 22,
-      "session_id": "SESSION-006",
+      "session_id": "sess-005",
       "server": "mcp-fs",
       "tool_name": "fixture.inspect",
       "args_schema_fp": "fp-fixture.inspect-v1",
@@ -4501,7 +4741,7 @@
     },
     {
       "id": 23,
-      "session_id": "SESSION-007",
+      "session_id": "sess-005",
       "server": "mcp-git",
       "tool_name": "view_file",
       "args_schema_fp": "fp-view_file-v1",
@@ -4512,7 +4752,7 @@
     },
     {
       "id": 24,
-      "session_id": "SESSION-008",
+      "session_id": "sess-006",
       "server": "mcp-eval",
       "tool_name": "git_status",
       "args_schema_fp": "fp-git_status-v1",
@@ -4523,7 +4763,7 @@
     },
     {
       "id": 25,
-      "session_id": "SESSION-001",
+      "session_id": "sess-006",
       "server": "native",
       "tool_name": "read_file",
       "args_schema_fp": "fp-read_file-v1",
@@ -4534,7 +4774,7 @@
     },
     {
       "id": 26,
-      "session_id": "SESSION-002",
+      "session_id": "sess-006",
       "server": "mcp-fs",
       "tool_name": "run_command",
       "args_schema_fp": "fp-run_command-v1",
@@ -4545,7 +4785,7 @@
     },
     {
       "id": 27,
-      "session_id": "SESSION-003",
+      "session_id": "sess-007",
       "server": "mcp-git",
       "tool_name": "replace_file_content",
       "args_schema_fp": "fp-replace_file_content-v1",
@@ -4556,7 +4796,7 @@
     },
     {
       "id": 28,
-      "session_id": "SESSION-004",
+      "session_id": "sess-007",
       "server": "mcp-eval",
       "tool_name": "fixture.inspect",
       "args_schema_fp": "fp-fixture.inspect-v1",
@@ -4567,7 +4807,7 @@
     },
     {
       "id": 29,
-      "session_id": "SESSION-005",
+      "session_id": "sess-007",
       "server": "native",
       "tool_name": "view_file",
       "args_schema_fp": "fp-view_file-v1",
@@ -4578,7 +4818,7 @@
     },
     {
       "id": 30,
-      "session_id": "SESSION-006",
+      "session_id": "sess-008",
       "server": "mcp-fs",
       "tool_name": "git_status",
       "args_schema_fp": "fp-git_status-v1",
@@ -4592,7 +4832,7 @@
     {
       "scope": "session",
       "event_count": 13,
-      "session_count": 8,
+      "session_count": 7,
       "kind_count": 5,
       "latest_at": "2026-10-04T13:22:30Z",
       "latest_kind": "turn.completed",
@@ -4623,7 +4863,7 @@
     {
       "scope": "agent",
       "event_count": 13,
-      "session_count": 4,
+      "session_count": 6,
       "kind_count": 4,
       "latest_at": "2026-10-04T13:45:00Z",
       "latest_kind": "agent.registered",
@@ -5275,8 +5515,8 @@
       "id": 1,
       "event_type": "chat",
       "request_id": "req-0001",
-      "session_id": "SESSION-001",
-      "caller_id": "agent-001",
+      "session_id": "sess-002",
+      "caller_id": "sysop",
       "operation": "chat",
       "provider": "google",
       "model": "gemini-2.0-flash",
@@ -5297,8 +5537,8 @@
       "id": 2,
       "event_type": "completion",
       "request_id": "req-0002",
-      "session_id": "SESSION-002",
-      "caller_id": "agent-002",
+      "session_id": "sess-002",
+      "caller_id": "architect",
       "operation": "completion",
       "provider": "anthropic",
       "model": "claude-3-7-sonnet",
@@ -5319,8 +5559,8 @@
       "id": 3,
       "event_type": "completion",
       "request_id": "req-0003",
-      "session_id": "SESSION-003",
-      "caller_id": "agent-003",
+      "session_id": "sess-002",
+      "caller_id": "launch-agent-os",
       "operation": "completion",
       "provider": "anthropic",
       "model": "claude-3-7-sonnet",
@@ -5341,8 +5581,8 @@
       "id": 4,
       "event_type": "chat",
       "request_id": "req-0004",
-      "session_id": "SESSION-004",
-      "caller_id": "agent-004",
+      "session_id": "sess-002",
+      "caller_id": "launch-worker-1",
       "operation": "chat",
       "provider": "google",
       "model": "gemini-2.0-flash",
@@ -5363,8 +5603,8 @@
       "id": 5,
       "event_type": "completion",
       "request_id": "req-0005",
-      "session_id": "SESSION-005",
-      "caller_id": "agent-001",
+      "session_id": "sess-003",
+      "caller_id": "task-parallax-4",
       "operation": "completion",
       "provider": "anthropic",
       "model": "claude-3-7-sonnet",
@@ -5385,8 +5625,8 @@
       "id": 6,
       "event_type": "completion",
       "request_id": "req-0006",
-      "session_id": "SESSION-006",
-      "caller_id": "agent-002",
+      "session_id": "sess-003",
+      "caller_id": "task-reader",
       "operation": "completion",
       "provider": "openai",
       "model": "gpt-4o",
@@ -5407,8 +5647,8 @@
       "id": 7,
       "event_type": "chat",
       "request_id": "req-0007",
-      "session_id": "SESSION-007",
-      "caller_id": "agent-003",
+      "session_id": "sess-003",
+      "caller_id": "task-legacy-runner",
       "operation": "chat",
       "provider": "google",
       "model": "gemini-2.0-flash",
@@ -5429,8 +5669,8 @@
       "id": 8,
       "event_type": "completion",
       "request_id": "req-0008",
-      "session_id": "SESSION-008",
-      "caller_id": "agent-004",
+      "session_id": "sess-003",
+      "caller_id": "agent-shim-v1",
       "operation": "completion",
       "provider": "anthropic",
       "model": "claude-3-7-sonnet",
@@ -5451,8 +5691,8 @@
       "id": 9,
       "event_type": "completion",
       "request_id": "req-0009",
-      "session_id": "SESSION-001",
-      "caller_id": "agent-001",
+      "session_id": "sess-003",
+      "caller_id": "sysop",
       "operation": "completion",
       "provider": "anthropic",
       "model": "claude-3-7-sonnet",
@@ -5473,8 +5713,8 @@
       "id": 10,
       "event_type": "chat",
       "request_id": "req-0010",
-      "session_id": "SESSION-002",
-      "caller_id": "agent-002",
+      "session_id": "sess-004",
+      "caller_id": "architect",
       "operation": "chat",
       "provider": "google",
       "model": "gemini-2.0-flash",
@@ -5495,8 +5735,8 @@
       "id": 11,
       "event_type": "completion",
       "request_id": "req-0011",
-      "session_id": "SESSION-003",
-      "caller_id": "agent-003",
+      "session_id": "sess-004",
+      "caller_id": "launch-agent-os",
       "operation": "completion",
       "provider": "openai",
       "model": "gpt-4o",
@@ -5517,8 +5757,8 @@
       "id": 12,
       "event_type": "refusal",
       "request_id": "req-0012",
-      "session_id": "SESSION-004",
-      "caller_id": "agent-004",
+      "session_id": "sess-004",
+      "caller_id": "launch-worker-1",
       "operation": "chat",
       "provider": "anthropic",
       "model": "claude-3-7-sonnet",
@@ -5540,8 +5780,8 @@
       "id": 13,
       "event_type": "chat",
       "request_id": "req-0013",
-      "session_id": "SESSION-005",
-      "caller_id": "agent-001",
+      "session_id": "sess-004",
+      "caller_id": "task-parallax-4",
       "operation": "chat",
       "provider": "google",
       "model": "gemini-2.0-flash",
@@ -5562,8 +5802,8 @@
       "id": 14,
       "event_type": "completion",
       "request_id": "req-0014",
-      "session_id": "SESSION-006",
-      "caller_id": "agent-002",
+      "session_id": "sess-004",
+      "caller_id": "task-reader",
       "operation": "completion",
       "provider": "anthropic",
       "model": "claude-3-7-sonnet",
@@ -5584,8 +5824,8 @@
       "id": 15,
       "event_type": "completion",
       "request_id": "req-0015",
-      "session_id": "SESSION-007",
-      "caller_id": "agent-003",
+      "session_id": "sess-005",
+      "caller_id": "task-legacy-runner",
       "operation": "completion",
       "provider": "anthropic",
       "model": "claude-3-7-sonnet",
@@ -5606,8 +5846,8 @@
       "id": 16,
       "event_type": "chat",
       "request_id": "req-0016",
-      "session_id": "SESSION-008",
-      "caller_id": "agent-004",
+      "session_id": "sess-005",
+      "caller_id": "agent-shim-v1",
       "operation": "chat",
       "provider": "google",
       "model": "gemini-2.0-flash",
@@ -5628,8 +5868,8 @@
       "id": 17,
       "event_type": "completion",
       "request_id": "req-0017",
-      "session_id": "SESSION-001",
-      "caller_id": "agent-001",
+      "session_id": "sess-005",
+      "caller_id": "sysop",
       "operation": "completion",
       "provider": "anthropic",
       "model": "claude-3-7-sonnet",
@@ -5650,15 +5890,15 @@
       "id": 18,
       "event_type": "budget_rejection",
       "request_id": "req-0018",
-      "session_id": "SESSION-002",
-      "caller_id": "agent-002",
+      "session_id": "sess-005",
+      "caller_id": "architect",
       "operation": "completion",
       "provider": "anthropic",
       "model": "claude-3-7-sonnet",
       "policy_version": "ai-policy-v1",
       "latency_ms": 879,
       "success": false,
-      "error": "budget limit $2.50 exceeded for session SESSION-002",
+      "error": "budget limit $2.50 exceeded for session sess-005",
       "input_tokens": 3540,
       "output_tokens": 1115,
       "cache_read_tokens": 740,
@@ -5673,8 +5913,8 @@
       "id": 19,
       "event_type": "chat",
       "request_id": "req-0019",
-      "session_id": "SESSION-003",
-      "caller_id": "agent-003",
+      "session_id": "sess-005",
+      "caller_id": "launch-agent-os",
       "operation": "chat",
       "provider": "google",
       "model": "gemini-2.0-flash",
@@ -5695,8 +5935,8 @@
       "id": 20,
       "event_type": "completion",
       "request_id": "req-0020",
-      "session_id": "SESSION-004",
-      "caller_id": "agent-004",
+      "session_id": "sess-006",
+      "caller_id": "launch-worker-1",
       "operation": "completion",
       "provider": "anthropic",
       "model": "claude-3-7-sonnet",
@@ -5717,8 +5957,8 @@
       "id": 21,
       "event_type": "completion",
       "request_id": "req-0021",
-      "session_id": "SESSION-005",
-      "caller_id": "agent-001",
+      "session_id": "sess-006",
+      "caller_id": "task-parallax-4",
       "operation": "completion",
       "provider": "openai",
       "model": "gpt-4o",
@@ -5739,8 +5979,8 @@
       "id": 22,
       "event_type": "chat",
       "request_id": "req-0022",
-      "session_id": "SESSION-006",
-      "caller_id": "agent-002",
+      "session_id": "sess-007",
+      "caller_id": "task-reader",
       "operation": "chat",
       "provider": "google",
       "model": "gemini-2.0-flash",
@@ -5761,8 +6001,8 @@
       "id": 23,
       "event_type": "completion",
       "request_id": "req-0023",
-      "session_id": "SESSION-007",
-      "caller_id": "agent-003",
+      "session_id": "sess-007",
+      "caller_id": "task-legacy-runner",
       "operation": "completion",
       "provider": "anthropic",
       "model": "claude-3-7-sonnet",
@@ -5783,8 +6023,8 @@
       "id": 24,
       "event_type": "completion",
       "request_id": "req-0024",
-      "session_id": "SESSION-008",
-      "caller_id": "agent-004",
+      "session_id": "sess-008",
+      "caller_id": "agent-shim-v1",
       "operation": "completion",
       "provider": "anthropic",
       "model": "claude-3-7-sonnet",
@@ -5809,6 +6049,7 @@
       "mode": "code",
       "intent": "primary reasoning",
       "usage_budget": {
+        "level": "route",
         "max_cost_usd": 10,
         "window": "24h",
         "scope": "global"
@@ -5828,6 +6069,7 @@
       "mode": "fast",
       "intent": "quick edits",
       "usage_budget": {
+        "level": "route",
         "max_cost_usd": 5,
         "window": "24h",
         "scope": "global"
@@ -5847,6 +6089,7 @@
       "mode": "structured",
       "intent": "schema transforms",
       "usage_budget": {
+        "level": "session",
         "max_cost_usd": 2.5,
         "window": "24h",
         "scope": "session"
@@ -5866,6 +6109,7 @@
       "mode": "pro",
       "intent": "planning and architecture",
       "usage_budget": {
+        "level": "project",
         "max_cost_usd": 5,
         "window": "7d",
         "scope": "project"

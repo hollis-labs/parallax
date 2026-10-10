@@ -17,10 +17,11 @@ Downstream tasks consume these fixtures to recreate the Tether Sysop pages:
 | **Family ID** | `tether-sysop` | Distinct family path in Parallax scenarios and `family-contracts.json` |
 | **Dataset Version** | `tether-sysop/v1` | Explicit versioning; clean break from legacy ad-hoc fixtures |
 | **Generator** | `parallax/v10` | Registered Go generator in `internal/scenarios` |
-| **Operations Version** | `operations/v2` | Directly joined with Parallax `operations/v2` records-8 baseline |
+| **Operations Version** | `operations/v2` | Aligned with Parallax generator baseline |
 | **Deterministic Seed** | `4421` | Matches Parallax suite convention |
 | **Reference Clock** | `2026-10-04T14:30:00Z` | Fixed reference time; no `Date.now()` or `time.Now()` |
 | **Observation Window** | `2026-10-03T14:30:00Z` to `2026-10-04T14:30:00Z` | Exact 24-hour retrospective coverage window |
+| **Upstream Tether HEAD** | `3e9e7a42783d4e3df52db25e50e40e05bff4c8c4` | Source of wire types and algorithms from Tether worktree |
 
 ## Upstream Parity & Client Wire Shapes
 
@@ -29,81 +30,76 @@ All shapes preserve the primary Tether source definitions from `apps/sysop/front
 ### 1. Overview (`OverviewInfo`)
 
 Mirrors the `GET /api/overview` dashboard aggregate payload:
-- **Sessions** (`OverviewSessions`): total 8, running 2 (`SESSION-001`, `SESSION-006`), ended 6 (`SESSION-002`, `003`, `004`, `005`, `007`, `008`). Derivable rates: 66% success, 33% failure, avg duration 90s. Categorized by state (`done`, `running`, `failed`), provider (`claude`, `codex`, `agy`), and project (`parallax`, `tether`, `tangent`).
-- **Tool Calls** (`OverviewToolCalls`): total 30, ok 28, errors 2 (93% success rate in standard profile, <95% in degraded variant). Latency metrics: p50 185ms, p95 1450ms, avg 360ms. Slow calls (≥1000ms): 2. Ranked lists: `top_tools`, `top_errors`, `by_server`, `latency` bands (`<10ms`, `10-99ms`, `100-499ms`, `500-999ms`, `>=1s`).
+- **Sessions** (`OverviewSessions`): total 8, running 2 (`sess-007`, `sess-008`), ended 6 (`sess-001` through `sess-006`). Derived rates: 83% success (5/6 ended), 17% failure (1/6 ended), avg duration 10440s. Categorized by state (`running`, `ended`), provider (`claude`, `codex`, `agy`), and project (`parallax`, `tether`, `tangent`). All 8 sessions started within the 24h window (`recent_24h: 8`).
+- **Tool Calls** (`OverviewToolCalls`): total 30, ok 29, errors 1 (96% success rate in standard profile, <95% in degraded variant). Latency metrics: p50 210ms, p95 1450ms, avg 461ms. Slow calls (≥1000ms): 4. Calls within last hour: 2. Ranked lists: `top_tools`, `top_errors`, `by_server`, `latency` bands (`<10ms`, `10-99ms`, `100-499ms`, `500-999ms`, `>=1s`).
 - **Messages** (`OverviewMessages`): total 24, unread 0 (in standard; 7 in degraded), archived 4, recent24h 24. Distributions: `by_kind` (`turn`, `notice`, `system`), `by_scope` (`agent`, `user`, `group`).
-- **Events** (`OverviewEvents`): total 64, recent1h 22, latest_seq 64. Distributions: `by_scope` (`session`, `agent`, `system`, `router`, `mesh`), `by_kind` (`session.turn`, `tool.dispatched`, `tool.completed`, `session.started`, `checkpoint.saved`).
+- **Events** (`OverviewEvents`): total 64, recent1h 3 (derived strictly using Tether clock cutoff `clock.Add(-time.Hour)`), latest_seq 64. Distributions: `by_scope` (`session`, `agent`, `system`, `router`, `mesh`), `by_kind` (`session.turn`, `tool.dispatched`, `tool.completed`, `session.started`, `checkpoint.saved`).
 - **AI Gateway** (`OverviewAI`): configured providers 4, enabled 3, routes 6. Requests 140, successes 136, errors 4, budget rejections 1. Tokens: 384k input, 96k output, estimated cost $1.84. Distributions: `by_provider`, `by_model`, `by_event_type`.
 - **Catalog** (`OverviewCatalog`): projects 4, agents 8, providers 4, launches 8.
 - **Health** (`HealthInfo`): status `"ok"`, catalog_root `"/home/chrispian/.tether/catalog"`.
-- **Trend Buckets**: 24 hourly buckets, oldest-first, bucketed deterministically using `bucketCounts`.
+- **Trend Buckets**: 24 equal-width oldest-first bins across the retrospective 24h window.
 
-### 2. AI Gateway (`TetherSysopAIFixture`)
+### 2. Trend Bucket Projection Semantics (`bucketCounts`)
 
-- **Settings** (`AISettingsInfo`):
-  - Global AI policy with tool and reasoning permissions, max output tokens 8192, and session budget caps.
-  - 4 providers: `anthropic` (enabled), `google` (enabled), `openai` (enabled), and `local` (disabled, base URL `http://localhost:11434`).
-  - 6 routes: `general-code`, `fast-edit`, `reasoning-heavy`, `structured-data`, `triage`, and `local-offline`.
-- **Runtime** (`AIRuntimeInfo`):
-  - 4 runtime provider descriptors, 8 model descriptors with context windows (up to 1M tokens), input/output modalities, and route bindings.
-- **Usage & Breakdowns** (`AIUsageInfo`):
-  - Total requests 140, successes 136, errors 4. Cost $1.84.
-  - Breakdowns by provider, model, and operation. Exact mathematical derivability: the sum across breakdown categories matches the top-level summary.
-- **Audit Log** (`AIAuditInfo`):
-  - 24 audit events spanning the 24h window.
-  - Includes a safety policy refusal (`event_type: "refusal"`, `success: false`, `refusal: "Refusal: safety policy denied unreviewed tool execution"`).
-  - Includes a budget rejection (`event_type: "budget_rejection"`, `success: false`, `error: "budget limit $2.50 exceeded"`).
-- **Budgets** (`AIBudgetsInfo`):
-  - 4 budgets: 3 active and 1 exhausted (`exhausted: true`, `spent_cost_usd: 2.50`, `remaining_cost_usd: 0.00`).
-- **Catalog Models** (`[]AIProviderCatalogInfo`):
-  - Detailed catalog metadata including token pricing per MTok, modalities, tool/reasoning capabilities for Anthropic and Google.
+In upstream Tether (`apps/sysop/cmd/tether_sysop/main.go:3346`), `bucketCounts(times []time.Time, n int)` computes:
+```go
+lo := times[0]
+hi := times[len(times)-1]
+// partitions [lo, hi] into n equal-width buckets, returning counts oldest-to-newest
+```
+For retrospective 24-hour dashboard views where the observation window is anchored to `clock` (`2026-10-04T14:30:00Z`) and `observedSince` (`2026-10-03T14:30:00Z`), the 24 hourly buckets partition this fixed 24h interval into equal 1-hour slots oldest-first, ensuring deterministic, stable sparkline rendering across all 5 trend categories.
 
-### 3. Activity Monitor (`TetherSysopActivityFixture`)
+### 3. Session Provenance & Incompatible Joins
 
-- **Events** (`EventsInfo`):
-  - 64 events with strictly monotonic sequence numbers (`seq: 1` through `seq: 64`).
-  - Scopes: `session`, `agent`, `system`, `router`, `mesh`.
-  - Every event carries a valid, parseable JSON payload.
-  - Compatible session events link to `SESSION-001` through `SESSION-008`.
-- **Tool Calls** (`ToolCallsInfo`):
-  - 30 tool calls with realistic duration spread: 10 calls <100ms, 12 calls 100-500ms, 4 calls 500-1000ms, 4 calls ≥1000ms (slow calls).
-  - Includes error cases (`ok: false`) with realistic error messages.
-- **Scope Aggregates** (`[]ActivityScopeAggregate`):
-  - Precomputed derived aggregations per scope (`event_count`, `session_count`, `kind_count`, `latest_at`, `latest_kind`, `latest_seq`, `kinds`).
-  - Exactly verified against the events array.
+In early drafts, tool calls and events attempted to reference session IDs from Parallax `operations/v2` (`SESSION-001` through `SESSION-008`). However:
+1. `operations/v2` sessions are clustered exclusively between 14:10Z and 14:26Z on October 4, whereas Tether telemetry spans a full 24 hours back to October 3. Claiming operations joins caused severe temporal violations (e.g. tool call 1 occurred on the evening of October 3 while linked `SESSION-001` began at 14:10Z on October 4).
+2. `operations/v2` sessions carry no provider or project attributes; attaching `byProvider` or `byProject` metadata created guessed provenance.
 
-### 4. Registry (`RegistryInfo`)
+**Resolution:**
+The `tether-sysop/v1` fixture defines authentic, fixture-local sessions (`sess-001` through `sess-008`) spanning `[clock - 24h, clock]`:
+- Each session carries explicit provenance: `project_id`, `provider_id`, `state`, `created_at`, `updated_at`, `ended_at`, and `exit_code`.
+- All linked events, tool calls, and AI audit records strictly satisfy:
+  `timestamp >= session.created_at` and (if ended) `timestamp <= session.ended_at`.
+- Unknown sessions or timestamp violations are rejected with strict errors by `ValidateTetherSysop`.
 
-- **12 Profiles** (8 agents + 4 projects):
-  - Agents: `sup-agent-os`, `architect`, `launch-agent-os`, `launch-worker-1`, `task-parallax-4`, `task-parallax-1`, `task-legacy-runner` (deprecated), `agent-shim-v1` (deprecated).
-  - Projects: `tether`, `parallax`, `tangent`, `legacy-prototype` (deprecated).
-  - Mixed active and deprecated statuses.
-  - Formatted callback endpoints (`file://` and `http://`), skills with proficiency levels, links to repos/docs/ADRs, and instance identity (`tether-main`).
+### 4. Direct / Flat Projection Invariants
 
----
+`TetherSysopFixture` exposes direct top-level arrays (`events`, `toolCalls`, `scopes`, `registryRows`, `aiProviders`, `aiRoutes`, `aiAuditEvents`, `aiBudgets`) for automated contract and inventory verification.
 
-## Variants Specification
+`ValidateTetherSysop` strictly asserts deep equality between these top-level projections and their canonical nested locations:
+- `f.Events == f.Activity.Events.Events`
+- `f.ToolCalls == f.Activity.ToolCalls.ToolCalls`
+- `f.Scopes == f.Activity.Scopes`
+- `f.Sessions == f.Activity.Sessions`
+- `f.RegistryRows == f.Registry.Rows`
+- `f.AIProviders == f.AI.Settings.Config.Providers`
+- `f.AIRoutes == f.AI.Settings.Config.Routes`
+- `f.AIAuditEvents == f.AI.Audit.Events`
+- `f.AIBudgets == f.AI.Budgets.Budgets`
 
-The fixture supplies explicit variants under `overviewVariants` to support comprehensive UI state testing without requiring network or state mutation:
+### 5. Adverse Specimens vs. Canonical Activity Dataset
 
-| Variant Key | Intended UI Test Case | Key Deviations from Standard |
-|---|---|---|
-| `standard` | Healthy baseline | `health.status = "ok"`, `success_pct = 93%`, `unread = 0`, `slow_calls = 2` |
-| `blocked-health` | Catalog failure banner / badge | `health.status = "blocked"`, `health.error = "catalog root inaccessible: permission denied"` |
-| `degraded-reliability` | Intelligence row adverse accents | `tool_calls.success_pct = 90%` (<95%), `messages.unread = 7` (>0), `sessions.success_pct = 45%` (<50%), `slow_calls = 4` |
-| `combined-adverse` | Full degraded & blocked presentation | Both blocked health status and adverse reliability metrics |
+The fixture bundle provides explicit alternative specimens under `overviewVariants`:
+- `standard`: Canonical baseline derived directly from the underlying activity ledger and session state.
+- `blocked-health`: Simulates catalog permission failure (`health.status = "blocked"`).
+- `degraded-reliability`: Simulates service degradation (`tool_calls.success_pct = 85%`, `slow_calls = 4`, `messages.unread = 7`, `sessions.success_pct = 40%`).
+- `combined-adverse`: Combines blocked health status with degraded reliability.
 
----
+**Important Note:** The adverse specimens are synthetic UI stress-test fixtures intended for rendering edge-case error banners, alert badges, and degraded tables. They are intentionally adverse and do NOT reconcile with the underlying raw activity log. Downstream testing should use `standard` for ledger consistency tests and variants for visual state tests.
 
-## Data Handling: Known Zero vs. Withheld / Unknown
+### 6. AI Gateway Provider Catalog Error Handling
 
-Per Parallax architectural conventions:
-1. **Known Zero is not Missing**:
-   - `unread: 0` in standard overview indicates an empty unread inbox, backed by evidence.
-   - `errors: 0` in an OK batch indicates 0 failed executions.
-2. **Withheld / Unavailable Data**:
-   - Fields that are not applicable (e.g. `refusal` for successful calls, `error` for healthy services, `ended_at` for running sessions) are omitted (`omitempty`) rather than populated with placeholder zero-values.
-   - External network calls, live daemon connections, SSE streams, and real model invocations are withheld and simulated with inert deterministic specimens.
+Per review requirements, the mock API client (`createTetherSysopMockApi`) enforces strict provider catalog lookups:
+- If a known `provider_type` (`anthropic`, `google`) is queried, its catalog model descriptor is returned.
+- If an unknown or unregistered `provider_type` is requested, the client throws `Error("provider catalog unavailable: <provider_type>")` rather than returning an observed-empty collection.
+
+### 7. Telemetry Windows & Distinct Datasets
+
+Telemetry across the sysop surface serves different operational purposes and reflects different observation windows:
+- **AI Audit Trail** (`ai.audit`): Point-in-time sampled security, policy, and refusal events (24 samples across 24h).
+- **AI Usage Counters** (`ai.usage`): Aggregated daemon-level accounting metrics (140 requests, token counts, cost approximations).
+- **AI Budgets** (`ai.budgets`): Windowed policy spend caps (e.g. hourly or rolling caps).
+- Discrepancies between sampled audit records and aggregated billing totals are authentic to distributed systems and must not be coerced into a single derivable ledger.
 
 ---
 
@@ -114,12 +110,12 @@ In accordance with the propose-then-confirm process (DEC-073), the following con
 1. **Trend Bucket Window & Granularity**:
    - *Default*: 24 hourly buckets oldest-to-newest across all 5 overview trend series.
    - *Rationale*: Exactly matches Tether Sysop `overviewTrendBuckets = 24` in `cmd/tether_sysop/main.go`.
-2. **Operations v2 Joins**:
-   - *Default*: Tool calls and session events reuse IDs `SESSION-001` through `SESSION-008` from Parallax `operations/v2`.
-   - *Rationale*: Reuses existing Event Ledger and Run Explorer concepts without inventing disjoint session namespaces.
+2. **Fixture-Local Session Namespace**:
+   - *Default*: Use explicit fixture-local sessions `sess-001` through `sess-008` with authentic metadata.
+   - *Rationale*: Resolves temporal inconsistencies with `operations/v2` 16-minute runs and provides clean provenance.
 3. **Data-Driven AI Gateway Fixtures**:
    - *Default*: Model metadata, route tables, and budget rules are structured purely as data-driven collections.
-   - *Rationale*: Insulates Parallax fixtures from pending one-registry and gateway refactors (`ws-resource-governance` / `ws-model-routing`).
+   - *Rationale*: Insulates Parallax fixtures from pending one-registry and gateway refactors.
 4. **Registry URN Hierarchy**:
    - *Default*: URN format `msg://agent/agent-mux/<id>` and `msg://project/hollis-labs/<name>`.
    - *Rationale*: Conforms to Tether canonical URN scheme while presenting opaque strings for UI data-table rendering.

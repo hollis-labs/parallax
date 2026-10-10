@@ -329,7 +329,7 @@
       "generator": "parallax/v10",
       "seed": 4421,
       "referenceClock": "2026-10-04T14:30:00Z",
-      "policy": "independent full snapshot with operations/v2 cross-references",
+      "policy": "independent full snapshot with authentic fixture-local sessions",
       "projections": ["snapshot", "prefix"],
       "profiles": [
         {
@@ -351,8 +351,8 @@
         }
       ],
       "joins": [
-        "activity.session_id and ai.audit.session_id → operations/v2 records-8 session IDs",
-        "overview.sessions → operations/v2 records-8 run and session status distributions",
+        "activity.session_id and ai.audit.session_id → fixture-local sessions (sess-001 through sess-008)",
+        "overview.sessions → fixture-local sessions run and session status distributions",
         "ai.routes.provider and ai.budgets.provider → ai.settings.providers",
         "registry.agent.project → registry.project.display_name"
       ],

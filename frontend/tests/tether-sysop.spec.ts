@@ -5,6 +5,7 @@ import {
   createTetherSysopMockApi,
   overviewModel,
   registryModel,
+  sessionsModel,
   tetherSysopFixture,
 } from "../src/tether-sysop/model"
 
@@ -19,7 +20,12 @@ test("tether-sysop fixture bundle identity and structure", () => {
 test("overview model provides standard and required variants", () => {
   const standard = overviewModel("standard")
   expect(standard.health.status).toBe("ok")
-  expect(standard.tool_calls.success_pct).toBeGreaterThanOrEqual(95)
+  expect(standard.tool_calls.success_pct).toBe(96)
+  expect(standard.tool_calls.ok).toBe(29)
+  expect(standard.tool_calls.errors).toBe(1)
+  expect(standard.tool_calls.slow_calls).toBe(4)
+  expect(standard.tool_calls.p50_ms).toBe(210)
+  expect(standard.events.recent_1h).toBe(3)
   expect(standard.messages.unread).toBe(0)
   expect(standard.sessions.trend.length).toBe(24)
   expect(standard.tool_calls.trend.length).toBe(24)
@@ -56,6 +62,10 @@ test("ai model covers providers, routes, usage, audit, budgets and catalog", () 
   // Budgets (>=3 incl exhausted)
   expect(ai.budgets.budgets.length).toBeGreaterThanOrEqual(3)
   expect(ai.budgets.budgets.some((b) => b.exhausted)).toBe(true)
+  expect(ai.budgets.budgets.some((b) => b.usage_budget.level === "route")).toBe(true)
+
+  // Runtime route usage budget level
+  expect(ai.runtime.routes.some((r) => r.usage_budget?.level === "route")).toBe(true)
 
   // Catalog
   expect(ai.catalog.length).toBeGreaterThanOrEqual(2)
@@ -123,6 +133,58 @@ test("tether sysop mock api returns matching payloads", async () => {
   const toolCalls = await api.getToolCalls()
   expect(toolCalls.tool_calls.length).toBe(30)
 
-  const reg = await api.getRegistry({ kind: "agent" })
+  const reg = await api.getRegistry("agent")
   expect(reg.rows.length).toBe(8)
+
+  const activeAgents = await api.getRegistry("agent", { status: "active" })
+  expect(activeAgents.rows.length).toBe(6)
+
+  const parallaxAgents = await api.getRegistry("agent", { project: "parallax" })
+  expect(parallaxAgents.rows.length).toBe(3)
+
+  // Invalid kind or filter key rejection
+  await expect(api.getRegistry("invalid" as any)).rejects.toThrow(
+    "unsupported registry kind: invalid",
+  )
+  await expect(api.getRegistry("agent", { invalid_key: "val" } as any)).rejects.toThrow(
+    "unsupported registry query filter: invalid_key",
+  )
+
+  const sessions = await api.getSessions()
+  expect(sessions.total).toBe(8)
+  expect(sessions.running).toBe(2)
+  expect(sessions.ended).toBe(6)
+
+  // Primary getAIProviderCatalog and rejection of unknown provider
+  const anthropicCat = await api.getAIProviderCatalog("anthropic")
+  expect(anthropicCat.provider_type).toBe("anthropic")
+  expect(anthropicCat.models.length).toBeGreaterThan(0)
+
+  await expect(api.getAIProviderCatalog("nonexistent-provider")).rejects.toThrow(
+    "provider catalog unavailable: nonexistent-provider",
+  )
+  await expect(api.getAICatalogModels("nonexistent-provider")).rejects.toThrow(
+    "provider catalog unavailable: nonexistent-provider",
+  )
+})
+
+test("sessions model provides fixture-local session records with authentic provenance", () => {
+  const sessions = sessionsModel()
+  expect(sessions.total).toBe(8)
+  expect(sessions.running).toBe(2)
+  expect(sessions.ended).toBe(6)
+  expect(sessions.sessions.length).toBe(8)
+
+  for (const s of sessions.sessions) {
+    expect(s.id).toMatch(/^sess-\d{3}$/)
+    expect(s.project_id).toBeTruthy()
+    expect(s.provider_id).toBeTruthy()
+    expect(["running", "ended"]).toContain(s.state)
+    if (s.state === "ended") {
+      expect(s.ended_at).toBeTruthy()
+      expect(typeof s.exit_code).toBe("number")
+    } else {
+      expect(s.ended_at).toBeUndefined()
+    }
+  }
 })

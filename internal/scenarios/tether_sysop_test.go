@@ -209,3 +209,105 @@ func TestWriteTetherSysop(t *testing.T) {
 		t.Fatalf("validate parsed fixture: %v", err)
 	}
 }
+
+func TestValidateTetherSysop_NegativeMutations(t *testing.T) {
+	t.Run("invalid_event_json", func(t *testing.T) {
+		f := GenerateTetherSysop()
+		f.Activity.Events.Events[0].Payload = "{not valid json"
+		f.Events[0].Payload = "{not valid json"
+		if err := ValidateTetherSysop(f); err == nil {
+			t.Errorf("expected error for malformed event JSON payload, got nil")
+		}
+	})
+
+	t.Run("overview_events_total_mismatch", func(t *testing.T) {
+		f := GenerateTetherSysop()
+		f.Overview.Events.Total += 99
+		if err := ValidateTetherSysop(f); err == nil {
+			t.Errorf("expected error for mismatched overview events total, got nil")
+		}
+	})
+
+	t.Run("overview_events_recent1h_mismatch", func(t *testing.T) {
+		f := GenerateTetherSysop()
+		f.Overview.Events.Recent1h += 5
+		if err := ValidateTetherSysop(f); err == nil {
+			t.Errorf("expected error for mismatched overview events recent_1h, got nil")
+		}
+	})
+
+	t.Run("overview_tool_calls_ok_mismatch", func(t *testing.T) {
+		f := GenerateTetherSysop()
+		f.Overview.ToolCalls.OK -= 1
+		if err := ValidateTetherSysop(f); err == nil {
+			t.Errorf("expected error for mismatched overview tool calls ok count, got nil")
+		}
+	})
+
+	t.Run("overview_tool_calls_slow_mismatch", func(t *testing.T) {
+		f := GenerateTetherSysop()
+		f.Overview.ToolCalls.SlowCalls += 2
+		if err := ValidateTetherSysop(f); err == nil {
+			t.Errorf("expected error for mismatched overview tool calls slow count, got nil")
+		}
+	})
+
+	t.Run("predated_session_join_event", func(t *testing.T) {
+		f := GenerateTetherSysop()
+		// Move event timestamp to before session start (Oct 2)
+		f.Activity.Events.Events[0].At = "2026-10-02T10:00:00.000Z"
+		f.Events[0].At = "2026-10-02T10:00:00.000Z"
+		if err := ValidateTetherSysop(f); err == nil {
+			t.Errorf("expected error for event predating linked session created_at, got nil")
+		}
+	})
+
+	t.Run("postdated_session_join_toolcall", func(t *testing.T) {
+		f := GenerateTetherSysop()
+		// sess-001 ended at 2026-10-03T18:30:00Z; put tool call at 19:30Z with session sess-001
+		f.Activity.ToolCalls.ToolCalls[0].SessionID = "sess-001"
+		f.Activity.ToolCalls.ToolCalls[0].Timestamp = "2026-10-03T19:30:00Z"
+		f.ToolCalls[0].SessionID = "sess-001"
+		f.ToolCalls[0].Timestamp = "2026-10-03T19:30:00Z"
+		if err := ValidateTetherSysop(f); err == nil {
+			t.Errorf("expected error for tool call postdating session ended_at, got nil")
+		}
+	})
+
+	t.Run("unknown_session_join", func(t *testing.T) {
+		f := GenerateTetherSysop()
+		f.Activity.Events.Events[0].SessionID = "sess-non-existent-999"
+		f.Events[0].SessionID = "sess-non-existent-999"
+		if err := ValidateTetherSysop(f); err == nil {
+			t.Errorf("expected error for event referencing unknown session ID, got nil")
+		}
+	})
+
+	t.Run("projection_mismatch_events", func(t *testing.T) {
+		f := GenerateTetherSysop()
+		f.Events = make([]EventInfo, len(f.Activity.Events.Events))
+		copy(f.Events, f.Activity.Events.Events)
+		f.Events[0].Kind = "mutated.kind"
+		if err := ValidateTetherSysop(f); err == nil {
+			t.Errorf("expected error when flat Events projection does not equal Activity.Events.Events, got nil")
+		}
+	})
+
+	t.Run("projection_mismatch_toolcalls", func(t *testing.T) {
+		f := GenerateTetherSysop()
+		f.ToolCalls = make([]ToolCallInfo, len(f.Activity.ToolCalls.ToolCalls))
+		copy(f.ToolCalls, f.Activity.ToolCalls.ToolCalls)
+		f.ToolCalls[0].ToolName = "mutated_tool"
+		if err := ValidateTetherSysop(f); err == nil {
+			t.Errorf("expected error when flat ToolCalls projection does not equal Activity.ToolCalls.ToolCalls, got nil")
+		}
+	})
+
+	t.Run("projection_mismatch_sessions", func(t *testing.T) {
+		f := GenerateTetherSysop()
+		f.Sessions.Total += 1
+		if err := ValidateTetherSysop(f); err == nil {
+			t.Errorf("expected error when flat Sessions projection does not equal Activity.Sessions, got nil")
+		}
+	})
+}

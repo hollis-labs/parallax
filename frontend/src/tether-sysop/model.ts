@@ -27,6 +27,30 @@ export interface OverviewSessions {
   by_project: NameCount[]
 }
 
+export interface SessionInfo {
+  id: string
+  launch_id: string
+  project_id: string
+  logical_agent_id: string
+  provider_id: string
+  provider_kind: string
+  workspace: string
+  state: "running" | "ended" | string
+  pid?: number
+  exit_code?: number
+  created_at: string
+  updated_at: string
+  ended_at?: string
+}
+
+export interface SessionsInfo {
+  sessions: SessionInfo[]
+  total: number
+  running: number
+  ended: number
+  error?: string
+}
+
 export interface OverviewToolCalls {
   total: number
   ok: number
@@ -106,6 +130,7 @@ export type OverviewVariantKey =
   | "combined-adverse"
 
 export interface AIUsageBudgetPolicyInfo {
+  level?: string
   max_cost_usd?: number
   window?: string
   scope?: string
@@ -413,15 +438,37 @@ export interface RegistryInfo {
   error?: string
 }
 
+export interface RegistryQuery {
+  status?: string
+  role?: string
+  title?: string
+  project?: string
+  capability?: string
+  skill_name?: string
+}
+
 export interface TetherSysopModel {
   overview: (variant?: OverviewVariantKey) => OverviewInfo
   ai: () => typeof artifact.ai
   activity: () => typeof artifact.activity
-  registry: (filter?: {
-    kind?: "agent" | "project" | "all"
-    status?: "active" | "deprecated" | "all"
-    query?: string
-  }) => RegistryProfileInfo[]
+  sessions: () => SessionsInfo
+  registry: (
+    filterOrKind?:
+      | {
+          kind?: "agent" | "project" | "all"
+          status?: string
+          role?: string
+          title?: string
+          project?: string
+          capability?: string
+          skill_name?: string
+          query?: string
+        }
+      | "agent"
+      | "project"
+      | "all",
+    query?: RegistryQuery & { query?: string },
+  ) => RegistryProfileInfo[]
   mockApi: (variant?: OverviewVariantKey) => TetherSysopApi
 }
 
@@ -432,10 +479,12 @@ export interface TetherSysopApi {
   getAIUsage: () => Promise<AIUsageInfo>
   getAIAudit: () => Promise<AIAuditInfo>
   getAIBudgets: () => Promise<AIBudgetsInfo>
+  getAIProviderCatalog: (providerType: string) => Promise<AIProviderCatalogInfo>
   getAICatalogModels: (providerType?: string) => Promise<AIProviderCatalogInfo>
   getEvents: () => Promise<EventsInfo>
   getToolCalls: () => Promise<ToolCallsInfo>
-  getRegistry: (params?: { kind?: string; status?: string }) => Promise<RegistryInfo>
+  getSessions: () => Promise<SessionsInfo>
+  getRegistry: (kind: "agent" | "project", query?: RegistryQuery) => Promise<RegistryInfo>
 }
 
 export function overviewModel(variant: OverviewVariantKey = "standard"): OverviewInfo {
@@ -454,20 +503,62 @@ export function activityModel() {
   return artifact.activity
 }
 
-export function registryModel(filter?: {
-  kind?: "agent" | "project" | "all"
-  status?: "active" | "deprecated" | "all"
-  query?: string
-}): RegistryProfileInfo[] {
+export function sessionsModel(): SessionsInfo {
+  return (artifact as { sessions?: SessionsInfo }).sessions as SessionsInfo
+}
+
+export function registryModel(
+  filterOrKind?:
+    | {
+        kind?: "agent" | "project" | "all"
+        status?: string
+        role?: string
+        title?: string
+        project?: string
+        capability?: string
+        skill_name?: string
+        query?: string
+      }
+    | "agent"
+    | "project"
+    | "all",
+  query?: RegistryQuery & { query?: string },
+): RegistryProfileInfo[] {
+  let kind: string | undefined
+  let params: (RegistryQuery & { query?: string }) | undefined
+
+  if (typeof filterOrKind === "string") {
+    kind = filterOrKind
+    params = query
+  } else if (filterOrKind) {
+    kind = filterOrKind.kind
+    params = filterOrKind
+  }
+
   let rows = artifact.registry.rows as RegistryProfileInfo[]
-  if (filter?.kind && filter.kind !== "all") {
-    rows = rows.filter((r) => r.kind === filter.kind)
+  if (kind && kind !== "all") {
+    rows = rows.filter((r) => r.kind === kind)
   }
-  if (filter?.status && filter.status !== "all") {
-    rows = rows.filter((r) => r.status === filter.status)
+  if (params?.status && params.status !== "all") {
+    rows = rows.filter((r) => r.status === params.status)
   }
-  if (filter?.query?.trim()) {
-    const q = filter.query.trim().toLowerCase()
+  if (params?.role) {
+    rows = rows.filter((r) => r.role === params.role)
+  }
+  if (params?.title) {
+    rows = rows.filter((r) => r.title === params.title)
+  }
+  if (params?.project) {
+    rows = rows.filter((r) => r.project === params.project)
+  }
+  if (params?.capability) {
+    rows = rows.filter((r) => r.capabilities?.includes(params.capability!))
+  }
+  if (params?.skill_name) {
+    rows = rows.filter((r) => r.skills?.some((s) => s.name === params.skill_name))
+  }
+  if (params?.query?.trim()) {
+    const q = params.query.trim().toLowerCase()
     rows = rows.filter(
       (r) =>
         r.display_name.toLowerCase().includes(q) ||
@@ -481,6 +572,18 @@ export function registryModel(filter?: {
 }
 
 export function createTetherSysopMockApi(variant: OverviewVariantKey = "standard"): TetherSysopApi {
+  const getCatalog = async (providerType: string) => {
+    if (!providerType) {
+      throw new Error("providerType required")
+    }
+    const catalogs = artifact.ai.catalog as AIProviderCatalogInfo[]
+    const found = catalogs.find((c) => c.provider_type === providerType)
+    if (!found) {
+      throw new Error(`provider catalog unavailable: ${providerType}`)
+    }
+    return found
+  }
+
   return {
     getOverview: async () => overviewModel(variant),
     getAISettings: async () => artifact.ai.settings as AISettingsInfo,
@@ -488,24 +591,48 @@ export function createTetherSysopMockApi(variant: OverviewVariantKey = "standard
     getAIUsage: async () => artifact.ai.usage as AIUsageInfo,
     getAIAudit: async () => artifact.ai.audit as AIAuditInfo,
     getAIBudgets: async () => artifact.ai.budgets as AIBudgetsInfo,
+    getAIProviderCatalog: getCatalog,
     getAICatalogModels: async (providerType?: string) => {
       const catalogs = artifact.ai.catalog as AIProviderCatalogInfo[]
-      if (!providerType) return catalogs[0] ?? { provider_type: "", models: [] }
-      return (
-        catalogs.find((c) => c.provider_type === providerType) ?? {
-          provider_type: providerType,
-          models: [],
-        }
-      )
+      if (!providerType) {
+        if (!catalogs[0]) throw new Error("no provider catalog available")
+        return catalogs[0]
+      }
+      return getCatalog(providerType)
     },
     getEvents: async () => artifact.activity.events as EventsInfo,
     getToolCalls: async () => artifact.activity.tool_calls as ToolCallsInfo,
-    getRegistry: async (params?: { kind?: string; status?: string }) => {
-      const rows = registryModel({
-        kind: params?.kind as "agent" | "project" | undefined,
-        status: params?.status as "active" | "deprecated" | undefined,
-      })
+    getSessions: async () => sessionsModel(),
+    getRegistry: async (kind: "agent" | "project", query?: RegistryQuery) => {
+      if (kind !== "agent" && kind !== "project") {
+        throw new Error(`unsupported registry kind: ${kind}`)
+      }
+      const allowedKeys = new Set([
+        "status",
+        "role",
+        "title",
+        "project",
+        "capability",
+        "skill_name",
+      ])
+      if (query) {
+        for (const k of Object.keys(query)) {
+          if (!allowedKeys.has(k)) {
+            throw new Error(`unsupported registry query filter: ${k}`)
+          }
+        }
+      }
+      const rows = registryModel(kind, query)
       return { rows }
     },
   }
+}
+
+export const tetherSysopModel: TetherSysopModel = {
+  overview: overviewModel,
+  ai: aiModel,
+  activity: activityModel,
+  sessions: sessionsModel,
+  registry: registryModel,
+  mockApi: createTetherSysopMockApi,
 }

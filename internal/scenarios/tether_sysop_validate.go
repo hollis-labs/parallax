@@ -1,8 +1,10 @@
 package scenarios
 
 import (
+	"encoding/json"
 	"fmt"
-	"strings"
+	"reflect"
+	"sort"
 	"time"
 )
 
@@ -42,10 +44,86 @@ func ValidateTetherSysop(f TetherSysopFixture) error {
 		return fmt.Errorf("observedSince %v after clock %v", observedSince, clock)
 	}
 
-	// 2. Known Sessions Referential Set (from operations/v2)
-	validSessions := map[string]bool{}
-	for _, sess := range ops.Sessions {
-		validSessions[sess.ID] = true
+	// 2. Known Sessions Referential Set (from fixture-local sessions)
+	if len(f.Sessions.Sessions) == 0 {
+		return fmt.Errorf("fixture sessions list must not be empty")
+	}
+	if f.Sessions.Total != len(f.Sessions.Sessions) {
+		return fmt.Errorf("sessions total %d != length %d", f.Sessions.Total, len(f.Sessions.Sessions))
+	}
+	sessionMap := map[string]SessionInfo{}
+	sessionRunning := 0
+	sessionEnded := 0
+	sessionSuccesses := 0
+	sessionRecent24h := 0
+	recent24hCutoff := clock.Add(-24 * time.Hour)
+
+	for i, s := range f.Sessions.Sessions {
+		if s.ID == "" {
+			return fmt.Errorf("session [%d] missing ID", i)
+		}
+		if s.ProjectID == "" {
+			return fmt.Errorf("session [%d] missing project_id", i)
+		}
+		if s.ProviderID == "" {
+			return fmt.Errorf("session [%d] missing provider_id", i)
+		}
+		sStart, err := time.Parse(time.RFC3339, s.CreatedAt)
+		if err != nil {
+			return fmt.Errorf("session [%d] invalid created_at %q: %w", i, s.CreatedAt, err)
+		}
+		if sStart.After(clock) {
+			return fmt.Errorf("session [%d] created_at %v exceeds clock %v", i, sStart, clock)
+		}
+		if sStart.Equal(recent24hCutoff) || sStart.After(recent24hCutoff) {
+			sessionRecent24h++
+		}
+		if s.State == "running" {
+			sessionRunning++
+			if s.EndedAt != "" {
+				return fmt.Errorf("running session [%d] must not have ended_at", i)
+			}
+		} else if s.State == "ended" {
+			sessionEnded++
+			if s.EndedAt == "" {
+				return fmt.Errorf("ended session [%d] missing ended_at", i)
+			}
+			sEnd, err := time.Parse(time.RFC3339, s.EndedAt)
+			if err != nil {
+				return fmt.Errorf("session [%d] invalid ended_at %q: %w", i, s.EndedAt, err)
+			}
+			if sEnd.Before(sStart) {
+				return fmt.Errorf("session [%d] ended_at %v before created_at %v", i, sEnd, sStart)
+			}
+			if s.ExitCode != nil && *s.ExitCode == 0 {
+				sessionSuccesses++
+			}
+		} else {
+			return fmt.Errorf("session [%d] invalid state %q", i, s.State)
+		}
+		sessionMap[s.ID] = s
+	}
+
+	sessionSuccessPct := 0
+	if sessionEnded > 0 {
+		sessionSuccessPct = sessionSuccesses * 100 / sessionEnded
+	}
+
+	// Verify Overview Sessions derives from fixture-local sessions
+	if f.Overview.Sessions.Total != len(f.Sessions.Sessions) {
+		return fmt.Errorf("overview sessions total %d != actual %d", f.Overview.Sessions.Total, len(f.Sessions.Sessions))
+	}
+	if f.Overview.Sessions.Running != sessionRunning {
+		return fmt.Errorf("overview sessions running %d != derived %d", f.Overview.Sessions.Running, sessionRunning)
+	}
+	if f.Overview.Sessions.Ended != sessionEnded {
+		return fmt.Errorf("overview sessions ended %d != derived %d", f.Overview.Sessions.Ended, sessionEnded)
+	}
+	if f.Overview.Sessions.SuccessPct != sessionSuccessPct {
+		return fmt.Errorf("overview sessions success_pct %d != derived %d", f.Overview.Sessions.SuccessPct, sessionSuccessPct)
+	}
+	if f.Overview.Sessions.Recent24h != sessionRecent24h {
+		return fmt.Errorf("overview sessions recent_24h %d != derived %d", f.Overview.Sessions.Recent24h, sessionRecent24h)
 	}
 
 	// 3. Overview Validation (Standard)
@@ -110,13 +188,48 @@ func ValidateTetherSysop(f TetherSysopFixture) error {
 		if ev.Scope == "" || ev.Kind == "" {
 			return fmt.Errorf("event [%d] missing scope or kind", i)
 		}
-		if ev.SessionID != "" && !validSessions[ev.SessionID] {
-			return fmt.Errorf("event [%d] references unknown session %q", i, ev.SessionID)
+		if ev.SessionID != "" {
+			sess, ok := sessionMap[ev.SessionID]
+			if !ok {
+				return fmt.Errorf("event [%d] references unknown session %q", i, ev.SessionID)
+			}
+			sStart, _ := time.Parse(time.RFC3339, sess.CreatedAt)
+			if evTime.Before(sStart) {
+				return fmt.Errorf("event [%d] timestamp %v predates session %s created_at %v", i, evTime, sess.ID, sStart)
+			}
+			if sess.EndedAt != "" {
+				sEnd, _ := time.Parse(time.RFC3339, sess.EndedAt)
+				if evTime.After(sEnd) {
+					return fmt.Errorf("event [%d] timestamp %v postdates session %s ended_at %v", i, evTime, sess.ID, sEnd)
+				}
+			}
 		}
-		if ev.Payload == "" || !strings.HasPrefix(ev.Payload, "{") {
-			return fmt.Errorf("event [%d] payload must be valid json string", i)
+		if !json.Valid([]byte(ev.Payload)) {
+			return fmt.Errorf("event [%d] payload must be valid json string: %s", i, ev.Payload)
+		}
+		var parsedPayload map[string]any
+		if err := json.Unmarshal([]byte(ev.Payload), &parsedPayload); err != nil {
+			return fmt.Errorf("event [%d] payload failed json unmarshal: %w", i, err)
 		}
 		scopeEvents[ev.Scope] = append(scopeEvents[ev.Scope], ev)
+	}
+
+	// Verify Overview Events derives from Activity Events
+	derivedEventsRecent1h := 0
+	for _, ev := range events {
+		t, _ := time.Parse(time.RFC3339Nano, ev.At)
+		if t.After(clock.Add(-time.Hour)) {
+			derivedEventsRecent1h++
+		}
+	}
+	if f.Overview.Events.Total != len(events) {
+		return fmt.Errorf("overview events total %d != actual %d", f.Overview.Events.Total, len(events))
+	}
+	if f.Overview.Events.Recent1h != derivedEventsRecent1h {
+		return fmt.Errorf("overview events recent_1h %d != derived %d", f.Overview.Events.Recent1h, derivedEventsRecent1h)
+	}
+	if f.Overview.Events.LatestSeq != lastSeq {
+		return fmt.Errorf("overview events latest_seq %d != derived %d", f.Overview.Events.LatestSeq, lastSeq)
 	}
 
 	// 6. Activity Scope Aggregates Validation
@@ -165,12 +278,38 @@ func ValidateTetherSysop(f TetherSysopFixture) error {
 
 	hasError := false
 	hasSlowCall := false
+	derivedToolOKCount := 0
+	derivedToolErrCount := 0
+	derivedToolSlowCalls := 0
+	derivedToolRecent1h := 0
+	var derivedToolDurations []int64
+
 	for i, tc := range toolCalls {
 		if tc.ID <= 0 {
 			return fmt.Errorf("tool call [%d] invalid ID %d", i, tc.ID)
 		}
-		if tc.SessionID != "" && !validSessions[tc.SessionID] {
-			return fmt.Errorf("tool call [%d] references unknown session %q", i, tc.SessionID)
+		tcTime, err := time.Parse(time.RFC3339, tc.Timestamp)
+		if err != nil {
+			return fmt.Errorf("tool call [%d] invalid timestamp %q: %w", i, tc.Timestamp, err)
+		}
+		if tcTime.After(clock) {
+			return fmt.Errorf("tool call [%d] timestamp %v exceeds clock %v", i, tcTime, clock)
+		}
+		if tc.SessionID != "" {
+			sess, ok := sessionMap[tc.SessionID]
+			if !ok {
+				return fmt.Errorf("tool call [%d] references unknown session %q", i, tc.SessionID)
+			}
+			sStart, _ := time.Parse(time.RFC3339, sess.CreatedAt)
+			if tcTime.Before(sStart) {
+				return fmt.Errorf("tool call [%d] timestamp %v predates session %s created_at %v", i, tcTime, sess.ID, sStart)
+			}
+			if sess.EndedAt != "" {
+				sEnd, _ := time.Parse(time.RFC3339, sess.EndedAt)
+				if tcTime.After(sEnd) {
+					return fmt.Errorf("tool call [%d] timestamp %v postdates session %s ended_at %v", i, tcTime, sess.ID, sEnd)
+				}
+			}
 		}
 		if tc.ToolName == "" {
 			return fmt.Errorf("tool call [%d] missing tool_name", i)
@@ -180,26 +319,66 @@ func ValidateTetherSysop(f TetherSysopFixture) error {
 		}
 		if tc.DurationMs >= 1000 {
 			hasSlowCall = true
+			derivedToolSlowCalls++
 		}
 		if !tc.OK {
 			hasError = true
+			derivedToolErrCount++
 			if tc.Error == "" {
 				return fmt.Errorf("tool call [%d] marked not ok but missing error string", i)
 			}
+		} else {
+			derivedToolOKCount++
 		}
-		tcTime, err := time.Parse(time.RFC3339, tc.Timestamp)
-		if err != nil {
-			return fmt.Errorf("tool call [%d] invalid timestamp %q: %w", i, tc.Timestamp, err)
+		if tcTime.After(clock.Add(-time.Hour)) {
+			derivedToolRecent1h++
 		}
-		if tcTime.After(clock) {
-			return fmt.Errorf("tool call [%d] timestamp %v exceeds clock %v", i, tcTime, clock)
-		}
+		derivedToolDurations = append(derivedToolDurations, int64(tc.DurationMs))
 	}
 	if !hasError {
 		return fmt.Errorf("tool calls must include error cases for visual error state testing")
 	}
 	if !hasSlowCall {
 		return fmt.Errorf("tool calls must include slow call cases (>=1000ms)")
+	}
+
+	sort.Slice(derivedToolDurations, func(i, j int) bool { return derivedToolDurations[i] < derivedToolDurations[j] })
+	derivedP50Ms := pctile(derivedToolDurations, 0.50)
+	derivedP95Ms := pctile(derivedToolDurations, 0.95)
+	var derivedSumDur int64
+	for _, d := range derivedToolDurations {
+		derivedSumDur += d
+	}
+	derivedAvgMs := derivedSumDur / int64(len(derivedToolDurations))
+	derivedSuccessPct := (derivedToolOKCount * 100) / len(toolCalls)
+
+	// Verify Overview ToolCalls derives from Activity ToolCalls
+	if f.Overview.ToolCalls.Total != len(toolCalls) {
+		return fmt.Errorf("overview tool calls total %d != actual %d", f.Overview.ToolCalls.Total, len(toolCalls))
+	}
+	if f.Overview.ToolCalls.OK != derivedToolOKCount {
+		return fmt.Errorf("overview tool calls ok %d != derived %d", f.Overview.ToolCalls.OK, derivedToolOKCount)
+	}
+	if f.Overview.ToolCalls.Errors != derivedToolErrCount {
+		return fmt.Errorf("overview tool calls errors %d != derived %d", f.Overview.ToolCalls.Errors, derivedToolErrCount)
+	}
+	if f.Overview.ToolCalls.SlowCalls != derivedToolSlowCalls {
+		return fmt.Errorf("overview tool calls slow %d != derived %d", f.Overview.ToolCalls.SlowCalls, derivedToolSlowCalls)
+	}
+	if f.Overview.ToolCalls.Recent1h != derivedToolRecent1h {
+		return fmt.Errorf("overview tool calls recent_1h %d != derived %d", f.Overview.ToolCalls.Recent1h, derivedToolRecent1h)
+	}
+	if f.Overview.ToolCalls.SuccessPct != derivedSuccessPct {
+		return fmt.Errorf("overview tool calls success_pct %d != derived %d", f.Overview.ToolCalls.SuccessPct, derivedSuccessPct)
+	}
+	if f.Overview.ToolCalls.P50Ms != derivedP50Ms {
+		return fmt.Errorf("overview tool calls p50 %d != derived %d", f.Overview.ToolCalls.P50Ms, derivedP50Ms)
+	}
+	if f.Overview.ToolCalls.P95Ms != derivedP95Ms {
+		return fmt.Errorf("overview tool calls p95 %d != derived %d", f.Overview.ToolCalls.P95Ms, derivedP95Ms)
+	}
+	if f.Overview.ToolCalls.AvgMs != derivedAvgMs {
+		return fmt.Errorf("overview tool calls avg %d != derived %d", f.Overview.ToolCalls.AvgMs, derivedAvgMs)
 	}
 
 	// 8. AI Gateway Validation
@@ -274,18 +453,31 @@ func ValidateTetherSysop(f TetherSysopFixture) error {
 		if ae.ID <= 0 || ae.Operation == "" {
 			return fmt.Errorf("audit event [%d] invalid ID or operation", i)
 		}
-		if ae.SessionID != "" && !validSessions[ae.SessionID] {
-			return fmt.Errorf("audit event [%d] references unknown session %q", i, ae.SessionID)
-		}
-		if ae.Refusal != "" {
-			hasRefusal = true
-		}
 		aeTime, err := time.Parse(time.RFC3339, ae.Timestamp)
 		if err != nil {
 			return fmt.Errorf("audit event [%d] invalid timestamp %q: %w", i, ae.Timestamp, err)
 		}
 		if aeTime.After(clock) {
 			return fmt.Errorf("audit event [%d] timestamp %v exceeds clock %v", i, aeTime, clock)
+		}
+		if ae.SessionID != "" {
+			sess, ok := sessionMap[ae.SessionID]
+			if !ok {
+				return fmt.Errorf("audit event [%d] references unknown session %q", i, ae.SessionID)
+			}
+			sStart, _ := time.Parse(time.RFC3339, sess.CreatedAt)
+			if aeTime.Before(sStart) {
+				return fmt.Errorf("audit event [%d] timestamp %v predates session %s created_at %v", i, aeTime, sess.ID, sStart)
+			}
+			if sess.EndedAt != "" {
+				sEnd, _ := time.Parse(time.RFC3339, sess.EndedAt)
+				if aeTime.After(sEnd) {
+					return fmt.Errorf("audit event [%d] timestamp %v postdates session %s ended_at %v", i, aeTime, sess.ID, sEnd)
+				}
+			}
+		}
+		if ae.Refusal != "" {
+			hasRefusal = true
 		}
 	}
 	if !hasRefusal {
@@ -372,6 +564,35 @@ func ValidateTetherSysop(f TetherSysopFixture) error {
 	}
 	if !hasDeprecated {
 		return fmt.Errorf("registry must contain mixed active and deprecated profiles")
+	}
+
+	// 10. Direct / Flat Projection Equality Validation
+	if !reflect.DeepEqual(f.Events, f.Activity.Events.Events) {
+		return fmt.Errorf("flat projection Events does not match Activity.Events.Events")
+	}
+	if !reflect.DeepEqual(f.ToolCalls, f.Activity.ToolCalls.ToolCalls) {
+		return fmt.Errorf("flat projection ToolCalls does not match Activity.ToolCalls.ToolCalls")
+	}
+	if !reflect.DeepEqual(f.Scopes, f.Activity.Scopes) {
+		return fmt.Errorf("flat projection Scopes does not match Activity.Scopes")
+	}
+	if !reflect.DeepEqual(f.Sessions, f.Activity.Sessions) {
+		return fmt.Errorf("flat projection Sessions does not match Activity.Sessions")
+	}
+	if !reflect.DeepEqual(f.RegistryRows, f.Registry.Rows) {
+		return fmt.Errorf("flat projection RegistryRows does not match Registry.Rows")
+	}
+	if !reflect.DeepEqual(f.AIProviders, f.AI.Settings.Config.Providers) {
+		return fmt.Errorf("flat projection AIProviders does not match AI.Settings.Config.Providers")
+	}
+	if !reflect.DeepEqual(f.AIRoutes, f.AI.Settings.Config.Routes) {
+		return fmt.Errorf("flat projection AIRoutes does not match AI.Settings.Config.Routes")
+	}
+	if !reflect.DeepEqual(f.AIAuditEvents, f.AI.Audit.Events) {
+		return fmt.Errorf("flat projection AIAuditEvents does not match AI.Audit.Events")
+	}
+	if !reflect.DeepEqual(f.AIBudgets, f.AI.Budgets.Budgets) {
+		return fmt.Errorf("flat projection AIBudgets does not match AI.Budgets.Budgets")
 	}
 
 	return nil

@@ -19,6 +19,7 @@ type TetherSysopFixture struct {
 	ObservedSince     string                     `json:"observedSince"`
 	Overview          OverviewInfo               `json:"overview"`
 	OverviewVariants  map[string]OverviewInfo    `json:"overviewVariants"`
+	Sessions          SessionsInfo               `json:"sessions"`
 	AI                TetherSysopAIFixture       `json:"ai"`
 	Activity          TetherSysopActivityFixture `json:"activity"`
 	Registry          RegistryInfo               `json:"registry"`
@@ -49,11 +50,36 @@ type TetherSysopActivityFixture struct {
 	Events    EventsInfo               `json:"events"`
 	ToolCalls ToolCallsInfo            `json:"tool_calls"`
 	Scopes    []ActivityScopeAggregate `json:"scopes"`
+	Sessions  SessionsInfo             `json:"sessions"`
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Overview Wire Types (from Tether client.ts / main.go)
+// Session Wire Types (from Tether client.ts / main.go)
 // ─────────────────────────────────────────────────────────────────────────────
+
+type SessionInfo struct {
+	ID             string `json:"id"`
+	LaunchID       string `json:"launch_id"`
+	ProjectID      string `json:"project_id"`
+	LogicalAgentID string `json:"logical_agent_id"`
+	ProviderID     string `json:"provider_id"`
+	ProviderKind   string `json:"provider_kind"`
+	Workspace      string `json:"workspace"`
+	State          string `json:"state"`
+	PID            int    `json:"pid,omitempty"`
+	ExitCode       *int   `json:"exit_code,omitempty"`
+	CreatedAt      string `json:"created_at"`
+	UpdatedAt      string `json:"updated_at"`
+	EndedAt        string `json:"ended_at,omitempty"`
+}
+
+type SessionsInfo struct {
+	Sessions []SessionInfo `json:"sessions"`
+	Total    int           `json:"total"`
+	Running  int           `json:"running"`
+	Ended    int           `json:"ended"`
+	Error    string        `json:"error,omitempty"`
+}
 
 type HealthInfo struct {
 	Status      string `json:"status"`
@@ -157,6 +183,7 @@ type OverviewInfo struct {
 // ─────────────────────────────────────────────────────────────────────────────
 
 type AIUsageBudgetPolicyInfo struct {
+	Level      string   `json:"level,omitempty"`
 	MaxCostUSD *float64 `json:"max_cost_usd,omitempty"`
 	Window     string   `json:"window,omitempty"`
 	Scope      string   `json:"scope,omitempty"`
@@ -565,6 +592,38 @@ func boolPtr(b bool) *bool          { return &b }
 func intPtr(i int) *int             { return &i }
 func floatPtr(f float64) *float64   { return &f }
 
+func pctile(sorted []int64, p float64) int64 {
+	if len(sorted) == 0 {
+		return 0
+	}
+	idx := int(float64(len(sorted)-1) * p)
+	if idx < 0 {
+		idx = 0
+	}
+	if idx >= len(sorted) {
+		idx = len(sorted) - 1
+	}
+	return sorted[idx]
+}
+
+func activeSessionAt(t time.Time, sessions []SessionInfo) string {
+	for i := len(sessions) - 1; i >= 0; i-- {
+		s := sessions[i]
+		start, _ := time.Parse(time.RFC3339, s.CreatedAt)
+		if s.EndedAt != "" {
+			end, _ := time.Parse(time.RFC3339, s.EndedAt)
+			if (t.Equal(start) || t.After(start)) && (t.Equal(end) || t.Before(end)) {
+				return s.ID
+			}
+		} else {
+			if t.Equal(start) || t.After(start) {
+				return s.ID
+			}
+		}
+	}
+	return sessions[0].ID
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Generator
 // ─────────────────────────────────────────────────────────────────────────────
@@ -573,7 +632,134 @@ func floatPtr(f float64) *float64   { return &f }
 func GenerateTetherSysop() TetherSysopFixture {
 	clock := time.Date(2026, 10, 4, 14, 30, 0, 0, time.UTC)
 	coverage := clock.Add(-24 * time.Hour)
-	ops := Generate() // Reuses compatible operations/v2 observations
+	ops := Generate() // Reference operations/v2 baseline
+
+	// Build Fixture-Local Sessions (spanning 24h coverage window)
+	sessions := []SessionInfo{
+		{
+			ID:             "sess-001",
+			LaunchID:       "launch-parallax-review",
+			ProjectID:      "parallax",
+			LogicalAgentID: "agent-001",
+			ProviderID:     "claude",
+			ProviderKind:   "anthropic",
+			Workspace:      "/home/chrispian/dev/hollis-labs/worktrees/parallax/review",
+			State:          "ended",
+			PID:            4101,
+			ExitCode:       intPtr(0),
+			CreatedAt:      clock.Add(-24 * time.Hour).Format(time.RFC3339),
+			UpdatedAt:      clock.Add(-20 * time.Hour).Format(time.RFC3339),
+			EndedAt:        clock.Add(-20 * time.Hour).Format(time.RFC3339),
+		},
+		{
+			ID:             "sess-002",
+			LaunchID:       "launch-tether-daemon",
+			ProjectID:      "tether",
+			LogicalAgentID: "agent-002",
+			ProviderID:     "codex",
+			ProviderKind:   "openai",
+			Workspace:      "/home/chrispian/dev/hollis-labs/tether",
+			State:          "ended",
+			PID:            4102,
+			ExitCode:       intPtr(0),
+			CreatedAt:      clock.Add(-20 * time.Hour).Format(time.RFC3339),
+			UpdatedAt:      clock.Add(-16 * time.Hour).Format(time.RFC3339),
+			EndedAt:        clock.Add(-16 * time.Hour).Format(time.RFC3339),
+		},
+		{
+			ID:             "sess-003",
+			LaunchID:       "launch-tangent-proxy",
+			ProjectID:      "tangent",
+			LogicalAgentID: "agent-003",
+			ProviderID:     "agy",
+			ProviderKind:   "google",
+			Workspace:      "/home/chrispian/dev/hollis-labs/tangent",
+			State:          "ended",
+			PID:            4103,
+			ExitCode:       intPtr(1),
+			CreatedAt:      clock.Add(-16 * time.Hour).Format(time.RFC3339),
+			UpdatedAt:      clock.Add(-12 * time.Hour).Format(time.RFC3339),
+			EndedAt:        clock.Add(-12 * time.Hour).Format(time.RFC3339),
+		},
+		{
+			ID:             "sess-004",
+			LaunchID:       "launch-parallax-fixtures",
+			ProjectID:      "parallax",
+			LogicalAgentID: "agent-001",
+			ProviderID:     "claude",
+			ProviderKind:   "anthropic",
+			Workspace:      "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
+			State:          "ended",
+			PID:            4104,
+			ExitCode:       intPtr(0),
+			CreatedAt:      clock.Add(-12 * time.Hour).Format(time.RFC3339),
+			UpdatedAt:      clock.Add(-8 * time.Hour).Format(time.RFC3339),
+			EndedAt:        clock.Add(-8 * time.Hour).Format(time.RFC3339),
+		},
+		{
+			ID:             "sess-005",
+			LaunchID:       "launch-tether-registry",
+			ProjectID:      "tether",
+			LogicalAgentID: "agent-004",
+			ProviderID:     "codex",
+			ProviderKind:   "openai",
+			Workspace:      "/home/chrispian/dev/hollis-labs/tether",
+			State:          "ended",
+			PID:            4105,
+			ExitCode:       intPtr(0),
+			CreatedAt:      clock.Add(-8 * time.Hour).Format(time.RFC3339),
+			UpdatedAt:      clock.Add(-4 * time.Hour).Format(time.RFC3339),
+			EndedAt:        clock.Add(-4 * time.Hour).Format(time.RFC3339),
+		},
+		{
+			ID:             "sess-006",
+			LaunchID:       "launch-tangent-bridge",
+			ProjectID:      "tangent",
+			LogicalAgentID: "agent-003",
+			ProviderID:     "agy",
+			ProviderKind:   "google",
+			Workspace:      "/home/chrispian/dev/hollis-labs/tangent",
+			State:          "ended",
+			PID:            4106,
+			ExitCode:       intPtr(0),
+			CreatedAt:      clock.Add(-4 * time.Hour).Format(time.RFC3339),
+			UpdatedAt:      clock.Add(-1 * time.Hour).Format(time.RFC3339),
+			EndedAt:        clock.Add(-1 * time.Hour).Format(time.RFC3339),
+		},
+		{
+			ID:             "sess-007",
+			LaunchID:       "launch-parallax-runner",
+			ProjectID:      "parallax",
+			LogicalAgentID: "agent-001",
+			ProviderID:     "claude",
+			ProviderKind:   "anthropic",
+			Workspace:      "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
+			State:          "running",
+			PID:            4107,
+			CreatedAt:      clock.Add(-2 * time.Hour).Format(time.RFC3339),
+			UpdatedAt:      clock.Add(-10 * time.Minute).Format(time.RFC3339),
+		},
+		{
+			ID:             "sess-008",
+			LaunchID:       "launch-parallax-gate",
+			ProjectID:      "parallax",
+			LogicalAgentID: "agent-002",
+			ProviderID:     "codex",
+			ProviderKind:   "openai",
+			Workspace:      "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
+			State:          "running",
+			PID:            4108,
+			CreatedAt:      clock.Add(-30 * time.Minute).Format(time.RFC3339),
+			UpdatedAt:      clock.Add(-2 * time.Minute).Format(time.RFC3339),
+		},
+	}
+
+	sessionsInfo := SessionsInfo{
+		Sessions: sessions,
+		Total:    len(sessions),
+		Running:  2,
+		Ended:    6,
+	}
 
 	// Build Activity Events (64 monotonic-seq events)
 	events := make([]EventInfo, 0, 64)
@@ -591,12 +777,21 @@ func GenerateTetherSysop() TetherSysopFixture {
 		"mesh":    {"envelope.routed", "peer.discovered", "lease.renewed", "partition.fenced"},
 	}
 
+	eventsRecent1h := 0
+	var maxEventSeq int64
+
 	for i := 0; i < 64; i++ {
 		seq := int64(i + 1)
 		// Distribute time monotonically backwards from clock
 		offsetSec := int(float64(64-i-1) * (24.0 * 3600.0 / 64.0))
 		t := clock.Add(-time.Duration(offsetSec) * time.Second)
 		eventTimes = append(eventTimes, t)
+		if t.After(recent1hCutoff) {
+			eventsRecent1h++
+		}
+		if seq > maxEventSeq {
+			maxEventSeq = seq
+		}
 
 		scope := scopes[i%len(scopes)]
 		kinds := kindsForScope[scope]
@@ -604,7 +799,7 @@ func GenerateTetherSysop() TetherSysopFixture {
 
 		var sessionID string
 		if scope == "session" || (scope == "agent" && i%2 == 0) {
-			sessionID = fmt.Sprintf("SESSION-%03d", (i%8)+1)
+			sessionID = activeSessionAt(t, sessions)
 		}
 
 		payload := fmt.Sprintf(`{"seq":%d,"scope":"%s","kind":"%s","status":"admitted","deterministic":true}`, seq, scope, kind)
@@ -674,7 +869,9 @@ func GenerateTetherSysop() TetherSysopFixture {
 	var toolDurs []int64
 	var toolSumMs int64
 	toolRecent1h := 0
-	slowCalls := 0
+	toolSlowCalls := 0
+	toolOKCount := 0
+	toolErrCount := 0
 	toolSessions := map[string]struct{}{}
 
 	// Durations deliberately crafted: fast (<100ms), medium (100-499ms), 500-999ms, slow (>=1000ms)
@@ -693,7 +890,7 @@ func GenerateTetherSysop() TetherSysopFixture {
 			toolRecent1h++
 		}
 
-		sessionID := fmt.Sprintf("SESSION-%03d", (i%8)+1)
+		sessionID := activeSessionAt(t, sessions)
 		toolSessions[sessionID] = struct{}{}
 
 		name := toolNames[i%len(toolNames)]
@@ -706,7 +903,7 @@ func GenerateTetherSysop() TetherSysopFixture {
 		toolDurs = append(toolDurs, dur)
 		toolSumMs += dur
 		if dur >= 1000 {
-			slowCalls++
+			toolSlowCalls++
 		}
 		toolLatencyCounts[latencyBand(dur)]++
 
@@ -717,6 +914,9 @@ func GenerateTetherSysop() TetherSysopFixture {
 			ok = false
 			errStr = "file not found: config/missing.yaml"
 			errorCounts[name]++
+			toolErrCount++
+		} else {
+			toolOKCount++
 		}
 
 		callPayload := fmt.Sprintf(`{"tool":"%s","server":"%s","ok":%t,"duration_ms":%d}`, name, server, ok, dur)
@@ -735,44 +935,62 @@ func GenerateTetherSysop() TetherSysopFixture {
 	}
 
 	sort.Slice(toolDurs, func(i, j int) bool { return toolDurs[i] < toolDurs[j] })
-	p50Ms := toolDurs[int(float64(len(toolDurs)-1)*0.50)]
-	p95Ms := toolDurs[int(float64(len(toolDurs)-1)*0.95)]
+	p50Ms := pctile(toolDurs, 0.50)
+	p95Ms := pctile(toolDurs, 0.95)
 	avgMs := toolSumMs / int64(len(toolDurs))
+	toolSuccessPct := toolOKCount * 100 / len(toolCalls)
 
-	// Build Overview Sessions data (linking with operations/v2 sessions)
-	sessionTimes := make([]time.Time, 0, len(ops.Runs))
+	// Build Overview Sessions data (derived directly from fixture-local sessions)
+	var sessionStarts []time.Time
+	var sessionDurations []float64
 	sessionStateCounts := map[string]int{}
-	sessionProviderCounts := map[string]int{"claude": 3, "codex": 3, "agy": 2}
-	sessionProjectCounts := map[string]int{"parallax": 4, "tether": 2, "tangent": 2}
+	sessionProviderCounts := map[string]int{}
+	sessionProjectCounts := map[string]int{}
 	sessionRunning := 0
 	sessionEnded := 0
-	sessionSuccess := 0
-	sessionFail := 0
-	var sessionDurSum float64
+	sessionSuccesses := 0
+	sessionFailures := 0
+	sessionRecent24h := 0
+	recent24hCutoff := clock.Add(-24 * time.Hour)
 
-	for i, r := range ops.Runs {
-		sessionStateCounts[r.Status]++
-		st, _ := time.Parse(time.RFC3339, r.Started)
-		sessionTimes = append(sessionTimes, st)
-		if r.Status == "running" {
+	for _, s := range sessions {
+		sessionStateCounts[s.State]++
+		sessionProviderCounts[s.ProviderID]++
+		sessionProjectCounts[s.ProjectID]++
+		start, _ := time.Parse(time.RFC3339, s.CreatedAt)
+		sessionStarts = append(sessionStarts, start)
+		if start.Equal(recent24hCutoff) || start.After(recent24hCutoff) {
+			sessionRecent24h++
+		}
+		if s.State == "running" {
 			sessionRunning++
-		} else {
+		}
+		if s.EndedAt != "" {
 			sessionEnded++
-			if r.Status == "done" {
-				sessionSuccess++
+			end, _ := time.Parse(time.RFC3339, s.EndedAt)
+			sessionDurations = append(sessionDurations, end.Sub(start).Seconds())
+			if s.ExitCode != nil && *s.ExitCode == 0 {
+				sessionSuccesses++
 			} else {
-				sessionFail++
-			}
-			if r.Finished != nil {
-				ft, _ := time.Parse(time.RFC3339, *r.Finished)
-				sessionDurSum += ft.Sub(st).Seconds()
+				sessionFailures++
 			}
 		}
-		_ = i
 	}
-	sessionSuccessPct := sessionSuccess * 100 / sessionEnded
-	sessionFailurePct := sessionFail * 100 / sessionEnded
-	sessionAvgSec := int(sessionDurSum / float64(sessionEnded))
+
+	sessionSuccessPct := 0
+	sessionFailurePct := 0
+	if sessionEnded > 0 {
+		sessionSuccessPct = sessionSuccesses * 100 / sessionEnded
+		sessionFailurePct = sessionFailures * 100 / sessionEnded
+	}
+	sessionAvgSec := 0
+	if len(sessionDurations) > 0 {
+		var sumDur float64
+		for _, d := range sessionDurations {
+			sumDur += d
+		}
+		sessionAvgSec = int(sumDur / float64(len(sessionDurations)))
+	}
 
 	// Build Overview Messages data
 	messageKinds := map[string]int{"turn": 14, "notice": 8, "system": 2}
@@ -929,8 +1147,9 @@ func GenerateTetherSysop() TetherSysopFixture {
 		success := true
 		refusalStr := ""
 		errStr := ""
-		sessID := fmt.Sprintf("SESSION-%03d", (i%8)+1)
-		callerID := fmt.Sprintf("agent-%03d", (i%4)+1)
+		sessID := activeSessionAt(t, sessions)
+		agentCallers := []string{"sysop", "architect", "launch-agent-os", "launch-worker-1", "task-parallax-4", "task-reader", "task-legacy-runner", "agent-shim-v1"}
+		callerID := agentCallers[i%len(agentCallers)]
 
 		if i%3 == 0 {
 			evType = "chat"
@@ -956,7 +1175,7 @@ func GenerateTetherSysop() TetherSysopFixture {
 			prov = "anthropic"
 			mod = "claude-3-7-sonnet"
 			success = false
-			errStr = "budget limit $2.50 exceeded for session SESSION-002"
+			errStr = fmt.Sprintf("budget limit $2.50 exceeded for session %s", sessID)
 		}
 
 		auditEvents = append(auditEvents, AIAuditEventInfo{
@@ -993,6 +1212,7 @@ func GenerateTetherSysop() TetherSysopFixture {
 			Mode:     "code",
 			Intent:   "primary reasoning",
 			UsageBudget: AIUsageBudgetPolicyInfo{
+				Level:      "route",
 				MaxCostUSD: floatPtr(10.0),
 				Window:     "24h",
 				Scope:      "global",
@@ -1009,6 +1229,7 @@ func GenerateTetherSysop() TetherSysopFixture {
 			Mode:     "fast",
 			Intent:   "quick edits",
 			UsageBudget: AIUsageBudgetPolicyInfo{
+				Level:      "route",
 				MaxCostUSD: floatPtr(5.0),
 				Window:     "24h",
 				Scope:      "global",
@@ -1025,6 +1246,7 @@ func GenerateTetherSysop() TetherSysopFixture {
 			Mode:     "structured",
 			Intent:   "schema transforms",
 			UsageBudget: AIUsageBudgetPolicyInfo{
+				Level:      "session",
 				MaxCostUSD: floatPtr(2.5),
 				Window:     "24h",
 				Scope:      "session",
@@ -1041,6 +1263,7 @@ func GenerateTetherSysop() TetherSysopFixture {
 			Mode:     "pro",
 			Intent:   "planning and architecture",
 			UsageBudget: AIUsageBudgetPolicyInfo{
+				Level:      "project",
 				MaxCostUSD: floatPtr(5.0),
 				Window:     "7d",
 				Scope:      "project",
@@ -1212,7 +1435,22 @@ func GenerateTetherSysop() TetherSysopFixture {
 			{ConfiguredProviderID: "local", VendorProviderID: "ollama", ID: "qwen2.5-coder", Name: "Qwen 2.5 Coder 32B", Family: "qwen", ContextWindow: 32000, MaxOutputTokens: 4096, InputModalities: []string{"text"}, OutputModalities: []string{"text"}},
 		},
 		Routes: []AIRuntimeRouteInfo{
-			{Provider: "anthropic", Model: "claude-3-7-sonnet", Mode: "code", Intent: "primary code and reasoning", RequiresReasoning: boolPtr(true), RequiresTools: boolPtr(true), AllowReasoning: boolPtr(true), AllowTools: boolPtr(true)},
+			{
+				Provider:          "anthropic",
+				Model:             "claude-3-7-sonnet",
+				Mode:              "code",
+				Intent:            "primary code and reasoning",
+				RequiresReasoning: boolPtr(true),
+				RequiresTools:     boolPtr(true),
+				AllowReasoning:    boolPtr(true),
+				AllowTools:        boolPtr(true),
+				UsageBudget: &AIUsageBudgetPolicyInfo{
+					Level:      "route",
+					MaxCostUSD: floatPtr(10.0),
+					Window:     "24h",
+					Scope:      "session",
+				},
+			},
 			{Provider: "google", Model: "gemini-2.0-flash", Mode: "fast", Intent: "quick search and targeted edits", RequiresReasoning: boolPtr(false), RequiresTools: boolPtr(true), AllowTools: boolPtr(true)},
 			{Provider: "openai", Model: "gpt-4o", Mode: "structured", Intent: "schema transforms and data parsing", RequiresReasoning: boolPtr(false), RequiresTools: boolPtr(false), AllowTools: boolPtr(true)},
 			{Provider: "google", Model: "gemini-2.5-pro", Mode: "pro", Intent: "architecture and planning", RequiresReasoning: boolPtr(true), RequiresTools: boolPtr(true), AllowReasoning: boolPtr(true), AllowTools: boolPtr(true)},
@@ -1615,22 +1853,22 @@ func GenerateTetherSysop() TetherSysopFixture {
 			SuccessPct:  sessionSuccessPct,
 			FailurePct:  sessionFailurePct,
 			AvgSeconds:  sessionAvgSec,
-			Recent24h:   len(ops.Runs),
-			Trend:       bucketCounts(sessionTimes, 24),
+			Recent24h:   sessionRecent24h,
+			Trend:       bucketCounts(sessionStarts, 24),
 			ByState:     topN(sessionStateCounts, 6),
 			ByProvider:  topN(sessionProviderCounts, 6),
 			ByProject:   topN(sessionProjectCounts, 6),
 		},
 		ToolCalls: OverviewToolCalls{
 			Total:      len(toolCalls),
-			OK:         len(toolCalls) - len(errorCounts),
-			Errors:     len(errorCounts),
-			SuccessPct: (len(toolCalls) - len(errorCounts)) * 100 / len(toolCalls),
+			OK:         toolOKCount,
+			Errors:     toolErrCount,
+			SuccessPct: toolSuccessPct,
 			P50Ms:      p50Ms,
 			P95Ms:      p95Ms,
 			AvgMs:      avgMs,
 			Recent1h:   toolRecent1h,
-			SlowCalls:  slowCalls,
+			SlowCalls:  toolSlowCalls,
 			Sessions:   len(toolSessions),
 			TopTools:   topN(toolCounts, 5),
 			TopErrors:  topN(errorCounts, 5),
@@ -1649,8 +1887,8 @@ func GenerateTetherSysop() TetherSysopFixture {
 		},
 		Events: OverviewEvents{
 			Total:     len(events),
-			Recent1h:  22,
-			LatestSeq: int64(len(events)),
+			Recent1h:  eventsRecent1h,
+			LatestSeq: maxEventSeq,
 			ByScope:   topN(eventScopeCounts, 6),
 			ByKind:    topN(eventKindCounts, 8),
 			Trend:     bucketCounts(eventTimes, 24),
@@ -1741,6 +1979,7 @@ func GenerateTetherSysop() TetherSysopFixture {
 		ObservedSince:     coverage.Format(time.RFC3339),
 		Overview:          overview,
 		OverviewVariants:  variants,
+		Sessions:          sessionsInfo,
 		AI: TetherSysopAIFixture{
 			Settings: aiSettings,
 			Runtime:  aiRuntime,
@@ -1764,7 +2003,8 @@ func GenerateTetherSysop() TetherSysopFixture {
 				ToolCalls: toolCalls,
 				Total:     len(toolCalls),
 			},
-			Scopes: scopeAggregates,
+			Scopes:   scopeAggregates,
+			Sessions: sessionsInfo,
 		},
 		Registry: RegistryInfo{
 			Rows: registryProfiles,

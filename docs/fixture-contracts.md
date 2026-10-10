@@ -10,7 +10,7 @@ The generated [family manifest](../frontend/src/fixtures/family-contracts.json) 
 | Observations | observations/v1 / parallax/v5 | Declared five-resource review label | Bounded resource receipts at observedAt; retrospective samples at their own exact UTC timestamps |
 | Developer | developer/v1 / parallax/v6 | Declared file/graph review label | Recorded evidence at recordedAt; authored proposals remain explicitly separate |
 | Voice | voice/v1 / parallax/v7 | Declared two-clip review label | Independent synthetic-media snapshot; authored timed text is not speech transcription |
-| Tether Sysop | tether-sysop/v1 / parallax/v10 | Bundled control plane and operations dashboard | Independent full snapshot joined to operations/v2 sessions; 24h retrospective window |
+| Tether Sysop | tether-sysop/v1 / parallax/v10 | Bundled control plane and operations dashboard | Independent full snapshot with authentic fixture-local sessions; 24h retrospective window |
 
 Every artifact supplies seed 4421 and its own fixed reference clock, 2026-10-04T14:30:00Z. Their equal clocks do not make communication, administration or voice snapshots follow an operations cutoff. The manifest records actual coverage windows where supplied, and the developer recordedAt boundary. Presentation appearances and authored specimens are not persisted historical profiles. Administration now carries additive generator metadata; its existing v1 records and business relationships are unchanged.
 
