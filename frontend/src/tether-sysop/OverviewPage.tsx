@@ -76,16 +76,52 @@ function DataList({ title, items }: { title: string; items: NameCount[] }) {
   )
 }
 
-// Monotonic frame lease sequence counter and permanently retired leases across lifecycle and variant transitions
-let globalFrameLeaseSeq = 0
-const retiredLeases = new Set<number>()
+// Monotonic activation lease sequence counter and sets of active/retired leases across lifecycle and variant transitions
+let globalActivationLeaseSeq = 0
+export const activeLeases = new Set<number>()
+export const retiredLeases = new Set<number>()
 
-function hasCompetingOverlay(): boolean {
+export function isElementVisibleAndActive(el: HTMLElement): boolean {
+  if (el.hidden || el.getAttribute("aria-hidden") === "true") return false
+  if (el.hasAttribute("inert") || Boolean(el.closest("[inert]"))) return false
+  if (Boolean(el.closest('[aria-hidden="true"]'))) return false
+  if (Boolean(el.closest("details:not([open])"))) return false
+
+  if (el.getAttribute("data-state") === "closed" || Boolean(el.closest('[data-state="closed"]'))) {
+    return false
+  }
+
+  if (typeof window !== "undefined" && typeof window.getComputedStyle === "function") {
+    const style = window.getComputedStyle(el)
+    if (
+      style.display === "none" ||
+      style.visibility === "hidden" ||
+      style.visibility === "collapse" ||
+      style.opacity === "0"
+    ) {
+      return false
+    }
+  }
+
+  const rect = el.getBoundingClientRect()
+  if (rect.width === 0 && rect.height === 0) {
+    return false
+  }
+
+  return true
+}
+
+export function hasCompetingOverlay(): boolean {
   if (typeof document === "undefined") return false
-  const overlay = document.querySelector(
-    '[role="dialog"]:not([hidden]):not([aria-hidden="true"]), [role="alertdialog"]:not([hidden]):not([aria-hidden="true"]), [role="menu"]:not([hidden]):not([aria-hidden="true"]), [role="listbox"]:not([hidden]):not([aria-hidden="true"])',
+  const overlays = document.querySelectorAll<HTMLElement>(
+    '[role="dialog"], [role="alertdialog"], [role="menu"], [role="listbox"]',
   )
-  return overlay !== null
+  for (const el of Array.from(overlays)) {
+    if (isElementVisibleAndActive(el)) {
+      return true
+    }
+  }
+  return false
 }
 
 export interface OverviewPageProps {
@@ -130,65 +166,81 @@ export function OverviewPage({
   })
   const [loading, setLoading] = useState(forcedAppearance === "loading")
 
+  // Track activation lease per mount and variant lifecycle
+  const [activationLease, setActivationLease] = useState<number>(() => {
+    const initial = ++globalActivationLeaseSeq
+    activeLeases.add(initial)
+    return initial
+  })
+  const currentLeaseRef = useRef(activationLease)
   const rootRef = useRef<HTMLDivElement>(null)
-  const currentFrameLeaseRef = useRef(0)
   const requestSeqRef = useRef(0)
   const currentVariantRef = useRef(currentVariant)
   currentVariantRef.current = currentVariant
 
-  // Monotonic committed lease: advances on mount and variant/source replacement; retires old lease permanently
+  // Advance lease on variant transition and mount lifecycle; permanently retire previous lease
   useLayoutEffect(() => {
     void currentVariant
-    const frameLease = ++globalFrameLeaseSeq
-    currentFrameLeaseRef.current = frameLease
+    const lease = ++globalActivationLeaseSeq
+    activeLeases.add(lease)
+    currentLeaseRef.current = lease
+    setActivationLease(lease)
 
     return () => {
-      retiredLeases.add(frameLease)
-      if (currentFrameLeaseRef.current === frameLease) {
-        currentFrameLeaseRef.current = 0
+      activeLeases.delete(lease)
+      retiredLeases.add(lease)
+      if (currentLeaseRef.current === lease) {
+        currentLeaseRef.current = 0
       }
     }
   }, [currentVariant])
 
-  const isAdmitted = useCallback(() => {
-    const lease = currentFrameLeaseRef.current
-    if (lease === 0 || retiredLeases.has(lease)) return false
-    if (!rootRef.current?.isConnected || !document.contains(rootRef.current)) {
-      return false
-    }
-    if (hasCompetingOverlay()) return false
-    return true
-  }, [])
+  const isAdmitted = useCallback(
+    (leaseToVerify: number): boolean => {
+      if (
+        leaseToVerify === 0 ||
+        !activeLeases.has(leaseToVerify) ||
+        retiredLeases.has(leaseToVerify) ||
+        leaseToVerify !== currentLeaseRef.current
+      ) {
+        return false
+      }
+      if (!rootRef.current || !rootRef.current.isConnected || !document.contains(rootRef.current)) {
+        return false
+      }
+      if (hasCompetingOverlay()) {
+        return false
+      }
+      return true
+    },
+    [],
+  )
 
   const api = useMemo(() => createTetherSysopMockApi(currentVariant), [currentVariant])
 
-  const load = useCallback(() => {
-    const capturedFrameLease = currentFrameLeaseRef.current
-    if (
-      capturedFrameLease === 0 ||
-      retiredLeases.has(capturedFrameLease) ||
-      !rootRef.current?.isConnected ||
-      !document.contains(rootRef.current) ||
-      hasCompetingOverlay()
-    ) {
-      return
+  const load = useCallback((): boolean => {
+    const capturedLease = activationLease
+    if (!isAdmitted(capturedLease)) {
+      return false
     }
 
+    const capturedVariant = currentVariant
     const requestLease = ++requestSeqRef.current
-    const requestedVariant = currentVariant
+
+    if (typeof window !== "undefined") {
+      const w = window as unknown as { __tetherOverviewRequestCount?: number }
+      w.__tetherOverviewRequestCount = (w.__tetherOverviewRequestCount ?? 0) + 1
+    }
 
     setLoading(true)
     api
       .getOverview()
       .then((info) => {
-        // Promise completion must match the captured request, active frame lease, and variant
+        // Promise completion must match the captured request, active lease, and variant
         if (
-          capturedFrameLease !== currentFrameLeaseRef.current ||
-          retiredLeases.has(capturedFrameLease) ||
+          !isAdmitted(capturedLease) ||
           requestLease !== requestSeqRef.current ||
-          requestedVariant !== currentVariantRef.current ||
-          !rootRef.current?.isConnected ||
-          !document.contains(rootRef.current)
+          capturedVariant !== currentVariantRef.current
         ) {
           return
         }
@@ -206,12 +258,9 @@ export function OverviewPage({
       })
       .catch((err: unknown) => {
         if (
-          capturedFrameLease !== currentFrameLeaseRef.current ||
-          retiredLeases.has(capturedFrameLease) ||
+          !isAdmitted(capturedLease) ||
           requestLease !== requestSeqRef.current ||
-          requestedVariant !== currentVariantRef.current ||
-          !rootRef.current?.isConnected ||
-          !document.contains(rootRef.current)
+          capturedVariant !== currentVariantRef.current
         ) {
           return
         }
@@ -219,16 +268,17 @@ export function OverviewPage({
       })
       .finally(() => {
         if (
-          capturedFrameLease !== currentFrameLeaseRef.current ||
-          retiredLeases.has(capturedFrameLease) ||
+          !isAdmitted(capturedLease) ||
           requestLease !== requestSeqRef.current ||
-          requestedVariant !== currentVariantRef.current
+          capturedVariant !== currentVariantRef.current
         ) {
           return
         }
         setLoading(false)
       })
-  }, [api, currentVariant, forcedAppearance, forcedErrorMessage])
+
+    return true
+  }, [activationLease, api, currentVariant, forcedAppearance, forcedErrorMessage, isAdmitted])
 
   useEffect(() => {
     if (forcedAppearance === "error") {
@@ -251,57 +301,59 @@ export function OverviewPage({
     load()
   }, [load, forcedAppearance, forcedErrorMessage])
 
-  // Retain callback for verification testing with non-reviving lease and admission guards
-  useEffect(() => {
-    void currentVariant
-    if (typeof window === "undefined") return
-
-    const capturedFrameLease = currentFrameLeaseRef.current
-
-    const registeredCallback = (): boolean => {
-      if (
-        capturedFrameLease === 0 ||
-        capturedFrameLease !== currentFrameLeaseRef.current ||
-        retiredLeases.has(capturedFrameLease) ||
-        !rootRef.current?.isConnected ||
-        !document.contains(rootRef.current) ||
-        hasCompetingOverlay()
-      ) {
+  const handleVariantChange = useCallback(
+    (next: OverviewVariantKey): boolean => {
+      if (!isAdmitted(activationLease)) {
         return false
       }
-      load()
-      return true
-    }
-
-    const w = window as unknown as {
-      __tetherOverviewRetainedCallback?: () => boolean
-      __tetherOverviewActiveCallback?: () => boolean
-      __tetherOverviewCallbackHistory?: Array<() => boolean>
-    }
-    w.__tetherOverviewRetainedCallback = registeredCallback
-    w.__tetherOverviewActiveCallback = registeredCallback
-    if (!w.__tetherOverviewCallbackHistory) {
-      w.__tetherOverviewCallbackHistory = []
-    }
-    w.__tetherOverviewCallbackHistory.push(registeredCallback)
-  }, [currentVariant, load])
-
-  const handleVariantChange = useCallback(
-    (next: OverviewVariantKey) => {
-      if (!isAdmitted()) return
       if (controlledVariant === undefined) {
         setInternalVariant(next)
       }
       onVariantChange?.(next)
+      return true
     },
-    [controlledVariant, isAdmitted, onVariantChange],
+    [activationLease, controlledVariant, isAdmitted, onVariantChange],
   )
 
-  const handleRefresh = useCallback(() => {
-    if (!isAdmitted() || loading) return
+  const handleRefresh = useCallback((): boolean => {
+    if (!isAdmitted(activationLease) || loading) {
+      return false
+    }
+    if (typeof window !== "undefined") {
+      const w = window as unknown as { __tetherOverviewRefreshCount?: number }
+      w.__tetherOverviewRefreshCount = (w.__tetherOverviewRefreshCount ?? 0) + 1
+    }
     onRefresh?.()
-    load()
-  }, [isAdmitted, loading, onRefresh, load])
+    return load()
+  }, [activationLease, isAdmitted, loading, onRefresh, load])
+
+  // Register active DOM handlers and lease state on window for custody verification
+  useEffect(() => {
+    if (typeof window === "undefined") return
+
+    const w = window as unknown as {
+      __tetherOverviewActiveRefreshHandler?: () => boolean
+      __tetherOverviewActiveVariantHandler?: (next: OverviewVariantKey) => boolean
+      __tetherOverviewActiveLoadHandler?: () => boolean
+      __tetherOverviewActivationLease?: number
+      __tetherOverviewActiveLeases?: Set<number>
+      __tetherOverviewRetiredLeases?: Set<number>
+      __tetherOverviewRetainedCallback?: () => boolean
+      __tetherOverviewCallbackHistory?: Array<() => boolean>
+    }
+    w.__tetherOverviewActiveRefreshHandler = handleRefresh
+    w.__tetherOverviewActiveVariantHandler = handleVariantChange
+    w.__tetherOverviewActiveLoadHandler = load
+    w.__tetherOverviewActivationLease = activationLease
+    w.__tetherOverviewActiveLeases = activeLeases
+    w.__tetherOverviewRetiredLeases = retiredLeases
+    w.__tetherOverviewRetainedCallback = handleRefresh
+
+    if (!w.__tetherOverviewCallbackHistory) {
+      w.__tetherOverviewCallbackHistory = []
+    }
+    w.__tetherOverviewCallbackHistory.push(handleRefresh)
+  }, [activationLease, handleRefresh, handleVariantChange, load])
 
   // Keyboard navigation & shortcut guard
   useEffect(() => {
@@ -323,21 +375,24 @@ export function OverviewPage({
         ) {
           return
         }
-        if (rootRef.current && target.ownerDocument !== rootRef.current.ownerDocument) {
+
+        const root = rootRef.current
+        if (!root || !root.isConnected || !document.contains(root)) {
+          return
+        }
+
+        const isDocumentLevel = target === document.body || target === document.documentElement
+        const isInsideRoot = root.contains(target)
+
+        if (!isDocumentLevel && !isInsideRoot) {
+          // Outside element in the same document is focused - do not intercept
           return
         }
       }
 
       if (hasCompetingOverlay()) return
 
-      if (
-        currentFrameLeaseRef.current === 0 ||
-        retiredLeases.has(currentFrameLeaseRef.current) ||
-        !rootRef.current ||
-        !rootRef.current.isConnected ||
-        !document.contains(rootRef.current) ||
-        loading
-      ) {
+      if (!isAdmitted(activationLease) || loading) {
         return
       }
 
@@ -348,7 +403,7 @@ export function OverviewPage({
 
     window.addEventListener("keydown", onKeyDown)
     return () => window.removeEventListener("keydown", onKeyDown)
-  }, [handleRefresh, loading])
+  }, [activationLease, handleRefresh, isAdmitted, loading])
 
   const s = data?.sessions
   const t = data?.tool_calls

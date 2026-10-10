@@ -179,11 +179,12 @@ test.describe("Tether Sysop Overview Recreation", () => {
     await expect(page.locator("header.tether-overview-header")).toBeVisible()
   })
 
-  test("keyboard tab navigation and shortcuts refuse IME/modifier without blocking native Tab", async ({
+  test("keyboard tab navigation and shortcuts refuse IME/modifier and external focus without blocking native Tab", async ({
     page,
   }) => {
     await page.setViewportSize({ width: 1280, height: 800 })
     await page.goto("/?example=tether&screen=overview")
+    await expect(page.locator("header.tether-overview-header")).toBeVisible()
 
     // Test tab key focus traversal
     const select = page.getByRole("combobox", { name: "Dataset variant" })
@@ -202,70 +203,188 @@ test.describe("Tether Sysop Overview Recreation", () => {
     expect(active1).not.toBeNull()
     expect(active2).not.toBeNull()
 
-    // Test that Shift+R does NOT trigger refresh
-    let refreshed = false
-    await page.exposeFunction("__testRefreshWatcher", () => {
-      refreshed = true
-    })
+    // Baseline telemetry request count
+    const baselineRequests = await page.evaluate(
+      () =>
+        (window as unknown as { __tetherOverviewRequestCount?: number })
+          .__tetherOverviewRequestCount ?? 0,
+    )
+
+    // Positive control: plain 'r' shortcut at document level triggers admission and increments request count
+    await page.evaluate(() => (document.activeElement as HTMLElement)?.blur?.())
+    await page.keyboard.press("KeyR")
+    await expect
+      .poll(async () => {
+        return await page.evaluate(
+          () =>
+            (window as unknown as { __tetherOverviewRequestCount?: number })
+              .__tetherOverviewRequestCount ?? 0,
+        )
+      })
+      .toBe(baselineRequests + 1)
+
+    const countAfterPlainR = baselineRequests + 1
+
+    // Modifier check: Shift+KeyR must NOT trigger refresh (count stays identical)
     await page.keyboard.press("Shift+KeyR")
-    expect(refreshed).toBe(false)
+    const countAfterShiftR = await page.evaluate(
+      () =>
+        (window as unknown as { __tetherOverviewRequestCount?: number })
+          .__tetherOverviewRequestCount ?? 0,
+    )
+    expect(countAfterShiftR).toBe(countAfterPlainR)
+
+    // External focus scope check: element outside OverviewPage root in same document must NOT trigger Overview refresh
+    await page.evaluate(() => {
+      const extBtn = document.createElement("button")
+      extBtn.id = "external-test-btn"
+      extBtn.textContent = "Outside Control"
+      document.body.appendChild(extBtn)
+      extBtn.focus()
+    })
+    expect(await page.evaluate(() => document.activeElement?.id)).toBe("external-test-btn")
+
+    await page.keyboard.press("KeyR")
+    const countAfterExternalFocus = await page.evaluate(
+      () =>
+        (window as unknown as { __tetherOverviewRequestCount?: number })
+          .__tetherOverviewRequestCount ?? 0,
+    )
+    expect(countAfterExternalFocus).toBe(countAfterPlainR)
+
+    // Cleanup external button
+    await page.evaluate(() => {
+      document.getElementById("external-test-btn")?.remove()
+      ;(document.activeElement as HTMLElement)?.blur?.()
+    })
+
+    // Hidden overlay negative control (must NOT spuriously veto):
+    await page.evaluate(() => {
+      const hiddenDialog = document.createElement("div")
+      hiddenDialog.setAttribute("role", "dialog")
+      hiddenDialog.setAttribute("id", "hidden-test-dialog")
+      hiddenDialog.style.display = "none"
+      hiddenDialog.textContent = "Hidden Dialog"
+      document.body.appendChild(hiddenDialog)
+    })
+
+    await page.keyboard.press("KeyR")
+    await expect
+      .poll(async () => {
+        return await page.evaluate(
+          () =>
+            (window as unknown as { __tetherOverviewRequestCount?: number })
+              .__tetherOverviewRequestCount ?? 0,
+        )
+      })
+      .toBe(countAfterPlainR + 1)
+
+    const countAfterHiddenDialog = countAfterPlainR + 1
+
+    // Cleanup hidden dialog
+    await page.evaluate(() => {
+      document.getElementById("hidden-test-dialog")?.remove()
+      ;(document.activeElement as HTMLElement)?.blur?.()
+    })
+
+    // Visible overlay positive control (MUST veto):
+    await page.evaluate(() => {
+      const visibleDialog = document.createElement("div")
+      visibleDialog.setAttribute("role", "dialog")
+      visibleDialog.setAttribute("id", "visible-test-dialog")
+      visibleDialog.style.width = "200px"
+      visibleDialog.style.height = "100px"
+      visibleDialog.style.background = "#fff"
+      visibleDialog.textContent = "Visible Competing Dialog"
+      document.body.appendChild(visibleDialog)
+    })
+
+    await page.keyboard.press("KeyR")
+    const countAfterVisibleDialog = await page.evaluate(
+      () =>
+        (window as unknown as { __tetherOverviewRequestCount?: number })
+          .__tetherOverviewRequestCount ?? 0,
+    )
+    expect(countAfterVisibleDialog).toBe(countAfterHiddenDialog)
+
+    // Cleanup visible dialog
+    await page.evaluate(() => {
+      document.getElementById("visible-test-dialog")?.remove()
+    })
   })
 
-  test("retained callbacks refuse execution across in-page variant changes and competing overlays with fresh positives", async ({
+  test("retained actual DOM handlers refuse execution across in-page variant changes and competing overlays with fresh positives", async ({
     page,
   }) => {
     await page.goto("/?example=tether&screen=overview")
     await expect(page.locator("header.tether-overview-header")).toBeVisible()
 
-    // 1. Capture callback reference cb1 while on variant standard
-    const initialAdmission = await page.evaluate(() => {
+    // 1. Capture the ACTUAL once-working DOM Refresh handler cb1 while on variant standard
+    const initialRefreshResult = await page.evaluate(() => {
       const w = window as unknown as {
-        __tetherOverviewRetainedCallback?: () => boolean
-        __capturedCb1?: () => boolean
+        __tetherOverviewActiveRefreshHandler?: () => boolean
+        __capturedRefreshCb1?: () => boolean
       }
-      w.__capturedCb1 = w.__tetherOverviewRetainedCallback
-      return typeof w.__capturedCb1 === "function" ? w.__capturedCb1() : false
+      w.__capturedRefreshCb1 = w.__tetherOverviewActiveRefreshHandler
+      return typeof w.__capturedRefreshCb1 === "function" ? w.__capturedRefreshCb1() : false
     })
-    expect(initialAdmission).toBe(true) // Fresh positive on initial mounted callback
+    expect(initialRefreshResult).toBe(true) // Fresh positive on initial mounted actual DOM handler
 
     // 2. Switch variant in-page (SAME document, NO page.goto)
     const select = page.getByRole("combobox", { name: "Dataset variant" })
     await select.selectOption("blocked-health")
     await expect(page).toHaveURL(/variant=blocked-health/)
 
-    // 3. Verify that the SAME captured callback cb1 permanently refuses execution now that variant replaced the lease
+    // 3. Verify that the SAME captured actual handler cb1 permanently refuses execution now that variant replaced the lease
     const cb1AfterVariantChange = await page.evaluate(() => {
-      const w = window as unknown as { __capturedCb1?: () => boolean }
-      return typeof w.__capturedCb1 === "function" ? w.__capturedCb1() : true
+      const w = window as unknown as { __capturedRefreshCb1?: () => boolean }
+      return typeof w.__capturedRefreshCb1 === "function" ? w.__capturedRefreshCb1() : true
     })
-    expect(cb1AfterVariantChange).toBe(false) // Permanently refused!
+    expect(cb1AfterVariantChange).toBe(false) // Permanently refused! Non-reviving!
 
-    // 4. Verify fresh positive for the newly registered active callback cb2
+    // 4. Verify fresh positive for the newly registered active DOM handler cb2
     const cb2Result = await page.evaluate(() => {
       const w = window as unknown as {
-        __tetherOverviewRetainedCallback?: () => boolean
-        __capturedCb2?: () => boolean
+        __tetherOverviewActiveRefreshHandler?: () => boolean
+        __capturedRefreshCb2?: () => boolean
       }
-      w.__capturedCb2 = w.__tetherOverviewRetainedCallback
-      return typeof w.__capturedCb2 === "function" ? w.__capturedCb2() : false
+      w.__capturedRefreshCb2 = w.__tetherOverviewActiveRefreshHandler
+      return typeof w.__capturedRefreshCb2 === "function" ? w.__capturedRefreshCb2() : false
     })
-    expect(cb2Result).toBe(true) // Fresh positive on cb2!
+    expect(cb2Result).toBe(true) // Fresh positive on new actual DOM handler cb2!
 
-    // 5. Test competing overlay veto:
-    // Opening a competing foreground dialog/menu/listbox must refuse background actions
+    // 5. Test hidden overlay does NOT spuriously veto cb2 (negative control for veto):
+    await page.evaluate(() => {
+      const hiddenDialog = document.createElement("div")
+      hiddenDialog.setAttribute("role", "dialog")
+      hiddenDialog.setAttribute("id", "hidden-overlay-specimen")
+      hiddenDialog.style.display = "none"
+      document.body.appendChild(hiddenDialog)
+    })
+    const cb2WithHiddenOverlay = await page.evaluate(() => {
+      const w = window as unknown as { __capturedRefreshCb2?: () => boolean }
+      return typeof w.__capturedRefreshCb2 === "function" ? w.__capturedRefreshCb2() : false
+    })
+    expect(cb2WithHiddenOverlay).toBe(true) // Not vetoed by hidden overlay!
+    await page.evaluate(() => document.getElementById("hidden-overlay-specimen")?.remove())
+
+    // 6. Test visible competing overlay veto:
+    // Opening a visible competing foreground dialog/menu/listbox must refuse background actions
     await page.evaluate(() => {
       const dialog = document.createElement("div")
       dialog.setAttribute("role", "dialog")
       dialog.setAttribute("id", "competing-overlay-specimen")
+      dialog.style.width = "200px"
+      dialog.style.height = "100px"
       dialog.textContent = "Modal dialog overlay"
       document.body.appendChild(dialog)
     })
 
-    const cb2WithOverlay = await page.evaluate(() => {
-      const w = window as unknown as { __capturedCb2?: () => boolean }
-      return typeof w.__capturedCb2 === "function" ? w.__capturedCb2() : true
+    const cb2WithVisibleOverlay = await page.evaluate(() => {
+      const w = window as unknown as { __capturedRefreshCb2?: () => boolean }
+      return typeof w.__capturedRefreshCb2 === "function" ? w.__capturedRefreshCb2() : true
     })
-    expect(cb2WithOverlay).toBe(false) // Vetoed by competing overlay!
+    expect(cb2WithVisibleOverlay).toBe(false) // Vetoed by visible competing overlay!
 
     // Dismiss competing overlay
     await page.evaluate(() => {
@@ -274,12 +393,12 @@ test.describe("Tether Sysop Overview Recreation", () => {
 
     // Once overlay is removed, cb2 is admitted again
     const cb2AfterDismiss = await page.evaluate(() => {
-      const w = window as unknown as { __capturedCb2?: () => boolean }
-      return typeof w.__capturedCb2 === "function" ? w.__capturedCb2() : false
+      const w = window as unknown as { __capturedRefreshCb2?: () => boolean }
+      return typeof w.__capturedRefreshCb2 === "function" ? w.__capturedRefreshCb2() : false
     })
     expect(cb2AfterDismiss).toBe(true)
 
-    // 6. Test connected root guard:
+    // 7. Test connected root guard:
     // If root container is disconnected from active document, callback refuses
     await page.evaluate(() => {
       const root = document.querySelector(".tether-overview-root")
@@ -292,8 +411,8 @@ test.describe("Tether Sysop Overview Recreation", () => {
     })
 
     const cb2Disconnected = await page.evaluate(() => {
-      const w = window as unknown as { __capturedCb2?: () => boolean }
-      return typeof w.__capturedCb2 === "function" ? w.__capturedCb2() : true
+      const w = window as unknown as { __capturedRefreshCb2?: () => boolean }
+      return typeof w.__capturedRefreshCb2 === "function" ? w.__capturedRefreshCb2() : true
     })
     expect(cb2Disconnected).toBe(false) // Refused because root is disconnected!
 
@@ -305,10 +424,10 @@ test.describe("Tether Sysop Overview Recreation", () => {
       }
     })
 
-    // 7. Verify that cb1 STILL refuses (never revives across transitions)
+    // 8. Verify that cb1 STILL refuses (never revives across transitions)
     const cb1NeverRevives = await page.evaluate(() => {
-      const w = window as unknown as { __capturedCb1?: () => boolean }
-      return typeof w.__capturedCb1 === "function" ? w.__capturedCb1() : true
+      const w = window as unknown as { __capturedRefreshCb1?: () => boolean }
+      return typeof w.__capturedRefreshCb1 === "function" ? w.__capturedRefreshCb1() : true
     })
     expect(cb1NeverRevives).toBe(false)
   })
