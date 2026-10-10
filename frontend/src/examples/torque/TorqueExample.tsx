@@ -94,9 +94,41 @@ export function TorqueExample({
     identity: "",
     ids: [],
   })
-  const opener = useRef<HTMLElement | null>(null)
+  const opener = useRef<{
+    target: HTMLElement | null
+    id: string
+    identity: string
+    board: boolean
+  } | null>(null)
   const boardAnchor = useRef<HTMLInputElement | null>(null)
   const headingAnchor = useRef<HTMLHeadingElement | null>(null)
+  const boardIdentity = JSON.stringify([
+    state.profile,
+    state.scenario,
+    state.cutoff,
+    state.override,
+    state.query,
+  ])
+  // Closing changes route/leases before Base UI resolves finalFocus. Read the
+  // current admission here rather than the opening render's model or callback.
+  const returnAdmission = useRef({ identity: boardIdentity, cursor, model })
+  returnAdmission.current = { identity: boardIdentity, cursor, model }
+  function returnTarget() {
+    const current = returnAdmission.current
+    const origin = opener.current
+    if (
+      origin?.target?.isConnected &&
+      origin.identity === current.identity &&
+      current.model.accessible &&
+      current.model.tasks.some((task) => task.id === origin.id) &&
+      (!origin.board ||
+        (current.cursor.identity === current.identity && current.cursor.ids.includes(origin.id))) &&
+      !origin.target.closest('[inert], [aria-hidden="true"]') &&
+      !origin.target.matches(":disabled")
+    )
+      return origin.target
+    return boardAnchor.current ?? headingAnchor.current
+  }
   const pageRoot = useRef<HTMLElement>(null)
   useLayoutEffect(() => {
     if (pageRoot.current) {
@@ -118,8 +150,12 @@ export function TorqueExample({
   function select(id: string) {
     if (admitted() && model.tasks.some((t) => t.id === id)) {
       if (state.route !== "task")
-        opener.current =
-          document.activeElement instanceof HTMLElement ? document.activeElement : null
+        opener.current = {
+          target: document.activeElement instanceof HTMLElement ? document.activeElement : null,
+          id,
+          identity: boardIdentity,
+          board: state.route === "tasks",
+        }
       change({ selected: id, route: "task" }, state.route === "task")
     }
   }
@@ -481,11 +517,7 @@ export function TorqueExample({
             else onChange({ route: "tasks", selected: null }, true)
           }
         }}
-        returnTarget={() =>
-          opener.current?.isConnected
-            ? opener.current
-            : (boardAnchor.current ?? headingAnchor.current)
-        }
+        returnTarget={returnTarget}
         onIntent={(action, id) => {
           if (admitted()) setIntent(`${action} / ${id}: inspected locally, no execution.`)
         }}

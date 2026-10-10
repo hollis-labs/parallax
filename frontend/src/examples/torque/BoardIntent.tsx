@@ -6,20 +6,23 @@ export type BoardIntentRequest = {
   action: string
   outcome: "preview" | "error" | "refusal"
   returnTarget: HTMLElement | null
+  identity: string
 }
 
 // Authored presentation only: no record mutation, persistence or execution adapter.
 export function BoardIntent({
   request,
   onClose,
+  resolveReturnTarget,
 }: {
   request: BoardIntentRequest | null
   onClose: () => void
+  resolveReturnTarget: (request: BoardIntentRequest | null) => HTMLElement | null
 }) {
   const [phase, setPhase] = useState<"confirm" | "pending" | "result">("confirm")
   const title = useRef<HTMLHeadingElement>(null)
-  const returnTarget = useRef<HTMLElement | null>(null)
-  if (request) returnTarget.current = request.returnTarget
+  const origin = useRef<BoardIntentRequest | null>(null)
+  if (request) origin.current = request
   useEffect(() => {
     if (request) setPhase("confirm")
   }, [request])
@@ -38,11 +41,7 @@ export function BoardIntent({
       <DialogContent
         className="torque-board-intent"
         initialFocus={title}
-        finalFocus={() =>
-          returnTarget.current?.isConnected
-            ? returnTarget.current
-            : document.querySelector<HTMLInputElement>('[aria-label="Example task filter"]')
-        }
+        finalFocus={() => resolveReturnTarget(origin.current)}
       >
         <DialogTitle ref={title} tabIndex={-1}>
           Local action preview

@@ -202,6 +202,26 @@ export function TorqueOperations({
     if (tableRoot.current) tableRoot.current.scrollTop = 0
   }, [filterFrame, matchingIds])
   const visible = matching.slice(0, visibleCount)
+  const returnAdmission = useRef({
+    identity,
+    ids: visible.map((r) => r.task.id),
+    accessible: model.accessible,
+  })
+  returnAdmission.current = {
+    identity,
+    ids: visible.map((r) => r.task.id),
+    accessible: model.accessible,
+  }
+  function resolveReturnTarget(request: BoardIntentRequest | null) {
+    const current = returnAdmission.current
+    return request?.returnTarget?.isConnected &&
+      request.identity === current.identity &&
+      current.accessible &&
+      current.ids.includes(request.id) &&
+      !request.returnTarget.matches(":disabled")
+      ? request.returnTarget
+      : anchorRef.current
+  }
   useLayoutEffect(() => {
     if (selectAll.current)
       selectAll.current.indeterminate =
@@ -215,13 +235,16 @@ export function TorqueOperations({
         e.key !== "/" ||
         e.defaultPrevented ||
         e.isComposing ||
+        e.keyCode === 229 ||
         e.ctrlKey ||
         e.metaKey ||
         e.altKey ||
         e.shiftKey ||
         document.querySelector('[role="dialog"], [role="menu"]') ||
         (target instanceof Element &&
-          target.closest('input, textarea, select, button, a, [contenteditable="true"]'))
+          target.closest(
+            'input, textarea, select, button, a, [contenteditable]:not([contenteditable="false"]), [role="textbox"], [role="combobox"], [role="slider"], [role="spinbutton"], [role="tablist"], [role="listbox"], [role="tree"], [role="grid"], [role="radiogroup"]',
+          ))
       )
         return
       e.preventDefault()
@@ -308,7 +331,11 @@ export function TorqueOperations({
               if (admitted()) onQuery(e.target.value)
             }}
             onKeyDown={(e) => {
-              if (e.key === "Escape" && !e.nativeEvent.isComposing) {
+              if (
+                e.key === "Escape" &&
+                !e.nativeEvent.isComposing &&
+                e.nativeEvent.keyCode !== 229
+              ) {
                 e.preventDefault()
                 e.stopPropagation()
                 if (admitted()) onQuery("")
@@ -561,6 +588,7 @@ export function TorqueOperations({
               {visible.map((r) => (
                 <tr
                   key={r.task.id}
+                  data-task-id={r.task.id}
                   data-selected={selected.includes(r.task.id)}
                   tabIndex={0}
                   onClick={(e) => {
@@ -572,14 +600,18 @@ export function TorqueOperations({
                       !e.shiftKey &&
                       !e.altKey &&
                       !(e.target instanceof Element && e.target.closest(ROW_INTERACTIVE_SELECTOR))
-                    )
+                    ) {
+                      e.currentTarget.focus({ preventScroll: true })
                       onSelect(r.task.id)
+                    }
                   }}
                   onKeyDown={(e) => {
                     if (
                       admitted() &&
                       e.target === e.currentTarget &&
+                      !e.defaultPrevented &&
                       !e.nativeEvent.isComposing &&
+                      e.nativeEvent.keyCode !== 229 &&
                       !e.ctrlKey &&
                       !e.metaKey &&
                       !e.shiftKey &&
@@ -622,6 +654,7 @@ export function TorqueOperations({
                           !e.altKey
                         ) {
                           e.preventDefault()
+                          e.currentTarget.focus({ preventScroll: true })
                           onSelect(r.task.id)
                         }
                       }}
@@ -734,6 +767,7 @@ export function TorqueOperations({
                             if (admitted())
                               setIntent({
                                 id: r.task.id,
+                                identity,
                                 action:
                                   r.status === "review"
                                     ? "Approve"
@@ -795,7 +829,11 @@ export function TorqueOperations({
           )}
         </section>
       )}
-      <BoardIntent request={intent} onClose={() => setIntent(null)} />
+      <BoardIntent
+        request={intent}
+        onClose={() => setIntent(null)}
+        resolveReturnTarget={resolveReturnTarget}
+      />
       <footer className="torque-ops-footer">
         {model.accessible
           ? `${matching.length} tasks · ${matching.filter((r) => selected.includes(r.task.id)).length} selected`
