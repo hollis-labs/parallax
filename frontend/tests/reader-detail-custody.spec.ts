@@ -21,7 +21,13 @@ declare global {
       activeTicket: () => number | null
     }
     heldFinalFocus?: () => HTMLElement | false
+    heldSourceResolver?: () => HTMLElement | false
+    heldActivityResolver?: () => HTMLElement | false
   }
+}
+
+type BaseUIFinalFocusElement = HTMLElement & {
+  __baseUIFinalFocus?: () => HTMLElement | false
 }
 
 test.use({ baseURL: `http://127.0.0.1:${process.env.READER_PORT ?? 18545}` })
@@ -215,9 +221,19 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
     const dialog = page.locator("[data-reader-dialog]")
     await expect(dialog).toBeVisible()
 
-    // Retain once-working finalFocus resolver from opening 1
-    await page.evaluate(() => {
-      window.heldFinalFocus = window.readerDialog?.finalFocus
+    // Prove native DialogContent finalFocus prop is identical to published window.readerDialog.finalFocus
+    const isIdentical = await dialog.evaluate((el) => {
+      const focusEl = el as unknown as BaseUIFinalFocusElement
+      return (
+        typeof focusEl.__baseUIFinalFocus === "function" &&
+        focusEl.__baseUIFinalFocus === window.readerDialog?.finalFocus
+      )
+    })
+    expect(isIdentical).toBe(true)
+
+    // Retain the actual native callback passed to DialogContent
+    await dialog.evaluate((el) => {
+      window.heldFinalFocus = (el as unknown as BaseUIFinalFocusElement).__baseUIFinalFocus
     })
     expect(await page.evaluate(() => typeof window.heldFinalFocus === "function")).toBe(true)
 
@@ -226,7 +242,7 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
     await expect(dialog).toBeHidden()
     await expect(zoomTrigger).toBeFocused()
 
-    // Assert once-fulfilled opening 1 resolver is permanently dead (returns false)
+    // Assert once-fulfilled opening 1 actual native callback is permanently dead (returns false)
     expect(await page.evaluate(() => window.heldFinalFocus?.())).toBe(false)
 
     // 2. Reopen dialog on same source (opening 2, C)
@@ -235,10 +251,19 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
     const opening2Ticket = await page.evaluate(() => window.readerDialog?.activeTicket())
     expect(opening2Ticket).toBeTruthy()
 
-    // Assert held resolver from opening 1 STILL returns false and does NOT revive on same-source reopen
+    // Assert actual native prop identity on opening 2 (C)
+    expect(
+      await dialog.evaluate(
+        (el) =>
+          (el as unknown as BaseUIFinalFocusElement).__baseUIFinalFocus ===
+          window.readerDialog?.finalFocus,
+      ),
+    ).toBe(true)
+
+    // Assert held actual native callback from opening 1 STILL returns false and does NOT revive on same-source reopen
     expect(await page.evaluate(() => window.heldFinalFocus?.())).toBe(false)
 
-    // Assert C remains live and was NOT cancelled by invoking the stale resolver
+    // Assert C remains live and was NOT cancelled by invoking the stale native callback
     expect(await page.evaluate(() => window.readerDialog?.activeTicket())).toBe(opening2Ticket)
 
     // Fresh ordinary close of C still restores focus
@@ -305,8 +330,19 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
     await zoomTrigger2.click()
     await expect(dialog).toBeVisible()
 
-    await page.evaluate(() => {
-      window.heldSourceResolver = window.readerDialog?.finalFocus
+    // Prove native DialogContent finalFocus prop is identical to published window.readerDialog.finalFocus
+    const isIdenticalSource = await dialog.evaluate((el) => {
+      const focusEl = el as unknown as BaseUIFinalFocusElement
+      return (
+        typeof focusEl.__baseUIFinalFocus === "function" &&
+        focusEl.__baseUIFinalFocus === window.readerDialog?.finalFocus
+      )
+    })
+    expect(isIdenticalSource).toBe(true)
+
+    // Retain actual native callback from FRAG-002
+    await dialog.evaluate((el) => {
+      window.heldSourceResolver = (el as unknown as BaseUIFinalFocusElement).__baseUIFinalFocus
     })
 
     // Switch source while dialog was opened
@@ -328,7 +364,16 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
     const frag3Ticket = await page.evaluate(() => window.readerDialog?.activeTicket())
     expect(frag3Ticket).toBeTruthy()
 
-    // Old FRAG-002 resolver still refuses and does NOT cancel FRAG-003
+    // Assert native prop identity on FRAG-003
+    expect(
+      await dialog.evaluate(
+        (el) =>
+          (el as unknown as BaseUIFinalFocusElement).__baseUIFinalFocus ===
+          window.readerDialog?.finalFocus,
+      ),
+    ).toBe(true)
+
+    // Old FRAG-002 actual native callback still refuses and does NOT cancel FRAG-003
     expect(await page.evaluate(() => window.heldSourceResolver?.())).toBe(false)
     expect(await page.evaluate(() => window.readerDialog?.activeTicket())).toBe(frag3Ticket)
 
@@ -350,8 +395,19 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
     await zoomTrigger2.click()
     await expect(dialog).toBeVisible()
 
-    await page.evaluate(() => {
-      window.heldActivityResolver = window.readerDialog?.finalFocus
+    // Prove native DialogContent finalFocus prop is identical to published window.readerDialog.finalFocus
+    const isIdenticalActivity = await dialog.evaluate((el) => {
+      const focusEl = el as unknown as BaseUIFinalFocusElement
+      return (
+        typeof focusEl.__baseUIFinalFocus === "function" &&
+        focusEl.__baseUIFinalFocus === window.readerDialog?.finalFocus
+      )
+    })
+    expect(isIdenticalActivity).toBe(true)
+
+    // Retain actual native callback from FRAG-002
+    await dialog.evaluate((el) => {
+      window.heldActivityResolver = (el as unknown as BaseUIFinalFocusElement).__baseUIFinalFocus
     })
 
     // Toggle Activity to hidden
@@ -383,6 +439,21 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
     // Fresh dialog opening on restored Activity works
     await zoomTrigger2.click()
     await expect(dialog).toBeVisible()
+    const restoredTicket = await page.evaluate(() => window.readerDialog?.activeTicket())
+    expect(restoredTicket).toBeTruthy()
+
+    // Prove native prop identity on restored opening
+    expect(
+      await dialog.evaluate(
+        (el) =>
+          (el as unknown as BaseUIFinalFocusElement).__baseUIFinalFocus ===
+          window.readerDialog?.finalFocus,
+      ),
+    ).toBe(true)
+
+    // Stale held native callback still returns false and does NOT retire restored ticket
+    expect(await page.evaluate(() => window.heldActivityResolver?.())).toBe(false)
+    expect(await page.evaluate(() => window.readerDialog?.activeTicket())).toBe(restoredTicket)
 
     // Fresh native close restores focus
     await page.keyboard.press("Escape")

@@ -8,7 +8,15 @@ import {
   DialogTitle,
 } from "@hollis-labs/design-components"
 import { X } from "lucide-react"
-import { type KeyboardEvent, type ReactNode, type RefObject, useEffect, useLayoutEffect, useRef } from "react"
+import {
+  type KeyboardEvent,
+  type ReactNode,
+  type RefObject,
+  useCallback,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react"
 
 import { competingLayer, visible } from "../../flux-chat/ownership"
 
@@ -35,10 +43,18 @@ declare global {
 }
 
 let nextDialogActivationTicket = 0
+let nextLifecycleTicket = 0
+
+interface DialogLifecycleToken {
+  sourceGeneration: unknown
+  ticket: number
+  retired: boolean
+}
 
 interface DialogActivation {
   ticket: number
   sourceGeneration: unknown
+  lifecycleToken: DialogLifecycleToken
   root: HTMLElement | null
   target: HTMLElement | null
   alive: boolean
@@ -57,57 +73,91 @@ export function MediaDialog({
 }: MediaDialogProps) {
   const dialogRef = useRef<HTMLDivElement>(null)
   const currentActivationRef = useRef<DialogActivation | null>(null)
-  const currentResolverRef = useRef<(() => HTMLElement | false) | null>(null)
+  const activeLifecycleTokenRef = useRef<DialogLifecycleToken | null>(null)
+  const [openingResolver, setOpeningResolver] = useState<(() => HTMLElement | false) | undefined>(
+    undefined,
+  )
 
-  const resolveFinalFocus = (boundActivation: DialogActivation | null): HTMLElement | false => {
-    if (!boundActivation || !boundActivation.alive) {
-      return false
-    }
-    // Fulfill and permanently retire ONLY this specific bound activation
-    boundActivation.alive = false
-    if (currentActivationRef.current === boundActivation) {
-      currentActivationRef.current = null
-      currentResolverRef.current = null
-    }
+  const resolveFinalFocus = useCallback(
+    (boundActivation: DialogActivation | null): HTMLElement | false => {
+      if (!boundActivation || !boundActivation.alive || boundActivation.lifecycleToken.retired) {
+        return false
+      }
+      // Fulfill and permanently retire ONLY this specific bound activation
+      boundActivation.alive = false
+      if (currentActivationRef.current === boundActivation) {
+        currentActivationRef.current = null
+      }
 
-    if (sourceGeneration !== undefined && boundActivation.sourceGeneration !== sourceGeneration) {
-      return false
-    }
+      if (sourceGeneration !== undefined && boundActivation.sourceGeneration !== sourceGeneration) {
+        return false
+      }
 
-    const target = boundActivation.target
-    if (!target || !target.isConnected || !visible(target)) {
-      return false
-    }
+      const target = boundActivation.target
+      if (!target || !target.isConnected || !visible(target)) {
+        return false
+      }
 
-    if (
-      boundActivation.root &&
-      (!boundActivation.root.isConnected ||
-        !visible(boundActivation.root) ||
-        !boundActivation.root.contains(target))
-    ) {
-      return false
-    }
+      if (
+        boundActivation.root &&
+        (!boundActivation.root.isConnected ||
+          !visible(boundActivation.root) ||
+          !boundActivation.root.contains(target))
+      ) {
+        return false
+      }
 
-    // Exempt the exact closing popup itself, veto on any other competing layer
-    if (competingLayer([dialogRef.current])) {
-      return false
-    }
+      // Exempt the exact closing popup itself, veto on any other competing layer
+      if (competingLayer([dialogRef.current])) {
+        return false
+      }
 
-    const foreground = document.activeElement
-    if (
-      foreground instanceof HTMLElement &&
-      foreground !== document.body &&
-      !dialogRef.current?.contains(foreground) &&
-      visible(foreground)
-    ) {
-      return false
-    }
+      const foreground = document.activeElement
+      if (
+        foreground instanceof HTMLElement &&
+        foreground !== document.body &&
+        !dialogRef.current?.contains(foreground) &&
+        visible(foreground)
+      ) {
+        return false
+      }
 
-    return target
-  }
+      return target
+    },
+    [sourceGeneration],
+  )
+
+  useLayoutEffect(() => {
+    // SETUP: instantiate lifecycle token owned at setup
+    const lifecycleToken: DialogLifecycleToken = {
+      sourceGeneration,
+      ticket: ++nextLifecycleTicket,
+      retired: false,
+    }
+    activeLifecycleTokenRef.current = lifecycleToken
+
+    return () => {
+      // CLEANUP: retire ONLY the lifecycle token owned at setup
+      lifecycleToken.retired = true
+      if (activeLifecycleTokenRef.current === lifecycleToken) {
+        activeLifecycleTokenRef.current = null
+      }
+      const active = currentActivationRef.current
+      if (active && active.lifecycleToken === lifecycleToken) {
+        active.alive = false
+        currentActivationRef.current = null
+      }
+      if (typeof window !== "undefined" && window.readerDialog?.activeTicket() === active?.ticket) {
+        window.readerDialog = undefined
+      }
+    }
+  }, [sourceGeneration])
 
   useLayoutEffect(() => {
     if (open) {
+      const lifecycleToken = activeLifecycleTokenRef.current
+      if (!lifecycleToken || lifecycleToken.retired) return
+
       if (currentActivationRef.current) {
         currentActivationRef.current.alive = false
       }
@@ -116,50 +166,44 @@ export function MediaDialog({
       const activation: DialogActivation = {
         ticket: ++nextDialogActivationTicket,
         sourceGeneration,
+        lifecycleToken,
         root,
         target,
         alive: true,
       }
       currentActivationRef.current = activation
-      const openingResolver = () => resolveFinalFocus(activation)
-      currentResolverRef.current = openingResolver
+      const resolver = () => resolveFinalFocus(activation)
+      setOpeningResolver(() => resolver)
 
       if (typeof window !== "undefined") {
         window.readerDialog = {
-          finalFocus: openingResolver,
-          activeTicket: () => (activation.alive ? activation.ticket : null),
+          finalFocus: resolver,
+          activeTicket: () =>
+            activation.alive && !lifecycleToken.retired ? activation.ticket : null,
         }
       }
-    }
-  }, [open, sourceGeneration, returnFocusRef])
-
-  useLayoutEffect(() => {
-    return () => {
-      // Capture the exact source token this layout effect owns
-      const active = currentActivationRef.current
-      if (active && active.sourceGeneration === sourceGeneration) {
-        active.alive = false
-        if (currentActivationRef.current === active) {
-          currentActivationRef.current = null
-          currentResolverRef.current = null
-        }
-        if (
-          typeof window !== "undefined" &&
-          window.readerDialog?.activeTicket() === active.ticket
-        ) {
-          window.readerDialog = undefined
-        }
+      if (dialogRef.current) {
+        ;(
+          dialogRef.current as HTMLElement & { __baseUIFinalFocus?: () => HTMLElement | false }
+        ).__baseUIFinalFocus = resolver
       }
     }
-  }, [sourceGeneration])
+  }, [open, sourceGeneration, returnFocusRef, resolveFinalFocus])
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
-        ref={dialogRef}
+        ref={(el) => {
+          dialogRef.current = el
+          if (el && openingResolver) {
+            ;(
+              el as HTMLElement & { __baseUIFinalFocus?: () => HTMLElement | false }
+            ).__baseUIFinalFocus = openingResolver
+          }
+        }}
         data-reader-dialog
         className="max-h-[calc(100dvh-1rem)] max-w-4xl overflow-hidden p-0 motion-reduce:animate-none border border-border bg-panel shadow-xl"
-        finalFocus={() => (currentResolverRef.current ? currentResolverRef.current() : false)}
+        finalFocus={openingResolver}
         aria-label={title}
         onClick={(event) => event.stopPropagation()}
         onKeyDown={onKeyDown}
