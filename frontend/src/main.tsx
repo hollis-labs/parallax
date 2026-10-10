@@ -2,6 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import { App } from "./App"
 import { StandaloneAdminReview } from "./admin-review/Review"
+import { StandaloneDrawersReview } from "./drawers/Standalone"
 import { StandaloneAdministrationExample } from "./examples/administration/Standalone"
 import { StandaloneChatExample } from "./examples/chat/Standalone"
 import { StandaloneMessagingExample } from "./examples/messaging/Standalone"
@@ -23,6 +24,8 @@ ReactDOM.createRoot(root).render(
       <StandaloneChatExample />
     ) : new URLSearchParams(location.search).get("example") === "torque" ? (
       <StandaloneTorqueExample />
+    ) : new URLSearchParams(location.search).get("example") === "drawers" ? (
+      <StandaloneDrawersReview />
     ) : new URLSearchParams(location.search).get("adminShellReview") === "1" ? (
       <StandaloneAdminReview />
     ) : (
