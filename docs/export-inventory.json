@@ -314,6 +314,7 @@
       "frontend/src/examples/messaging/MessagingExample.tsx",
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/examples/torque/TaskInspection.tsx",
+      "frontend/src/flux-rail/Review.tsx",
       "frontend/src/layouts/AsideConsumers.stories.tsx",
       "frontend/src/operations-list-proof/Proof.tsx"
     ]
@@ -604,6 +605,7 @@
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/examples/workspace/WorkspaceExample.tsx",
+      "frontend/src/flux-rail/Review.tsx",
       "frontend/src/layouts/AppShellAside.stories.tsx",
       "frontend/src/layouts/Comparison.stories.tsx",
       "frontend/src/run-explorer/Explorer.stories.tsx"
@@ -1847,11 +1849,26 @@
     "name": "resolveAdmittedFocusTarget",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/flux-rail/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2050,7 +2067,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/examples/torque/Operations.tsx"
+      "frontend/src/examples/torque/Operations.tsx",
+      "frontend/src/flux-rail/Review.tsx"
     ]
   },
   {
@@ -2397,6 +2415,9 @@
       "frontend/src/examples/torque/TaskInspection.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/examples/workspace/WorkspaceExample.tsx",
+      "frontend/src/flux-rail/Contents.tsx",
+      "frontend/src/flux-rail/Rail.tsx",
+      "frontend/src/flux-rail/Review.tsx",
       "frontend/src/layouts/AppShellAside.stories.tsx",
       "frontend/src/layouts/AsideConsumers.stories.tsx",
       "frontend/src/layouts/Comparison.stories.tsx",
@@ -3414,7 +3435,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/examples/torque/Operations.tsx"
+      "frontend/src/examples/torque/Operations.tsx",
+      "frontend/src/flux-rail/Review.tsx"
     ]
   },
   {
@@ -3455,7 +3477,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/examples/torque/Operations.tsx"
+      "frontend/src/examples/torque/Operations.tsx",
+      "frontend/src/flux-rail/Review.tsx"
     ]
   },
   {
@@ -3537,7 +3560,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/examples/torque/Operations.tsx"
+      "frontend/src/examples/torque/Operations.tsx",
+      "frontend/src/flux-rail/Review.tsx"
     ]
   },
   {
@@ -7348,6 +7372,7 @@
       "frontend/src/communications/Messaging.tsx",
       "frontend/src/developer/Lab.tsx",
       "frontend/src/evidence/Inspector.tsx",
+      "frontend/src/flux-rail/Contents.tsx",
       "frontend/src/observability/Views.tsx",
       "frontend/src/operations/Views.tsx",
       "frontend/src/primitives/Gallery.tsx",
@@ -7407,6 +7432,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/flux-rail/Contents.tsx",
       "frontend/src/ops-dashboard/Dashboard.tsx",
       "frontend/src/ops-dashboard/contracts.ts"
     ]
@@ -7463,6 +7489,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/flux-rail/Contents.tsx",
       "frontend/src/ops-dashboard/Dashboard.tsx"
     ]
   },
@@ -7517,6 +7544,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/flux-rail/Contents.tsx",
       "frontend/src/widgets/Gallery.tsx",
       "frontend/src/widgets/contracts.ts"
     ]
@@ -9704,7 +9732,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/flux-rail/Contents.tsx"
     ]
   },
   {
@@ -9729,7 +9758,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/flux-rail/Contents.tsx"
     ]
   },
   {
@@ -9754,7 +9784,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/flux-rail/Contents.tsx"
     ]
   },
   {
@@ -9779,7 +9810,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/flux-rail/Contents.tsx"
     ]
   },
   {
@@ -9817,7 +9849,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/flux-rail/Contents.tsx"
     ]
   },
   {
@@ -9840,11 +9873,23 @@
     "name": "PlanTrigger",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/communications/Chat.tsx"
+      ],
+      "checks": [
+        "frontend/tests/communications.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/communications/Communications.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/flux-rail/Contents.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -11407,7 +11452,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/flux-rail/Contents.tsx"
     ]
   },
   {
@@ -11432,7 +11478,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/flux-rail/Contents.tsx"
     ]
   },
   {
@@ -11457,7 +11504,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/flux-rail/Contents.tsx"
     ]
   },
   {
@@ -11572,7 +11620,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/flux-rail/Contents.tsx"
     ]
   },
   {
@@ -11582,11 +11631,23 @@
     "name": "QueueSection",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/communications/Chat.tsx"
+      ],
+      "checks": [
+        "frontend/tests/communications.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/communications/Communications.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/flux-rail/Contents.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -11595,11 +11656,23 @@
     "name": "QueueSectionTrigger",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/communications/Chat.tsx"
+      ],
+      "checks": [
+        "frontend/tests/communications.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/communications/Communications.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/flux-rail/Contents.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -11608,11 +11681,23 @@
     "name": "QueueSectionLabel",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/communications/Chat.tsx"
+      ],
+      "checks": [
+        "frontend/tests/communications.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/communications/Communications.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/flux-rail/Contents.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -11621,11 +11706,23 @@
     "name": "QueueSectionContent",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/communications/Chat.tsx"
+      ],
+      "checks": [
+        "frontend/tests/communications.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/communications/Communications.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/flux-rail/Contents.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -11649,7 +11746,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/flux-rail/Contents.tsx"
     ]
   },
   {
@@ -12180,6 +12278,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/flux-rail/Review.tsx",
       "frontend/src/usage-evidence/Review.tsx",
       "frontend/src/usage-evidence/contracts.ts"
     ]
@@ -12231,6 +12330,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/flux-rail/Review.tsx",
       "frontend/src/usage-evidence/Review.tsx",
       "frontend/src/usage-evidence/contracts.ts"
     ]
@@ -12333,6 +12433,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/flux-rail/Review.tsx",
       "frontend/src/usage-evidence/Review.tsx",
       "frontend/src/usage-evidence/contracts.ts"
     ]
@@ -12344,11 +12445,23 @@
     "name": "ContextContentBody",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/communications/Chat.tsx"
+      ],
+      "checks": [
+        "frontend/tests/communications.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/communications/Communications.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/flux-rail/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -12410,6 +12523,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/flux-rail/Review.tsx",
       "frontend/src/usage-evidence/Review.tsx",
       "frontend/src/usage-evidence/contracts.ts"
     ]
@@ -12461,6 +12575,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/flux-rail/Review.tsx",
       "frontend/src/usage-evidence/Review.tsx",
       "frontend/src/usage-evidence/contracts.ts"
     ]
