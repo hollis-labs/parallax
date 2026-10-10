@@ -166,14 +166,14 @@ test("Torque facet option counts exclude their own facet; entity and cycle own n
 for (const consumer of ["torque", "runs"]) {
   test(`${consumer}: current composition controls respect competing layers`, async ({ page }) => {
     await page.goto(path(consumer))
-    const search = page.getByRole("searchbox").first()
+    const search = page.locator('[data-ops-pane="list"] input[type="search"]')
     const row = page.locator("[data-ops-row-id]").first()
     await row.focus()
     await page.keyboard.press("Enter")
     const inspector =
       consumer === "torque"
-        ? page.getByRole("dialog").first()
-        : page.getByRole("region", { name: "Record inspector" })
+        ? page.locator('[role="dialog"]').filter({ has: page.locator('[data-ops-action="next"]') })
+        : page.locator('[data-ops-pane="inspector"]')
     await expect(inspector).toBeVisible()
     const currentSearch = () =>
       page.evaluate(() => {
@@ -189,14 +189,14 @@ for (const consumer of ["torque", "runs"]) {
       await currentSearch()
       await expect(search).toHaveValue("")
     }
+    const title = await inspector.locator("h2").first().textContent()
     await inspector.getByRole("button", { name: "Open nested evidence" }).click()
     const nested = page.getByRole("dialog", { name: "Nested evidence" })
     await expect(nested).toBeVisible()
-    const title = await inspector.locator("h2").first().textContent()
     await currentSearch()
-    await inspector.getByRole("button", { name: "Next", exact: true }).dispatchEvent("click")
+    await inspector.locator('[data-ops-action="next"]').dispatchEvent("click")
     if (consumer === "runs")
-      await inspector.getByRole("button", { name: "Back to list" }).dispatchEvent("click")
+      await inspector.locator('[data-ops-action="back"]').dispatchEvent("click")
     await expect(search).toHaveValue("")
     await expect(inspector.locator("h2").first()).toHaveText(title ?? "")
     await expect(inspector).toBeVisible()
