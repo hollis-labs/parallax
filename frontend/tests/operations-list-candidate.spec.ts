@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url"
 import type { OperationsActionScope } from "@hollis-labs/kit-dashboard/layout"
 import { expect, test } from "@playwright/test"
 import type { OperationsProofDiagnostics } from "../src/operations-list-proof/Proof"
@@ -8,6 +9,14 @@ declare global {
     retiredScope?: OperationsActionScope
   }
 }
+// The standalone HTML entry is served by Vite; the default suite's base URL is Go.
+test.use({
+  baseURL: `http://127.0.0.1:${process.env.OPS_PORT ?? 18545}`,
+  launchOptions: { executablePath: process.env.OPS_CHROMIUM, args: ["--no-sandbox"] },
+})
+const screenshotRoot = fileURLToPath(
+  new URL("../../.scratch/operations-list/screens/", import.meta.url),
+)
 const path = (consumer = "torque", scenario = "populated") =>
   `/operations-list.html?consumer=${consumer}&scenario=${scenario}`
 for (const consumer of ["torque", "runs"]) {
@@ -275,7 +284,7 @@ for (const size of [
           await expect(page.locator("html")).toHaveAttribute("data-theme", theme)
           await expect(page.locator("html")).toHaveAttribute("data-mode", mode)
           await page.screenshot({
-            path: `../.scratch/operations-list/screens/${consumer}-${theme}-${size.width}x${size.height}-${mode}-list.png`,
+            path: `${screenshotRoot}${consumer}-${theme}-${size.width}x${size.height}-${mode}-list.png`,
           })
           await page.locator("[data-ops-row-id]").first().focus()
           await page.keyboard.press("Enter")
@@ -288,7 +297,7 @@ for (const size of [
             await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
           ).toBe(true)
           await page.screenshot({
-            path: `../.scratch/operations-list/screens/${consumer}-${theme}-${size.width}x${size.height}-${mode}-inspector.png`,
+            path: `${screenshotRoot}${consumer}-${theme}-${size.width}x${size.height}-${mode}-inspector.png`,
           })
           const body =
             consumer === "torque"

@@ -1,6 +1,7 @@
 import { defineConfig } from "@playwright/test"
 
 const port = Number(process.env.OPS_PORT ?? 18773)
+process.env.OPS_PORT = String(port)
 export default defineConfig({
   testDir: "./tests",
   testMatch: "operations-list-candidate.spec.ts",
