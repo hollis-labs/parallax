@@ -650,54 +650,116 @@ test.describe("Tether Sysop AI Gateway Recreation", () => {
     await closeBtn.click()
     await expect(detailDialog).not.toBeVisible()
 
-    // 3. Now open a COMPLETELY DIFFERENT dialog: ProviderDialog ("Add provider (specimen)")
-    const addProviderBtn = page.getByRole("button", { name: "Add provider (specimen)" })
-    await addProviderBtn.click()
+    // 3. Same-kind reopen: Detail B (google, different entity)
+    const googleRow = page.getByRole("button", { name: "Open AI provider google" })
+    await googleRow.click()
 
-    // A dialog is now visibly in the DOM!
-    const providerDialog = page.getByRole("dialog")
-    await expect(providerDialog).toBeVisible()
-    await expect(providerDialog.getByText("Add AI provider (specimen)")).toBeVisible()
+    // Dialog is visibly open as Provider google
+    await expect(detailDialog).toBeVisible()
+    await expect(detailDialog.getByText("Provider google")).toBeVisible()
 
-    const popupBInfo = await page.evaluate(() => {
+    const detailBInfo = await page.evaluate(() => {
       const w = window as unknown as {
-        __tetherAIProviderTicket?: number
-        __tetherAIProviderEntityId?: string
+        __tetherAIDetailTicket?: number
+        __tetherAIDetailEntityId?: string
       }
       return {
-        ticket: w.__tetherAIProviderTicket ?? 0,
-        entityId: w.__tetherAIProviderEntityId ?? "",
+        ticket: w.__tetherAIDetailTicket ?? 0,
+        entityId: w.__tetherAIDetailEntityId ?? "",
       }
     })
     // Strictly monotonic ticket sequence guarantee
-    expect(popupBInfo.ticket).toBeGreaterThan(initialDetailInfo.ticket)
-    expect(popupBInfo.entityId).not.toEqual(initialDetailInfo.entityId)
+    expect(detailBInfo.ticket).toBeGreaterThan(initialDetailInfo.ticket)
+    expect(detailBInfo.entityId).toBe("provider::google")
+    expect(detailBInfo.entityId).not.toEqual(initialDetailInfo.entityId)
 
-    // 4. Crucial assertion: Invoke the RETAINED detail close & edit callbacks from popupA
-    // Even though popupB is visibly open in the DOM ([role="dialog"]),
-    // the retained popupA callbacks MUST REFUSE (return false)
-    // because its own popup has retired and the visible dialog is a foreign popup with a different ticket and entity ID!
-    const retainedDetailCloseResult = await page.evaluate(() => {
-      const w = window as unknown as { __capturedDetailClose?: () => boolean }
-      return typeof w.__capturedDetailClose === "function" ? w.__capturedDetailClose() : true
-    })
-    expect(retainedDetailCloseResult).toBe(false) // REFUSED! Exact popup identity enforced!
+    // 4. Crucial assertion: Invoke BOTH the RETAINED close & edit callbacks from Detail A
+    // Even though Detail B of the same kind is visibly open in the DOM,
+    // the retained Detail A callbacks MUST REFUSE (return false)
+    // because ticket and entity do not match Detail B!
+    const dummyProvider = {
+      id: "anthropic",
+      type: "anthropic",
+      enabled: true,
+      model: "claude-3-7-sonnet",
+      models: ["claude-3-7-sonnet"],
+      default_model: "claude-3-7-sonnet",
+      policy: {},
+    }
+    const retainedDetailAResults = await page.evaluate((payload) => {
+      const w = window as unknown as {
+        __capturedDetailClose?: () => boolean
+        __capturedDetailEdit?: (p: unknown) => boolean
+      }
+      return {
+        close: typeof w.__capturedDetailClose === "function" ? w.__capturedDetailClose() : true,
+        edit: typeof w.__capturedDetailEdit === "function" ? w.__capturedDetailEdit(payload) : true,
+      }
+    }, dummyProvider)
+    expect(retainedDetailAResults.close).toBe(false) // REFUSED!
+    expect(retainedDetailAResults.edit).toBe(false) // REFUSED!
 
-    // Crucially: Assert popupB is STILL open and visible after the refused invocation!
-    await expect(providerDialog).toBeVisible()
-    await expect(providerDialog.getByText("Add AI provider (specimen)")).toBeVisible()
+    // Crucially: Assert visible Detail B is UNCHANGED!
+    await expect(detailDialog).toBeVisible()
+    await expect(detailDialog.getByText("Provider google")).toBeVisible()
 
-    // 5. Fresh positive: Active provider dialog handler (__tetherAIActiveCloseProvider) SUCCEEDS
-    const activeProviderCloseResult = await page.evaluate(() => {
-      const w = window as unknown as { __tetherAIActiveCloseProvider?: () => boolean }
-      return typeof w.__tetherAIActiveCloseProvider === "function"
-        ? w.__tetherAIActiveCloseProvider()
+    // 5. Fresh positive: Active close handler on Detail B SUCCEEDS
+    const activeDetailBCloseResult = await page.evaluate(() => {
+      const w = window as unknown as { __tetherAIActiveCloseDetail?: () => boolean }
+      return typeof w.__tetherAIActiveCloseDetail === "function"
+        ? w.__tetherAIActiveCloseDetail()
         : false
     })
-    expect(activeProviderCloseResult).toBe(true) // Fresh positive on current owned popup!
-    await expect(providerDialog).not.toBeVisible()
+    expect(activeDetailBCloseResult).toBe(true)
+    await expect(detailDialog).not.toBeVisible()
 
-    // 6. Retained detail close callback STILL refuses after everything is closed
+    // 6. Same-kind reopen: Detail C (anthropic, same entity ID as A reopened)
+    await anthropicRow.click()
+    await expect(detailDialog).toBeVisible()
+    await expect(detailDialog.getByText("Provider anthropic")).toBeVisible()
+
+    const detailCInfo = await page.evaluate(() => {
+      const w = window as unknown as {
+        __tetherAIDetailTicket?: number
+        __tetherAIDetailEntityId?: string
+      }
+      return {
+        ticket: w.__tetherAIDetailTicket ?? 0,
+        entityId: w.__tetherAIDetailEntityId ?? "",
+      }
+    })
+    expect(detailCInfo.ticket).toBeGreaterThan(detailBInfo.ticket)
+    expect(detailCInfo.entityId).toBe(initialDetailInfo.entityId) // same entity ID
+
+    // Invoke HELD Detail A callbacks (with stale ticketA): must still REFUSE even though entity matches!
+    const retainedDetailAOnSameEntity = await page.evaluate((payload) => {
+      const w = window as unknown as {
+        __capturedDetailClose?: () => boolean
+        __capturedDetailEdit?: (p: unknown) => boolean
+      }
+      return {
+        close: typeof w.__capturedDetailClose === "function" ? w.__capturedDetailClose() : true,
+        edit: typeof w.__capturedDetailEdit === "function" ? w.__capturedDetailEdit(payload) : true,
+      }
+    }, dummyProvider)
+    expect(retainedDetailAOnSameEntity.close).toBe(false)
+    expect(retainedDetailAOnSameEntity.edit).toBe(false)
+
+    // Assert visible Detail C remains open and unchanged
+    await expect(detailDialog).toBeVisible()
+    await expect(detailDialog.getByText("Provider anthropic")).toBeVisible()
+
+    // Fresh positive on Detail C closes it
+    const activeDetailCCloseResult = await page.evaluate(() => {
+      const w = window as unknown as { __tetherAIActiveCloseDetail?: () => boolean }
+      return typeof w.__tetherAIActiveCloseDetail === "function"
+        ? w.__tetherAIActiveCloseDetail()
+        : false
+    })
+    expect(activeDetailCCloseResult).toBe(true)
+    await expect(detailDialog).not.toBeVisible()
+
+    // 7. Retained detail close callback STILL refuses after everything is closed
     const retainedAfterCloseAll = await page.evaluate(() => {
       const w = window as unknown as { __capturedDetailClose?: () => boolean }
       return typeof w.__capturedDetailClose === "function" ? w.__capturedDetailClose() : true
@@ -895,6 +957,7 @@ test.describe("Tether Sysop AI Gateway Recreation", () => {
       ticketBAdvanced: true,
       distinctEntities: true,
       retainedCloseRefusedOnForeignPopup: true,
+      retainedEditRefusedOnForeignPopup: true,
       popupBRemainsOpenAfterRetainedClose: true,
       freshPopupBCloseSucceeds: true,
       popupBClosedAfterFreshClose: true,

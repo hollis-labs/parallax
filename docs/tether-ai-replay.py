@@ -117,7 +117,7 @@ if (root / ".scratch/tooling").exists():
 quote = shlex.quote
 
 if mode == "fresh":
-    receipt["dependency_mode"] = "clean offline npm ci from owned cache (.scratch/npm); no retained node_modules"
+    receipt["dependency_mode"] = "clean npm ci from owned cache (.scratch/npm; network permitted); no retained node_modules"
     env = dict(os.environ, TMPDIR=str(browser_tmp), npm_config_cache=str(root / ".scratch/npm"))
     with (proof / "fresh-install.log").open("w") as install_log:
         ci_res = subprocess.run(

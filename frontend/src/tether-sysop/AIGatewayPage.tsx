@@ -953,7 +953,6 @@ export function hasCompetingOverlay(activePopup?: HTMLElement | null): boolean {
     if (!isElementVisibleAndActive(el)) continue
     if (activePopup) {
       if (el === activePopup) continue
-      if (el.contains(activePopup)) continue
       return true
     }
     return true

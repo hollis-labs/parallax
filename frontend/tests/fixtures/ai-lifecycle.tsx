@@ -316,36 +316,64 @@ export async function aiLifecycleExercise() {
   })
   await settle()
 
-  // Open popupB (ProviderDialog "Add provider specimen")
+  // Open popupB (Detail dialog for google - same kind, different entity)
   flushSync(() => {
-    getHandlers().__tetherAIActiveOpenProvider?.()
+    openDetail({
+      kind: "provider",
+      item: {
+        id: "google",
+        type: "gemini",
+        enabled: true,
+        model: "gemini-2.5-pro",
+        models: ["gemini-2.5-pro"],
+        default_model: "gemini-2.5-pro",
+        policy: {},
+      },
+    })
   })
   await settle()
 
-  const ticketB = getHandlers().__tetherAIProviderTicket
-  const entityB = getHandlers().__tetherAIProviderEntityId
-  const activeCloseProvider = getHandlers().__tetherAIActiveCloseProvider
-  if (!activeCloseProvider) {
-    throw new Error("Missing provider form close handler")
+  const ticketB = getHandlers().__tetherAIDetailTicket
+  const entityB = getHandlers().__tetherAIDetailEntityId
+  const activeCloseDetailB = getHandlers().__tetherAIActiveCloseDetail
+  if (!activeCloseDetailB) {
+    throw new Error("Missing active close handler on detail B")
   }
 
   // Monotonic ticket check: ticketB must be strictly greater than ticketA
   const ticketBAdvanced = (ticketB ?? 0) > (ticketA ?? 0)
   const distinctEntities = entityA !== entityB
 
-  // Crucial check: Invoke held popupA close callback while popupB is open
-  // Must refuse because ticket and entity do not match popupB!
+  // Crucial check: Invoke BOTH held popupA callbacks (close AND edit) while popupB is open
+  const dummyProvider = {
+    id: "anthropic",
+    type: "anthropic",
+    enabled: true,
+    model: "claude-3-7-sonnet",
+    models: ["claude-3-7-sonnet"],
+    default_model: "claude-3-7-sonnet",
+    policy: {},
+  }
   const retainedCloseRefusedOnForeignPopup = heldDetailClose() === false
+  const retainedEditRefusedOnForeignPopup = heldDetailEdit(dummyProvider) === false
+
+  // PopupB remains open and unchanged
   const popupBRemainsOpenAfterRetainedClose =
-    getHandlers().__tetherAIActiveCloseProvider !== undefined
+    getHandlers().__tetherAIDetailEntityId === "provider::google"
 
   // Fresh positive: active close handler on popupB succeeds
-  const freshPopupBCloseSucceeds = activeCloseProvider() === true
+  let freshPopupBCloseSucceeds = false
+  flushSync(() => {
+    freshPopupBCloseSucceeds = activeCloseDetailB() === true
+  })
   await settle()
-  const popupBClosedAfterFreshClose = getHandlers().__tetherAIActiveCloseProvider === undefined
+  const popupBClosedAfterFreshClose =
+    getHandlers().__tetherAIActiveCloseDetail === undefined &&
+    getHandlers().__tetherAIDetailTicket === 0
 
-  // Retained popupA callback still refuses when everything is closed
-  const retainedCloseStillRefused = heldDetailClose() === false
+  // Retained popupA callbacks still refuse when everything is closed
+  const retainedCloseStillRefused =
+    heldDetailClose() === false && heldDetailEdit(dummyProvider) === false
 
   // Unmount fixture
   flushSync(() => root.unmount())
@@ -372,6 +400,7 @@ export async function aiLifecycleExercise() {
     ticketBAdvanced,
     distinctEntities,
     retainedCloseRefusedOnForeignPopup,
+    retainedEditRefusedOnForeignPopup,
     popupBRemainsOpenAfterRetainedClose,
     freshPopupBCloseSucceeds,
     popupBClosedAfterFreshClose,
