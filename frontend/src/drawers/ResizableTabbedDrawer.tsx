@@ -1,6 +1,14 @@
 import { GripHorizontal, X } from "lucide-react"
-import { type KeyboardEvent, type PointerEvent, type ReactNode, useCallback, useRef } from "react"
+import {
+  type KeyboardEvent,
+  type PointerEvent,
+  type ReactNode,
+  useCallback,
+  useLayoutEffect,
+  useRef,
+} from "react"
 import { ChatDrawerTabStrip } from "./ChatDrawerTabStrip"
+import { DRAWER_GEOMETRY } from "./geometry"
 import type { ChatDrawerTab, DrawerPlacement, DrawerTabStripVariant } from "./types"
 
 export interface ResizableTabbedDrawerProps {
@@ -36,9 +44,11 @@ export function ResizableTabbedDrawer({
   onOpenChange,
   height,
   onHeightChange,
-  defaultHeight = placement === "top" ? 240 : 200,
-  minHeight = 48,
-  maxHeight = 600,
+  defaultHeight = placement === "top"
+    ? DRAWER_GEOMETRY.primaryDefault
+    : DRAWER_GEOMETRY.workingDefault,
+  minHeight = DRAWER_GEOMETRY.minimum,
+  maxHeight = DRAWER_GEOMETRY.maximum,
   tabs = [],
   activeTab,
   onSelectTab,
@@ -58,6 +68,13 @@ export function ResizableTabbedDrawer({
 }: ResizableTabbedDrawerProps) {
   const dragRef = useRef<{ pointerId: number; startY: number; startHeight: number } | null>(null)
   const handleRef = useRef<HTMLDivElement>(null)
+  const previousOpenRef = useRef(open)
+  useLayoutEffect(() => {
+    if (previousOpenRef.current && !open && document.activeElement === document.body) {
+      handleRef.current?.focus()
+    }
+    previousOpenRef.current = open
+  }, [open])
 
   const effectiveHeight = Math.max(minHeight, Math.min(maxHeight, height || defaultHeight))
 
@@ -66,6 +83,7 @@ export function ResizableTabbedDrawer({
     if (isAlertActive) return
     if (e.button !== 0) return
     e.preventDefault()
+    e.currentTarget.focus()
     dragRef.current = {
       pointerId: e.pointerId,
       startY: e.clientY,
@@ -105,7 +123,7 @@ export function ResizableTabbedDrawer({
     if (isAlertActive) return
 
     // Auto-close if shrunk below threshold
-    if (height < 24) {
+    if (height < DRAWER_GEOMETRY.collapseThreshold) {
       onOpenChange(false)
       onHeightChange(defaultHeight)
     }
@@ -132,8 +150,8 @@ export function ResizableTabbedDrawer({
     if (e.defaultPrevented || e.nativeEvent.isComposing || e.keyCode === 229) return
     if (e.altKey || e.ctrlKey || e.metaKey) return
 
-    const step = 16
-    const largeStep = 48
+    const step = DRAWER_GEOMETRY.keyboardStep
+    const largeStep = DRAWER_GEOMETRY.keyboardPageStep
 
     if (e.key === "Enter" || e.key === " " || e.key === "Spacebar" || e.code === "Space") {
       e.preventDefault()
@@ -176,7 +194,7 @@ export function ResizableTabbedDrawer({
         return
       }
       const next = Math.max(0, Math.min(maxHeight, effectiveHeight + delta))
-      if (next < 24) {
+      if (next < DRAWER_GEOMETRY.collapseThreshold) {
         onOpenChange(false)
         onHeightChange(defaultHeight)
       } else {
@@ -275,6 +293,8 @@ export function ResizableTabbedDrawer({
         >
           {/* Main content + optional sidebar */}
           <div
+            inert={isAlertActive}
+            aria-hidden={isAlertActive || undefined}
             className={`flex h-full min-h-0 min-w-0 flex-1 transition-opacity duration-200 ${
               isAlertActive ? "opacity-30 pointer-events-none select-none" : "opacity-100"
             }`}

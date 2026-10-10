@@ -123,7 +123,9 @@ export function ChatDrawerTabStrip({
     void tabs
     const targetId = pendingFocusTabIdRef.current
     if (!targetId) return
-    const btn = tabButtonRefs.current.get(targetId)
+    const btn =
+      tabButtonRefs.current.get(targetId) ??
+      tabButtonRefs.current.get(tabs.find((t) => t.active)?.id ?? "")
     if (btn) {
       pendingFocusTabIdRef.current = null
       btn.focus()
@@ -225,6 +227,9 @@ export function ChatDrawerTabStrip({
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation()
+                    if (t.active) {
+                      pendingFocusTabIdRef.current = t.id
+                    }
                     onTogglePin(t.id)
                   }}
                   className="opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-opacity text-fg-muted hover:text-fg p-0.5 rounded-sm outline-none focus-visible:ring-1 focus-visible:ring-primary"

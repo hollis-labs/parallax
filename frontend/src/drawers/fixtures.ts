@@ -65,6 +65,7 @@ export interface ContextSlotItem {
 }
 
 export interface DrawerFixtureSet {
+  availability?: "available" | "unavailable"
   sessionId: string
   sessionTitle: string
   documents: DocumentItem[]
@@ -418,6 +419,7 @@ export const DRAWER_FIXTURES: Record<string, DrawerFixtureSet> = {
 }
 
 export const UNAVAILABLE_FIXTURES: DrawerFixtureSet = {
+  availability: "unavailable",
   sessionId: "UNAVAILABLE",
   sessionTitle: "Session Unavailable",
   documents: [],
@@ -440,7 +442,7 @@ export const UNAVAILABLE_FIXTURES: DrawerFixtureSet = {
 }
 
 export function getDrawerFixtures(sessionId: string): DrawerFixtureSet {
-  if (sessionId && sessionId in DRAWER_FIXTURES) {
+  if (sessionId && Object.hasOwn(DRAWER_FIXTURES, sessionId)) {
     return DRAWER_FIXTURES[sessionId]
   }
   return {

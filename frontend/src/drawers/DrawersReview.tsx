@@ -243,6 +243,7 @@ export function DrawersReview({
       <main className="flex-1 flex flex-col justify-between max-w-3xl w-full mx-auto p-4 min-h-0 relative">
         {/* Top Drawer: ChatPrimaryDrawer */}
         <ChatPrimaryDrawer
+          key={`primary-${sessionId}`}
           sessionId={sessionId}
           open={session.primaryDrawer.open}
           onOpenChange={(open) => session.setPrimaryDrawer({ open })}
@@ -297,6 +298,7 @@ export function DrawersReview({
 
         {/* Bottom Drawer: ChatWorkingDrawer */}
         <ChatWorkingDrawer
+          key={`working-${sessionId}`}
           sessionId={sessionId}
           open={session.workingDrawer.open}
           onOpenChange={(open) => session.setWorkingDrawer({ open })}

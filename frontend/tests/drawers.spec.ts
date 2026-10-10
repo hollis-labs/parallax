@@ -322,7 +322,7 @@ test.describe("Parallax Flux Drawers Candidate Suite", () => {
     await takeoverCheck.check()
 
     // Verify alert banner is visible
-    const alertBanner = page.locator('[role="alert"]')
+    const alertBanner = page.locator('[role="alertdialog"]')
     await expect(alertBanner).toBeVisible()
     await expect(alertBanner).toContainText("This session is now active in another tab")
 
@@ -416,5 +416,136 @@ test.describe("Parallax Flux Drawers Candidate Suite", () => {
 
       await expect(page.locator('[data-testid="drawers-review"]')).toBeVisible()
     }
+  })
+  test("alert blocks background tabs and dynamic actions, then restores admitted focus", async ({
+    page,
+  }) => {
+    await page.goto(entry)
+    await page.getByRole("button", { name: "Add dynamic card tab" }).click()
+    const bottom = page.getByTestId("drawer-bottom")
+    await page.getByRole("checkbox", { name: "Simulate session takeover alert" }).check()
+    const alert = page.getByRole("alertdialog")
+    await expect(alert.getByRole("button", { name: "Dismiss", exact: true })).toBeFocused()
+    const background = bottom.getByRole("tab", {
+      name: "Artifacts",
+      exact: true,
+      includeHidden: true,
+    })
+    await expect(background).toBeDisabled()
+    await background.evaluate((el) => (el as HTMLElement).focus())
+    // Disabled/inert background cannot take native focus; Enter belongs to Dismiss.
+    await expect(alert.getByRole("button", { name: "Dismiss", exact: true })).toBeFocused()
+    await background.evaluate((el) =>
+      el.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true })),
+    )
+    await expect(background).toHaveAttribute("aria-selected", "false")
+    await expect(
+      bottom.getByRole("button", { name: "Pin Specimen 1", includeHidden: true }),
+    ).toBeDisabled()
+    await expect(
+      bottom.getByRole("button", { name: "Close tab Specimen 1", includeHidden: true }),
+    ).toBeDisabled()
+    await alert.getByRole("button", { name: "Dismiss", exact: true }).click()
+    await expect(bottom.getByRole("tab", { name: "Specimen 1", exact: true })).toBeFocused()
+  })
+
+  test("active close and unpin return native focus; reload retains layout without transient cards", async ({
+    page,
+  }) => {
+    await page.goto(entry)
+    const add = page.getByRole("button", { name: "Add dynamic card tab" })
+    await add.click()
+    await add.click()
+    const bottom = page.getByTestId("drawer-bottom")
+    await bottom.getByRole("button", { name: "Close tab Specimen 2", exact: true }).click()
+    await expect(bottom.getByRole("tab", { name: "Specimen 1", exact: true })).toBeFocused()
+    await bottom.getByRole("button", { name: "Pin Specimen 1", exact: true }).click()
+    const top = page.getByTestId("drawer-top")
+    await top.getByRole("tab", { name: "Specimen 1", exact: true }).click()
+    await top.getByRole("button", { name: "Unpin tab Specimen 1", exact: true }).click()
+    await expect(top.getByRole("tab", { name: /^Pins/ })).toBeFocused()
+    const stored = await page.evaluate(() =>
+      JSON.parse(localStorage.getItem("parallax_drawers_layout_v1") ?? "null"),
+    )
+    expect(stored["CHAT-001"].workingDrawer.cardTabs).toBeUndefined()
+    expect(stored["CHAT-001"].primaryDrawer.pinnedCards).toBeUndefined()
+    await page.reload()
+    await expect(bottom.getByRole("tab", { name: /^Specimen/ })).toHaveCount(0)
+    await add.click()
+    await expect(bottom.getByRole("tab", { name: "Specimen 1", exact: true })).toHaveCount(1)
+  })
+
+  test("external layout updates notify subscribers and malformed layout rehydrates safely", async ({
+    page,
+    context,
+  }) => {
+    await page.goto(entry)
+    const other = await context.newPage()
+    await other.goto(entry)
+    await other.getByTestId("drawer-handle-top").focus()
+    await other.keyboard.press("End")
+    await expect(page.getByTestId("drawer-handle-top")).toHaveAttribute("aria-valuenow", "600")
+    await other.evaluate(() => localStorage.removeItem("parallax_drawers_layout_v1"))
+    await expect(page.getByTestId("drawer-handle-top")).toHaveAttribute("aria-valuenow", "240")
+    await page.evaluate(() =>
+      localStorage.setItem(
+        "parallax_drawers_layout_v1",
+        JSON.stringify({
+          "CHAT-001": {
+            primaryDrawer: { open: true, height: -100, activeTab: "unknown-tab" },
+            workingDrawer: {
+              open: "yes",
+              height: "huge",
+              activeTab: "card:stale",
+              cardTabs: [{ id: "card:stale" }],
+            },
+          },
+        }),
+      ),
+    )
+    await page.reload()
+    await expect(page.getByTestId("drawer-handle-top")).toHaveAttribute("aria-valuenow", "48")
+    await expect(
+      page.getByTestId("drawer-top").getByRole("tab", { name: /^Documents/ }),
+    ).toHaveAttribute("aria-selected", "true")
+    await expect(
+      page.getByTestId("drawer-bottom").getByRole("tab", { name: "Scratchpad", exact: true }),
+    ).toHaveAttribute("aria-selected", "true")
+    await expect(page.getByTestId("drawer-bottom").getByRole("tab", { name: /stale/ })).toHaveCount(
+      0,
+    )
+    await other.close()
+  })
+  test("unknown sessions show unavailable data rather than successful empty or another session", async ({
+    page,
+  }) => {
+    await page.goto("/?example=drawers&session=UNKNOWN")
+    await expect(page.getByTestId("drawer-body-top")).toContainText(
+      "Session data unavailable for UNKNOWN",
+    )
+    await page
+      .getByTestId("drawer-bottom")
+      .getByRole("tab", { name: "Session Context", exact: true })
+      .click()
+    await expect(page.getByTestId("drawer-body-bottom")).toContainText(
+      "Session data unavailable for UNKNOWN",
+    )
+    await expect(page.getByTestId("drawer-body-bottom")).not.toContainText("$0.00")
+  })
+  test("alert opens a closed drawer and returns to its handle after dismissal", async ({
+    page,
+  }) => {
+    await page.goto(entry)
+    await page.getByRole("button", { name: "Toggle working drawer" }).click()
+    await page.getByRole("checkbox", { name: "Simulate session takeover alert" }).check()
+    await expect(
+      page.getByRole("alertdialog").getByRole("button", { name: "Dismiss", exact: true }),
+    ).toBeFocused()
+    await page
+      .getByRole("alertdialog")
+      .getByRole("button", { name: "Dismiss", exact: true })
+      .click()
+    await expect(page.getByTestId("drawer-body-bottom")).toHaveCount(0)
+    await expect(page.getByTestId("drawer-handle-bottom")).toBeFocused()
   })
 })

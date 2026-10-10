@@ -9,7 +9,7 @@
   - Local candidate primitives implemented first in Parallax.
   - Scoped dark composer for Concrete & Signal; system font stacks.
   - Distinct-second-consumer review is strictly required before promotion to `@hollis-labs/design-components` (per PM correction `01a123ff-25bc-7dad-8380-e31a32092c02`).
-  - Scope is strictly candidate implementation + upstream proposal; tasks `CW-20261010-0086` (kit promotion), `CW-20261010-0087`, and `CW-20261010-0094` are deferred until distinct-second-consumer review.
+  - Scope is strictly candidate implementation + upstream proposal; this task does not implement `CW-20261010-0086`, `CW-20261010-0087`, or `CW-20261010-0094`. Shared primitive promotion requires distinct-second-consumer review.
   - No core registry publication, npm deployment, or hardware claims.
 
 ---
@@ -31,12 +31,12 @@ The candidate architecture in `frontend/src/drawers/` introduces four cleanly de
   - WAI-ARIA `role="separator"` with `tabIndex={0}`, `aria-orientation="horizontal"`, `aria-valuenow`, `aria-valuemin`, `aria-valuemax`.
   - Arrow keys: `ArrowDown` / `ArrowUp` increment/decrement by 16px (aligned with 4px token grid scale).
   - Page keys: `PageDown` / `PageUp` increment/decrement by 48px (aligned with 4px token grid scale).
-  - Bounds keys: `End` expands to `maxHeight` (600px); `Home` collapses to `minHeight` (48px).
+  - Bounds keys: `End` expands to `maxHeight` (600px at the default root scale); `Home` resizes to `minHeight` (48px).
   - Toggle key: `Space` toggles open/close state.
-  - Focus return: closing via close button (`X`) or auto-close automatically restores focus to the drag handle.
+  - Focus return: closing via close button (`X`) restores focus to the drag handle.
 - **Alert Simulation Overlay:**
-  - When active (e.g. Session Takeover, Circuit Open, Interrupted Turn), drawer body dims to `opacity-30` with `inert` and `aria-hidden` attributes applied to background content and tab strips, blocking keyboard access to underlying tabs and pin controls.
-  - Alert dialog is presented as `role="alertdialog"` with `aria-modal="true"`, auto-focuses dismiss control on entry, and restores focus to the active tab upon dismissal.
+  - When active (e.g. Session Takeover, Circuit Open, Interrupted Turn), drawer body dims to `opacity-30` with `inert` and `aria-hidden` attributes applied to background body and sidebar, blocking keyboard access to underlying tabs and pin controls.
+  - Scoped alert is presented as `role="alertdialog"` (the review controls outside the drawer remain available), auto-focuses dismiss control on entry, and restores focus to the active tab upon dismissal.
 
 ### 2.2 `ChatDrawerTabStrip` (Dynamic Tab Navigation)
 - **File:** [`frontend/src/drawers/ChatDrawerTabStrip.tsx`](../frontend/src/drawers/ChatDrawerTabStrip.tsx)
@@ -44,8 +44,8 @@ The candidate architecture in `frontend/src/drawers/` introduces four cleanly de
 - **Features:**
   - Overflow measurement via `scrollLeft` / `scrollWidth` / `clientWidth` with Chevron left/right pagination controls.
   - Keyboard navigation: `ArrowLeft` / `ArrowRight` cycles between tabs with auto-focus; `Home` / `End` jumps to first/last tab.
-  - Running pip indicator: tabs with `running: true` display a pulsing pip with `role="status"` and `aria-label="Running"`.
-  - Closeable tabs: dynamic card tabs display a close button (`X`) with focus retirement to the preceding tab.
+  - Running pip indicator: tabs with `runningPip: true` display a pulsing pip with `role="status"` and `aria-label="Running activity"`.
+  - Closeable tabs: dynamic card tabs display a close button (`X`) with focus return to an adjacent admitted tab after removal.
   - Pinnable tabs: dynamic card tabs display a pin toggle (`Pin` / `PinOff`), sending pinned cards to the top drawer.
 
 ### 2.3 `useDrawerSessionStore` (Per-Session Persistence & Isolation)
@@ -53,9 +53,9 @@ The candidate architecture in `frontend/src/drawers/` introduces four cleanly de
 - **Role:** Session-keyed layout state store utilizing `localStorage` with fallback in-memory caching.
 - **Isolation & Persistence Guarantee:**
   - Changes to drawer heights, open/closed states, active tabs, and pinned/card tabs in `CHAT-001` have zero side effects on `CHAT-002` or `CHAT-003`.
-  - Rehydration Policy (matching Flux `useLayoutStore` 232064c3): `localStorage` stores layout dimensions only (`open`, `height`, static `activeTab`). Transient dynamic card tabs and envelopes are in-memory session state and initialize empty on reload.
+  - Rehydration Policy (matching Flux `useLayoutStore` 232064c3): `localStorage` stores layout dimensions only (`open`, `height`, static `activeTab`). Transient dynamic card tabs and envelopes are in-memory session state and initialize empty on reload. Persisted booleans, finite heights and static tab identities are validated; unknown session panels explicitly show unavailable data.
   - Cross-Browser-Tab Reactivity: Subscribes to `window` `storage` events to synchronize layout updates across concurrent browser tabs.
-  - Stale Setter Retirement: `useDrawerSession` guards all state dispatchers with mounted and session identity checks, preventing old held setters from mutating stale sessions after switch or unmount.
+  - Stale Setter Retirement: `useDrawerSession` guards all state dispatchers with a distinct admitted lifetime for each session visit (including A → B → A), preventing old held setters from mutating stale sessions after switch or unmount.
 
 ### 2.4 Domain Adapters: `ChatPrimaryDrawer` & `ChatWorkingDrawer`
 - **Top Drawer (`ChatPrimaryDrawer`):**
@@ -79,9 +79,9 @@ Strict adherence to `@hollis-labs/eslint-config-design` and `@hollis-labs/design
      - Radii: `rounded-panel`, `rounded-control`, `rounded-sm`.
      - Colors: `bg-bg`, `bg-bg-elevated`, `bg-surface`, `text-fg`, `text-fg-muted`, `border-border`, `bg-primary`, `text-primary`.
      - Spacing: standard Tailwind spacing (`p-2`, `px-3`, `py-1`, `h-5`, `w-36`).
-   - Zero arbitrary bracket escapes (no `text-[11px]`, `rounded-[4px]`, etc.).
+   - Scrollbar visibility selectors are behavioral utilities; no arbitrary presentation bracket escapes (no `text-[11px]`, `rounded-[4px]`, etc.).
 2. **Built-in Themes Compatibility:**
-   - Tested and verified across all 10 design-tokens themes in both `light` and `dark` modes:
+   - Verified theme application and token resolution across all 10 design-tokens themes in both `light` and `dark` modes:
      1. Concrete & Signal (`nanite-default`)
      2. Graphite & Ink (`dir-a`)
      3. Warm Stone & Steel (`dir-b`)
@@ -121,4 +121,12 @@ Strict adherence to `@hollis-labs/eslint-config-design` and `@hollis-labs/design
    - Formalize the component interface:
      - `ResizableDrawer`: Generic placement (`top` | `bottom` | `left` | `right`), controlled height/width, pointer capture drag, keyboard accessibility.
      - `DrawerTabStrip`: General-purpose tab strip with badge, pip, and overflow support.
-   - Only when both distinct consumers agree on the API boundary should `CW-20261010-0086` be executed to promote to the shared design kit.
+   - Only when both distinct consumers agree on the API boundary should a separately scoped promotion task be executed.
+
+## Source and adaptation boundary
+
+The pinned Flux drawers use measured pointer geometry, near-zero release collapse and default reset (240 primary / 200 working). They do not provide this candidate’s keyboard separator controls or 48/600 bounds. Those controls are local accessibility adaptations; 16/48 key increments snap to inherited Tailwind spacing-4/12. Defaults snap to spacing-60/50, minimum to spacing-12, maximum to spacing-150 and collapse threshold to spacing-6. These authored steps resolve from the inherited spacing token; pointer deltas remain measured geometry. Flux layout persistence excludes transient working card tabs and panel envelopes. This candidate also excludes pins from reload persistence, and starts both drawers open for inspection; neither is a claim about Flux default state.
+
+Theme checks establish application and nonempty token resolution, not full visual acceptance of every interaction in every theme. Native browser receipts establish local mouse and keyboard behavior; physical touch, OS IME and live provider behavior remain unclaimed.
+
+Additional regression cases assert disabled/inert alert controls and admitted dismissal focus, active close/unpin focus, transient-free reloads, cross-tab layout updates and deletion, malformed persisted layout, explicit unknown-session panels, and alert focus when the drawer starts closed. Retained native replay separately exercises each held hook dispatcher after switch, return to the same session ID, and unmount. Raw viewport/theme captures, request logs and source/package hashes are retained in the task’s owned proof packet for independent manager review.

@@ -1,6 +1,7 @@
 import { ClipboardList, FileText, GitCompare, Pin, PinOff, Trash2, Wrench } from "lucide-react"
 import { useMemo } from "react"
 import { type DrawerFixtureSet, getDrawerFixtures } from "./fixtures"
+import { DRAWER_GEOMETRY } from "./geometry"
 import { ResizableTabbedDrawer } from "./ResizableTabbedDrawer"
 import type { ChatDrawerTab, DrawerPinnedCard } from "./types"
 
@@ -41,28 +42,28 @@ export function ChatPrimaryDrawer({
         id: "documents",
         label: "Documents",
         active: activeTab === "documents",
-        count: fixtures.documents.length,
+        count: fixtures.availability === "unavailable" ? undefined : fixtures.documents.length,
         icon: <FileText className="size-3.5" />,
       },
       {
         id: "reports",
         label: "Reports",
         active: activeTab === "reports",
-        count: fixtures.reports.length,
+        count: fixtures.availability === "unavailable" ? undefined : fixtures.reports.length,
         icon: <ClipboardList className="size-3.5" />,
       },
       {
         id: "diffs",
         label: "Diffs",
         active: activeTab === "diffs",
-        count: fixtures.diffs.length,
+        count: fixtures.availability === "unavailable" ? undefined : fixtures.diffs.length,
         icon: <GitCompare className="size-3.5" />,
       },
       {
         id: "tools",
         label: "Tools",
         active: activeTab === "tools",
-        count: fixtures.toolCalls.length,
+        count: fixtures.availability === "unavailable" ? undefined : fixtures.toolCalls.length,
         runningPip: hasRunningTool,
         icon: <Wrench className="size-3.5" />,
       },
@@ -70,7 +71,10 @@ export function ChatPrimaryDrawer({
         id: "pins",
         label: "Pins",
         active: activeTab === "pins",
-        count: (fixtures.pinnedCards?.length ?? 0) + pinnedCards.length,
+        count:
+          fixtures.availability === "unavailable"
+            ? undefined
+            : (fixtures.pinnedCards?.length ?? 0) + pinnedCards.length,
         icon: <Pin className="size-3.5" />,
       },
     ]
@@ -104,9 +108,9 @@ export function ChatPrimaryDrawer({
       onOpenChange={onOpenChange}
       height={height}
       onHeightChange={onHeightChange}
-      defaultHeight={240}
-      minHeight={48}
-      maxHeight={600}
+      defaultHeight={DRAWER_GEOMETRY.primaryDefault}
+      minHeight={DRAWER_GEOMETRY.minimum}
+      maxHeight={DRAWER_GEOMETRY.maximum}
       tabs={tabs}
       activeTab={activeTab}
       onSelectTab={onSelectTab}
@@ -121,24 +125,32 @@ export function ChatPrimaryDrawer({
         aria-labelledby={`tab-${activeTab}`}
         className="p-3 text-sm text-fg min-h-0 flex-1 flex flex-col"
       >
-        {activeTab === "documents" && <DocumentsPanel documents={fixtures.documents} />}
-        {activeTab === "reports" && <ReportsPanel reports={fixtures.reports} />}
-        {activeTab === "diffs" && <DiffsPanel diffs={fixtures.diffs} />}
-        {activeTab === "tools" && <ToolsPanel toolCalls={fixtures.toolCalls} />}
-        {activeTab === "pins" && (
-          <PinsPanel
-            pinnedCards={[...(fixtures.pinnedCards ?? []), ...pinnedCards]}
-            onUnpin={onUnpinCard}
-            onSelectTab={onSelectTab}
-          />
-        )}
-        {activeTab.startsWith("pin:") && (
-          <PinnedCardView
-            card={[...(fixtures.pinnedCards ?? []), ...pinnedCards].find(
-              (c) => `pin:${c.id}` === activeTab,
+        {fixtures.availability === "unavailable" ? (
+          <p role="status" className="text-caption text-fg-muted">
+            Session data unavailable for {sessionId}.
+          </p>
+        ) : (
+          <>
+            {activeTab === "documents" && <DocumentsPanel documents={fixtures.documents} />}
+            {activeTab === "reports" && <ReportsPanel reports={fixtures.reports} />}
+            {activeTab === "diffs" && <DiffsPanel diffs={fixtures.diffs} />}
+            {activeTab === "tools" && <ToolsPanel toolCalls={fixtures.toolCalls} />}
+            {activeTab === "pins" && (
+              <PinsPanel
+                pinnedCards={[...(fixtures.pinnedCards ?? []), ...pinnedCards]}
+                onUnpin={onUnpinCard}
+                onSelectTab={onSelectTab}
+              />
             )}
-            onUnpin={onUnpinCard}
-          />
+            {activeTab.startsWith("pin:") && (
+              <PinnedCardView
+                card={[...(fixtures.pinnedCards ?? []), ...pinnedCards].find(
+                  (c) => `pin:${c.id}` === activeTab,
+                )}
+                onUnpin={onUnpinCard}
+              />
+            )}
+          </>
         )}
       </div>
     </ResizableTabbedDrawer>

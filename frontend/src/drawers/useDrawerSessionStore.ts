@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useRef, useSyncExternalStore } from "react"
+import { useCallback, useLayoutEffect, useMemo, useSyncExternalStore } from "react"
+import { DRAWER_GEOMETRY } from "./geometry"
 import type {
   ChatPrimaryDrawerSessionState,
   ChatWorkingDrawerSessionState,
@@ -11,14 +12,14 @@ const STORAGE_KEY = "parallax_drawers_layout_v1"
 
 export const DEFAULT_PRIMARY_DRAWER: ChatPrimaryDrawerSessionState = {
   open: true,
-  height: 240,
+  height: DRAWER_GEOMETRY.primaryDefault,
   activeTab: "documents",
   pinnedCards: [],
 }
 
 export const DEFAULT_WORKING_DRAWER: ChatWorkingDrawerSessionState = {
   open: true,
-  height: 200,
+  height: DRAWER_GEOMETRY.workingDefault,
   activeTab: "scratchpad",
   cardTabs: [],
 }
@@ -47,8 +48,8 @@ let memoryStore: StoreData = {}
 const listeners = new Set<() => void>()
 
 function sanitizeHeight(h: unknown, fallback: number): number {
-  if (typeof h === "number" && !Number.isNaN(h)) {
-    return Math.max(48, Math.min(600, Math.round(h)))
+  if (typeof h === "number" && Number.isFinite(h)) {
+    return Math.max(DRAWER_GEOMETRY.minimum, Math.min(DRAWER_GEOMETRY.maximum, Math.round(h)))
   }
   return fallback
 }
@@ -69,10 +70,11 @@ function sanitizeLayout(
   const height = sanitizeHeight(obj.height, defaultState.height)
   // Dynamic card tabs and pins are transient in-memory and not restored
   const activeTabRaw = typeof obj.activeTab === "string" ? obj.activeTab : defaultState.activeTab
-  const activeTab =
-    activeTabRaw.startsWith("card:") || activeTabRaw.startsWith("pin:")
-      ? defaultState.activeTab
-      : activeTabRaw
+  const allowedTabs =
+    defaultState === DEFAULT_PRIMARY_DRAWER
+      ? ["documents", "reports", "diffs", "tools", "pins"]
+      : ["scratchpad", "terminal-1", "terminal-2", "artifacts", "runtime", "session-context"]
+  const activeTab = allowedTabs.includes(activeTabRaw) ? activeTabRaw : defaultState.activeTab
   return { open, height, activeTab }
 }
 
@@ -120,7 +122,7 @@ if (typeof window !== "undefined") {
       // Preserve live in-memory transient tabs/pins while syncing layout
       for (const [key, extSess] of Object.entries(external)) {
         const mem = memoryStore[key]
-        memoryStore[key] = {
+        external[key] = {
           primaryDrawer: {
             ...extSess.primaryDrawer,
             pinnedCards: mem?.primaryDrawer.pinnedCards ?? [],
@@ -131,6 +133,7 @@ if (typeof window !== "undefined") {
           },
         }
       }
+      memoryStore = external
       listeners.forEach((listener) => {
         listener()
       })
@@ -172,7 +175,7 @@ function saveStore(next: StoreData) {
 
 export function getDrawerSessionState(sessionId: string): DrawerSessionState {
   if (!sessionId) return emptySessionState()
-  const found = memoryStore[sessionId]
+  const found = Object.hasOwn(memoryStore, sessionId) ? memoryStore[sessionId] : undefined
   if (!found) {
     return emptySessionState()
   }
@@ -265,6 +268,10 @@ export function removeWorkingDrawerCardTab(sessionId: string, tabId: string) {
     primaryDrawer: {
       ...current.primaryDrawer,
       pinnedCards: nextPrimaryPinned,
+      activeTab:
+        current.primaryDrawer.activeTab === `pin:${tabId}`
+          ? DEFAULT_PRIMARY_DRAWER.activeTab
+          : current.primaryDrawer.activeTab,
     },
   }
   saveStore({
@@ -387,16 +394,14 @@ function subscribe(listener: () => void) {
 }
 
 export function useDrawerSession(sessionId: string) {
-  const currentSessionIdRef = useRef(sessionId)
-  const isMountedRef = useRef(true)
-
-  useEffect(() => {
-    currentSessionIdRef.current = sessionId
-    isMountedRef.current = true
+  // Each admitted session lifetime is distinct, including A → B → A.
+  const admission = useMemo(() => ({ active: false, sessionId }), [sessionId])
+  useLayoutEffect(() => {
+    admission.active = true
     return () => {
-      isMountedRef.current = false
+      admission.active = false
     }
-  }, [sessionId])
+  }, [admission])
 
   const getSnapshot = useCallback(() => {
     return JSON.stringify(getDrawerSessionState(sessionId))
@@ -407,64 +412,64 @@ export function useDrawerSession(sessionId: string) {
 
   const setPrimary = useCallback(
     (patch: Partial<ChatPrimaryDrawerSessionState>) => {
-      if (!isMountedRef.current || currentSessionIdRef.current !== sessionId) return
+      if (!admission.active) return
       setPrimaryDrawerState(sessionId, patch)
     },
-    [sessionId],
+    [sessionId, admission],
   )
 
   const setWorking = useCallback(
     (patch: Partial<ChatWorkingDrawerSessionState>) => {
-      if (!isMountedRef.current || currentSessionIdRef.current !== sessionId) return
+      if (!admission.active) return
       setWorkingDrawerState(sessionId, patch)
     },
-    [sessionId],
+    [sessionId, admission],
   )
 
   const appendCard = useCallback(
     (tab: DynamicCardTab) => {
-      if (!isMountedRef.current || currentSessionIdRef.current !== sessionId) return
+      if (!admission.active) return
       appendWorkingDrawerCardTab(sessionId, tab)
     },
-    [sessionId],
+    [sessionId, admission],
   )
 
   const removeCard = useCallback(
     (tabId: string) => {
-      if (!isMountedRef.current || currentSessionIdRef.current !== sessionId) return
+      if (!admission.active) return
       removeWorkingDrawerCardTab(sessionId, tabId)
     },
-    [sessionId],
+    [sessionId, admission],
   )
 
   const togglePinCard = useCallback(
     (tabId: string) => {
-      if (!isMountedRef.current || currentSessionIdRef.current !== sessionId) return
+      if (!admission.active) return
       togglePinWorkingDrawerCardTab(sessionId, tabId)
     },
-    [sessionId],
+    [sessionId, admission],
   )
 
   const pinCard = useCallback(
     (card: DrawerPinnedCard) => {
-      if (!isMountedRef.current || currentSessionIdRef.current !== sessionId) return
+      if (!admission.active) return
       pinPrimaryDrawerCard(sessionId, card)
     },
-    [sessionId],
+    [sessionId, admission],
   )
 
   const unpinCard = useCallback(
     (cardId: string) => {
-      if (!isMountedRef.current || currentSessionIdRef.current !== sessionId) return
+      if (!admission.active) return
       unpinPrimaryDrawerCard(sessionId, cardId)
     },
-    [sessionId],
+    [sessionId, admission],
   )
 
   const reset = useCallback(() => {
-    if (!isMountedRef.current || currentSessionIdRef.current !== sessionId) return
+    if (!admission.active) return
     resetDrawerSession(sessionId)
-  }, [sessionId])
+  }, [sessionId, admission])
 
   return {
     primaryDrawer: state.primaryDrawer,

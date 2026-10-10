@@ -12,6 +12,7 @@ import {
 } from "lucide-react"
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef } from "react"
 import { type DrawerFixtureSet, getDrawerFixtures } from "./fixtures"
+import { DRAWER_GEOMETRY } from "./geometry"
 import { ResizableTabbedDrawer } from "./ResizableTabbedDrawer"
 import type { ChatDrawerTab, DynamicCardTab } from "./types"
 
@@ -51,7 +52,7 @@ export function ChatWorkingDrawer({
   onOpenChange,
   height,
   onHeightChange,
-  activeTab = "scratchpad",
+  activeTab: requestedActiveTab = "scratchpad",
   onSelectTab,
   cardTabs = [],
   onRemoveCardTab,
@@ -85,6 +86,12 @@ export function ChatWorkingDrawer({
     return developerMode ? FIXED_TABS : FIXED_TABS.filter((t) => !t.devOnly)
   }, [developerMode])
 
+  const activeTab =
+    visibleFixedTabs.some((t) => t.id === requestedActiveTab) ||
+    cardTabs.some((t) => t.id === requestedActiveTab)
+      ? requestedActiveTab
+      : "scratchpad"
+
   const allTabs: ChatDrawerTab[] = useMemo(() => {
     const fixed: ChatDrawerTab[] = visibleFixedTabs.map((t) => ({
       id: t.id,
@@ -110,7 +117,7 @@ export function ChatWorkingDrawer({
   const alertContent = isAlertActive ? (
     <div
       className="p-4 rounded-panel border border-warning/40 bg-surface shadow-lg text-fg focus:outline-none"
-      role="alert"
+      role="alertdialog"
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-desc"
     >
@@ -159,13 +166,13 @@ export function ChatWorkingDrawer({
   ) : null
 
   useEffect(() => {
-    if (isAlertActive) {
+    if (isAlertActive && open) {
       alertDismissButtonRef.current?.focus()
     } else if (wasAlertActiveRef.current && !isAlertActive) {
       sidebarButtonRefs.current.get(activeTab)?.focus()
     }
     wasAlertActiveRef.current = isAlertActive
-  }, [isAlertActive, activeTab])
+  }, [isAlertActive, activeTab, open])
 
   const sidebarButtonRefs = useRef<Map<string, HTMLButtonElement>>(new Map())
   const pendingSidebarFocusTabIdRef = useRef<string | null>(null)
@@ -274,6 +281,7 @@ export function ChatWorkingDrawer({
             aria-controls={`panel-working-${t.id}`}
             aria-selected={t.active}
             tabIndex={isAlertActive ? -1 : t.active ? 0 : -1}
+            disabled={isAlertActive}
             aria-disabled={isAlertActive ? true : undefined}
             onClick={() => {
               if (isAlertActive) return
@@ -296,6 +304,7 @@ export function ChatWorkingDrawer({
           {t.pinnable && onTogglePinCardTab && (
             <button
               type="button"
+              disabled={isAlertActive}
               onClick={() => onTogglePinCardTab(t.id)}
               className="opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-opacity p-0.5 text-fg-muted hover:text-fg rounded-sm shrink-0"
               aria-label={t.pinned ? `Unpin ${t.label}` : `Pin ${t.label}`}
@@ -307,6 +316,7 @@ export function ChatWorkingDrawer({
           {t.closeable && (
             <button
               type="button"
+              disabled={isAlertActive}
               onClick={() => handleCloseTab(t.id)}
               className="opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-opacity p-0.5 text-fg-muted hover:text-fg rounded-sm shrink-0"
               aria-label={`Close tab ${t.label}`}
@@ -326,9 +336,9 @@ export function ChatWorkingDrawer({
       onOpenChange={onOpenChange}
       height={height}
       onHeightChange={onHeightChange}
-      defaultHeight={200}
-      minHeight={48}
-      maxHeight={600}
+      defaultHeight={DRAWER_GEOMETRY.workingDefault}
+      minHeight={DRAWER_GEOMETRY.minimum}
+      maxHeight={DRAWER_GEOMETRY.maximum}
       tabs={allTabs}
       activeTab={activeTab}
       onSelectTab={onSelectTab}
@@ -348,24 +358,35 @@ export function ChatWorkingDrawer({
         aria-labelledby={`tab-working-${activeTab}`}
         className="p-3 text-sm text-fg min-h-0 flex-1 flex flex-col h-full overflow-y-auto"
       >
-        {activeTab === "scratchpad" && <ScratchpadPanel content={fixtures.scratchpadContent} />}
-        {activeTab === "terminal-1" && (
-          <TerminalPanel title="Terminal 1" output={fixtures.terminal1Output} />
-        )}
-        {activeTab === "terminal-2" && (
-          <TerminalPanel title="Terminal 2 (Developer Mode)" output={fixtures.terminal2Output} />
-        )}
-        {activeTab === "artifacts" && <ArtifactsPanel artifacts={fixtures.artifacts} />}
-        {activeTab === "runtime" && <RuntimePanel feed={fixtures.runtimeFeed} />}
-        {activeTab === "session-context" && (
-          <SessionContextPanel
-            usage={fixtures.tokenUsage}
-            slots={fixtures.contextSlots}
-            sessionId={sessionId}
-          />
-        )}
-        {activeTab.startsWith("card:") && (
-          <DynamicCardPanelView card={cardTabs.find((c) => c.id === activeTab)} />
+        {fixtures.availability === "unavailable" ? (
+          <p role="status" className="text-caption text-fg-muted">
+            Session data unavailable for {sessionId}.
+          </p>
+        ) : (
+          <>
+            {activeTab === "scratchpad" && <ScratchpadPanel content={fixtures.scratchpadContent} />}
+            {activeTab === "terminal-1" && (
+              <TerminalPanel title="Terminal 1" output={fixtures.terminal1Output} />
+            )}
+            {activeTab === "terminal-2" && (
+              <TerminalPanel
+                title="Terminal 2 (Developer Mode)"
+                output={fixtures.terminal2Output}
+              />
+            )}
+            {activeTab === "artifacts" && <ArtifactsPanel artifacts={fixtures.artifacts} />}
+            {activeTab === "runtime" && <RuntimePanel feed={fixtures.runtimeFeed} />}
+            {activeTab === "session-context" && (
+              <SessionContextPanel
+                usage={fixtures.tokenUsage}
+                slots={fixtures.contextSlots}
+                sessionId={sessionId}
+              />
+            )}
+            {activeTab.startsWith("card:") && (
+              <DynamicCardPanelView card={cardTabs.find((c) => c.id === activeTab)} />
+            )}
+          </>
         )}
       </div>
     </ResizableTabbedDrawer>
