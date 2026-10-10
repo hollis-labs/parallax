@@ -203,11 +203,12 @@ rapid inline action dispatch for cards and rows.
   - Control buttons: Tokenized circular controls using Tailwind control sizing scale (e.g. `size-8`
     or `size-9` with `rounded-full`).
   - Center button: Circular control with `rounded-full` (`×` to close, `←` to return from sublayer).
-  - Orbit radius: Derived from token spacing (e.g. `var(--spacing-16)` or proportional spacing token).
+  - Orbit radius: Derived from the inherited spacing scale (e.g. `4rem` / step 16 of the inherited Tailwind spacing scale).
   - Viewport clearance margin: Calculated dynamically as orbit radius plus control button radius
     plus tokenized edge padding (ensuring the bounding orbit clears the viewport boundary without clipping).
 - **Design-kit token styling:**
-  - Surface: `var(--color-bg-elevated)` with `var(--color-border-subtle)` border and `var(--radius-panel)` shadow.
+  - Surface: `var(--color-bg-elevated)` background with `var(--color-border-subtle)` border,
+    `var(--radius-panel)` border radius, and elevation shadow (`shadow-lg`).
   - Action buttons: `var(--color-surface)` background, `var(--color-fg)` text, `rounded-full`.
   - Hover/focus state: `var(--color-surface-hover)` background, `var(--color-fg)` text.
   - Typography: `var(--font-mono)` with scale token `var(--text-micro)` (9px) or `var(--text-caption)` (10px).
