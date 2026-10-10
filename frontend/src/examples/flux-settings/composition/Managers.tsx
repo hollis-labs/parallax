@@ -13,7 +13,7 @@ export interface ManagerDiagnostics {
 export function Manager({
   kind,
   live: parent,
-  readOnly,
+  readOnly: _readOnly,
   empty,
   publish,
   publishForm,
@@ -25,6 +25,7 @@ export function Manager({
   publish: (frame: ManagerDiagnostics) => void
   publishForm: (frame: FormDiagnostics) => void
 }) {
+  const readOnly = true
   const records = empty
     ? []
     : kind === "providers"
@@ -74,7 +75,7 @@ export function Manager({
     <section ref={root} data-section={kind}>
       <PanelHeader
         title={kind === "agents" ? "Agents" : kind === "plugins" ? "Plugins" : "Providers"}
-        description="Independent fictional records; selection and actions affect this fixture only."
+        description="Independent fictional records; metadata inspection only; mutation and preview actions are unavailable."
       />
       <div className="flux-manager">
         <div>

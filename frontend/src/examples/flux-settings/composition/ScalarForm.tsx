@@ -78,7 +78,9 @@ export function ScalarForm({
   useLayoutEffect(() => {
     publish?.({ edit, save, cancel, state })
   })
-  const footer = (
+  const footer = readOnly ? (
+    <p>Inert fictional specimen · editing and configuration unavailable.</p>
+  ) : (
     <div className="flux-form-actions">
       <button
         type="button"
@@ -117,7 +119,7 @@ export function ScalarForm({
           <option value="form">Group form</option>
           <option value="grouped">Grouped renderer</option>
           <option value="provenance">Source provenance</option>
-          <option value="wizard">Setup preview</option>
+          {!readOnly && <option value="wizard">Setup preview</option>}
         </select>
       </label>
       {mode === "form" ? (

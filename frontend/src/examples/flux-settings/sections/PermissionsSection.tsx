@@ -1,5 +1,6 @@
 import { AlertCircle, CheckCircle2, RotateCcw, Search, Shield } from "lucide-react"
 import { useMemo, useState } from "react"
+import { useCommittedFrame } from "../committed-frame"
 import {
   FIXTURE_TOOL_GRANTS,
   PERMISSION_MODE_OPTIONS,
@@ -13,6 +14,7 @@ interface PermissionsSectionProps {
   tools: ToolGrantItem[]
   onModeChange: (mode: PermissionMode) => void
   onToolsChange: (tools: ToolGrantItem[]) => void
+  isLive?: () => boolean
   readOnly?: boolean
 }
 
@@ -22,7 +24,10 @@ export function PermissionsSection({
   onModeChange,
   onToolsChange,
   readOnly = false,
+  isLive = () => true,
 }: PermissionsSectionProps) {
+  const frame = useCommittedFrame()
+  const live = () => frame.checkToken(frame.frameToken) && isLive()
   const [search, setSearch] = useState("")
 
   const activeModeOption = useMemo(
@@ -43,13 +48,13 @@ export function PermissionsSection({
   const autoLoadCount = useMemo(() => tools.filter((t) => t.synced).length, [tools])
 
   const handleToggle = (id: string) => {
-    if (readOnly) return
+    if (!live() || readOnly) return
     const next = tools.map((t) => (t.id === id ? { ...t, allowed: !t.allowed } : t))
     onToolsChange(next)
   }
 
   const handleReset = () => {
-    if (readOnly) return
+    if (!live() || readOnly) return
     onModeChange("default")
     onToolsChange(FIXTURE_TOOL_GRANTS)
   }
@@ -88,7 +93,9 @@ export function PermissionsSection({
               value: o.value,
               label: o.label,
             }))}
-            onChange={(val) => onModeChange(val as PermissionMode)}
+            onChange={(val) => {
+              if (live() && !readOnly) onModeChange(val as PermissionMode)
+            }}
             disabled={readOnly}
             width="w-64"
           />
@@ -149,7 +156,9 @@ export function PermissionsSection({
             <input
               type="text"
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => {
+                if (live()) setSearch(e.target.value)
+              }}
               placeholder="Filter tools…"
               className="w-full bg-surface border border-border-subtle rounded-control pl-8 pr-2.5 py-1 text-xs text-fg placeholder:text-fg-faint focus:outline-hidden focus:ring-1 focus:ring-primary"
             />

@@ -4,7 +4,7 @@ import { executions, providers, workers } from "./model"
 export function Observability({
   empty,
   live,
-  readOnly,
+  readOnly: _readOnly,
   onNotice,
 }: {
   empty: boolean
@@ -12,6 +12,7 @@ export function Observability({
   readOnly: boolean
   onNotice: (value: string) => void
 }) {
+  const readOnly = true
   const data = empty ? [] : executions
   const total = data.length,
     duration = total ? data.reduce((n, v) => n + v.duration, 0) / total : 0,

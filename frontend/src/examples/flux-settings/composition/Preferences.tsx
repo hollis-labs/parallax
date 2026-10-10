@@ -10,7 +10,7 @@ export interface ReorderDiagnostics {
 }
 export function Preferences({
   live: parent,
-  readOnly,
+  readOnly: _readOnly,
   malformed,
   publish,
   publishForm,
@@ -21,6 +21,7 @@ export function Preferences({
   publish: (frame: ReorderDiagnostics) => void
   publishForm: (frame: FormDiagnostics) => void
 }) {
+  const readOnly = true
   const [initial] = useState(() => {
     let stored: unknown = [...defaultChain]
     try {
@@ -58,7 +59,7 @@ export function Preferences({
     <section ref={root} data-section="preferences">
       <PanelHeader
         title="Preferences"
-        description="Session defaults and ordered provider fallback. All values are fixture proposals."
+        description="Session defaults and ordered provider fallback. Inert fictional specimen; editing and reordering are unavailable."
       />
       <ScalarForm
         fixture={formFixture(
@@ -100,7 +101,7 @@ export function Preferences({
       />
       <SCard
         title="Provider Fallback Chain"
-        description="Drag a row or use Alt-free Arrow Up / Down on its Move button. Zero-like provider IDs retain identity."
+        description="Recorded fallback order only. Reordering and persistence are unavailable; opaque IDs retain identity."
       >
         <ol className="flux-reorder" aria-label="Provider fallback order">
           {chain.map((id, index) => (

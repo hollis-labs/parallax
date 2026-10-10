@@ -51,6 +51,7 @@ test("representative navigation, hash reload/back-forward and developer gating",
   await page.keyboard.press("ArrowDown")
   await expect(page).toHaveURL(/#preferences$/)
   await expect(nav.getByRole("link", { name: "Inspector", exact: true })).toHaveCount(0)
+  await page.getByText("Fixture review controls", { exact: true }).click()
   await page.getByLabel("Developer mode (local)").check()
   await nav.getByRole("link", { name: "Inspector", exact: true }).click()
   await expect(page.locator("main pre")).toContainText('"seed": 4421')
@@ -58,132 +59,62 @@ test("representative navigation, hash reload/back-forward and developer gating",
   await expect(page).toHaveURL(/#profile$/)
   expect(errors).toEqual([])
 })
-test("scalar draft save/cancel and public presentation modes retain source custody", async ({
+test("extra specimens refuse edits, reorder, install and configuration callbacks", async ({
   page,
 }) => {
-  await open(page)
-  await page.getByLabel("Display Name", { exact: true }).fill("Local reviewer")
-  await expect(page.getByText("Unsaved local draft", { exact: true })).toBeVisible()
-  await page.getByRole("button", { name: "Cancel draft", exact: true }).click()
-  await expect(page.getByLabel("Display Name", { exact: true })).toHaveValue("Morgan Fixture")
-  await page.getByLabel("Display Name", { exact: true }).fill("Fixture writer")
-  await page.getByRole("button", { name: "Save fixture", exact: true }).click()
-  await expect(page.getByText("Saved to this local fixture only.", { exact: true })).toBeVisible()
+  await open(page, "profile")
+  expect(
+    await page.evaluate(() => [
+      window.fluxSettingsComposition?.form?.edit({
+        display_name: { kind: "value", value: "Forbidden" },
+      }),
+      window.fluxSettingsComposition?.form?.save(),
+      window.fluxSettingsComposition?.form?.cancel(),
+    ]),
+  ).toEqual([false, false, false])
+  await expect(page.getByRole("button", { name: "Save fixture", exact: true })).toHaveCount(0)
   await page.getByLabel("Field presentation").selectOption("provenance")
-  await expect(page.locator("main")).toContainText("Local fixture specimen")
-  await page.getByLabel("Field presentation").selectOption("grouped")
-  await expect(page.getByLabel("Display Name", { exact: true })).toHaveValue("Fixture writer")
-  await page.getByLabel("Field presentation").selectOption("wizard")
-  await expect(
-    page.getByText(
-      "Submit setup inspects a local plan; it does not install or configure a service.",
-    ),
-  ).toBeVisible()
-})
-test("provider fallback supports keyboard and pointer drag plus malformed persistence", async ({
-  page,
-}) => {
-  await open(page, "preferences")
-  const move = page.getByRole("button", { name: "Move Local Studio", exact: true })
-  await move.focus()
-  await move.press("ArrowDown")
-  await expect(page.locator(".flux-reorder li").first()).toContainText("Cloud Atlas")
-  await page
-    .locator('[data-provider-id="0"]')
-    .dragTo(page.locator('[data-provider-id="provider:cloud/a?4421"]'))
-  await expect(page.locator(".flux-reorder li").first()).toContainText("Local Studio")
-  await page.getByRole("button", { name: "Save fixture order", exact: true }).click()
-  await page.reload()
-  await settled(page)
-  await expect(page.locator(".flux-reorder li").first()).toContainText("Local Studio")
-  await page.evaluate(() =>
-    localStorage.setItem("parallax:flux-settings:4421:provider-chain", '{"invalid":true}'),
+  await expect(page.locator("main")).toContainText("Morgan Fixture")
+  await open(page, "preferences", "&scenario=malformed-preferences")
+  expect(await page.evaluate(() => window.fluxSettingsComposition?.reorder?.reorder("0", 1))).toBe(
+    false,
   )
-  await page.reload()
-  await settled(page)
+  await expect(page.getByRole("button", { name: "Save fixture order", exact: true })).toBeDisabled()
+  await expect(page.locator('[data-provider-id="0"]')).toHaveAttribute("draggable", "false")
+  await expect(page.locator("main")).toContainText("Malformed fixture preference rejected")
+  await open(page, "plugins")
   await expect(
-    page.getByText("Malformed fixture preference rejected; using authored fallback order.", {
-      exact: true,
-    }),
-  ).toBeVisible()
-})
-test("master-detail keyboard keeps opaque IDs and inert plugin config zero/absent values", async ({
-  page,
-}) => {
-  await open(page, "agents")
-  const records = page.getByRole("group", { name: "agents records" })
-  await records.getByRole("button", { name: /Researcher/ }).focus()
-  await page.keyboard.press("ArrowDown")
-  await expect(page.getByRole("region", { name: "agents detail" })).toContainText(
-    "agent:/writer?4421",
-  )
-  await page.keyboard.press("End")
-  await expect(page.getByRole("region", { name: "agents detail" })).toContainText(
-    "Explicitly unset",
-  )
-  await page.getByRole("navigation").getByRole("link", { name: "Plugins", exact: true }).click()
-  await expect(page.getByLabel("Row limit", { exact: true })).toHaveValue("0")
-  await expect(page.getByLabel("Show annotations", { exact: true })).not.toBeChecked()
-  await expect(page.locator("main")).toContainText("Not set")
-  await page.getByRole("button", { name: "Preview install fixture", exact: true }).click()
-  await expect(
-    page.getByText("Install/reload preview recorded locally; no plugin was loaded."),
-  ).toBeVisible()
-  await page.getByLabel("Row limit", { exact: true }).fill("3")
-  await page.getByLabel("Notebook title", { exact: true }).fill("Local config")
-  await page.getByRole("button", { name: "Save fixture", exact: true }).click()
-  await expect(page.getByText("Saved to this local fixture only.")).toBeVisible()
-  await expect(page.getByLabel("Row limit", { exact: true })).toHaveValue("3")
-})
-test("once-working callbacks retire after source replacement and Activity hide-show, fresh positives recover", async ({
-  page,
-}) => {
-  await open(page)
+    page.getByRole("button", { name: "Preview install fixture", exact: true }),
+  ).toBeDisabled()
   expect(
     await page.evaluate(() =>
-      window.fluxSettingsComposition?.form?.edit({
-        display_name: { kind: "value", value: "First admitted draft" },
-      }),
+      window.fluxSettingsComposition?.form?.edit({ row_limit: { kind: "value", value: 3 } }),
     ),
-  ).toBe(true)
-  await expect(page.getByLabel("Display Name", { exact: true })).toHaveValue("First admitted draft")
-  await page.evaluate(() => {
-    window.retainedComposition = window.fluxSettingsComposition
-    window.retainedForm = window.fluxSettingsComposition?.form
-  })
-  await page.getByRole("button", { name: "Replace fixture source" }).click()
+  ).toBe(false)
+  await expect(page.locator("main")).toContainText("Inert fictional specimen")
+  await open(page, "observability")
+  await expect(page.getByRole("button", { name: "Preview cancel" }).first()).toBeDisabled()
+})
+test("confirmed Layout and Permissions pages are reachable local fixture previews", async ({
+  page,
+}) => {
+  await open(page, "layout")
+  await expect(page.getByRole("heading", { level: 1, name: "Layout", exact: true })).toBeVisible()
+  await expect(page.locator('[data-section="layout"]')).toBeVisible()
+  const chips = page.getByRole("switch", { name: "Toggle Header Metadata Chips" })
+  const previous = await chips.getAttribute("aria-checked")
+  await chips.click()
+  await expect(chips).toHaveAttribute("aria-checked", previous === "true" ? "false" : "true")
+  await page.getByRole("navigation").getByRole("link", { name: "Permissions", exact: true }).click()
+  await expect(page).toHaveURL(/#permissions$/)
+  await expect(page.locator('[data-section="permissions"]')).toBeVisible()
+  await page.getByLabel("Active Mode", { exact: true }).selectOption("plan")
+  await expect(page.getByLabel("Active Mode", { exact: true })).toHaveValue("plan")
+  await page.reload()
   await settled(page)
-  expect(
-    await page.evaluate(() => [
-      window.retainedComposition?.navigate("plugins"),
-      window.retainedForm?.save(),
-      window.retainedForm?.cancel(),
-      window.retainedForm?.edit({ display_name: { kind: "value", value: "Retired" } }),
-    ]),
-  ).toEqual([false, false, false, false])
-  await expect(page.getByLabel("Display Name", { exact: true })).toHaveValue("Morgan Fixture")
-  expect(
-    await page.evaluate(() =>
-      window.fluxSettingsComposition?.form?.edit({
-        display_name: { kind: "value", value: "Fresh admitted draft" },
-      }),
-    ),
-  ).toBe(true)
-  await expect(page.getByLabel("Display Name", { exact: true })).toHaveValue("Fresh admitted draft")
-  await page.evaluate(() => {
-    window.retainedForm = window.fluxSettingsComposition?.form
-    window.retainedComposition = window.fluxSettingsComposition
-  })
-  await page.getByRole("button", { name: "Hide settings activity" }).click()
-  await page.getByRole("button", { name: "Show settings activity" }).click()
-  await settled(page)
-  expect(
-    await page.evaluate(() => [
-      window.retainedForm?.cancel(),
-      window.retainedComposition?.navigate("plugins"),
-    ]),
-  ).toEqual([false, false])
-  expect(await page.evaluate(() => window.fluxSettingsComposition?.form?.cancel())).toBe(true)
+  await expect(
+    page.getByRole("heading", { level: 1, name: "Permissions", exact: true }),
+  ).toBeVisible()
 })
 test("capture records only its exact button, preserves native action keys, IME and actual overlay vetoes", async ({
   page,
@@ -275,7 +206,7 @@ test("read-only, empty, loading, error and access views disclose their source", 
   await expect(page.locator("main")).toContainText("Fixture access denied")
   await page.getByLabel("Fixture scenario").selectOption("populated")
   await settled(page)
-  await expect(page.getByRole("button", { name: "Preview install fixture" })).toBeEnabled()
+  await expect(page.getByRole("button", { name: "Preview install fixture" })).toBeDisabled()
 })
 test("delayed navigation focus obeys current publication and newer plain or portal foreground", async ({
   page,
@@ -362,10 +293,7 @@ test("theme tokens save locally and composing form edits remain editable", async
       .evaluateAll((els) => els.map((el) => el.getAttribute("title")))
   ).find((value) => value !== current)
   await color.fill(preset ?? "")
-  await page.getByRole("button", { name: "Save theme fixture", exact: true }).click()
-  await expect(page.getByText("Theme saved to this local fixture only.")).toBeVisible()
-  await open(page)
-  const field = page.getByLabel("Display Name", { exact: true })
+  const field = page.getByPlaceholder("hex or rgb/rgba")
   await field.focus()
   expect(
     await field.evaluate((el) => {
@@ -380,55 +308,36 @@ test("theme tokens save locally and composing form edits remain editable", async
       return e.defaultPrevented
     }),
   ).toBe(false)
-  await field.fill("Composing fixture text")
-  await expect(field).toHaveValue("Composing fixture text")
+  await field.fill("#112233")
+  await expect(field).toHaveValue("#112233")
+  await page.getByRole("button", { name: "Save theme fixture", exact: true }).click()
+  await expect(page.getByText("Theme saved to this local fixture only.")).toBeVisible()
 })
 
-test("reorder and form callbacks retire on access/layer and active-root loss", async ({ page }) => {
-  await open(page, "preferences")
-  expect(await page.evaluate(() => window.fluxSettingsComposition?.reorder?.reorder("0", 1))).toBe(
-    true,
-  )
-  await expect(page.locator(".flux-reorder li").first()).toContainText("Cloud Atlas")
+test("navigation callbacks retire on access/layer and active-root loss", async ({ page }) => {
+  await open(page, "appearance")
   await page.evaluate(() => {
-    window.retainedReorder = window.fluxSettingsComposition?.reorder
+    window.retainedComposition = window.fluxSettingsComposition
   })
   await page.getByRole("button", { name: "Pause fixture layer" }).click()
-  expect(await page.evaluate(() => window.retainedReorder?.reorder("0", 0))).toBe(false)
+  expect(await page.evaluate(() => window.retainedComposition?.navigate("layout"))).toBe(false)
   await page.getByRole("button", { name: "Resume fixture layer" }).click()
   await settled(page)
-  expect(await page.evaluate(() => window.retainedReorder?.reorder("0", 0))).toBe(false)
-  expect(await page.evaluate(() => window.fluxSettingsComposition?.reorder?.reorder("0", 1))).toBe(
-    true,
-  )
-  await open(page)
-  await page.evaluate(() => {
-    window.retainedForm = window.fluxSettingsComposition?.form
-  })
-  await page.getByRole("button", { name: "Revoke fixture access" }).click()
-  expect(
-    await page.evaluate(() =>
-      window.retainedForm?.edit({ display_name: { kind: "value", value: "Forbidden" } }),
-    ),
-  ).toBe(false)
-  await page.getByRole("button", { name: "Restore fixture access" }).click()
+  expect(await page.evaluate(() => window.retainedComposition?.navigate("layout"))).toBe(false)
+  expect(await page.evaluate(() => window.fluxSettingsComposition?.navigate("layout"))).toBe(true)
   await settled(page)
   expect(
     await page.evaluate(() => {
       const root = document.querySelector(".flux-settings-composition")
       root?.setAttribute("data-closed", "")
-      const result = window.fluxSettingsComposition?.form?.cancel()
+      const result = window.fluxSettingsComposition?.navigate("permissions")
       root?.removeAttribute("data-closed")
       return result
     }),
   ).toBe(false)
-  expect(
-    await page.evaluate(() =>
-      window.fluxSettingsComposition?.form?.edit({
-        display_name: { kind: "value", value: "Fresh positive" },
-      }),
-    ),
-  ).toBe(true)
+  expect(await page.evaluate(() => window.fluxSettingsComposition?.navigate("permissions"))).toBe(
+    true,
+  )
 })
 
 for (const geometry of [
@@ -493,3 +402,25 @@ for (const geometry of [
       }
     }
   })
+
+test("confirmed Layout and Permissions remain readable at desktop, narrow and short geometry", async ({
+  page,
+}, testInfo) => {
+  for (const size of [
+    { width: 1280, height: 900 },
+    { width: 390, height: 844 },
+    { width: 390, height: 420 },
+  ]) {
+    await page.setViewportSize(size)
+    for (const section of ["layout", "permissions"]) {
+      await open(page, section)
+      await page.locator(`[data-section="${section}"]`).scrollIntoViewIfNeeded()
+      await page.screenshot({
+        path: testInfo.outputPath(`${section}-${size.width}x${size.height}.png`),
+      })
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+        true,
+      )
+    }
+  }
+})

@@ -2,7 +2,10 @@ import type { SettingsGroup, SettingsProvenanceState } from "@hollis-labs/kit-se
 
 export const compositionIdentity = "flux-settings-composition/4421/2026-10-04T14:30:00Z"
 export const navigation = [
-  { label: "You", items: ["profile", "preferences", "appearance", "shortcuts"] },
+  {
+    label: "You",
+    items: ["profile", "preferences", "appearance", "layout", "shortcuts", "permissions"],
+  },
   { label: "AI", items: ["providers", "agents"] },
   { label: "Extensions", items: ["plugins"] },
   { label: "System", items: ["observability"] },
@@ -14,6 +17,8 @@ export const titles: Record<Section, string> = {
   preferences: "Preferences",
   appearance: "Appearance",
   shortcuts: "Shortcuts",
+  layout: "Layout",
+  permissions: "Permissions",
   providers: "Providers",
   agents: "Agents",
   plugins: "Plugins",
@@ -36,7 +41,7 @@ export function sectionFromHash(developer: boolean): Section {
   return sections.includes(id as (typeof sections)[number]) ||
     (developer && (id === "system-prompts" || id === "inspector"))
     ? (id as Section)
-    : "profile"
+    : "appearance"
 }
 
 // Opaque keys, including zero-like and punctuation-rich IDs, are never derived from labels.

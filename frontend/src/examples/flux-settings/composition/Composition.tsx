@@ -1,7 +1,18 @@
 import type { CSSProperties } from "react"
 import { Activity, useEffect, useLayoutEffect, useRef, useState } from "react"
-import { BUILTIN_THEMES, referenceClock, SHORTCUT_DEFS, type Theme, type ThemeMode } from "../model"
+import type { PermissionMode } from "../model"
+import {
+  BUILTIN_THEMES,
+  DEFAULT_LAYOUT_PREFERENCES,
+  FIXTURE_TOOL_GRANTS,
+  referenceClock,
+  SHORTCUT_DEFS,
+  type Theme,
+  type ThemeMode,
+} from "../model"
 import { AppearanceSection } from "../sections/AppearanceSection"
+import { LayoutSection } from "../sections/LayoutSection"
+import { PermissionsSection } from "../sections/PermissionsSection"
 import { type CaptureDiagnostics, ShortcutsSection } from "../sections/ShortcutsSection"
 import { plainKey, useAdmission } from "./admission"
 import { Manager, type ManagerDiagnostics } from "./Managers"
@@ -65,6 +76,9 @@ export function FluxSettingsComposition({
   const [navOpen, setNavOpen] = useState(false)
   const [theme, setTheme] = useState(initialTheme)
   const [mode, setMode] = useState<ThemeMode>(initialMode)
+  const [layout, setLayout] = useState(DEFAULT_LAYOUT_PREFERENCES)
+  const [permissionMode, setPermissionMode] = useState<PermissionMode>("default")
+  const [tools, setTools] = useState([...FIXTURE_TOOL_GRANTS])
   const [notice, setNotice] = useState("")
   const [shortcuts, setShortcuts] = useState<Record<string, string>>(() =>
     Object.fromEntries(SHORTCUT_DEFS.map((s) => [s.key, s.default])),
@@ -182,7 +196,7 @@ export function FluxSettingsComposition({
       user_context: { title: "User Context", value: "Fictional review workspace" },
       avatar_url: { title: "Avatar", readOnly: true },
     },
-    !readOnly,
+    false,
   )
   const unavailable =
     scenario === "loading" ||
@@ -358,6 +372,11 @@ export function FluxSettingsComposition({
           <p className="flux-source-label">
             Source: {source} · {referenceClock}
           </p>
+          <p className="flux-source-label">
+            Appearance, Layout, Shortcuts and Permissions are local fixture previews. Other pages
+            are inert fictional specimens; editing, reorder, install and configuration actions are
+            unavailable.
+          </p>
           {unavailable ? (
             <p role={scenario === "error" ? "alert" : "status"}>
               {scenario === "loading"
@@ -379,7 +398,7 @@ export function FluxSettingsComposition({
                   <ScalarForm
                     fixture={profile}
                     live={live}
-                    readOnly={readOnly}
+                    readOnly
                     publish={(f) => publish("form", f)}
                   />
                 </>
@@ -387,7 +406,7 @@ export function FluxSettingsComposition({
               {section === "preferences" && (
                 <Preferences
                   live={live}
-                  readOnly={readOnly}
+                  readOnly
                   malformed={scenario === "malformed-preferences"}
                   publish={(f) => publish("reorder", f)}
                   publishForm={(f) => publish("form", f)}
@@ -408,6 +427,30 @@ export function FluxSettingsComposition({
                   }}
                 />
               )}
+              {section === "layout" && (
+                <LayoutSection
+                  preferences={layout}
+                  readOnly={readOnly}
+                  isLive={live}
+                  onChange={(next) => {
+                    if (live() && !readOnly) setLayout(next)
+                  }}
+                />
+              )}
+              {section === "permissions" && (
+                <PermissionsSection
+                  mode={permissionMode}
+                  tools={tools}
+                  readOnly={readOnly}
+                  isLive={live}
+                  onModeChange={(next) => {
+                    if (live() && !readOnly) setPermissionMode(next)
+                  }}
+                  onToolsChange={(next) => {
+                    if (live() && !readOnly) setTools(next)
+                  }}
+                />
+              )}
               {section === "shortcuts" && (
                 <ShortcutsSection
                   shortcuts={shortcuts}
@@ -423,7 +466,7 @@ export function FluxSettingsComposition({
                 <Manager
                   kind={section}
                   live={live}
-                  readOnly={readOnly}
+                  readOnly
                   empty={scenario === "empty"}
                   publish={(f) => publish("manager", f)}
                   publishForm={(f) => publish("form", f)}
@@ -433,7 +476,7 @@ export function FluxSettingsComposition({
                 <Observability
                   empty={scenario === "empty"}
                   live={live}
-                  readOnly={readOnly}
+                  readOnly
                   onNotice={(next) => {
                     if (live()) setNotice(next)
                   }}
