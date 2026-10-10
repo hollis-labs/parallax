@@ -1,4 +1,9 @@
-import { AppShell, Button, OverlaySidebar } from "@hollis-labs/design-components"
+import {
+  AppShell,
+  Button,
+  OverlaySidebar,
+  useControlledRecordNavigation,
+} from "@hollis-labs/design-components"
 import { SettingsProvenanceRenderer } from "@hollis-labs/kit-settings"
 import { useLayoutEffect, useRef, useState } from "react"
 import { AccountReview } from "../../account-review/Review"
@@ -172,6 +177,15 @@ export function AdministrationExample({
     ? `${state.appearance}: records withheld; count Unknown.`
     : "Known empty snapshot appearance · 0 supplied users/settings."
   const profile = ["profile", "roles", "permissions"].includes(state.page)
+  const profileNavigation = useControlledRecordNavigation({
+    orderedIds: data.matches.map((user) => user.id),
+    selectedId: state.user || null,
+    active: profile,
+    accessible: data.accessible,
+    sourceGeneration: identity,
+    boundaryPolicy: "stop",
+    onSelect: (user) => change({ user }, true),
+  })
   const settings = settingsReviewModel("recorded")
   return (
     <AppShell
@@ -279,6 +293,24 @@ export function AdministrationExample({
                         ))}
                       </select>
                     </label>
+                    <Button
+                      variant="outline"
+                      disabled={!profileNavigation.availability.previous}
+                      onClick={() => profileNavigation.navigate(-1)}
+                    >
+                      Previous directory user
+                    </Button>
+                    <span>
+                      {profileNavigation.position + 1} of {data.matches.length} matching users ·
+                      stops at ends
+                    </span>
+                    <Button
+                      variant="outline"
+                      disabled={!profileNavigation.availability.next}
+                      onClick={() => profileNavigation.navigate(1)}
+                    >
+                      Next directory user
+                    </Button>
                     <Button variant="outline" onClick={() => change({ page: "directory" }, true)}>
                       Back to directory
                     </Button>

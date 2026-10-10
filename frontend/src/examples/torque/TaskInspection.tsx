@@ -1,5 +1,9 @@
-import { Button, InspectionDialog } from "@hollis-labs/design-components"
-import { type KeyboardEvent, useLayoutEffect, useRef } from "react"
+import {
+  Button,
+  InspectionDialog,
+  useControlledRecordNavigation,
+} from "@hollis-labs/design-components"
+import { useRef } from "react"
 import type { OperationsModel, RunDetail } from "../../operations/model"
 import { ResourceNotice, RunDetailBody } from "../../operations/Views"
 import { operationsMetadata } from "./operations-metadata"
@@ -30,23 +34,6 @@ export function TaskInspection({
   intent: string
 }) {
   const title = useRef<HTMLHeadingElement>(null)
-  const popup = useRef<HTMLDivElement>(null)
-  const composing = useRef(false)
-  const mounted = useRef(false)
-  useLayoutEffect(() => {
-    mounted.current = true
-    return () => {
-      mounted.current = false
-    }
-  }, [])
-  useLayoutEffect(() => {
-    if (!open) composing.current = false
-  }, [open])
-  // A retained handler cannot act on an earlier order, selection or source,
-  // even if that source is later revisited with the same identifiers.
-  const frame = {}
-  const currentFrame = useRef(frame)
-  currentFrame.current = frame
   const identity = JSON.stringify([
     state.profile,
     state.scenario,
@@ -55,67 +42,27 @@ export function TaskInspection({
     state.query,
   ])
   const ids = model.accessible && cursor.identity === identity ? cursor.ids : []
-  const position = detail ? ids.indexOf(detail.task.id) : -1
-  const navigable = position >= 0 && ids.length > 1
+  const navigation = useControlledRecordNavigation({
+    orderedIds: ids,
+    selectedId: detail?.task.id ?? null,
+    active: open,
+    accessible: model.accessible,
+    sourceGeneration: identity,
+    boundaryPolicy: "wrap",
+    onSelect,
+  })
+  const position = navigation.position
   const metadata = detail ? operationsMetadata[detail.task.id] : undefined
-  function navigate(offset: number) {
-    if (mounted.current && currentFrame.current === frame && open && navigable)
-      onSelect(ids[(position + offset + ids.length) % ids.length])
-  }
-  function shortcut(e: KeyboardEvent<HTMLDivElement>) {
-    const root = popup.current
-    const target = e.target
-    if (
-      !open ||
-      (e.key !== "ArrowLeft" && e.key !== "ArrowRight") ||
-      e.defaultPrevented ||
-      e.nativeEvent.isComposing ||
-      e.nativeEvent.keyCode === 229 ||
-      composing.current ||
-      e.ctrlKey ||
-      e.metaKey ||
-      e.altKey ||
-      e.shiftKey ||
-      !navigable ||
-      currentFrame.current !== frame ||
-      !root ||
-      !(target instanceof Element) ||
-      !root.contains(target) ||
-      target.closest('[role="dialog"], [role="alertdialog"]') !== root ||
-      root.hasAttribute("data-nested-dialog-open") ||
-      target.closest(
-        'input, textarea, select, button, a, [contenteditable]:not([contenteditable="false"]), [role="textbox"], [role="combobox"], [role="slider"], [role="spinbutton"], [role="tablist"], [role="tab"], [role="menu"], [role="menuitem"], [role="listbox"], [role="tree"], [role="grid"], [role="radiogroup"]',
-      ) ||
-      Array.from(
-        document.querySelectorAll(
-          '[role="dialog"], [role="alertdialog"], [role="menu"], [role="listbox"]',
-        ),
-      ).some(
-        (overlay) =>
-          overlay !== root && !overlay.contains(root) && overlay.getClientRects().length > 0,
-      )
-    )
-      return
-    e.preventDefault()
-    navigate(e.key === "ArrowLeft" ? -1 : 1)
-  }
   return (
     <InspectionDialog
       open={open}
       onOpenChange={(next) => {
         if (!next) onClose()
       }}
-      ref={popup}
       className="torque-task-inspection"
       initialFocus={title}
       finalFocus={returnTarget}
-      onKeyDown={shortcut}
-      onCompositionStartCapture={() => {
-        composing.current = true
-      }}
-      onCompositionEndCapture={() => {
-        composing.current = false
-      }}
+      {...navigation.popupHandlers}
       title="Task and run inspection"
       titleProps={{ ref: title, tabIndex: -1 }}
       meta={
@@ -129,8 +76,8 @@ export function TaskInspection({
           <Button
             variant="outline"
             size="sm"
-            disabled={!navigable}
-            onClick={() => navigate(-1)}
+            disabled={!navigation.availability.previous}
+            onClick={() => navigation.navigate(-1)}
             aria-keyshortcuts="ArrowLeft"
           >
             Previous task
@@ -144,8 +91,8 @@ export function TaskInspection({
           <Button
             variant="outline"
             size="sm"
-            disabled={!navigable}
-            onClick={() => navigate(1)}
+            disabled={!navigation.availability.next}
+            onClick={() => navigation.navigate(1)}
             aria-keyshortcuts="ArrowRight"
           >
             Next task

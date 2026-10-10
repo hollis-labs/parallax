@@ -18,7 +18,7 @@
     "@base-ui/react": "1.8.0",
     "@hollis-labs/design-app-runtime": "0.4.0",
     "@hollis-labs/design-bindings": "0.1.0",
-    "@hollis-labs/design-components": "file:../third_party/hollis-labs-design-components-0.4.0-cw0035-d1ac13e4854d.tgz",
+    "@hollis-labs/design-components": "file:../third_party/hollis-labs-design-components-0.4.0-cw0036.tgz",
     "@hollis-labs/design-tokens": "0.4.0",
     "@hollis-labs/kit-account": "file:../third_party/hollis-labs-kit-account-0.0.0.tgz",
     "@hollis-labs/kit-admin": "0.1.0",
