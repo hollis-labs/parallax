@@ -283,7 +283,16 @@ for (const width of [1280, 390])
         if (width === 390)
           await page.getByRole("button", { name: "Open assistant", exact: true }).click()
         await expect(page.getByRole("combobox", { name: "Assistant draft" })).toBeVisible()
-        await page.screenshot({ path: info.outputPath(`${theme}-${mode}-${width}.png`) })
+        if (width === 390) {
+          const popup = page.getByRole("dialog", { name: "Assistant region" })
+          await expect
+            .poll(() => popup.evaluate((node) => getComputedStyle(node).opacity))
+            .toBe("1")
+        }
+        await page.screenshot({
+          path: info.outputPath(`${theme}-${mode}-${width}.png`),
+          animations: "disabled",
+        })
       })
     }
 test("portable Storybook story has no API dependency", async ({ page }) => {
