@@ -16,7 +16,7 @@ import {
   classifyPriorResponse,
   PromptCard,
 } from "@hollis-labs/kit-chat"
-import { useLayoutEffect, useRef, useState } from "react"
+import { type ReactNode, useLayoutEffect, useRef, useState } from "react"
 import { createAdminPresentationSession } from "../../chimera/admin-session"
 import { chatPack, chatPackDetail, chatPackModel, chatPackStates } from "./model"
 import { type ChatExampleState, chatExampleHref } from "./routes"
@@ -28,12 +28,27 @@ export const defaultChatState: ChatExampleState = {
   theme: "p4-white",
   mode: "light",
 }
+export type ChatChromeContext = {
+  state: ChatExampleState
+  accessible: boolean
+  editable: boolean
+  selectedId: string | null
+}
+/** Optional app-owned chrome; the default conversation and custody remain unchanged. */
+export type ChatChrome = {
+  navigation?: (context: ChatChromeContext) => ReactNode
+  header?: (context: ChatChromeContext) => ReactNode
+  className?: string
+  layout?: string
+}
 export function ChatExample({
   state = defaultChatState,
   onChange,
+  chrome,
 }: {
   state?: ChatExampleState
   onChange?: (state: ChatExampleState) => void
+  chrome?: ChatChrome
 }) {
   const [local, setLocal] = useState(state),
     [revision, setRevision] = useState(0),
@@ -58,6 +73,7 @@ export function ChatExample({
   return (
     <ChatSurface
       key={source}
+      chrome={chrome}
       state={actual}
       change={change}
       enqueue={enqueue}
@@ -71,6 +87,7 @@ export function ChatExample({
   )
 }
 function ChatSurface({
+  chrome,
   state,
   change,
   enqueue,
@@ -78,6 +95,7 @@ function ChatSurface({
   queued,
   reset,
 }: {
+  chrome?: ChatChrome
   state: ChatExampleState
   change: (s: ChatExampleState) => void
   enqueue: (p: () => void) => void
@@ -280,7 +298,13 @@ function ChatSurface({
   const matches = data.sessions.filter((s) =>
     `${s.id} ${s.title}`.toLowerCase().includes(state.query.toLowerCase()),
   )
-  const nav = (
+  const chromeContext: ChatChromeContext = {
+    state,
+    accessible: data.accessible,
+    editable: data.editable,
+    selectedId: detail?.session.id ?? null,
+  }
+  const nav = chrome?.navigation?.(chromeContext) ?? (
     <nav className="chat-session-list" aria-label="Chat sessions">
       <strong>Conversations</strong>
       <label>
@@ -521,7 +545,7 @@ function ChatSurface({
   )
   return (
     <AppShell
-      className="chat-example"
+      className={`chat-example ${chrome?.className ?? ""} ${chrome?.layout ? `flux-layout-${chrome.layout}` : ""}`}
       nav={<aside className="chat-example-sidebar">{nav}</aside>}
       header={
         <header className="chat-example-header">
@@ -542,12 +566,13 @@ function ChatSurface({
               {nav}
             </OverlaySidebar>
           </div>
-          <div>
+          <div className={chrome?.header ? "sr-only" : undefined}>
             <h1 ref={heading} tabIndex={-1}>
               {detail?.session.title ?? "Conversation unavailable"}
             </h1>
             <small>Snapshot · Review only</small>
           </div>
+          {chrome?.header?.(chromeContext)}
           <div className="chat-mobile-only">
             <OverlaySidebar
               side="right"
