@@ -78,12 +78,16 @@ function MenuSlot({
   generation,
   accessible,
   context = false,
+  ownerRoot,
+  ownerAdmitted,
 }: {
   label: string
   run: (action: Action) => void
   generation: unknown
   accessible: boolean
   context?: boolean
+  ownerRoot: () => HTMLElement | null
+  ownerAdmitted: () => boolean
 }) {
   const [open, setOpen] = useState(false)
   const popup = useRef<HTMLDivElement>(null),
@@ -92,6 +96,7 @@ function MenuSlot({
     key: "",
     enabled: false,
     sourceGeneration: generation,
+    scopeElement: ownerRoot,
     accessible,
     onTrigger: () => {},
   }).isLive
@@ -114,13 +119,24 @@ function MenuSlot({
       setOpen(false)
     }
   }, [generation, accessible])
+  const owns = () =>
+    ownerAdmitted() &&
+    !!ownerRoot()?.isConnected &&
+    !!trigger.current?.isConnected &&
+    !!ownerRoot()?.contains(trigger.current)
   const admitted = () =>
-    live() && accessible && openedGeneration.current === generation && currentLayer(popup.current)
+    live() &&
+    owns() &&
+    !!handoffLifetime.current?.live &&
+    accessible &&
+    openedGeneration.current === generation &&
+    currentLayer(popup.current)
   const press = useLongPress({
     sourceGeneration: generation,
     activationGeneration: label,
     accessible,
-    isAdmitted: () => live() && accessible && !competingLayer(),
+    isAdmitted: () =>
+      live() && owns() && !!handoffLifetime.current?.live && accessible && !competingLayer(),
     onLongPress: (gesture) => {
       handoff.current =
         gesture.pointerType === "touch" && handoffLifetime.current?.live
@@ -156,8 +172,25 @@ function MenuSlot({
     document.addEventListener("touchcancel", clear, true)
     document.addEventListener("scroll", clear, true)
     window.addEventListener("blur", clear)
+    const physicalTrigger = trigger.current
+    const observer = new MutationObserver((records) => {
+      if (
+        !physicalTrigger?.isConnected ||
+        records.some((record) =>
+          Array.from(record.removedNodes).some(
+            (node) =>
+              node === physicalTrigger || (!!physicalTrigger && node.contains(physicalTrigger)),
+          ),
+        )
+      ) {
+        lease.live = false
+        clear()
+      }
+    })
+    observer.observe(document.documentElement, { childList: true, subtree: true })
     return () => {
       lease.live = false
+      observer.disconnect()
       clear()
       document.removeEventListener("pointerdown", clear, true)
       document.removeEventListener("pointerup", release, true)
@@ -183,6 +216,8 @@ function MenuSlot({
       onOpenChange={(value) => {
         if (
           live() &&
+          owns() &&
+          handoffLifetime.current?.live &&
           accessible &&
           (value
             ? !competingLayer()
@@ -220,6 +255,7 @@ function MenuSlot({
                       held.target.contains(physicalEventTarget) &&
                       held.generation === generation &&
                       held.lease.live &&
+                      owns() &&
                       held.released &&
                       held.gestureEpoch === gestureEpoch.current &&
                       live() &&
@@ -233,7 +269,13 @@ function MenuSlot({
                     }
                   },
                   onContextMenu: (event: React.MouseEvent) => {
-                    if (live() && accessible && !competingLayer()) {
+                    if (
+                      live() &&
+                      owns() &&
+                      handoffLifetime.current?.live &&
+                      accessible &&
+                      !competingLayer()
+                    ) {
                       event.preventDefault()
                       openedGeneration.current = generation
                       setOpen(true)
@@ -252,6 +294,8 @@ function MenuSlot({
         finalFocus={() =>
           openedGeneration.current === generation &&
           live() &&
+          owns() &&
+          handoffLifetime.current?.live &&
           accessible &&
           !competingLayer() &&
           (document.activeElement === document.body ||
@@ -283,7 +327,11 @@ function FixtureRecords({
   active,
   navigate,
   run,
+  ownerRoot,
+  ownerAdmitted,
 }: {
+  ownerRoot: () => HTMLElement | null
+  ownerAdmitted: () => boolean
   generation: unknown
   accessible: boolean
   active: boolean
@@ -322,6 +370,8 @@ function FixtureRecords({
                   Inspect {r.id}
                 </Button>
                 <MenuSlot
+                  ownerRoot={ownerRoot}
+                  ownerAdmitted={ownerAdmitted}
                   label={`Row ${r.id}`}
                   generation={generation}
                   accessible={accessible}
@@ -359,7 +409,11 @@ function GroupFlyout({
   accessible,
   navigate,
   generation,
+  ownerRoot,
+  ownerAdmitted,
 }: {
+  ownerRoot: () => HTMLElement | null
+  ownerAdmitted: () => boolean
   generation: unknown
   group: Group
   items: Item[]
@@ -373,9 +427,15 @@ function GroupFlyout({
     key: "",
     enabled: false,
     sourceGeneration: generation,
+    scopeElement: ownerRoot,
     accessible,
     onTrigger: () => {},
   }).isLive
+  const owns = () =>
+    ownerAdmitted() &&
+    !!ownerRoot()?.isConnected &&
+    !!trigger.current?.isConnected &&
+    !!ownerRoot()?.contains(trigger.current)
   // biome-ignore lint/correctness/useExhaustiveDependencies: Reset controlled popup on source/access or Activity activation, including unchanged state preserved while hidden.
   useLayoutEffect(() => {
     setOpen(false)
@@ -385,7 +445,12 @@ function GroupFlyout({
       modal={false}
       open={open}
       onOpenChange={(value) => {
-        if (live() && accessible && (value ? !competingLayer() : !competingLayer([popup.current])))
+        if (
+          live() &&
+          owns() &&
+          accessible &&
+          (value ? !competingLayer() : !competingLayer([popup.current]))
+        )
           setOpen(value)
       }}
     >
@@ -408,6 +473,7 @@ function GroupFlyout({
         aria-label={`${group.label} flyout`}
         finalFocus={() =>
           live() &&
+          owns() &&
           accessible &&
           !competingLayer() &&
           (document.activeElement === document.body ||
@@ -421,7 +487,8 @@ function GroupFlyout({
             key={item.id}
             disabled={!accessible || !!item.reason}
             onClick={() => {
-              if (live() && currentLayer(popup.current)) navigate(item.route, popup.current)
+              if (live() && owns() && currentLayer(popup.current))
+                navigate(item.route, popup.current)
             }}
           >
             {item.label}
@@ -440,7 +507,11 @@ function Nav({
   generation,
   admitted,
   ownedDrawer = false,
+  ownerRoot,
+  ownerAdmitted,
 }: {
+  ownerRoot: () => HTMLElement | null
+  ownerAdmitted: () => boolean
   generation: unknown
   admitted: () => boolean
   ownedDrawer?: boolean
@@ -463,7 +534,7 @@ function Nav({
     setRoving(next)
     list[next]?.focus()
   }
-  useShortcut({
+  const down = useShortcut({
     key: "ArrowDown",
     scopeElement: () => root.current,
     sourceGeneration: generation,
@@ -472,7 +543,7 @@ function Nav({
     isAdmitted: () => admitted() && !!root.current?.contains(document.activeElement),
     onTrigger: () => move(1),
   })
-  useShortcut({
+  const up = useShortcut({
     key: "ArrowUp",
     scopeElement: () => root.current,
     sourceGeneration: generation,
@@ -492,6 +563,8 @@ function Nav({
               key={g.id}
               group={g}
               generation={generation}
+              ownerRoot={ownerRoot}
+              ownerAdmitted={ownerAdmitted}
               items={children}
               accessible={model.accessible}
               navigate={navigate}
@@ -554,6 +627,13 @@ function Nav({
   return (
     <nav
       ref={root}
+      onKeyDown={(event) => {
+        // DialogPopup owns the composite-key bubble boundary. Invoke the same
+        // public guarded shortcut locally for this explicitly owned drawer.
+        if (!ownedDrawer) return
+        if (event.key === "ArrowDown") down.trigger(event.nativeEvent)
+        else if (event.key === "ArrowUp") up.trigger(event.nativeEvent)
+      }}
       aria-label="Module navigation"
       className={`flex h-full min-h-0 flex-col border-r border-border bg-surface ${collapsed ? "w-16" : "w-64"}`}
     >
@@ -592,14 +672,25 @@ function PageNavigation({
         <TabsList
           activateOnFocus
           onKeyDownCapture={(event) => {
+            const navigationKey = [
+              "ArrowUp",
+              "ArrowDown",
+              "ArrowLeft",
+              "ArrowRight",
+              "Home",
+              "End",
+              "Enter",
+              " ",
+            ].includes(event.key)
             if (
-              event.nativeEvent.isComposing ||
-              event.keyCode === 229 ||
-              event.altKey ||
-              event.ctrlKey ||
-              event.metaKey ||
-              event.shiftKey ||
-              competingLayer()
+              navigationKey &&
+              (event.nativeEvent.isComposing ||
+                event.keyCode === 229 ||
+                event.altKey ||
+                event.ctrlKey ||
+                event.metaKey ||
+                event.shiftKey ||
+                competingLayer())
             ) {
               event.preventDefault()
               event.stopPropagation()
@@ -681,9 +772,24 @@ export function TachyonNav({
   }, [generation])
   const lifetime = useRef({ active: false, generation })
   useLayoutEffect(() => {
-    lifetime.current = { active: true, generation }
+    const physicalRoot = frameRoot.current
+    const current = { active: !!physicalRoot?.isConnected, generation }
+    lifetime.current = current
+    const observer = new MutationObserver((records) => {
+      if (
+        !physicalRoot?.isConnected ||
+        records.some((record) =>
+          Array.from(record.removedNodes).some(
+            (node) => node === physicalRoot || (!!physicalRoot && node.contains(physicalRoot)),
+          ),
+        )
+      )
+        current.active = false
+    })
+    observer.observe(document.documentElement, { childList: true, subtree: true })
     return () => {
-      lifetime.current.active = false
+      current.active = false
+      observer.disconnect()
     }
   }, [generation])
   const lease = useShortcut({
@@ -692,16 +798,17 @@ export function TachyonNav({
     sourceGeneration: generation,
     onTrigger: () => {},
   }).isLive
-  const alive = useCallback(
-    () =>
+  const alive = useCallback(() => {
+    if (!frameRoot.current?.isConnected) lifetime.current.active = false
+    return (
       lease() &&
       lifetime.current.active &&
       lifetime.current.generation === generation &&
       access &&
       layer &&
-      model.accessible,
-    [lease, generation, access, layer, model],
-  )
+      model.accessible
+    )
+  }, [lease, generation, access, layer, model])
   const background = () => alive() && !competingLayer()
   useEffect(() => {
     const update = () => setHash(location.hash)
@@ -759,6 +866,8 @@ export function TachyonNav({
       model={{ ...model, accessible: model.accessible && access && layer }}
       generation={generation}
       admitted={background}
+      ownerRoot={() => frameRoot.current}
+      ownerAdmitted={alive}
       active={item}
       collapsed={rail}
       navigate={navigate}
@@ -786,6 +895,11 @@ export function TachyonNav({
               <OverlaySidebar
                 open={drawer}
                 onOpenChange={(value) => {
+                  if (
+                    !alive() ||
+                    (value ? competingLayer() : competingLayer([drawerPopup.current]))
+                  )
+                    return
                   if (value) drawerGeneration.current = generation
                   setDrawer(value)
                 }}
@@ -804,6 +918,8 @@ export function TachyonNav({
                   model={{ ...model, accessible: model.accessible && access && layer }}
                   generation={generation}
                   admitted={() => alive() && currentLayer(drawerPopup.current)}
+                  ownerRoot={() => frameRoot.current}
+                  ownerAdmitted={alive}
                   ownedDrawer
                   active={item}
                   collapsed={false}
@@ -837,12 +953,16 @@ export function TachyonNav({
               Toggle context aside
             </Button>
             <MenuSlot
+              ownerRoot={() => frameRoot.current}
+              ownerAdmitted={alive}
               label="Header menu"
               generation={generation}
               accessible={access && layer && model.accessible}
               run={run}
             />
             <MenuSlot
+              ownerRoot={() => frameRoot.current}
+              ownerAdmitted={alive}
               label="Hamburger menu"
               generation={generation}
               accessible={access && layer && model.accessible}
@@ -927,6 +1047,8 @@ export function TachyonNav({
                         {route.detail ? `Task ${route.detail}` : item?.label}
                       </h2>
                       <MenuSlot
+                        ownerRoot={() => frameRoot.current}
+                        ownerAdmitted={alive}
                         label="Page toolbar"
                         generation={generation}
                         accessible={access && layer && model.accessible}
@@ -937,6 +1059,8 @@ export function TachyonNav({
                       {item?.owner} · source-declared route · Parallax fixture view · {hash}
                     </p>
                     <FixtureRecords
+                      ownerRoot={() => frameRoot.current}
+                      ownerAdmitted={alive}
                       generation={generation}
                       accessible={access && layer && model.accessible}
                       active={!drawer && !modal}

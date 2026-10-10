@@ -196,10 +196,6 @@ export function admitFixture(groups: Group[], candidates: Item[]) {
       refusals.push({ id: item.id, reason: "Duplicate id/route dropped; original owner retained" })
       continue
     }
-    if (item.parent && !candidates.some((i) => i.id === item.parent)) {
-      refusals.push({ id: item.id, reason: "Missing parent: fixture child dropped" })
-      continue
-    }
     if (!groups.some((g) => g.id === item.group)) {
       if (!groups.some((g) => g.id === "more"))
         groups.push({
@@ -213,6 +209,20 @@ export function admitFixture(groups: Group[], candidates: Item[]) {
       refusals.push({ id: item.id, reason: "Missing plugin group; placed in More" })
       items.push({ ...item, group: "more" })
     } else items.push(item)
+  }
+  // Remove children after declaration/owner admission, then cascade missing ancestors.
+  // The finite item set strictly shrinks on each pass.
+  let missing = items.filter(
+    (item) => item.parent && !items.some((parent) => parent.id === item.parent),
+  )
+  while (missing.length) {
+    for (const item of missing) {
+      refusals.push({ id: item.id, reason: "Missing admitted parent: fixture child dropped" })
+      items.splice(items.indexOf(item), 1)
+    }
+    missing = items.filter(
+      (item) => item.parent && !items.some((parent) => parent.id === item.parent),
+    )
   }
   return { groups, items, refusals }
 }

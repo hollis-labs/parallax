@@ -181,33 +181,46 @@ test("touch handoff clears on cancellation/new gesture and preserves fresh tap/k
   await expect(page.getByRole("menu", { name: "Row 4421-alpha", exact: true })).toHaveCount(0)
 })
 for (const kind of ["menu", "handoff"] as const)
-  test(`review: once-working ${kind} refuses physical root detach and reattach without revival`, async ({ page }) => {
+  test(`review: once-working ${kind} refuses physical root detach and reattach without revival`, async ({
+    page,
+  }) => {
     await page.goto("/tachyon-nav-lifecycle.html#/work")
     if (kind === "handoff") await holdRelease(page)
     else {
       await page.getByRole("button", { name: "Header menu", exact: true }).click()
-      await expect.poll(() => page.evaluate(() => window.tachyonNav.fresh["Header menu"]?.())).toBe(true)
+      await expect
+        .poll(() => page.evaluate(() => window.tachyonNav.fresh["Header menu"]?.()))
+        .toBe(true)
     }
-    await page.evaluate(kind => { window.heldNav = kind === "handoff" ? window.tachyonNav.handoff : window.tachyonNav.fresh["Header menu"] }, kind)
-    expect(await page.evaluate(() => {
-      const root = document.querySelector<HTMLElement>('[data-testid="tachyon-nav"]')
-      if (!root) throw new Error("Missing physical root")
-      const marker = document.createComment("physical owner marker")
-      Object.assign(window, { removedFixture: root, fixtureMarker: marker })
-      root.replaceWith(marker)
-      return window.heldNav?.()
-    })).toBe(false)
-    expect(await page.evaluate(() => {
-      const state = window as unknown as { removedFixture: HTMLElement; fixtureMarker: Comment }
-      state.fixtureMarker.replaceWith(state.removedFixture)
-      return window.heldNav?.()
-    })).toBe(false)
+    await page.evaluate((kind) => {
+      window.heldNav =
+        kind === "handoff" ? window.tachyonNav.handoff : window.tachyonNav.fresh["Header menu"]
+    }, kind)
+    expect(
+      await page.evaluate(() => {
+        const root = document.querySelector<HTMLElement>('[data-testid="tachyon-nav"]')
+        if (!root) throw new Error("Missing physical root")
+        const marker = document.createComment("physical owner marker")
+        Object.assign(window, { removedFixture: root, fixtureMarker: marker })
+        root.replaceWith(marker)
+        return window.heldNav?.()
+      }),
+    ).toBe(false)
+    expect(
+      await page.evaluate(() => {
+        const state = window as unknown as { removedFixture: HTMLElement; fixtureMarker: Comment }
+        state.fixtureMarker.replaceWith(state.removedFixture)
+        return window.heldNav?.()
+      }),
+    ).toBe(false)
     await page.getByRole("button", { name: "Replace fixture source", exact: true }).click()
     await expect(page.getByRole("menu")).toHaveCount(0)
     if (kind === "handoff") await holdRelease(page)
     else {
       await page.getByRole("button", { name: "Header menu", exact: true }).click()
-      await expect.poll(() => page.evaluate(() => window.tachyonNav.fresh["Header menu"]?.())).toBe(true)
+      await expect
+        .poll(() => page.evaluate(() => window.tachyonNav.fresh["Header menu"]?.()))
+        .toBe(true)
     }
     expect(await page.evaluate(() => window.heldNav?.())).toBe(false)
   })
