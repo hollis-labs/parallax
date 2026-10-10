@@ -1,0 +1,2867 @@
+{
+  "purpose": "static source reference, not fixture-count or UI acceptance contract",
+  "browser": "141.0.7390.37",
+  "seed": 4421,
+  "reference_time": "2026-10-04T14:30:00Z",
+  "observations": [
+    {
+      "name": "source-shell-archive-hidden",
+      "image": "captures/source-shell-archive-hidden.png",
+      "sha256": "8121e47434f592c15e7b866510d4146d88671f69e3df7e9c9d4c5c6ebdee8f09",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n6\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "source-shell-dark-1440x900",
+      "image": "captures/source-shell-dark-1440x900.png",
+      "sha256": "1dab1da816475798640877f20bf07a188fe629a05ef0a5b52366581c30666834",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages\n\nHide archived",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "source-shell-dark-390x844",
+      "image": "captures/source-shell-dark-390x844.png",
+      "sha256": "77dd15ccb081c9e8db48db5791ad42afae89c31e135fb702332b31bb2388373b",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "scrollHeight": 844
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "source-shell-dark-1440x420",
+      "image": "captures/source-shell-dark-1440x420.png",
+      "sha256": "3c80759338aee70cbfbaeb310b4872d40544e0ad7aeabcc8651770375e911d28",
+      "geometry": {
+        "width": 1440,
+        "height": 420,
+        "scrollWidth": 1440,
+        "scrollHeight": 420
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "source-shell-dark-390x420",
+      "image": "captures/source-shell-dark-390x420.png",
+      "sha256": "8fe4e14c01d862c7df104a71a1ac0c454d858b1953024c5b8416b251023cfd2b",
+      "geometry": {
+        "width": 390,
+        "height": 420,
+        "scrollWidth": 390,
+        "scrollHeight": 420
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "source-shell-light-1440x900",
+      "image": "captures/source-shell-light-1440x900.png",
+      "sha256": "34666fcb3241613b30076ec5288da1db52552b8aa77dd3d0619dcb0785a1d73d",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages\n\nHide archived",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(244, 245, 246)",
+        "fg": "rgb(24, 25, 27)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "source-shell-light-390x844",
+      "image": "captures/source-shell-light-390x844.png",
+      "sha256": "08f49ade0d33cb847dc58359846df005d7e754b674f481683b835c1b9d42d2f9",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "scrollHeight": 844
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(244, 245, 246)",
+        "fg": "rgb(24, 25, 27)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "source-shell-light-1440x420",
+      "image": "captures/source-shell-light-1440x420.png",
+      "sha256": "6ad2bc016d2b8c9f78098056bbe3449389e598c623b5e55e33e2ad67686fe516",
+      "geometry": {
+        "width": 1440,
+        "height": 420,
+        "scrollWidth": 1440,
+        "scrollHeight": 420
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(244, 245, 246)",
+        "fg": "rgb(24, 25, 27)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "source-shell-light-390x420",
+      "image": "captures/source-shell-light-390x420.png",
+      "sha256": "413ec5c3161097a0cbeff2eac964c8212cc824ff41d7bb842a107d7adc8296b9",
+      "geometry": {
+        "width": 390,
+        "height": 420,
+        "scrollWidth": 390,
+        "scrollHeight": 420
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(244, 245, 246)",
+        "fg": "rgb(24, 25, 27)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "working-drawer-scratchpad",
+      "image": "captures/working-drawer-scratchpad.png",
+      "sha256": "8c269656a4d5d0a2d1c1528c105014c89ea817564e3ff96f090b1919013ac2da",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nScratchpad \u2014 not sent to agent unless referenced\n\nScratchpad\nTerminal 1\nTerminal 2\nArtifacts\nRuntime\nSession Context\nFixture information\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages\n\nHide archived",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "working-drawer-terminal-1",
+      "image": "captures/working-drawer-terminal-1.png",
+      "sha256": "89340acb4e5cf3070c92ede3233347046b351bd2c1f349250dddc3b691c808d2",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nNo shell output yet. Type ! followed by a command in the composer.\nScratchpad\nTerminal 1\nTerminal 2\nArtifacts\nRuntime\nSession Context\nFixture information\nFixture information\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages\n\nHide archived",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "working-drawer-terminal-2",
+      "image": "captures/working-drawer-terminal-2.png",
+      "sha256": "9827842ef91106e03c2d31b311d194dd6e4aa4db054d922f633182bf0987ea38",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nTerminal 2 (dev) \u2014 interactive shell, follow-up\nScratchpad\nTerminal 1\nTerminal 2\nArtifacts\nRuntime\nSession Context\nFixture information\nFixture information\nFixture information\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages\n\nHide archived",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "working-drawer-artifacts",
+      "image": "captures/working-drawer-artifacts.png",
+      "sha256": "73972ba1e579de24d58965f847bfe66e2dfdd78bea7ec3778e9a9f29b4b6b8d0",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nArtifacts will appear here\n\nDrop files here or use the chat composer to upload\n\nScratchpad\nTerminal 1\nTerminal 2\nArtifacts\nRuntime\nSession Context\nFixture information\nFixture information\nFixture information\nFixture information\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages\n\nHide archived",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "working-drawer-runtime",
+      "image": "captures/working-drawer-runtime.png",
+      "sha256": "a8a8330f3692b00319ffba1a381d2e5833fae304e8d4bee60eca7476e7fca76f",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nStatus\nunknown\nInterrupt\nnone\nProvider\n\u2014\nTransport\n\u2014\nProvider session\nnot reported\nRuntime generation\n\u2014\nFeed cursor\n0\n\nRECENT EVENTS\n\nNo retained runtime activity for this session.\n\nScratchpad\nTerminal 1\nTerminal 2\nArtifacts\nRuntime\nSession Context\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages\n\nHide archived",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events",
+          "/api/sessions/fixture-session-1/runtime-events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "working-drawer-session-context",
+      "image": "captures/working-drawer-session-context.png",
+      "sha256": "acfacc9a66ccca81d1a8f8931fcaec9b769ead66d64c6505f53567f7c9b415e4",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nSession context \u2014 survives compaction \u00b7 keep thin + pointer-style\n\nScratchpad\nTerminal 1\nTerminal 2\nArtifacts\nRuntime\nSession Context\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages\n\nHide archived",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getSessionContextPrompt",
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events",
+          "/api/sessions/fixture-session-1/runtime-events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "working-drawer-card-fixture-info-card",
+      "image": "captures/working-drawer-card-fixture-info-card.png",
+      "sha256": "7fd7202442ea2ad1de037f6dc3d54adbca07815a8f1ded6ef0a823b0dfb61fe9",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nScratchpad\nTerminal 1\nTerminal 2\nArtifacts\nRuntime\nSession Context\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages\n\nHide archived",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getSessionContextPrompt",
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events",
+          "/api/sessions/fixture-session-1/runtime-events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "working-card-narrow-short",
+      "image": "captures/working-card-narrow-short.png",
+      "sha256": "45f1664a9331bda578dcd9a279564b355f80b58e1c5d2aac8e8ec5d83b2c6a26",
+      "geometry": {
+        "width": 390,
+        "height": 420,
+        "scrollWidth": 390,
+        "scrollHeight": 420
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nScratchpad\nTerminal 1\nTerminal 2\nArtifacts\nRuntime\nSession Context\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getSessionContextPrompt",
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events",
+          "/api/sessions/fixture-session-1/runtime-events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "primary-drawer-documents",
+      "image": "captures/primary-drawer-documents.png",
+      "sha256": "87bc2a21760a8a88c43d877b3318cd88a1f7e240998e4e34bddfd9d6fa804e4b",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nUpload\nPaste\nNo documents yet\n\nSelect or upload a document\n\nDocuments\nReports\nDiffs\nTools\nPins\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nScratchpad\nTerminal 1\nTerminal 2\nArtifacts\nRuntime\nSession Context\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages\n\nHide archived",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getSessionContextPrompt",
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events",
+          "/api/sessions/fixture-session-1/runtime-events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "primary-drawer-reports",
+      "image": "captures/primary-drawer-reports.png",
+      "sha256": "d684e4323b33979662d25be253e2269a6822439be0fa85ab78bdfa42260e07b0",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nNo reports yet \u2014 they'll appear here as agents produce them.\nDocuments\nReports\nDiffs\nTools\nPins\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nScratchpad\nTerminal 1\nTerminal 2\nArtifacts\nRuntime\nSession Context\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages\n\nHide archived",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getSessionContextPrompt",
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events",
+          "/api/sessions/fixture-session-1/runtime-events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "primary-drawer-diffs",
+      "image": "captures/primary-drawer-diffs.png",
+      "sha256": "01625347b5ea9cb6b5050ee575f8be8e6dd04d6a960f768f06a1a69a9778c3e9",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nNo diffs in this session yet.\nDocuments\nReports\nDiffs\nTools\nPins\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nScratchpad\nTerminal 1\nTerminal 2\nArtifacts\nRuntime\nSession Context\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages\n\nHide archived",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getSessionContextPrompt",
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events",
+          "/api/sessions/fixture-session-1/runtime-events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "primary-drawer-tools",
+      "image": "captures/primary-drawer-tools.png",
+      "sha256": "8e7e3a97afbe6379ff3294c898418a17ff25083d7400e498370cbc3a8ddf15ab",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\nDocuments\nReports\nDiffs\nTools\nPins\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nScratchpad\nTerminal 1\nTerminal 2\nArtifacts\nRuntime\nSession Context\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages\n\nHide archived",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getSessionContextPrompt",
+        "getStartSurfaceCapabilities"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events",
+          "/api/sessions/fixture-session-1/runtime-events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "primary-drawer-pins",
+      "image": "captures/primary-drawer-pins.png",
+      "sha256": "dde0d7b040cc65462762b112ea637bc445bfe2e7749dc998c01e162af87f5705",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\n\nPinned context \u2014 survives compaction \u00b7 set by agent via nanite_pin\n\nAll\nSession\nProject\nNo pinned content yet. The agent can pin content using nanite_pin.\nDocuments\nReports\nDiffs\nTools\nPins\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nScratchpad\nTerminal 1\nTerminal 2\nArtifacts\nRuntime\nSession Context\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages\n\nHide archived",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getSessionContextPrompt",
+        "getStartSurfaceCapabilities",
+        "listPins"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events",
+          "/api/sessions/fixture-session-1/runtime-events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "right-rail-widgets",
+      "image": "captures/right-rail-widgets.png",
+      "sha256": "07c5c4977c2af2dcda55355ce6ad0a01499fcb29314a4a9da1c9d319ed23c611",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\n\nPinned context \u2014 survives compaction \u00b7 set by agent via nanite_pin\n\nAll\nSession\nProject\nNo pinned content yet. The agent can pin content using nanite_pin.\nDocuments\nReports\nDiffs\nTools\nPins\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nScratchpad\nTerminal 1\nTerminal 2\nArtifacts\nRuntime\nSession Context\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWidgets\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nSESSION\nBOOKMARKS\n\nNo bookmarks yet. Bookmark messages with Cmd+D.\n\nCONTEXT\n25%\nWindow\n8K / 32K\nTokens used\n8K \u00b7 <$0.01\nInput\n5K\nOutput\n3K\nMessages\n3\nSystem prompt\n2K\nTool calls (0)\n1K\nTools available\n1\nTOKEN USAGE\nInput\n5.0k\nContent\n4.0k\nTools\n1.0k\nOutput\n3.0k\nTotal\n8.0k\nCost\n$0.00\nMessages\n3\nCUMULATIVE\nAll sessions\n8.0k\nTotal cost\n$0.00\nOBSERVABILITY\nTOOLS\nTools available\n1\nMCP servers\n0/1\nRefresh\nAGENT\nStatus\nIdle\nModel\nclaude-sonnet-4-20250514\nCONTEXT SLOTS\n\nNo execution data yet. Send a message to populate.\n\nTURN SNAPSHOTS\n\nNo snapshots captured. Enable debug mode on the agent or turn on developer mode in settings.\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages\n\nHide archived",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getSessionContextPrompt",
+        "getStartSurfaceCapabilities",
+        "listPins"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events",
+          "/api/sessions/fixture-session-1/runtime-events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "right-rail-work",
+      "image": "captures/right-rail-work.png",
+      "sha256": "0765d25cd65fc6e6d3cd413b94f0ed672e1f37742a0367b5a3956628d5992cc8",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\n\nPinned context \u2014 survives compaction \u00b7 set by agent via nanite_pin\n\nAll\nSession\nProject\nNo pinned content yet. The agent can pin content using nanite_pin.\nDocuments\nReports\nDiffs\nTools\nPins\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nScratchpad\nTerminal 1\nTerminal 2\nArtifacts\nRuntime\nSession Context\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nPlan\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nWork\nAll\nSession\nProject\nNo work items\nAdd a todo or let the agent create a plan\nTODOS\n0\nTHIS SESSION\nAdd session todo...\nSend Changes\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages\n\nHide archived",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getSessionContextPrompt",
+        "getStartSurfaceCapabilities",
+        "listPins"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events",
+          "/api/sessions/fixture-session-1/runtime-events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "right-rail-workflows",
+      "image": "captures/right-rail-workflows.png",
+      "sha256": "de2d563e9caa4ee95ff1f8626a39ee61be0b774b5c53a4e402fda55d3bad0243",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\n\nPinned context \u2014 survives compaction \u00b7 set by agent via nanite_pin\n\nAll\nSession\nProject\nNo pinned content yet. The agent can pin content using nanite_pin.\nDocuments\nReports\nDiffs\nTools\nPins\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nScratchpad\nTerminal 1\nTerminal 2\nArtifacts\nRuntime\nSession Context\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nWorkflows\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nActive\nAll\nNo active runs\nSwitch to All to see completed runs\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages\n\nHide archived",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getSessionContextPrompt",
+        "getStartSurfaceCapabilities",
+        "listPins"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events",
+          "/api/sessions/fixture-session-1/runtime-events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "right-rail-inbox",
+      "image": "captures/right-rail-inbox.png",
+      "sha256": "1f8e0381dbd077c91a37f330616f5afcb7646e34c212a23cacd486a6969041df",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\n\nPinned context \u2014 survives compaction \u00b7 set by agent via nanite_pin\n\nAll\nSession\nProject\nNo pinned content yet. The agent can pin content using nanite_pin.\nDocuments\nReports\nDiffs\nTools\nPins\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nScratchpad\nTerminal 1\nTerminal 2\nArtifacts\nRuntime\nSession Context\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nInbox\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\nMy Inbox\nAgent Inbox\nAll\nunread\nread\nresolved\nNo messages\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages\n\nHide archived",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getSessionContextPrompt",
+        "getStartSurfaceCapabilities",
+        "listPins"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events",
+          "/api/sessions/fixture-session-1/runtime-events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "right-rail-artifacts",
+      "image": "captures/right-rail-artifacts.png",
+      "sha256": "f92d478376b2405eea54db022d199b22f96cd458334ace255c422ca272b2a66a",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "All Chats\nStart\n\u2318N\nSearch chats\n\u2318K\nPINNED\n1\nFictional api / idle\n10m\nfixture / fictional-model\nRECENT\n7\nFictional cli / online\n11m\nsubprocess / fictional-model\nFictional durable / working\n12m\ndurable / fixture-durable-3\nFictional api / pending_action\n13m\nfixture / fictional-model\nFictional cli / failed\n14m\nsubprocess / fictional-model\nFictional durable / halted\n15m\ndurable / fixture-durable-6\nFictional cli / stopped\n16m\nsubprocess / fictional-model\nFictional durable / archived\n17m\ndurable / fixture-durable-8\nFixture reviewer\nN\nNanite\nfictional-model\n\u00b7\n1 tools\n8K / 32K\n\nPinned context \u2014 survives compaction \u00b7 set by agent via nanite_pin\n\nAll\nSession\nProject\nNo pinned content yet. The agent can pin content using nanite_pin.\nDocuments\nReports\nDiffs\nTools\nPins\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nScratchpad\nTerminal 1\nTerminal 2\nArtifacts\nRuntime\nSession Context\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nFixture information\nDEV\n\n\n\n\nNORM\n\nNANITE MAY PRODUCE INACCURATE INFORMATION\n\nArtifacts\nWidgets\nPlan\nWorkflows\nInbox\nArtifacts\n\nArtifacts will appear here\n\nDrop files here or use the chat composer to upload\n\nCommand Palette\n\nSearch for commands, chats, and settings\n\nSearch Chats\n\nFind chat sessions and messages\n\nHide archived",
+      "presence": [
+        "API chat session",
+        "Idle",
+        "CLI harness session",
+        "Runtime online",
+        "Durable agent session",
+        "Working now",
+        "API chat session",
+        "Waiting on tool or user action",
+        "CLI harness session",
+        "Failed",
+        "Durable agent session",
+        "Halted",
+        "CLI harness session",
+        "Stopped",
+        "Durable agent session",
+        "Archived"
+      ],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [
+        "getSessionContextPrompt",
+        "getStartSurfaceCapabilities",
+        "listPins"
+      ],
+      "write_attempts": [],
+      "transport": {
+        "sse": [
+          "/api/events",
+          "/api/sessions/fixture-session-1/runtime-events"
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-document-viewer-complete",
+      "image": "captures/envelope-document-viewer-complete.png",
+      "sha256": "62bd4f07df2c810eb49383dd5687466502c5f00a11448bdeac408c00f8ea36b9",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "DOCUMENT\nFixture field notes\nSummary\nReview\n\nFictional notes, never customer data.",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-document-viewer-partial",
+      "image": "captures/envelope-document-viewer-partial.png",
+      "sha256": "58d82462dc0432e9560343a8b0aae6f7c0436678d95dcbfce71d2696dec2442c",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "LOAD ERROR\nUNAVAILABLE\nEnvelope failed: document-viewer\n\nCannot read properties of undefined (reading 'replace')",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [
+        "LOAD ERROR\nUNAVAILABLE\nEnvelope failed: document-viewer\n\nCannot read properties of undefined (reading 'replace')"
+      ],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-report-card-complete",
+      "image": "captures/envelope-report-card-complete.png",
+      "sha256": "329a6a778277358da096be311e6956a2f51f935329bc915cf6c73910ca88b6e5",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "FIXTURE REPORT\nGenerated Oct 4, 02:30 PM\nREVIEW PROGRESS\n42%\nREPORT\n\nFictional preparation only.",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-report-card-partial",
+      "image": "captures/envelope-report-card-partial.png",
+      "sha256": "0b6ed9000dbbf5f8cc6c5d72273d2e31d57642edbcf631b9807af4bc841e8a81",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "FIXTURE REPORT",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-error-report-complete",
+      "image": "captures/envelope-error-report-complete.png",
+      "sha256": "813277c6088c00f5aec43e723a7ab7f0fe20de1bef3bb18fb6e5a268dcb203cd",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "FIXTURE UNAVAILABLE\n02:30:00 PM\n\nFictional adapter unavailable\n\nCopy error\nDetails",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-error-report-partial",
+      "image": "captures/envelope-error-report-partial.png",
+      "sha256": "a36d07c9b46caa06d62968ceeb6991da735e520fd70e2e92eb24eff20c77649e",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "LOAD ERROR\nUNAVAILABLE\nEnvelope failed: error-report\n\nCannot read properties of undefined (reading 'toUpperCase')",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [
+        "LOAD ERROR\nUNAVAILABLE\nEnvelope failed: error-report\n\nCannot read properties of undefined (reading 'toUpperCase')"
+      ],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-approval-card-complete",
+      "image": "captures/envelope-approval-card-complete.png",
+      "sha256": "c74a5abcaa04edaf4c3c116405b4a1a677cd050b13204cec4424d4a801458cdb",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "APPROVAL REQUIRED\nLOW RISK\nInspect fictional notes\n\nLocal specimen only.\n\nApprove\nReject",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-approval-card-partial",
+      "image": "captures/envelope-approval-card-partial.png",
+      "sha256": "9dc99e758b1296f4274cd5309a4a2c1ba2656b1cbb5349b65e29d680bdada0cd",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "APPROVAL REQUIRED\nLOW RISK\nApprove\nReject",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-proposal-card-complete",
+      "image": "captures/envelope-proposal-card-complete.png",
+      "sha256": "3d74ff8cde77dc62c755cc8f7b8d5be8800993204823bf0558de96c05f17eaec",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "PROPOSAL\ncreate_task\nREVIEW\nTITLE*\nDESCRIPTION\nApply\nDismiss",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-proposal-card-partial",
+      "image": "captures/envelope-proposal-card-partial.png",
+      "sha256": "a038d4d41d5562515dce698adaf95e56a295d752a5d1b3407d9b363527f409f8",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "PROPOSAL\nREVIEW\nApply\nDismiss",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-info-card-complete",
+      "image": "captures/envelope-info-card-complete.png",
+      "sha256": "fd1e6bd1b4b2a233f035efc921b572e55c2431a7f218b7e4220e79fc5f240f20",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "INFO\nFixture information\n\nFictional operands use a fixed reference clock.",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-info-card-partial",
+      "image": "captures/envelope-info-card-partial.png",
+      "sha256": "3f829028e4f25cf4ea8f6dd8ea0de98f2e35ce6e6f34bd3c2fd2ed5f5836b5e9",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "INFO\nFixture information",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-list-card-complete",
+      "image": "captures/envelope-list-card-complete.png",
+      "sha256": "9e32768bf5ca6eb56c48ec5796c7d567c570b7c3706fb61a46d51f8c26645280",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "LIST\n2 items\nFixture checklist\nReview capture\nRead source",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-list-card-partial",
+      "image": "captures/envelope-list-card-partial.png",
+      "sha256": "4943fb2bec5938797087d4805ceb1177c82492d7a3b3be4cceb5667dd7e9b181",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "LIST\n0 items\nFixture checklist",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-metric-card-complete",
+      "image": "captures/envelope-metric-card-complete.png",
+      "sha256": "bcdd35d5a47a9037b678236458009e382b55b5ae6c96320223552e9647e36e03",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "METRIC\nFIXTURE PROGRESS\n42\n%\nPreviously: 40 %\n\nAuthored value, not measured runtime.",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-metric-card-partial",
+      "image": "captures/envelope-metric-card-partial.png",
+      "sha256": "36b2ac9ff4b63375b5f4a8610a7f422596e5196a583410a27fd07529167aa4e3",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "METRIC\nFIXTURE PROGRESS\n\nAuthored value, not measured runtime.",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-progress-card-complete",
+      "image": "captures/envelope-progress-card-complete.png",
+      "sha256": "75b306cf8ae635182ebc7b34970961ca71002a4706065f0c27a4bde758ece75c",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "PROGRESS\n42%\nFixture preparation\n\nReviewing\n\nSource read\nOwner confirmation",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-progress-card-partial",
+      "image": "captures/envelope-progress-card-partial.png",
+      "sha256": "c500d571cf961330cc3a5514fce8be75efae4cf7c3dc8c3d120665bdd8cae9a9",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "PROGRESS\nNaN%\nFixture preparation",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-confirmation-card-complete",
+      "image": "captures/envelope-confirmation-card-complete.png",
+      "sha256": "8db0e439d306d31b0d66c32bf4c94b2e9d9f2e396f2f8146b9386447d51b23fc",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "CONFIRM ACTION\nLOW RISK\nFixture confirmation\n\nConfirm fictional preview?\n\nConfirm\nCancel",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-confirmation-card-partial",
+      "image": "captures/envelope-confirmation-card-partial.png",
+      "sha256": "07f0b8a8330428ad96142452e898fca67bd9494f89ddceb875b5fc0c2aea793a",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "CONFIRM ACTION\nLOW RISK\nFixture confirmation\n\nConfirm\nCancel",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-table-card-complete",
+      "image": "captures/envelope-table-card-complete.png",
+      "sha256": "10f5575ae1b9d82fb2c6f75c7e60149cadb7028053c8019d18468c64311f937a",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "FIXTURE RECORDS\n2 rows\nName\n\tSTATE\n\nFictional record A\n\t\npending\n\n\nFictional record B\n\t\ndone",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-table-card-partial",
+      "image": "captures/envelope-table-card-partial.png",
+      "sha256": "a58428536c183bf26f915c7e71f53641ad43fd97e033cd52d5654c2cfd03c1d5",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "FIXTURE RECORDS\n0 rows",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-timeline-card-complete",
+      "image": "captures/envelope-timeline-card-complete.png",
+      "sha256": "16aeb04354cbf6bc4d79af68c3cbc36d11f2a04701bc1b1c4006d12564a79580",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "TIMELINE\n2 events\nFixture timeline\nSource read\nOct 4, 02:10 PM\nReview pending\nOct 4, 02:30 PM",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-timeline-card-partial",
+      "image": "captures/envelope-timeline-card-partial.png",
+      "sha256": "52df1c1d596847fa8d11141ab1de569fbe854887066007cfe52815f3eebde0c3",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "TIMELINE\n0 events\nFixture timeline",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-diff-card-complete",
+      "image": "captures/envelope-diff-card-complete.png",
+      "sha256": "d13a760f1917fb30ce3da1b90553c691f665433afa4b25cff04fc301eed7df0e",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "FIXTURE DIFFERENCE\nBEFORE\nold fictional copy\nAFTER\nnew fictional copy",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-diff-card-partial",
+      "image": "captures/envelope-diff-card-partial.png",
+      "sha256": "9d2e8559a1b1a23cac0f8a2d43341088e4905b8316c5e438300d06e3c6ea7327",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "FIXTURE DIFFERENCE",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-artifact-mini-complete",
+      "image": "captures/envelope-artifact-mini-complete.png",
+      "sha256": "45ce0ab8db8cd53de371769d599ca956b3667e0d13e796b56a00c1fc64cdd415",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "fictional-notes.md\n\ntext/markdown\n128 B\n\u00b7 fixture\nDownload\nDismiss",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-artifact-mini-partial",
+      "image": "captures/envelope-artifact-mini-partial.png",
+      "sha256": "0f67edb33943669f2b03f131e9b9afc8ac01d727d348a68e7e2ef82ef753b7be",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "Untitled artifact\n\nDismiss",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-session-task-complete",
+      "image": "captures/envelope-session-task-complete.png",
+      "sha256": "086df9d83d3dc48f6f0d296a0d300d82bbbaa6fc368d8cab21b8bdf5a16fcd4b",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "UNSUPPORTED ENVELOPE\nsession-task\nNo render path is registered for this envelope.\n\nThe envelope payload arrived, but no matching component or legacy fallback handled it.",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-session-task-partial",
+      "image": "captures/envelope-session-task-partial.png",
+      "sha256": "086df9d83d3dc48f6f0d296a0d300d82bbbaa6fc368d8cab21b8bdf5a16fcd4b",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "UNSUPPORTED ENVELOPE\nsession-task\nNo render path is registered for this envelope.\n\nThe envelope payload arrived, but no matching component or legacy fallback handled it.",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-subagent-spawn-approval-complete",
+      "image": "captures/envelope-subagent-spawn-approval-complete.png",
+      "sha256": "d146c1dd780960254c6b0a79f2ea4721ee87c7df7f5d5e1fce8b49de7ceeb991",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "SUBAGENT SPAWN APPROVAL\nfixture-run-1\nMEDIUM RISK\nROLE fixture-reviewer\nMODE sync\nPROMPT\nRead fictional notes. Do not start a model.\nApprove\nReject",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-subagent-spawn-approval-partial",
+      "image": "captures/envelope-subagent-spawn-approval-partial.png",
+      "sha256": "abec9521d2848c6c7bdca12dd13388a8177364b49dbe16ae2b1a169e802c858b",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "LOAD ERROR\nUNAVAILABLE\nEnvelope failed: subagent-spawn-approval\n\nCannot read properties of undefined (reading 'length')",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [
+        "LOAD ERROR\nUNAVAILABLE\nEnvelope failed: subagent-spawn-approval\n\nCannot read properties of undefined (reading 'length')"
+      ],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-chat-loop-terminated-complete",
+      "image": "captures/envelope-chat-loop-terminated-complete.png",
+      "sha256": "135e06cd639bd7642e51589569bf53f21a1fbe309650c6c32b059d629eab6b1e",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "LOOP TERMINATED\n02:30:00 PM\nTURN LIMIT REACHED\nFictional iteration ceiling\n\nThe loop hit its per-generation turn budget before finishing. If the task legitimately needed more steps, ask the user to continue or split the request.\n\niter 3",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-chat-loop-terminated-partial",
+      "image": "captures/envelope-chat-loop-terminated-partial.png",
+      "sha256": "921bea4bcb013ffaa2f4b37876efe9f81209bc4df17f8e33a2ac81d28f9dd35d",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "LOOP TERMINATED\nInvalid Date\n\nThe chat loop exited without a natural end_turn from the model. No final reply was composed.\n\niter",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-elicitation-prompt-complete",
+      "image": "captures/envelope-elicitation-prompt-complete.png",
+      "sha256": "508a2f31348eed621bf874c2b088abb2b2b4355d5de79e8fd75f3c3fef5b5b1c",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "TOOL IS ASKING\nInspect fictional notes?\nAccept\nDecline",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "envelope-elicitation-prompt-partial",
+      "image": "captures/envelope-elicitation-prompt-partial.png",
+      "sha256": "d600361e2a1dd318b668b6b636c8136b78b2c5028d3d7ceedb08eddee9178139",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "TOOL IS ASKING\nInspect fictional notes?\nSubmit\nDecline",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "approval-approval-card-low-pending",
+      "image": "captures/approval-approval-card-low-pending.png",
+      "sha256": "c74a5abcaa04edaf4c3c116405b4a1a677cd050b13204cec4424d4a801458cdb",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "APPROVAL REQUIRED\nLOW RISK\nInspect fictional notes\n\nLocal specimen only.\n\nApprove\nReject",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "approval-approval-card-low-approved",
+      "image": "captures/approval-approval-card-low-approved.png",
+      "sha256": "20e9e8424c4f35a3e6bdd877ef3e7f318b295d0d0648916479dfee3e5c3684ec",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "Approved \u2014\nInspect fictional notes",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "approval-approval-card-low-rejected",
+      "image": "captures/approval-approval-card-low-rejected.png",
+      "sha256": "7f10058119e6294c4cc477416e95f19b187cc86d96ca9c9488f4d0702bc7cec5",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "Rejected \u2014\nInspect fictional notes",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "approval-approval-card-medium-pending",
+      "image": "captures/approval-approval-card-medium-pending.png",
+      "sha256": "15cd0662615191836ba6b1f9f2af67dab58b261b3396639809c24735762bae15",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "APPROVAL REQUIRED\nMEDIUM RISK\nInspect fictional notes\n\nLocal specimen only.\n\nApprove\nReject",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "approval-approval-card-medium-approved",
+      "image": "captures/approval-approval-card-medium-approved.png",
+      "sha256": "20e9e8424c4f35a3e6bdd877ef3e7f318b295d0d0648916479dfee3e5c3684ec",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "Approved \u2014\nInspect fictional notes",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "approval-approval-card-medium-rejected",
+      "image": "captures/approval-approval-card-medium-rejected.png",
+      "sha256": "7f10058119e6294c4cc477416e95f19b187cc86d96ca9c9488f4d0702bc7cec5",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "Rejected \u2014\nInspect fictional notes",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "approval-approval-card-high-pending",
+      "image": "captures/approval-approval-card-high-pending.png",
+      "sha256": "447975e2bb1c59df9712fb3d05e51329d44e7c308666c2407ff421a5f9badb30",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "APPROVAL REQUIRED\nHIGH RISK\nInspect fictional notes\n\nLocal specimen only.\n\nApprove\nReject",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "approval-approval-card-high-approved",
+      "image": "captures/approval-approval-card-high-approved.png",
+      "sha256": "20e9e8424c4f35a3e6bdd877ef3e7f318b295d0d0648916479dfee3e5c3684ec",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "Approved \u2014\nInspect fictional notes",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "approval-approval-card-high-rejected",
+      "image": "captures/approval-approval-card-high-rejected.png",
+      "sha256": "7f10058119e6294c4cc477416e95f19b187cc86d96ca9c9488f4d0702bc7cec5",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "Rejected \u2014\nInspect fictional notes",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "approval-subagent-spawn-approval-low-pending",
+      "image": "captures/approval-subagent-spawn-approval-low-pending.png",
+      "sha256": "ba701c7b2a56682a5e903e4d6026e4d1ac12381d55e75b60380d95288c1a791f",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "SUBAGENT SPAWN APPROVAL\nfixture-run-1\nLOW RISK\nROLE fixture-reviewer\nMODE sync\nPROMPT\nRead fictional notes. Do not start a model.\nApprove\nReject",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "approval-subagent-spawn-approval-low-approved",
+      "image": "captures/approval-subagent-spawn-approval-low-approved.png",
+      "sha256": "526d6764027cd9f37082652d32bfff2e03ac803d854ad282ed0bef4c80c99914",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "Subagent run fixture-run-1 \u2014 approved.",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "approval-subagent-spawn-approval-low-rejected",
+      "image": "captures/approval-subagent-spawn-approval-low-rejected.png",
+      "sha256": "3d6e0c4ca42a461ec2aea63cfc88a5f0938bc8352399414edaefa7fc5409fe22",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "Subagent run fixture-run-1 \u2014 rejected.",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "approval-subagent-spawn-approval-medium-pending",
+      "image": "captures/approval-subagent-spawn-approval-medium-pending.png",
+      "sha256": "d146c1dd780960254c6b0a79f2ea4721ee87c7df7f5d5e1fce8b49de7ceeb991",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "SUBAGENT SPAWN APPROVAL\nfixture-run-1\nMEDIUM RISK\nROLE fixture-reviewer\nMODE sync\nPROMPT\nRead fictional notes. Do not start a model.\nApprove\nReject",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "approval-subagent-spawn-approval-medium-approved",
+      "image": "captures/approval-subagent-spawn-approval-medium-approved.png",
+      "sha256": "526d6764027cd9f37082652d32bfff2e03ac803d854ad282ed0bef4c80c99914",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "Subagent run fixture-run-1 \u2014 approved.",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "approval-subagent-spawn-approval-medium-rejected",
+      "image": "captures/approval-subagent-spawn-approval-medium-rejected.png",
+      "sha256": "3d6e0c4ca42a461ec2aea63cfc88a5f0938bc8352399414edaefa7fc5409fe22",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "Subagent run fixture-run-1 \u2014 rejected.",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "approval-subagent-spawn-approval-high-pending",
+      "image": "captures/approval-subagent-spawn-approval-high-pending.png",
+      "sha256": "4ed3c5e6f3535b2539129494fb5e3fd171bb9b59a1fd3619d6ae835a7795d331",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "SUBAGENT SPAWN APPROVAL\nfixture-run-1\nHIGH RISK\nROLE fixture-reviewer\nMODE sync\nPROMPT\nRead fictional notes. Do not start a model.\nApprove\nReject",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "approval-subagent-spawn-approval-high-approved",
+      "image": "captures/approval-subagent-spawn-approval-high-approved.png",
+      "sha256": "526d6764027cd9f37082652d32bfff2e03ac803d854ad282ed0bef4c80c99914",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "Subagent run fixture-run-1 \u2014 approved.",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "approval-subagent-spawn-approval-high-rejected",
+      "image": "captures/approval-subagent-spawn-approval-high-rejected.png",
+      "sha256": "3d6e0c4ca42a461ec2aea63cfc88a5f0938bc8352399414edaefa7fc5409fe22",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "Subagent run fixture-run-1 \u2014 rejected.",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "transcript-thinking-text-only",
+      "image": "captures/transcript-thinking-text-only.png",
+      "sha256": "a2c1364ac2f9663dd45afbafa607cf0291d8ff4b02a04f9bfe036e9a95b24cfd",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "TEXT-ONLY MODE\nNo tools\nThis agent has no tools configured. Use / for commands or @ to reference files in the prompt.\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nNANITE\nrunning tools\u2026\nWORKING\u2026\nFictional reasoning preview\nReading fictional operands\n\nFictional final preview\n\nTOOL\nfixture_read\nNo execution occurred.",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "transcript-text-only-banner",
+      "image": "captures/transcript-text-only-banner.png",
+      "sha256": "178d71ff2de26bd5d7b845ecdddc8a37a8ff743c92c9c48eda457f7e39a2c5d6",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "TEXT-ONLY MODE\nNo tools\nThis agent has no tools configured. Use / for commands or @ to reference files in the prompt.\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nNANITE\nrunning tools\u2026\nWORKING\u2026\nFictional reasoning preview\nReading fictional operands\n\nFictional final preview\n\nTOOL\nfixture_read\nNo execution occurred.",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      },
+      "capture_phase": "focused banner supplement"
+    },
+    {
+      "name": "transcript-thinking-narrow-short",
+      "image": "captures/transcript-thinking-narrow-short.png",
+      "sha256": "98324562b6f7ff8b641df385b41b96f26f8ad3d2c910d2a430d4fe81667b7669",
+      "geometry": {
+        "width": 390,
+        "height": 420,
+        "scrollWidth": 390,
+        "scrollHeight": 420
+      },
+      "text": "TEXT-ONLY MODE\nNo tools\nThis agent has no tools configured. Use / for commands or @ to reference files in the prompt.\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nNANITE\nrunning tools\u2026\nWORKING\u2026\nFictional reasoning preview\nReading fictional operands\n\nFictional final preview\n\nTOOL\nfixture_read\nNo execution occurred.",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "tool-statuses",
+      "image": "captures/tool-statuses.png",
+      "sha256": "ec8f58263453cb258bde6637bd46e361f29bbaa6dac68d4dad8293dc290e3b03",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900
+      },
+      "text": "DOCUMENT\nFixture field notes\nSummary\nReview\n\nFictional notes, never customer data.\n\nFIXTURE_READ\n\nNo execution occurred.\n\nFIXTURE_READ\n\nNo execution occurred.\n\nFIXTURE_READ\n\nNo execution occurred.",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      }
+    },
+    {
+      "name": "transcript-banner-narrow-short",
+      "image": "captures/transcript-banner-narrow-short.png",
+      "sha256": "eac47b35eb3d68ca561b58c5fc3884002b1e2c0922da1cdc294ec45de3d82cc4",
+      "geometry": {
+        "width": 390,
+        "height": 420,
+        "scrollWidth": 390,
+        "scrollHeight": 420
+      },
+      "text": "TEXT-ONLY MODE\nNo tools\nThis agent has no tools configured. Use / for commands or @ to reference files in the prompt.\nFixture reviewer\nReview the **fictional** fixture.\n\n- Markdown list\n- `inline code`\n\n```ts\nconst seed = 4421\n```\nEarlier messages summarized\nNanite\nFixture review\nItem\tState\nSource\tRead\n\nFictional operands only.\n\nA deliberatelylongunbrokenidentifierforwrappingandnarrowviewportreview.\n\nNanite\n\nFictional information card.\n\nINFO\nFixture information\n\nFictional operands use a fixed reference clock.\n\nNANITE\nrunning tools\u2026\nWORKING\u2026\nFictional reasoning preview\nReading fictional operands\n\nFictional final preview\n\nTOOL\nfixture_read\nNo execution occurred.",
+      "presence": [],
+      "paint": {
+        "bg": "rgb(12, 13, 14)",
+        "fg": "rgb(232, 234, 237)"
+      },
+      "font": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      "error_cards": [],
+      "widget_failure": false,
+      "unavailable": [],
+      "write_attempts": [],
+      "transport": {
+        "sse": [],
+        "intervals": []
+      },
+      "capture_phase": "focused banner supplement"
+    }
+  ],
+  "request_summary": {
+    "requests": 16443,
+    "hosts": [
+      "127.0.0.1:18583"
+    ],
+    "methods": [
+      "GET"
+    ],
+    "blocked": []
+  },
+  "uncaught_errors": [],
+  "supplement": {
+    "reason": "scroll source .chat-scroll to top for visibly mounted banner; first driver used an absent Radix selector",
+    "requests": 288,
+    "blocked": [],
+    "uncaught_errors": []
+  }
+}
