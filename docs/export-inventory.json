@@ -5958,6 +5958,117 @@
   {
     "package": "@hollis-labs/kit-dashboard",
     "version": "0.4.0",
+    "entry": "./layout",
+    "name": "OperationsListPage",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact local CW-20261010-0073 candidate, actual Torque modal and proposed Run Explorer inline adapters. Native bounded contract proof; independent manager review and registry release are separate.",
+    "nextAction": "Review exact candidate source and installed proof; promote only within reviewed bounded contract, never claim existing Run Explorer inline parity or registry publication.",
+    "evidence": {
+      "pages": [
+        "frontend/src/operations-list-proof/Proof.tsx"
+      ],
+      "stories": [
+        "frontend/src/operations-list-proof/OperationsList.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-generic-list-candidate--torque-modal",
+        "operations-generic-list-candidate--run-evidence-inline"
+      ],
+      "checks": [
+        "frontend/tests/operations-list-candidate.spec.ts"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/operations-list-proof/Proof.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./layout",
+    "name": "OperationsListPageProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./layout",
+    "name": "OperationsFacet",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/operations/Views.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--mission-control"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/operations-list-proof/Proof.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./layout",
+    "name": "OperationsInspector",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./layout",
+    "name": "OperationsActionScope",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/operations/Views.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--mission-control"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/operations-list-proof/Proof.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
     "entry": "./data",
     "name": "FilterBar",
     "category": "visual-component",
