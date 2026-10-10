@@ -1,0 +1,31 @@
+/* Local composition sizing: retain the public table and its own scroll surface. */
+.nil-example h1 {
+  font-size: var(--text-label);
+  line-height: inherit;
+}
+.nil-example [data-ops-pane="list"] {
+  min-width: 0;
+}
+.nil-example [data-ops-pane="list"] > div > div:first-child {
+  flex-wrap: wrap;
+  gap: calc(var(--spacing) * 2);
+}
+.nil-example select {
+  max-width: calc(var(--spacing) * 28);
+}
+@media (max-height: 480px) {
+  .nil-example [data-ops-pane="list"] > div {
+    overflow-y: auto;
+  }
+  .nil-example [data-ops-scroll="list"] {
+    min-height: calc(var(--spacing) * 36);
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .nil-example table th:nth-child(n + 3),
+  .nil-example table td:nth-child(n + 3) {
+    display: none;
+  }
+}
