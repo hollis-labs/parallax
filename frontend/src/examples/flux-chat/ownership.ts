@@ -4,7 +4,7 @@ export function visible(target: HTMLElement) {
     target.isConnected &&
     !!target.getClientRects().length &&
     getComputedStyle(target).visibility !== "hidden" &&
-    !target.closest('[inert],[aria-hidden="true"]')
+    !target.closest('[hidden],[data-closed],[inert],[aria-hidden="true"]')
   )
 }
 export function composerListbox(owner: HTMLElement, editor: HTMLTextAreaElement | null) {

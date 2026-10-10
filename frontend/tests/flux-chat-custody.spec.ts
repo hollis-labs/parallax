@@ -208,3 +208,147 @@ test("exact popup owner yields to a nested competing role and fresh close works 
   await close.click()
   await expect(popup).toBeHidden()
 })
+for (const path of ["filter", "toolbar"]) {
+  test(`native popup ${path} keys admit current owner, yield competing owner and work fresh`, async ({
+    page,
+  }) => {
+    await page.goto(entry)
+    await page.getByRole("button", { name: "Command palette", exact: true }).click()
+    const input = page.getByLabel("Filter commands")
+    const controls = page
+      .getByRole("toolbar", { name: "Filtered local results" })
+      .getByRole("button")
+    await expect(input).toBeFocused()
+    await input.press("ArrowDown")
+    await expect(controls.first()).toBeFocused()
+    if (path === "toolbar") {
+      await controls.first().press("End")
+      await expect(controls.last()).toBeFocused()
+    } else await input.focus()
+    const target = path === "filter" ? input : controls.last()
+    await page.evaluate(() => {
+      const owner = document.createElement("div")
+      owner.id = "keyboard-competitor"
+      owner.setAttribute("role", "menu")
+      owner.textContent = "New visible unregistered keyboard owner"
+      document.body.prepend(owner)
+    })
+    for (const key of path === "filter"
+      ? ["ArrowDown", "Enter"]
+      : ["Home", "End", "ArrowUp", "ArrowDown"]) {
+      const result = await target.evaluate((node, key) => {
+        const before = document.activeElement
+        const event = new KeyboardEvent("keydown", { key, bubbles: true, cancelable: true })
+        node.dispatchEvent(event)
+        return {
+          consumed: event.defaultPrevented,
+          focusChanged: document.activeElement !== before,
+          targetConnected: node.isConnected,
+        }
+      }, key)
+      expect(result).toEqual({ consumed: false, focusChanged: false, targetConnected: true })
+    }
+    await page.locator("#keyboard-competitor").evaluate((node) => node.remove())
+    if (path === "filter") {
+      await input.focus()
+      await input.press("ArrowDown")
+      await expect(controls.first()).toBeFocused()
+      await controls.first().press("Enter")
+      await expect(page.getByLabel("Flux local draft")).toBeFocused()
+    } else {
+      await controls.last().focus()
+      await controls.last().press("Home")
+      await expect(controls.first()).toBeFocused()
+    }
+  })
+}
+test("filter keys preserve exact modifiers, IME and previously prevented event custody", async ({
+  page,
+}) => {
+  for (const kind of [
+    "ctrlKey",
+    "metaKey",
+    "altKey",
+    "shiftKey",
+    "isComposing",
+    "keyCode",
+    "prevented",
+  ]) {
+    for (const key of ["ArrowDown", "Enter"]) {
+      await page.goto(entry)
+      await page.getByRole("button", { name: "Command palette", exact: true }).click()
+      const input = page.getByLabel("Filter commands")
+      await expect(input).toBeFocused()
+      const result = await input.evaluate(
+        (node, { kind, key }) => {
+          const before = document.activeElement
+          const event = new KeyboardEvent("keydown", {
+            key,
+            bubbles: true,
+            cancelable: true,
+            ...(kind === "prevented" ? {} : { [kind]: kind === "keyCode" ? 229 : true }),
+          })
+          if (kind === "prevented") event.preventDefault()
+          node.dispatchEvent(event)
+          return {
+            consumed: event.defaultPrevented,
+            focusChanged: document.activeElement !== before,
+          }
+        },
+        { kind, key },
+      )
+      expect(result).toEqual({ consumed: kind === "prevented", focusChanged: false })
+      await expect(input).toBeFocused()
+      await expect(page.getByRole("dialog", { name: "Command palette", exact: true })).toBeVisible()
+    }
+  }
+})
+test("normal search close ignores retired native dialog markup before the next layout shortcut", async ({
+  page,
+}) => {
+  await page.goto(entry)
+  await page.getByRole("button", { name: "Search chats", exact: true }).last().click()
+  await expect(page.getByLabel("Search chat fixtures")).toBeFocused()
+  const closing = await page.evaluate(() => {
+    const dialog = document.querySelector<HTMLElement>('[role="dialog"]')!
+    const close = Array.from(dialog.querySelectorAll<HTMLButtonElement>("button")).find(
+      (node) => node.textContent?.trim() === "Close panel",
+    )!
+    close.click()
+    return {
+      connected: dialog.isConnected,
+      closed: dialog.hasAttribute("data-closed"),
+      ariaHidden: dialog.getAttribute("aria-hidden"),
+      visibility: getComputedStyle(dialog).visibility,
+      rects: dialog.getClientRects().length,
+    }
+  })
+  console.log("Native search close primary DOM:", JSON.stringify(closing))
+  expect(closing.connected).toBe(true)
+  await expect
+    .poll(() =>
+      page.evaluate(() =>
+        Array.from(document.querySelectorAll<HTMLElement>('[role="dialog"]')).map((node) => ({
+          closed: node.hasAttribute("data-closed"),
+          ancestorClosed: !!node.closest("[data-closed]"),
+          html: node.outerHTML.slice(0, 700),
+        })),
+      ),
+    )
+    .toEqual(expect.arrayContaining([expect.objectContaining({ ancestorClosed: true })]))
+  console.log(
+    "Committed native closing DOM:",
+    JSON.stringify(
+      await page.evaluate(() =>
+        Array.from(document.querySelectorAll<HTMLElement>('[role="dialog"]')).map((node) => ({
+          closed: node.hasAttribute("data-closed"),
+          ancestorClosed: !!node.closest("[data-closed]"),
+          html: node.outerHTML.slice(0, 700),
+        })),
+      ),
+    ),
+  )
+  await page.getByRole("button", { name: "Layout presets", exact: true }).focus()
+  await page.keyboard.press("Control+\\")
+  await expect(page.getByRole("dialog", { name: "Layout presets", exact: true })).toBeVisible()
+})

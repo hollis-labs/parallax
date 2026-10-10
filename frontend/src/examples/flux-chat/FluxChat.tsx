@@ -683,7 +683,17 @@ function FluxHost({
                 value={filter}
                 onChange={(event) => popupRun(() => setFilter(event.target.value))}
                 onKeyDown={(event) => {
-                  if (event.nativeEvent.isComposing || event.keyCode === 229) return
+                  if (
+                    event.defaultPrevented ||
+                    event.nativeEvent.isComposing ||
+                    event.keyCode === 229 ||
+                    event.ctrlKey ||
+                    event.metaKey ||
+                    event.altKey ||
+                    event.shiftKey ||
+                    !popupRun(() => {})
+                  )
+                    return
                   if (event.key === "ArrowDown") {
                     event.preventDefault()
                     popupRoot.current
@@ -704,12 +714,14 @@ function FluxHost({
               aria-label="Filtered local results"
               onKeyDown={(event) => {
                 if (
+                  event.defaultPrevented ||
                   event.nativeEvent.isComposing ||
                   event.keyCode === 229 ||
                   event.ctrlKey ||
                   event.metaKey ||
                   event.altKey ||
-                  event.shiftKey
+                  event.shiftKey ||
+                  !popupRun(() => {})
                 )
                   return
                 if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return
