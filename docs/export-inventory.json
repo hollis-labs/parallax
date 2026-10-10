@@ -242,6 +242,7 @@
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/workspace/WorkspaceExample.tsx",
+      "frontend/src/nil-dialog-proof/ForegroundProof.tsx",
       "frontend/src/nil-dialog-proof/Proof.tsx",
       "frontend/src/observation-review/Review.tsx",
       "frontend/src/operations/Views.tsx",
@@ -1832,11 +1833,26 @@
     "name": "hasActiveModalOverlay",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/nil-dialog-proof/Proof.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2662,6 +2678,7 @@
       "frontend/src/layouts/Comparison.stories.tsx",
       "frontend/src/layouts/Comparison.tsx",
       "frontend/src/layouts/Navigation.tsx",
+      "frontend/src/nil-dialog-proof/ForegroundProof.tsx",
       "frontend/src/nil-dialog-proof/LayerProof.tsx",
       "frontend/src/nil-dialog-proof/Proof.tsx",
       "frontend/src/nil-dialog-proof/TorqueProof.tsx",

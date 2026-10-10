@@ -82,3 +82,20 @@ that suite through heavytest with frontend/nil-dialogs.playwright.config.ts and
 owned ports 18932. Stop only owned listeners; retain worktrees, proofs and replay
 stages for independent review. Dependency caches and browser tools are inputs,
 not claimed as rebuilt from source by this task.
+
+## Foreground admission review correction
+
+`ForegroundProof.tsx` exercises exact owned fullscreen dispatch against an actual
+competing Base UI portal, plus a plain foreground owner established during queued
+return admission. This deliberate admission-predicate probe is local; no host
+policy or global focus listener is added. Nested/competing portals veto retained
+fullscreen handlers, and only the exact current layer may exempt its declared
+results or admitted lower registered roots. Object and callback refs retain React
+cleanup semantics. The Nil list/board arrows additionally refuse while a palette
+or other active popup owns keys, using the landed public overlay guard.
+
+The original review hook probes observed two actual failures (retained toggle and
+queued focus stealing). The retained background native probes separately observed
+one attempted background focus per arrow while the palette owned input. Earlier
+probe setup failures are retained but are not labeled handler failures. Replacement
+affected-package/native receipts supersede these historical candidates.

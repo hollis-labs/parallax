@@ -110,9 +110,15 @@ test("nested ownership, retired opener fallback and inspection axes", async ({ p
   await page.getByRole("textbox", { name: "Draft", exact: true }).focus()
   await page.keyboard.press("ArrowRight")
   await expect(page.getByRole("dialog")).toContainText("nil-4421")
+  const capturedToggle = await page
+    .getByRole("button", { name: "Enter fullscreen", exact: true })
+    .elementHandle()
+  if (!capturedToggle) throw new Error("Expected current retained control")
   await page.getByRole("button", { name: "Open nested confirmation" }).click()
   const nested = page.getByRole("dialog", { name: "Nested confirmation", exact: true })
   await expect(nested).toBeVisible()
+  await capturedToggle.dispatchEvent("click")
+  expect(await capturedToggle.getAttribute("aria-pressed")).toBe("false")
   await page.keyboard.press("Escape")
   await expect(nested).not.toBeVisible()
   await expect(page.getByRole("dialog")).toBeVisible()
@@ -304,4 +310,120 @@ test("legacy OverlaySidebar keeps admitted return and retired fallback without n
   await page.getByRole("button", { name: "Retire opener", exact: true }).click()
   await page.getByRole("button", { name: "Close", exact: true }).click()
   await expect(page.getByRole("button", { name: "Admitted fallback" })).toBeFocused()
+})
+
+for (const section of ["List navigation", "Board navigation"]) {
+  test(`${section}: current arrows yield to palette and competing popup`, async ({ page }) => {
+    await page.goto(story)
+    const rows = page.getByRole("region", { name: section }).getByRole("button")
+    const retainedRow = await rows.nth(0).elementHandle()
+    if (!retainedRow) throw new Error("Expected current retained control")
+    await rows.nth(0).focus()
+    await page.keyboard.press("ArrowDown")
+    await expect(rows.nth(1)).toBeFocused()
+    await rows.nth(1).evaluate((node) => {
+      const target = node as HTMLButtonElement
+      const original = target.focus.bind(target)
+      ;(window as typeof window & { attemptedBackgroundFocus: number }).attemptedBackgroundFocus = 0
+      target.focus = (...args) => {
+        ;(window as typeof window & { attemptedBackgroundFocus: number }).attemptedBackgroundFocus++
+        original(...args)
+      }
+    })
+    await page.getByRole("button", { name: "Quick search", exact: true }).click()
+    const input = page.getByRole("combobox")
+    await input.focus()
+    await expect(input).toBeFocused()
+    await page.evaluate(() => {
+      ;(window as typeof window & { attemptedBackgroundFocus: number }).attemptedBackgroundFocus = 0
+    })
+    await retainedRow.dispatchEvent("keydown", { key: "ArrowDown" })
+    expect(
+      await page.evaluate(
+        () =>
+          (window as typeof window & { attemptedBackgroundFocus: number }).attemptedBackgroundFocus,
+      ),
+    ).toBe(0)
+    await expect(input).toBeFocused()
+    await input.press("Escape")
+    await expect(page.locator('[role="dialog"]')).toHaveCount(0)
+    await page.evaluate(() => {
+      ;(window as typeof window & { attemptedBackgroundFocus: number }).attemptedBackgroundFocus = 0
+    })
+    await page.evaluate(() => {
+      const popup = document.createElement("div")
+      popup.id = "background-competitor"
+      popup.setAttribute("role", "menu")
+      popup.textContent = "Foreground menu"
+      document.body.append(popup)
+    })
+    await retainedRow.dispatchEvent("keydown", { key: "ArrowDown" })
+    expect(
+      await page.evaluate(
+        () =>
+          (window as typeof window & { attemptedBackgroundFocus: number }).attemptedBackgroundFocus,
+      ),
+    ).toBe(0)
+    await page.evaluate(() => document.getElementById("background-competitor")?.remove())
+    await rows.nth(0).focus()
+    await page.keyboard.press("ArrowDown")
+    await expect(rows.nth(1)).toBeFocused()
+  })
+}
+
+test("retained fullscreen control yields to an actual competing portal then admits current owner", async ({
+  page,
+}) => {
+  await page.goto(
+    `${server}/iframe.html?id=primitives-nil-dialog-behavior--foreground-admission&viewMode=story`,
+  )
+  const competingTrigger = await page
+    .getByRole("button", { name: "Open competing portal", exact: true })
+    .elementHandle()
+  if (!competingTrigger) throw new Error("Expected current retained control")
+  await page.getByRole("button", { name: "Open owned portal", exact: true }).click()
+  const own = page.getByRole("dialog", { name: "Owned foreground", exact: true })
+  const toggle = await own
+    .getByRole("button", { name: "Enter fullscreen", exact: true })
+    .elementHandle()
+  if (!toggle) throw new Error("Expected current retained control")
+  await toggle.dispatchEvent("click")
+  await expect(own).toHaveAttribute("data-fullscreen", "true")
+  await toggle.dispatchEvent("click")
+  await expect(own).not.toHaveAttribute("data-fullscreen", "true")
+  await competingTrigger.dispatchEvent("click")
+  const other = page.getByRole("dialog", { name: "Competing foreground", exact: true })
+  await expect(other).toBeVisible()
+  await toggle.dispatchEvent("click")
+  expect(await toggle.getAttribute("aria-pressed")).toBe("false")
+  await other.getByRole("button", { name: "Close", exact: true }).click()
+  await expect(page.locator('[role="dialog"]')).toHaveCount(1)
+  await own.getByRole("textbox", { name: "Owned editor", exact: true }).focus()
+  await toggle.dispatchEvent("click")
+  await expect(own).toHaveAttribute("data-fullscreen", "true")
+})
+
+test("queued actual portal return preserves a newer plain foreground owner and native positive", async ({
+  page,
+}) => {
+  await page.goto(
+    `${server}/iframe.html?id=primitives-nil-dialog-behavior--foreground-admission&viewMode=story`,
+  )
+  const origin = page.getByRole("button", { name: "Open owned portal", exact: true })
+  await page.getByRole("checkbox", { name: "Claim foreground during return admission" }).check()
+  await origin.click()
+  await page
+    .getByRole("dialog", { name: "Owned foreground", exact: true })
+    .getByRole("button", { name: "Close", exact: true })
+    .click()
+  await expect(
+    page.getByRole("button", { name: "Plain foreground owner", exact: true }),
+  ).toBeFocused()
+  await page.getByRole("checkbox", { name: "Claim foreground during return admission" }).uncheck()
+  await origin.click()
+  await page
+    .getByRole("dialog", { name: "Owned foreground", exact: true })
+    .getByRole("button", { name: "Close", exact: true })
+    .click()
+  await expect(origin).toBeFocused()
 })

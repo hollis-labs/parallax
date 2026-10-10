@@ -11,6 +11,7 @@ import {
   DialogContent,
   DialogTitle,
   FormDialog,
+  hasActiveModalOverlay,
   InspectionDialog,
   JsonModal,
   OverlaySidebar,
@@ -339,6 +340,9 @@ function Specimen({ idiom = "nil" }: { idiom?: "nil" | "torque" }) {
             onKeyDown={(event) => {
               if (
                 open ||
+                palette ||
+                hasActiveModalOverlay(event.currentTarget.ownerDocument) ||
+                event.defaultPrevented ||
                 event.target !== event.currentTarget ||
                 event.nativeEvent.isComposing ||
                 event.nativeEvent.keyCode === 229 ||
@@ -385,6 +389,8 @@ function Specimen({ idiom = "nil" }: { idiom?: "nil" | "torque" }) {
                 onKeyDown={(event) => {
                   if (
                     open ||
+                    palette ||
+                    hasActiveModalOverlay(event.currentTarget.ownerDocument) ||
                     event.target !== event.currentTarget ||
                     event.defaultPrevented ||
                     event.nativeEvent.isComposing ||
