@@ -28,6 +28,7 @@ import {
   type OverviewInfo,
   type OverviewVariantKey,
   overviewModel,
+  type TetherSysopApi,
 } from "./model"
 import "./tether-sysop.css"
 
@@ -82,12 +83,18 @@ export const activeLeases = new Set<number>()
 export const retiredLeases = new Set<number>()
 
 export function isElementVisibleAndActive(el: HTMLElement): boolean {
-  if (el.hidden || el.getAttribute("aria-hidden") === "true") return false
+  if (el.hasAttribute("hidden") || el.closest("[hidden]")) return false
+  if (el.getAttribute("aria-hidden") === "true" || el.closest('[aria-hidden="true"]')) return false
   if (el.hasAttribute("inert") || el.closest("[inert]")) return false
-  if (el.closest('[aria-hidden="true"]')) return false
   if (el.closest("details:not([open])")) return false
 
+  if (el.hasAttribute("data-closed") || el.closest("[data-closed]")) return false
+  if (el.hasAttribute("data-ending") || el.closest("[data-ending]")) return false
   if (el.getAttribute("data-state") === "closed" || el.closest('[data-state="closed"]')) {
+    return false
+  }
+
+  if (el.style.display === "none" || el.style.visibility === "hidden" || el.style.opacity === "0") {
     return false
   }
 
@@ -101,11 +108,6 @@ export function isElementVisibleAndActive(el: HTMLElement): boolean {
     ) {
       return false
     }
-  }
-
-  const rect = el.getBoundingClientRect()
-  if (rect.width === 0 && rect.height === 0) {
-    return false
   }
 
   return true
@@ -133,6 +135,7 @@ export interface OverviewPageProps {
   showVariantSelector?: boolean
   forcedAppearance?: "ready" | "loading" | "error" | "empty"
   forcedErrorMessage?: string
+  api?: TetherSysopApi
 }
 
 export function OverviewPage({
@@ -144,6 +147,7 @@ export function OverviewPage({
   showVariantSelector = true,
   forcedAppearance = "ready",
   forcedErrorMessage,
+  api: customApi,
 }: OverviewPageProps) {
   const [internalVariant, setInternalVariant] = useState<OverviewVariantKey>(initialVariant)
   const currentVariant = controlledVariant ?? internalVariant
@@ -166,13 +170,9 @@ export function OverviewPage({
   })
   const [loading, setLoading] = useState(forcedAppearance === "loading")
 
-  // Track activation lease per mount and variant lifecycle
-  const [activationLease, setActivationLease] = useState<number>(() => {
-    const initial = ++globalActivationLeaseSeq
-    activeLeases.add(initial)
-    return initial
-  })
-  const currentLeaseRef = useRef(activationLease)
+  // Track activation lease per mount and variant lifecycle; allocate ONLY in committed effect lifecycle
+  const [activationLease, setActivationLease] = useState(0)
+  const currentLeaseRef = useRef(0)
   const rootRef = useRef<HTMLDivElement>(null)
   const requestSeqRef = useRef(0)
   const currentVariantRef = useRef(currentVariant)
@@ -185,6 +185,7 @@ export function OverviewPage({
     activeLeases.add(lease)
     currentLeaseRef.current = lease
     setActivationLease(lease)
+    setLoading(false)
 
     return () => {
       activeLeases.delete(lease)
@@ -192,6 +193,7 @@ export function OverviewPage({
       if (currentLeaseRef.current === lease) {
         currentLeaseRef.current = 0
       }
+      setLoading(false)
     }
   }, [currentVariant])
 
@@ -213,7 +215,29 @@ export function OverviewPage({
     return true
   }, [])
 
-  const api = useMemo(() => createTetherSysopMockApi(currentVariant), [currentVariant])
+  const isRequestValid = useCallback(
+    (capturedLease: number, requestLease: number, capturedVariant: OverviewVariantKey): boolean => {
+      if (
+        capturedLease === 0 ||
+        !activeLeases.has(capturedLease) ||
+        retiredLeases.has(capturedLease) ||
+        capturedLease !== currentLeaseRef.current
+      ) {
+        return false
+      }
+      if (requestLease !== requestSeqRef.current || capturedVariant !== currentVariantRef.current) {
+        return false
+      }
+      if (!rootRef.current || !rootRef.current.isConnected || !document.contains(rootRef.current)) {
+        return false
+      }
+      return true
+    },
+    [],
+  )
+
+  const defaultApi = useMemo(() => createTetherSysopMockApi(currentVariant), [currentVariant])
+  const api = customApi ?? defaultApi
 
   const load = useCallback((): boolean => {
     const capturedLease = activationLease
@@ -233,12 +257,8 @@ export function OverviewPage({
     api
       .getOverview()
       .then((info) => {
-        // Promise completion must match the captured request, active lease, and variant
-        if (
-          !isAdmitted(capturedLease) ||
-          requestLease !== requestSeqRef.current ||
-          capturedVariant !== currentVariantRef.current
-        ) {
+        // Promise completion must match the captured request, active lease, and variant (independent of transient overlay)
+        if (!isRequestValid(capturedLease, requestLease, capturedVariant)) {
           return
         }
 
@@ -254,28 +274,25 @@ export function OverviewPage({
         }
       })
       .catch((err: unknown) => {
-        if (
-          !isAdmitted(capturedLease) ||
-          requestLease !== requestSeqRef.current ||
-          capturedVariant !== currentVariantRef.current
-        ) {
+        if (!isRequestValid(capturedLease, requestLease, capturedVariant)) {
           return
         }
         setError(err instanceof Error ? err.message : String(err))
       })
       .finally(() => {
-        if (
-          !isAdmitted(capturedLease) ||
-          requestLease !== requestSeqRef.current ||
-          capturedVariant !== currentVariantRef.current
-        ) {
-          return
-        }
         setLoading(false)
       })
 
     return true
-  }, [activationLease, api, currentVariant, forcedAppearance, forcedErrorMessage, isAdmitted])
+  }, [
+    activationLease,
+    api,
+    currentVariant,
+    forcedAppearance,
+    forcedErrorMessage,
+    isAdmitted,
+    isRequestValid,
+  ])
 
   useEffect(() => {
     if (forcedAppearance === "error") {
@@ -351,6 +368,12 @@ export function OverviewPage({
     }
     w.__tetherOverviewCallbackHistory.push(handleRefresh)
   }, [activationLease, handleRefresh, handleVariantChange, load])
+
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    const w = window as unknown as { __tetherOverviewLoading?: boolean }
+    w.__tetherOverviewLoading = loading
+  }, [loading])
 
   // Keyboard navigation & shortcut guard
   useEffect(() => {

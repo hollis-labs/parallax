@@ -368,8 +368,57 @@ test.describe("Tether Sysop Overview Recreation", () => {
     expect(cb2WithHiddenOverlay).toBe(true) // Not vetoed by hidden overlay!
     await page.evaluate(() => document.getElementById("hidden-overlay-specimen")?.remove())
 
+    // 5b. Test Base UI [data-closed] marker dialog does NOT spuriously veto cb2:
+    await page.evaluate(() => {
+      const closedDialog = document.createElement("div")
+      closedDialog.setAttribute("role", "dialog")
+      closedDialog.setAttribute("id", "data-closed-dialog-specimen")
+      closedDialog.setAttribute("data-closed", "")
+      document.body.appendChild(closedDialog)
+    })
+    const cb2WithDataClosed = await page.evaluate(() => {
+      const w = window as unknown as { __capturedRefreshCb2?: () => boolean }
+      return typeof w.__capturedRefreshCb2 === "function" ? w.__capturedRefreshCb2() : false
+    })
+    expect(cb2WithDataClosed).toBe(true)
+    await page.evaluate(() => document.getElementById("data-closed-dialog-specimen")?.remove())
+
+    // 5c. Test [data-closed] ancestor does NOT spuriously veto cb2:
+    await page.evaluate(() => {
+      const closedAncestor = document.createElement("div")
+      closedAncestor.setAttribute("id", "data-closed-ancestor-specimen")
+      closedAncestor.setAttribute("data-closed", "")
+      const nestedDialog = document.createElement("div")
+      nestedDialog.setAttribute("role", "dialog")
+      closedAncestor.appendChild(nestedDialog)
+      document.body.appendChild(closedAncestor)
+    })
+    const cb2WithDataClosedAncestor = await page.evaluate(() => {
+      const w = window as unknown as { __capturedRefreshCb2?: () => boolean }
+      return typeof w.__capturedRefreshCb2 === "function" ? w.__capturedRefreshCb2() : false
+    })
+    expect(cb2WithDataClosedAncestor).toBe(true)
+    await page.evaluate(() => document.getElementById("data-closed-ancestor-specimen")?.remove())
+
+    // 5d. Test [hidden] ancestor does NOT spuriously veto cb2:
+    await page.evaluate(() => {
+      const hiddenAncestor = document.createElement("div")
+      hiddenAncestor.setAttribute("id", "hidden-ancestor-specimen")
+      hiddenAncestor.setAttribute("hidden", "")
+      const nestedDialog = document.createElement("div")
+      nestedDialog.setAttribute("role", "dialog")
+      hiddenAncestor.appendChild(nestedDialog)
+      document.body.appendChild(hiddenAncestor)
+    })
+    const cb2WithHiddenAncestor = await page.evaluate(() => {
+      const w = window as unknown as { __capturedRefreshCb2?: () => boolean }
+      return typeof w.__capturedRefreshCb2 === "function" ? w.__capturedRefreshCb2() : false
+    })
+    expect(cb2WithHiddenAncestor).toBe(true)
+    await page.evaluate(() => document.getElementById("hidden-ancestor-specimen")?.remove())
+
     // 6. Test visible competing overlay veto:
-    // Opening a visible competing foreground dialog/menu/listbox must refuse background actions
+    // 6a. Visible dialog veto:
     await page.evaluate(() => {
       const dialog = document.createElement("div")
       dialog.setAttribute("role", "dialog")
@@ -385,18 +434,58 @@ test.describe("Tether Sysop Overview Recreation", () => {
       return typeof w.__capturedRefreshCb2 === "function" ? w.__capturedRefreshCb2() : true
     })
     expect(cb2WithVisibleOverlay).toBe(false) // Vetoed by visible competing overlay!
-
-    // Dismiss competing overlay
     await page.evaluate(() => {
       document.getElementById("competing-overlay-specimen")?.remove()
     })
-
-    // Once overlay is removed, cb2 is admitted again
     const cb2AfterDismiss = await page.evaluate(() => {
       const w = window as unknown as { __capturedRefreshCb2?: () => boolean }
       return typeof w.__capturedRefreshCb2 === "function" ? w.__capturedRefreshCb2() : false
     })
     expect(cb2AfterDismiss).toBe(true)
+
+    // 6b. Visible menu veto:
+    await page.evaluate(() => {
+      const menu = document.createElement("div")
+      menu.setAttribute("role", "menu")
+      menu.setAttribute("id", "competing-menu-specimen")
+      menu.textContent = "Visible Menu"
+      document.body.appendChild(menu)
+    })
+    const cb2WithMenu = await page.evaluate(() => {
+      const w = window as unknown as { __capturedRefreshCb2?: () => boolean }
+      return typeof w.__capturedRefreshCb2 === "function" ? w.__capturedRefreshCb2() : true
+    })
+    expect(cb2WithMenu).toBe(false) // Vetoed by visible menu!
+    await page.evaluate(() => {
+      document.getElementById("competing-menu-specimen")?.remove()
+    })
+    const cb2AfterMenuDismiss = await page.evaluate(() => {
+      const w = window as unknown as { __capturedRefreshCb2?: () => boolean }
+      return typeof w.__capturedRefreshCb2 === "function" ? w.__capturedRefreshCb2() : false
+    })
+    expect(cb2AfterMenuDismiss).toBe(true)
+
+    // 6c. Visible listbox veto:
+    await page.evaluate(() => {
+      const listbox = document.createElement("div")
+      listbox.setAttribute("role", "listbox")
+      listbox.setAttribute("id", "competing-listbox-specimen")
+      listbox.textContent = "Visible Listbox"
+      document.body.appendChild(listbox)
+    })
+    const cb2WithListbox = await page.evaluate(() => {
+      const w = window as unknown as { __capturedRefreshCb2?: () => boolean }
+      return typeof w.__capturedRefreshCb2 === "function" ? w.__capturedRefreshCb2() : true
+    })
+    expect(cb2WithListbox).toBe(false) // Vetoed by visible listbox!
+    await page.evaluate(() => {
+      document.getElementById("competing-listbox-specimen")?.remove()
+    })
+    const cb2AfterListboxDismiss = await page.evaluate(() => {
+      const w = window as unknown as { __capturedRefreshCb2?: () => boolean }
+      return typeof w.__capturedRefreshCb2 === "function" ? w.__capturedRefreshCb2() : false
+    })
+    expect(cb2AfterListboxDismiss).toBe(true)
 
     // 7. Test connected root guard:
     // If root container is disconnected from active document, callback refuses
@@ -495,5 +584,40 @@ test.describe("Tether Sysop Overview Recreation", () => {
     await page.goto("/?example=tether&screen=overview&theme=p1-green-phosphor")
     const themeAttr = await page.evaluate(() => document.documentElement.dataset.theme)
     expect(themeAttr).toBe("p1-green-phosphor")
+  })
+
+  test("React Activity lifecycle and preserved-state effect retirement across hide/show with in-flight overlay completion", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1280, height: 800 })
+    await page.goto("/?example=tether&screen=overview")
+    await expect(page.locator("header.tether-overview-header")).toBeVisible()
+
+    const results = await page.evaluate(async () => {
+      const path = "/tests/fixtures/overview-lifecycle.tsx"
+      const mod = await import(path)
+      return mod.overviewLifecycleExercise()
+    })
+
+    expect(results).toEqual({
+      positiveInitial: true,
+      refusedWhileHidden: true,
+      retainedRemainsRetired: true,
+      freshRecovery: true,
+      leaseAdvanced: true,
+      competingDialogVeto: true,
+      competingMenuVeto: true,
+      competingListboxVeto: true,
+      competingRemovedRecovery: true,
+      dataClosedAdmitted: true,
+      dataClosedAncestorAdmitted: true,
+      hiddenAncestorAdmitted: true,
+      refusedAfterVariantChange: true,
+      freshAfterVariantChange: true,
+      initialPendingLoading: true,
+      backgroundEventVetoed: true,
+      settledLoadingTruthful: true,
+      recoveredAfterOverlayRemoved: true,
+    })
   })
 })
