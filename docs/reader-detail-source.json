@@ -1,12 +1,12 @@
 {
-  "ancestor": "5dfcde6bef7fc96b0c0dbd1b8efbc7717eeaa4bc",
+  "ancestor": "3198f07cd154aeefaf87a3875225c56c2f0fec3c",
   "source_snapshot": {
     "head": "e5884854bee4dbcd01df479b48659a644915c0f6",
     "tree": "30bda2a2e230b53499fc03cd596c9f5c30eea4eb"
   },
   "note": "Tracked manifest snapshot records source files commit e588485; separate final head/tree/ancestor receipt generated directly from git via replay.",
   "files": {
-    "docs/reader-detail-replay.py": "5cb16e5173c3742ec02216eb272d63bc0644cebe15526fd8e22b57b315df354d",
+    "docs/reader-detail-replay.py": "f50e90a7c005f2d062b5bb52d63a4232673f0a55ddd408b4603ace8ce8dad76c",
     "docs/reader-example.md": "cfbb1dfaa99e237c784df9fcdba578e58c71386118a431d8ade9660042458a9a",
     "docs/reader-owner-questions.md": "8d232c475481aa26534e0960caa772329aeeb9ba588ebc75cfb1a980e3cf3faf",
     "frontend/reader-lifecycle.html": "945f5b11d4cb0fef25193d7d83dfcb52d606c66b3dd110e5aec958c21f742631",
@@ -24,14 +24,14 @@
     "frontend/src/examples/reader/renderers/FallbackRenderers.tsx": "0f4359f70dac8d6a12630042154a066c4d569fd426ba363471d9965f63507ed2",
     "frontend/src/examples/reader/renderers/GalleryRenderer.tsx": "999da69e2e885b49a3aed1554d31e6225d4733807f048bb539340c11f5d3e87c",
     "frontend/src/examples/reader/renderers/ImageRenderer.tsx": "a338b1a5bc2725e53d1110697139318f4c4cc196ce5c41469ffb1dceee0f7a8f",
-    "frontend/src/examples/reader/renderers/MediaDialog.tsx": "ca1ea57ed76ddf6ebc7829250c887fbb2256200895536b5450bd21bad9cd4ee9",
+    "frontend/src/examples/reader/renderers/MediaDialog.tsx": "4292e5f9d78de7c34a36b1317c3d2bb0586de064646e73340ea81f1cccbb2ee1",
     "frontend/src/examples/reader/renderers/ReaderContentRenderer.tsx": "55a47e1b8ce986ae55f4511656bc87e0490da3c0a190df9529c5e8ec41c64626",
     "frontend/src/examples/reader/renderers/ResourceStatePanel.tsx": "43089892a823b460f89963ca54ef45b7b4c031c5df9b08f035a1cb335dd985ab",
     "frontend/src/examples/reader/renderers/VideoRenderer.tsx": "3540175c39e2a52e5981d10f97fcb91e33486db7b35f31b52016ad2df4f65ff1",
     "frontend/src/examples/reader/renderers/index.ts": "cbe4c961080b081cd8a010f7870c071f742f8737357630442e0a154067c9b9bd",
     "frontend/src/examples/reader/renderers/media.ts": "009e82e766c265d1b8a195a4b3b21c61bb5ca78e5e82fa66327d5d84f55a7ece",
     "frontend/src/fixtures/reader-example.json": "b64517481a3df8be8ba01fa60a9c7b57105859fdfc12d824dd44a3043760bfad",
-    "frontend/tests/reader-detail-custody.spec.ts": "f9af3804ee4eabb59cfa24c48ebbb7d957a626a742dcfdcdd3f68a269c3c6443",
+    "frontend/tests/reader-detail-custody.spec.ts": "4e6b055380fe675f7ac377b557e49b9f0fa81977cd2030073cd88283904d4815",
     "frontend/tests/reader-detail.spec.ts": "db78d7e966f532f1bd6a7a69bbe7f2eecbdc6be9013d19753459fc8289e17000"
   },
   "ports": {

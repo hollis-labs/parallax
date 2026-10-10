@@ -76,11 +76,16 @@ prerequisites = {
     }
 }
 
+try:
+    ancestor = subprocess.check_output(["git", "merge-base", head, "origin/main"], text=True).strip()
+except Exception:
+    ancestor = json.loads((root / "docs/reader-detail-source.json").read_text()).get("ancestor", "3198f07cd154aeefaf87a3875225c56c2f0fec3c")
+
 actual_tree = subprocess.check_output(["git", "rev-parse", f"{head}^{{tree}}"], text=True).strip()
 
 receipt = {"head": head,
            "tree": actual_tree,
-           "ancestor": "5dfcde6bef7fc96b0c0dbd1b8efbc7717eeaa4bc",
+           "ancestor": ancestor,
            "mode": mode,
            "archive_sha256": sha(archive),
            "source_files": tree(stage), "stage": str(stage),
