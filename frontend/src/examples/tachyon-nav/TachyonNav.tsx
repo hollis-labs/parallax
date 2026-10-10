@@ -54,8 +54,9 @@ export const diagnostics: {
   access?: () => void
   layer?: () => void
   handoff?: () => boolean
+  navigation: Record<string, { trigger: (event?: KeyboardEvent) => boolean; isLive: () => boolean }>
   fresh: Record<string, () => boolean>
-} = { actions: [], retained: [], fresh: {} }
+} = { actions: [], retained: [], fresh: {}, navigation: {} }
 const icons = {
   users: Users,
   play: Play,
@@ -552,6 +553,9 @@ function Nav({
     isAdmitted: () => admitted() && !!root.current?.contains(document.activeElement),
     onTrigger: () => move(-1),
   })
+  useLayoutEffect(() => {
+    diagnostics.navigation[ownedDrawer ? "drawer" : "background"] = down
+  }, [down, ownedDrawer])
   const groups = (footer: boolean) =>
     model.groups
       .filter((g) => !!g.footer === footer)
@@ -775,6 +779,7 @@ export function TachyonNav({
     const physicalRoot = frameRoot.current
     const current = { active: !!physicalRoot?.isConnected, generation }
     lifetime.current = current
+    setDrawer(false)
     const observer = new MutationObserver((records) => {
       if (
         !physicalRoot?.isConnected ||

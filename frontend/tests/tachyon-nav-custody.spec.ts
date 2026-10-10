@@ -4,6 +4,7 @@ import type { diagnostics } from "../src/examples/tachyon-nav/TachyonNav"
 declare global {
   interface Window {
     tachyonNav: typeof diagnostics
+    heldDrawerLive?: () => boolean
     heldNav?: () => boolean
     heldHandoff?: () => boolean
   }
@@ -222,5 +223,41 @@ for (const kind of ["menu", "handoff"] as const)
         .poll(() => page.evaluate(() => window.tachyonNav.fresh["Header menu"]?.()))
         .toBe(true)
     }
+    expect(await page.evaluate(() => window.heldNav?.())).toBe(false)
+  })
+
+for (const boundary of ["source", "access", "root", "Activity"] as const)
+  test(`review: retained drawer shortcut refuses ${boundary} retirement with fresh positive`, async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 420 })
+    await page.goto("/tachyon-nav-lifecycle.html#/work")
+    const modules = page.getByRole("button", { name: "Modules", exact: true })
+    const drawer = page.getByRole("dialog", { name: "Module drawer", exact: true })
+    const agents = drawer.getByRole("button", { name: "Agents", exact: true })
+    const ops = drawer.getByRole("button", { name: "Agent Ops", exact: true })
+    await modules.click()
+    await agents.focus()
+    await page.keyboard.press("ArrowDown")
+    await expect(ops).toBeFocused()
+    await agents.focus()
+    await page.evaluate(() => {
+      const shortcut = window.tachyonNav.navigation.drawer
+      window.heldNav = shortcut.trigger
+      window.heldDrawerLive = shortcut.isLive
+      const prevented = new KeyboardEvent("keydown", {key:"ArrowDown", cancelable:true})
+      prevented.preventDefault()
+      if(shortcut.trigger(prevented)) throw new Error("defaultPrevented shortcut admitted")
+    })
+    expect(await page.evaluate(() => window.heldNav?.())).toBe(true)
+    await expect(ops).toBeFocused()
+    expect(await page.evaluate(() => window.heldDrawerLive?.())).toBe(true)
+    const control = boundary === "source" ? "Replace fixture source" : `Toggle fixture ${boundary}`
+    await page.getByRole("button", {name:control, exact:true}).evaluate((el: HTMLButtonElement) => el.click())
+    await expect.poll(() => page.evaluate(() => window.heldDrawerLive?.())).toBe(false)
+    expect(await page.evaluate(() => window.heldNav?.())).toBe(false)
+    if(boundary !== "source") await page.getByRole("button", {name:control, exact:true}).evaluate((el: HTMLButtonElement) => el.click())
+    await modules.click()
+    await agents.focus()
+    await page.keyboard.press("ArrowDown")
+    await expect(ops).toBeFocused()
     expect(await page.evaluate(() => window.heldNav?.())).toBe(false)
   })

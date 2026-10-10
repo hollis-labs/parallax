@@ -319,7 +319,8 @@ test("subnav refuses IME/229/modifier and competing owner while editable composi
   await expect(page).toHaveURL(/#\/work\/board$/)
 })
 
-test("narrow module drawer owns roving arrows and yields to newer popup", async ({ page }) => {
+for (const role of ["dialog", "menu", "listbox"])
+ test(`narrow module drawer owns roving arrows and yields to newer ${role}`, async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 420 })
   await page.goto(`${entry}#/work`)
   await page.getByRole("button", { name: "Modules", exact: true }).click()
@@ -328,13 +329,17 @@ test("narrow module drawer owns roving arrows and yields to newer popup", async 
   await agents.focus()
   await page.keyboard.press("ArrowDown")
   await expect(drawer.getByRole("button", { name: "Agent Ops", exact: true })).toBeFocused()
-  await page.evaluate(() => {
+  for (const init of [{isComposing:true}, {keyCode:229}, {shiftKey:true}, {ctrlKey:true}, {altKey:true}, {metaKey:true}]) {
+    await agents.evaluate((element, init) => element.dispatchEvent(new KeyboardEvent("keydown", {key:"ArrowDown", bubbles:true, cancelable:true, ...init})), init)
+    await expect(drawer.getByRole("button", { name: "Agent Ops", exact: true })).toBeFocused()
+  }
+  await page.evaluate((role) => {
     const newer = document.createElement("div")
     newer.id = "drawer-newer"
-    newer.setAttribute("role", "listbox")
+    newer.setAttribute("role", role)
     newer.textContent = "New layer"
     document.body.append(newer)
-  })
+  }, role)
   await page.keyboard.press("ArrowDown")
   await expect(drawer.getByRole("button", { name: "Agent Ops", exact: true })).toBeFocused()
   await page.locator("#drawer-newer").evaluate((el) => el.remove())
