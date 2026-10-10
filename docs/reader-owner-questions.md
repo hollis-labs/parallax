@@ -31,25 +31,34 @@
 * **Proposed Default:** Excluded. The reader route provides a single-column list with `PageHeader` ("Reader") and manual `Refresh` button only.
 * **Rationale:** Keeps the reader list focused strictly on reading and triage ergonomics, respecting the bounded small-example scope and avoiding premature extraction of search widgets.
 
-### 5. Card Activation & Interactive Descendant Exclusion
+### 5. Card Activation Semantics (Proposed Local Adaptation vs Source Parity)
 
 * **Question:** What activation semantics should apply to `ReaderCard`, given that each card contains embedded tabs, note inputs, tag removal buttons, reading state toggles, and action pills?
-* **Proposed Default:** The card is an accessible link role (`tabIndex={0}`) activated by primary mouse click, `Enter`, or `Space`. Activation opens the fragment detail inspection modal. Clicks and key presses originating from interactive descendants (`a`, `button`, `input`, `select`, `textarea`, `[role="button"]`, `[role="tab"]`, `[data-reader-nav-exclude]`), text selections (`window.getSelection()`), or modifier keys are strictly excluded from triggering card activation.
-* **Rationale:** Prevents frustrating misfires when users toggle read status, edit notes, add tags, or inspect visual media, while maintaining standard card clickability.
+* **Proposed Default:** The card uses button/popup-trigger semantics (`role="button"`, `aria-haspopup="dialog"`, `tabIndex={0}`) rather than link role, because activation opens an in-place modal inspection dialog rather than performing browser navigation. This is an explicit **proposed Parallax local adaptation rather than source parity** (in the primary `apps/fragments-engine/apps/sysop` source, `openItem` navigates to `/reader/:id`). The card is activated by primary mouse click, clean `Enter`, or clean `Space`. Clicks and key presses originating from interactive descendants (`a`, `button`, `input`, `select`, `textarea`, `[role="button"]`, `[role="tab"]`, `[data-reader-ignore-card-click]`), text selections (`window.getSelection()`), `defaultPrevented` events, composition/IME (e.g. `keyCode === 229`), or modifier keys (`Shift`, `Control`, `Alt`, `Meta`) are strictly rejected.
+* **Rationale:** A link role should not imply navigation when an action opens a dialog. Using `role="button"` with `aria-haspopup="dialog"` communicates accurate popup-trigger semantics while preventing accidental activations during text selection, form interactions, or modified keystrokes.
 
 ### 6. Focus Return on Dialog Dismissal
 
 * **Question:** Where should focus land when closing media preview or fragment detail inspection dialogs?
-* **Proposed Default:** Focus returns deterministically to the originating element (the specific card or media trigger button) via Base UI `finalFocus` reference.
+* **Proposed Default:** Focus returns deterministically to the originating element (the specific `ReaderCard` element with `tabIndex={0}`, or the visual preview trigger button) via Base UI `finalFocus` reference. If the specific element is stale or disconnected, an explicit fallback returns focus to an admitted reader card.
 * **Rationale:** Meets accessibility guidelines (WCAG 2.4.3 Focus Order) and ensures keyboard users remain at their current position in the list.
 
-### 7. Local Fictional Fixture Mutations
+### 7. Provenance Spine Description
+
+* **Question:** What operational facets are represented by the left-edge 3-segment provenance spine on `ReaderCard`?
+* **Proposed Default:** The three segments represent operational status tones for:
+  1. `triage` (operational triage tone)
+  2. `enrichment` (operational enrichment tone)
+  3. `media` (operational media acquisition tone)
+* **Rationale:** Faithfully reflects the primary source provenance spine contract (`triage/enrichment/media`).
+
+### 8. Local Fictional Fixture Mutations
 
 * **Question:** How should user commands (tag edits, note saving, reading progress, effect actions) take effect?
 * **Proposed Default:** All commands execute purely against in-memory local fixture state. No network requests, SSE streams, timers, or persistent storage are invoked. A "Reset fixture state" button in the pinned footer restores the initial state.
 * **Rationale:** Adheres to Parallax standalone architectural constraints where examples provide realistic interactive ergonomics without backend side-effects or network flakiness.
 
-### 8. Self-Contained Media Format
+### 9. Self-Contained Media Format
 
 * **Question:** How should visual media (article preview images, gallery slides, video posters) be delivered?
 * **Proposed Default:** Embedded as self-contained SVG data URIs directly within `reader-example.json`.

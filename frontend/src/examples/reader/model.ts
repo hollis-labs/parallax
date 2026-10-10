@@ -20,19 +20,50 @@ export function readerScopeLabel(scope: ReaderScope): string {
   return scope === "inbox" ? "Inbox" : scope === "library" ? "Library" : "All"
 }
 
+export const PUBLIC_THEME_IDS = [
+  "nanite-default",
+  "dir-a",
+  "dir-b",
+  "dir-d",
+  "dir-e",
+  "dir-f",
+  "sysop-p4-white",
+  "sysop-green-phosphor",
+  "sysop-amber-phosphor",
+  "sysop-hi-contrast",
+] as const
+
+export const THEME_ALIASES: Record<string, (typeof PUBLIC_THEME_IDS)[number]> = {
+  "p4-white": "sysop-p4-white",
+  "p1-green-phosphor": "sysop-green-phosphor",
+  "p3-amber-phosphor": "sysop-amber-phosphor",
+  "hi-contrast": "sysop-hi-contrast",
+}
+
+export type ReaderTheme = (typeof PUBLIC_THEME_IDS)[number]
+
+export function normalizeTheme(raw: string | null): ReaderTheme {
+  if (!raw) return "sysop-p4-white"
+  const canonical = THEME_ALIASES[raw] ?? raw
+  if ((PUBLIC_THEME_IDS as readonly string[]).includes(canonical)) {
+    return canonical as ReaderTheme
+  }
+  return "sysop-p4-white"
+}
+
 export type ReaderExampleAppearance = "recorded" | "loading" | "error" | "empty" | "inline-error"
 
 export type ReaderExampleState = {
   scope: ReaderScope
   appearance: ReaderExampleAppearance
-  theme: "p4-white" | "p1-green-phosphor" | "p3-amber-phosphor" | "hi-contrast"
+  theme: ReaderTheme
   mode: "light" | "dark"
 }
 
 export const defaultReaderState: ReaderExampleState = {
   scope: "inbox",
   appearance: "recorded",
-  theme: "p4-white",
+  theme: "sysop-p4-white",
   mode: "light",
 }
 
@@ -50,13 +81,7 @@ export function normalizeReaderState(params: URLSearchParams): ReaderExampleStat
       ? rawAppearance
       : "recorded"
 
-  const rawTheme = params.get("theme")
-  const theme =
-    rawTheme === "p1-green-phosphor" ||
-    rawTheme === "p3-amber-phosphor" ||
-    rawTheme === "hi-contrast"
-      ? rawTheme
-      : "p4-white"
+  const theme = normalizeTheme(params.get("theme"))
 
   const rawMode = params.get("mode")
   const mode = rawMode === "dark" ? "dark" : "light"
@@ -69,7 +94,7 @@ export function readerHref(state: ReaderExampleState): string {
   params.set("example", "reader")
   params.set("scope", state.scope)
   if (state.appearance !== "recorded") params.set("appearance", state.appearance)
-  if (state.theme !== "p4-white") params.set("theme", state.theme)
+  if (state.theme !== "sysop-p4-white") params.set("theme", state.theme)
   if (state.mode !== "light") params.set("mode", state.mode)
   return `/?${params.toString()}`
 }
@@ -249,11 +274,9 @@ export const READER_CARD_INTERACTIVE_SELECTOR = [
 ].join(",")
 
 export function hasReaderCardInteraction(target: EventTarget | null, card: HTMLElement): boolean {
-  return (
-    target instanceof Element &&
-    target !== card &&
-    Boolean(target.closest(READER_CARD_INTERACTIVE_SELECTOR))
-  )
+  if (!(target instanceof Element)) return false
+  const interactive = target.closest(READER_CARD_INTERACTIVE_SELECTOR)
+  return Boolean(interactive && interactive !== card && card.contains(interactive))
 }
 
 export function hasReaderCardSelection(card: HTMLElement): boolean {

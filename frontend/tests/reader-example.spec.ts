@@ -61,6 +61,49 @@ test.describe("Reader Example Standalone", () => {
     await page.goto(entry)
     const card = page.locator('[data-testid="reader-card"]').first()
     await expect(card).toBeVisible()
+    await expect(card).toHaveAttribute("role", "button")
+    await expect(card).toHaveAttribute("aria-haspopup", "dialog")
+    await expect(card).toHaveAttribute("tabindex", "0")
+
+    // Guarded negative: modifier keys (Shift, Control, Alt, Meta) must NOT trigger activation
+    await card.focus()
+    for (const mod of ["Shift", "Control", "Alt", "Meta"]) {
+      await page.keyboard.press(`${mod}+Enter`)
+      await expect(page.getByRole("dialog")).toHaveCount(0)
+    }
+
+    // Guarded negative: text selection inside card must NOT trigger activation
+    await page.evaluate(() => {
+      const heading = document.querySelector('[data-testid="reader-card"] h2')
+      if (heading && heading.firstChild) {
+        const range = document.createRange()
+        range.selectNodeContents(heading)
+        const sel = window.getSelection()
+        sel?.removeAllRanges()
+        sel?.addRange(range)
+      }
+    })
+    await card.focus()
+    await page.keyboard.press("Enter")
+    await expect(page.getByRole("dialog")).toHaveCount(0)
+    await page.keyboard.press("Space")
+    await expect(page.getByRole("dialog")).toHaveCount(0)
+    await page.evaluate(() => window.getSelection()?.removeAllRanges())
+
+    // Guarded negative: defaultPrevented synthetic event must NOT trigger activation
+    await card.evaluate((el) => {
+      const ev = new KeyboardEvent("keydown", { key: "Enter", bubbles: true, cancelable: true })
+      ev.preventDefault()
+      el.dispatchEvent(ev)
+    })
+    await expect(page.getByRole("dialog")).toHaveCount(0)
+
+    // Guarded negative: composition / native 229 diagnostic must NOT trigger activation
+    await card.evaluate((el) => {
+      const ev = new KeyboardEvent("keydown", { key: "Enter", keyCode: 229, bubbles: true, cancelable: true })
+      el.dispatchEvent(ev)
+    })
+    await expect(page.getByRole("dialog")).toHaveCount(0)
 
     // Click card opens detail dialog
     await card.click()
@@ -197,17 +240,15 @@ test.describe("Reader Example Standalone", () => {
 
   test("media visual preview and modal focus return", async ({ page }) => {
     await page.goto(entry)
-    // Find visual card button
     const visualBtn = page.locator("[data-reader-card-visual]").first()
-    if ((await visualBtn.count()) > 0) {
-      await visualBtn.click()
-      const mediaDialog = page.getByRole("dialog")
-      await expect(mediaDialog).toBeVisible()
-      await expect(mediaDialog.locator("img")).toBeVisible()
-      await mediaDialog.getByRole("button", { name: "Close" }).last().click()
-      await expect(mediaDialog).toHaveCount(0)
-      await expect(visualBtn).toBeFocused()
-    }
+    await expect(visualBtn).toBeVisible()
+    await visualBtn.click()
+    const mediaDialog = page.getByRole("dialog")
+    await expect(mediaDialog).toBeVisible()
+    await expect(mediaDialog.locator("img")).toBeVisible()
+    await mediaDialog.getByRole("button", { name: "Close" }).last().click()
+    await expect(mediaDialog).toHaveCount(0)
+    await expect(visualBtn).toBeFocused()
   })
 
   test("responsive viewport checks and token-only layout", async ({ page }, info) => {
@@ -236,18 +277,71 @@ test.describe("Reader Example Standalone", () => {
     await page.screenshot({ path: info.outputPath("reader-viewport-390x420.png") })
   })
 
-  test("all 10 themes and light/dark modes apply cleanly", async ({ page }) => {
-    const themes = ["p4-white", "p1-green-phosphor", "p3-amber-phosphor", "hi-contrast"] as const
+  test("all 10 public themes and light/dark modes apply cleanly with resolved computed tokens", async ({
+    page,
+  }) => {
+    const publicThemes = [
+      "nanite-default",
+      "dir-a",
+      "dir-b",
+      "dir-d",
+      "dir-e",
+      "dir-f",
+      "sysop-p4-white",
+      "sysop-green-phosphor",
+      "sysop-amber-phosphor",
+      "sysop-hi-contrast",
+    ] as const
 
-    for (const theme of themes) {
-      for (const mode of ["light", "dark"] as const) {
+    for (const theme of publicThemes) {
+      for (const mode of ["dark", "light"] as const) {
         await page.goto(`/?example=reader&theme=${theme}&mode=${mode}`)
-        await expect(page.locator(".reader-example")).toBeVisible()
-        const elTheme = await page.locator(".reader-example").getAttribute("data-theme")
-        const elMode = await page.locator(".reader-example").getAttribute("data-mode")
-        expect(elTheme).toBe(theme)
-        expect(elMode).toBe(mode)
+        const root = page.locator(".reader-example")
+        await expect(root).toBeVisible()
+        await expect(root).toHaveAttribute("data-theme", theme)
+        await expect(root).toHaveAttribute("data-mode", mode)
+        await expect(page.locator("html")).toHaveAttribute("data-theme", theme)
+        await expect(page.locator("html")).toHaveAttribute("data-mode", mode)
+
+        const styles = await root.evaluate((el) => {
+          const cs = window.getComputedStyle(el)
+          return {
+            color: cs.color,
+            backgroundColor: cs.backgroundColor,
+            fontFamily: cs.fontFamily,
+          }
+        })
+        expect(styles.color).toMatch(/^rgba?\(/)
+        expect(styles.backgroundColor).toMatch(/^rgba?\(/)
+        expect(styles.fontFamily.length).toBeGreaterThan(0)
       }
     }
+
+    // Verify legacy alias normalization to public sysop themes
+    const aliases: Record<string, string> = {
+      "p4-white": "sysop-p4-white",
+      "p1-green-phosphor": "sysop-green-phosphor",
+      "p3-amber-phosphor": "sysop-amber-phosphor",
+      "hi-contrast": "sysop-hi-contrast",
+    }
+    for (const [alias, canonical] of Object.entries(aliases)) {
+      await page.goto(`/?example=reader&theme=${alias}&mode=dark`)
+      const root = page.locator(".reader-example")
+      await expect(root).toBeVisible()
+      await expect(root).toHaveAttribute("data-theme", canonical)
+    }
+
+    // Verify theme-specific resolved color differences (Sysop Green Phosphor vs Nanite Default)
+    await page.goto("/?example=reader&theme=sysop-green-phosphor&mode=dark")
+    const greenColor = await page.locator(".reader-example").evaluate((el) => window.getComputedStyle(el).color)
+    await page.goto("/?example=reader&theme=nanite-default&mode=dark")
+    const naniteColor = await page.locator(".reader-example").evaluate((el) => window.getComputedStyle(el).color)
+    expect(greenColor).not.toEqual(naniteColor)
+
+    // Verify mode differences (Dark vs Light background on Nanite Default)
+    const naniteDarkBg = await page.locator(".reader-example").evaluate((el) => window.getComputedStyle(el).backgroundColor)
+    await page.goto("/?example=reader&theme=nanite-default&mode=light")
+    const naniteLightBg = await page.locator(".reader-example").evaluate((el) => window.getComputedStyle(el).backgroundColor)
+    expect(naniteDarkBg).not.toEqual(naniteLightBg)
   })
 })

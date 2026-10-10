@@ -23,8 +23,11 @@ export function StandaloneReaderExample() {
   }, [])
 
   useEffect(() => {
-    applyTheme(state.theme)
+    applyTheme(state.theme as any)
     document.documentElement.dataset.mode = state.mode
+    document.documentElement.classList.toggle("light", state.mode === "light")
+    document.documentElement.classList.toggle("dark", state.mode === "dark")
+    document.documentElement.style.colorScheme = state.mode
     const canonical = readerHref(state)
     const current = `${location.pathname}${location.search}`
     if (current !== canonical) {

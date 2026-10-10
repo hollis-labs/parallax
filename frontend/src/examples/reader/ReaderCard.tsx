@@ -23,11 +23,12 @@ export interface ReaderCardProps {
   onOpen: (fragmentId: string) => void
   onCommand: (command: ReaderCommand) => void
   mediaSlot?: ReactNode
+  cardRef?: (node: HTMLElement | null) => void
 }
 
 type ReaderCardTab = "content" | ReaderNoteKind
 
-export function ReaderCard({ item, onOpen, onCommand, mediaSlot }: ReaderCardProps) {
+export function ReaderCard({ item, onOpen, onCommand, mediaSlot, cardRef }: ReaderCardProps) {
   const [activeTab, setActiveTab] = useState<ReaderCardTab>("content")
   const source = sourceLabel(item)
   const host = sourceHost(item)
@@ -36,6 +37,9 @@ export function ReaderCard({ item, onOpen, onCommand, mediaSlot }: ReaderCardPro
   const sourceHref = safeReaderSourceHref(item)
 
   function openFromPointer(event: React.MouseEvent<HTMLElement>) {
+    if (event.defaultPrevented) return
+    const target = event.target as HTMLElement | null
+    if (target?.closest('[role="dialog"]')) return
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
       return
     if (hasReaderCardInteraction(event.target, event.currentTarget)) return
@@ -44,8 +48,12 @@ export function ReaderCard({ item, onOpen, onCommand, mediaSlot }: ReaderCardPro
   }
 
   function openFromKeyboard(event: React.KeyboardEvent<HTMLElement>) {
+    if (event.defaultPrevented) return
     if (event.target !== event.currentTarget) return
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
+    if (event.nativeEvent.isComposing || event.keyCode === 229) return
     if (event.key !== "Enter" && event.key !== " ") return
+    if (hasReaderCardSelection(event.currentTarget)) return
     event.preventDefault()
     onOpen(item.fragment_id)
   }
@@ -53,10 +61,12 @@ export function ReaderCard({ item, onOpen, onCommand, mediaSlot }: ReaderCardPro
   return (
     // biome-ignore lint/a11y/useSemanticElements: card contains interactive descendants
     <div
+      ref={cardRef}
       className="group relative cursor-pointer rounded-sm border border-divider bg-bg py-5 pl-7 pr-5 outline-none hover:border-border hover:bg-panel-hover-soft focus-visible:ring-2 focus-visible:ring-ring motion-reduce:transition-none sm:py-6 sm:pl-8 sm:pr-6"
-      role="link"
+      role="button"
+      aria-haspopup="dialog"
       tabIndex={0}
-      aria-label={`Open ${item.display.title.value || "untitled fragment"}`}
+      aria-label={`Inspect fragment: ${item.display.title.value || "untitled fragment"}`}
       data-testid="reader-card"
       data-fragment-id={item.fragment_id}
       onClick={openFromPointer}

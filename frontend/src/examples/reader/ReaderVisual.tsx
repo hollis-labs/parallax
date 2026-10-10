@@ -257,6 +257,8 @@ export function ReaderCardVisual({ item, className }: { item: ReaderItem; classN
           className="max-w-3xl border border-border bg-panel p-6 shadow-xl"
           finalFocus={() => triggerRef.current}
           aria-label={dialogTitle}
+          onClick={(event) => event.stopPropagation()}
+          onKeyDown={(event) => event.stopPropagation()}
         >
           <DialogHeader>
             <DialogTitle className="text-base font-semibold text-text">{dialogTitle}</DialogTitle>
@@ -274,7 +276,14 @@ export function ReaderCardVisual({ item, className }: { item: ReaderItem; classN
           </div>
 
           <div className="mt-4 flex justify-end">
-            <Button variant="outline" size="sm" onClick={() => setOpen(false)}>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={(event) => {
+                event.stopPropagation()
+                setOpen(false)
+              }}
+            >
               Close
             </Button>
           </div>

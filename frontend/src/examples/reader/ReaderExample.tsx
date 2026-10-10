@@ -84,7 +84,6 @@ export function ReaderExample({
   // Base items per scope
   const [localItemOverrides, setLocalItemOverrides] = useState<Record<string, ReaderItem>>({})
   const [pageLoaded, setPageLoaded] = useState(1)
-  const [loadingMore, setLoadingMore] = useState(false)
   const [moreError, setMoreError] = useState<string | undefined>(
     state.appearance === "inline-error"
       ? "Failed to load additional fragments. Please try again."
@@ -143,24 +142,16 @@ export function ReaderExample({
   }
 
   function loadMore() {
-    if (loadingMore || !nextCursor) return
-    setLoadingMore(true)
+    if (!nextCursor) return
     const isRetryingInlineError = Boolean(moreError)
-    setMoreError(undefined)
 
     if (state.appearance === "inline-error" && pageLoaded === 1 && !isRetryingInlineError) {
-      // Simulate inline page error on first attempt if in inline-error mode
-      setTimeout(() => {
-        setMoreError("Failed to load additional fragments. Please try again.")
-        setLoadingMore(false)
-      }, 50)
+      setMoreError("Failed to load additional fragments. Please try again.")
       return
     }
 
-    setTimeout(() => {
-      setPageLoaded(2)
-      setLoadingMore(false)
-    }, 50)
+    setMoreError(undefined)
+    setPageLoaded(2)
   }
 
   const selectedItem = selectedFragmentId
@@ -168,7 +159,11 @@ export function ReaderExample({
     : null
 
   return (
-    <div className="reader-example" data-theme={state.theme} data-mode={state.mode}>
+    <div
+      className={`reader-example min-h-screen bg-bg text-fg ${state.mode === "light" ? "light" : "dark"}`}
+      data-theme={state.theme}
+      data-mode={state.mode}
+    >
       <header className="reader-page-header">
         <PageHeader title="Reader">
           <Button
@@ -234,22 +229,19 @@ export function ReaderExample({
             </div>
 
             {items.map((item) => (
-              <div
+              <ReaderCard
                 key={item.fragment_id}
-                ref={(element) => {
+                item={item}
+                cardRef={(element) => {
                   if (element) {
                     cardRefs.current.set(item.fragment_id, element)
                   } else {
                     cardRefs.current.delete(item.fragment_id)
                   }
                 }}
-              >
-                <ReaderCard
-                  item={item}
-                  onOpen={(fragmentId) => setSelectedFragmentId(fragmentId)}
-                  onCommand={handleCommand}
-                />
-              </div>
+                onOpen={(fragmentId) => setSelectedFragmentId(fragmentId)}
+                onCommand={handleCommand}
+              />
             ))}
 
             {moreError && (
@@ -263,8 +255,8 @@ export function ReaderExample({
 
             {nextCursor && !moreError && (
               <div className="flex justify-center border-t border-divider py-5">
-                <Button variant="outline" onClick={loadMore} disabled={loadingMore}>
-                  {loadingMore ? "Loading…" : "Load more"}
+                <Button variant="outline" onClick={loadMore}>
+                  Load more
                 </Button>
               </div>
             )}
@@ -301,7 +293,12 @@ export function ReaderExample({
         >
           <DialogContent
             className="max-w-3xl max-h-[85vh] overflow-y-auto border border-border bg-panel p-6 shadow-xl"
-            finalFocus={() => cardRefs.current.get(selectedFragmentId ?? "") || null}
+            finalFocus={() => {
+              const target = cardRefs.current.get(selectedFragmentId ?? "")
+              if (target && target.isConnected) return target
+              const fallback = document.querySelector<HTMLElement>('[data-testid="reader-card"]')
+              return fallback && fallback.isConnected ? fallback : null
+            }}
             aria-label={`Fragment detail: ${selectedItem.display.title.value || "Untitled"}`}
           >
             <DialogHeader>
