@@ -91,6 +91,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/flux-cards/Cards.tsx",
       "frontend/src/primitives/Gallery.tsx",
       "frontend/src/primitives/contracts.ts",
       "frontend/src/primitives/model.ts"
@@ -240,6 +241,7 @@
       "frontend/src/event-ledger/Ledger.tsx",
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
+      "frontend/src/examples/flux-cards/Gallery.tsx",
       "frontend/src/examples/workspace/WorkspaceExample.tsx",
       "frontend/src/observation-review/Review.tsx",
       "frontend/src/operations/Views.tsx",
@@ -425,6 +427,8 @@
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/evidence/contracts.ts",
       "frontend/src/examples/chat/ChatExample.tsx",
+      "frontend/src/examples/flux-cards/Cards.tsx",
+      "frontend/src/examples/flux-cards/Gallery.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
       "frontend/src/examples/workspace/WorkspaceExample.tsx",
       "frontend/src/observation-review/Review.tsx",
@@ -569,6 +573,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/flux-cards/Cards.tsx",
       "frontend/src/primitives/Gallery.tsx",
       "frontend/src/primitives/contracts.ts"
     ]
@@ -2386,6 +2391,9 @@
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/examples/administration/AdministrationExample.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
+      "frontend/src/examples/flux-cards/Cards.tsx",
+      "frontend/src/examples/flux-cards/Gallery.tsx",
+      "frontend/src/examples/flux-cards/StreamStates.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/examples/reader/ReaderExample.tsx",
@@ -3859,6 +3867,7 @@
     "importEvidence": [
       "frontend/src/directory-review/Review.tsx",
       "frontend/src/directory-review/contracts.ts",
+      "frontend/src/examples/flux-cards/Gallery.tsx",
       "frontend/src/examples/reader/ReaderInlineActions.tsx"
     ]
   },
@@ -3901,6 +3910,7 @@
     },
     "importEvidence": [
       "frontend/src/directory-review/Review.tsx",
+      "frontend/src/examples/flux-cards/Gallery.tsx",
       "frontend/src/examples/reader/ReaderInlineActions.tsx"
     ]
   },
@@ -4027,6 +4037,7 @@
     },
     "importEvidence": [
       "frontend/src/directory-review/Review.tsx",
+      "frontend/src/examples/flux-cards/Gallery.tsx",
       "frontend/src/examples/reader/ReaderInlineActions.tsx"
     ]
   },
@@ -5687,6 +5698,7 @@
       "frontend/src/examples/administration/Standalone.tsx",
       "frontend/src/examples/chat/Chat.stories.tsx",
       "frontend/src/examples/chat/Standalone.tsx",
+      "frontend/src/examples/flux-cards/Gallery.tsx",
       "frontend/src/examples/messaging/Messaging.stories.tsx",
       "frontend/src/examples/messaging/Standalone.tsx",
       "frontend/src/examples/reader/Reader.stories.tsx",
@@ -7752,6 +7764,7 @@
       "frontend/src/communications/Messaging.tsx",
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
+      "frontend/src/examples/flux-cards/Gallery.tsx",
       "frontend/src/examples/messaging/MessagingExample.tsx",
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/layouts/AsideConsumers.stories.tsx"
@@ -7834,6 +7847,7 @@
       "frontend/src/communications/Chat.tsx",
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
+      "frontend/src/examples/flux-cards/Gallery.tsx",
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/layouts/AsideConsumers.stories.tsx"
     ]
@@ -7870,22 +7884,30 @@
     "name": "ArtifactCard",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Bounded local Flux stream candidates: complete/partial/empty/long operands, unsupported/source/access truth, fixed zero vs absent, original-index inert table action adaptation, native theme/narrow and candidate retirement checks. No exhaustive props, producer or owner visual acceptance.",
+    "nextAction": "Retain named local evidence; extraction requires owner review and DEC026 distinct second consumer.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
-      ],
-      "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/src/examples/flux-cards/Cards.tsx",
+        "frontend/src/examples/flux-cards/Gallery.tsx",
+        "docs/flux-cards-proposal.md"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/examples/flux-cards/FluxCards.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/flux-cards.spec.ts"
+      ],
+      "storyIds": [
+        "flux-stream-cards--approval-card-complete",
+        "flux-stream-cards--session-task-complete",
+        "flux-stream-cards--progress-card-partial"
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/examples/flux-cards/Cards.tsx"
     ]
   },
   {
@@ -7895,11 +7917,30 @@
     "name": "DocumentCard",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded local Flux stream candidates: complete/partial/empty/long operands, unsupported/source/access truth, fixed zero vs absent, original-index inert table action adaptation, native theme/narrow and candidate retirement checks. No exhaustive props, producer or owner visual acceptance.",
+    "nextAction": "Retain named local evidence; extraction requires owner review and DEC026 distinct second consumer.",
+    "evidence": {
+      "pages": [
+        "frontend/src/examples/flux-cards/Cards.tsx",
+        "frontend/src/examples/flux-cards/Gallery.tsx",
+        "docs/flux-cards-proposal.md"
+      ],
+      "stories": [
+        "frontend/src/examples/flux-cards/FluxCards.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/flux-cards.spec.ts"
+      ],
+      "storyIds": [
+        "flux-stream-cards--approval-card-complete",
+        "flux-stream-cards--session-task-complete",
+        "flux-stream-cards--progress-card-partial"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/flux-cards/Cards.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -7952,7 +7993,8 @@
     "importEvidence": [
       "frontend/src/communications/Chat.tsx",
       "frontend/src/conversation-review/Review.tsx",
-      "frontend/src/examples/chat/ChatExample.tsx"
+      "frontend/src/examples/chat/ChatExample.tsx",
+      "frontend/src/examples/flux-cards/Cards.tsx"
     ]
   },
   {
@@ -8069,7 +8111,8 @@
     "importEvidence": [
       "frontend/src/communications/Chat.tsx",
       "frontend/src/conversation-review/Review.tsx",
-      "frontend/src/examples/chat/ChatExample.tsx"
+      "frontend/src/examples/chat/ChatExample.tsx",
+      "frontend/src/examples/flux-cards/Cards.tsx"
     ]
   },
   {
@@ -8079,11 +8122,30 @@
     "name": "DiffCard",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded local Flux stream candidates: complete/partial/empty/long operands, unsupported/source/access truth, fixed zero vs absent, original-index inert table action adaptation, native theme/narrow and candidate retirement checks. No exhaustive props, producer or owner visual acceptance.",
+    "nextAction": "Retain named local evidence; extraction requires owner review and DEC026 distinct second consumer.",
+    "evidence": {
+      "pages": [
+        "frontend/src/examples/flux-cards/Cards.tsx",
+        "frontend/src/examples/flux-cards/Gallery.tsx",
+        "docs/flux-cards-proposal.md"
+      ],
+      "stories": [
+        "frontend/src/examples/flux-cards/FluxCards.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/flux-cards.spec.ts"
+      ],
+      "storyIds": [
+        "flux-stream-cards--approval-card-complete",
+        "flux-stream-cards--session-task-complete",
+        "flux-stream-cards--progress-card-partial"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/flux-cards/Cards.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -8092,11 +8154,31 @@
     "name": "Envelope",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded local Flux stream candidates: complete/partial/empty/long operands, unsupported/source/access truth, fixed zero vs absent, original-index inert table action adaptation, native theme/narrow and candidate retirement checks. No exhaustive props, producer or owner visual acceptance.",
+    "nextAction": "Retain named local evidence; extraction requires owner review and DEC026 distinct second consumer.",
+    "evidence": {
+      "pages": [
+        "frontend/src/examples/flux-cards/Cards.tsx",
+        "frontend/src/examples/flux-cards/Gallery.tsx",
+        "docs/flux-cards-proposal.md"
+      ],
+      "stories": [
+        "frontend/src/examples/flux-cards/FluxCards.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/flux-cards.spec.ts"
+      ],
+      "storyIds": [
+        "flux-stream-cards--approval-card-complete",
+        "flux-stream-cards--session-task-complete",
+        "flux-stream-cards--progress-card-partial"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/flux-cards/Cards.tsx",
+      "frontend/src/examples/flux-cards/StreamStates.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -8105,11 +8187,31 @@
     "name": "EnvelopeBody",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded local Flux stream candidates: complete/partial/empty/long operands, unsupported/source/access truth, fixed zero vs absent, original-index inert table action adaptation, native theme/narrow and candidate retirement checks. No exhaustive props, producer or owner visual acceptance.",
+    "nextAction": "Retain named local evidence; extraction requires owner review and DEC026 distinct second consumer.",
+    "evidence": {
+      "pages": [
+        "frontend/src/examples/flux-cards/Cards.tsx",
+        "frontend/src/examples/flux-cards/Gallery.tsx",
+        "docs/flux-cards-proposal.md"
+      ],
+      "stories": [
+        "frontend/src/examples/flux-cards/FluxCards.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/flux-cards.spec.ts"
+      ],
+      "storyIds": [
+        "flux-stream-cards--approval-card-complete",
+        "flux-stream-cards--session-task-complete",
+        "flux-stream-cards--progress-card-partial"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/flux-cards/Cards.tsx",
+      "frontend/src/examples/flux-cards/StreamStates.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -8118,11 +8220,31 @@
     "name": "EnvelopeFooter",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded local Flux stream candidates: complete/partial/empty/long operands, unsupported/source/access truth, fixed zero vs absent, original-index inert table action adaptation, native theme/narrow and candidate retirement checks. No exhaustive props, producer or owner visual acceptance.",
+    "nextAction": "Retain named local evidence; extraction requires owner review and DEC026 distinct second consumer.",
+    "evidence": {
+      "pages": [
+        "frontend/src/examples/flux-cards/Cards.tsx",
+        "frontend/src/examples/flux-cards/Gallery.tsx",
+        "docs/flux-cards-proposal.md"
+      ],
+      "stories": [
+        "frontend/src/examples/flux-cards/FluxCards.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/flux-cards.spec.ts"
+      ],
+      "storyIds": [
+        "flux-stream-cards--approval-card-complete",
+        "flux-stream-cards--session-task-complete",
+        "flux-stream-cards--progress-card-partial"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/flux-cards/Cards.tsx",
+      "frontend/src/examples/flux-cards/StreamStates.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -8131,11 +8253,31 @@
     "name": "EnvelopeHeader",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded local Flux stream candidates: complete/partial/empty/long operands, unsupported/source/access truth, fixed zero vs absent, original-index inert table action adaptation, native theme/narrow and candidate retirement checks. No exhaustive props, producer or owner visual acceptance.",
+    "nextAction": "Retain named local evidence; extraction requires owner review and DEC026 distinct second consumer.",
+    "evidence": {
+      "pages": [
+        "frontend/src/examples/flux-cards/Cards.tsx",
+        "frontend/src/examples/flux-cards/Gallery.tsx",
+        "docs/flux-cards-proposal.md"
+      ],
+      "stories": [
+        "frontend/src/examples/flux-cards/FluxCards.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/flux-cards.spec.ts"
+      ],
+      "storyIds": [
+        "flux-stream-cards--approval-card-complete",
+        "flux-stream-cards--session-task-complete",
+        "flux-stream-cards--progress-card-partial"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/flux-cards/Cards.tsx",
+      "frontend/src/examples/flux-cards/StreamStates.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -8144,11 +8286,30 @@
     "name": "EnvelopeSection",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded local Flux stream candidates: complete/partial/empty/long operands, unsupported/source/access truth, fixed zero vs absent, original-index inert table action adaptation, native theme/narrow and candidate retirement checks. No exhaustive props, producer or owner visual acceptance.",
+    "nextAction": "Retain named local evidence; extraction requires owner review and DEC026 distinct second consumer.",
+    "evidence": {
+      "pages": [
+        "frontend/src/examples/flux-cards/Cards.tsx",
+        "frontend/src/examples/flux-cards/Gallery.tsx",
+        "docs/flux-cards-proposal.md"
+      ],
+      "stories": [
+        "frontend/src/examples/flux-cards/FluxCards.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/flux-cards.spec.ts"
+      ],
+      "storyIds": [
+        "flux-stream-cards--approval-card-complete",
+        "flux-stream-cards--session-task-complete",
+        "flux-stream-cards--progress-card-partial"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/flux-cards/Cards.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -8157,22 +8318,31 @@
     "name": "InfoCard",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "disposition": "reviewed",
+    "reason": "Bounded local Flux stream candidates: complete/partial/empty/long operands, unsupported/source/access truth, fixed zero vs absent, original-index inert table action adaptation, native theme/narrow and candidate retirement checks. No exhaustive props, producer or owner visual acceptance.",
+    "nextAction": "Retain named local evidence; extraction requires owner review and DEC026 distinct second consumer.",
     "evidence": {
       "pages": [
-        "frontend/src/communications/Chat.tsx"
-      ],
-      "checks": [
-        "frontend/tests/communications.spec.ts"
+        "frontend/src/examples/flux-cards/Cards.tsx",
+        "frontend/src/examples/flux-cards/Gallery.tsx",
+        "docs/flux-cards-proposal.md"
       ],
       "stories": [
-        "frontend/src/communications/Communications.stories.tsx"
+        "frontend/src/examples/flux-cards/FluxCards.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/flux-cards.spec.ts"
+      ],
+      "storyIds": [
+        "flux-stream-cards--approval-card-complete",
+        "flux-stream-cards--session-task-complete",
+        "flux-stream-cards--progress-card-partial"
       ]
     },
     "importEvidence": [
-      "frontend/src/communications/Chat.tsx"
+      "frontend/src/communications/Chat.tsx",
+      "frontend/src/examples/flux-cards/Cards.tsx",
+      "frontend/src/examples/flux-cards/StreamStates.tsx"
     ]
   },
   {
@@ -8182,11 +8352,30 @@
     "name": "ListCard",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded local Flux stream candidates: complete/partial/empty/long operands, unsupported/source/access truth, fixed zero vs absent, original-index inert table action adaptation, native theme/narrow and candidate retirement checks. No exhaustive props, producer or owner visual acceptance.",
+    "nextAction": "Retain named local evidence; extraction requires owner review and DEC026 distinct second consumer.",
+    "evidence": {
+      "pages": [
+        "frontend/src/examples/flux-cards/Cards.tsx",
+        "frontend/src/examples/flux-cards/Gallery.tsx",
+        "docs/flux-cards-proposal.md"
+      ],
+      "stories": [
+        "frontend/src/examples/flux-cards/FluxCards.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/flux-cards.spec.ts"
+      ],
+      "storyIds": [
+        "flux-stream-cards--approval-card-complete",
+        "flux-stream-cards--session-task-complete",
+        "flux-stream-cards--progress-card-partial"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/flux-cards/Cards.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -8195,11 +8384,30 @@
     "name": "MetricCard",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded local Flux stream candidates: complete/partial/empty/long operands, unsupported/source/access truth, fixed zero vs absent, original-index inert table action adaptation, native theme/narrow and candidate retirement checks. No exhaustive props, producer or owner visual acceptance.",
+    "nextAction": "Retain named local evidence; extraction requires owner review and DEC026 distinct second consumer.",
+    "evidence": {
+      "pages": [
+        "frontend/src/examples/flux-cards/Cards.tsx",
+        "frontend/src/examples/flux-cards/Gallery.tsx",
+        "docs/flux-cards-proposal.md"
+      ],
+      "stories": [
+        "frontend/src/examples/flux-cards/FluxCards.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/flux-cards.spec.ts"
+      ],
+      "storyIds": [
+        "flux-stream-cards--approval-card-complete",
+        "flux-stream-cards--session-task-complete",
+        "flux-stream-cards--progress-card-partial"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/flux-cards/Cards.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -8208,11 +8416,30 @@
     "name": "ProgressCard",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded local Flux stream candidates: complete/partial/empty/long operands, unsupported/source/access truth, fixed zero vs absent, original-index inert table action adaptation, native theme/narrow and candidate retirement checks. No exhaustive props, producer or owner visual acceptance.",
+    "nextAction": "Retain named local evidence; extraction requires owner review and DEC026 distinct second consumer.",
+    "evidence": {
+      "pages": [
+        "frontend/src/examples/flux-cards/Cards.tsx",
+        "frontend/src/examples/flux-cards/Gallery.tsx",
+        "docs/flux-cards-proposal.md"
+      ],
+      "stories": [
+        "frontend/src/examples/flux-cards/FluxCards.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/flux-cards.spec.ts"
+      ],
+      "storyIds": [
+        "flux-stream-cards--approval-card-complete",
+        "flux-stream-cards--session-task-complete",
+        "flux-stream-cards--progress-card-partial"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/flux-cards/Cards.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -8221,11 +8448,30 @@
     "name": "TableCard",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded local Flux stream candidates: complete/partial/empty/long operands, unsupported/source/access truth, fixed zero vs absent, original-index inert table action adaptation, native theme/narrow and candidate retirement checks. No exhaustive props, producer or owner visual acceptance.",
+    "nextAction": "Retain named local evidence; extraction requires owner review and DEC026 distinct second consumer.",
+    "evidence": {
+      "pages": [
+        "frontend/src/examples/flux-cards/Cards.tsx",
+        "frontend/src/examples/flux-cards/Gallery.tsx",
+        "docs/flux-cards-proposal.md"
+      ],
+      "stories": [
+        "frontend/src/examples/flux-cards/FluxCards.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/flux-cards.spec.ts"
+      ],
+      "storyIds": [
+        "flux-stream-cards--approval-card-complete",
+        "flux-stream-cards--session-task-complete",
+        "flux-stream-cards--progress-card-partial"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/flux-cards/Cards.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -8234,11 +8480,30 @@
     "name": "TimelineCard",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "reviewed",
+    "reason": "Bounded local Flux stream candidates: complete/partial/empty/long operands, unsupported/source/access truth, fixed zero vs absent, original-index inert table action adaptation, native theme/narrow and candidate retirement checks. No exhaustive props, producer or owner visual acceptance.",
+    "nextAction": "Retain named local evidence; extraction requires owner review and DEC026 distinct second consumer.",
+    "evidence": {
+      "pages": [
+        "frontend/src/examples/flux-cards/Cards.tsx",
+        "frontend/src/examples/flux-cards/Gallery.tsx",
+        "docs/flux-cards-proposal.md"
+      ],
+      "stories": [
+        "frontend/src/examples/flux-cards/FluxCards.stories.tsx"
+      ],
+      "checks": [
+        "frontend/tests/flux-cards.spec.ts"
+      ],
+      "storyIds": [
+        "flux-stream-cards--approval-card-complete",
+        "flux-stream-cards--session-task-complete",
+        "flux-stream-cards--progress-card-partial"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/flux-cards/Cards.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -8899,11 +9164,23 @@
     "name": "ChatTrigger",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/communications/Chat.tsx"
+      ],
+      "checks": [
+        "frontend/tests/communications.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/communications/Communications.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/flux-cards/Gallery.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-chat",
@@ -8982,6 +9259,7 @@
       "frontend/src/communications/Chat.tsx",
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
+      "frontend/src/examples/flux-cards/Gallery.tsx",
       "frontend/src/examples/ops-shell/model.ts",
       "frontend/src/layouts/AsideConsumers.stories.tsx"
     ]

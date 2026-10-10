@@ -1,0 +1,75 @@
+@reference "../../index.css";
+.flux-cards-gallery {
+  @apply flex h-screen min-w-0 flex-col overflow-y-auto gap-4 bg-bg p-4 font-sans text-fg;
+}
+.flux-cards-gallery header {
+  @apply flex flex-col gap-1;
+}
+.flux-cards-gallery h1 {
+  @apply text-lg font-semibold;
+}
+.flux-cards-gallery p {
+  @apply text-control leading-relaxed;
+}
+.flux-cards-gallery pre {
+  @apply max-h-64 overflow-auto whitespace-pre-wrap break-all rounded-control border border-border-subtle bg-surface p-3 font-mono text-label;
+}
+.flux-cards-gallery label {
+  @apply flex min-w-0 flex-col gap-1 text-label text-fg-secondary;
+}
+.flux-cards-gallery input,
+.flux-cards-gallery select,
+.flux-cards-gallery textarea {
+  @apply min-w-0 max-w-full rounded-control border border-border-subtle bg-surface px-2 py-1 text-control text-fg;
+}
+.flux-controls {
+  @apply flex flex-wrap items-end gap-2;
+}
+.flux-stream-layout {
+  @apply grid min-w-0 gap-4 lg:grid-cols-2;
+}
+.flux-conversation {
+  @apply flex min-h-96 min-w-0 flex-col gap-3;
+}
+.flux-transcript {
+  @apply h-96 min-h-0 min-w-0 scroll-mt-4 rounded-panel border border-border-subtle;
+}
+.flux-transcript [data-slot="chat-stream-item"] {
+  @apply min-w-0 break-words;
+}
+.flux-state-gallery {
+  @apply flex min-w-0 flex-col gap-3;
+}
+.flux-composer-scope {
+  @apply relative min-w-0 rounded-panel bg-bg-elevated p-3 text-fg;
+}
+.flux-composer-scope [data-slot="chat-input-suggestions"] {
+  @apply max-h-48 overflow-y-auto;
+}
+.flux-composer-scope [role="option"] {
+  @apply flex-wrap break-all;
+}
+.flux-metrics {
+  @apply grid min-w-0 gap-2 sm:grid-cols-2;
+}
+.flux-thinking {
+  @apply flex items-center gap-2 py-1 font-mono text-label uppercase tracking-wide text-fg-muted;
+}
+.flux-tool {
+  @apply flex min-w-0 flex-wrap items-center gap-2 py-1 font-mono text-label text-fg-secondary;
+}
+.flux-tool-full {
+  @apply rounded-control border border-border-subtle bg-surface p-2;
+}
+.flux-tool summary {
+  @apply cursor-pointer text-fg-muted;
+}
+.flux-compaction {
+  @apply flex items-center gap-3 py-1 text-caption text-fg-muted;
+}
+.flux-compaction span {
+  @apply h-px flex-1 bg-divider;
+}
+.flux-inspection {
+  @apply flex min-w-0 flex-col gap-3;
+}
