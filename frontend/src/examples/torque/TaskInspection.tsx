@@ -1,12 +1,11 @@
 import { Button, Dialog, DialogContent, DialogTitle } from "@hollis-labs/design-components"
-import { useRef } from "react"
+import { type KeyboardEvent, useLayoutEffect, useRef } from "react"
 import type { OperationsModel, RunDetail } from "../../operations/model"
 import { ResourceNotice, RunDetailBody } from "../../operations/Views"
 import { operationsMetadata } from "./operations-metadata"
 import type { TorqueState } from "./routes"
 
 // The record controller consumes only the board's admitted, loaded order.
-// Keyboard/IME/child-overlay policy is deliberately supplied by task 0009 later.
 export function TaskInspection({
   open,
   detail,
@@ -31,6 +30,23 @@ export function TaskInspection({
   intent: string
 }) {
   const title = useRef<HTMLHeadingElement>(null)
+  const popup = useRef<HTMLDivElement>(null)
+  const composing = useRef(false)
+  const mounted = useRef(false)
+  useLayoutEffect(() => {
+    mounted.current = true
+    return () => {
+      mounted.current = false
+    }
+  }, [])
+  useLayoutEffect(() => {
+    if (!open) composing.current = false
+  }, [open])
+  // A retained handler cannot act on an earlier order, selection or source,
+  // even if that source is later revisited with the same identifiers.
+  const frame = {}
+  const currentFrame = useRef(frame)
+  currentFrame.current = frame
   const identity = JSON.stringify([
     state.profile,
     state.scenario,
@@ -43,7 +59,45 @@ export function TaskInspection({
   const navigable = position >= 0 && ids.length > 1
   const metadata = detail ? operationsMetadata[detail.task.id] : undefined
   function navigate(offset: number) {
-    if (navigable) onSelect(ids[(position + offset + ids.length) % ids.length])
+    if (mounted.current && currentFrame.current === frame && open && navigable)
+      onSelect(ids[(position + offset + ids.length) % ids.length])
+  }
+  function shortcut(e: KeyboardEvent<HTMLDivElement>) {
+    const root = popup.current
+    const target = e.target
+    if (
+      !open ||
+      (e.key !== "ArrowLeft" && e.key !== "ArrowRight") ||
+      e.defaultPrevented ||
+      e.nativeEvent.isComposing ||
+      e.nativeEvent.keyCode === 229 ||
+      composing.current ||
+      e.ctrlKey ||
+      e.metaKey ||
+      e.altKey ||
+      e.shiftKey ||
+      !navigable ||
+      currentFrame.current !== frame ||
+      !root ||
+      !(target instanceof Element) ||
+      !root.contains(target) ||
+      target.closest('[role="dialog"], [role="alertdialog"]') !== root ||
+      root.hasAttribute("data-nested-dialog-open") ||
+      target.closest(
+        'input, textarea, select, button, a, [contenteditable]:not([contenteditable="false"]), [role="textbox"], [role="combobox"], [role="slider"], [role="spinbutton"], [role="tablist"], [role="tab"], [role="menu"], [role="menuitem"], [role="listbox"], [role="tree"], [role="grid"], [role="radiogroup"]',
+      ) ||
+      Array.from(
+        document.querySelectorAll(
+          '[role="dialog"], [role="alertdialog"], [role="menu"], [role="listbox"]',
+        ),
+      ).some(
+        (overlay) =>
+          overlay !== root && !overlay.contains(root) && overlay.getClientRects().length > 0,
+      )
+    )
+      return
+    e.preventDefault()
+    navigate(e.key === "ArrowLeft" ? -1 : 1)
   }
   return (
     <Dialog
@@ -53,10 +107,18 @@ export function TaskInspection({
       }}
     >
       <DialogContent
+        ref={popup}
         className="torque-task-inspection"
         widthClassName="torque-task-inspection-width"
         initialFocus={title}
         finalFocus={returnTarget}
+        onKeyDown={shortcut}
+        onCompositionStartCapture={() => {
+          composing.current = true
+        }}
+        onCompositionEndCapture={() => {
+          composing.current = false
+        }}
       >
         <header className="torque-inspection-header">
           <DialogTitle ref={title} tabIndex={-1}>
@@ -67,16 +129,28 @@ export function TaskInspection({
           </p>
         </header>
         <nav className="torque-inspection-navigation" aria-label="Inspection record navigation">
-          <Button variant="outline" size="sm" disabled={!navigable} onClick={() => navigate(-1)}>
+          <Button
+            variant="outline"
+            size="sm"
+            disabled={!navigable}
+            onClick={() => navigate(-1)}
+            aria-keyshortcuts="ArrowLeft"
+          >
             Previous task
           </Button>
           <span>
             {position >= 0
               ? `${position + 1} of ${ids.length} loaded tasks`
               : "Outside loaded board order"}{" "}
-            · wraps
+            · wraps · ← previous / → next
           </span>
-          <Button variant="outline" size="sm" disabled={!navigable} onClick={() => navigate(1)}>
+          <Button
+            variant="outline"
+            size="sm"
+            disabled={!navigable}
+            onClick={() => navigate(1)}
+            aria-keyshortcuts="ArrowRight"
+          >
             Next task
           </Button>
         </nav>
