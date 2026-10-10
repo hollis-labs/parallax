@@ -24,7 +24,7 @@ export function RailHeader({
   source: string
   prefs: Preferences
   active: PanelId | null
-  select: (id: PanelId) => void
+  select: (id: PanelId) => boolean
   settings: (trigger: HTMLElement) => void
   close: () => void
 }) {
@@ -90,8 +90,8 @@ export function RailHeader({
                           ? tabs.at(-1)
                           : null
                 if (!target) return
+                if (!select(target)) return
                 e.preventDefault()
-                select(target)
                 refs.current.get(target)?.focus()
                 refs.current.get(target)?.scrollIntoView({ block: "nearest", inline: "nearest" })
               }}

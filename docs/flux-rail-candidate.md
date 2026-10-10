@@ -73,6 +73,17 @@ stored. Each exposed dispatcher uses the committed lease from the public guarded
 retirement invalidate retained callbacks permanently, including reactivation.
 Mod+/ uses the kit's exact modifier, editable, IME and modal guards.
 
+Review found two additional focus paths outside the action dispatchers. Captured
+inspection focus return now checks its committed lease before reading refs,
+requires matching source markers, and refuses to take focus from a new foreground
+owner. The tab header moves focus and scrolls only after its host returns `true`
+from selection. A native repro first established working focus/arrow callbacks,
+then showed old focus return resolving a replacement heading or reviving after
+Activity reactivation, and an old arrow moving focus after selection refused.
+The correction keeps these callbacks retired while current controls still work.
+The test captures the actual React DOM keyboard prop; production code does not
+use React internals. Original failures and focused correction logs are retained.
+
 Context and Session reuse `InspectionDialog`, with explicit initial heading focus,
 admitted trigger return and heading fallback. Nested inspection menu and usage
 popover mount through installed public Base UI Portal/Positioner/Popup inside the

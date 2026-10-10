@@ -50,6 +50,7 @@ export interface RailActions {
   collapse: (id: WidgetId, open: boolean) => boolean
   signal: (signal: PanelSignal) => boolean
   inspect: (kind: "context" | "session", trigger: HTMLElement) => boolean
+  finalFocus: () => HTMLElement | false
   shortcut: ReturnType<typeof useShortcut>
 }
 export const diagnostics: { frames: RailActions[]; admitted: string[] } = {
@@ -207,6 +208,29 @@ function ReviewFrame({
       setOverlay((value) => !value)
     },
   })
+  const finalFocus = () => {
+    if (!shortcut.isLive() || !access || !layer || competing || nested) return false
+    const foreground = document.activeElement
+    if (
+      foreground &&
+      foreground !== document.body &&
+      foreground !== trigger.current &&
+      !inspectionRoot.current?.contains(foreground)
+    )
+      return false
+    const belongs = (target: HTMLElement) =>
+      validTarget(target) &&
+      !target.matches(":disabled") &&
+      target.closest("[data-flux-rail-source]")?.getAttribute("data-flux-rail-source") === source
+    return (
+      resolveAdmittedFocusTarget({
+        trigger: () => trigger.current,
+        isAdmitted: belongs,
+        fallbackTarget: () => heading.current,
+        isFallbackAdmitted: belongs,
+      }) ?? false
+    )
+  }
   useLayoutEffect(() => {
     diagnostics.frames.push({
       source,
@@ -215,6 +239,7 @@ function ReviewFrame({
       signal,
       inspect: (kind, target) => inspect(kind, target),
       shortcut,
+      finalFocus,
     })
   })
   const validTarget = (target: HTMLElement) =>
@@ -235,7 +260,12 @@ function ReviewFrame({
     <AppShell
       header={
         <header className="flex shrink-0 flex-wrap items-center justify-between gap-2 border-b border-border bg-bg-elevated px-4 py-3">
-          <h1 ref={heading} tabIndex={-1} className="text-sm font-semibold">
+          <h1
+            data-flux-rail-source={source}
+            ref={heading}
+            tabIndex={-1}
+            className="text-sm font-semibold"
+          >
             Flux right rail candidate
           </h1>
           <Button
@@ -373,14 +403,7 @@ function ReviewFrame({
         ref={inspectionRoot}
         titleProps={{ ref: inspectTitle, tabIndex: -1 }}
         initialFocus={() => inspectTitle.current}
-        finalFocus={() =>
-          resolveAdmittedFocusTarget({
-            trigger: () => trigger.current,
-            isAdmitted: validTarget,
-            fallbackTarget: () => heading.current,
-            isFallbackAdmitted: validTarget,
-          }) ?? false
-        }
+        finalFocus={finalFocus}
         meta="Fictional local specimen · no provider"
         bodyProps={{ "aria-label": "Rail inspection body", tabIndex: 0 }}
         footer={

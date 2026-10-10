@@ -450,3 +450,46 @@ test("short desktop and narrow rail scroll, every panel, session details and dis
     expect(bounds.h).toBeLessThanOrEqual(420)
   }
 })
+
+test("captured final focus and roving callbacks retire", async ({ page }) => {
+  await page.goto(`${sourceBase}/?example=flux-rail`)
+  await page.getByRole("button", { name: "Inspect context", exact: true }).click()
+  await page.getByRole("button", { name: "Close inspection", exact: true }).click()
+  const before = await page.evaluate(() => {
+    const w = window as unknown as {
+      fluxRail: { frames: { finalFocus: () => HTMLElement | false }[] }
+      heldFinal: () => HTMLElement | false
+    }
+    const frame = w.fluxRail.frames.at(-1)
+    if (!frame) throw new Error("Missing committed focus frame")
+    w.heldFinal = frame.finalFocus
+    return w.heldFinal() !== false
+  })
+  expect(before).toBe(true)
+  const foregroundRefusal = await page.evaluate(() => {
+    document.querySelector<HTMLSelectElement>("select")?.focus()
+    return (window as unknown as { heldFinal: () => HTMLElement | false }).heldFinal() === false
+  })
+  expect(foregroundRefusal).toBe(true)
+  await page.getByRole("button", { name: "Replace source", exact: true }).click()
+  await expect(page.getByRole("dialog")).toHaveCount(0)
+  const replaced = await page.evaluate(
+    () => (window as unknown as { heldFinal: () => HTMLElement | false }).heldFinal() !== false,
+  )
+  const lifecycle = await page.evaluate(async () => {
+    const path = "/tests/fixtures/rail-lifecycle.tsx"
+    return (await import(path)).focusExercise()
+  })
+  console.log(JSON.stringify({ replaced, ...lifecycle }))
+  expect({ replaced, ...lifecycle }).toEqual({
+    replaced: false,
+    positiveFocus: true,
+    hiddenFocus: false,
+    reactivatedFocus: false,
+    freshFocus: true,
+    positiveRove: true,
+    beforeHideLive: true,
+    staleRove: false,
+    freshRove: true,
+  })
+})
