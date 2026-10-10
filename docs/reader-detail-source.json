@@ -1,11 +1,12 @@
 {
-  "tree": "63cf8e3d9993c7a2fd21920e060bdcb3643bf497",
-  "ancestor": "9324982a613d1052ebdfc9dc16839aa64b971a94",
+  "ancestor": "9324982a9da1ae2df22d2ba672ceb5fac7a5619f",
   "files": {
     "docs/reader-example.md": "cfbb1dfaa99e237c784df9fcdba578e58c71386118a431d8ade9660042458a9a",
     "docs/reader-owner-questions.md": "8d232c475481aa26534e0960caa772329aeeb9ba588ebc75cfb1a980e3cf3faf",
-    "docs/reader-detail-replay.py": "6ad02ea60acca8f4519160d6c0b3d19c2426c3bb55311ee5bf6231682dfa8652",
-    "frontend/src/examples/reader/ReaderDetailPage.tsx": "dce7147a673c11a90d8e02724c3c5bfc68edba9ac5bbc9bba7026c58195316b8",
+    "docs/reader-detail-replay.py": "ecfab6c8026265a79fe983cf2f7694332418f22cf3ef4a44e0e1202298ca82ef",
+    "frontend/reader-lifecycle.html": "945f5b11d4cb0fef25193d7d83dfcb52d606c66b3dd110e5aec958c21f742631",
+    "frontend/src/examples/reader/lifecycle.tsx": "912ad0620461268c883f128036f72efd2da31eea23b41db2ef6ebfba0c1e3bfd",
+    "frontend/src/examples/reader/ReaderDetailPage.tsx": "71eb8290e6b41fe263b9b5d3bca40c293cdf217a068578ae18a417971e3ef47d",
     "frontend/src/examples/reader/ReaderDetailHeader.tsx": "e1a23db0375f16f386234e511b07e0569776c5a3b84df732523358e71567c61d",
     "frontend/src/examples/reader/ReaderProvenanceSpine.tsx": "42cfcaaf18ebb9901bde40fc2e29f6f70c7b31b946d8b682ccc4471de748aafc",
     "frontend/src/examples/reader/ReaderInlineActions.tsx": "94d2776d212b8ae66cdf6ed2a0b3b7464c0c0650dee7965df43da21117b4b004",
@@ -17,16 +18,16 @@
     "frontend/src/examples/reader/renderers/index.ts": "cbe4c961080b081cd8a010f7870c071f742f8737357630442e0a154067c9b9bd",
     "frontend/src/examples/reader/renderers/media.ts": "009e82e766c265d1b8a195a4b3b21c61bb5ca78e5e82fa66327d5d84f55a7ece",
     "frontend/src/examples/reader/renderers/ArticleRenderer.tsx": "b08812cacff6914aeeadd13aa0cc3a323029b8b3c7d554e6e7f23e48caa6f64d",
-    "frontend/src/examples/reader/renderers/ImageRenderer.tsx": "ba871322473ebbbeb9442bde25401d761687bb528f281cf46dddd6470e5d8a92",
-    "frontend/src/examples/reader/renderers/GalleryRenderer.tsx": "050b8ffc4562690e00d3578cdd80476ef8d601d53ac67e29c01f2abd852f4aa9",
+    "frontend/src/examples/reader/renderers/ImageRenderer.tsx": "28cc7a57a0a1aff3d72e0ea31dbf69d2ced50e5c907b29ab86d3df7c2d75dd1b",
+    "frontend/src/examples/reader/renderers/GalleryRenderer.tsx": "bbad855206fd59006e236eab4637904d81526b2b08a59155b8357c4afa577dd6",
     "frontend/src/examples/reader/renderers/VideoRenderer.tsx": "aa5f4f78bb4d20fd9f7bba7d181a97a3ddfe3a34a5fe037a7d16f3e8431b0c31",
     "frontend/src/examples/reader/renderers/FallbackRenderers.tsx": "0f4359f70dac8d6a12630042154a066c4d569fd426ba363471d9965f63507ed2",
-    "frontend/src/examples/reader/renderers/MediaDialog.tsx": "8d2855c21e4ad8b2340417522a85ab5140ffad36a78946b6d3d80da65baa08b1",
+    "frontend/src/examples/reader/renderers/MediaDialog.tsx": "b8161e3cd6e223f78889fb1029831013aea8b235d19c13ecdee3d1c5f9989965",
     "frontend/src/examples/reader/renderers/ReaderContentRenderer.tsx": "55a47e1b8ce986ae55f4511656bc87e0490da3c0a190df9529c5e8ec41c64626",
     "frontend/src/examples/reader/renderers/ResourceStatePanel.tsx": "43089892a823b460f89963ca54ef45b7b4c031c5df9b08f035a1cb335dd985ab",
     "frontend/src/fixtures/reader-example.json": "b64517481a3df8be8ba01fa60a9c7b57105859fdfc12d824dd44a3043760bfad",
     "frontend/tests/reader-detail.spec.ts": "db78d7e966f532f1bd6a7a69bbe7f2eecbdc6be9013d19753459fc8289e17000",
-    "frontend/tests/reader-detail-custody.spec.ts": "3dc58bbcd4b7585adeb69e9d7e462b9eda0ae3866fb7120f34f7412f1e449294"
+    "frontend/tests/reader-detail-custody.spec.ts": "3c40911230c0980cb26cf581dd39c437e2c2971254825d00daf6587ed0b13d3b"
   },
   "ports": {
     "go_binary": 19031,
@@ -35,6 +36,5 @@
   },
   "ownerVisualApproval": false,
   "pmInertWrites": true,
-  "custodyLeases": true,
-  "head": "80c53e58f08ee167226f0666ad8e16e46eae0955"
+  "custodyLeases": true
 }

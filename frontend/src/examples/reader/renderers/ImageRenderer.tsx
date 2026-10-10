@@ -89,6 +89,7 @@ export function ImageRenderer({
         open={open}
         onOpenChange={setOpen}
         returnFocusRef={triggerRef}
+        sourceGeneration={item.fragment_id}
         title={item.display.title.value || "Captured image"}
         description={caption || "Larger authorized image representation"}
       >

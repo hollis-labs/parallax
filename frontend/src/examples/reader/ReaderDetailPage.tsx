@@ -5,10 +5,11 @@ import {
   EmptyState,
   Skeleton,
   useControlledRecordNavigation,
+  useShortcut,
 } from "@hollis-labs/design-components"
 import { Copy, ExternalLink, RefreshCw } from "lucide-react"
-import { type ReactNode, useEffect, useMemo, useRef, useState } from "react"
-import { currentLayer } from "../flux-chat/ownership"
+import { type ReactNode, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
+import { currentLayer, visible } from "../flux-chat/ownership"
 import { readerPlainTextExcerpt, safeReaderSourceHref, sourceHost, sourceLabel } from "./model"
 import { ReaderDetailHeader } from "./ReaderDetailHeader"
 import { ReaderReadingControls } from "./ReaderInlineActions"
@@ -73,25 +74,23 @@ export function ReaderQuickActionSeam({ children }: { children?: ReactNode }) {
 declare global {
   interface Window {
     readerDetail?: {
+      handleBack: () => boolean
+      handleRefresh: () => boolean
+      handlePrevious: () => boolean
+      handleNext: () => boolean
+      isAdmitted: (targetPopup?: HTMLElement | null) => boolean
       fresh: {
-        Back?: () => boolean
-        Refresh?: () => boolean
-        Previous?: () => boolean
-        Next?: () => boolean
+        Back: () => boolean
+        Refresh: () => boolean
+        Previous: () => boolean
+        Next: () => boolean
       }
-      lifecycle?: {
-        alive: boolean
-        lease: number
-        generation: string
-        access: boolean
-        layer: boolean
-        activity: boolean
-      }
-      retire?: (boundary: "source" | "access" | "layer" | "root" | "Activity") => void
-      restore?: (boundary: "source" | "access" | "layer" | "root" | "Activity") => void
     }
+    heldAction?: () => boolean
   }
 }
+
+let nextReaderActivationTicket = 0
 
 export function ReaderDetailPage({
   item,
@@ -135,39 +134,44 @@ export function ReaderDetailPage({
     onSelect: (nextId) => onNavigate(nextId),
   })
 
-  const [, setLifecycleEpoch] = useState(0)
-  // Captured committed source/root/Activity admission and lifecycle lease
   const currentGeneration = `${scope}:${item?.fragment_id ?? ""}:${item?.fragment_revision_id ?? ""}`
-  const lifecycle = useRef({
-    alive: true,
-    lease: 1,
-    generation: currentGeneration,
-    access: true,
-    layer: true,
-    activity: true,
+
+  // Committed shortcut frame tracking exact source generation
+  const shortcutFrame = useShortcut({
+    key: "",
+    enabled: false,
+    sourceGeneration: currentGeneration,
+    onTrigger: () => {},
   })
 
-  // Synchronize generation when props change
-  lifecycle.current.generation = currentGeneration
+  // Monotonic ticket sequence for committed activation frames:
+  const activeTicketRef = useRef<number>(-1)
+  const isMountedRef = useRef(false)
+  const renderTicketRef = useRef<number>(0)
+  const currentGenRef = useRef(currentGeneration)
 
-  useEffect(() => {
-    lifecycle.current.alive = true
+  if (currentGenRef.current !== currentGeneration || activeTicketRef.current === -1) {
+    currentGenRef.current = currentGeneration
+    renderTicketRef.current = ++nextReaderActivationTicket
+  }
+
+  const myTicket = renderTicketRef.current
+
+  useLayoutEffect(() => {
+    isMountedRef.current = true
+    activeTicketRef.current = myTicket
     return () => {
-      lifecycle.current.alive = false
-      lifecycle.current.lease++
+      isMountedRef.current = false
+      if (activeTicketRef.current === myTicket) {
+        activeTicketRef.current = -1
+      }
     }
-  }, [])
-
-  const capturedLease = lifecycle.current.lease
-  const capturedGeneration = currentGeneration
+  }, [currentGeneration, myTicket])
 
   function isAdmitted(targetPopup?: HTMLElement | null): boolean {
-    if (!lifecycle.current.alive) return false
-    if (lifecycle.current.lease !== capturedLease) return false
-    if (lifecycle.current.generation !== capturedGeneration) return false
-    if (!lifecycle.current.access || !lifecycle.current.layer || !lifecycle.current.activity)
-      return false
-    if (!rootRef.current?.isConnected) return false
+    if (!isMountedRef.current || activeTicketRef.current !== myTicket) return false
+    if (!shortcutFrame.isLive()) return false
+    if (!rootRef.current?.isConnected || !visible(rootRef.current)) return false
     if (targetPopup) {
       if (!currentLayer(targetPopup)) return false
     } else {
@@ -200,44 +204,19 @@ export function ReaderDetailPage({
     return true
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (typeof window === "undefined") return
     window.readerDetail = {
+      handleBack,
+      handleRefresh,
+      handlePrevious,
+      handleNext,
+      isAdmitted: (targetPopup) => isAdmitted(targetPopup),
       fresh: {
-        Back: () => isAdmitted() && !!onBack,
-        Refresh: () => isAdmitted() && !!onRefresh,
-        Previous: () => isAdmitted() && navigation.availability.previous,
-        Next: () => isAdmitted() && navigation.availability.next,
-      },
-      lifecycle: lifecycle.current,
-      retire: (boundary: "source" | "access" | "layer" | "root" | "Activity") => {
-        lifecycle.current.lease++
-        if (boundary === "source") {
-          lifecycle.current.generation = "retired-source"
-        } else if (boundary === "access") {
-          lifecycle.current.access = false
-        } else if (boundary === "layer") {
-          lifecycle.current.layer = false
-        } else if (boundary === "Activity") {
-          lifecycle.current.activity = false
-        } else if (boundary === "root") {
-          lifecycle.current.alive = false
-        }
-      },
-      restore: (boundary: "source" | "access" | "layer" | "root" | "Activity") => {
-        lifecycle.current.lease++
-        if (boundary === "source") {
-          lifecycle.current.generation = currentGeneration
-        } else if (boundary === "access") {
-          lifecycle.current.access = true
-        } else if (boundary === "layer") {
-          lifecycle.current.layer = true
-        } else if (boundary === "Activity") {
-          lifecycle.current.activity = true
-        } else if (boundary === "root") {
-          lifecycle.current.alive = true
-        }
-        setLifecycleEpoch((e) => e + 1)
+        Back: handleBack,
+        Refresh: handleRefresh,
+        Previous: handlePrevious,
+        Next: handleNext,
       },
     }
   })
