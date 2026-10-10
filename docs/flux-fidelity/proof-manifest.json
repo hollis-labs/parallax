@@ -1,0 +1,55 @@
+{
+  "purpose": "exact retained final reference receipt; acceptance pending",
+  "source_heads": {
+    "flux": "232064c3a5eaa8e8d9e270d89d78df3ca81df231",
+    "parallax_base": "bb6f11970b38aeb803e8cad2f9fb7af2c38cbd82",
+    "design_kit": "1dc83f98098a93ecf300dc5b3999bfe542efc7a7",
+    "go_envelopes_v0_4_0": "ae5bc8c72e1d58a81fb858a66c688b1e60c0139e"
+  },
+  "environment": {
+    "node": "22.19.0",
+    "npm": "10.9.3",
+    "browser": "141.0.7390.37",
+    "fixture_server": "127.0.0.1:18583",
+    "runtime_network": "local asset GET/HEAD only; API/model/SSE/WebSocket blocked",
+    "fonts": "retained local fallback fonts, no webfont network",
+    "reference_time": "2026-10-04T14:30:00Z",
+    "seed": 4421
+  },
+  "final_result": {
+    "native_captures": 86,
+    "uncaught_errors": [],
+    "widget_failures": [],
+    "write_attempts": [],
+    "blocked_requests": [],
+    "capture_phases": {
+      "full": 85,
+      "focused_banner": 2,
+      "unique_selected_views": 86
+    }
+  },
+  "file_sha256": {
+    "fixture-operands.json": "9df9b4498090b024932938e876295f4b9831b63261ae84788dec8cf9c14a4682",
+    "fixtures.py": "c4b3c26687f4d43d3ba4ad526238ee2640de1d62e3f8a69e88f094cbf490b068",
+    "inventory.py": "1cf41bb3cef387f14af6d1011bd718a6621abe671318f9e3141c5f328746db42",
+    "source-token-inventory.json": "543b0de76667cf6b057b9fcd7a6230c48e34992edace97ade3151694d89bc148",
+    "token-mapping.md": "35a86b7b3d60c2e732dfc0aedb23fd9c31f35af6efd5290563cafe5de80ba7af",
+    "capture-index.json": "46902d3824f250b288a5a58eed264ee72248d04a8841084ec83300980a4f649d",
+    "replay/api.ts": "66afac4b8ecc45d22f9ce347e23688ca6e867d43b1e05dcf68e56eb50f7914c8",
+    "replay/capture.cjs": "00e3bd91ababd87fa7b1d7cec58065ba3432306cdccca54e58d8c480130036c8",
+    "replay/entry.tsx": "594b0e5a5d17fcccb43b241dbdab8114c7294e1d81780d6f50f63698ae3c17b9",
+    "replay/fixture.html": "1c5328936392408431c693a9d17fc20a7721d6d7dfd2dac0c551e8b28b05994e",
+    "replay/fonts.conf": "6cd3c8f23a6ea5c66be0f40b5734b0cfe180f366e99a4cf3709e8a5ceb2f88cf",
+    "replay/query.ts": "da76d4f33c8a00b80221a2cb29d75ec3e211e756f17ef58bac67d382784753b1",
+    "replay/vite.config.ts": "1faf5bfdc0ba263f3dd1dcddaa2c6d1fb28f2f1cc91172ff1ae41ec661e4e512",
+    "replay/capture-banner.cjs": "55ad047771fde98e9d44b407dc54718ed500892e6d604f8360cfa415b749ef40",
+    "replay/capture-full-observed.cjs": "e9de9ce8706d08888eee9a82543d5c76e94b68dd1f2534511706ed24f51bc68e"
+  },
+  "retained_raw_proof": {
+    "path": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0083/.scratch/flux-fidelity",
+    "native-final.json": "afc7cb2f3b669cba6799869565ad877740fc478f6141ba00f61a97acd0ea7790",
+    "native-final.log": "10fbd1a154c1ecbefebe19e851097a689ab990a4a19cce2a086fd639e7322035",
+    "native-banner-final.json": "c0a6105c30c6eec59dd68be84e9721eea24be796fec2bbd0dc3feeecc3947165",
+    "native-banner-final.log": "0e84c24558097539636aae2ba1b4b32914d68f993ea01e65400f92c4c5d2a4eb"
+  }
+}

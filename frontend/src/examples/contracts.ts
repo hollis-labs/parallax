@@ -8,6 +8,7 @@ export type FamilyId =
   | "observations"
   | "developer"
   | "voice"
+  | "tether-sysop"
 export type ExampleDefinition = {
   id: string
   entry: { parameter: string; value: string }

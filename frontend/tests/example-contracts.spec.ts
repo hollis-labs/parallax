@@ -59,7 +59,7 @@ test("native About exposes six actual artifact identities and independent snapsh
 }, testInfo) => {
   await page.goto("/?example=torque&screen=about&cutoff=2026-10-04T14:15:15Z")
   const matrix = page.getByRole("region", { name: "Bundled fixture-family contracts", exact: true })
-  await expect(matrix.getByRole("article")).toHaveCount(6)
+  await expect(matrix.getByRole("article")).toHaveCount(fixtureContracts.families.length)
   const comm = matrix.getByRole("article", { name: "communications fixture contract", exact: true })
   await expect(comm).toContainText("streamChunks: 3")
   await expect(comm).toContainText("2026-10-04T14:30:00Z")
@@ -103,6 +103,6 @@ test("portable About consumes the same family manifest without a Go or plugin re
     page
       .getByRole("region", { name: "Bundled fixture-family contracts", exact: true })
       .getByRole("article"),
-  ).toHaveCount(6)
+  ).toHaveCount(fixtureContracts.families.length)
   expect(calls).toEqual([])
 })
