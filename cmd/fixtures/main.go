@@ -6,6 +6,9 @@ import (
 )
 
 func main() {
+	if err := scenarios.WriteReaderExample("frontend/src/fixtures/reader-example.json"); err != nil {
+		log.Fatal(err)
+	}
 	if err := scenarios.WriteChatExample("frontend/src/fixtures/chat-example.json"); err != nil {
 		log.Fatal(err)
 	}
