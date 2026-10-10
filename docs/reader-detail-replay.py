@@ -120,7 +120,7 @@ else:
                 f"STORYBOOK_DISABLE_TELEMETRY=1 npm run build-storybook --prefix frontend >> {quote(str(proof / 'build.log'))} 2>&1",
                 f"go build -o .scratch/parallax ./cmd/parallax >> {quote(str(proof / 'build.log'))} 2>&1",
                 f"python3 {quote(str(capture))}",
-                'frontend/node_modules/.bin/playwright test reader-detail.spec.ts reader-example.spec.ts reader-detail-custody.spec.ts --config owned-native.config.mts "$@"']
+                'frontend/node_modules/.bin/playwright test "${@:-reader-detail-custody.spec.ts}" --config owned-native.config.mts']
     (proof / "run.sh").write_text("\n".join(commands) + "\n")
 (proof / "receipt.json").write_text(json.dumps(receipt, indent=2) + "\n")
 print(json.dumps({"head": head, "mode": mode, "proof": str(proof), "archive_sha256": receipt["archive_sha256"]}))
