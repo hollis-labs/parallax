@@ -70,7 +70,7 @@ test("empty, denied, discovery failures and diagnostic admissions remain distinc
     ["degraded", "Discovery degraded"],
     ["duplicate", "Duplicate id/route dropped"],
     ["reserved", "Reserved route claim refused"],
-    ["missing-parent", "Missing parent"],
+    ["missing-parent", "Missing admitted parent"],
   ]) {
     await page.goto(`${entry}&scenario=${scenario}#/work`)
     await expect(page.locator('[data-testid="tachyon-nav"]')).toContainText(expected)
