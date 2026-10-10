@@ -204,6 +204,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/nil-dialog-proof/Proof.tsx",
       "frontend/src/primitives/Gallery.tsx",
       "frontend/src/primitives/contracts.ts"
     ]
@@ -242,6 +243,8 @@
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/examples/chat/ChatExample.tsx",
       "frontend/src/examples/workspace/WorkspaceExample.tsx",
+      "frontend/src/nil-dialog-proof/ForegroundProof.tsx",
+      "frontend/src/nil-dialog-proof/Proof.tsx",
       "frontend/src/observation-review/Review.tsx",
       "frontend/src/operations/Views.tsx",
       "frontend/src/run-explorer/Explorer.tsx",
@@ -319,6 +322,8 @@
       "frontend/src/examples/torque/TaskInspection.tsx",
       "frontend/src/flux-rail/Review.tsx",
       "frontend/src/layouts/AsideConsumers.stories.tsx",
+      "frontend/src/nil-dialog-proof/Proof.tsx",
+      "frontend/src/nil-dialog-proof/TorqueProof.tsx",
       "frontend/src/operations-list-proof/Proof.tsx"
     ]
   },
@@ -382,6 +387,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/nil-dialog-proof/Proof.tsx",
       "frontend/src/primitives/Gallery.tsx",
       "frontend/src/primitives/contracts.ts"
     ]
@@ -719,7 +725,8 @@
       "frontend/src/examples/torque/TorqueExample.tsx",
       "frontend/src/examples/workspace/WorkspaceExample.tsx",
       "frontend/src/layouts/Comparison.tsx",
-      "frontend/src/layouts/Navigation.tsx"
+      "frontend/src/layouts/Navigation.tsx",
+      "frontend/src/nil-dialog-proof/Proof.tsx"
     ]
   },
   {
@@ -1006,7 +1013,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/evidence/contracts.ts"
+      "frontend/src/evidence/contracts.ts",
+      "frontend/src/nil-dialog-proof/Proof.tsx"
     ]
   },
   {
@@ -1552,7 +1560,8 @@
     },
     "importEvidence": [
       "frontend/src/appearance-review/Review.tsx",
-      "frontend/src/appearance-review/contracts.ts"
+      "frontend/src/appearance-review/contracts.ts",
+      "frontend/src/nil-dialog-proof/Appearance.tsx"
     ]
   },
   {
@@ -1605,7 +1614,8 @@
     },
     "importEvidence": [
       "frontend/src/appearance-review/Review.tsx",
-      "frontend/src/appearance-review/contracts.ts"
+      "frontend/src/appearance-review/contracts.ts",
+      "frontend/src/nil-dialog-proof/Appearance.tsx"
     ]
   },
   {
@@ -1690,7 +1700,9 @@
     },
     "importEvidence": [
       "frontend/src/examples/administration/AdministrationExample.tsx",
-      "frontend/src/examples/torque/TaskInspection.tsx"
+      "frontend/src/examples/torque/TaskInspection.tsx",
+      "frontend/src/nil-dialog-proof/Proof.tsx",
+      "frontend/src/nil-dialog-proof/TorqueProof.tsx"
     ]
   },
   {
@@ -1860,11 +1872,26 @@
     "name": "hasActiveModalOverlay",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/nil-dialog-proof/Proof.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2013,7 +2040,8 @@
     },
     "importEvidence": [
       "frontend/src/examples/messaging/MessagingExample.tsx",
-      "frontend/src/examples/torque/TaskInspection.tsx"
+      "frontend/src/examples/torque/TaskInspection.tsx",
+      "frontend/src/nil-dialog-proof/LayerProof.tsx"
     ]
   },
   {
@@ -2162,7 +2190,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/examples/torque/Operations.tsx"
+      "frontend/src/examples/torque/Operations.tsx",
+      "frontend/src/nil-dialog-proof/Proof.tsx"
     ]
   },
   {
@@ -2183,6 +2212,208 @@
     "version": "0.4.0",
     "entry": ".",
     "name": "UseQuickSearchShortcutResult",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DialogOptions",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DetailDialogProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "FormDialogProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "ConfirmDialogProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SearchPalette",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/nil-dialog-proof/Proof.tsx",
+      "frontend/src/nil-dialog-proof/TorqueProof.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SearchPaletteProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SearchPaletteOption",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SearchPaletteFilter",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CycleModeToggle",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/nil-dialog-proof/Proof.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SearchAddToggle",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/nil-dialog-proof/Proof.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "CycleModeToggleProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "SearchAddToggleProps",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "deferred",
@@ -2216,7 +2447,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/examples/flux-navigation/FluxNavigationExample.tsx"
+      "frontend/src/examples/flux-navigation/FluxNavigationExample.tsx",
+      "frontend/src/nil-dialog-proof/Proof.tsx"
     ]
   },
   {
@@ -2285,7 +2517,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/examples/flux-navigation/FluxNavigationExample.tsx"
+      "frontend/src/examples/flux-navigation/FluxNavigationExample.tsx",
+      "frontend/src/nil-dialog-proof/Proof.tsx"
     ]
   },
   {
@@ -2436,7 +2669,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/examples/flux-navigation/FluxNavigationExample.tsx"
+      "frontend/src/examples/flux-navigation/FluxNavigationExample.tsx",
+      "frontend/src/nil-dialog-proof/Proof.tsx"
     ]
   },
   {
@@ -2575,6 +2809,10 @@
       "frontend/src/layouts/Comparison.stories.tsx",
       "frontend/src/layouts/Comparison.tsx",
       "frontend/src/layouts/Navigation.tsx",
+      "frontend/src/nil-dialog-proof/ForegroundProof.tsx",
+      "frontend/src/nil-dialog-proof/LayerProof.tsx",
+      "frontend/src/nil-dialog-proof/Proof.tsx",
+      "frontend/src/nil-dialog-proof/TorqueProof.tsx",
       "frontend/src/observability/Lab.tsx",
       "frontend/src/observability/Views.tsx",
       "frontend/src/observation-review/Review.tsx",
@@ -3075,11 +3313,26 @@
     "name": "CommandDialog",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/nil-dialog-proof/Proof.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -3378,7 +3631,9 @@
       "frontend/src/examples/flux-cards/lifecycle.tsx",
       "frontend/src/examples/reader/ReaderExample.tsx",
       "frontend/src/examples/reader/ReaderVisual.tsx",
-      "frontend/src/examples/torque/BoardIntent.tsx"
+      "frontend/src/examples/torque/BoardIntent.tsx",
+      "frontend/src/nil-dialog-proof/LayerProof.tsx",
+      "frontend/src/nil-dialog-proof/Proof.tsx"
     ]
   },
   {
@@ -3423,7 +3678,9 @@
       "frontend/src/examples/flux-cards/lifecycle.tsx",
       "frontend/src/examples/reader/ReaderExample.tsx",
       "frontend/src/examples/reader/ReaderVisual.tsx",
-      "frontend/src/examples/torque/BoardIntent.tsx"
+      "frontend/src/examples/torque/BoardIntent.tsx",
+      "frontend/src/nil-dialog-proof/LayerProof.tsx",
+      "frontend/src/nil-dialog-proof/Proof.tsx"
     ]
   },
   {
@@ -3552,7 +3809,9 @@
       "frontend/src/examples/flux-cards/lifecycle.tsx",
       "frontend/src/examples/reader/ReaderExample.tsx",
       "frontend/src/examples/reader/ReaderVisual.tsx",
-      "frontend/src/examples/torque/BoardIntent.tsx"
+      "frontend/src/examples/torque/BoardIntent.tsx",
+      "frontend/src/nil-dialog-proof/LayerProof.tsx",
+      "frontend/src/nil-dialog-proof/Proof.tsx"
     ]
   },
   {
@@ -4525,11 +4784,26 @@
     "name": "Sheet",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/nil-dialog-proof/Proof.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -4564,11 +4838,26 @@
     "name": "SheetContent",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/nil-dialog-proof/Proof.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -4603,11 +4892,26 @@
     "name": "SheetTitle",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/nil-dialog-proof/Proof.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
