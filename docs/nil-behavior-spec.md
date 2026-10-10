@@ -19,11 +19,13 @@ implementation begins.
 
 Primary source was inspected in owned worktrees from fetched `origin/main`:
 
-| Repository | Head commit | Path | Evidence / finding |
+| Repository | Reference | Git object | Role |
 | --- | --- | --- | --- |
-| `nil` (`apps/nil`) | `cab453268482bf0b60df5820bb337a77e2ff841b` | `~/dev/hollis-labs/worktrees/nil/CW-20261010-0089` | Primary source audited across 12 topics. See [`docs/nil-source-survey.md`](nil-source-survey.md). |
-| `parallax` | `70afd38a3b31b409ee5d267083ce3b7f9d3fe75a` | `~/dev/hollis-labs/worktrees/parallax/CW-20261010-0089` | Host of recreation examples, inspection extractions, and docs. |
-| `design-kit` | `d1e6241b9fb735ccce3b627bf913515574e72c61` | Pinned local candidate `0.4.0-cw0036` | Public `InspectionDialog` and `useControlledRecordNavigation`. |
+| `nil` (`apps/nil`) | Source head | Commit `cab453268482bf0b60df5820bb337a77e2ff841b` | Primary source audited across 12 topics. See [`docs/nil-source-survey.md`](nil-source-survey.md). |
+| `parallax` | Source head | Commit `70afd38a3b31b409ee5d267083ce3b7f9d3fe75a` | Host of recreation examples, inspection extractions, and docs (`origin/main`). |
+| `design-kit` | PR 102 merge commit | Commit `1dc83f98098a93ecf300dc5b3999bfe542efc7a7` | Landed candidate on `main`. |
+| `design-kit` | PR 102 source head | Commit `62c066cfe6a6547969e85745d969929240e3dcb6` | Author candidate head. |
+| `design-kit` | Pinned package tree | Tree `d1e6241b9fb735ccce3b627bf913515574e72c61` | Pinned tree in local tarball `0.4.0-cw0036`. |
 
 ### Extraction receipts: reuse, not duplication
 
@@ -54,7 +56,7 @@ controls, colliding with text typing, or executing during IME composition.
 
 #### The standard keyboard guard pattern
 Every shortcut listener outside an active text input MUST evaluate the established guard pattern
-(proven in `Operations.tsx:234-248`):
+(aligned with `Operations.tsx:234-248`):
 
 ```typescript
 function isEventGuarded(e: KeyboardEvent): boolean {
@@ -95,8 +97,8 @@ Shortcuts are categorized into four strict priority tiers:
 
 ### 2.2 Layered Escape stack architecture
 
-To eliminate Nil's accidental cross-layer query clearing defect (`nil-source-survey.md` Topic 3,
-where closing `QuickSearchModal` triggered `handleClearAll` and erased the background search query),
+To eliminate Nil's accidental cross-layer query clearing risk (`nil-source-survey.md` Topic 3,
+where closing `QuickSearchModal` risked clearing the background search query via `handleClearAll`),
 Parallax specifies a centralized **LIFO Layered Escape Stack**.
 
 ```mermaid
@@ -104,7 +106,7 @@ flowchart TD
     KeyDown["Escape keydown event"] --> TopOverlay{"Is an overlay active in stack?"}
     TopOverlay -- Yes --> Innermost["Dispatch Escape to innermost (topmost) overlay"]
     Innermost --> CloseOverlay["Overlay closes itself"]
-    CloseOverlay --> StopEvent["Call e.preventDefault() & e.stopPropagation()"]
+    CloseOverlay --> StopEvent["Call e.preventDefault(), e.stopPropagation() & e.nativeEvent.stopImmediatePropagation()"]
     StopEvent --> RetainQuery["Background main query & underlying state PRESERVED"]
 
     TopOverlay -- No --> MainFocus{"Focus in main search input?"}
@@ -115,7 +117,7 @@ flowchart TD
 #### Layered Escape contracts
 1. **Innermost first:** Only the topmost entry on the overlay stack receives the `Escape` event.
 2. **Immediate event consumption:** The handling overlay MUST invoke `e.preventDefault()`,
-   `e.stopPropagation()`, and `e.stopImmediatePropagation()`.
+   `e.stopPropagation()`, and `e.nativeEvent?.stopImmediatePropagation?.()`.
 3. **Background query retention:** Closing an overlay MUST NEVER clear, reset, or alter the
    underlying page query, filter bar, or selection state.
 4. **Base-level Escape:** When no overlays are present in the stack:
@@ -131,7 +133,7 @@ All dialogs, drawers, and modal palettes MUST conform to accessible dialog requi
 
 1. **Focus Entry:**
    - On open, focus is programmatically shifted to a designated initial element within the modal.
-   - For `QuickSearchPalette`: initial focus is the `<input>` element immediately upon mount.
+   - For `QuickSearchPalette`: initial focus is the `<input role="combobox">` element immediately upon mount.
    - For `InspectionDialog`: initial focus defaults to the first interactive action button or
      readable title element, as configured by caller props.
 2. **Focus Trap:**
@@ -142,8 +144,8 @@ All dialogs, drawers, and modal palettes MUST conform to accessible dialog requi
    - The component opening the modal MUST capture `document.activeElement` prior to opening.
    - Upon dismissal (via `Escape`, close button, backdrop click, or action execution), focus
      MUST be returned to the captured triggering element.
-   - If the triggering element was removed from the DOM during the modal's lifetime, focus defaults
-     to the nearest parent container or the main list.
+   - If the triggering element was removed from the DOM during the modal's lifetime or is disconnected,
+     focus falls back to the nearest parent container or the main list element.
 
 ---
 
@@ -153,24 +155,26 @@ Derived from Nil's `QuickSearchModal.tsx`, the search palette provides instantan
 and item activation across todos, notes, and scratchpads.
 
 #### Activation shortcuts
-- **Primary:** `Cmd+K` (macOS) / `Ctrl+K` (Linux/Windows).
-- **Alias:** `Shift+Shift` (two consecutive Shift key taps within 300ms).
-  - Timing window: 300ms.
+- **Primary:** `Cmd+K` (macOS) / `Ctrl+K` (Linux/Windows) per DEC-NIL-01.
+- **Alias (proposed):** `Shift+Shift` (two consecutive Shift key taps within 300ms).
+  - Timing window: 300ms (recommended default).
   - Guard: Ignored if `e.target` is an editable field, or during IME composition
     (`isComposing === true` or `keyCode === 229`), or if modifiers (`altKey`, `ctrlKey`, `metaKey`)
     are held.
   - Reset: Any non-Shift key immediately resets the tap window to zero.
 
-#### Search input & caret retention
-- The search palette implements an accessible **combobox pattern**:
-  - Root container: `role="combobox"`, `aria-expanded="true"`, `aria-haspopup="listbox"`.
-  - Input: `<input type="text" role="searchbox" aria-autocomplete="list" aria-controls="search-results-list" ... />`.
-  - Results container: `<div id="search-results-list" role="listbox" ... />`.
-  - Result items: `<div role="option" id="result-opt-${id}" aria-selected={isSelected} ... />`.
+#### Search input & caret retention (W3C ARIA 1.2 Combobox pattern)
+- The text input itself is the focus owner and carries the combobox semantics:
+  - Focused input element:
+    `<input type="text" role="combobox" aria-expanded="true" aria-haspopup="listbox" aria-autocomplete="list" aria-controls="search-results-listbox" aria-activedescendant={activeId ? `opt-${activeId}` : undefined} ... />`
+  - Results container:
+    `<div id="search-results-listbox" role="listbox" aria-label="Search results" ... />`
+  - Result options:
+    `<div id={`opt-${id}`} role="option" aria-selected={isActive} ... />`
 - **Arrow navigation mechanics:**
-  - `ArrowDown` / `ArrowUp` keydown events are caught on the input.
+  - `ArrowDown` / `ArrowUp` keydown events are caught on the input element.
   - `e.preventDefault()` is called to prevent vertical caret movement in the input.
-  - Active index state updates immediately, updating `aria-activedescendant="result-opt-${focusedId}"`.
+  - Active index state updates immediately, updating `aria-activedescendant` on that same input.
   - The highlighted option scrolls smoothly into view (`scrollIntoView({ block: "nearest" })`).
   - **DOM focus remains continuously inside the text input**, keeping the text caret visible
     and ready for continued typing.
@@ -182,21 +186,29 @@ and item activation across todos, notes, and scratchpads.
   - Chips: `<button role="radio" aria-checked={isActive} tabIndex={isActive ? 0 : -1} ... />`.
 - **Keyboard navigation:**
   - When focus is in the chip group, `ArrowLeft` / `ArrowRight` cycles through chips.
-  - While typing in the input: `Ctrl+1` through `Ctrl+4` (or `Alt+1` through `Alt+4`) toggles
-    the corresponding filter chip directly without moving focus away from the input text.
+  - Proposed default for direct keyboard switching while typing in the input: `Tab` moves focus
+    to the active filter chip; alternatively, `Alt+1` through `Alt+4` can be bound as an explicit
+    proposal (using `Alt` to prevent browser tab switching collisions with `Ctrl+1..9`).
 
 ---
 
 ### 2.5 Radial menu component contract
 
 Derived from Nil's `RadialMenuWrapper.tsx` and `TerminalList.tsx`, the radial menu provides
-rapid 360-degree inline action dispatch for cards and rows.
+rapid inline action dispatch for cards and rows.
 
-#### Geometry and layout
-- **Radius:** 60px from center anchor to item centers.
-- **Center button:** 35px diameter circular button (`×` to close, `←` to return from sublayer).
-- **Action buttons:** 35px diameter circular buttons containing icon (12px) and text label (8px).
-- **Bounding circle:** Total diameter `(60 * 2) + 35 = 155px`. Bounding clearance radius = 85px.
+#### Geometry and design-kit token mapping
+- **Geometry (component exception):**
+  - Radius: 60px from center anchor to item centers.
+  - Center button: 35px diameter circular button (`×` to close, `←` to return from sublayer).
+  - Action buttons: 35px diameter circular buttons.
+  - Bounding clearance radius: 85px (total diameter 155px plus safety padding).
+- **Design-kit token styling:**
+  - Menu surface: `var(--color-bg-panel)` with `var(--color-border-subtle)` border.
+  - Action button: `var(--color-bg-subtle)` background, `var(--color-text-primary)` text,
+    `var(--radius-full)` border radius.
+  - Active/hover state: `var(--color-accent-subtle)` or `var(--color-interactive-hover)`.
+  - Typography: `var(--font-mono)` with scale token `var(--text-xs)` (8px–10px).
 - **Items:**
   - Todo main layer (8 items):
     `NOW` (0°, top), `SOON` (45°), `ANY` (90°, right), `DEL` (135°), `EDIT` (180°, bottom),
@@ -207,7 +219,7 @@ rapid 360-degree inline action dispatch for cards and rows.
     `ARCH` (90°), `COPY` (150°), `META` (210°), `→NOTE` (270°).
 
 #### Timing, cancellation, and click suppression
-- **Hold threshold:** 1000ms initial hold duration.
+- **Hold threshold:** 1000ms initial hold duration (proposed default).
 - **Pointer cancellation:** Hold timer is cancelled immediately upon:
   - `mousemove` or `touchmove` exceeding 8px displacement from initial touch point.
   - `mouseleave` or pointer cancellation.
@@ -215,7 +227,7 @@ rapid 360-degree inline action dispatch for cards and rows.
   - Upon hold completion (1000ms), a flag `holdTriggered.current = true` is set.
   - When the user releases pointer/touch, the subsequent synthetic `click` event is intercepted
     and cancelled (`e.preventDefault()`, `e.stopPropagation()`).
-  - **Eliminates the Nil defect** where mouse release after long-press triggered the underlying row's
+  - This eliminates the Nil risk where mouse release after long-press triggered the underlying row's
     `onClick` and opened `EditItemModal`.
 - **Viewport clamping:**
   - The menu center coordinate `(x, y)` is clamped so the 85px radius bounding circle remains
@@ -231,7 +243,8 @@ rapid 360-degree inline action dispatch for cards and rows.
   - `ArrowRight` / `ArrowDown` steps clockwise to the next action wedge; `ArrowLeft` / `ArrowUp`
     steps counterclockwise.
   - `Enter` or `Space` executes the selected action and closes the menu.
-  - `Escape` dismisses the menu and **restores keyboard focus to the triggering row**.
+  - `Escape` dismisses the menu and **restores keyboard focus to the triggering row** (with fallback
+    to list container if row is unmounted).
 
 ---
 
@@ -239,8 +252,9 @@ rapid 360-degree inline action dispatch for cards and rows.
 
 #### 3-way app mode cycle button
 - **Functionality:** Cycles display mode: `todos` → `notes` → `all` → `todos`.
-- **Visual presentation:** Badge button displaying current mode icon and label (`CheckSquare` for Todos,
-  `FileText` for Notes, `Layers` for All).
+- **Visual presentation:** Badge button using design-kit tokens (`bg-panel`, `border-subtle`,
+  `text-primary`) displaying current mode icon and label (`CheckSquare` for Todos, `FileText` for
+  Notes, `Layers` for All).
 - **Short click:** Advances to next mode in 3-cycle.
 - **Long press (1000ms):** Sets `longPressFired = true` and opens Settings navigated to the "tabs" tab.
   Click event on mouseup is suppressed if long press fired.
@@ -251,12 +265,12 @@ rapid 360-degree inline action dispatch for cards and rows.
 - **Visual presentation:**
   - In Add mode: displays `<Plus size={16} />`, tooltip: *"Quick Add Mode (Click to switch to Search)"*.
   - In Search mode: displays `<Search size={16} />`, tooltip: *"Search Mode (Click to switch to Quick Add)"*.
-- **Resolution of "+/@" discrepancy:**
+- **Proposed interpretation of "+/@" wording:**
   - Old Nil contained no literal "+/@" button. The button beside search is the Search/Plus mode toggle.
   - Beside it sits the Session Context button (`<Target size={16} />`).
   - Nil's capture syntax uses `+` for projects and `@` for contexts.
   - The specification retains the explicit `Search` / `Plus` mode toggle and introduces an
-    optional syntax token menu for inserting `+project` and `@context` filters.
+    optional syntax token menu for inserting `+project` and `@context` filters, seeking owner confirmation.
 
 ---
 
@@ -264,8 +278,8 @@ rapid 360-degree inline action dispatch for cards and rows.
 
 | Key | Context | Behavior |
 | --- | --- | --- |
-| `Space` | Row focused (`e.target === e.currentTarget`) | Toggles row selection checkbox. (Folds Nil's `x` key into standard grid selection). |
-| `Enter` | Row focused | Opens inspection / edit modal for the focused item. |
+| `Enter` | Row focused (`e.target === e.currentTarget`) | Inspects / opens record detail dialog (preserves `Operations.tsx` baseline). |
+| `Space` | Row focused | **Baseline:** inspects record (per `Operations.tsx:619`). **Proposed alternative:** in Inbox view, toggles selection checkbox. |
 | `p` | Row focused in Inbox view | **Process:** moves inbox item to active/today list. |
 | `a` | Row focused in Inbox view | **Archive:** archives the item. |
 | `d` | Row focused in Inbox view | **Delete:** deletes or prompts deletion for the item. |
@@ -278,7 +292,7 @@ with roving tabindex. They are NEVER registered on `window` and NEVER active ins
 
 ### 2.8 Directional navigation matrix (Lists, Dialogs, Boards)
 
-To resolve directional ambiguity across the suite, Parallax establishes an orthogonal 2D model:
+To resolve directional ambiguity across the suite, Parallax specifies an orthogonal 2D model:
 
 ```
                         ▲  ArrowUp (Previous row in list / card above in board)
@@ -298,7 +312,7 @@ To resolve directional ambiguity across the suite, Parallax establishes an ortho
    - `ArrowLeft` / `ArrowRight` navigates previous / next record along the admitted sequence.
    - Supports explicit `boundaryPolicy: "wrap" | "stop"`.
    - `ArrowUp` / `ArrowDown` scrolls the modal body or navigates internal form fields.
-3. **Multi-column boards (kanban):**
+3. **Multi-column boards (kanban):** Proposed model:
    - `ArrowLeft` / `ArrowRight` moves focus horizontally between columns / swimlanes.
    - `ArrowUp` / `ArrowDown` moves focus vertically between cards within the column.
 4. **Precedence:** When an inspection dialog is open over a board or table, the dialog's
@@ -313,11 +327,12 @@ Derived from Nil's `EditItemModal.tsx:59-62`, expanded to all dialogs per DEC-NI
 - **Affordance:** A header action button rendering `<Maximize2 size={13} />` (when bounded) or
   `<Minimize2 size={13} />` (when fullscreen), with `aria-label="Toggle fullscreen"`.
 - **Transitions and geometry:**
-  - Bounded (default): `width: min(720px, 95vw); height: min(750px, calc(100vh - 40px)); border-radius: var(--radius-lg);`.
+  - Bounded (default): width uses scale token `var(--modal-max-w, 720px)`, max-height bounded
+    to dynamic viewport with `var(--radius-lg)` border radius.
   - Fullscreen: `width: 100vw; height: 100vh; border-radius: 0; border: none; inset: 0;`.
 - **Persistence policy:**
-  - **Default (proposed):** Resets to bounded default size on every opening (matching Nil's
-    proven implementation to avoid visual disorientation).
+  - **Proposed default:** Resets to bounded default size on every opening (matching the author's
+    stated comment intent, preventing unexpected full-screen takeover).
   - **Opt-in session persistence:** If confirmed by owner, store preference in `sessionStorage`
     keyed by dialog archetype (`parallax.dialog.fullscreen.<archetype>`), persisting across
     openings within the session and clearing upon tab close.
@@ -336,7 +351,7 @@ specification MUST adhere to the project's reproducibility rules:
      event timestamps.
 2. **Styling and tokens:**
    - Token-only rule: spacing, typography, and palette must reference design-tokens
-     (`var(--term-*)`, design-tokens 0.4.0), with no arbitrary color or sizing literals.
+     (`@hollis-labs/design-tokens` 0.4.0), with no arbitrary color or sizing literals.
 3. **Synthetic vs native event claims:**
    - Automated tests using synthetic `isComposing`, `keyCode: 229`, or simulated Touch events
      prove event forwarding and state logic only.
@@ -353,15 +368,16 @@ This document is the design deliverable for CW-20261010-0089. Downstream tasks m
 the following dependency and authority gates:
 
 ```mermaid
-flowchart LR
-    Task0089["CW-20261010-0089: Behavior Spec (this task)"] --> TechReview["Manager Independent Technical Review"]
+flowchart TD
+    Task0089["CW-20261010-0089: Behavior Spec & Decision Sheet"] --> TechReview["Manager Independent Technical Review"]
     TechReview --> OwnerReview["Chrispian Owner Confirmation (Decision Sheet)"]
-    OwnerReview --> Task0090["CW-20261010-0090: Layered Esc & Focus Stack"]
-    OwnerReview --> Task0091["CW-20261010-0091: Quick Search Palette (Cmd+K / Shift-Shift)"]
-    OwnerReview --> Task0092["CW-20261010-0092: Radial Menu Component"]
-    Task0090 --> Task0093["CW-20261010-0093: Nil Recreation Example in Parallax"]
+    OwnerReview --> Task0090["CW-20261010-0090: Shortcut registry + Esc stack"]
+    OwnerReview --> Task0091["CW-20261010-0091: useLongPress + Radial menu"]
+    OwnerReview --> Task0092["CW-20261010-0092: Fullscreen, focus props, search palette, cycle, nav"]
+    Task0090 --> Task0093["CW-20261010-0093: Nil recreation example in Parallax"]
     Task0091 --> Task0093
     Task0092 --> Task0093
+    Task0073["CW-20261010-0073: Ops-list view (kit-dashboard)"] --> Task0093
 ```
 
 - **Scope boundary:** No npm publishing, no version bumps, no credentials, and no implementation
