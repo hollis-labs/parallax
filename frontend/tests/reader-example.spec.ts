@@ -100,7 +100,12 @@ test.describe("Reader Example Standalone", () => {
 
     // Guarded negative: composition / native 229 diagnostic must NOT trigger activation
     await card.evaluate((el) => {
-      const ev = new KeyboardEvent("keydown", { key: "Enter", keyCode: 229, bubbles: true, cancelable: true })
+      const ev = new KeyboardEvent("keydown", {
+        key: "Enter",
+        keyCode: 229,
+        bubbles: true,
+        cancelable: true,
+      })
       el.dispatchEvent(ev)
     })
     await expect(page.getByRole("dialog")).toHaveCount(0)
@@ -333,15 +338,23 @@ test.describe("Reader Example Standalone", () => {
 
     // Verify theme-specific resolved color differences (Sysop Green Phosphor vs Nanite Default)
     await page.goto("/?example=reader&theme=sysop-green-phosphor&mode=dark")
-    const greenColor = await page.locator(".reader-example").evaluate((el) => window.getComputedStyle(el).color)
+    const greenColor = await page
+      .locator(".reader-example")
+      .evaluate((el) => window.getComputedStyle(el).color)
     await page.goto("/?example=reader&theme=nanite-default&mode=dark")
-    const naniteColor = await page.locator(".reader-example").evaluate((el) => window.getComputedStyle(el).color)
+    const naniteColor = await page
+      .locator(".reader-example")
+      .evaluate((el) => window.getComputedStyle(el).color)
     expect(greenColor).not.toEqual(naniteColor)
 
     // Verify mode differences (Dark vs Light background on Nanite Default)
-    const naniteDarkBg = await page.locator(".reader-example").evaluate((el) => window.getComputedStyle(el).backgroundColor)
+    const naniteDarkBg = await page
+      .locator(".reader-example")
+      .evaluate((el) => window.getComputedStyle(el).backgroundColor)
     await page.goto("/?example=reader&theme=nanite-default&mode=light")
-    const naniteLightBg = await page.locator(".reader-example").evaluate((el) => window.getComputedStyle(el).backgroundColor)
+    const naniteLightBg = await page
+      .locator(".reader-example")
+      .evaluate((el) => window.getComputedStyle(el).backgroundColor)
     expect(naniteDarkBg).not.toEqual(naniteLightBg)
   })
 })

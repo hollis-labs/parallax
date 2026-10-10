@@ -10,7 +10,7 @@ function Portable({ state: initial = defaultReaderState }: { state?: ReaderExamp
     const root = document.documentElement
     const oldTheme = root.dataset.theme
     const oldMode = root.dataset.mode
-    applyTheme(state.theme)
+    applyTheme(state.theme as any)
     root.dataset.mode = state.mode
     return () => {
       if (oldTheme) root.dataset.theme = oldTheme
