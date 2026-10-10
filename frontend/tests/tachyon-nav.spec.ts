@@ -318,3 +318,27 @@ test("subnav refuses IME/229/modifier and competing owner while editable composi
   await tasks.press("ArrowRight")
   await expect(page).toHaveURL(/#\/work\/board$/)
 })
+
+test("narrow module drawer owns roving arrows and yields to newer popup", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 420 })
+  await page.goto(`${entry}#/work`)
+  await page.getByRole("button", { name: "Modules", exact: true }).click()
+  const drawer = page.getByRole("dialog", { name: "Module drawer", exact: true })
+  const agents = drawer.getByRole("button", { name: "Agents", exact: true })
+  await agents.focus()
+  await page.keyboard.press("ArrowDown")
+  await expect(drawer.getByRole("button", { name: "Agent Ops", exact: true })).toBeFocused()
+  await page.evaluate(() => {
+    const newer = document.createElement("div")
+    newer.id = "drawer-newer"
+    newer.setAttribute("role", "listbox")
+    newer.textContent = "New layer"
+    document.body.append(newer)
+  })
+  await page.keyboard.press("ArrowDown")
+  await expect(drawer.getByRole("button", { name: "Agent Ops", exact: true })).toBeFocused()
+  await page.locator("#drawer-newer").evaluate((el) => el.remove())
+  await page.keyboard.press("Escape")
+  await expect(drawer).toHaveCount(0)
+  await expect(page.getByRole("button", { name: "Modules", exact: true })).toBeFocused()
+})

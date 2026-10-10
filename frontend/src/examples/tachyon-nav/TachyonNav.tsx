@@ -376,6 +376,7 @@ function GroupFlyout({
     accessible,
     onTrigger: () => {},
   }).isLive
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Reset controlled popup on source/access or Activity activation, including unchanged state preserved while hidden.
   useLayoutEffect(() => {
     setOpen(false)
   }, [generation, accessible])

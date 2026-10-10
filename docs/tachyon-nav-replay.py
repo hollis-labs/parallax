@@ -39,7 +39,9 @@ def tree(path):
 receipt = {"head": head, "mode": mode, "archive_sha256": sha(archive),
            "source_files": tree(stage), "stage": str(stage),
            "lock_sha256": sha(stage / "frontend/package-lock.json"),
-           "archives": tree(stage / "third_party")}
+           "archives": tree(stage / "third_party"),
+           "tooling_bytes": {name: tree(root / ".scratch/tooling" / name) for name in ["chromium", "libs", "fonts"]},
+           "fonts_conf_sha256": sha(root / ".scratch/tooling/fonts.conf")}
 (stage / ".scratch/tmp").mkdir(parents=True)
 if mode == "fresh":
     receipt["dependency_mode"] = "fresh npm ci in exact source stage; owned npm cache may supply fetched bytes"
@@ -59,6 +61,7 @@ else:
     receipt["dependency_mode"] = "retained owned npm-ci installation; original emitted hashes retained, port-mapped artifacts rebuilt; no fresh-install claim"
     (stage / "frontend/node_modules").symlink_to(root / "frontend/node_modules", target_is_directory=True)
     receipt["installed_hollis_bytes"] = tree(root / "frontend/node_modules/@hollis-labs")
+    receipt["installed_external_bytes"] = {name: tree(root / "frontend/node_modules" / name) for name in ["@base-ui/react", "react", "react-dom", "playwright", "@playwright/test"]}
     receipt["storybook_bytes"] = tree(root / ".scratch/storybook")
     receipt["webui_bytes"] = tree(root / "internal/webui/dist")
     receipt["go_binary_sha256"] = sha(root / ".scratch/parallax")
