@@ -6,7 +6,7 @@ const inspection = (page: Page) =>
   page.getByRole("dialog", { name: "Task and run inspection", exact: true })
 const title = (page: Page) =>
   inspection(page).getByRole("heading", { name: "Task and run inspection", exact: true })
-const record = (page: Page) => inspection(page).locator(".torque-inspection-header p")
+const record = (page: Page) => inspection(page).locator('[data-slot="inspection-header"] p')
 const rows = (page: Page) => page.locator("tbody tr[data-task-id]")
 
 // Hold the authored callback, rather than a Base UI handler that reads a live ref.

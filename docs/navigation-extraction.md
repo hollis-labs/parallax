@@ -29,7 +29,10 @@ fiber can point at an older alternate and make a negative-only test vacuous.
 
 Proof artifacts live in this task's .scratch/extraction-proof. The immutable
 standalone-proof snapshot preserves navigation-only source/candidate evidence;
-final combined evidence is recorded separately after actual main reconciliation.
+final combined evidence is recorded separately in .scratch/combined-proof after
+normal reconciliation against actual chrome consumer main706e90b. Torque and
+Messaging retain InspectionDialog; the pinned combined archive contains both public
+APIs from landed design-kit tree d1e6241b9fb735ccce3b627bf913515574e72c61.
 Original0009's68 artifacts and0011's58 artifacts were verified unchanged and
 never overwritten. Synthetic isComposing/229/start/end and injected native-control
 or child-overlay diagnostics do not prove native OS IME. Physical touchscreen is
