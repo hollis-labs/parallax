@@ -5,6 +5,8 @@ import {
   DropdownMenuTrigger,
   ROW_INTERACTIVE_SELECTOR,
   rowInteractiveProps,
+  useQuickSearchShortcut,
+  useShortcut,
 } from "@hollis-labs/design-components"
 import {
   BookOpen,
@@ -228,31 +230,13 @@ export function TorqueOperations({
         visible.some((r) => selected.includes(r.task.id)) &&
         !visible.every((r) => selected.includes(r.task.id))
   })
-  useEffect(() => {
-    function shortcut(e: KeyboardEvent) {
-      const target = e.target
-      if (
-        e.key !== "/" ||
-        e.defaultPrevented ||
-        e.isComposing ||
-        e.keyCode === 229 ||
-        e.ctrlKey ||
-        e.metaKey ||
-        e.altKey ||
-        e.shiftKey ||
-        document.querySelector('[role="dialog"], [role="menu"]') ||
-        (target instanceof Element &&
-          target.closest(
-            'input, textarea, select, button, a, [contenteditable]:not([contenteditable="false"]), [role="textbox"], [role="combobox"], [role="slider"], [role="spinbutton"], [role="tablist"], [role="listbox"], [role="tree"], [role="grid"], [role="radiogroup"]',
-          ))
-      )
-        return
-      e.preventDefault()
-      anchorRef.current?.focus()
-    }
-    window.addEventListener("keydown", shortcut)
-    return () => window.removeEventListener("keydown", shortcut)
-  }, [anchorRef])
+  useShortcut({
+    key: "/",
+    onTrigger: () => anchorRef.current?.focus(),
+  })
+  useQuickSearchShortcut({
+    onOpen: () => anchorRef.current?.focus(),
+  })
   const cursorIds = JSON.stringify(visible.map((r) => r.task.id))
   useLayoutEffect(() => {
     onCursor({ identity, ids: JSON.parse(cursorIds) })
@@ -338,7 +322,14 @@ export function TorqueOperations({
               ) {
                 e.preventDefault()
                 e.stopPropagation()
-                if (admitted()) onQuery("")
+                if (typeof e.nativeEvent?.stopImmediatePropagation === "function") {
+                  e.nativeEvent.stopImmediatePropagation()
+                }
+                if (state.query !== "") {
+                  if (admitted()) onQuery("")
+                } else {
+                  anchorRef.current?.blur()
+                }
               }
             }}
           />

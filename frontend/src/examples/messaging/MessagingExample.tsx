@@ -4,6 +4,7 @@ import {
   InspectionDialog,
   JsonViewer,
   OverlaySidebar,
+  useLayeredEscape,
 } from "@hollis-labs/design-components"
 import { ChatInput } from "@hollis-labs/kit-chat"
 import { StatusBadge } from "@hollis-labs/kit-dashboard"
@@ -77,6 +78,15 @@ export function MessagingExample({
       if (raf.current !== null) cancelAnimationFrame(raf.current)
     }
   }, [identity])
+
+  useLayeredEscape({
+    active: Boolean(inspection),
+    onEscape: () => {
+      close()
+      return "closed"
+    },
+    trigger: () => origin.current,
+  })
   const admitted = () =>
     life.current.alive && life.current.lease === token && rendered.current === identity
   function transition(fn: () => void) {
@@ -306,6 +316,22 @@ export function MessagingExample({
                     aria-label="Find messaging contacts"
                     value={state.query}
                     onChange={(e) => change({ query: e.target.value })}
+                    onKeyDown={(e) => {
+                      if (
+                        e.key === "Escape" &&
+                        !e.nativeEvent.isComposing &&
+                        e.nativeEvent.keyCode !== 229
+                      ) {
+                        if (state.query !== "") {
+                          e.preventDefault()
+                          e.stopPropagation()
+                          if (typeof e.nativeEvent?.stopImmediatePropagation === "function") {
+                            e.nativeEvent.stopImmediatePropagation()
+                          }
+                          change({ query: "" })
+                        }
+                      }
+                    }}
                   />
                 </label>
                 <p>
@@ -400,6 +426,22 @@ export function MessagingExample({
                   aria-label="Search messaging conversations"
                   value={state.query}
                   onChange={(e) => change({ query: e.target.value })}
+                  onKeyDown={(e) => {
+                    if (
+                      e.key === "Escape" &&
+                      !e.nativeEvent.isComposing &&
+                      e.nativeEvent.keyCode !== 229
+                    ) {
+                      if (state.query !== "") {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        if (typeof e.nativeEvent?.stopImmediatePropagation === "function") {
+                          e.nativeEvent.stopImmediatePropagation()
+                        }
+                        change({ query: "" })
+                      }
+                    }
+                  }}
                 />
               </label>
               {state.contact && (

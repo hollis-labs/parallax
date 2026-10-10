@@ -2,6 +2,7 @@ import {
   Button,
   InspectionDialog,
   useControlledRecordNavigation,
+  useLayeredEscape,
 } from "@hollis-labs/design-components"
 import { useRef } from "react"
 import type { OperationsModel, RunDetail } from "../../operations/model"
@@ -51,6 +52,18 @@ export function TaskInspection({
     boundaryPolicy: "wrap",
     onSelect,
   })
+
+  useLayeredEscape({
+    active: open,
+    accessible: model.accessible,
+    onEscape: () => {
+      onClose()
+      return "closed"
+    },
+    trigger: returnTarget,
+    sourceGeneration: identity,
+  })
+
   const position = navigation.position
   const metadata = detail ? operationsMetadata[detail.task.id] : undefined
   return (
