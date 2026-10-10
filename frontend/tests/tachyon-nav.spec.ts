@@ -342,3 +342,26 @@ test("narrow module drawer owns roving arrows and yields to newer popup", async 
   await expect(drawer).toHaveCount(0)
   await expect(page.getByRole("button", { name: "Modules", exact: true })).toBeFocused()
 })
+test("review: native Shift+Tab exits subnav while modified arrows remain vetoed", async ({ page }) => {
+  await page.goto(`${entry}#/work`)
+  const tasks = page.getByRole("tab", { name: "Tasks", exact: true })
+  await tasks.focus()
+  await tasks.press("Shift+ArrowRight")
+  await expect(page).toHaveURL(/#\/work$/)
+  await expect(tasks).toBeFocused()
+  await tasks.press("Shift+Tab")
+  await expect(page.getByRole("textbox", { name: "Local navigation note" })).toBeFocused()
+})
+test("review: child requires admitted parent with admitted topology positive", async () => {
+  const { fixture, admitFixture } = await import("../src/examples/tachyon-nav/model")
+  const base = fixture("populated")
+  const result = admitFixture(base.groups, [...base.items,
+    { id: "refused-parent", label: "Refused parent", group: "work", route: "/dashboard", owner: "fixture" },
+    { id: "child-of-refused", label: "Refused child", group: "work", route: "/fixture-child", owner: "fixture", parent: "refused-parent" },
+    { id: "admitted-parent", label: "Admitted parent", group: "work", route: "/fixture-parent", owner: "fixture" },
+    { id: "child-of-admitted", label: "Admitted child", group: "work", route: "/fixture-parent/child", owner: "fixture", parent: "admitted-parent" },
+  ])
+  expect(result.items.some(item => item.id === "child-of-refused")).toBe(false)
+  expect(result.refusals.some(item => item.id === "child-of-refused" && /parent/i.test(item.reason))).toBe(true)
+  expect(result.items.some(item => item.id === "child-of-admitted")).toBe(true)
+})
