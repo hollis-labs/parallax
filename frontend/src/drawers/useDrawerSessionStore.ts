@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useMemo, useSyncExternalStore } from "react"
+import { useCallback, useMemo, useSyncExternalStore } from "react"
 import { DRAWER_GEOMETRY } from "./geometry"
 import type {
   ChatPrimaryDrawerSessionState,
@@ -386,90 +386,90 @@ export function clearAllDrawerSessions() {
   saveStore({})
 }
 
-function subscribe(listener: () => void) {
-  listeners.add(listener)
-  return () => {
-    listeners.delete(listener)
-  }
-}
-
 export function useDrawerSession(sessionId: string) {
-  // Each admitted session lifetime is distinct, including A → B → A.
-  const admission = useMemo(() => ({ active: false, sessionId }), [sessionId])
-  useLayoutEffect(() => {
-    admission.active = true
-    return () => {
-      admission.active = false
-    }
-  }, [admission])
-
-  const getSnapshot = useCallback(() => {
-    return JSON.stringify(getDrawerSessionState(sessionId))
-  }, [sessionId])
-
-  const rawState = useSyncExternalStore(subscribe, getSnapshot, getSnapshot)
-  const state: DrawerSessionState = rawState ? JSON.parse(rawState) : emptySessionState()
+  // A subscription activation is a lease. Cleanup permanently retires its epoch,
+  // even when React reconnects the same hook after StrictMode or Activity cleanup.
+  const admission = useMemo(() => ({ active: false, epoch: 0, sessionId }), [sessionId])
+  const subscribeSession = useCallback(
+    (listener: () => void) => {
+      const activation = ++admission.epoch
+      admission.active = true
+      listeners.add(listener)
+      listener()
+      return () => {
+        listeners.delete(listener)
+        if (admission.epoch === activation) admission.active = false
+      }
+    },
+    [admission],
+  )
+  const getSnapshot = useCallback(
+    () => JSON.stringify([admission.epoch, getDrawerSessionState(sessionId)]),
+    [sessionId, admission],
+  )
+  const rawState = useSyncExternalStore(subscribeSession, getSnapshot, getSnapshot)
+  const [epoch, state]: [number, DrawerSessionState] = JSON.parse(rawState)
 
   const setPrimary = useCallback(
     (patch: Partial<ChatPrimaryDrawerSessionState>) => {
-      if (!admission.active) return
+      if (!admission.active || admission.epoch !== epoch) return
       setPrimaryDrawerState(sessionId, patch)
     },
-    [sessionId, admission],
+    [sessionId, admission, epoch],
   )
 
   const setWorking = useCallback(
     (patch: Partial<ChatWorkingDrawerSessionState>) => {
-      if (!admission.active) return
+      if (!admission.active || admission.epoch !== epoch) return
       setWorkingDrawerState(sessionId, patch)
     },
-    [sessionId, admission],
+    [sessionId, admission, epoch],
   )
 
   const appendCard = useCallback(
     (tab: DynamicCardTab) => {
-      if (!admission.active) return
+      if (!admission.active || admission.epoch !== epoch) return
       appendWorkingDrawerCardTab(sessionId, tab)
     },
-    [sessionId, admission],
+    [sessionId, admission, epoch],
   )
 
   const removeCard = useCallback(
     (tabId: string) => {
-      if (!admission.active) return
+      if (!admission.active || admission.epoch !== epoch) return
       removeWorkingDrawerCardTab(sessionId, tabId)
     },
-    [sessionId, admission],
+    [sessionId, admission, epoch],
   )
 
   const togglePinCard = useCallback(
     (tabId: string) => {
-      if (!admission.active) return
+      if (!admission.active || admission.epoch !== epoch) return
       togglePinWorkingDrawerCardTab(sessionId, tabId)
     },
-    [sessionId, admission],
+    [sessionId, admission, epoch],
   )
 
   const pinCard = useCallback(
     (card: DrawerPinnedCard) => {
-      if (!admission.active) return
+      if (!admission.active || admission.epoch !== epoch) return
       pinPrimaryDrawerCard(sessionId, card)
     },
-    [sessionId, admission],
+    [sessionId, admission, epoch],
   )
 
   const unpinCard = useCallback(
     (cardId: string) => {
-      if (!admission.active) return
+      if (!admission.active || admission.epoch !== epoch) return
       unpinPrimaryDrawerCard(sessionId, cardId)
     },
-    [sessionId, admission],
+    [sessionId, admission, epoch],
   )
 
   const reset = useCallback(() => {
-    if (!admission.active) return
+    if (!admission.active || admission.epoch !== epoch) return
     resetDrawerSession(sessionId)
-  }, [sessionId, admission])
+  }, [sessionId, admission, epoch])
 
   return {
     primaryDrawer: state.primaryDrawer,
