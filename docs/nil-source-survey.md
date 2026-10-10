@@ -46,7 +46,9 @@ registration, priority arbitration, or input-field collision prevention.
      unless intercepted earlier.
    - **`Cmd+K` does not exist anywhere in `apps/nil`**. In Nil, quick search is mapped to `Cmd+S`
      (`KeyboardScope.tsx:44`) or `Shift+Shift` (`KeyboardScope.tsx:23`). Primary `Cmd+K` is a new
-     direction introduced by the owner in DEC-073.
+     direction established by the owner (relayed via planner/tracker handoffs
+     `01M4HR38D2BWASTS5FQ8WF01X1` / `01M4HV1FTKSY20B9RKVPNY683E`; DEC-073 authorizes the
+     propose-then-confirm process).
 
 2. **`frontend/src/pages/App.tsx:108-128`**:
    - `Cmd+Shift+V` / `Ctrl+Shift+V` → `setShowVaultSwitcher(v => !v)` (lines 110–113).
