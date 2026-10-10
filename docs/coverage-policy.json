@@ -1396,8 +1396,8 @@
         "."
       ],
       "disposition": "partial",
-      "reason": "CW-20261010-0091 unpublished local candidate from landed KIT PR109. Exact KIT source/archive/installed bytes and bounded author native/emulation receipts independently reviewed; isolated Nil and message specimens pass 13 controls. Paired consumer source/pin acceptance remains pending; no physical touch or OS IME claim.",
-      "nextAction": "Complete paired configured gate and independent consumer source/pin review before marking reviewed; physical touch and OS IME remain untested.",
+      "reason": "CW-20261010-0091 unpublished local candidate from landed KIT PR109. Exact KIT source/archive/installed bytes and bounded author native/emulation receipts independently reviewed; isolated Nil and message specimens exercise 13 named controls. This disposition tracks bounded local evidence, not exhaustive public-state, physical touch or OS IME coverage.",
+      "nextAction": "Retain named source/pin and acceptance receipts; extend evidence for additional public states or hardware contexts before claiming exhaustive coverage.",
       "evidence": {
         "pages": [
           "frontend/src/nil-radial/Specimen.tsx",

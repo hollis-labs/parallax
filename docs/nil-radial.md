@@ -40,8 +40,9 @@ The authored prototype preceded upstream promotion. Its source snapshot and
 hash map are retained under the owned `.scratch/nil-radial/prototype-source`
 directory. Final source/archive/installed provenance, raw browser output,
 screenshots and gate logs are retained in the same owned evidence directory.
-Coverage disposition remains partial until independent source and receipt
-acceptance. Author checks are not manager acceptance.
+Coverage tracks the named local specimens. Author native execution and
+independent source/byte review are attributed separately; task receipts record
+acceptance.
 
 `frontend/tests/nil-radial.spec.ts` covers Chromium mouse holds, actual keyboard
 actions, release custody, replacement, edge bounds at 1280×800 and 390×420,
