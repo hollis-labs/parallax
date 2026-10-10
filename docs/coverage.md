@@ -79,3 +79,11 @@ The twenty-seventh bounded batch reviews eight exact design-components 0.4.0 Com
 The twenty-eighth bounded batch independently reviews nine released base exports in [Event Ledger](event-ledger-review.md): semantic Table with its seven named sections/cells plus ScrollArea. Current admitted operations event/log rows, independent authored metadata specimens, exact UTC fields and native bounded vertical keyboard scrolling have concrete model/story/browser pointers. Implicit ScrollBar remains deferred. Totals139 reviewed/179 partial/985 deferred/5 unsupported,315 exact imports. Untested variants and supporting helpers remain partial/deferred. Ten portable states bring the catalogue to370 stories and the finite Workbench to29 destinations; the cmdk relation gap remains open under CW-20261008-0037.
 
 The twenty-ninth bounded batch independently reviews four installed root exports in [Appearance Review](appearance-review.md): ThemePicker, ModeToggle, Checkbox and default-size Switch. Actual native selection/Space/checked paint, isolated semantic token roles, purposeful annotation/density flags, exact companion and fresh system listener with retired scope callbacks have concrete stories/checks. Root convenience aliases and universal nested dark-utility isolation are not claimed. Totals143 reviewed/179 partial/981 deferred/5 unsupported,319 exact imports. Ten portable states bring the catalogue to380 stories and30 finite destinations; no persistence/dependencies/business effects. Helpers/untested variants remain partial/deferred and CW-20261008-0037 remains unresolved.
+
+CW-20261010-0074 adds the standalone `?example=ops-shell` and portable
+`Templates/Operations Shell` review family: one public AppShell, fixture chat,
+generic Run Explorer projection with public OperationsListPage inline/modal
+inspectors. Its [behavior/owner review notes](ops-shell-example.md) and
+`frontend/tests/ops-shell.spec.ts` bound the new evidence. Inventory imports are
+regenerated from the actual candidate declarations. This adds composition evidence
+without promoting every shared export/state to exhaustive or owner-approved status.

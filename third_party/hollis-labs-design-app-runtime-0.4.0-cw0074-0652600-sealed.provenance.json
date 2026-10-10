@@ -1,0 +1,11 @@
+{
+  "head": "0652600275d14186c500e14311a1532390660501",
+  "tree": "1fd3661dfe5473e65fa62830d43d77b2ef304d69",
+  "base": "f317ba8",
+  "package": "design-app-runtime",
+  "sha256": "2dd65c8a0e5cbc2a40f39e5f31e6311a8cfcf1cd5010cfc74afb58833ab95136",
+  "sourceArchiveSha256": "3eae8c1c08f3c378020ed301faf15c9ffa92865b74a6f86d6bec39ed4ac86730",
+  "build": "affected package typecheck/lint/test:run/build and design-rules-gate PASS; .scratch/logs/kit-gate-final.log",
+  "publication": false,
+  "sealBuild": "components-exact-seal-build.log; source-map source content checked against sealed commit; runtime unchanged"
+}
