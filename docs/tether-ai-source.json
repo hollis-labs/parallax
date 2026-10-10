@@ -18,9 +18,10 @@
     "frontend/src/examples/tether-ai/main.tsx": "1961f4e8466316ae96967907700afb124e47c1c31a83490841f554bfab8ddbda",
     "frontend/src/examples/tether-ai/model.ts": "5f6abb93b1c0e093a2af152f95c57da2e6471b8e131a077994bcd6b21fb859d6",
     "frontend/src/main.tsx": "4b1df2571149c0085cd779ee43e71ffb8f65871818d5b8d1ac5e82d2ed333d49",
-    "frontend/src/tether-sysop/AIGatewayPage.tsx": "99bc494f6973cda88bc7b9add10a9924084db7fd4b8c052a326d464fab33b9d4",
+    "frontend/src/tether-sysop/AIGatewayPage.tsx": "e23aaf9413a36a28352b3d34dbe6a2b23e2cd09dfb1fddef95d7fe20b1b183c1",
     "frontend/src/tether-sysop/tether-ai.css": "c900d76fb3b6c907fea70969645fcb079126845eb25eb10e9a24ce0cff60615e",
-    "frontend/tests/tether-ai.spec.ts": "98d0ec6f5b205e0971a72037db6b14a1628fb8b59c2ffb92ec6f789c2f697768",
+    "frontend/tests/fixtures/ai-lifecycle.tsx": "95649c4b06e43d40f04d7d1154d8acc4340e4dbebdb7fe1595746530ca71e7d1",
+    "frontend/tests/tether-ai.spec.ts": "79a8ec3b65920f1e74e9a61ae3031b9bc9fd32e9ed5d00a358d8ca09f6f4d841",
     "frontend/tether-ai.html": "e38ce021f08ce6e1755f46624abe25119a4583f009f5b76091cb370bf874596a"
   },
   "installed_pins": {

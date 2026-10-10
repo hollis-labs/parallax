@@ -384,39 +384,93 @@ test.describe("Tether Sysop AI Gateway Recreation", () => {
     await page.goto("/?example=tether&screen=ai")
     await expect(page.locator("header.tether-ai-header")).toBeVisible()
 
-    // 1. Capture the ACTUAL once-working DOM Refresh handler cb1 while on variant standard
-    const initialRefreshResult = await page.evaluate(() => {
+    // 1. Capture the ACTUAL once-working DOM Refresh, Load, Open, and Save handlers while on variant standard
+    const initialPositives = await page.evaluate(() => {
       const w = window as unknown as {
         __tetherAIActiveRefreshHandler?: () => boolean
+        __tetherAIActiveLoadHandler?: () => boolean
+        __tetherAIActiveOpenProvider?: () => boolean
+        __tetherAIActiveSaveConfig?: () => boolean
+        __tetherAIActiveReloadDaemon?: () => boolean
         __capturedRefreshCb1?: () => boolean
+        __capturedLoadCb1?: () => boolean
+        __capturedOpenProviderCb1?: () => boolean
+        __capturedSaveConfigCb1?: () => boolean
+        __capturedReloadDaemonCb1?: () => boolean
       }
       w.__capturedRefreshCb1 = w.__tetherAIActiveRefreshHandler
-      return typeof w.__capturedRefreshCb1 === "function" ? w.__capturedRefreshCb1() : false
+      w.__capturedLoadCb1 = w.__tetherAIActiveLoadHandler
+      w.__capturedOpenProviderCb1 = w.__tetherAIActiveOpenProvider
+      w.__capturedSaveConfigCb1 = w.__tetherAIActiveSaveConfig
+      w.__capturedReloadDaemonCb1 = w.__tetherAIActiveReloadDaemon
+
+      return {
+        refresh: typeof w.__capturedRefreshCb1 === "function" ? w.__capturedRefreshCb1() : false,
+        load: typeof w.__capturedLoadCb1 === "function" ? w.__capturedLoadCb1() : false,
+        save: typeof w.__capturedSaveConfigCb1 === "function" ? w.__capturedSaveConfigCb1() : false,
+        reload:
+          typeof w.__capturedReloadDaemonCb1 === "function" ? w.__capturedReloadDaemonCb1() : false,
+      }
     })
-    expect(initialRefreshResult).toBe(true) // Fresh positive on initial mounted actual DOM handler
+    expect(initialPositives.refresh).toBe(true)
+    expect(initialPositives.load).toBe(true)
+    expect(initialPositives.save).toBe(true)
+    expect(initialPositives.reload).toBe(true)
 
     // 2. Switch variant in-page (SAME document, NO page.goto)
     const select = page.getByRole("combobox", { name: "Dataset variant" })
     await select.selectOption("blocked-health")
     await expect(page).toHaveURL(/variant=blocked-health/)
 
-    // 3. Verify that the SAME captured actual handler cb1 permanently refuses execution now that variant replaced the lease
-    const cb1AfterVariantChange = await page.evaluate(() => {
-      const w = window as unknown as { __capturedRefreshCb1?: () => boolean }
-      return typeof w.__capturedRefreshCb1 === "function" ? w.__capturedRefreshCb1() : true
+    // 3. Verify that the SAME captured actual handlers permanently refuse execution now that variant replaced the lease
+    const refusalsAfterVariantChange = await page.evaluate(() => {
+      const w = window as unknown as {
+        __capturedRefreshCb1?: () => boolean
+        __capturedLoadCb1?: () => boolean
+        __capturedOpenProviderCb1?: () => boolean
+        __capturedSaveConfigCb1?: () => boolean
+        __capturedReloadDaemonCb1?: () => boolean
+      }
+      return {
+        refresh: typeof w.__capturedRefreshCb1 === "function" ? w.__capturedRefreshCb1() : true,
+        load: typeof w.__capturedLoadCb1 === "function" ? w.__capturedLoadCb1() : true,
+        open:
+          typeof w.__capturedOpenProviderCb1 === "function" ? w.__capturedOpenProviderCb1() : true,
+        save: typeof w.__capturedSaveConfigCb1 === "function" ? w.__capturedSaveConfigCb1() : true,
+        reload:
+          typeof w.__capturedReloadDaemonCb1 === "function" ? w.__capturedReloadDaemonCb1() : true,
+      }
     })
-    expect(cb1AfterVariantChange).toBe(false) // Permanently refused! Non-reviving!
+    expect(refusalsAfterVariantChange.refresh).toBe(false) // Permanently refused!
+    expect(refusalsAfterVariantChange.load).toBe(false)
+    expect(refusalsAfterVariantChange.open).toBe(false)
+    expect(refusalsAfterVariantChange.save).toBe(false)
+    expect(refusalsAfterVariantChange.reload).toBe(false)
 
-    // 4. Verify fresh positive for the newly registered active DOM handler cb2
+    // 4. Verify fresh positive for the newly registered active DOM handlers under the new lease
     const cb2Result = await page.evaluate(() => {
       const w = window as unknown as {
         __tetherAIActiveRefreshHandler?: () => boolean
+        __tetherAIActiveLoadHandler?: () => boolean
+        __tetherAIActiveSaveConfig?: () => boolean
         __capturedRefreshCb2?: () => boolean
       }
       w.__capturedRefreshCb2 = w.__tetherAIActiveRefreshHandler
-      return typeof w.__capturedRefreshCb2 === "function" ? w.__capturedRefreshCb2() : false
+      return {
+        refresh: typeof w.__capturedRefreshCb2 === "function" ? w.__capturedRefreshCb2() : false,
+        load:
+          typeof w.__tetherAIActiveLoadHandler === "function"
+            ? w.__tetherAIActiveLoadHandler()
+            : false,
+        save:
+          typeof w.__tetherAIActiveSaveConfig === "function"
+            ? w.__tetherAIActiveSaveConfig()
+            : false,
+      }
     })
-    expect(cb2Result).toBe(true) // Fresh positive on cb2!
+    expect(cb2Result.refresh).toBe(true)
+    expect(cb2Result.load).toBe(true)
+    expect(cb2Result.save).toBe(true)
 
     // 5. Test hidden overlay does NOT spuriously veto cb2:
     await page.evaluate(() => {
@@ -571,24 +625,29 @@ test.describe("Tether Sysop AI Gateway Recreation", () => {
     await expect(detailDialog).toBeVisible()
     await expect(detailDialog.getByText("Provider anthropic")).toBeVisible()
 
-    // 2. Capture the active detail close callback and verify fresh positive
-    const initialDetailTicket = await page.evaluate(() => {
+    // 2. Capture the active detail close callback and verify entity/ticket identity
+    const initialDetailInfo = await page.evaluate(() => {
       const w = window as unknown as {
         __tetherAIActiveCloseDetail?: () => boolean
+        __tetherAIActiveEditProvider?: (p: unknown) => boolean
         __capturedDetailClose?: () => boolean
+        __capturedDetailEdit?: (p: unknown) => boolean
         __tetherAIDetailTicket?: number
+        __tetherAIDetailEntityId?: string
       }
       w.__capturedDetailClose = w.__tetherAIActiveCloseDetail
-      return w.__tetherAIDetailTicket ?? 0
+      w.__capturedDetailEdit = w.__tetherAIActiveEditProvider
+      return {
+        ticket: w.__tetherAIDetailTicket ?? 0,
+        entityId: w.__tetherAIDetailEntityId ?? "",
+      }
     })
-    expect(initialDetailTicket).toBeGreaterThan(0)
+    expect(initialDetailInfo.ticket).toBeGreaterThan(0)
+    expect(initialDetailInfo.entityId).toBe("provider::anthropic")
 
-    // Close detail dialog via the captured callback
-    const closeResult = await page.evaluate(() => {
-      const w = window as unknown as { __capturedDetailClose?: () => boolean }
-      return typeof w.__capturedDetailClose === "function" ? w.__capturedDetailClose() : false
-    })
-    expect(closeResult).toBe(true) // Fresh positive while own popup was active!
+    // Close detail dialog normally via the close button (do NOT call the captured callback yet)
+    const closeBtn = page.getByRole("button", { name: "Close", exact: true })
+    await closeBtn.click()
     await expect(detailDialog).not.toBeVisible()
 
     // 3. Now open a COMPLETELY DIFFERENT dialog: ProviderDialog ("Add provider (specimen)")
@@ -600,15 +659,33 @@ test.describe("Tether Sysop AI Gateway Recreation", () => {
     await expect(providerDialog).toBeVisible()
     await expect(providerDialog.getByText("Add AI provider (specimen)")).toBeVisible()
 
-    // 4. Crucial assertion: Invoke the RETAINED detail close callback (__capturedDetailClose)
-    // Even though there is a visible dialog in the DOM ([role="dialog"]),
-    // the retained detail close callback MUST REFUSE (return false)
-    // because its own popup has retired and the visible dialog is a foreign popup!
+    const popupBInfo = await page.evaluate(() => {
+      const w = window as unknown as {
+        __tetherAIProviderTicket?: number
+        __tetherAIProviderEntityId?: string
+      }
+      return {
+        ticket: w.__tetherAIProviderTicket ?? 0,
+        entityId: w.__tetherAIProviderEntityId ?? "",
+      }
+    })
+    // Strictly monotonic ticket sequence guarantee
+    expect(popupBInfo.ticket).toBeGreaterThan(initialDetailInfo.ticket)
+    expect(popupBInfo.entityId).not.toEqual(initialDetailInfo.entityId)
+
+    // 4. Crucial assertion: Invoke the RETAINED detail close & edit callbacks from popupA
+    // Even though popupB is visibly open in the DOM ([role="dialog"]),
+    // the retained popupA callbacks MUST REFUSE (return false)
+    // because its own popup has retired and the visible dialog is a foreign popup with a different ticket and entity ID!
     const retainedDetailCloseResult = await page.evaluate(() => {
       const w = window as unknown as { __capturedDetailClose?: () => boolean }
       return typeof w.__capturedDetailClose === "function" ? w.__capturedDetailClose() : true
     })
     expect(retainedDetailCloseResult).toBe(false) // REFUSED! Exact popup identity enforced!
+
+    // Crucially: Assert popupB is STILL open and visible after the refused invocation!
+    await expect(providerDialog).toBeVisible()
+    await expect(providerDialog.getByText("Add AI provider (specimen)")).toBeVisible()
 
     // 5. Fresh positive: Active provider dialog handler (__tetherAIActiveCloseProvider) SUCCEEDS
     const activeProviderCloseResult = await page.evaluate(() => {
@@ -777,6 +854,51 @@ test.describe("Tether Sysop AI Gateway Recreation", () => {
     // Cleanup
     await page.evaluate(() => {
       document.getElementById("temp-overlay-during-load")?.remove()
+    })
+  })
+
+  test("React Activity lifecycle, committed lease allocation, and popup custody across hide/show with in-flight overlay completion", async ({
+    page,
+    baseURL,
+  }) => {
+    const sourceBase =
+      process.env.TETHER_AI_SOURCE_URL ||
+      (baseURL?.includes(":19021") ? "http://127.0.0.1:19025" : baseURL || "http://127.0.0.1:19025")
+    await page.setViewportSize({ width: 1280, height: 800 })
+    await page.goto(`${sourceBase}/?example=tether&screen=ai`)
+    await expect(page.locator("header.tether-ai-header")).toBeVisible()
+
+    const results = await page.evaluate(async () => {
+      const path = "/tests/fixtures/ai-lifecycle.tsx"
+      const mod = await import(path)
+      return mod.aiLifecycleExercise()
+    })
+
+    expect(results).toEqual({
+      positiveInitial: true,
+      refusedWhileHidden: true,
+      retainedRemainsRetired: true,
+      freshRecovery: true,
+      leaseAdvanced: true,
+      competingDialogVeto: true,
+      competingMenuVeto: true,
+      competingListboxVeto: true,
+      competingRemovedRecovery: true,
+      dataClosedAdmitted: true,
+      dataClosedAncestorAdmitted: true,
+      hiddenAncestorAdmitted: true,
+      displayNoneAncestorAdmitted: true,
+      opacityZeroAncestorAdmitted: true,
+      zeroRectDialogAdmitted: true,
+      refusedAfterVariantChange: true,
+      freshAfterVariantChange: true,
+      ticketBAdvanced: true,
+      distinctEntities: true,
+      retainedCloseRefusedOnForeignPopup: true,
+      popupBRemainsOpenAfterRetainedClose: true,
+      freshPopupBCloseSucceeds: true,
+      popupBClosedAfterFreshClose: true,
+      retainedCloseStillRefused: true,
     })
   })
 })

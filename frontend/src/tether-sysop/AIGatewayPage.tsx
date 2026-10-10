@@ -878,8 +878,33 @@ const budgetColumns: ColumnDef<AIBudgetInfo>[] = [
 ]
 
 let globalAILeaseSeq = 0
+let globalAITicketSeq = 0
 export const activeAILeases = new Set<number>()
 export const retiredAILeases = new Set<number>()
+
+export function getDetailEntityId(view: DetailView | null): string {
+  if (!view) return ""
+  switch (view.kind) {
+    case "provider":
+      return `provider::${view.item.id}`
+    case "route":
+      return `route::${routeKey(view.item)}`
+    case "audit":
+      return `audit::${view.item.id}`
+    case "budget":
+      return `budget::${view.item.provider}::${view.item.model || "*"}`
+  }
+}
+
+export function getProviderFormEntityId(form: ProviderFormState | null): string {
+  if (!form) return ""
+  return `provider-form::${form.originalID || form.id || "new"}`
+}
+
+export function getRouteFormEntityId(form: RouteFormState | null): string {
+  if (!form) return ""
+  return `route-form::${form.originalKey || `${form.provider}::${form.model}` || "new"}`
+}
 
 export function isElementVisibleAndActive(el: HTMLElement): boolean {
   if (!el.isConnected) return false
@@ -1046,19 +1071,25 @@ export function AIGatewayPage({
 
   // Bound popup DOM refs and entity/open tickets
   const detailTicketRef = useRef(0)
+  const detailEntityIdRef = useRef("")
   const [detailTicket, setDetailTicket] = useState(0)
+  const [detailEntityId, setDetailEntityId] = useState("")
   const detailDialogRef = useRef<HTMLDivElement | null>(null)
   const detailViewRef = useRef<DetailView | null>(null)
   detailViewRef.current = detailView
 
   const providerTicketRef = useRef(0)
+  const providerEntityIdRef = useRef("")
   const [providerTicket, setProviderTicket] = useState(0)
+  const [providerEntityId, setProviderEntityId] = useState("")
   const providerDialogRef = useRef<HTMLDivElement | null>(null)
   const providerFormRef = useRef<ProviderFormState | null>(null)
   providerFormRef.current = providerForm
 
   const routeTicketRef = useRef(0)
+  const routeEntityIdRef = useRef("")
   const [routeTicket, setRouteTicket] = useState(0)
+  const [routeEntityId, setRouteEntityId] = useState("")
   const routeDialogRef = useRef<HTMLDivElement | null>(null)
   const routeFormRef = useRef<RouteFormState | null>(null)
   routeFormRef.current = routeForm
@@ -1121,11 +1152,11 @@ export function AIGatewayPage({
   const api = useMemo(() => createTetherSysopMockApi(currentVariant), [currentVariant])
 
   const load = useCallback((): boolean => {
-    const capturedLease = currentLeaseRef.current
-    if (!isAdmitted(capturedLease)) {
+    if (!isAdmitted(activationLease)) {
       return false
     }
 
+    const capturedLease = activationLease
     const capturedVariant = currentVariant
     const requestLease = ++requestSeqRef.current
 
@@ -1205,7 +1236,15 @@ export function AIGatewayPage({
         setLoading(false)
       })
     return true
-  }, [api, currentVariant, forcedAppearance, forcedErrorMessage, isAdmitted, isSourceValid])
+  }, [
+    activationLease,
+    api,
+    currentVariant,
+    forcedAppearance,
+    forcedErrorMessage,
+    isAdmitted,
+    isSourceValid,
+  ])
 
   useEffect(() => {
     if (forcedAppearance === "error") {
@@ -1443,217 +1482,350 @@ export function AIGatewayPage({
 
   const handleOpenDetail = useCallback(
     (view: DetailView): boolean => {
-      if (!isAdmitted(currentLeaseRef.current)) return false
-      detailTicketRef.current += 1
-      const ticket = detailTicketRef.current
-      setDetailTicket(ticket)
+      if (!isAdmitted(activationLease)) return false
+      const nextTicket = ++globalAITicketSeq
+      const nextEntityId = getDetailEntityId(view)
+      detailTicketRef.current = nextTicket
+      detailEntityIdRef.current = nextEntityId
+      setDetailTicket(nextTicket)
+      setDetailEntityId(nextEntityId)
       setDetailView(view)
       return true
     },
-    [isAdmitted],
+    [activationLease, isAdmitted],
   )
 
-  const handleCloseDetail = useCallback((): boolean => {
-    const ticket = detailTicketRef.current
-    if (ticket === 0 || !detailViewRef.current) return false
-    const container = detailDialogRef.current
-    if (!container?.isConnected) return false
-    if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
-    const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
-    if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
-    detailTicketRef.current = 0
-    setDetailTicket(0)
-    setDetailView(null)
-    return true
-  }, [isAdmitted])
-
-  const handleOpenAddProvider = useCallback((): boolean => {
-    if (!isAdmitted(currentLeaseRef.current)) return false
-    providerTicketRef.current += 1
-    const ticket = providerTicketRef.current
-    setProviderTicket(ticket)
-    setProviderForm(emptyProviderForm())
-    return true
-  }, [isAdmitted])
-
-  const handleOpenAddRoute = useCallback((): boolean => {
-    if (!isAdmitted(currentLeaseRef.current)) return false
-    routeTicketRef.current += 1
-    const ticket = routeTicketRef.current
-    setRouteTicket(ticket)
-    setRouteForm(emptyRouteForm())
-    return true
-  }, [isAdmitted])
-
-  const handleEditProvider = useCallback(
-    (provider: AIProviderSettingsInfo): boolean => {
-      const ticket = detailTicketRef.current
-      if (ticket === 0 || !detailViewRef.current) return false
+  const handleCloseDetail = useCallback(
+    (capturedTicket?: number, capturedEntityId?: string): boolean => {
+      const ticketToVerify = capturedTicket ?? detailTicketRef.current
+      const entityToVerify = capturedEntityId ?? detailEntityIdRef.current
+      if (ticketToVerify === 0 || ticketToVerify !== detailTicketRef.current) return false
+      if (
+        !entityToVerify ||
+        entityToVerify !== detailEntityIdRef.current ||
+        !detailViewRef.current
+      ) {
+        return false
+      }
       const container = detailDialogRef.current
       if (!container?.isConnected) return false
-      if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
+      if (container.getAttribute("data-dialog-ticket") !== String(ticketToVerify)) return false
+      if (container.getAttribute("data-dialog-entity") !== entityToVerify) return false
       const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
-      if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
+      if (!isAdmitted(activationLease, ownedPopup)) return false
       detailTicketRef.current = 0
+      detailEntityIdRef.current = ""
       setDetailTicket(0)
+      setDetailEntityId("")
+      setDetailView(null)
+      return true
+    },
+    [activationLease, isAdmitted],
+  )
+
+  const handleOpenAddProvider = useCallback((): boolean => {
+    if (!isAdmitted(activationLease)) return false
+    const nextTicket = ++globalAITicketSeq
+    const nextEntityId = "provider-form::new"
+    providerTicketRef.current = nextTicket
+    providerEntityIdRef.current = nextEntityId
+    setProviderTicket(nextTicket)
+    setProviderEntityId(nextEntityId)
+    setProviderForm(emptyProviderForm())
+    return true
+  }, [activationLease, isAdmitted])
+
+  const handleOpenAddRoute = useCallback((): boolean => {
+    if (!isAdmitted(activationLease)) return false
+    const nextTicket = ++globalAITicketSeq
+    const nextEntityId = "route-form::new"
+    routeTicketRef.current = nextTicket
+    routeEntityIdRef.current = nextEntityId
+    setRouteTicket(nextTicket)
+    setRouteEntityId(nextEntityId)
+    setRouteForm(emptyRouteForm())
+    return true
+  }, [activationLease, isAdmitted])
+
+  const handleEditProvider = useCallback(
+    (
+      capturedTicket: number,
+      capturedEntityId: string,
+      provider: AIProviderSettingsInfo,
+    ): boolean => {
+      if (capturedTicket === 0 || capturedTicket !== detailTicketRef.current) return false
+      if (
+        !capturedEntityId ||
+        capturedEntityId !== detailEntityIdRef.current ||
+        !detailViewRef.current
+      ) {
+        return false
+      }
+      const container = detailDialogRef.current
+      if (!container?.isConnected) return false
+      if (container.getAttribute("data-dialog-ticket") !== String(capturedTicket)) return false
+      if (container.getAttribute("data-dialog-entity") !== capturedEntityId) return false
+      const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
+      if (!isAdmitted(activationLease, ownedPopup)) return false
+
+      detailTicketRef.current = 0
+      detailEntityIdRef.current = ""
+      setDetailTicket(0)
+      setDetailEntityId("")
       setDetailView(null)
 
-      providerTicketRef.current += 1
-      const pTicket = providerTicketRef.current
-      setProviderTicket(pTicket)
+      const nextTicket = ++globalAITicketSeq
+      const nextEntityId = `provider-form::${provider.id}`
+      providerTicketRef.current = nextTicket
+      providerEntityIdRef.current = nextEntityId
+      setProviderTicket(nextTicket)
+      setProviderEntityId(nextEntityId)
       setProviderForm(providerToForm(provider))
       return true
     },
-    [isAdmitted],
+    [activationLease, isAdmitted],
   )
 
   const handleEditRoute = useCallback(
-    (route: AIRouteSettingsInfo): boolean => {
-      const ticket = detailTicketRef.current
-      if (ticket === 0 || !detailViewRef.current) return false
+    (capturedTicket: number, capturedEntityId: string, route: AIRouteSettingsInfo): boolean => {
+      if (capturedTicket === 0 || capturedTicket !== detailTicketRef.current) return false
+      if (
+        !capturedEntityId ||
+        capturedEntityId !== detailEntityIdRef.current ||
+        !detailViewRef.current
+      ) {
+        return false
+      }
       const container = detailDialogRef.current
       if (!container?.isConnected) return false
-      if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
+      if (container.getAttribute("data-dialog-ticket") !== String(capturedTicket)) return false
+      if (container.getAttribute("data-dialog-entity") !== capturedEntityId) return false
       const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
-      if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
+      if (!isAdmitted(activationLease, ownedPopup)) return false
+
       detailTicketRef.current = 0
+      detailEntityIdRef.current = ""
       setDetailTicket(0)
+      setDetailEntityId("")
       setDetailView(null)
 
-      routeTicketRef.current += 1
-      const rTicket = routeTicketRef.current
-      setRouteTicket(rTicket)
+      const nextTicket = ++globalAITicketSeq
+      const nextEntityId = `route-form::${routeKey(route)}`
+      routeTicketRef.current = nextTicket
+      routeEntityIdRef.current = nextEntityId
+      setRouteTicket(nextTicket)
+      setRouteEntityId(nextEntityId)
       setRouteForm(routeToForm(route))
       return true
     },
-    [isAdmitted],
+    [activationLease, isAdmitted],
   )
 
-  const handleCloseProviderForm = useCallback((): boolean => {
-    const ticket = providerTicketRef.current
-    if (ticket === 0 || !providerFormRef.current) return false
-    const container = providerDialogRef.current
-    if (!container?.isConnected) return false
-    if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
-    const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
-    if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
-    providerTicketRef.current = 0
-    setProviderTicket(0)
-    setProviderForm(null)
-    return true
-  }, [isAdmitted])
-
-  const handleCloseRouteForm = useCallback((): boolean => {
-    const ticket = routeTicketRef.current
-    if (ticket === 0 || !routeFormRef.current) return false
-    const container = routeDialogRef.current
-    if (!container?.isConnected) return false
-    if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
-    const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
-    if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
-    routeTicketRef.current = 0
-    setRouteTicket(0)
-    setRouteForm(null)
-    return true
-  }, [isAdmitted])
-
-  const handleProviderFormChange = useCallback(
-    (next: ProviderFormState | null): boolean => {
-      const ticket = providerTicketRef.current
-      if (ticket === 0 || !providerFormRef.current) return false
+  const handleCloseProviderForm = useCallback(
+    (capturedTicket?: number, capturedEntityId?: string): boolean => {
+      const ticketToVerify = capturedTicket ?? providerTicketRef.current
+      const entityToVerify = capturedEntityId ?? providerEntityIdRef.current
+      if (ticketToVerify === 0 || ticketToVerify !== providerTicketRef.current) return false
+      if (
+        !entityToVerify ||
+        entityToVerify !== providerEntityIdRef.current ||
+        !providerFormRef.current
+      ) {
+        return false
+      }
       const container = providerDialogRef.current
       if (!container?.isConnected) return false
-      if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
+      if (container.getAttribute("data-dialog-ticket") !== String(ticketToVerify)) return false
+      if (container.getAttribute("data-dialog-entity") !== entityToVerify) return false
       const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
-      if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
+      if (!isAdmitted(activationLease, ownedPopup)) return false
+      providerTicketRef.current = 0
+      providerEntityIdRef.current = ""
+      setProviderTicket(0)
+      setProviderEntityId("")
+      setProviderForm(null)
+      return true
+    },
+    [activationLease, isAdmitted],
+  )
+
+  const handleCloseRouteForm = useCallback(
+    (capturedTicket?: number, capturedEntityId?: string): boolean => {
+      const ticketToVerify = capturedTicket ?? routeTicketRef.current
+      const entityToVerify = capturedEntityId ?? routeEntityIdRef.current
+      if (ticketToVerify === 0 || ticketToVerify !== routeTicketRef.current) return false
+      if (!entityToVerify || entityToVerify !== routeEntityIdRef.current || !routeFormRef.current) {
+        return false
+      }
+      const container = routeDialogRef.current
+      if (!container?.isConnected) return false
+      if (container.getAttribute("data-dialog-ticket") !== String(ticketToVerify)) return false
+      if (container.getAttribute("data-dialog-entity") !== entityToVerify) return false
+      const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
+      if (!isAdmitted(activationLease, ownedPopup)) return false
+      routeTicketRef.current = 0
+      routeEntityIdRef.current = ""
+      setRouteTicket(0)
+      setRouteEntityId("")
+      setRouteForm(null)
+      return true
+    },
+    [activationLease, isAdmitted],
+  )
+
+  const handleProviderFormChange = useCallback(
+    (
+      next: ProviderFormState | null,
+      capturedTicket?: number,
+      capturedEntityId?: string,
+    ): boolean => {
+      const ticketToVerify = capturedTicket ?? providerTicketRef.current
+      const entityToVerify = capturedEntityId ?? providerEntityIdRef.current
+      if (ticketToVerify === 0 || ticketToVerify !== providerTicketRef.current) return false
+      if (
+        !entityToVerify ||
+        entityToVerify !== providerEntityIdRef.current ||
+        !providerFormRef.current
+      ) {
+        return false
+      }
+      const container = providerDialogRef.current
+      if (!container?.isConnected) return false
+      if (container.getAttribute("data-dialog-ticket") !== String(ticketToVerify)) return false
+      if (container.getAttribute("data-dialog-entity") !== entityToVerify) return false
+      const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
+      if (!isAdmitted(activationLease, ownedPopup)) return false
       setProviderForm(next)
       return true
     },
-    [isAdmitted],
+    [activationLease, isAdmitted],
   )
 
   const handleRouteFormChange = useCallback(
-    (next: RouteFormState | null): boolean => {
-      const ticket = routeTicketRef.current
-      if (ticket === 0 || !routeFormRef.current) return false
+    (next: RouteFormState | null, capturedTicket?: number, capturedEntityId?: string): boolean => {
+      const ticketToVerify = capturedTicket ?? routeTicketRef.current
+      const entityToVerify = capturedEntityId ?? routeEntityIdRef.current
+      if (ticketToVerify === 0 || ticketToVerify !== routeTicketRef.current) return false
+      if (!entityToVerify || entityToVerify !== routeEntityIdRef.current || !routeFormRef.current) {
+        return false
+      }
       const container = routeDialogRef.current
       if (!container?.isConnected) return false
-      if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
+      if (container.getAttribute("data-dialog-ticket") !== String(ticketToVerify)) return false
+      if (container.getAttribute("data-dialog-entity") !== entityToVerify) return false
       const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
-      if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
+      if (!isAdmitted(activationLease, ownedPopup)) return false
       setRouteForm(next)
       return true
     },
-    [isAdmitted],
+    [activationLease, isAdmitted],
   )
 
   // Effectful write controls are INERT fixture specimens
   const saveConfig = useCallback((): boolean => {
-    if (!isAdmitted(currentLeaseRef.current)) return false
+    if (!isAdmitted(activationLease)) return false
     setMessage(
       "Fixture specimen: save is inert. Local drafts are demonstration-only and not persisted.",
     )
     return true
-  }, [isAdmitted])
+  }, [activationLease, isAdmitted])
 
   const reloadDaemon = useCallback((): boolean => {
-    if (!isAdmitted(currentLeaseRef.current)) return false
+    if (!isAdmitted(activationLease)) return false
     setMessage("Fixture specimen: daemon reload is inert. Presentation and inspection only.")
     return true
-  }, [isAdmitted])
+  }, [activationLease, isAdmitted])
 
-  const saveProvider = useCallback((): boolean => {
-    const ticket = providerTicketRef.current
-    if (ticket === 0 || !providerFormRef.current) return false
-    const container = providerDialogRef.current
-    if (!container?.isConnected) return false
-    if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
-    const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
-    if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
-    setMessage("Fixture specimen: provider changes are inert and not persisted.")
-    return true
-  }, [isAdmitted])
+  const saveProvider = useCallback(
+    (capturedTicket?: number, capturedEntityId?: string): boolean => {
+      const ticketToVerify = capturedTicket ?? providerTicketRef.current
+      const entityToVerify = capturedEntityId ?? providerEntityIdRef.current
+      if (ticketToVerify === 0 || ticketToVerify !== providerTicketRef.current) return false
+      if (
+        !entityToVerify ||
+        entityToVerify !== providerEntityIdRef.current ||
+        !providerFormRef.current
+      ) {
+        return false
+      }
+      const container = providerDialogRef.current
+      if (!container?.isConnected) return false
+      if (container.getAttribute("data-dialog-ticket") !== String(ticketToVerify)) return false
+      if (container.getAttribute("data-dialog-entity") !== entityToVerify) return false
+      const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
+      if (!isAdmitted(activationLease, ownedPopup)) return false
+      setMessage("Fixture specimen: provider changes are inert and not persisted.")
+      return true
+    },
+    [activationLease, isAdmitted],
+  )
 
   const deleteProvider = useCallback(
-    (_provider: AIProviderSettingsInfo): boolean => {
-      const ticket = detailTicketRef.current
-      if (ticket === 0 || !detailViewRef.current) return false
+    (
+      capturedTicket: number,
+      capturedEntityId: string,
+      _provider: AIProviderSettingsInfo,
+    ): boolean => {
+      if (capturedTicket === 0 || capturedTicket !== detailTicketRef.current) return false
+      if (
+        !capturedEntityId ||
+        capturedEntityId !== detailEntityIdRef.current ||
+        !detailViewRef.current
+      ) {
+        return false
+      }
       const container = detailDialogRef.current
       if (!container?.isConnected) return false
-      if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
+      if (container.getAttribute("data-dialog-ticket") !== String(capturedTicket)) return false
+      if (container.getAttribute("data-dialog-entity") !== capturedEntityId) return false
       const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
-      if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
+      if (!isAdmitted(activationLease, ownedPopup)) return false
       setMessage("Fixture specimen: provider deletion is inert and not persisted.")
       return true
     },
-    [isAdmitted],
+    [activationLease, isAdmitted],
   )
 
-  const saveRoute = useCallback((): boolean => {
-    const ticket = routeTicketRef.current
-    if (ticket === 0 || !routeFormRef.current) return false
-    const container = routeDialogRef.current
-    if (!container?.isConnected) return false
-    if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
-    const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
-    if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
-    setMessage("Fixture specimen: route changes are inert and not persisted.")
-    return true
-  }, [isAdmitted])
+  const saveRoute = useCallback(
+    (capturedTicket?: number, capturedEntityId?: string): boolean => {
+      const ticketToVerify = capturedTicket ?? routeTicketRef.current
+      const entityToVerify = capturedEntityId ?? routeEntityIdRef.current
+      if (ticketToVerify === 0 || ticketToVerify !== routeTicketRef.current) return false
+      if (!entityToVerify || entityToVerify !== routeEntityIdRef.current || !routeFormRef.current) {
+        return false
+      }
+      const container = routeDialogRef.current
+      if (!container?.isConnected) return false
+      if (container.getAttribute("data-dialog-ticket") !== String(ticketToVerify)) return false
+      if (container.getAttribute("data-dialog-entity") !== entityToVerify) return false
+      const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
+      if (!isAdmitted(activationLease, ownedPopup)) return false
+      setMessage("Fixture specimen: route changes are inert and not persisted.")
+      return true
+    },
+    [activationLease, isAdmitted],
+  )
 
   const deleteRoute = useCallback(
-    (_route: AIRouteSettingsInfo): boolean => {
-      const ticket = detailTicketRef.current
-      if (ticket === 0 || !detailViewRef.current) return false
+    (capturedTicket: number, capturedEntityId: string, _route: AIRouteSettingsInfo): boolean => {
+      if (capturedTicket === 0 || capturedTicket !== detailTicketRef.current) return false
+      if (
+        !capturedEntityId ||
+        capturedEntityId !== detailEntityIdRef.current ||
+        !detailViewRef.current
+      ) {
+        return false
+      }
       const container = detailDialogRef.current
       if (!container?.isConnected) return false
-      if (container.getAttribute("data-dialog-ticket") !== String(ticket)) return false
+      if (container.getAttribute("data-dialog-ticket") !== String(capturedTicket)) return false
+      if (container.getAttribute("data-dialog-entity") !== capturedEntityId) return false
       const ownedPopup = (container.closest('[role="dialog"]') ?? container) as HTMLElement
-      if (!isAdmitted(currentLeaseRef.current, ownedPopup)) return false
+      if (!isAdmitted(activationLease, ownedPopup)) return false
       setMessage("Fixture specimen: route deletion is inert and not persisted.")
       return true
     },
-    [isAdmitted],
+    [activationLease, isAdmitted],
   )
 
   // Register active DOM handlers and lease state on window for custody verification
@@ -1665,6 +1837,11 @@ export function AIGatewayPage({
       __tetherAIActiveVariantHandler?: (next: OverviewVariantKey) => boolean
       __tetherAIActiveTabHandler?: (next: AITabKey) => boolean
       __tetherAIActiveLoadHandler?: () => boolean
+      __tetherAIActiveOpenDetail?: (view: DetailView) => boolean
+      __tetherAIActiveOpenProvider?: () => boolean
+      __tetherAIActiveOpenRoute?: () => boolean
+      __tetherAIActiveSaveConfig?: () => boolean
+      __tetherAIActiveReloadDaemon?: () => boolean
       __tetherAIActivationLease?: number
       __tetherAIActiveLeases?: Set<number>
       __tetherAIRetiredLeases?: Set<number>
@@ -1672,31 +1849,66 @@ export function AIGatewayPage({
       __tetherAICallbackHistory?: Array<() => boolean>
       __tetherAIActiveCloseDetail?: () => boolean
       __tetherAIActiveEditProvider?: (provider: AIProviderSettingsInfo) => boolean
+      __tetherAIActiveEditRoute?: (route: AIRouteSettingsInfo) => boolean
       __tetherAIActiveCloseProvider?: () => boolean
       __tetherAIActiveSaveProvider?: () => boolean
+      __tetherAIActiveProviderFormChange?: (next: ProviderFormState | null) => boolean
       __tetherAIActiveCloseRoute?: () => boolean
       __tetherAIActiveSaveRoute?: () => boolean
+      __tetherAIActiveRouteFormChange?: (next: RouteFormState | null) => boolean
       __tetherAIDetailTicket?: number
+      __tetherAIDetailEntityId?: string
       __tetherAIProviderTicket?: number
+      __tetherAIProviderEntityId?: string
       __tetherAIRouteTicket?: number
+      __tetherAIRouteEntityId?: string
     }
     w.__tetherAIActiveRefreshHandler = handleRefresh
     w.__tetherAIActiveVariantHandler = handleVariantChange
     w.__tetherAIActiveTabHandler = handleTabChange
     w.__tetherAIActiveLoadHandler = load
+    w.__tetherAIActiveOpenDetail = handleOpenDetail
+    w.__tetherAIActiveOpenProvider = handleOpenAddProvider
+    w.__tetherAIActiveOpenRoute = handleOpenAddRoute
+    w.__tetherAIActiveSaveConfig = saveConfig
+    w.__tetherAIActiveReloadDaemon = reloadDaemon
     w.__tetherAIActivationLease = activationLease
     w.__tetherAIActiveLeases = activeAILeases
     w.__tetherAIRetiredLeases = retiredAILeases
     w.__tetherAIRetainedCallback = handleRefresh
-    w.__tetherAIActiveCloseDetail = detailView ? handleCloseDetail : undefined
-    w.__tetherAIActiveEditProvider = detailView ? handleEditProvider : undefined
-    w.__tetherAIActiveCloseProvider = providerForm ? handleCloseProviderForm : undefined
-    w.__tetherAIActiveSaveProvider = providerForm ? saveProvider : undefined
-    w.__tetherAIActiveCloseRoute = routeForm ? handleCloseRouteForm : undefined
-    w.__tetherAIActiveSaveRoute = routeForm ? saveRoute : undefined
+    w.__tetherAIActiveCloseDetail = detailView
+      ? () => handleCloseDetail(detailTicket, detailEntityId)
+      : undefined
+    w.__tetherAIActiveEditProvider = detailView
+      ? (p) => handleEditProvider(detailTicket, detailEntityId, p)
+      : undefined
+    w.__tetherAIActiveEditRoute = detailView
+      ? (r) => handleEditRoute(detailTicket, detailEntityId, r)
+      : undefined
+    w.__tetherAIActiveCloseProvider = providerForm
+      ? () => handleCloseProviderForm(providerTicket, providerEntityId)
+      : undefined
+    w.__tetherAIActiveSaveProvider = providerForm
+      ? () => saveProvider(providerTicket, providerEntityId)
+      : undefined
+    w.__tetherAIActiveProviderFormChange = providerForm
+      ? (next) => handleProviderFormChange(next, providerTicket, providerEntityId)
+      : undefined
+    w.__tetherAIActiveCloseRoute = routeForm
+      ? () => handleCloseRouteForm(routeTicket, routeEntityId)
+      : undefined
+    w.__tetherAIActiveSaveRoute = routeForm
+      ? () => saveRoute(routeTicket, routeEntityId)
+      : undefined
+    w.__tetherAIActiveRouteFormChange = routeForm
+      ? (next) => handleRouteFormChange(next, routeTicket, routeEntityId)
+      : undefined
     w.__tetherAIDetailTicket = detailTicket
+    w.__tetherAIDetailEntityId = detailEntityId
     w.__tetherAIProviderTicket = providerTicket
+    w.__tetherAIProviderEntityId = providerEntityId
     w.__tetherAIRouteTicket = routeTicket
+    w.__tetherAIRouteEntityId = routeEntityId
 
     if (!w.__tetherAICallbackHistory) {
       w.__tetherAICallbackHistory = []
@@ -1704,20 +1916,31 @@ export function AIGatewayPage({
     w.__tetherAICallbackHistory.push(handleRefresh)
   }, [
     activationLease,
+    detailEntityId,
     detailTicket,
     detailView,
     handleCloseDetail,
     handleCloseProviderForm,
     handleCloseRouteForm,
     handleEditProvider,
+    handleEditRoute,
+    handleOpenAddProvider,
+    handleOpenAddRoute,
+    handleOpenDetail,
+    handleProviderFormChange,
     handleRefresh,
+    handleRouteFormChange,
     handleTabChange,
     handleVariantChange,
     load,
+    providerEntityId,
     providerForm,
     providerTicket,
+    reloadDaemon,
+    routeEntityId,
     routeForm,
     routeTicket,
+    saveConfig,
     saveProvider,
     saveRoute,
   ])
@@ -2118,29 +2341,32 @@ export function AIGatewayPage({
       <ProviderDialog
         form={providerForm}
         ticket={providerTicket}
+        entityId={providerEntityId}
         containerRef={providerDialogRef}
         catalog={providerForm ? providerCatalogs[providerForm.type] : undefined}
-        onChange={handleProviderFormChange}
-        onClose={handleCloseProviderForm}
-        onSave={saveProvider}
+        onChange={(next) => handleProviderFormChange(next, providerTicket, providerEntityId)}
+        onClose={() => handleCloseProviderForm(providerTicket, providerEntityId)}
+        onSave={() => saveProvider(providerTicket, providerEntityId)}
       />
       <RouteDialog
         form={routeForm}
         ticket={routeTicket}
+        entityId={routeEntityId}
         containerRef={routeDialogRef}
-        onChange={handleRouteFormChange}
-        onClose={handleCloseRouteForm}
-        onSave={saveRoute}
+        onChange={(next) => handleRouteFormChange(next, routeTicket, routeEntityId)}
+        onClose={() => handleCloseRouteForm(routeTicket, routeEntityId)}
+        onSave={() => saveRoute(routeTicket, routeEntityId)}
       />
       <AIDetailDialog
         detail={detailView}
         ticket={detailTicket}
+        entityId={detailEntityId}
         containerRef={detailDialogRef}
-        onClose={handleCloseDetail}
-        onEditProvider={handleEditProvider}
-        onDeleteProvider={deleteProvider}
-        onEditRoute={handleEditRoute}
-        onDeleteRoute={deleteRoute}
+        onClose={() => handleCloseDetail(detailTicket, detailEntityId)}
+        onEditProvider={(provider) => handleEditProvider(detailTicket, detailEntityId, provider)}
+        onDeleteProvider={(provider) => deleteProvider(detailTicket, detailEntityId, provider)}
+        onEditRoute={(route) => handleEditRoute(detailTicket, detailEntityId, route)}
+        onDeleteRoute={(route) => deleteRoute(detailTicket, detailEntityId, route)}
       />
     </div>
   )
@@ -2149,6 +2375,7 @@ export function AIGatewayPage({
 function ProviderDialog({
   form,
   ticket,
+  entityId,
   containerRef,
   catalog,
   onChange,
@@ -2157,6 +2384,7 @@ function ProviderDialog({
 }: {
   form: ProviderFormState | null
   ticket: number
+  entityId: string
   containerRef: React.RefObject<HTMLDivElement | null>
   catalog?: AIProviderCatalogInfo
   onChange: (next: ProviderFormState | null) => void
@@ -2237,7 +2465,12 @@ function ProviderDialog({
         </div>
       }
     >
-      <div ref={containerRef} data-dialog-ticket={ticket} data-dialog-type="provider">
+      <div
+        ref={containerRef}
+        data-dialog-ticket={ticket}
+        data-dialog-entity={entityId}
+        data-dialog-type="provider"
+      >
         {form && (
           <>
             <DetailSection title="Provider">
@@ -2391,6 +2624,7 @@ function ProviderDialog({
 function RouteDialog({
   form,
   ticket,
+  entityId,
   containerRef,
   onChange,
   onClose,
@@ -2398,6 +2632,7 @@ function RouteDialog({
 }: {
   form: RouteFormState | null
   ticket: number
+  entityId: string
   containerRef: React.RefObject<HTMLDivElement | null>
   onChange: (next: RouteFormState | null) => void
   onClose: () => void
@@ -2429,7 +2664,12 @@ function RouteDialog({
         </div>
       }
     >
-      <div ref={containerRef} data-dialog-ticket={ticket} data-dialog-type="route">
+      <div
+        ref={containerRef}
+        data-dialog-ticket={ticket}
+        data-dialog-entity={entityId}
+        data-dialog-type="route"
+      >
         {form && (
           <>
             <DetailSection title="Route">
@@ -2515,6 +2755,7 @@ function RouteDialog({
 function AIDetailDialog({
   detail,
   ticket,
+  entityId,
   containerRef,
   onClose,
   onEditProvider,
@@ -2524,6 +2765,7 @@ function AIDetailDialog({
 }: {
   detail: DetailView | null
   ticket: number
+  entityId: string
   containerRef: React.RefObject<HTMLDivElement | null>
   onClose: () => void
   onEditProvider: (provider: AIProviderSettingsInfo) => void
@@ -2619,7 +2861,12 @@ function AIDetailDialog({
       }
       widthClassName="w-[760px] max-w-[calc(100vw-2rem)]"
     >
-      <div ref={containerRef} data-dialog-ticket={ticket} data-dialog-type="detail">
+      <div
+        ref={containerRef}
+        data-dialog-ticket={ticket}
+        data-dialog-entity={entityId}
+        data-dialog-type="detail"
+      >
         {provider && (
           <>
             <DetailSection title="Provider">
