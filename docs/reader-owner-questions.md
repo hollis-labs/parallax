@@ -63,3 +63,39 @@
 * **Question:** How should visual media (article preview images, gallery slides, video posters) be delivered?
 * **Proposed Default:** Embedded as self-contained SVG data URIs directly within `reader-example.json`.
 * **Rationale:** Eliminates external network requests, avoids blob URL leakages, and guarantees reproducible rendering across test suites, Storybook, and headless CI environments.
+
+### 10. Standalone Detail Route Scheme & Scope Preservation
+
+* **Question:** What is the canonical route structure for the standalone Reader Detail Page?
+* **Proposed Default:** `/?example=reader&fragmentId=${fragmentId}&scope=${scope}` (with optional `&revision_id=${revisionId}`). Missing or unrecognized scope canonicalizes to `inbox`.
+* **Rationale:** Parallax hosts standalone apps using query parameters (`?example=...`). Mapping the sysop `/reader/:fragmentId` route into `?example=reader&fragmentId=...` preserves the overarching Parallax URL scheme while retaining origin `scope` context for return navigation through native browser history and the "Reader" back button.
+
+### 11. Guarded Record Navigation & Boundary Policy (CW-20261010-0036 Contract)
+
+* **Question:** How should previous/next record navigation behave across admitted fragment lists?
+* **Proposed Default:** Enforces `boundaryPolicy: "stop"`, where navigation terminates at the start and end of the admitted list without wrapping. Navigation strictly admits only IDs belonging to the origin scope projection (`inbox`, `library`, or `all`).
+* **Rationale:** Stop bounds prevent disorienting list wrap-around during reading sessions. Respecting admitted list-origin projection ensures users only navigate between items present in their chosen scope.
+
+### 12. Navigation Keyboard Shortcut Filtering & Ownership Veto
+
+* **Question:** Under what conditions should global ArrowLeft and ArrowRight keyboard shortcuts trigger record navigation?
+* **Proposed Default:** Arrow shortcuts trigger navigation only when focus is outside editable elements (`input`, `textarea`, `select`, `contenteditable`), outside open modal dialogs or alert dialogs, outside media players/controls, and without modifier keys (`Shift`, `Control`, `Alt`, `Meta`), IME composition (`isComposing`, `keyCode === 229`), or `defaultPrevented`. Any active dialog or modal strictly vetoes global record navigation.
+* **Rationale:** Prevents accidental navigation while typing notes, scrubbing media, or navigating inside modal dialogs (such as gallery inspection or image zoom).
+
+### 13. External Provider Media Inertness & Local Asset Guarantee
+
+* **Question:** How should external video, audio, or third-party embed links (e.g. YouTube) behave in fixture mode?
+* **Proposed Default:** Rendered as inert, accessible local placeholders with no external network requests, third-party iframes, or blob streams. Local media relies exclusively on self-contained SVG data URIs.
+* **Rationale:** Prevents network flakiness, sandbox CSP violations, tracker leakage, and non-deterministic behavior in automated test environments.
+
+### 14. Detail Page PM Inert Writes & Specimen Boundary
+
+* **Question:** How are reading progress, notes, tags, and media materialization handled on the detail page?
+* **Proposed Default:** Strict PM inert write boundary is enforced. Notes, tags, reading progress, and media materialization are presented as read-only fictional specimens with explicit "Read-only specimen" labels and fenced callbacks. Simulated mutations are completely disallowed (not merely network-free). Note textareas are `readOnly` with no local saving or "Saved locally" / "Note added" toast announcements. Tags render without add/delete controls. The header "Refresh" button re-synchronizes the admitted state.
+* **Rationale:** Adheres to supervisor review directive (CW-20261010-0097) preventing false impressions of state persistence, while preserving taxonomy, typography, and visual layout parity.
+
+### 15. Committed Admission & Lifecycle Leases (Custody Proof)
+
+* **Question:** How do detail page actions, window keyboard navigation, and dialogs guard against stale callbacks and competing foreground layers?
+* **Proposed Default:** All detail actions (Back, Refresh, Previous, Next navigation) require captured committed lifecycle admission (`alive`, `generation`, `access`, `layer`, `activity`) and current-layer foreground check (`currentLayer(root)`). If an unregistered dialog, menu, listbox, or outside foreground owner is active, background callbacks strictly refuse. Stale DOM callbacks retained across retirement boundaries never revive.
+* **Rationale:** Guarantees custody safety across React StrictMode, Concurrent Mode, route changes, and nested modal overlays matching Tachyon Nav and Flux Chat contracts.

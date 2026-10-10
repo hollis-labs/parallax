@@ -275,21 +275,53 @@ export function ReaderReadingControls({
   item,
   onCommand,
   compact = false,
+  readOnly = false,
 }: {
   item: ReaderItem
-  onCommand: (command: ReaderCommand) => void
+  onCommand?: (command: ReaderCommand) => void
   compact?: boolean
+  readOnly?: boolean
 }) {
   const nextCommand = item.reading_state.state === "read" ? "mark_unread" : "mark_read"
-  const canToggle = hasReaderCommand(item, nextCommand)
+  const canToggle = !readOnly && hasReaderCommand(item, nextCommand)
 
   function toggleRead(event: React.MouseEvent) {
     event.stopPropagation()
-    if (!canToggle) return
-    onCommand({
+    if (!canToggle || readOnly) return
+    onCommand?.({
       fragment_id: item.fragment_id,
       command: nextCommand,
     })
+  }
+
+  if (readOnly) {
+    return (
+      <div
+        className="flex flex-wrap items-center gap-1.5"
+        data-reader-reading-controls
+        data-reader-nav-exclude
+      >
+        <span
+          role="status"
+          className={cn(
+            "inline-flex items-center gap-1.5 rounded-full bg-panel-2 px-2.5 font-medium text-text-muted",
+            compact ? "min-h-7 text-label" : "min-h-8 text-xs",
+          )}
+          title="Read-only specimen reading state"
+          aria-label={`Reading state: ${readingStateLabel(item.reading_state.state)} (read-only specimen)`}
+        >
+          {item.reading_state.state === "read" ? (
+            <BookOpenCheck className="h-3.5 w-3.5" aria-hidden="true" />
+          ) : (
+            <Circle className="h-3 w-3" aria-hidden="true" />
+          )}
+          {readingStateLabel(item.reading_state.state)}
+        </span>
+        <span className="rounded-sm bg-panel-2/60 px-1.5 py-0.5 text-micro font-medium uppercase tracking-wider text-text-subtle">
+          Read-only specimen
+        </span>
+      </div>
+    )
   }
 
   return (
@@ -316,7 +348,14 @@ export function ReaderReadingControls({
         )}
         {readingStateLabel(item.reading_state.state)}
       </button>
-      <ReaderActionPill item={item} onCommand={onCommand} command="set_reading_progress" compact />
+      {onCommand && (
+        <ReaderActionPill
+          item={item}
+          onCommand={onCommand}
+          command="set_reading_progress"
+          compact
+        />
+      )}
     </div>
   )
 }

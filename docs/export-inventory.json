@@ -63,6 +63,12 @@
       "frontend/src/examples/reader/ReaderNotes.tsx",
       "frontend/src/examples/reader/ReaderTags.tsx",
       "frontend/src/examples/reader/ReaderVisual.tsx",
+      "frontend/src/examples/reader/renderers/ArticleRenderer.tsx",
+      "frontend/src/examples/reader/renderers/FallbackRenderers.tsx",
+      "frontend/src/examples/reader/renderers/GalleryRenderer.tsx",
+      "frontend/src/examples/reader/renderers/ImageRenderer.tsx",
+      "frontend/src/examples/reader/renderers/ResourceStatePanel.tsx",
+      "frontend/src/examples/reader/renderers/VideoRenderer.tsx",
       "frontend/src/tether-sysop/AIGatewayPage.tsx",
       "frontend/src/tether-sysop/OverviewPage.tsx"
     ]
@@ -936,6 +942,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/reader/ReaderDetailPage.tsx",
       "frontend/src/layouts/Comparison.tsx"
     ]
   },
@@ -1174,6 +1181,7 @@
       "frontend/src/conversation-review/Review.tsx",
       "frontend/src/developer-evidence/Review.tsx",
       "frontend/src/directory-review/Review.tsx",
+      "frontend/src/examples/reader/ReaderDetailPage.tsx",
       "frontend/src/examples/reader/ReaderExample.tsx",
       "frontend/src/observability/Views.tsx",
       "frontend/src/observation-review/Review.tsx",
@@ -2103,6 +2111,7 @@
     "importEvidence": [
       "frontend/src/examples/administration/AdministrationExample.tsx",
       "frontend/src/examples/nil/Editor.tsx",
+      "frontend/src/examples/reader/ReaderDetailPage.tsx",
       "frontend/src/examples/torque/TaskInspection.tsx",
       "frontend/src/nil-dialog-proof/Proof.tsx",
       "frontend/src/nil-dialog-proof/TorqueProof.tsx"
@@ -2141,11 +2150,61 @@
     "name": "EDITABLE_TARGET_SELECTOR",
     "category": "runtime-value",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/reader/ReaderDetailPage.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -2860,6 +2919,7 @@
       "frontend/src/examples/flux-navigation/FluxNavigationExample.tsx",
       "frontend/src/examples/nil/Editor.tsx",
       "frontend/src/examples/nil/NilExample.tsx",
+      "frontend/src/examples/reader/ReaderDetailPage.tsx",
       "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/examples/torque/Operations.tsx",
       "frontend/src/flux-rail/Review.tsx",
@@ -4121,9 +4181,14 @@
       "frontend/src/examples/nil/Editor.tsx",
       "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
+      "frontend/src/examples/reader/ReaderDetailPage.tsx",
       "frontend/src/examples/reader/ReaderExample.tsx",
       "frontend/src/examples/reader/ReaderInlineActions.tsx",
       "frontend/src/examples/reader/ReaderVisual.tsx",
+      "frontend/src/examples/reader/lifecycle.tsx",
+      "frontend/src/examples/reader/renderers/GalleryRenderer.tsx",
+      "frontend/src/examples/reader/renderers/MediaDialog.tsx",
+      "frontend/src/examples/reader/renderers/VideoRenderer.tsx",
       "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/examples/tachyon-nav/lifecycle.tsx",
       "frontend/src/examples/torque/BoardIntent.tsx",
@@ -5035,6 +5100,7 @@
       "frontend/src/examples/flux-chat/lifecycle.tsx",
       "frontend/src/examples/reader/ReaderExample.tsx",
       "frontend/src/examples/reader/ReaderVisual.tsx",
+      "frontend/src/examples/reader/renderers/MediaDialog.tsx",
       "frontend/src/examples/torque/BoardIntent.tsx",
       "frontend/src/nil-dialog-proof/LayerProof.tsx",
       "frontend/src/nil-dialog-proof/Proof.tsx"
@@ -5047,11 +5113,61 @@
     "name": "DialogClose",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/reader/renderers/MediaDialog.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -5118,6 +5234,7 @@
       "frontend/src/examples/flux-chat/lifecycle.tsx",
       "frontend/src/examples/reader/ReaderExample.tsx",
       "frontend/src/examples/reader/ReaderVisual.tsx",
+      "frontend/src/examples/reader/renderers/MediaDialog.tsx",
       "frontend/src/examples/torque/BoardIntent.tsx",
       "frontend/src/nil-dialog-proof/LayerProof.tsx",
       "frontend/src/nil-dialog-proof/Proof.tsx"
@@ -5184,7 +5301,8 @@
     },
     "importEvidence": [
       "frontend/src/examples/reader/ReaderExample.tsx",
-      "frontend/src/examples/reader/ReaderVisual.tsx"
+      "frontend/src/examples/reader/ReaderVisual.tsx",
+      "frontend/src/examples/reader/renderers/MediaDialog.tsx"
     ]
   },
   {
@@ -5261,7 +5379,8 @@
     },
     "importEvidence": [
       "frontend/src/examples/reader/ReaderExample.tsx",
-      "frontend/src/examples/reader/ReaderVisual.tsx"
+      "frontend/src/examples/reader/ReaderVisual.tsx",
+      "frontend/src/examples/reader/renderers/MediaDialog.tsx"
     ]
   },
   {
@@ -5355,6 +5474,7 @@
       "frontend/src/examples/flux-chat/lifecycle.tsx",
       "frontend/src/examples/reader/ReaderExample.tsx",
       "frontend/src/examples/reader/ReaderVisual.tsx",
+      "frontend/src/examples/reader/renderers/MediaDialog.tsx",
       "frontend/src/examples/torque/BoardIntent.tsx",
       "frontend/src/nil-dialog-proof/LayerProof.tsx",
       "frontend/src/nil-dialog-proof/Proof.tsx"
@@ -7104,6 +7224,7 @@
     },
     "importEvidence": [
       "frontend/src/evidence-states/Review.tsx",
+      "frontend/src/examples/reader/ReaderDetailPage.tsx",
       "frontend/src/examples/reader/ReaderExample.tsx"
     ]
   },
