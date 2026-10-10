@@ -1822,6 +1822,7 @@
     },
     "importEvidence": [
       "frontend/src/examples/flux-navigation/Sidebar.tsx",
+      "frontend/src/examples/flux-settings/sections/ShortcutsSection.tsx",
       "frontend/src/nil-radial/Specimen.tsx"
     ]
   },
@@ -25546,7 +25547,8 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/examples/flux-navigation/model.ts"
+      "frontend/src/examples/flux-navigation/model.ts",
+      "frontend/src/examples/flux-settings/model.ts"
     ]
   },
   {
@@ -25582,7 +25584,8 @@
     },
     "importEvidence": [
       "frontend/src/examples/flux-navigation/FluxNavigationExample.tsx",
-      "frontend/src/examples/flux-navigation/model.ts"
+      "frontend/src/examples/flux-navigation/model.ts",
+      "frontend/src/examples/flux-settings/model.ts"
     ]
   },
   {
