@@ -20,6 +20,7 @@ import {
   READER_SCOPES,
   type ReaderExampleState,
   readerFixture,
+  readerHref,
   readerPlainTextExcerpt,
   readerScopeLabel,
   safeReaderSourceHref,
@@ -27,6 +28,7 @@ import {
   sourceLabel,
 } from "./model"
 import { ReaderCard } from "./ReaderCard"
+import { ReaderDetailPage } from "./ReaderDetailPage"
 import { ReaderStateSummary } from "./ReaderStateSummary"
 import { ReaderCardVisual } from "./ReaderVisual"
 import type { ReaderCommand, ReaderItem, ReaderScope } from "./types"
@@ -99,7 +101,12 @@ export function ReaderExample({
   )
 
   const combinedItems = baseItems.slice()
-  if (scope !== "inbox" && pageLoaded >= 2 && state.appearance !== "empty") {
+  const isTargetInPageTwo =
+    scope !== "inbox" &&
+    (readerFixture.pageTwoItems as ReaderItem[]).some(
+      (item) => item.fragment_id === state.fragmentId,
+    )
+  if (scope !== "inbox" && (pageLoaded >= 2 || isTargetInPageTwo) && state.appearance !== "empty") {
     const page2 = readerFixture.pageTwoItems as ReaderItem[]
     const seen = new Set(combinedItems.map((item) => item.fragment_id))
     for (const item of page2) {
@@ -157,6 +164,53 @@ export function ReaderExample({
   const selectedItem = selectedFragmentId
     ? items.find((item) => item.fragment_id === selectedFragmentId)
     : null
+
+  if (state.fragmentId) {
+    const allKnownItems: ReaderItem[] = [
+      ...(readerFixture.inboxItems as ReaderItem[]),
+      ...(readerFixture.pageOneItems as ReaderItem[]),
+      ...(readerFixture.pageTwoItems as ReaderItem[]),
+    ]
+    const baseDetailItem = allKnownItems.find((i) => i.fragment_id === state.fragmentId)
+    const effectiveDetailItem = baseDetailItem
+      ? (localItemOverrides[baseDetailItem.fragment_id] ?? baseDetailItem)
+      : undefined
+
+    const detailItem =
+      effectiveDetailItem &&
+      (!state.revisionId || effectiveDetailItem.fragment_revision_id === state.revisionId)
+        ? effectiveDetailItem
+        : undefined
+
+    const admittedIds = combinedItems.map((item) => item.fragment_id)
+
+    return (
+      <ReaderDetailPage
+        item={detailItem}
+        scope={scope}
+        admittedIds={admittedIds}
+        theme={state.theme}
+        mode={state.mode}
+        loading={state.appearance === "loading"}
+        error={
+          state.appearance === "error"
+            ? "The Reader item could not be loaded."
+            : !detailItem && !state.invalidRevision
+              ? "The Reader item could not be loaded."
+              : undefined
+        }
+        invalidRevision={state.invalidRevision}
+        onBack={() => {
+          updateState({ fragmentId: undefined, revisionId: undefined, invalidRevision: undefined })
+        }}
+        onNavigate={(nextId) => {
+          updateState({ fragmentId: nextId, revisionId: undefined, invalidRevision: undefined })
+        }}
+        onCommand={handleCommand}
+        onRefresh={handleRefresh}
+      />
+    )
+  }
 
   return (
     <div
@@ -370,19 +424,31 @@ export function ReaderExample({
               </div>
             </div>
 
-            <div className="mt-6 flex items-center justify-between border-t border-divider pt-4">
-              {safeReaderSourceHref(selectedItem) ? (
+            <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-divider pt-4">
+              <div className="flex flex-wrap items-center gap-4">
+                {safeReaderSourceHref(selectedItem) && (
+                  <a
+                    href={safeReaderSourceHref(selectedItem)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-xs text-primary underline-offset-4 hover:underline"
+                  >
+                    Open external source ↗
+                  </a>
+                )}
                 <a
-                  href={safeReaderSourceHref(selectedItem)}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-xs text-primary underline-offset-4 hover:underline"
+                  href={readerHref({ ...state, fragmentId: selectedItem.fragment_id })}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    const id = selectedItem.fragment_id
+                    setSelectedFragmentId(null)
+                    updateState({ fragmentId: id })
+                  }}
+                  className="text-xs font-medium text-primary underline-offset-4 hover:underline"
                 >
-                  Open external source ↗
+                  Open full detail page →
                 </a>
-              ) : (
-                <span />
-              )}
+              </div>
               <Button variant="outline" size="sm" onClick={() => setSelectedFragmentId(null)}>
                 Close
               </Button>

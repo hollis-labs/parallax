@@ -119,3 +119,46 @@ export function ReaderNoteEditor({
     </div>
   )
 }
+
+export function ReaderNotes({
+  item,
+  onCommand,
+  compact = false,
+}: Omit<ReaderNoteEditorProps, "kind">) {
+  const [active, setActive] = useState<ReaderNoteKind>("curated")
+
+  return (
+    <section data-reader-notes-tabs data-reader-nav-exclude>
+      <div
+        className="mb-3 flex items-center gap-1 border-b border-border"
+        role="tablist"
+        aria-label="Reader notes"
+      >
+        {(["curated", "capture"] as const).map((kind) => (
+          <button
+            key={kind}
+            type="button"
+            role="tab"
+            aria-selected={active === kind}
+            className={cn(
+              "min-h-9 border-b-2 px-3 text-xs font-medium outline-none focus-visible:ring-2 focus-visible:ring-ring",
+              active === kind
+                ? "border-primary text-text font-semibold"
+                : "border-transparent text-text-subtle hover:text-text",
+            )}
+            onClick={() => setActive(kind)}
+          >
+            {kind === "curated" ? "Curated note" : "Capture note"}
+          </button>
+        ))}
+      </div>
+      <ReaderNoteEditor
+        key={`${active}-${active === "curated" ? (item.curated_note?.revision ?? 0) : "append"}`}
+        item={item}
+        onCommand={onCommand}
+        kind={active}
+        compact={compact}
+      />
+    </section>
+  )
+}

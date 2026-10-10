@@ -64,3 +64,106 @@ export const InlineError: StoryObj<typeof meta> = {
     },
   },
 }
+
+export const DetailArticle: StoryObj<typeof meta> = {
+  args: {
+    state: {
+      ...defaultReaderState,
+      fragmentId: "FRAG-001",
+    },
+  },
+}
+
+export const DetailImage: StoryObj<typeof meta> = {
+  args: {
+    state: {
+      ...defaultReaderState,
+      fragmentId: "FRAG-002",
+    },
+  },
+}
+
+export const DetailGallery: StoryObj<typeof meta> = {
+  args: {
+    state: {
+      ...defaultReaderState,
+      fragmentId: "FRAG-003",
+    },
+  },
+}
+
+export const DetailVideo: StoryObj<typeof meta> = {
+  args: {
+    state: {
+      ...defaultReaderState,
+      fragmentId: "FRAG-004",
+    },
+  },
+}
+
+export const DetailAudio: StoryObj<typeof meta> = {
+  args: {
+    state: {
+      ...defaultReaderState,
+      fragmentId: "FRAG-005",
+    },
+  },
+}
+
+export const DetailDocument: StoryObj<typeof meta> = {
+  args: {
+    state: {
+      ...defaultReaderState,
+      fragmentId: "FRAG-006",
+    },
+  },
+}
+
+export const DetailText: StoryObj<typeof meta> = {
+  args: {
+    state: {
+      ...defaultReaderState,
+      scope: "library",
+      fragmentId: "FRAG-007",
+    },
+  },
+}
+
+export const DetailUnknown: StoryObj<typeof meta> = {
+  args: {
+    state: {
+      ...defaultReaderState,
+      scope: "library",
+      fragmentId: "FRAG-008",
+    },
+  },
+}
+
+export const DetailLoading: StoryObj<typeof meta> = {
+  args: {
+    state: {
+      ...defaultReaderState,
+      fragmentId: "FRAG-001",
+      appearance: "loading",
+    },
+  },
+}
+
+export const DetailError: StoryObj<typeof meta> = {
+  args: {
+    state: {
+      ...defaultReaderState,
+      fragmentId: "FRAG-999",
+    },
+  },
+}
+
+export const DetailInvalidRevision: StoryObj<typeof meta> = {
+  args: {
+    state: {
+      ...defaultReaderState,
+      fragmentId: "FRAG-001",
+      invalidRevision: true,
+    },
+  },
+}

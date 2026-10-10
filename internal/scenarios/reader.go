@@ -354,8 +354,6 @@ func GenerateReaderExample() ReaderExampleFixture {
 
 	// Item 3: gallery (Inbox & Library)
 	gal1 := svgDataURI("Multi-Agent View 1: Task Dispatch", "%23282c34", "%23e06c75")
-	gal2 := svgDataURI("Multi-Agent View 2: Coordination", "%2321252b", "%23e5c07b")
-	gal3 := svgDataURI("Multi-Agent View 3: Execution Log", "%232c313a", "%2398c379")
 	items[2] = ReaderItem{
 		SchemaVersion:      "fe.reader.item.v1",
 		FragmentID:         "FRAG-003",
@@ -388,7 +386,7 @@ func GenerateReaderExample() ReaderExampleFixture {
 				Kind:         "image",
 				AltText:      "Supervisor coordination grid",
 				Variants: []ReaderAssetVariant{
-					{AssetVariantID: "var-003-2-prev", Kind: "preview", Custody: "mirror", AcquisitionState: "available", ContentHREF: gal2},
+					{AssetVariantID: "var-003-2-prev", Kind: "preview", Custody: "reference", AcquisitionState: "pending"},
 				},
 			},
 			{
@@ -397,7 +395,16 @@ func GenerateReaderExample() ReaderExampleFixture {
 				Kind:         "image",
 				AltText:      "Execution review board",
 				Variants: []ReaderAssetVariant{
-					{AssetVariantID: "var-003-3-prev", Kind: "preview", Custody: "mirror", AcquisitionState: "available", ContentHREF: gal3},
+					{AssetVariantID: "var-003-3-ref", Kind: "original", Custody: "reference", AcquisitionState: "reference_only", SourceURL: "https://hollis-labs.com/gallery/agents-review.png"},
+				},
+			},
+			{
+				Attachment:   ReaderMediaAttachment{AttachmentID: "att-003-4", FragmentRevisionID: "REV-FRAG-003-01", MediaAssetID: "asset-003-4", Role: "gallery_item", Position: 3, Caption: "Real-time Telemetry Stream"},
+				MediaAssetID: "asset-003-4",
+				Kind:         "image",
+				AltText:      "Real-time telemetry stream",
+				Variants: []ReaderAssetVariant{
+					{AssetVariantID: "var-003-4-fail", Kind: "preview", Custody: "reference", AcquisitionState: "failed"},
 				},
 			},
 		},
@@ -427,7 +434,7 @@ func GenerateReaderExample() ReaderExampleFixture {
 				{Capability: "gallery_manifest", State: "provided"},
 				{Capability: "thumbnail_or_poster", State: "provided"},
 			},
-			Acquisition: map[string]int{"pending": 0, "available": 3, "reference_only": 0, "failed": 0},
+			Acquisition: map[string]int{"pending": 1, "available": 1, "reference_only": 1, "failed": 1},
 		},
 		Actions: defaultActions(),
 	}

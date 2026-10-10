@@ -28,10 +28,12 @@ export function StandaloneReaderExample() {
     document.documentElement.classList.toggle("light", state.mode === "light")
     document.documentElement.classList.toggle("dark", state.mode === "dark")
     document.documentElement.style.colorScheme = state.mode
-    const canonical = readerHref(state)
-    const current = `${location.pathname}${location.search}`
-    if (current !== canonical) {
-      window.history.replaceState(null, "", canonical)
+    if (!state.invalidRevision) {
+      const canonical = readerHref(state)
+      const current = `${location.pathname}${location.search}`
+      if (current !== canonical) {
+        window.history.replaceState(null, "", canonical)
+      }
     }
   }, [state])
 

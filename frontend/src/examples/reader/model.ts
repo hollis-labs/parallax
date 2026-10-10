@@ -59,6 +59,9 @@ export type ReaderExampleState = {
   appearance: ReaderExampleAppearance
   theme: ReaderTheme
   mode: "light" | "dark"
+  fragmentId?: string
+  revisionId?: string
+  invalidRevision?: boolean
 }
 
 export const defaultReaderState: ReaderExampleState = {
@@ -87,13 +90,44 @@ export function normalizeReaderState(params: URLSearchParams): ReaderExampleStat
   const rawMode = params.get("mode")
   const mode = rawMode === "dark" ? "dark" : "light"
 
-  return { scope, appearance, theme, mode }
+  const rawFragmentId = params.get("fragmentId") ?? params.get("fragment_id")
+  const fragmentId = rawFragmentId ? rawFragmentId.trim() : undefined
+
+  const revisionValues = params.getAll("revision_id")
+  let revisionId: string | undefined
+  let invalidRevision = false
+  if (revisionValues.length > 1) {
+    invalidRevision = true
+  } else if (revisionValues.length === 1) {
+    const trimmed = revisionValues[0].trim()
+    if (!trimmed) {
+      invalidRevision = true
+    } else {
+      revisionId = trimmed
+    }
+  }
+
+  return {
+    scope,
+    appearance,
+    theme,
+    mode,
+    ...(fragmentId ? { fragmentId } : {}),
+    ...(revisionId ? { revisionId } : {}),
+    ...(invalidRevision ? { invalidRevision: true } : {}),
+  }
 }
 
 export function readerHref(state: ReaderExampleState): string {
   const params = new URLSearchParams()
   params.set("example", "reader")
+  if (state.fragmentId) {
+    params.set("fragmentId", state.fragmentId)
+  }
   params.set("scope", state.scope)
+  if (state.revisionId) {
+    params.set("revision_id", state.revisionId)
+  }
   if (state.appearance !== "recorded") params.set("appearance", state.appearance)
   if (state.theme !== "sysop-p4-white") params.set("theme", state.theme)
   if (state.mode !== "light") params.set("mode", state.mode)

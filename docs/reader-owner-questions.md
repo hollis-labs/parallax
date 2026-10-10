@@ -63,3 +63,33 @@
 * **Question:** How should visual media (article preview images, gallery slides, video posters) be delivered?
 * **Proposed Default:** Embedded as self-contained SVG data URIs directly within `reader-example.json`.
 * **Rationale:** Eliminates external network requests, avoids blob URL leakages, and guarantees reproducible rendering across test suites, Storybook, and headless CI environments.
+
+### 10. Standalone Detail Route Scheme & Scope Preservation
+
+* **Question:** What is the canonical route structure for the standalone Reader Detail Page?
+* **Proposed Default:** `/?example=reader&fragmentId=${fragmentId}&scope=${scope}` (with optional `&revision_id=${revisionId}`). Missing or unrecognized scope canonicalizes to `inbox`.
+* **Rationale:** Parallax hosts standalone apps using query parameters (`?example=...`). Mapping the sysop `/reader/:fragmentId` route into `?example=reader&fragmentId=...` preserves the overarching Parallax URL scheme while retaining origin `scope` context for return navigation through native browser history and the "Reader" back button.
+
+### 11. Guarded Record Navigation & Boundary Policy (CW-20261010-0036 Contract)
+
+* **Question:** How should previous/next record navigation behave across admitted fragment lists?
+* **Proposed Default:** Enforces `boundaryPolicy: "stop"`, where navigation terminates at the start and end of the admitted list without wrapping. Navigation strictly admits only IDs belonging to the origin scope projection (`inbox`, `library`, or `all`).
+* **Rationale:** Stop bounds prevent disorienting list wrap-around during reading sessions. Respecting admitted list-origin projection ensures users only navigate between items present in their chosen scope.
+
+### 12. Navigation Keyboard Shortcut Filtering & Ownership Veto
+
+* **Question:** Under what conditions should global ArrowLeft and ArrowRight keyboard shortcuts trigger record navigation?
+* **Proposed Default:** Arrow shortcuts trigger navigation only when focus is outside editable elements (`input`, `textarea`, `select`, `contenteditable`), outside open modal dialogs or alert dialogs, outside media players/controls, and without modifier keys (`Shift`, `Control`, `Alt`, `Meta`), IME composition (`isComposing`, `keyCode === 229`), or `defaultPrevented`. Any active dialog or modal strictly vetoes global record navigation.
+* **Rationale:** Prevents accidental navigation while typing notes, scrubbing media, or navigating inside modal dialogs (such as gallery inspection or image zoom).
+
+### 13. External Provider Media Inertness & Local Asset Guarantee
+
+* **Question:** How should external video, audio, or third-party embed links (e.g. YouTube) behave in fixture mode?
+* **Proposed Default:** Rendered as inert, accessible local placeholders with no external network requests, third-party iframes, or blob streams. Local media relies exclusively on self-contained SVG data URIs.
+* **Rationale:** Prevents network flakiness, sandbox CSP violations, tracker leakage, and non-deterministic behavior in automated test environments.
+
+### 14. Detail Page Local Fictional Command Execution & Manual Refresh
+
+* **Question:** How are reading progress, notes, tags, and action pills mutated on the detail page?
+* **Proposed Default:** Mutations execute in-memory against local fixture state (`localItemOverrides`), synchronously updating title, tags, notes, reading progress, and operational tallies without persistent side-effects or network timers. The "Refresh" button in the header resets declared local presentation.
+* **Rationale:** Maintains strict fidelity with the standalone interactive paradigm while avoiding backend side-effects or unauthenticated writes.
