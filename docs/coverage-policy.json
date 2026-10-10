@@ -7,21 +7,25 @@
       "evidence": {
         "pages": [
           "frontend/src/App.tsx",
+          "frontend/src/examples/nil/NilExample.tsx",
           "frontend/src/examples/flux-chat/FluxChat.tsx",
           "frontend/src/examples/flux-chat/Conversation.tsx",
           "docs/flux-chat-composition.md"
         ],
         "checks": [
           "frontend/tests/lab.spec.ts",
+          "frontend/tests/nil-example.spec.ts",
           "frontend/tests/flux-chat.spec.ts",
           "frontend/tests/flux-chat-custody.spec.ts"
         ],
         "stories": [
           "frontend/src/operations/Operations.stories.tsx",
+          "frontend/src/examples/nil/Nil.stories.tsx",
           "frontend/src/examples/flux-chat/FluxChat.stories.tsx"
         ],
         "storyIds": [
           "operations-controlled-views--primitives",
+          "app-examples-nil--operations",
           "examples-flux-chat--default",
           "examples-flux-chat--workspace",
           "examples-flux-chat--focus",
@@ -40,16 +44,20 @@
       "package": "@hollis-labs/kit-dashboard",
       "evidence": {
         "pages": [
-          "frontend/src/operations/Views.tsx"
+          "frontend/src/operations/Views.tsx",
+          "frontend/src/examples/nil/NilExample.tsx"
         ],
         "checks": [
-          "frontend/tests/lab.spec.ts"
+          "frontend/tests/lab.spec.ts",
+          "frontend/tests/nil-example.spec.ts"
         ],
         "stories": [
-          "frontend/src/operations/Operations.stories.tsx"
+          "frontend/src/operations/Operations.stories.tsx",
+          "frontend/src/examples/nil/Nil.stories.tsx"
         ],
         "storyIds": [
-          "operations-controlled-views--mission-control"
+          "operations-controlled-views--mission-control",
+          "app-examples-nil--operations"
         ]
       }
     },
