@@ -21,9 +21,10 @@ interface ShortcutRowProps {
   binding: string
   isEditing: boolean
   readOnly?: boolean
+  isLive?: () => boolean
   conflict?: string
   onEdit: () => void
-  onSave: (binding: string) => void
+  onSave: (binding: string) => boolean | void
   onCancel: () => void
 }
 
@@ -45,6 +46,7 @@ function ShortcutRow({
   binding,
   isEditing,
   readOnly = false,
+  isLive,
   conflict,
   onEdit,
   onSave,
@@ -52,7 +54,16 @@ function ShortcutRow({
 }: ShortcutRowProps) {
   const [captured, setCaptured] = useState<string | null>(null)
   const rowRef = useRef<HTMLDivElement>(null)
-  const captureBoxRef = useRef<HTMLDivElement>(null)
+  const captureBoxRef = useRef<HTMLButtonElement>(null)
+
+  const handleCommitSave = useCallback(() => {
+    if (readOnly || (isLive && !isLive())) return false
+    if (captured) {
+      onSave(captured)
+      return true
+    }
+    return false
+  }, [readOnly, isLive, captured, onSave])
 
   useEffect(() => {
     if (!isEditing) {
@@ -63,19 +74,21 @@ function ShortcutRow({
     captureBoxRef.current?.focus()
 
     function handleKeyDown(e: KeyboardEvent) {
-      // Lease guard: if row is disconnected, ignore
+      // 1. Lease guard: if row is disconnected, ignore
       if (!rowRef.current?.isConnected) return
 
-      // Scoped guard: if event originates from an unrelated input, textarea, editor,
-      // or inside a popup/layer outside this editing row, do NOT intercept or consume
+      // 2. Exact row-owned event target requirement:
+      // The event target MUST be contained within this exact shortcut row!
+      // Outside plain buttons, document.body, outside inputs, outside popups are rejected.
       const target = e.target as HTMLElement | null
-      if (target && !rowRef.current.contains(target)) {
-        if (
-          target.matches("input, textarea, select, [contenteditable='true']") ||
-          target.closest("[role='dialog'], [role='menu'], [data-nested-layer]")
-        ) {
-          return
-        }
+      if (!target || !rowRef.current.contains(target)) {
+        return
+      }
+
+      // 3. Current host / row admission lease:
+      // If row is readOnly or host frame admission/lease is false or retired, refuse to consume
+      if (readOnly || (isLive && !isLive())) {
+        return
       }
 
       const parsed = parseKeyEvent(e)
@@ -84,7 +97,7 @@ function ShortcutRow({
         return
       }
 
-      // Key event is admitted (or Escape cancellation): consume and handle
+      // Exact admitted row-owned event (or Escape cancellation): consume and handle
       e.preventDefault()
       e.stopPropagation()
 
@@ -99,7 +112,26 @@ function ShortcutRow({
 
     window.addEventListener("keydown", handleKeyDown, true)
     return () => window.removeEventListener("keydown", handleKeyDown, true)
-  }, [isEditing, onCancel])
+  }, [isEditing, readOnly, isLive, onCancel])
+
+  // Publish active capture lease to window diagnostics when editing
+  useEffect(() => {
+    if (!isEditing) return
+    if (typeof window !== "undefined" && window.fluxSettings) {
+      window.fluxSettings.currentCapture = {
+        key: def.key,
+        isLive: () => !readOnly && (!isLive || isLive()),
+        captured,
+        save: handleCommitSave,
+        cancel: onCancel,
+      }
+    }
+    return () => {
+      if (typeof window !== "undefined" && window.fluxSettings) {
+        window.fluxSettings.currentCapture = undefined
+      }
+    }
+  }, [isEditing, def.key, readOnly, isLive, captured, handleCommitSave, onCancel])
 
   return (
     <div ref={rowRef} data-shortcut-row={def.key} className="w-full">
@@ -117,30 +149,34 @@ function ShortcutRow({
         onClick={isEditing || readOnly ? undefined : onEdit}
       >
         {isEditing ? (
-          <div
-            ref={captureBoxRef}
-            title={`Recording shortcut for ${def.label}`}
-            className="flex items-center gap-2 outline-none"
-          >
-            {captured ? (
-              <>
+          <div className="flex items-center gap-2">
+            <button
+              ref={captureBoxRef}
+              type="button"
+              aria-label={`Recording shortcut for ${def.label}`}
+              title={`Recording shortcut for ${def.label}`}
+              className="flex items-center gap-2 outline-none focus:ring-1 focus:ring-primary/60 rounded px-1.5 py-0.5 border border-primary/30 bg-primary-muted/50 text-xs font-mono cursor-default"
+            >
+              {captured ? (
                 <KbdGroup>{renderKeyBadges(captured, "cap", true)}</KbdGroup>
-                <button
-                  type="button"
-                  aria-label={`Save ${def.label} shortcut`}
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    onSave(captured)
-                  }}
-                  className="inline-flex items-center justify-center w-6 h-6 rounded-sm bg-success-muted text-success hover:bg-success hover:text-success-fg cursor-pointer transition-colors"
-                >
-                  <Check className="w-3.5 h-3.5" />
-                </button>
-              </>
-            ) : (
-              <span className="text-xs text-fg-muted font-mono italic animate-pulse">
-                Press keys…
-              </span>
+              ) : (
+                <span className="text-xs text-fg-muted font-mono italic animate-pulse">
+                  Press keys…
+                </span>
+              )}
+            </button>
+            {captured && (
+              <button
+                type="button"
+                aria-label={`Save ${def.label} shortcut`}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  handleCommitSave()
+                }}
+                className="inline-flex items-center justify-center w-6 h-6 rounded-sm bg-success-muted text-success hover:bg-success hover:text-success-fg cursor-pointer transition-colors"
+              >
+                <Check className="w-3.5 h-3.5" />
+              </button>
             )}
             <button
               type="button"
@@ -172,13 +208,19 @@ function ShortcutRow({
   )
 }
 
-interface ShortcutsSectionProps {
+export interface ShortcutsSectionProps {
   shortcuts: Record<string, string>
   onChange: (shortcuts: Record<string, string>) => void
   readOnly?: boolean
+  isLive?: () => boolean
 }
 
-export function ShortcutsSection({ shortcuts, onChange, readOnly = false }: ShortcutsSectionProps) {
+export function ShortcutsSection({
+  shortcuts,
+  onChange,
+  readOnly = false,
+  isLive,
+}: ShortcutsSectionProps) {
   const [editingKey, setEditingKey] = useState<string | null>(null)
 
   const getBinding = useCallback(
@@ -187,19 +229,23 @@ export function ShortcutsSection({ shortcuts, onChange, readOnly = false }: Shor
   )
 
   const handleSave = useCallback(
-    (key: string, newBinding: string) => {
+    (key: string, newBinding: string): boolean => {
+      if (readOnly || (isLive && !isLive())) return false
       onChange({ ...shortcuts, [key]: newBinding })
       setEditingKey(null)
+      return true
     },
-    [shortcuts, onChange],
+    [shortcuts, onChange, readOnly, isLive],
   )
 
-  const handleResetAll = useCallback(() => {
+  const handleResetAll = useCallback((): boolean => {
+    if (readOnly || (isLive && !isLive())) return false
     const defaults: Record<string, string> = {}
     for (const def of SHORTCUT_DEFS) defaults[def.key] = def.default
     onChange(defaults)
     setEditingKey(null)
-  }, [onChange])
+    return true
+  }, [onChange, readOnly, isLive])
 
   // Conflict detection
   const conflicts = useMemo(() => {
@@ -247,6 +293,7 @@ export function ShortcutsSection({ shortcuts, onChange, readOnly = false }: Shor
                 binding={getBinding(def.key, def.default)}
                 isEditing={editingKey === def.key}
                 readOnly={readOnly}
+                isLive={isLive}
                 conflict={conflicts[def.key]}
                 onEdit={() => setEditingKey(def.key)}
                 onSave={(b) => handleSave(def.key, b)}

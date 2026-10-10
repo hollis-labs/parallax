@@ -266,10 +266,28 @@ test("shortcuts section: guarded key capture, modifier lifecycle, and Escape can
   await page.keyboard.press("Control+Shift+P")
   await page.getByRole("button", { name: "Save Toggle Sidebar shortcut" }).click()
 
-  // Enter capture mode again to verify scoped non-swallowing of external inputs
+  // Enter capture mode again to verify focusable editing surface, outside negatives, and retained retirement
   await sidebarRow.click()
+  const captureBox = sidebarRow.getByRole("button", {
+    name: "Recording shortcut for Toggle Sidebar",
+  })
+  await expect(captureBox).toBeVisible()
+  await expect(captureBox).toBeFocused()
   await expect(page.getByText("Press keys…")).toBeVisible()
 
+  // 1. Outside plain button negative: key events are NOT consumed
+  await page.evaluate(() => {
+    const btn = document.createElement("button")
+    btn.id = "test-outside-btn"
+    btn.textContent = "Outside Button"
+    document.body.append(btn)
+    btn.focus()
+  })
+  await page.keyboard.press("Control+Shift+B")
+  await expect(page.getByText("Press keys…")).toBeVisible()
+  await page.evaluate(() => document.getElementById("test-outside-btn")?.remove())
+
+  // 2. Outside editor negative: key events type normally and are NOT consumed
   await page.evaluate(() => {
     const input = document.createElement("input")
     input.id = "test-unrelated-editor"
@@ -281,10 +299,54 @@ test("shortcuts section: guarded key capture, modifier lifecycle, and Escape can
     () => (document.getElementById("test-unrelated-editor") as HTMLInputElement)?.value,
   )
   expect(inputVal).toBe("safe-typing")
+  await expect(page.getByText("Press keys…")).toBeVisible()
   await page.evaluate(() => document.getElementById("test-unrelated-editor")?.remove())
 
-  // Cancel editing
-  await page.getByRole("button", { name: "Cancel editing Toggle Sidebar" }).click()
+  // 3. Outside popup negative: key events in dialog are NOT consumed
+  await page.evaluate(() => {
+    const popup = document.createElement("div")
+    popup.id = "test-outside-popup"
+    popup.setAttribute("role", "dialog")
+    const btn = document.createElement("button")
+    btn.id = "test-popup-btn"
+    popup.append(btn)
+    document.body.append(popup)
+    btn.focus()
+  })
+  await page.keyboard.press("Control+Shift+M")
+  await expect(page.getByText("Press keys…")).toBeVisible()
+  await page.evaluate(() => document.getElementById("test-outside-popup")?.remove())
+
+  // 4. Exact row-owned event positive: focus captureBox and record chord
+  await captureBox.focus()
+  await page.keyboard.press("Control+Shift+P")
+  await expect(page.getByText("Press keys…")).toHaveCount(0)
+
+  // 5. Retained capture retirement: capture session retires on loss of admission
+  const captureLive = await page.evaluate(() => {
+    const w = window as any
+    w.heldCapture = w.fluxSettings.currentCapture
+    return w.heldCapture?.isLive()
+  })
+  expect(captureLive).toBe(true)
+
+  // Replace source -> held capture retires
+  await page.getByRole("button", { name: "Replace source", exact: true }).click()
+  const captureRetired = await page.evaluate(() => {
+    const w = window as any
+    return {
+      isLive: w.heldCapture?.isLive(),
+      saveResult: w.heldCapture?.save(),
+    }
+  })
+  expect(captureRetired.isLive).toBe(false)
+  expect(captureRetired.saveResult).toBe(false)
+
+  // Re-enter and save key in fresh frame
+  await sidebarRow.click()
+  await captureBox.focus()
+  await page.keyboard.press("Control+Shift+P")
+  await page.getByRole("button", { name: "Save Toggle Sidebar shortcut" }).click()
   await expect(page.getByText("Press keys…")).toHaveCount(0)
 
   // Reset All shortcuts
@@ -544,6 +606,54 @@ test("captured activation callback and roving navigation retire across source, a
   })
   expect(reAdmitted).toBe(true)
 
+  // Competing popup in document refutes liveness and ignores roving
+  await page.evaluate(() => {
+    const popup = document.createElement("div")
+    popup.id = "competing-test-dialog"
+    popup.setAttribute("role", "dialog")
+    document.body.append(popup)
+  })
+  const rovingPopupRefused = await page.evaluate(() => {
+    const w = window as any
+    const btn = document.querySelector('button[data-section-id="appearance"]')
+    return w.fluxSettings.currentFrame.handleSidebarKeyDown(
+      { key: "ArrowDown", currentTarget: btn, target: btn, nativeEvent: { isComposing: false } },
+      0,
+    )
+  })
+  expect(rovingPopupRefused).toBe(false)
+  await page.evaluate(() => document.getElementById("competing-test-dialog")?.remove())
+
+  // Fresh roving recovery after popup removal
+  const rovingRecovered = await page.evaluate(() => {
+    const w = window as any
+    const btn = document.querySelector('button[data-section-id="appearance"]')
+    return w.fluxSettings.currentFrame.handleSidebarKeyDown(
+      { key: "ArrowDown", currentTarget: btn, target: btn, nativeEvent: { isComposing: false } },
+      0,
+    )
+  })
+  expect(rovingRecovered).toBe(true)
+  await expect(page.locator('[data-section="layout"]')).toBeVisible()
+
+  // Retained roving handler across source replacement
+  const heldRoving = await page.evaluate(() => {
+    const w = window as any
+    w.heldRoving = w.fluxSettings.currentFrame.handleSidebarKeyDown
+    return true
+  })
+  expect(heldRoving).toBe(true)
+  await page.getByRole("button", { name: "Replace source", exact: true }).click()
+  const rovingRetired = await page.evaluate(() => {
+    const w = window as any
+    const btn = document.querySelector('button[data-section-id="layout"]')
+    return w.heldRoving(
+      { key: "ArrowDown", currentTarget: btn, target: btn, nativeEvent: { isComposing: false } },
+      1,
+    )
+  })
+  expect(rovingRetired).toBe(false)
+
   // Exercise React Activity lifecycle fixture
   const lifecycle = await page.evaluate(async () => {
     const path = "/tests/fixtures/settings-lifecycle.tsx"
@@ -560,5 +670,9 @@ test("captured activation callback and roving navigation retire across source, a
     imeIgnored: true,
     modifierIgnored: true,
     accessDeniedIgnored: true,
+    competingPopupIgnored: true,
+    competingPopupRecovered: true,
+    retainedRovingRetired: true,
+    rootDetachedIgnored: true,
   })
 })

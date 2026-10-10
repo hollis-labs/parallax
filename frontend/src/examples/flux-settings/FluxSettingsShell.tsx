@@ -115,6 +115,7 @@ export interface FluxSettingsFrame {
   layer: boolean
   isLive: () => boolean
   activateSection: (target: string) => boolean
+  handleSidebarKeyDown: (e: React.KeyboardEvent | KeyboardEvent, index: number) => boolean
 }
 
 export interface FluxSettingsDiagnostics {
@@ -130,6 +131,7 @@ export interface FluxSettingsDiagnostics {
   navItems: string[]
   activateSection: (section: string) => boolean
   setSection: (section: string) => boolean
+  handleSidebarKeyDown: (e: React.KeyboardEvent | KeyboardEvent, index: number) => boolean
   fenceStats: {
     activations: number
     refusals: number
@@ -141,6 +143,13 @@ export interface FluxSettingsDiagnostics {
   isLive: () => boolean
   frames: FluxSettingsFrame[]
   currentFrame?: FluxSettingsFrame
+  currentCapture?: {
+    key: string
+    isLive: () => boolean
+    captured: string | null
+    save: () => boolean
+    cancel: () => void
+  }
   diagnostics: {
     malformedRejected: boolean
     malformedNotice: string | null
@@ -254,6 +263,14 @@ export function FluxSettingsShell({
   })
 
   const isLive = useCallback(() => {
+    // 1. Guard against actual visible competing popups / dialogs in the document
+    if (typeof document !== "undefined") {
+      const activePopup = document.querySelector(
+        "[role='dialog']:not([aria-hidden='true']), [data-competing-popup='true'], [data-competing-layer='true']",
+      )
+      if (activePopup) return false
+    }
+
     return (
       checkToken(thisFrameToken) &&
       hostLiveRef.current.source === frameSource &&
@@ -329,36 +346,46 @@ export function FluxSettingsShell({
   // Roving keyboard navigation in sidebar
   const allNavItems = useMemo(() => NAV_GROUPS.flatMap((g) => g.items), [])
 
-  const handleSidebarKeyDown = (e: React.KeyboardEvent, index: number) => {
-    // 1. Guard admission and live state
-    if (!isLive()) return
-    // 2. Guard IME composition and modifiers
-    if (e.nativeEvent.isComposing || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return
-    // 3. Current-root guard: ensure target is within navRef
-    if (!navRef.current?.contains(e.currentTarget as Node)) return
+  const handleSidebarKeyDown = useCallback(
+    (e: React.KeyboardEvent | KeyboardEvent, index: number): boolean => {
+      // 1. Guard admission and live state
+      if (!isLive()) return false
+      // 2. Guard IME composition and modifiers
+      const native = "nativeEvent" in e ? (e as React.KeyboardEvent).nativeEvent : e
+      if (native.isComposing || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return false
+      // 3. Current-root guard: ensure target is within navRef and navRef is connected
+      if (!navRef.current?.isConnected) return false
+      const targetNode = (
+        "currentTarget" in e && e.currentTarget ? e.currentTarget : e.target
+      ) as Node | null
+      if (!targetNode || !navRef.current.contains(targetNode)) return false
 
-    let nextIdx = -1
-    if (e.key === "ArrowDown") {
-      nextIdx = (index + 1) % allNavItems.length
-    } else if (e.key === "ArrowUp") {
-      nextIdx = (index - 1 + allNavItems.length) % allNavItems.length
-    } else if (e.key === "Home") {
-      nextIdx = 0
-    } else if (e.key === "End") {
-      nextIdx = allNavItems.length - 1
-    }
+      let nextIdx = -1
+      if (e.key === "ArrowDown") {
+        nextIdx = (index + 1) % allNavItems.length
+      } else if (e.key === "ArrowUp") {
+        nextIdx = (index - 1 + allNavItems.length) % allNavItems.length
+      } else if (e.key === "Home") {
+        nextIdx = 0
+      } else if (e.key === "End") {
+        nextIdx = allNavItems.length - 1
+      }
 
-    if (nextIdx >= 0) {
-      e.preventDefault()
-      e.stopPropagation()
-      const target = allNavItems[nextIdx]
-      activateSection(target.id)
-      const btn = navRef.current?.querySelector<HTMLButtonElement>(
-        `button[data-section-id="${target.id}"]`,
-      )
-      btn?.focus()
-    }
-  }
+      if (nextIdx >= 0) {
+        e.preventDefault?.()
+        e.stopPropagation?.()
+        const target = allNavItems[nextIdx]
+        activateSection(target.id)
+        const btn = navRef.current?.querySelector<HTMLButtonElement>(
+          `button[data-section-id="${target.id}"]`,
+        )
+        btn?.focus()
+        return true
+      }
+      return false
+    },
+    [isLive, allNavItems, activateSection],
+  )
 
   // Diagnostics for Playwright testing
   useLayoutEffect(() => {
@@ -368,6 +395,7 @@ export function FluxSettingsShell({
       layer: layerState,
       isLive,
       activateSection,
+      handleSidebarKeyDown,
     }
     framesRef.current.push(frame)
 
@@ -384,6 +412,7 @@ export function FluxSettingsShell({
       navItems: allNavItems.map((i) => i.id),
       activateSection,
       setSection: activateSection,
+      handleSidebarKeyDown,
       fenceStats,
       source: currentSource,
       access: accessState,
@@ -577,6 +606,7 @@ export function FluxSettingsShell({
                 shortcuts={shortcuts}
                 onChange={setShortcuts}
                 readOnly={isReadOnly}
+                isLive={isLive}
               />
             )}
             {activeSection === "permissions" && (

@@ -131,6 +131,56 @@ export async function settingsLifecycleExercise() {
   flushSync(() => onKeyDown(createKeyEvent()))
   const accessDeniedIgnored = !prevented
 
+  // Guard test: Competing popup in document refutes liveness and ignores roving
+  flushSync(() => setAccessProp(true))
+  await settle()
+  const currentNavButton = required(element.querySelector('button[role="tab"]'))
+  const currentOnKeyDown = keyboardHandler(currentNavButton)
+  const createCurrentKeyEvent = (overrides: Partial<any> = {}) => ({
+    key: "ArrowDown",
+    nativeEvent: { isComposing: false },
+    currentTarget: currentNavButton,
+    target: currentNavButton,
+    ctrlKey: false,
+    metaKey: false,
+    altKey: false,
+    shiftKey: false,
+    preventDefault: () => {
+      prevented = true
+    },
+    stopPropagation: () => {},
+    ...overrides,
+  })
+
+  const competingPopup = document.createElement("div")
+  competingPopup.setAttribute("role", "dialog")
+  document.body.append(competingPopup)
+  prevented = false
+  flushSync(() => currentOnKeyDown(createCurrentKeyEvent()))
+  const competingPopupIgnored = !prevented
+  competingPopup.remove()
+
+  // Guard test: Fresh recovery after competing popup removal
+  prevented = false
+  flushSync(() => currentOnKeyDown(createCurrentKeyEvent()))
+  const competingPopupRecovered = prevented
+
+  // Guard test: Retained roving handler refuses after source replacement
+  const heldRoving = currentOnKeyDown
+  flushSync(() => setSourceProp("fixture-source-2"))
+  await settle()
+  prevented = false
+  flushSync(() => heldRoving(createCurrentKeyEvent()))
+  const retainedRovingRetired = !prevented
+
+  // Guard test: Root detachment / target outside nav root
+  const freshOnKeyDown = keyboardHandler(required(element.querySelector('button[role="tab"]')))
+  prevented = false
+  flushSync(() =>
+    freshOnKeyDown(createKeyEvent({ currentTarget: document.body, target: document.body })),
+  )
+  const rootDetachedIgnored = !prevented
+
   // Cleanup
   flushSync(() => root.unmount())
   element.remove()
@@ -146,5 +196,9 @@ export async function settingsLifecycleExercise() {
     imeIgnored,
     modifierIgnored,
     accessDeniedIgnored,
+    competingPopupIgnored,
+    competingPopupRecovered,
+    retainedRovingRetired,
+    rootDetachedIgnored,
   }
 }
