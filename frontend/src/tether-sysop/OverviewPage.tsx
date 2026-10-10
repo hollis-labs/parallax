@@ -294,7 +294,9 @@ export function OverviewPage({
         setError(err instanceof Error ? err.message : String(err))
       })
       .finally(() => {
-        setLoading(false)
+        if (isRequestValid(capturedLease, requestLease, capturedVariant)) {
+          setLoading(false)
+        }
       })
 
     return true

@@ -262,6 +262,100 @@ export async function overviewLifecycleExercise() {
   flushSync(() => pendingRoot.unmount())
   pendingElement.remove()
 
+  // 7. Stale request resolving while newer request is pending:
+  // Start A, commit variant/source lease replacement and start B,
+  // resolve A first, assert B remains loading/Refresh disabled;
+  // then resolve B, fresh current settles false.
+  const dualElement = document.createElement("div")
+  document.body.append(dualElement)
+  const dualRoot = createRoot(dualElement)
+
+  let resolveA!: (val: OverviewInfo) => void
+  const promiseA = new Promise<OverviewInfo>((resolve) => {
+    resolveA = resolve
+  })
+  let resolveB!: (val: OverviewInfo) => void
+  const promiseB = new Promise<OverviewInfo>((resolve) => {
+    resolveB = resolve
+  })
+
+  let requestCount = 0
+  const dualApi = {
+    ...createTetherSysopMockApi("standard"),
+    getOverview: () => {
+      requestCount++
+      if (requestCount === 1) return promiseA
+      return promiseB
+    },
+  }
+
+  let setDualVariant: (v: OverviewVariantKey) => void = () => {}
+
+  function DualHarness() {
+    const [variant, setVariant] = useState<OverviewVariantKey>("standard")
+    setDualVariant = setVariant
+    return <OverviewPage variant={variant} api={dualApi} />
+  }
+
+  flushSync(() => {
+    dualRoot.render(
+      <StrictMode>
+        <DualHarness />
+      </StrictMode>,
+    )
+  })
+  await settle()
+
+  // Start request A
+  const handlersBeforeSwitch = getHandlers()
+  flushSync(() => {
+    handlersBeforeSwitch.__tetherOverviewActiveRefreshHandler?.()
+  })
+  const loadingAfterAStarted =
+    (window as unknown as { __tetherOverviewLoading?: boolean }).__tetherOverviewLoading === true
+
+  // Commit variant/source lease replacement
+  flushSync(() => {
+    setDualVariant("degraded")
+  })
+  await settle()
+
+  // Start request B on new committed lease/variant
+  const handlersAfterSwitch = getHandlers()
+  flushSync(() => {
+    handlersAfterSwitch.__tetherOverviewActiveRefreshHandler?.()
+  })
+  const loadingAfterBStarted =
+    (window as unknown as { __tetherOverviewLoading?: boolean }).__tetherOverviewLoading === true
+
+  // Resolve A first (stale/superseded request)
+  resolveA(overviewModel("standard"))
+  await settle()
+  await new Promise((r) => setTimeout(r, 25))
+
+  // While request B remains pending:
+  // Stale request A's finally must NOT clear loading or re-enable refresh!
+  const bRemainsLoadingAfterAResolves =
+    (window as unknown as { __tetherOverviewLoading?: boolean }).__tetherOverviewLoading === true
+
+  const refreshRefusedWhileBPending =
+    handlersAfterSwitch.__tetherOverviewActiveRefreshHandler?.() === false
+
+  // Now resolve B (current active request)
+  resolveB(overviewModel("degraded"))
+  await settle()
+  await new Promise((r) => setTimeout(r, 25))
+
+  // Fresh current request B settles loading = false
+  const bSettledLoadingFalse =
+    (window as unknown as { __tetherOverviewLoading?: boolean }).__tetherOverviewLoading === false
+
+  const refreshRecoveredAfterB =
+    handlersAfterSwitch.__tetherOverviewActiveRefreshHandler?.() === true
+
+  flushSync(() => dualRoot.unmount())
+  dualElement.remove()
+
   return {
     positiveInitial,
     refusedWhileHidden,
@@ -284,5 +378,11 @@ export async function overviewLifecycleExercise() {
     backgroundEventVetoed,
     settledLoadingTruthful,
     recoveredAfterOverlayRemoved,
+    loadingAfterAStarted,
+    loadingAfterBStarted,
+    bRemainsLoadingAfterAResolves,
+    refreshRefusedWhileBPending,
+    bSettledLoadingFalse,
+    refreshRecoveredAfterB,
   }
 }
