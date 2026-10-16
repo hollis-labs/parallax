@@ -4,7 +4,7 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"github.com/hollis-labs/chimera/host"
+	"github.com/hollis-labs/libs/app/app-host/host"
 	"github.com/hollis-labs/parallax/internal/demoplugin"
 	"github.com/hollis-labs/parallax/internal/scenarios"
 	"github.com/hollis-labs/parallax/internal/webui"
