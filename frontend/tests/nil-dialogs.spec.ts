@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test"
+import { expectPopupClosed, expectPopupFocus } from "./helpers/popup-focus"
 
 const server = process.env.NIL_STORYBOOK_URL ?? "http://127.0.0.1:18542"
 const story = `${server}/iframe.html?id=primitives-nil-dialog-behavior--nil-keyboard&viewMode=story`
@@ -325,14 +326,21 @@ for (const section of ["List navigation", "Board navigation"]) {
       const target = node as HTMLButtonElement
       const original = target.focus.bind(target)
       ;(window as typeof window & { attemptedBackgroundFocus: number }).attemptedBackgroundFocus = 0
-      target.focus = (...args) => {
-        ;(window as typeof window & { attemptedBackgroundFocus: number }).attemptedBackgroundFocus++
-        original(...args)
-      }
+      // Storybook's inherited focus setter replaces the shared implementation.
+      // Keep this spy on the row so native palette focus is not redirected here.
+      Object.defineProperty(target, "focus", {
+        configurable: true,
+        value: (...args: Parameters<HTMLElement["focus"]>) => {
+          ;(window as typeof window & { attemptedBackgroundFocus: number })
+            .attemptedBackgroundFocus++
+          original(...args)
+        },
+      })
     })
     await page.getByRole("button", { name: "Quick search", exact: true }).click()
+    const palette = page.getByRole("dialog")
     const input = page.getByRole("combobox")
-    await input.focus()
+    await expectPopupFocus(palette)
     await expect(input).toBeFocused()
     await page.evaluate(() => {
       ;(window as typeof window & { attemptedBackgroundFocus: number }).attemptedBackgroundFocus = 0
@@ -348,15 +356,8 @@ for (const section of ["List navigation", "Board navigation"]) {
     const palettePopup = await page.locator('[role="dialog"]').elementHandle()
     if (!palettePopup) throw new Error("Expected current palette popup")
     await input.press("Escape")
-    await expect(page.locator('[role="dialog"]')).toHaveCount(0)
+    await expectPopupClosed(palette, page.getByRole("button", { name: "Open dialog", exact: true }))
     await expect.poll(() => palettePopup.evaluate((popup) => !popup.isConnected)).toBe(true)
-    // Complete the native close restoration frame before measuring a new competitor.
-    await page.evaluate(
-      () =>
-        new Promise<void>((resolve) => {
-          requestAnimationFrame(() => queueMicrotask(resolve))
-        }),
-    )
     await page.evaluate(() => {
       ;(window as typeof window & { attemptedBackgroundFocus: number }).attemptedBackgroundFocus = 0
     })

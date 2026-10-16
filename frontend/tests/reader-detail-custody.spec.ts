@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test"
+import { expectPopupFocus } from "./helpers/popup-focus"
 
 declare global {
   interface Window {
@@ -279,7 +280,7 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
 
     // Base UI queues initial focus in an animation frame after the popup is
     // visible. Let that finish before installing a newer foreground owner.
-    await expect.poll(() => dialog.evaluate((el) => el.contains(document.activeElement))).toBe(true)
+    await expectPopupFocus(dialog)
 
     await page.evaluate(() => {
       const ext = document.createElement("input")
