@@ -2,7 +2,7 @@ package demoplugin
 
 import (
 	"encoding/json"
-	"github.com/hollis-labs/libs/plugin-mcp/plugin-sdk/registry"
+	"github.com/hollis-labs/libs/mcp/plugin-mcp/plugin-sdk/registry"
 	"net/http/httptest"
 	"testing"
 )

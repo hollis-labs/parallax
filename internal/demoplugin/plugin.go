@@ -4,8 +4,8 @@ package demoplugin
 import (
 	"embed"
 	"encoding/json"
-	"github.com/hollis-labs/chimera/plugins"
-	"github.com/hollis-labs/libs/plugin-mcp/plugin-sdk/registry"
+	"github.com/hollis-labs/libs/app/app-host/plugins"
+	"github.com/hollis-labs/libs/mcp/plugin-mcp/plugin-sdk/registry"
 )
 
 //go:embed bundle.js
