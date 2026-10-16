@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test"
+import { expectPopupFocus } from "./helpers/popup-focus"
 
 declare global {
   interface Window {
@@ -237,9 +238,11 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
     })
     expect(await page.evaluate(() => typeof window.heldFinalFocus === "function")).toBe(true)
 
+    // Wait for popup removal (including exit transition and focus cleanup) before
+    // asserting custody or starting another opening.
     // Normal close restores focus to opener and fulfills opening 1
     await page.keyboard.press("Escape")
-    await expect(dialog).toBeHidden()
+    await expect(dialog).toHaveCount(0)
     await expect(zoomTrigger).toBeFocused()
 
     // Assert once-fulfilled opening 1 actual native callback is permanently dead (returns false)
@@ -268,12 +271,16 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
 
     // Fresh ordinary close of C still restores focus
     await page.keyboard.press("Escape")
-    await expect(dialog).toBeHidden()
+    await expect(dialog).toHaveCount(0)
     await expect(zoomTrigger).toBeFocused()
 
     // 3. Newer plain foreground owner active during close
     await zoomTrigger.click()
     await expect(dialog).toBeVisible()
+
+    // Base UI queues initial focus in an animation frame after the popup is
+    // visible. Let that finish before installing a newer foreground owner.
+    await expectPopupFocus(dialog)
 
     await page.evaluate(() => {
       const ext = document.createElement("input")
@@ -287,7 +294,7 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
 
     // Close dialog while plain foreground owner is active
     await page.keyboard.press("Escape")
-    await expect(dialog).toBeHidden()
+    await expect(dialog).toHaveCount(0)
 
     // Refusal: focus is NOT stolen back to zoomTrigger; remains on extInput
     await expect(extInput).toBeFocused()
@@ -313,7 +320,7 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
     expect(await page.evaluate(() => window.readerDialog?.finalFocus() ?? false)).toBe(false)
     await page.locator("#competing-modal").evaluate((el) => el.remove())
     await page.keyboard.press("Escape")
-    await expect(dialog).toBeHidden()
+    await expect(dialog).toHaveCount(0)
   })
 
   test("MediaDialog retires across source transition and React Activity hide/show, refuses revival, and supports fresh native-close positive", async ({

@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test"
+import { expectPopupClosed, expectPopupFocus } from "./helpers/popup-focus"
 
 const entry = "/?example=messaging&theme=p4-white&mode=light"
 const email = entry + "&conversation=CONVERSATION-001"
@@ -118,7 +119,9 @@ test("StrictMode current-message attachment intersection and captured query chan
   await attachment.click()
   const modal = page.getByRole("dialog", { name: "Attachment ATTACHMENT-001", exact: true })
   await expect(modal).toContainText("MESSAGE-IN-001")
+  await expectPopupFocus(modal)
   await page.keyboard.press("Escape")
+  await expectPopupClosed(modal, attachment)
   const search = page.getByRole("textbox", { name: "Search messaging conversations", exact: true })
   await search.pressSequentially("gateway")
   await expect(search).toBeFocused()
