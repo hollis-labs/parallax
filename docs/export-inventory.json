@@ -261,7 +261,6 @@
     },
     "importEvidence": [
       "frontend/src/examples/torque/Operations.tsx",
-      "frontend/src/snapshots/Agents.tsx",
       "frontend/src/snapshots/Builder.tsx",
       "frontend/src/snapshots/Planner.tsx",
       "frontend/src/snapshots/Review.tsx",
@@ -352,7 +351,6 @@
       "frontend/src/operations/Views.tsx",
       "frontend/src/run-explorer/Explorer.tsx",
       "frontend/src/settings-review/Review.tsx",
-      "frontend/src/snapshots/Agents.tsx",
       "frontend/src/snapshots/Builder.tsx",
       "frontend/src/snapshots/Planner.tsx",
       "frontend/src/snapshots/Review.tsx",
@@ -398,7 +396,6 @@
     "importEvidence": [
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/primitives/Gallery.tsx",
-      "frontend/src/snapshots/Agents.tsx",
       "frontend/src/snapshots/Builder.tsx",
       "frontend/src/snapshots/Planner.tsx",
       "frontend/src/snapshots/Sessions.tsx",
@@ -4136,7 +4133,6 @@
       "frontend/src/directory-review/Review.tsx",
       "frontend/src/directory-review/contracts.ts",
       "frontend/src/examples/torque/Operations.tsx",
-      "frontend/src/snapshots/Agents.tsx",
       "frontend/src/snapshots/Builder.tsx",
       "frontend/src/snapshots/ConsoleParts.tsx",
       "frontend/src/snapshots/Planner.tsx",
@@ -8977,7 +8973,6 @@
     },
     "importEvidence": [
       "frontend/src/examples/torque/Operations.tsx",
-      "frontend/src/snapshots/Agents.tsx",
       "frontend/src/snapshots/Builder.tsx",
       "frontend/src/snapshots/Planner.tsx",
       "frontend/src/snapshots/Sessions.tsx",
@@ -10135,7 +10130,6 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/snapshots/Agents.tsx",
       "frontend/src/snapshots/Planner.tsx"
     ]
   },
@@ -10555,7 +10549,6 @@
     },
     "importEvidence": [
       "frontend/src/examples/torque/Operations.tsx",
-      "frontend/src/snapshots/Agents.tsx",
       "frontend/src/snapshots/Builder.tsx",
       "frontend/src/snapshots/Planner.tsx",
       "frontend/src/snapshots/Sessions.tsx"
@@ -19629,6 +19622,269 @@
       "frontend/src/snapshots/Agents.tsx",
       "frontend/src/snapshots/Builder.tsx"
     ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityGroup",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityMetric",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityRecord",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityStatus",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityDialog",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityFacts",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivitySection",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityActionButton",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityTimeline",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityBars",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityTone",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
   },
   {
     "package": "@hollis-labs/kit-admin",
