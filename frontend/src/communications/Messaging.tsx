@@ -43,7 +43,7 @@ export function AttachmentInspector({
       title="Bundled attachment"
       meta={record ? `${record.id} / ${record.runId}` : ""}
     >
-      <div className="example-body">
+      <div className="dash-form-stack">
         <h3>{record?.name}</h3>
         <p className="muted">Read-only fixture content; no download or remote source.</p>
         <pre className="fixture-text">{record?.content}</pre>
@@ -74,7 +74,7 @@ export function ContactsView({
         icon={<Users className="size-4" />}
         meta={`${contacts.length} fictional contacts`}
       >
-        <div className="example-body">
+        <div className="dash-form-stack">
           <label>
             Find a contact
             <input
@@ -118,7 +118,7 @@ export function ContactsView({
         </div>
       </Panel>
       <Panel title="Contact detail" icon={<Users className="size-4" />}>
-        <div className="example-body">
+        <div className="dash-form-stack">
           {contact ? (
             <>
               <h2>{contact.name}</h2>
@@ -172,7 +172,7 @@ function ConversationBody({
     denied = delivery === "denied"
   return (
     <>
-      <div className="example-body">
+      <div className="dash-form-stack">
         <p className="eyebrow">
           {conversation.channel} · {conversation.id} · {conversation.runId}
         </p>
@@ -277,7 +277,7 @@ export function MessagesView({
         icon={<Mail className="size-4" />}
         meta={`${conversations.length} linked conversations`}
       >
-        <div className="example-body">
+        <div className="dash-form-stack">
           <label>
             Channel
             <select
@@ -313,7 +313,7 @@ export function MessagesView({
             conversations.map((c) => (
               <button
                 type="button"
-                className="task-card"
+                className="dash-selectable-row"
                 key={c.id}
                 aria-pressed={c.id === selected}
                 onClick={() => {
@@ -337,7 +337,7 @@ export function MessagesView({
         </div>
       </Panel>
       <Panel title="Message review" icon={<MessageSquare className="size-4" />}>
-        <div className="example-body">
+        <div className="dash-form-stack">
           <label>
             Delivery scenario
             <select
@@ -363,7 +363,7 @@ export function MessagesView({
             onIntent={onIntent}
           />
         ) : (
-          <div className="example-body">
+          <div className="dash-form-stack">
             <EmptyState
               variant="empty"
               title="Select a conversation"

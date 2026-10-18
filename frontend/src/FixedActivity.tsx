@@ -21,7 +21,7 @@ export function FixedActivity({
         icon={<Gauge className="size-4" />}
         meta={`${bins.reduce((s, b) => s + b.count, 0)} recorded starts`}
       >
-        <div className="example-body">
+        <div className="dash-form-stack">
           <div className="pulse" role="img" aria-label="Fixed-clock hourly run counts">
             {bins.map((b) => (
               <div
@@ -51,7 +51,7 @@ export function FixedActivity({
       </Panel>
       {showCalendar && (
         <Panel title="Activity calendar" icon={<Activity className="size-4" />} meta="28 days">
-          <div className="example-body">
+          <div className="dash-form-stack">
             <div className="calendar" role="img" aria-label="Fixed-clock daily run counts">
               {days.map((d) => (
                 <div

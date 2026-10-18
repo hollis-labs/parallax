@@ -108,7 +108,7 @@ export function ActivityCalendar({ model }: { model: OperationsModel }) {
       icon={<Activity className="size-4" />}
       meta="fixed UTC clock"
     >
-      <div className="example-body">
+      <div className="dash-form-stack">
         <div
           className="calendar-weeks"
           role="img"
@@ -249,7 +249,7 @@ export function MissionView({
             icon={<Compass className="size-4" />}
             meta={`${model.runs.length} admitted runs · entire filtered graph`}
           >
-            <div className="example-body">
+            <div className="dash-form-stack">
               <CompositionBars items={items} />
               <BarList items={items} />
             </div>
@@ -259,7 +259,7 @@ export function MissionView({
             icon={<Gauge className="size-4" />}
             meta={`${model.usage.length} recorded receipts`}
           >
-            <div className="example-body">
+            <div className="dash-form-stack">
               <BarMeter
                 rows={series
                   .filter((d) => d.tokens !== null)
@@ -345,7 +345,7 @@ export function SeriesPanel({
     maximum = Math.max(1e-6, ...series.map((day) => day[field] ?? 0))
   return (
     <Panel title={title} icon={<Gauge className="size-4" />} meta="14 UTC dates">
-      <div className="example-body">
+      <div className="dash-form-stack">
         <svg
           className="series-chart"
           viewBox="0 0 420 100"
@@ -421,7 +421,7 @@ export function UsageView({
       <SeriesPanel title="14-day cost" field="cost" model={model} />
       <div className="dashboard-grid">
         <Panel title="Usage by correlated run" icon={<Gauge className="size-4" />}>
-          <div className="example-body">
+          <div className="dash-form-stack">
             <BarMeter
               rows={model.usage.map((u) => ({
                 key: u.id,
@@ -433,7 +433,7 @@ export function UsageView({
           </div>
         </Panel>
         <Panel title="Provider / model attribution" icon={<Layers className="size-4" />}>
-          <div className="example-body">
+          <div className="dash-form-stack">
             <p className="muted">
               Unavailable in this fixture contract. No provider or model service is connected; this
               is not zero usage.
@@ -453,7 +453,7 @@ export function RunDetailBody({
   onIntent: (action: string, id: string) => void
 }) {
   return (
-    <div className="example-body">
+    <div className="dash-form-stack">
       <p className="muted">Evidence through {detail.cutoff} · fixed recorded frame</p>
       <h3>{detail.task.title}</h3>
       <p>{detail.task.narrative}</p>

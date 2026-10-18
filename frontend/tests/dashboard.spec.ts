@@ -131,3 +131,134 @@ test("reference dashboard compositions preserve intensity exact date tables them
   await page.keyboard.press("Escape")
   await expect(page.getByRole("dialog")).not.toBeVisible()
 })
+
+for (const rootSize of [16, 20, 24]) {
+  test(`dashboard defaults reach catalog and Torque routes at root ${rootSize}`, async ({
+    page,
+  }) => {
+    for (const view of ["Examples", "Primitives", "Run Explorer"]) {
+      await page.goto(`/?view=${encodeURIComponent(view)}`)
+      await page.evaluate((size) => {
+        document.documentElement.style.fontSize = `${size}px`
+      }, rootSize)
+      await expect(page.locator("h1").first()).toHaveCSS("font-size", "11px")
+      if (view !== "Run Explorer") {
+        await expect(page.getByRole("heading", { name: view, exact: true })).toHaveCSS(
+          "font-size",
+          "11px",
+        )
+        const card = page.locator('[data-slot="card"]').first()
+        await expect(card).toHaveCSS("border-top-width", "0px")
+        const background = await page
+          .locator("body")
+          .evaluate((el) => getComputedStyle(el).backgroundColor)
+        await expect(card).toHaveCSS("background-color", background)
+      } else {
+        await expect(page.locator("tbody td").first()).toHaveCSS("font-size", "13px")
+        await expect(page.locator("thead").first()).toHaveCSS("font-size", "10px")
+      }
+    }
+    for (const screen of ["tasks", "runs", "dashboard", "about"]) {
+      await page.goto(`/?example=torque&screen=${screen}`)
+      await page.evaluate((size) => {
+        document.documentElement.style.fontSize = `${size}px`
+      }, rootSize)
+      await expect(page.locator(".torque-header h1")).toHaveCSS("font-size", "11px")
+      await expect(page.locator(".torque-header")).toHaveCSS("padding-left", `${rootSize}px`)
+    }
+  })
+}
+
+test("app theme overrides reach separate catalog pages and explicit raised surfaces", async ({
+  page,
+}) => {
+  for (const view of ["Examples", "Primitives"]) {
+    await page.goto(`/?view=${view}`)
+    await page.evaluate(() => {
+      document.documentElement.style.setProperty("--dash-page-padding", "27px")
+      document.documentElement.style.setProperty("--dash-page-heading-size", "15px")
+    })
+    await expect(page.getByTestId("page-scroll")).toHaveCSS("padding-left", "27px")
+    await expect(page.getByRole("heading", { name: view, exact: true })).toHaveCSS(
+      "font-size",
+      "15px",
+    )
+    const card = page.locator('[data-slot="card"]').first()
+    await card.evaluate((el) => el.setAttribute("data-dashboard-surface", "raised"))
+    await expect(card).toHaveCSS("border-top-width", "1px")
+  }
+})
+
+for (const rootSize of [16, 20]) {
+  test(`shared dropdown and search controls stay coherent at root ${rootSize}`, async ({
+    page,
+  }) => {
+    await page.goto("/?view=Primitives")
+    await page.evaluate((size) => {
+      document.documentElement.style.fontSize = `${size}px`
+    }, rootSize)
+    const gallery = page.getByLabel("Gallery state"),
+      reset = page.getByRole("button", { name: "Reset gallery", exact: true })
+    await expect(gallery).toHaveCSS("height", `${rootSize * 2}px`)
+    await expect(reset).toHaveCSS("height", `${rootSize * 2}px`)
+    const font = await reset.evaluate((el) => getComputedStyle(el).fontSize)
+    await expect(gallery).toHaveCSS("font-size", font)
+    await expect(page.getByLabel("Scenario", { exact: true })).toHaveCSS("font-size", font)
+    await gallery.click()
+    await page.keyboard.press("ArrowDown")
+    await page.keyboard.press("Enter")
+    await expect(gallery).toHaveValue("empty")
+    await gallery.focus()
+    await expect(gallery).toHaveCSS("outline-style", "none")
+    await page.keyboard.press("Tab")
+    await expect(reset).toBeFocused()
+    await expect(reset).toHaveCSS("outline-style", "none")
+    expect(
+      await reset.evaluate((el) =>
+        getComputedStyle(el).getPropertyValue("--tw-ring-shadow").trim(),
+      ),
+    ).toBe("0 0 transparent")
+
+    const backgrounds: string[] = []
+    for (const screen of ["tasks", "runs"]) {
+      await page.goto(`/?example=torque&screen=${screen}`)
+      const input = page.getByLabel(
+        screen === "tasks" ? "Example task filter" : "Search admitted runs",
+        { exact: true },
+      )
+      await expect(input).toHaveCSS("border-top-width", "0px")
+      await expect(input).toHaveCSS("padding-top", "0px")
+      const field = input.locator("..")
+      const before = await field.evaluate((el) => getComputedStyle(el).backgroundColor)
+      backgrounds.push(before)
+      await input.focus()
+      await expect(input).toHaveCSS("outline-style", "none")
+      await expect(field).toHaveCSS("outline-style", "none")
+      await expect(field).not.toHaveCSS("background-color", before)
+      await expect(input).toHaveCSS("background-color", "rgba(0, 0, 0, 0)")
+      const trigger = page.getByRole("button", {
+        name: screen === "tasks" ? "Filter by project" : "Filter run owner",
+        exact: true,
+      })
+      await trigger.click()
+      const popup = page.locator('[data-slot="popover-content"]')
+      const second = popup.getByRole("option").nth(1)
+      await expect(second).toHaveCSS("border-top-width", "1px")
+      if (screen === "runs") {
+        const viewport = popup.locator('[data-slot="scroll-area-viewport"]')
+        expect(await viewport.evaluate((el) => el.scrollHeight > el.clientHeight)).toBe(true)
+        await popup.getByRole("option").last().scrollIntoViewIfNeeded()
+        await expect(popup.getByRole("option").last()).toBeInViewport()
+      }
+      await expect(trigger).toHaveCSS("outline-style", "none")
+      await page.keyboard.press("Escape")
+      await expect(trigger).toBeFocused()
+      await expect(trigger).toHaveCSS("outline-style", "none")
+    }
+    expect(backgrounds[0]).toBe(backgrounds[1])
+    await page.locator('[data-testid="data-table-row"]').first().click()
+    await expect(page.getByRole("dialog")).toBeVisible()
+    await expect(page.locator(".torque-header h1")).toHaveCSS("outline-style", "none")
+    await page.keyboard.press("Escape")
+  })
+}

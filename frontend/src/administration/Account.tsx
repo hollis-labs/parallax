@@ -159,7 +159,7 @@ function AccountPresentation({
       ) : view === "Users" ? (
         <div className="admin-columns">
           <Panel icon={null} title="Fixture users">
-            <div className="example-body">
+            <div className="dash-form-stack">
               {artifact.users.map((u) => (
                 <Button
                   key={u.id}
@@ -175,7 +175,7 @@ function AccountPresentation({
             </div>
           </Panel>
           <Panel icon={null} title="User detail">
-            <div className="example-body">
+            <div className="dash-form-stack">
               <h3>{selected.name}</h3>
               <p>
                 {selected.id} · {selected.contactId} · {selected.state}
@@ -200,7 +200,7 @@ function AccountPresentation({
       ) : view === "Roles" ? (
         <div className="admin-columns">
           <Panel icon={null} title="Fixture roles">
-            <div className="example-body">
+            <div className="dash-form-stack">
               {artifact.roles.map((r) => (
                 <Button
                   key={r.id}
@@ -216,7 +216,7 @@ function AccountPresentation({
             </div>
           </Panel>
           <Panel icon={null} title="Role detail">
-            <div className="example-body">
+            <div className="dash-form-stack">
               <h3>{artifact.roles.find((r) => r.id === selectedRole)?.label}</h3>
               <p>{selectedRole}</p>
               <h4>Related permissions</h4>
@@ -246,7 +246,7 @@ function AccountPresentation({
         </div>
       ) : view === "Permissions" ? (
         <Panel icon={null} title="Permission presentation labels">
-          <div className="example-body">
+          <div className="dash-form-stack">
             <p className="muted">
               These relationships describe fixtures; they do not evaluate or grant access.
             </p>

@@ -12,6 +12,8 @@ export const operationsMetadata: Record<
     sprint: string
     tag: string
     executor: string
+    collection?: string
+    inInbox?: boolean
   }
 > = {
   "TASK-001": {
@@ -37,6 +39,7 @@ export const operationsMetadata: Record<
     executor: "claude",
   },
   "TASK-003": {
+    collection: "UI review",
     status: "review",
     priority: 3,
     manual: false,
@@ -81,6 +84,7 @@ export const operationsMetadata: Record<
     executor: "cli",
   },
   "TASK-007": {
+    inInbox: true,
     status: "backlog",
     priority: 1,
     manual: false,
@@ -92,6 +96,7 @@ export const operationsMetadata: Record<
     executor: "codex",
   },
   "TASK-008": {
+    collection: "Release readiness",
     status: "done",
     priority: 2,
     manual: false,

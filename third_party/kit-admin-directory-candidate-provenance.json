@@ -1,0 +1,18 @@
+{
+  "task": "CW-20261018-0007",
+  "status": "local review candidate; not a registry release",
+  "package": "@hollis-labs/kit-admin",
+  "archive": "hollis-labs-kit-admin-0.1.0-cw0007-directory-0665dff2.tgz",
+  "sha256": "0665dff2f27844717f16035ff2baf7c9205182a211ed3f2bb02b7b8a7b776513",
+  "baseline_source_commit": "cd3a90b16866548d6226c910e48f6f54177a3a40",
+  "upstream_checkout": "/home/chrispian/dev/hollis-labs/libs/design-kit",
+  "source_files": {
+    "src/index.ts": "6bb6ab04aa99f6ae984d95bdd3022cc0bc8a38a9a17260d8951e05fe1a66b661",
+    "src/directory.tsx": "983b956879c13a8934aea0b49a250645d0c4ccd69365f5e23afeb772f17113f2",
+    "src/identity-avatar.tsx": "d2ea5a542cf53c39aa119a87bb4bc7bbf33ab883a19a59d2a903f40ba4cde296"
+  },
+  "source_patch": "kit-admin-directory-candidate.patch",
+  "source_patch_sha256": "5a1265d2cd926c6cffbd3b3c3b1e47655bb56f580e66a07b390460458d38d236",
+  "note": "Additive directory, metadata and identity presentation APIs, same source in current kit-admin. Built on Parallax 0.4 dashboard baseline to avoid unrelated release changes. Apply dashboard review patch before building this candidate.",
+  "upstream_checkpoint_commit": "0f8663e58923de1076ed1f2fbb7208aede9ac325"
+}

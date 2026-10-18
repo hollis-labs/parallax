@@ -286,7 +286,7 @@ function InspectorInstance({
           </div>
         </Panel>
         <Panel title="Selected metadata and payload" icon={null}>
-          <div className="example-body">
+          <div className="dash-form-stack">
             {row && payload ? (
               <>
                 <MetaList
@@ -342,7 +342,7 @@ function InspectorInstance({
           </div>
         }
       >
-        <div className="example-body">
+        <div className="dash-form-stack">
           {row && payload && (
             <>
               <DetailSection title="Payload classification">

@@ -190,7 +190,7 @@ export function TraceInspection({
           </div>
           <div className="admin-columns">
             <Panel icon={null} title="Recorded spans">
-              <div className="example-body">
+              <div className="dash-form-stack">
                 {detail.spans.map((span) => (
                   <button
                     type="button"
@@ -215,7 +215,7 @@ export function TraceInspection({
               </div>
             </Panel>
             <Panel icon={null} title="Span detail">
-              <div className="example-body">
+              <div className="dash-form-stack">
                 <h3>{detail.selected?.id}</h3>
                 <p>{detail.selected?.parentId ?? "No parent (root span)"}</p>
                 <h4>Related tool calls</h4>

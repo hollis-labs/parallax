@@ -370,6 +370,15 @@ export const destinations: readonly Definition[] = [
     story: "chat-usage-evidence--recorded",
     playback: true,
   },
+  {
+    id: "App Snapshots",
+    group: "App Examples",
+    icon: "Gauge",
+    source: "Captured Torque and Tether responses",
+    scope: "Real task board, Tether overview and session identities.",
+    gap: "Bounded read-only capture; no live actions or task bodies.",
+    story: "",
+  },
 ]
 export const workbenchEntry = { id: "Review Workbench", icon: "Layers" as const }
 export function normalizeView(value: string | null) {
@@ -381,7 +390,7 @@ export function viewIcon(name: keyof typeof icons) {
   return icons[name]
 }
 export function storyDestination(host: string, story: string) {
-  if (!destinations.some((d) => d.story === story)) return null
+  if (!story || !destinations.some((d) => d.story === story)) return null
   let origin: string | null = null
   if (
     [

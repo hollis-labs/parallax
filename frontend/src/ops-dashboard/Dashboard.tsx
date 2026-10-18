@@ -1,5 +1,6 @@
 import { Button, Tabs, TabsContent, TabsList, TabsTrigger } from "@hollis-labs/design-components"
 import { PageHeader, SummaryCards } from "@hollis-labs/kit-dashboard"
+import { DashboardField } from "@hollis-labs/kit-dashboard/layout"
 import { IntelligenceRow, Kpi, KpiGrid } from "@hollis-labs/kit-dashboard/widgets"
 import { type ReactNode, useLayoutEffect, useRef, useState } from "react"
 import type { OperationsModel } from "../operations/model"
@@ -223,8 +224,7 @@ function Metrics({ model, onSelect }: { model: OperationsModel; onSelect: (id: s
           ))}
         </tbody>
       </table>
-      <label>
-        Metric record
+      <DashboardField label="Metric record" orientation="stacked">
         <select
           aria-label="Metric record"
           value={selected}
@@ -248,7 +248,7 @@ function Metrics({ model, onSelect }: { model: OperationsModel; onSelect: (id: s
             </option>
           ))}
         </select>
-      </label>
+      </DashboardField>
       <div className="ops-status-digest">
         <IntelligenceRow
           label="Supplied task status"

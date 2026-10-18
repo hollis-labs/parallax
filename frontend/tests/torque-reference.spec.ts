@@ -147,7 +147,7 @@ test("native Torque source profile reload/history/reset and readable reference o
   const nav = page.getByRole("navigation", { name: "Torque application navigation", exact: true })
   await nav.getByRole("link", { name: "Operations", exact: true }).click()
   await page.getByLabel("Example task filter", { exact: true }).fill("TASK-003")
-  await page.locator(".torque-ops-task > a").click()
+  await page.locator(".torque-ops-task a").click()
   await expect(page).toHaveURL(/selected=TASK-003/)
   await expect(
     page.getByRole("dialog", { name: "Task and run inspection", exact: true }),

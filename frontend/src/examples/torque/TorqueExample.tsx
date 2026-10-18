@@ -1,5 +1,15 @@
 import { AppShell, Button, OverlaySidebar } from "@hollis-labs/design-components"
-import { Activity, Cog, FileText, LayoutList, PanelLeft, Radio } from "lucide-react"
+import { NavRail } from "@hollis-labs/kit-dashboard/ui"
+import {
+  Activity,
+  Cog,
+  FileText,
+  FolderTree,
+  LayoutList,
+  Menu,
+  PanelLeft,
+  Radio,
+} from "lucide-react"
 import { type ReactNode, useLayoutEffect, useRef, useState } from "react"
 import { operationsModel, runDetail, scenarios } from "../../operations/model"
 import { OpsDashboard } from "../../ops-dashboard/Dashboard"
@@ -301,27 +311,51 @@ export function TorqueExample({
   )
   return (
     <AppShell
-      className={`torque-example ${boardRoute === "tasks" ? "torque-operations-shell" : ""}`}
+      className="torque-example"
       nav={
         <aside className="torque-sidebar">
-          <a
-            className="torque-brand"
-            href={torqueHref(state, { route: "tasks" })}
-            onClick={(e) => {
-              e.preventDefault()
-              change({ route: "tasks" })
-            }}
-          >
-            <Cog size={20} />
-            <span>Torque</span>
-          </a>
-          {links}
-          <footer>
-            <a href="/?view=Review+Workbench">
-              <PanelLeft size={16} />
-              <span className="torque-nav-label">Back to review lab</span>
-            </a>
-          </footer>
+          <NavRail
+            ariaLabel="Torque application navigation"
+            logo={
+              <a
+                href={torqueHref(state, { route: "tasks" })}
+                aria-label="Torque"
+                onClick={(e) => {
+                  e.preventDefault()
+                  change({ route: "tasks" })
+                }}
+              >
+                <Cog className="size-5" />
+              </a>
+            }
+            logoLabel="Torque"
+            items={[
+              ...destinations.map((d) => ({
+                key: d.route,
+                label: d.label,
+                href: torqueHref(state, { route: d.route }),
+                onSelect: () => change({ route: d.route }),
+                active: boardRoute === d.route,
+                icon:
+                  d.route === "tasks" ? (
+                    <LayoutList className="size-4" />
+                  ) : d.route === "dashboard" ? (
+                    <Activity className="size-4" />
+                  ) : d.route === "runs" ? (
+                    <Radio className="size-4" />
+                  ) : (
+                    <FileText className="size-4" />
+                  ),
+              })),
+              {
+                key: "lab",
+                label: "Back to review lab",
+                href: "/?view=Review+Workbench",
+                icon: <PanelLeft className="size-4" />,
+                footer: true,
+              },
+            ]}
+          />
         </aside>
       }
       header={
@@ -335,8 +369,8 @@ export function TorqueExample({
               }}
               title="Torque navigation"
               trigger={
-                <Button variant="outline" size="sm">
-                  Open app navigation
+                <Button variant="outline" size="icon-sm" aria-label="Open app navigation">
+                  <Menu />
                 </Button>
               }
             >
@@ -348,7 +382,7 @@ export function TorqueExample({
             </OverlaySidebar>
           </div>
           <div className="torque-heading">
-            <h1 ref={headingAnchor} tabIndex={-1}>
+            <h1 ref={headingAnchor} tabIndex={-1} className="dash-page-heading">
               {title}
             </h1>
             <span>
@@ -358,20 +392,24 @@ export function TorqueExample({
           {boardRoute === "tasks" && (
             <div className="torque-header-scopes">
               {["Projects", "Sprints", "Epics", "Scope"].map((label) => (
-                <button
+                <Button
+                  variant="outline"
+                  size="sm"
                   type="button"
                   key={label}
+                  className="dash-header-action"
                   onClick={() => {
                     if (admitted())
                       pageRoot.current
-                        ?.querySelector<HTMLSelectElement>(
-                          `select[aria-label="Filter by ${label === "Scope" ? "tag" : label.toLowerCase().slice(0, -1)}"]`,
+                        ?.querySelector<HTMLElement>(
+                          `[aria-label="Filter by ${label === "Scope" ? "tag" : label.toLowerCase().slice(0, -1)}"]`,
                         )
                         ?.focus()
                   }}
                 >
+                  {label === "Scope" && <FolderTree />}
                   {label}
-                </button>
+                </Button>
               ))}
             </div>
           )}
@@ -383,7 +421,7 @@ export function TorqueExample({
             }}
             title="Torque fixture review"
             trigger={
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" className="dash-header-action">
                 Review fixtures
               </Button>
             }

@@ -1,0 +1,19 @@
+.snapshot-review {
+  height: 100dvh;
+  overflow-y: auto;
+  background: var(--color-bg);
+}
+.snapshot-content {
+  min-width: 0;
+}
+.snapshot-provenance {
+  color: var(--color-fg-faint);
+  font-size: var(--dash-support-size);
+}
+.snapshot-provenance p,
+.snapshot-provenance ul {
+  margin-block: var(--dash-field-gap);
+}
+.snapshot-content .torque-ops-table-region {
+  max-height: 65dvh;
+}

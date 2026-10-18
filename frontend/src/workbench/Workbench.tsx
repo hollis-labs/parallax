@@ -175,10 +175,14 @@ function Instance({
                 {story ? (
                   <a href={story}>Portable {d.id} story</a>
                 ) : (
-                  <span>Portable story link unavailable for this host.</span>
+                  <span>
+                    {d.story
+                      ? "Portable story link unavailable for this host."
+                      : "Captured-data review is available in Parallax."}
+                  </span>
                 )}
               </div>
-              <p className="workbench-story">Representative story: {d.story}</p>
+              {d.story && <p className="workbench-story">Representative story: {d.story}</p>}
             </article>
           )
         })}

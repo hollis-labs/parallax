@@ -9,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
   EmptyState,
-  Label,
   Popover,
   PopoverContent,
   PopoverTrigger,
@@ -18,6 +17,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@hollis-labs/design-components"
+import { DashboardField, DashboardToolbar } from "@hollis-labs/kit-dashboard/layout"
 import { useLayoutEffect, useRef, useState } from "react"
 import { createAdminPresentationSession } from "../chimera/admin-session"
 import { type Appearance, appearances, directoryModel, relationships } from "./model"
@@ -48,9 +48,8 @@ export function DirectoryReview({
         authorization.
       </p>
       {!embedded && (
-        <div className="directory-controls">
-          <Label>
-            Directory appearance
+        <DashboardToolbar>
+          <DashboardField label="Directory appearance">
             <select
               aria-label="Directory appearance"
               value={state}
@@ -60,9 +59,11 @@ export function DirectoryReview({
                 <option key={s}>{s}</option>
               ))}
             </select>
-          </Label>
-          <Button onClick={() => setReset((n) => n + 1)}>Reset directory review</Button>
-        </div>
+          </DashboardField>
+          <Button variant="outline" onClick={() => setReset((n) => n + 1)}>
+            Reset directory review
+          </Button>
+        </DashboardToolbar>
       )}
       {data.authored && (
         <p>

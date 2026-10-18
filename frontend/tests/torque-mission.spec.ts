@@ -153,7 +153,7 @@ test("Usage actual nullable area zero unavailable sparse split and exact receipt
   await page.mouse.wheel(0, -5000)
   await expect
     .poll(() =>
-      dialog.locator(".example-body").evaluate((e) => {
+      dialog.locator(".dash-form-stack").evaluate((e) => {
         for (let p = e.parentElement; p; p = p.parentElement)
           if (
             p.scrollHeight > p.clientHeight &&
@@ -171,7 +171,7 @@ test("Usage actual nullable area zero unavailable sparse split and exact receipt
   await page.mouse.wheel(0, -5000)
   await expect
     .poll(() =>
-      dialog.locator(".example-body").evaluate((e) => {
+      dialog.locator(".dash-form-stack").evaluate((e) => {
         for (let p = e.parentElement; p; p = p.parentElement)
           if (
             p.scrollHeight > p.clientHeight &&

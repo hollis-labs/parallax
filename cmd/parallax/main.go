@@ -7,6 +7,7 @@ import (
 	"github.com/hollis-labs/libs/app/app-host/host"
 	"github.com/hollis-labs/parallax/internal/demoplugin"
 	"github.com/hollis-labs/parallax/internal/scenarios"
+	"github.com/hollis-labs/parallax/internal/snapshots"
 	"github.com/hollis-labs/parallax/internal/webui"
 	"log"
 	"net"
@@ -20,6 +21,7 @@ func main() {
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
 	mux := http.NewServeMux()
+	mux.HandleFunc("GET /api/snapshots/current", snapshots.Serve)
 	mux.HandleFunc("GET /api/scenario", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		_ = json.NewEncoder(w).Encode(func() scenarios.Scenario {
