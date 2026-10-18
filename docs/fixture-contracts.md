@@ -134,7 +134,8 @@ No browser interaction calls Torque, Tether or Tachyon.
 
 `?example=snapshots&source=agents` preserves Tachyon's workstream/project groups,
 robot identities, captured process/chat state, provisional score and detail
-modal. Scores follow Tachyon's uptime/recency formula with no observed history.
+modal. Scores follow Tachyon's uptime/recency formula and include observed
+working share when a bounded page observation is installed.
 No working-share chart is fabricated. Process/chat joins use an exact session ID
 or a unique managed-workspace match before full paths are removed; ambiguous
 matches remain separate identities. Clock-based labels freeze at capture time.
@@ -153,6 +154,44 @@ theme-colored identity avatar. Shared dashboard section/search-band components
 supply Planner's corrected inset, vertical spacing and divider. Parallax's `dl`
 fallback lives in the base cascade layer so kit utility layouts can take effect.
 No per-page stylesheet or Sysop embed is introduced.
+
+The Agents fidelity pass also uses kit-admin's controlled `ActivityGroup`,
+`ActivityRecord`, `ActivityMetric` and `ActivityStatus`: compact bordered group
+bars, framed identities, inline states and aligned value-first metrics. The app
+still owns grouping, provisional scores, captured counts and selection. Missing
+working share is a dash and missing history is labeled; neither is a zero-valued
+observation. Chat identities use a chat indicator, while process mail distinguishes
+unreported counts from zero. `kit-admin-agents-candidate-provenance.json` and its
+source patch record this additive candidate against the shared-kit checkpoint.
+
+The agent inspector uses the shared `ActivityDialog`, `ActivityFacts`,
+`ActivitySection` and `ActivityActionButton` compositions. It has a single
+identity header, a responsive value-first fact grid and content-sized dialog
+scrolling. The captured identity disclosure retains full IDs and timestamps.
+Message controls reflect process versus chat identity but remain disabled;
+timeline, state-change count and observation duration are explicitly unavailable
+when absent from the capture. Confidence describes only the captured state field.
+
+An optional observed-activity extension freezes the live Tachyon Agents page's
+own transition history. Run `projectObservedFleet` from
+`scripts/project-observed-fleet.mjs` on the current `FleetAgentsView` props in an
+authorized browser, before downloading anything. It requires a connected,
+non-stale view and allowlists identity plus state/kind/observation time; wait
+reasons, action text, prompts, messages and full paths remain excluded. The
+current source exposes this history only in the mounted page, not its REST
+snapshot. Browser access to that view model is a manual capture adapter, not a
+runtime dependency of Parallax.
+
+Install only the projected result with `node scripts/capture-observed-fleet.mjs
+< observed-fleet.json`. The installer validates the observation receipt, ordered
+timestamps, final state, field allowlist and bounded histories before replacing
+only the fleet slice. Other source captures keep their original receipts.
+There are at most 60 transitions per identity; the timeline shows Tachyon's
+1–30 minute window and leaves its unobserved lead-in blank. Working share uses
+observed time, and relative labels use the frozen capture clock. Shared
+`ActivityTimeline` and `ActivityBars` render the app's derived intervals and
+samples without fetching data. Missing history remains distinct from an observed
+zero. The local capture stays ignored; a clean clone still starts empty.
 
 Capture uses the authenticated read-only Tachyon routes for Torque activity,
 Tether chat/catalog and manually imported saved teams. Tachyon remains a relay or

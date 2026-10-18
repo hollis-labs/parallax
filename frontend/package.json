@@ -21,7 +21,7 @@
     "@hollis-labs/design-components": "file:../third_party/hollis-labs-design-components-0.4.0-cw0091-candidate.tgz",
     "@hollis-labs/design-tokens": "0.4.0",
     "@hollis-labs/kit-account": "file:../third_party/hollis-labs-kit-account-0.0.0.tgz",
-    "@hollis-labs/kit-admin": "file:../third_party/hollis-labs-kit-admin-0.1.0-cw0007-directory-0665dff2.tgz",
+    "@hollis-labs/kit-admin": "file:../third_party/hollis-labs-kit-admin-0.1.0-cw0007-agents-19cd636a.tgz",
     "@hollis-labs/kit-chat": "0.4.0",
     "@hollis-labs/kit-code": "file:../third_party/hollis-labs-kit-code-0.0.0.tgz",
     "@hollis-labs/kit-dashboard": "file:../third_party/hollis-labs-kit-dashboard-0.4.0-cw0040-planner-88884f34.tgz",

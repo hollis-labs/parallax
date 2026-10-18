@@ -1,3 +1,4 @@
+import { observedActivity } from "./activity-model"
 export interface ConsoleReceipt {
   origin: string
   path: string
@@ -49,6 +50,11 @@ export interface TeamDefinition {
   authority?: string
   history?: string
 }
+export interface FleetTransition {
+  at: string
+  kind: "seen" | "started" | "state"
+  state: "busy" | "waiting" | "idle" | "unknown"
+}
 export interface FleetRecord {
   id: string
   name: string
@@ -65,6 +71,7 @@ export interface FleetRecord {
   lastActivity?: string
   messages?: number
   kind: "process" | "chat"
+  history?: FleetTransition[]
 }
 export interface ConsoleSnapshot {
   version: "console-capture/v1"
@@ -72,7 +79,11 @@ export interface ConsoleSnapshot {
   agents: Slice<AgentDefinition>
   launches: Slice<LaunchDefinition>
   teams: Slice<TeamDefinition> & { importedAt: string }
-  fleet: Slice<FleetRecord> & { rosterTotal: number; roster: ConsoleReceipt }
+  fleet: Slice<FleetRecord> & {
+    rosterTotal: number
+    roster: ConsoleReceipt
+    observation?: { method: "tachyon-page"; endedAt: string }
+  }
 }
 export const stateLabels = {
   busy: "Working",
@@ -95,7 +106,7 @@ export function elapsed(iso: string | undefined, clock: string) {
       ? `${Math.floor(m / 60)}h ${m % 60}m`
       : `${Math.floor(m / 1440)}d`
 }
-// Tachyon's provisional score with no observed history. Never invent a working-share series.
+// Tachyon's provisional score; observed share contributes only when captured.
 export function fleetScore(a: FleetRecord, clock: string) {
   const now = Date.parse(clock),
     start = Date.parse(a.startedAt ?? ""),
@@ -105,7 +116,8 @@ export function fleetScore(a: FleetRecord, clock: string) {
   return Math.max(
     0,
     Math.round(
-      up * 10 +
+      (observedActivity(a, clock)?.workingShare ?? 0) * 5 +
+        up * 10 +
         Math.max(0, 20 - idle / 3) -
         (a.state === "unknown" ? 20 : a.state === "waiting" ? 5 : 0),
     ),
