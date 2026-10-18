@@ -149,7 +149,8 @@ export interface OverviewPageProps {
   showVariantSelector?: boolean
   forcedAppearance?: "ready" | "loading" | "error" | "empty"
   forcedErrorMessage?: string
-  api?: TetherSysopApi
+  initialData?: OverviewInfo
+  api?: Pick<TetherSysopApi, "getOverview">
 }
 
 export function OverviewPage({
@@ -162,6 +163,7 @@ export function OverviewPage({
   forcedAppearance = "ready",
   forcedErrorMessage,
   api: customApi,
+  initialData,
 }: OverviewPageProps) {
   const [internalVariant, setInternalVariant] = useState<OverviewVariantKey>(initialVariant)
   const currentVariant = controlledVariant ?? internalVariant
@@ -173,13 +175,13 @@ export function OverviewPage({
       forcedAppearance === "error"
     )
       return null
-    return overviewModel(currentVariant)
+    return initialData ?? overviewModel(currentVariant)
   })
   const [error, setError] = useState<string | null>(() => {
     if (forcedAppearance === "error") {
       return forcedErrorMessage ?? "Could not load overview"
     }
-    const initial = overviewModel(currentVariant)
+    const initial = initialData ?? overviewModel(currentVariant)
     return initial.error ?? initial.health?.error ?? null
   })
   const [loading, setLoading] = useState(forcedAppearance === "loading")
@@ -489,7 +491,7 @@ export function OverviewPage({
         <EmptyState
           variant="empty"
           title="Loading overview..."
-          description="Retrieving Tether telemetry fixture data."
+          description="Retrieving Tether telemetry data."
         />
       </div>
     )

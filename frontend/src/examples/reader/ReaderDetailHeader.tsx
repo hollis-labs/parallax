@@ -59,7 +59,7 @@ export function ReaderDetailHeader({
       </div>
       <div className="flex flex-col gap-3 px-4 py-3 sm:flex-row sm:items-start sm:justify-between sm:px-6">
         <div className="min-w-0">
-          <h1 className="line-clamp-2 text-lg font-semibold leading-tight text-text sm:text-xl">
+          <h1 className="line-clamp-2 text-lg font-semibold normal-case leading-tight tracking-normal text-text sm:text-xl">
             {title}
           </h1>
           {readingState && <div className="mt-1 text-xs text-text-subtle">{readingState}</div>}

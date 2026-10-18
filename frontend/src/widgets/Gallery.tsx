@@ -226,7 +226,7 @@ function GalleryInstance({
       </div>
       <div className={`widgets-grid ${layout === "stack" ? "widgets-stack" : ""}`}>
         <Panel title="Sparkbars and MiniTrend" icon={null}>
-          <div className="example-body">
+          <div className="dash-form-stack">
             <p>
               Run-start count per admitted UTC bucket. Six normalized decorative rows; exact values
               below.
@@ -254,7 +254,7 @@ function GalleryInstance({
           </div>
         </Panel>
         <Panel title="SignalBars" icon={null}>
-          <div className="example-body">
+          <div className="dash-form-stack">
             <p>
               Same-unit disjoint run-start classes: finish observed / no finish observed. Two
               decorative columns per bucket; never double event counts.
@@ -280,7 +280,7 @@ function GalleryInstance({
           </div>
         </Panel>
         <Panel title="DonutChart" icon={null}>
-          <div className="example-body">
+          <div className="dash-form-stack">
             <p>
               Admitted window run status distribution. Denominator: {data.count ?? "Unavailable"}{" "}
               recorded run starts; run state differs from task state. Individual rounded percentages
@@ -305,7 +305,7 @@ function GalleryInstance({
           </div>
         </Panel>
         <Panel title="RecentList" icon={null}>
-          <div className="example-body">
+          <div className="dash-form-stack">
             <p>
               Caller-sorted start UTC descending, stable ID tie-break; at most5 rows. Keyboard
               selection opens read-only admitted record.
@@ -397,7 +397,7 @@ function GalleryInstance({
           </div>
         }
       >
-        <div className="example-body">
+        <div className="dash-form-stack">
           {row && (
             <>
               <MetaList

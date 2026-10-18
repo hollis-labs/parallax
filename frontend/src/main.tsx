@@ -18,13 +18,16 @@ import { StandaloneTetherAIExample } from "./examples/tether-ai/Standalone"
 import { StandaloneTorqueExample } from "./examples/torque/Standalone"
 import { StandaloneWorkspaceExample } from "./examples/workspace/Standalone"
 import { StandaloneFluxRailReview } from "./flux-rail/Review"
+import { SnapshotReview } from "./snapshots/Review"
 import "./index.css"
 
 const root = document.getElementById("root")
 if (!root) throw new Error("root element missing")
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
-    {new URLSearchParams(location.search).get("example") === "tachyon-nav" ? (
+    {new URLSearchParams(location.search).get("example") === "snapshots" ? (
+      <SnapshotReview />
+    ) : new URLSearchParams(location.search).get("example") === "tachyon-nav" ? (
       <StandaloneTachyonNav />
     ) : new URLSearchParams(location.search).get("example") === "tether-ai" ||
       (new URLSearchParams(location.search).get("example") === "tether" &&

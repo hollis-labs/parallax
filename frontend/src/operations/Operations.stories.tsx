@@ -122,7 +122,7 @@ export const SparseReceiptUsage: StoryObj<typeof meta> = {
 export function Primitives() {
   const [intent, setIntent] = useState("")
   return (
-    <div className="example-body">
+    <div className="dash-form-stack">
       <Button onClick={() => setIntent("Local story intent inspected")}>
         Inspect fixture intent
       </Button>

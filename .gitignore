@@ -35,3 +35,6 @@ Thumbs.db
 third_party/plugin-host-ui/
 
 *.deb
+
+# Operator captures are local build inputs, never source fixtures.
+/internal/snapshots/data/current.json

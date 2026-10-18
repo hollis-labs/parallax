@@ -317,7 +317,7 @@ function GalleryInstance({
       </div>
       <div className="gallery-grid">
         <Panel title="Pill, Callout and ProgressBar" icon={<Layers className="size-4" />}>
-          <div className="example-body">
+          <div className="dash-form-stack">
             <fieldset className="gallery-pills" aria-label="Supported pill tones">
               {(["neutral", "info", "success", "warning", "danger"] as const).map((tone) => (
                 <Pill key={tone} tone={tone} dot>
@@ -383,7 +383,7 @@ function GalleryInstance({
           </div>
         </Panel>
         <Panel title="Combobox and OverflowMenu" icon={<Layers className="size-4" />}>
-          <div className="example-body">
+          <div className="dash-form-stack">
             {data.readable || data.state === "empty" ? (
               <Combobox
                 items={data.items}
@@ -434,7 +434,7 @@ function GalleryInstance({
         </Panel>
       </div>
       <Panel title="CollapsibleSection and DetailSection" icon={<Layers className="size-4" />}>
-        <div className="example-body">
+        <div className="dash-form-stack">
           <CollapsibleSection
             key={selection ?? "none"}
             label="Fixture relationships"

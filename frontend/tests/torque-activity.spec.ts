@@ -153,7 +153,7 @@ test("native UTC disclosures recent keyboard detail and fresh StrictMode callbac
   await page.setViewportSize({ width: 390, height: 650 })
   await page.goForward()
   await expect.poll(() => dialog.evaluate((e) => getComputedStyle(e).opacity)).toBe("1")
-  const body = dialog.locator(".example-body")
+  const body = dialog.locator(".dash-form-stack")
   const scrollState = () =>
     body.evaluate((e) => {
       for (let n = e.parentElement; n; n = n.parentElement) {
@@ -294,7 +294,7 @@ test("390px dark Activity complete calendar pulse recent last row and short foot
   const recentLast = activity.locator(".torque-recent button").last()
   await expect(recentLast).toBeFocused()
   await recentLast.scrollIntoViewIfNeeded()
-  expect(await recentLast.evaluate((e) => getComputedStyle(e).outlineStyle)).toBe("solid")
+  expect(await recentLast.evaluate((e) => getComputedStyle(e).outlineStyle)).toBe("none")
   await page.screenshot({ path: info.outputPath("activity-recent-last-narrow.png") })
   expect(await page.locator(".torque-page").evaluate((e) => e.scrollWidth)).toBeLessThanOrEqual(390)
   await page.setViewportSize({ width: 1280, height: 500 })

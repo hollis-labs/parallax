@@ -1,16 +1,6 @@
-import {
-  Button,
-  DetailDialog,
-  ScrollArea,
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@hollis-labs/design-components"
+import { Button, type ColumnDef, DetailDialog, ScrollArea } from "@hollis-labs/design-components"
+import { DataTable, FilterBar } from "@hollis-labs/kit-dashboard/data"
+import { DashboardField } from "@hollis-labs/kit-dashboard/layout"
 import { useLayoutEffect, useRef, useState } from "react"
 import {
   type AdminPresentationTicket,
@@ -157,6 +147,79 @@ function Instance({
     queue.current.shift()?.()
     refresh((n) => n + 1)
   }
+  const columns: ColumnDef<(typeof rows)[number]>[] = [
+    {
+      key: "time",
+      header: "UTC / record",
+      cell: (r) => (
+        <>
+          <time className="dash-record-date" dateTime={r.time ?? undefined}>
+            {r.time ? (
+              <>
+                {r.time.slice(0, 10)}
+                <br />
+                {r.time.slice(11)}
+              </>
+            ) : (
+              "Timestamp not supplied"
+            )}
+          </time>
+          <div className="dash-record-metadata text-fg-faint">{r.id}</div>
+        </>
+      ),
+    },
+    {
+      key: "kind",
+      header: "Kind / raw label",
+      cell: (r) => (
+        <>
+          {r.origin}
+          <div className="dash-record-metadata text-fg-faint">{r.tag ?? "Label not supplied"}</div>
+        </>
+      ),
+    },
+    {
+      key: "run",
+      header: "Run / reference",
+      cell: (r) => (
+        <>
+          {r.runId ?? "Run reference absent"}
+          <div className="dash-record-metadata text-fg-faint">
+            {r.reference ?? "Related reference absent"}
+          </div>
+        </>
+      ),
+    },
+    {
+      key: "message",
+      header: "Supplied message",
+      cell: (r) => (
+        <>
+          <span className="ledger-message-full">{r.message ?? "Message not supplied"}</span>
+          <span className="ledger-message-excerpt">
+            {r.message
+              ? `${r.message.slice(0, 24)}${r.message.length > 24 ? "…" : ""}`
+              : "Not supplied"}
+          </span>
+        </>
+      ),
+    },
+    {
+      key: "view",
+      header: "View",
+      cell: (r) => (
+        <Button
+          variant="ghost"
+          size="sm"
+          className="ledger-inspect"
+          aria-label={`Inspect ${r.id}`}
+          onClick={(e) => choose(`${r.origin}/${r.id}`, e.currentTarget)}
+        >
+          View
+        </Button>
+      ),
+    },
+  ]
   return (
     <section className="event-ledger" aria-label="Event Ledger review">
       <p>
@@ -168,22 +231,20 @@ function Instance({
         Inherited operations matching filter: {operationsQuery || "None"}. {operations.runs.length}{" "}
         admitted matching runs. Ledger query below only narrows their supplied rows.
       </p>
-      <div className="ledger-controls">
-        <label>
-          Filter ledger
-          <input
-            aria-label="Filter ledger"
-            value={query}
-            onChange={(e) => {
-              if (current()) {
-                retire()
-                setQuery(e.target.value)
-              }
-            }}
-          />
-        </label>
-        <label>
-          UTC order
+      <FilterBar
+        searchQuery={query}
+        onSearchChange={(value) => {
+          if (current()) {
+            retire()
+            setQuery(value)
+          }
+        }}
+        searchAriaLabel="Filter ledger"
+        searchPlaceholder="Filter ledger…"
+        slashToFocus={false}
+        activeFilterCount={0}
+      >
+        <DashboardField label="UTC order">
           <select
             aria-label="UTC order"
             value={sort}
@@ -197,9 +258,8 @@ function Instance({
             <option value="ascending">Ascending UTC</option>
             <option value="descending">Descending UTC</option>
           </select>
-        </label>
-        <label>
-          Ledger specimen
+        </DashboardField>
+        <DashboardField label="Ledger specimen">
           <select
             aria-label="Ledger specimen"
             value={specimen}
@@ -215,8 +275,9 @@ function Instance({
               <option key={s}>{s}</option>
             ))}
           </select>
-        </label>
+        </DashboardField>
         <Button
+          variant="outline"
           onClick={() => {
             if (current()) {
               retire()
@@ -228,7 +289,7 @@ function Instance({
         >
           Reset ledger review
         </Button>
-      </div>
+      </FilterBar>
       <p role="status">
         {data.accessible
           ? specimen === "recorded"
@@ -243,79 +304,29 @@ function Instance({
         aria-label="Recorded ledger table"
         aria-describedby="ledger-scroll-help"
       >
-        <Table className="ledger-table">
-          <TableCaption>
-            Event/log ledger · exact UTC timestamps · {data.cutoff}.{" "}
-            {data.accessible
-              ? `${rows.length} matching displayed rows; ${data.count} admitted recorded, ${data.authoredCount} authored.`
-              : "Counts Unknown."}
-          </TableCaption>
-          <TableHeader>
-            <TableRow>
-              <TableHead scope="col">UTC / record</TableHead>
-              <TableHead scope="col">Kind / raw label</TableHead>
-              <TableHead scope="col">Run / reference</TableHead>
-              <TableHead scope="col">Supplied message</TableHead>
-              <TableHead scope="col">View</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {rows.map((r) => (
-              <TableRow key={`${r.origin}/${r.id}`} data-record-id={`${r.origin}/${r.id}`}>
-                <TableCell>
-                  <time dateTime={r.time ?? undefined}>
-                    {r.time ? (
-                      <>
-                        {r.time.slice(0, 10)}
-                        <br />
-                        {r.time.slice(11)}
-                      </>
-                    ) : (
-                      "Timestamp not supplied"
-                    )}
-                  </time>
-                  <div>{r.id}</div>
-                </TableCell>
-                <TableCell>
-                  {r.origin}
-                  <div>{r.tag ?? "Label not supplied"}</div>
-                </TableCell>
-                <TableCell>
-                  {r.runId ?? "Run reference absent"}
-                  <div>{r.reference ?? "Related reference absent"}</div>
-                </TableCell>
-                <TableCell className="ledger-message">
-                  <span className="ledger-message-full">{r.message ?? "Message not supplied"}</span>
-                  <span className="ledger-message-excerpt">
-                    {r.message
-                      ? `${r.message.slice(0, 24)}${r.message.length > 24 ? "…" : ""}`
-                      : "Not supplied"}
-                  </span>
-                </TableCell>
-                <TableCell>
-                  <Button
-                    className="ledger-inspect"
-                    aria-label={`Inspect ${r.id}`}
-                    onClick={(e) => choose(`${r.origin}/${r.id}`, e.currentTarget)}
-                  >
-                    View
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-          <TableFooter>
-            <TableRow>
-              <TableCell colSpan={5}>
-                {data.accessible
-                  ? specimen === "recorded"
-                    ? `${rows.length} matching rows / ${data.count} supplied rows. No new events are inferred.`
-                    : `${rows.length} matching composition rows / ${data.count} admitted recorded rows + ${data.authoredCount} authored specimen. No new events are inferred.`
-                  : `${data.resource}: supplied rows withheld; count Unknown.`}
-              </TableCell>
-            </TableRow>
-          </TableFooter>
-        </Table>
+        <DataTable
+          items={rows}
+          columns={columns}
+          getRowId={(r) => `${r.origin}/${r.id}`}
+          pageSize={Math.max(rows.length, 1)}
+          caption={
+            <>
+              Event/log ledger · exact UTC timestamps · {data.cutoff}.{" "}
+              {data.accessible
+                ? `${rows.length} matching displayed rows; ${data.count} admitted recorded, ${data.authoredCount} authored.`
+                : "Counts Unknown."}
+            </>
+          }
+          footer={
+            <>
+              {data.accessible
+                ? specimen === "recorded"
+                  ? `${rows.length} matching rows / ${data.count} supplied rows. No new events are inferred.`
+                  : `${rows.length} matching composition rows / ${data.count} admitted recorded rows + ${data.authoredCount} authored specimen. No new events are inferred.`
+                : `${data.resource}: supplied rows withheld; count Unknown.`}
+            </>
+          }
+        />
       </ScrollArea>
       <p id="ledger-scroll-help">
         This labelled table has its own bounded vertical review scroll. Tab into its native

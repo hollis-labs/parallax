@@ -1,0 +1,67 @@
+{
+  "task": "CW-20261018-0007",
+  "status": "local review candidate; not a registry release",
+  "package": "@hollis-labs/kit-admin",
+  "archive": "hollis-labs-kit-admin-0.1.0-cw0007-agents-19cd636a.tgz",
+  "sha256": "19cd636a06ad50ada69da462a92cd04c08adb5006bd78368e5f0a9709a7fca76",
+  "baseline_source_commit": "0f8663e58923de1076ed1f2fbb7208aede9ac325",
+  "source_patch": "kit-admin-agents-candidate.patch",
+  "source_patch_sha256": "51954edda147e14def6394fecfb0897252f83a297ef8c370aefc0a72a2829d2b",
+  "source_files": {
+    "src/activity-dialog.tsx": "42b8a100bc8949dc15ba0afb0fc7d6ee09bf1c57406023d661bca461677c6f50",
+    "src/activity-directory.tsx": "f33c07f88171162dc7c7b45e0d0bd2396093dba21c09ab4d4e43d5aca1eddc4b",
+    "src/activity-history.tsx": "a39dec23be28043eddb4fa89a6ec2a3dae9ab2cd209252ed7ebbb6e624895ba7",
+    "src/admin.tsx": "fb27ed1e8b09e96e4a226dda47d7dc80c1ba254f280d20842274eaae2b3a0030",
+    "src/charts.tsx": "12f4df6aee2027c7ae48c20521e4471517189d90fbd2c8eef9bc126e355dafec",
+    "src/directory.tsx": "983b956879c13a8934aea0b49a250645d0c4ccd69365f5e23afeb772f17113f2",
+    "src/identity-avatar.tsx": "ee0a4c19c2df873cc1c1da50e53a700ad987f8e8a8707e29c81b465ab9cf2c38",
+    "src/index.ts": "51a317f7ab810ad4ae015c7f0359d035d4128fd0fd76d8b4efeb197bc93d5db0",
+    "src/model.ts": "b5241a997c5899ad556fb7e5c1dd465d696211985d4c86a64c85303122d2dd4e",
+    "src/styles/source.css": "1281df650d50e23a3c906cd99931aeb185b9ca61211ada67e380e8cd46186107",
+    "src/types.ts": "05aacf57e3b991da81aa2de1acc9215299741d602d07bcc32950ac722583bfb6"
+  },
+  "note": "Current kit-admin source plus additive activity list and inspector primitives. Existing 0.4-compatible package dependency ranges retained. Built in isolation against installed Parallax review dependencies. No registry release.",
+  "build_adaptations": {
+    "typescript_config": {
+      "compilerOptions": {
+        "target": "ES2022",
+        "lib": [
+          "ES2022",
+          "DOM",
+          "DOM.Iterable"
+        ],
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "jsx": "react-jsx",
+        "strict": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "outDir": "dist/src",
+        "rootDir": "src"
+      },
+      "include": [
+        "src"
+      ],
+      "exclude": [
+        "src/**/*.test.ts",
+        "src/**/*.test.tsx",
+        "src/__tests__"
+      ]
+    },
+    "vite_config": "import { defineConfig } from 'vite'\nimport { createRequire } from 'node:module'\nconst pkg = createRequire(import.meta.url)('./package.json')\nconst external = [...Object.keys(pkg.dependencies), ...Object.keys(pkg.peerDependencies)]\nexport default defineConfig({\n  esbuild: { jsx: 'automatic' },\n  build: {\n    lib: { entry: { index: 'src/index.ts', charts: 'src/charts.tsx' }, formats: ['es'] },\n    rollupOptions: {\n      external: (id: string) => external.some(p => id === p || id.startsWith(p + '/')),\n      output: { preserveModules: true, preserveModulesRoot: 'src', entryFileNames: '[name].js' },\n    },\n    sourcemap: true,\n  },\n})\n",
+    "dependencies": {
+      "@hollis-labs/design-components": "^0.4.0",
+      "@hollis-labs/design-tokens": "^0.4.0",
+      "@hollis-labs/kit-dashboard": "^0.4.0",
+      "@hollis-labs/kit-settings": "^0.2.0",
+      "@hollis-labs/kit-observe": "^0.1.1"
+    },
+    "commands": [
+      "vite build",
+      "tsc -p tsconfig.build.json",
+      "npm pack --ignore-scripts"
+    ]
+  }
+}

@@ -1,0 +1,1137 @@
+--- /dev/null
++++ b/packages/kit-dashboard/src/components/data-table/data-table-cell.tsx
+@@ -0,0 +1,22 @@
++import type { ComponentProps } from 'react'
++import { cn } from '@hollis-labs/design-components'
++import type { TableDensity } from './data-table'
++
++export interface DataTableCellProps extends ComponentProps<'td'> {
++  density?: TableDensity
++  kind?: 'data' | 'selection'
++}
++
++/** Shared cell rhythm for DataTable and app-owned semantic tables. */
++export function DataTableCell({ density = 'compact', kind = 'data', className, ...props }: DataTableCellProps) {
++  return <td
++    {...props}
++    data-slot="data-table-cell"
++    className={cn(
++      'align-top dash-record-body',
++      density === 'compact' ? 'py-1.5' : 'py-3',
++      kind === 'selection' ? 'w-px pl-4 pr-0' : 'px-3',
++      className,
++    )}
++  />
++}
+--- /dev/null
++++ b/packages/kit-dashboard/src/components/data-table/record-summary.tsx
+@@ -0,0 +1,20 @@
++import type { ReactNode } from 'react'
++
++export interface RecordSummaryProps {
++  /** Text or an app-owned link. Navigation and accessible names stay with the app. */
++  title: ReactNode
++  /** Inline facts; omit when the record has no secondary information. */
++  metadata?: ReactNode
++}
++
++/** Dense record identity, usable in a table cell, list or board row. */
++export function RecordSummary({ title, metadata }: RecordSummaryProps) {
++  return <div data-slot="record-summary" className="min-w-0 font-mono">
++    <div data-slot="record-title" className="dash-record-title truncate text-fg [&_a]:block [&_a]:truncate [&_a]:text-inherit">
++      {title}
++    </div>
++    {metadata != null && <div data-slot="record-metadata" className="dash-record-metadata flex h-5 min-w-0 items-center gap-2 overflow-hidden whitespace-nowrap text-fg-faint">
++      {metadata}
++    </div>}
++  </div>
++}
+--- a/packages/kit-dashboard/src/components/data-table/index.ts
++++ b/packages/kit-dashboard/src/components/data-table/index.ts
+@@ -1,2 +1,4 @@
+ export { DataTable } from './data-table'
+ export { DataTableRow } from './data-table-row'
++export { DataTableCell, type DataTableCellProps } from './data-table-cell'
++export { RecordSummary, type RecordSummaryProps } from './record-summary'
+--- a/packages/kit-dashboard/src/components/data-table/data-table-row.tsx
++++ b/packages/kit-dashboard/src/components/data-table/data-table-row.tsx
+@@ -1,5 +1,6 @@
+ import type { TableDensity } from './data-table'
+ import { alignClass, type ColumnDef } from '@hollis-labs/design-components'
++import { DataTableCell } from './data-table-cell'
+ 
+ interface DataTableRowProps<T> {
+   density?: TableDensity
+@@ -76,7 +77,7 @@
+       aria-label={onOpen ? ariaLabel : undefined}
+     >
+       {selectable && (
+-        <td className={`w-8 align-top ${density === 'compact' ? 'py-1.5' : 'py-3'} pl-3.5 pr-0`}>
++        <DataTableCell density={density} kind="selection">
+           <input
+             type="checkbox"
+             checked={selected ?? false}
+@@ -85,17 +86,18 @@
+             aria-label={ariaLabel ? `Select ${ariaLabel}` : 'Select row'}
+             data-row-interactive="true"
+           />
+-        </td>
++        </DataTableCell>
+       )}
+       {columns.map((column) => (
+-        <td
++        <DataTableCell
+           key={column.key}
+-          className={`px-3 ${density === 'compact' ? 'py-1.5' : 'py-3'} align-top ${alignClass(column.align)} ${
++          density={density}
++          className={`${alignClass(column.align)} ${
+             column.width === 'fill' ? 'w-full max-w-0' : 'w-px whitespace-nowrap'
+           } ${column.className ?? ''}`}
+         >
+           {column.cell(item)}
+-        </td>
++        </DataTableCell>
+       ))}
+     </tr>
+   )
+--- a/packages/kit-dashboard/src/data.ts
++++ b/packages/kit-dashboard/src/data.ts
+@@ -18,7 +18,7 @@
+   type FilterChip,
+   type FilterEntityComboboxItem,
+ } from './components/filter-bar'
+-export { DataTable, DataTableRow } from './components/data-table'
++export { DataTable, DataTableRow, DataTableCell, RecordSummary, type DataTableCellProps, type RecordSummaryProps } from './components/data-table'
+ 
+ export type { TableDensity } from './components/data-table/data-table'
+ export { useArrowNav, type ArrowNavOptions } from './hooks/use-arrow-nav'
+--- a/packages/kit-dashboard/src/styles/theme.css
++++ b/packages/kit-dashboard/src/styles/theme.css
+@@ -47,6 +47,13 @@
+  * stylesheet gets both packages scanned and writes no globs of their own. */
+ @import "@hollis-labs/design-components/source.css";
+ @import "./source.css";
++
++@theme {
++  /* Dense record titles retain the Operations reference's restrained tracking. */
++  --tracking-dash-record-title: 0.02em;
++  --tracking-dash-record-date: 0.12em;
++  --tracking-dash-status: 0.14em;
++}
+ 
+ /* Palette values come only from design-tokens, including generated legacy-ID
+  * aliases. The dashboard layer derives workflow tones and keeps compatibility
+@@ -149,10 +156,13 @@
+   --theme-color-ring: var(--hl-ring);
+   --theme-color-ring-soft: var(--hl-ring);
+   --theme-color-status-backlog: var(--hl-fg-muted);
+-  --theme-color-status-todo: var(--hl-fg-secondary);
++  --theme-color-status-todo: var(--hl-fg-faint);
+   --theme-color-status-queued: var(--hl-warning);
+   --theme-color-status-doing: var(--hl-info);
+-  --theme-color-status-review: var(--hl-brand);
++  /* Review is a workflow state, independent of a monochrome brand accent.
++   * Derive its violet family from semantic cool/warm colors so phosphor and
++   * light palettes retain their own inputs. */
++  --theme-color-status-review: color-mix(in oklch, var(--hl-info) 65%, var(--hl-danger));
+   --theme-color-status-done: var(--hl-success);
+   --theme-color-status-blocked: var(--hl-danger);
+   --theme-color-status-paused: var(--hl-warning);
+@@ -324,19 +334,6 @@
+     letter-spacing: 0;
+   }
+ 
+-  /* Keep pointer focus quiet without cancelling keyboard focus indicators.
+-   * Tailwind's focus-visible Button ring is a box-shadow. */
+-  button:focus:not(:focus-visible),
+-  [role="menuitem"]:focus:not(:focus-visible) {
+-    outline: none;
+-    box-shadow: none;
+-  }
+-
+-  /* Base UI menu items highlight their background on keyboard navigation,
+-   * but outline-hidden supplies no visible outline outside forced colors. */
+-  [role="menuitem"]:focus-visible {
+-    @apply ring-2 ring-ring;
+-  }
+ 
+ }
+ 
+@@ -351,7 +348,7 @@
+     border-color: var(--color-border);
+   }
+   .hud-input:focus {
+-    box-shadow: 0 0 0 2px var(--color-ring);
++    background: var(--dash-control-active-bg);
+   }
+ 
+   .hud-button {
+@@ -448,3 +445,510 @@
+     transform: translateX(400%);
+   }
+ }
++
++/* Dashboard typography contract. Audited compact labels use fixed CSS pixels;
++ * menus retain the reference's root-relative type. Neither profile pins html
++ * nor changes --spacing, so density and browser zoom remain separate concerns.
++ * The scalable reset also supports nested surfaces and sibling previews. */
++
++:root, [data-dashboard-typography="compact"] {
++  --dash-record-line-height: calc(var(--spacing) * 4);
++  --dash-table-heading-line-height: 1.5;
++  --dash-menu-size: var(--text-sm);
++  --dash-menu-line-height: calc(var(--spacing) * 5);
++  --dash-record-title-size: 13px;
++  --dash-record-metadata-size: 10px;
++  --dash-record-label-size: 11px;
++  --dash-page-heading-size: 11px;
++  --dash-header-action-size: 0.8rem;
++  --dash-summary-label-size: 11px;
++  --dash-summary-value-size: 13px;
++  --dash-summary-tracking: 0.16em;
++  --dash-filter-caption-size: 10px;
++  --dash-filter-chip-leading: calc(4 / 3);
++  --dash-filter-search-size: 11px;
++  --dash-shortcut-size: 9px;
++}
++[data-dashboard-typography="scalable"] {
++  --dash-record-title-size: var(--text-control);
++  --dash-record-metadata-size: var(--text-caption);
++  --dash-record-label-size: var(--text-label);
++  --dash-record-line-height: calc(var(--spacing) * 4);
++  --dash-table-heading-line-height: 1.5;
++  --dash-menu-size: var(--text-sm);
++  --dash-menu-line-height: calc(var(--spacing) * 5);
++  --dash-page-heading-size: var(--text-label);
++  --dash-header-action-size: var(--text-control);
++  --dash-summary-label-size: var(--text-label);
++  --dash-summary-value-size: var(--text-control);
++  --dash-summary-tracking: var(--tracking-label);
++  --dash-filter-caption-size: var(--text-caption);
++  --dash-filter-chip-leading: initial;
++  --dash-filter-search-size: var(--text-label);
++  --dash-shortcut-size: var(--text-micro);
++}
++
++@layer utilities {
++  .dash-record-body, .dash-record-title {
++    font-family: var(--font-mono);
++    font-size: var(--dash-record-title-size);
++    font-weight: var(--font-weight-normal);
++    line-height: var(--dash-record-line-height);
++    letter-spacing: var(--tracking-normal);
++  }
++  .dash-record-title {
++    letter-spacing: var(--tracking-dash-record-title);
++  }
++  .dash-record-metadata {
++    font-family: var(--font-mono);
++    font-size: var(--dash-record-metadata-size);
++    font-weight: var(--font-weight-normal);
++    line-height: var(--dash-record-line-height);
++    letter-spacing: var(--tracking-normal);
++  }
++  /* Inline metadata controls participate in the record's typography. A base
++   * CopyableId or Badge may otherwise impose its own scalable caption size. */
++  .dash-record-metadata :where(button, code, [data-slot="badge"]) {
++    font-family: inherit;
++    font-size: inherit;
++    font-weight: inherit;
++    line-height: inherit;
++  }
++  .dash-table-heading {
++    font-family: var(--font-mono);
++    font-size: var(--dash-record-metadata-size);
++    font-weight: var(--font-weight-medium);
++    line-height: var(--dash-table-heading-line-height);
++    letter-spacing: var(--tracking-eyebrow);
++  }
++  .dash-record-number, .dash-record-date, .dash-record-status {
++    font-family: var(--font-mono);
++    font-size: var(--dash-record-label-size);
++    font-weight: var(--font-weight-normal);
++    line-height: var(--dash-record-line-height);
++    letter-spacing: var(--tracking-normal);
++  }
++  .dash-record-date {
++    text-transform: uppercase;
++    letter-spacing: var(--tracking-dash-record-date);
++  }
++  .dash-record-status {
++    text-transform: uppercase;
++    letter-spacing: var(--tracking-dash-status);
++  }
++  .dash-record-priority {
++    font-family: var(--font-mono);
++    font-size: var(--dash-record-metadata-size);
++    font-weight: var(--font-weight-bold);
++    line-height: var(--dash-record-line-height);
++    letter-spacing: var(--tracking-label);
++    text-transform: uppercase;
++  }
++  .dash-menu, .dash-menu [role="menuitem"] {
++    font-family: var(--font-sans);
++    font-size: var(--dash-menu-size);
++    font-weight: var(--font-weight-normal);
++    line-height: var(--dash-menu-line-height);
++    letter-spacing: var(--tracking-normal);
++  }
++}
++
++@layer utilities {
++  .dash-page-heading {
++    font-size: var(--dash-page-heading-size);
++    font-weight: var(--font-weight-semibold);
++    line-height: 1.5;
++    letter-spacing: var(--tracking-label);
++    text-transform: uppercase;
++  }
++  .dash-header-action {
++    font-size: var(--dash-header-action-size);
++    line-height: 1.5;
++  }
++  .dash-summary-label {
++    font-size: var(--dash-summary-label-size);
++    font-weight: var(--font-weight-normal);
++    line-height: 1;
++    letter-spacing: var(--dash-summary-tracking);
++    text-transform: uppercase;
++  }
++  .dash-summary-value {
++    font-family: var(--font-mono);
++    font-size: var(--dash-summary-value-size);
++    font-weight: var(--font-weight-semibold);
++    line-height: 1;
++    font-variant-numeric: tabular-nums;
++  }
++  .dash-filter-caption, .dash-filter-chip {
++    font-size: var(--dash-filter-caption-size);
++  }
++  .dash-filter-chip {
++    line-height: var(--dash-filter-chip-leading, inherit);
++  }
++  .dash-filter-search {
++    font-size: var(--dash-filter-search-size);
++  }
++  .dash-shortcut {
++    font-family: var(--font-mono);
++    font-size: var(--dash-shortcut-size);
++    line-height: 1.5;
++    letter-spacing: var(--tracking-wider);
++  }
++}
++
++
++/* Dashboard is an opinionated application theme. Import it once at the app
++ * root: native markup, shared primitives and portalled content share these
++ * defaults. A consumer changes theme roles here, never route-specific copies.
++ * Content sections are flat; raised cards are an explicit surface variant. */
++:root {
++  --dash-body-size: 13px;
++  --dash-body-leading: 1.5;
++  --dash-support-size: 11px;
++  --dash-section-size: 11px;
++  --dash-control-size: 0.75rem;
++  --dash-page-padding: calc(var(--spacing) * 4);
++  --dash-section-gap: calc(var(--spacing) * 4);
++  --dash-header-padding-inline: calc(var(--spacing) * 4);
++  --dash-header-padding-block: calc(var(--spacing) * 2.5);
++  --dash-surface-bg: var(--color-bg);
++  --dash-surface-border-width: 0px;
++  --dash-surface-radius: 0px;
++}
++
++@layer base {
++  body {
++    font-size: var(--dash-body-size);
++    line-height: var(--dash-body-leading);
++  }
++  h1, h2, h3 {
++    font-size: var(--dash-section-size);
++    font-weight: var(--font-weight-semibold);
++    line-height: 1.5;
++    letter-spacing: var(--tracking-label);
++    text-transform: uppercase;
++  }
++  h1 { font-size: var(--dash-page-heading-size); }
++  table { font-size: var(--dash-record-title-size); }
++  th {
++    font-size: var(--dash-record-metadata-size);
++    font-weight: var(--font-weight-medium);
++    letter-spacing: var(--tracking-eyebrow);
++    text-transform: uppercase;
++  }
++  td { line-height: var(--dash-record-line-height); }
++  /* Defaults yield to Input/SearchInput utilities, including transparent,
++   * borderless inner inputs. Parallax previously overrode these unlayered. */
++  select, input:not([type="checkbox"]):not([type="radio"]), textarea {
++    color: var(--color-fg);
++    background: var(--color-bg);
++    border: 1px solid var(--color-border);
++    border-radius: var(--radius-md);
++    padding: var(--spacing) calc(var(--spacing) * 2.5);
++    font-size: var(--dash-control-size);
++    line-height: calc(var(--spacing) * 4);
++  }
++}
++
++@layer utilities {
++  .dash-page-header {
++    padding: var(--dash-header-padding-block) var(--dash-header-padding-inline);
++  }
++  .dash-page-content { padding: var(--dash-page-padding); }
++  .dash-section-stack { gap: var(--dash-section-gap); }
++  .dash-form-stack {
++    display: grid;
++    gap: var(--dash-section-gap);
++    padding: var(--dash-page-padding);
++    min-width: 0;
++  }
++  .dash-form-stack > button { justify-self: start; }
++  .dash-panel {
++    gap: 0;
++    padding-block: 0;
++  }
++  .dash-section-heading {
++    font-size: var(--dash-section-size);
++    font-weight: var(--font-weight-semibold);
++    letter-spacing: var(--tracking-label);
++    text-transform: uppercase;
++  }
++  .dash-support { font-size: var(--dash-support-size); }
++  /* Style the shared primitive's public slots in this idiom, not the neutral
++   * design-components package. Menus/dialogs keep their elevated surfaces. */
++  [data-slot="card"] {
++    background: var(--dash-surface-bg);
++    border-width: var(--dash-surface-border-width);
++    border-radius: var(--dash-surface-radius);
++    box-shadow: none;
++    font-size: var(--dash-body-size);
++  }
++  [data-slot="card"][data-dashboard-surface="raised"] {
++    background: var(--color-bg-elevated);
++    border-width: 1px;
++    border-radius: var(--radius-md);
++  }
++  [data-slot="card-title"] {
++    font-size: var(--dash-section-size);
++    font-weight: var(--font-weight-semibold);
++    letter-spacing: var(--tracking-label);
++    text-transform: uppercase;
++  }
++  [data-slot="card-description"] { font-size: var(--dash-support-size); }
++}
++
++
++/* Shared controls: native selects and popover selectors use the same idiom.
++ * Keep the native select's form, keyboard, ref and change-event behavior. */
++:root, [data-theme] {
++  --dash-control-height: calc(var(--spacing) * 8);
++  --dash-control-padding: calc(var(--spacing) * 2.5);
++  --dash-control-bg: var(--hl-bg);
++  --dash-control-active-bg: var(--hl-surface-hover);
++  --dash-search-bg: var(--hl-bg-elevated);
++  --dash-search-active-bg: color-mix(in oklab, var(--hl-bg-elevated) 75%, var(--hl-bg));
++  --dash-menu-divider: var(--hl-border-subtle);
++  --dash-toolbar-gap: calc(var(--spacing) * 3);
++  --dash-field-gap: calc(var(--spacing) * 2);
++  --dash-selection-bg: var(--hl-surface-hover);
++}
++
++@layer components {
++  .dash-toolbar {
++    display: flex;
++    flex-wrap: wrap;
++    align-items: center;
++    gap: var(--dash-toolbar-gap);
++    min-width: 0;
++  }
++  .dash-field {
++    display: inline-flex;
++    align-items: center;
++    gap: var(--dash-field-gap);
++    min-width: 0;
++    max-width: 100%;
++  }
++  .dash-field-label {
++    flex-shrink: 0;
++    font-size: var(--dash-support-size);
++    font-weight: var(--font-weight-medium);
++    color: var(--color-fg-faint);
++  }
++  .dash-field[data-orientation="stacked"] {
++    display: flex;
++    flex-direction: column;
++    align-items: stretch;
++  }
++  .dash-field > :is(select, input) { min-width: 0; max-width: 100%; }
++  .dash-table-note {
++    padding: calc(var(--spacing) * 3);
++    font-size: var(--dash-support-size);
++    font-weight: var(--font-weight-normal);
++    line-height: var(--dash-body-leading);
++    text-align: start;
++    color: var(--color-fg-faint);
++    overflow-wrap: anywhere;
++  }
++  .dash-selectable-row {
++    display: grid;
++    gap: calc(var(--spacing) * 2);
++    padding: calc(var(--spacing) * 3);
++    text-align: start;
++    border: 1px solid var(--color-border);
++    border-radius: var(--radius-md);
++    background: var(--dash-control-bg);
++  }
++  .dash-selectable-row:is(:hover, :focus-visible, [aria-pressed="true"], [aria-selected="true"]) {
++    background: var(--dash-selection-bg);
++  }
++  select:not([multiple]), .dash-dropdown-trigger {
++    height: var(--dash-control-height);
++    min-width: 0;
++    max-width: 100%;
++    padding: 0 var(--dash-control-padding);
++    border: 1px solid var(--color-border);
++    border-radius: var(--radius-md);
++    background-color: var(--dash-control-bg);
++    color: var(--color-fg);
++    font-family: var(--font-sans);
++    font-size: var(--dash-control-size);
++    font-weight: var(--font-weight-medium);
++    line-height: calc(var(--spacing) * 4);
++    letter-spacing: var(--tracking-normal);
++    text-transform: none;
++  }
++  .dash-dropdown-trigger {
++    display: inline-flex;
++    align-items: center;
++    justify-content: space-between;
++    gap: calc(var(--spacing) * 1.5);
++  }
++  /* Fallback arrow also has a fixed inset and never overlaps a long label. */
++  select:not([multiple]) {
++    appearance: none;
++    padding-inline-end: calc(var(--spacing) * 7);
++    background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
++      linear-gradient(135deg, currentColor 50%, transparent 50%);
++    background-position: right calc(var(--spacing) * 3 + 3px) center,
++      right calc(var(--spacing) * 3) center;
++    background-size: 3px 3px;
++    background-repeat: no-repeat;
++  }
++  select:disabled { opacity: 0.5; }
++  .dash-dropdown-trigger:hover, select:not(:disabled):hover {
++    background-color: var(--dash-control-active-bg);
++  }
++}
++
++/* Use the browser's customizable native picker where available. Else retain
++ * the same closed control and the platform's native option list. */
++@supports (appearance: base-select) {
++  @layer components {
++    select:not([multiple]), select:not([multiple])::picker(select) {
++      appearance: base-select;
++    }
++    select:not([multiple]) {
++      display: inline-flex;
++      align-items: center;
++      gap: calc(var(--spacing) * 2);
++      padding-inline-end: var(--dash-control-padding);
++      background-image: none;
++    }
++    select::picker-icon {
++      content: '';
++      flex-shrink: 0;
++      width: calc(var(--spacing) * 1.5);
++      height: calc(var(--spacing) * 1.5);
++      margin-inline-start: auto;
++      margin-inline-end: var(--spacing);
++      margin-block-start: calc(var(--spacing) * -0.5);
++      border-inline-end: 1px solid currentColor;
++      border-block-end: 1px solid currentColor;
++      transform: rotate(45deg);
++      color: var(--color-fg-faint);
++    }
++    select::picker(select) {
++      margin-block: var(--spacing);
++      padding: var(--spacing);
++      max-height: min(60vh, 24rem);
++      overflow: auto;
++      border: 1px solid var(--color-border);
++      border-radius: var(--radius-md);
++      background: var(--color-popover);
++      color: var(--color-fg);
++      box-shadow: var(--shadow-md);
++      font-family: var(--font-sans);
++      font-size: var(--dash-menu-size);
++    }
++    select option {
++      display: flex;
++      align-items: center;
++      gap: calc(var(--spacing) * 2);
++      min-height: calc(var(--spacing) * 8);
++      padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 2);
++      border-radius: 0;
++      font-weight: var(--font-weight-normal);
++    }
++    select option + option { border-top: 1px solid var(--dash-menu-divider); }
++    select option::checkmark { order: 1; margin-inline-start: auto; }
++    select option:is(:hover, :focus, :checked) {
++      background: var(--dash-control-active-bg);
++    }
++  }
++}
++
++@layer utilities {
++  [data-slot="button"]:not(.dash-header-action), [data-slot="select-trigger"] {
++    font-size: var(--dash-control-size);
++  }
++  /* The adapter owns the legacy SearchInput's outer field, without changing
++   * its debounce/focus behavior or giving the inner input a second surface. */
++  .dash-search-adapter > div, .dash-search-field {
++    display: flex;
++    align-items: center;
++    gap: calc(var(--spacing) * 2);
++    min-width: 0;
++    border: 1px solid var(--color-border);
++    border-radius: var(--radius-md);
++    padding: var(--spacing) var(--dash-control-padding);
++    background: var(--dash-search-bg);
++  }
++  .dash-search-adapter > div:focus-within, .dash-search-field:focus-within {
++    background: var(--dash-search-active-bg);
++  }
++  .dash-search-adapter input, .dash-search-field input,
++  [data-slot="input-group"] > input {
++    flex: 1;
++    min-width: 0;
++    padding: 0;
++    border: 0;
++    border-radius: 0;
++    background: transparent;
++    box-shadow: none;
++    font-size: var(--dash-control-size);
++    line-height: calc(var(--spacing) * 4);
++  }
++  .dash-dropdown-menu {
++    display: flex;
++    flex-direction: column;
++    max-height: min(24rem, var(--available-height));
++    overflow: hidden;
++  }
++  .dash-dropdown-menu [data-slot="command"] {
++    min-height: 0;
++    max-height: inherit;
++    height: auto;
++    flex: 1;
++  }
++  .dash-dropdown-menu [data-slot="scroll-area"] {
++    display: flex;
++    flex-direction: column;
++    overflow: hidden;
++  }
++  .dash-dropdown-menu [data-slot="scroll-area-viewport"] { min-height: 0; flex: 1; }
++  [data-slot="input-group"] > [data-slot="command-input"] {
++    font-size: var(--dash-filter-search-size);
++  }
++  [data-slot="command-item"], [data-slot="select-item"],
++  [data-slot="combobox-item"] {
++    border-radius: 0;
++    padding-block: calc(var(--spacing) * 1.5);
++    font-size: var(--dash-menu-size);
++    line-height: var(--dash-menu-line-height);
++  }
++  [data-slot="command-item"] + [data-slot="command-item"],
++  [data-slot="select-item"] + [data-slot="select-item"],
++  [data-slot="combobox-item"] + [data-slot="combobox-item"],
++  [data-slot="dropdown-menu-item"] + [data-slot="dropdown-menu-item"] {
++    border-top: 1px solid var(--dash-menu-divider);
++  }
++  [data-slot="select-content"], [data-slot="popover-content"],
++  [data-slot="dropdown-menu-content"], [data-slot="dropdown-menu-sub-content"] {
++    border: 1px solid var(--color-border);
++  }
++}
++
++/* Dashboard focus policy: rings are off, including inherited Tailwind rings
++ * and programmatic heading focus. This deliberate theme-level priority keeps
++ * old component utilities from bringing them back. Do not remove focus itself:
++ * keyboard users retain background/selection feedback and focus return. */
++*, *::before, *::after {
++  --tw-ring-shadow: 0 0 transparent !important;
++  --tw-ring-offset-shadow: 0 0 transparent !important;
++  --tw-inset-ring-shadow: 0 0 transparent !important;
++}
++:focus, :focus-visible, :focus-within {
++  outline: none !important;
++}
++:where(button, a, select, input, textarea, [role="option"], [role="menuitem"]):focus-visible {
++  background-color: var(--dash-control-active-bg);
++  color: var(--color-fg);
++}
++:where(input, textarea, select, button, [data-slot="input-group"]):is(:focus, :focus-visible, :focus-within):not([aria-invalid="true"]) {
++  border-color: var(--color-border) !important;
++}
++/* A composed input's focus belongs to the outer field, not its inner editor. */
++.dash-search-adapter input:focus, .dash-search-field input:focus,
++[data-slot="input-group"] > input:focus {
++  background: transparent;
++}
+--- a/packages/kit-dashboard/src/components/nav-rail.tsx
++++ b/packages/kit-dashboard/src/components/nav-rail.tsx
+@@ -19,6 +19,8 @@
+ 
+ interface NavRailProps {
+   items: NavRailItem[]
++  /** Accessible name when several application navigations coexist. */
++  ariaLabel?: string
+   /** Brand mark shown at the top (e.g. an icon). */
+   logo?: ReactNode
+   /** Tooltip for the brand mark. */
+@@ -44,7 +46,12 @@
+ 
+   if (item.href !== undefined) {
+     return (
+-      <a href={item.href} {...common}>
++      <a href={item.href} {...common} onClick={(event) => {
++        if (item.onSelect && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
++          event.preventDefault()
++          item.onSelect()
++        }
++      }}>
+         {item.icon}
+       </a>
+     )
+@@ -62,12 +69,12 @@
+  * pass `href` for link items or `onSelect` for handler items, and compute
+  * `active` from your router. Items flagged `footer` pin to the bottom.
+  */
+-export function NavRail({ items, logo, logoLabel = 'Home', footerExtra }: NavRailProps) {
++export function NavRail({ items, logo, logoLabel = 'Home', ariaLabel = 'Application navigation', footerExtra }: NavRailProps) {
+   const primary = items.filter((i) => !i.footer)
+   const footer = items.filter((i) => i.footer)
+ 
+   return (
+-    <nav className="flex w-14 flex-col items-center gap-2 border-r border-border-subtle bg-panel py-4">
++    <nav aria-label={ariaLabel} className="flex w-14 flex-col items-center gap-2 border-r border-border-subtle bg-panel py-4">
+       {logo ? (
+         <>
+           <div
+--- a/packages/kit-dashboard/src/components/filter-bar/filter-entity-combobox.tsx
++++ b/packages/kit-dashboard/src/components/filter-bar/filter-entity-combobox.tsx
+@@ -1,6 +1,7 @@
+ import { useMemo, useState, type ReactNode } from 'react'
+ import { ChevronDown, Plus } from 'lucide-react'
+ import {
++  cn,
+   Command,
+   CommandEmpty,
+   CommandGroup,
+@@ -11,6 +12,7 @@
+ } from '@hollis-labs/design-components'
+ import { Popover, PopoverContent, PopoverTrigger } from '@hollis-labs/design-components'
+ import { ScrollArea } from '@hollis-labs/design-components'
++import { useDashboardTypography } from '../../lib/dashboard-typography'
+ 
+ export interface FilterEntityComboboxItem {
+   id: string
+@@ -28,6 +30,8 @@
+   /** Optional owner marker for scoped overlay admission. */
+   overlayOwner?: string
+   icon: ReactNode
++  /** Composition-specific width; typography remains token based. */
++  triggerClassName?: string
+   items: FilterEntityComboboxItem[]
+   value: string | null
+   onChange: (id: string | null) => void
+@@ -51,6 +55,7 @@
+  */
+ export function FilterEntityCombobox({
+   icon,
++  triggerClassName,
+   overlayOwner,
+   items,
+   value,
+@@ -61,6 +66,7 @@
+   createLabel,
+   showStateControls = false,
+ }: FilterEntityComboboxProps) {
++  const typography = useDashboardTypography()
+   const [open, setOpen] = useState(false)
+   const [showInactive, setShowInactive] = useState(false)
+   const [sortOrder, setSortOrder] = useState<'updated' | 'title'>('updated')
+@@ -84,17 +90,17 @@
+     <Popover open={open} onOpenChange={setOpen}>
+       <PopoverTrigger
+         aria-label={ariaLabel}
+-        className="inline-flex h-7 items-center gap-1.5 rounded border border-border-subtle bg-panel-2/50 px-2 text-caption tracking-wider transition-colors hover:border-border"
++        className={cn("dash-dropdown-trigger transition-colors", triggerClassName)}
+       >
+-        <span className="text-text-soft">{icon}</span>
++        {icon && <span className="text-text-soft">{icon}</span>}
+         <span className={isMuted ? 'text-text-subtle' : 'text-text'}>{displayLabel}</span>
+-        <ChevronDown className="h-3 w-3 text-text-subtle" />
++        <ChevronDown className="ml-auto h-3 w-3 shrink-0 text-text-subtle" />
+       </PopoverTrigger>
+-      <PopoverContent data-filter-owner={overlayOwner} className="w-64 p-0" align="start">
++      <PopoverContent {...typography} data-filter-owner={overlayOwner} className="dash-dropdown-menu w-64 p-0" align="start">
+         <Command className={onCreate ? 'h-[300px]' : undefined}>
+-          <CommandInput placeholder="Search…" className="h-8 text-label" />
++          <CommandInput placeholder="Search…" className="h-8 dash-filter-search" />
+           {showStateControls && (
+-            <div className="flex items-center gap-2 border-b border-border-subtle px-2 py-2 text-label">
++            <div className="flex items-center gap-2 border-b border-border-subtle px-2 py-2 dash-filter-search">
+               <label className="flex items-center gap-1.5 text-text-soft">
+                 <input
+                   type="checkbox"
+@@ -104,7 +110,7 @@
+                 Show inactive
+               </label>
+               <select
+-                className="ml-auto h-7 rounded-md border border-border-subtle bg-panel px-2 text-label text-text-muted"
++                className="ml-auto h-7 rounded-md border border-border-subtle bg-panel px-2 dash-filter-search text-text-muted"
+                 value={sortOrder}
+                 onChange={(e) => setSortOrder(e.target.value as 'updated' | 'title')}
+                 aria-label="Sort order"
+@@ -139,7 +145,7 @@
+                   >
+                     <span className="truncate">{item.name}</span>
+                     {item.count !== undefined && (
+-                      <span className="ml-auto font-mono text-caption tabular-nums text-text-subtle">
++                      <span className="ml-auto font-mono dash-filter-caption tabular-nums text-text-subtle">
+                         {item.count}
+                       </span>
+                     )}
+--- a/packages/kit-dashboard/src/components/status-badge.tsx
++++ b/packages/kit-dashboard/src/components/status-badge.tsx
+@@ -1,7 +1,9 @@
+-import { statusTone } from '../lib/status'
++import { statusTone, type StatusKey } from '../lib/status'
+ 
+ interface StatusBadgeProps {
+   status: string
++  /** App-owned vocabulary can borrow a kit tone without changing its label. */
++  tone?: StatusKey
+   className?: string
+ }
+ 
+@@ -10,12 +12,12 @@
+  * shade relationships match Torque's status pills exactly; themed via the
+  * `--color-status-*` tokens.
+  */
+-export function StatusBadge({ status, className = '' }: StatusBadgeProps) {
+-  const tone = statusTone(status)
++export function StatusBadge({ status, tone: toneKey, className = '' }: StatusBadgeProps) {
++  const tone = statusTone(toneKey ?? status)
+ 
+   return (
+     <span
+-      className={`inline-flex items-center gap-2 rounded border px-2 py-1 text-label uppercase tracking-label ${tone.border} ${tone.bg} ${tone.text} ${className}`}
++      className={`inline-flex items-center gap-2 rounded border px-2 py-1 dash-record-status ${tone.border} ${tone.bg} ${tone.text} ${className}`}
+     >
+       <span className={`h-1.5 w-1.5 rounded-full ${tone.dot}`} />
+       <span>{status || 'unknown'}</span>
+--- /dev/null
++++ b/packages/kit-dashboard/src/components/dashboard-typography.tsx
+@@ -0,0 +1,12 @@
++import type { ReactNode } from 'react'
++import { DashboardTypographyContext, type DashboardTypographyProfile } from '../lib/dashboard-typography'
++
++/** Scope record typography without changing the document root or layout density. */
++export function DashboardTypographyProvider({ profile = 'compact', children }: {
++  profile?: DashboardTypographyProfile
++  children: ReactNode
++}) {
++  return <DashboardTypographyContext.Provider value={profile}>
++    <div className="contents" data-dashboard-typography={profile}>{children}</div>
++  </DashboardTypographyContext.Provider>
++}
+--- a/packages/kit-dashboard/src/ui.ts
++++ b/packages/kit-dashboard/src/ui.ts
+@@ -17,6 +17,8 @@
+ export { NavRail, type NavRailItem } from './components/nav-rail'
+ export { StatusBadge } from './components/status-badge'
+ export { PriorityBadge } from './components/priority-badge'
++export { DashboardTypographyProvider } from './components/dashboard-typography'
++export { useDashboardTypography, type DashboardTypographyProfile } from './lib/dashboard-typography'
+ export { SummaryCards, type SummaryCard } from './components/summary-cards'
+ export {
+   SettingsField,
+--- /dev/null
++++ b/packages/kit-dashboard/src/lib/dashboard-typography.ts
+@@ -0,0 +1,9 @@
++import { createContext, useContext } from 'react'
++
++export type DashboardTypographyProfile = 'scalable' | 'compact'
++export const DashboardTypographyContext = createContext<DashboardTypographyProfile>('compact')
++
++/** Spread onto portal content: React context crosses portals; CSS does not. */
++export function useDashboardTypography() {
++  return { 'data-dashboard-typography': useContext(DashboardTypographyContext) }
++}
+--- a/packages/kit-dashboard/src/components/page-header.tsx
++++ b/packages/kit-dashboard/src/components/page-header.tsx
+@@ -6,8 +6,8 @@
+ /** Compact, pinned page header — mirrors Torque's Operations header. */
+ export function PageHeader({ title, children }: PageHeaderProps) {
+   return (
+-    <div className="flex items-center justify-between border-b border-border bg-bg px-4 py-2.5">
+-      <h1 className="text-label font-semibold uppercase tracking-label text-text-soft">
++    <div className="flex items-center justify-between border-b border-border bg-bg dash-page-header">
++      <h1 className="dash-page-heading text-text-soft">
+         {title}
+       </h1>
+       {children && <div className="flex items-center gap-2">{children}</div>}
+--- a/packages/kit-dashboard/src/components/summary-cards.tsx
++++ b/packages/kit-dashboard/src/components/summary-cards.tsx
+@@ -21,7 +21,7 @@
+             style={{ backgroundColor: card.accentColor ?? 'var(--color-text-subtle)' }}
+             aria-hidden
+           />
+-          <span className="uppercase tracking-label text-text-subtle">
++          <span className="dash-summary-label text-text-subtle">
+             {card.label}
+             {card.subtitle && (
+               <span className="ml-1 normal-case tracking-normal text-text-subtle/70">
+@@ -29,7 +29,7 @@
+               </span>
+             )}
+           </span>
+-          <span className="font-mono text-control font-semibold tabular-nums text-text">
++          <span className="dash-summary-value text-text">
+             {card.value}
+           </span>
+           {i < cards.length - 1 && <span className="ml-3 h-3 w-px bg-border" aria-hidden />}
+--- a/packages/kit-dashboard/src/components/filter-bar/filter-chip-group.tsx
++++ b/packages/kit-dashboard/src/components/filter-bar/filter-chip-group.tsx
+@@ -38,7 +38,7 @@
+   return (
+     <div className="flex flex-wrap items-center gap-1">
+       {label ? (
+-        <span className="mr-1 text-caption uppercase tracking-wider text-text-subtle">{label}</span>
++        <span className="mr-1 dash-filter-chip uppercase tracking-wider text-text-subtle">{label}</span>
+       ) : null}
+       {chips.map((chip) => {
+         const active = selected.includes(chip.value)
+@@ -50,7 +50,7 @@
+             disabled={chip.disabled}
+             onClick={() => onToggle(chip.value)}
+             className={cn(
+-              'rounded border px-2 py-0.5 text-caption uppercase tracking-wider transition-all',
++              'rounded border px-2 py-0.5 dash-filter-chip uppercase tracking-wider transition-all',
+               active ? `${ACTIVE_RING} ${chip.activeClassName ?? DEFAULT_ACTIVE}` : INACTIVE,
+             )}
+           >
+--- a/packages/kit-dashboard/src/components/data-table/data-table.tsx
++++ b/packages/kit-dashboard/src/components/data-table/data-table.tsx
+@@ -12,6 +12,10 @@
+ export type TableDensity = 'compact' | 'comfortable'
+ 
+ interface DataTableProps<T> {
++  /** Accessible table description; displayed beneath the records. */
++  caption?: ReactNode
++  /** Full-width table footer for totals or evidence coverage. */
++  footer?: ReactNode
+   /** Compact operations rows by default; comfortable for longer content. */
+   density?: TableDensity
+   /** Currently rendered ids after sorting/windowing; use for detail navigation. */
+@@ -53,6 +57,8 @@
+  * plus a `getRowId`.
+  */
+ export function DataTable<T>({
++  caption,
++  footer,
+   items,
+   density = 'compact',
+   onVisibleOrderChange,
+@@ -177,7 +183,8 @@
+   return (
+     <div className="w-full overflow-x-auto">
+       <table className="w-full min-w-full" data-density={density}>
+-        <thead className="text-caption uppercase tracking-eyebrow text-text-subtle">
++        {caption != null && <caption className="dash-table-note caption-bottom">{caption}</caption>}
++        <thead className="dash-table-heading uppercase text-text-subtle">
+           <tr className="border-b border-border">
+             {selectable && (
+               <th className="w-8 py-1.5 pl-3.5 pr-0">
+@@ -257,6 +264,7 @@
+             </tr>
+           )}
+         </tbody>
++        {footer != null && <tfoot><tr><td colSpan={totalCols} className="dash-table-note border-t border-border">{footer}</td></tr></tfoot>}
+       </table>
+       {hasMore && revealControls && <button type="button" data-ops-action="reveal-more" className="m-3 rounded border border-border px-3 py-2 text-label text-text" onClick={() => { if (!interactionAllowed || interactionAllowed()) setVisibleCount(c => Math.min(c + pageSize, sorted.length)) }}>Show more</button>}
+     </div>
+--- a/packages/kit-dashboard/src/components/filter-bar/filter-bar.tsx
++++ b/packages/kit-dashboard/src/components/filter-bar/filter-bar.tsx
+@@ -1,6 +1,7 @@
+ import type { ReactNode } from 'react'
+ import { SlidersHorizontal } from 'lucide-react'
+ import { SearchInput } from '@hollis-labs/design-components'
++import { DashboardToolbar } from '../layout/dashboard-controls'
+ 
+ interface FilterBarProps {
+   searchQuery: string
+@@ -55,8 +56,8 @@
+   return (
+     <div className="flex flex-col border-b border-border bg-bg">
+       {/* Row 1: search hero + summary + clear */}
+-      <div className="flex flex-wrap items-center gap-3 px-4 py-2">
+-        <div className="flex min-w-0 flex-1 basis-60 [&>div]:min-w-0">
++      <DashboardToolbar className="px-4 py-2">
++        <div className="dash-search-adapter flex min-w-0 flex-1 basis-60 [&>div]:min-w-0">
+           {searchControl ?? <SearchInput
+             value={searchQuery}
+             onChange={onSearchChange}
+@@ -65,7 +66,7 @@
+             slashToFocus={slashToFocus}
+           />}
+         </div>
+-        <div className="inline-flex h-8 items-center gap-1.5 rounded border border-border-subtle bg-panel-2/50 px-2 text-caption uppercase tracking-wider text-text-soft">
++        <div className="inline-flex h-8 items-center gap-1.5 rounded border border-border-subtle bg-panel-2/50 px-2 dash-filter-caption uppercase tracking-wider text-text-soft">
+           <span className="sr-only">Active filters:</span>
+           <SlidersHorizontal className="h-3.5 w-3.5" />
+           {activeFilterCount}
+@@ -73,7 +74,7 @@
+         {summaryText && anyActive && (
+           <span
+             role="status"
+-            className="text-caption uppercase tracking-wider text-text-subtle"
++            className="dash-filter-caption uppercase tracking-wider text-text-subtle"
+           >
+             {summaryText}
+           </span>
+@@ -83,18 +84,18 @@
+             type="button"
+             onClick={onClear}
+             aria-label="Clear all filters and search"
+-            className="rounded border border-border bg-transparent px-2 py-1 text-caption uppercase tracking-wider text-text-muted transition-colors hover:border-border-subtle hover:text-text"
++            className="rounded border border-border bg-transparent px-2 py-1 dash-filter-caption uppercase tracking-wider text-text-muted transition-colors hover:border-border-subtle hover:text-text"
+           >
+             Clear
+           </button>
+         )}
+         {actions && <div className="ml-auto flex items-center gap-2">{actions}</div>}
+-      </div>
++      </DashboardToolbar>
+ 
+       {/* Row 2: app-composed chip row */}
+       {children && (
+         <div className="border-t border-border px-4 py-2">
+-          <div className="flex flex-wrap items-center gap-3 text-xs">{children}</div>
++          <DashboardToolbar>{children}</DashboardToolbar>
+         </div>
+       )}
+     </div>
+--- a/packages/kit-dashboard/src/components/filter-bar/filter-cycle-toggle.tsx
++++ b/packages/kit-dashboard/src/components/filter-bar/filter-cycle-toggle.tsx
+@@ -32,7 +32,7 @@
+       aria-label={`${ariaLabel}, current: ${active.label}`}
+       title={active.title ?? `${ariaLabel}: ${active.label}`}
+       onClick={() => onChange(next.value)}
+-      className="inline-flex items-center gap-1.5 rounded border border-border-subtle bg-panel-2/50 px-2 py-0.5 text-caption uppercase tracking-wider text-text-muted transition-all hover:border-border"
++      className="inline-flex items-center gap-1.5 rounded border border-border-subtle bg-panel-2/50 px-2 py-0.5 dash-filter-chip uppercase tracking-wider text-text-muted transition-all hover:border-border"
+     >
+       {active.dotColor && (
+         <span className={`inline-block h-1.5 w-1.5 rounded-full ${active.dotColor}`} />
+--- a/packages/kit-dashboard/src/components/widgets/overview-panels.tsx
++++ b/packages/kit-dashboard/src/components/widgets/overview-panels.tsx
+@@ -9,11 +9,11 @@
+     <div className="flex min-h-9 items-center justify-between gap-3 border-b border-border bg-panel px-3">
+       <div className="flex min-w-0 items-center gap-2">
+         <span className="text-text-subtle">{icon}</span>
+-        <h2 className="truncate text-label font-semibold uppercase tracking-label text-text-muted">
++        <h2 className="truncate dash-section-heading text-text-muted">
+           {title}
+         </h2>
+       </div>
+-      {meta && <div className="shrink-0 text-label text-text-subtle">{meta}</div>}
++      {meta && <div className="shrink-0 dash-support text-text-subtle">{meta}</div>}
+     </div>
+   )
+ }
+@@ -29,7 +29,7 @@
+ /** Instrumentation panel: titled card with icon header and zero-padding body. */
+ export function Panel({ title, icon, meta, children, className }: PanelProps) {
+   return (
+-    <Card className={cn('min-h-0 overflow-hidden rounded-none', className)}>
++    <Card className={cn('dash-panel min-h-0 overflow-hidden rounded-none', className)}>
+       <SectionTitle title={title} icon={icon} meta={meta} />
+       <CardContent className="p-0">{children}</CardContent>
+     </Card>
+--- a/packages/kit-dashboard/src/layout.ts
++++ b/packages/kit-dashboard/src/layout.ts
+@@ -12,3 +12,7 @@
+ } from './components/layout'
+ 
+ export { OperationsListPage, type OperationsListPageProps, type OperationsFacet, type OperationsInspector, type OperationsActionScope } from './components/layout'
++
++export { DashboardToolbar, DashboardField, DashboardSection, type DashboardFieldProps } from './components/layout/dashboard-controls'
++
++export { DashboardSearchToolbar } from './components/layout/search-toolbar'
+--- /dev/null
++++ b/packages/kit-dashboard/src/components/layout/dashboard-controls.tsx
+@@ -0,0 +1,32 @@
++import type { ComponentProps, ReactNode } from 'react'
++import { cn } from '@hollis-labs/design-components'
++
++/** A wrapping control row. Each field stays together; actions align to controls. */
++export function DashboardToolbar({ className, ...props }: ComponentProps<'div'>) {
++  return <div {...props} className={cn('dash-toolbar', className)} />
++}
++
++export interface DashboardFieldProps extends ComponentProps<'label'> {
++  label: ReactNode
++  /** Inline for filter bands; stacked for forms and longer record selectors. */
++  orientation?: 'inline' | 'stacked'
++}
++
++/** Wrap one labelable control, or use htmlFor for a separately rendered control. */
++export function DashboardField({ label, orientation = 'inline', className, children, ...props }: DashboardFieldProps) {
++  return <label {...props} data-orientation={orientation} className={cn('dash-field', className)}>
++    <span className="dash-field-label">{label}</span>
++    {children}
++  </label>
++}
++
++/** Inset section label aligned with dashboard table cells, with space above the next group. */
++export function DashboardSection({ title, summary, children }: { title: string; summary?: ReactNode; children: ReactNode }) {
++  return <section aria-label={title} className="min-w-0">
++    <DashboardToolbar className="px-3 pb-2 pt-4">
++      <h2 className="dash-section-heading">{title}</h2>
++      {summary && <span className="dash-support text-fg-faint">{summary}</span>}
++    </DashboardToolbar>
++    {children}
++  </section>
++}
+--- a/packages/kit-dashboard/src/components/layout/tab-strip.tsx
++++ b/packages/kit-dashboard/src/components/layout/tab-strip.tsx
+@@ -27,8 +27,8 @@
+  */
+ export function TabStrip<K extends string>({ tabs, value, onChange, actions }: TabStripProps<K>) {
+   return (
+-    <div className="flex items-center justify-between border-b border-border bg-bg px-4">
+-      <div className="flex items-center gap-4">
++    <div className="flex min-w-0 flex-wrap items-center justify-between border-b border-border bg-bg px-4">
++      <div className="flex min-w-0 flex-wrap items-center gap-x-4">
+         {tabs.map((tab) => {
+           const active = tab.key === value
+           return (
+--- /dev/null
++++ b/packages/kit-dashboard/src/components/layout/search-toolbar.tsx
+@@ -0,0 +1,15 @@
++import type { ReactNode } from 'react'
++import { SearchInput } from '@hollis-labs/design-components'
++import { DashboardToolbar } from './dashboard-controls'
++
++/** Standalone search band using the same gutter, field surface and divider as FilterBar. */
++export function DashboardSearchToolbar({ value, onChange, label, placeholder, children }: {
++  value: string; onChange: (value: string) => void; label: string; placeholder?: string; children?: ReactNode
++}) {
++  return <DashboardToolbar className="border-b border-border px-4 py-2">
++    <div className="dash-search-adapter min-w-0 flex-1 basis-60">
++      <SearchInput value={value} onChange={onChange} ariaLabel={label} placeholder={placeholder} debounceMs={0} slashToFocus={false} />
++    </div>
++    {children}
++  </DashboardToolbar>
++}

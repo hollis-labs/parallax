@@ -1,7 +1,14 @@
 import {
+  Badge,
+  Button,
+  CopyableId,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
   ROW_INTERACTIVE_SELECTOR,
   rowInteractiveProps,
@@ -9,15 +16,32 @@ import {
   useShortcut,
 } from "@hollis-labs/design-components"
 import {
+  DataTableCell,
+  FilterChipGroup,
+  FilterEntityCombobox,
+  RecordSummary,
+} from "@hollis-labs/kit-dashboard/data"
+import {
+  PriorityBadge,
+  StatusBadge,
+  SummaryCards,
+  statusTone,
+  useDashboardTypography,
+} from "@hollis-labs/kit-dashboard/ui"
+import {
   BookOpen,
   Calendar,
   Folder,
+  FolderPlus,
   Hash,
+  Inbox,
   MoreHorizontal,
+  Plus,
   Search,
   SlidersHorizontal,
+  Zap,
 } from "lucide-react"
-import { type RefObject, useEffect, useLayoutEffect, useRef, useState } from "react"
+import { type ReactNode, type RefObject, useEffect, useLayoutEffect, useRef, useState } from "react"
 import type { OperationsModel } from "../../operations/model"
 import { ResourceNotice } from "../../operations/Views"
 import { BoardIntent, type BoardIntentRequest } from "./BoardIntent"
@@ -56,6 +80,83 @@ export function TorqueOperations({
   onCursor: (cursor: { identity: string; ids: string[] }) => void
   anchorRef: RefObject<HTMLInputElement | null>
 }) {
+  const reference = torqueReferenceModel(model)
+  const rows = model.tasks.map((t) => {
+    const metadata = operationsMetadata[t.id]
+    const receipt = model.dataset.usage.find((u) => u.id === t.usageId && u.runId === t.runId)
+    const update = reference.compatible
+      ? reference.effectiveUpdates.find((e) => e.taskId === t.id)?.time
+      : model.dataset.events.filter((e) => e.taskId === t.id && e.type.startsWith("task.")).at(-1)
+          ?.time
+    return {
+      task: t,
+      receipt,
+      update,
+      ...metadata,
+      status:
+        model.scenario === "unknown-status"
+          ? t.status
+          : (metadata?.status ?? (t.status === "running" ? "doing" : t.status)),
+    }
+  })
+  return (
+    <TorqueOperationsBoard
+      rows={rows}
+      accessible={model.accessible}
+      unavailable={<ResourceNotice model={model} />}
+      state={state}
+      onQuery={onQuery}
+      onSelect={onSelect}
+      onCursor={onCursor}
+      anchorRef={anchorRef}
+    />
+  )
+}
+
+export interface TorqueBoardRow {
+  task: { id: string; title: string }
+  receipt?: { cost: number | null; tokens: number | null }
+  update?: string
+  status: string
+  priority: number
+  manual: boolean
+  system: boolean
+  project: string
+  epic: string
+  sprint: string
+  tag: string
+  tags?: string[]
+  executor: string
+  collection?: string
+  inInbox?: boolean
+}
+
+export function TorqueOperationsBoard({
+  rows,
+  accessible,
+  unavailable,
+  state,
+  onQuery,
+  onSelect,
+  onCursor,
+  anchorRef,
+  sourceLabel = "Fictional tasks",
+  rowHref = (id) => torqueHref(state, { route: "task", selected: id }),
+  captured = false,
+}: {
+  rows: TorqueBoardRow[]
+  accessible: boolean
+  unavailable?: ReactNode
+  state: TorqueState
+  onQuery: (query: string) => void
+  onSelect: (id: string) => void
+  onCursor: (cursor: { identity: string; ids: string[] }) => void
+  anchorRef: RefObject<HTMLInputElement | null>
+  sourceLabel?: string
+  rowHref?: (id: string) => string
+  captured?: boolean
+}) {
+  const typography = useDashboardTypography()
   const [active, setActive] = useState(
     statuses.filter((s) => !["archived", "abandoned", "cancelled"].includes(s)),
   )
@@ -136,25 +237,6 @@ export function TorqueOperations({
       refresh((x) => x + 1)
     }
   }
-  const reference = torqueReferenceModel(model)
-  const rows = model.tasks.map((t) => {
-    const metadata = operationsMetadata[t.id]
-    const receipt = model.dataset.usage.find((u) => u.id === t.usageId && u.runId === t.runId)
-    const update = reference.compatible
-      ? reference.effectiveUpdates.find((e) => e.taskId === t.id)?.time
-      : model.dataset.events.filter((e) => e.taskId === t.id && e.type.startsWith("task.")).at(-1)
-          ?.time
-    return {
-      task: t,
-      receipt,
-      update,
-      ...metadata,
-      status:
-        model.scenario === "unknown-status"
-          ? t.status
-          : (metadata?.status ?? (t.status === "running" ? "doing" : t.status)),
-    }
-  })
   const matching = rows
     .filter(
       (r) =>
@@ -170,7 +252,7 @@ export function TorqueOperations({
         (!scope.project || scope.project === r.project) &&
         (!scope.epic || scope.epic === r.epic) &&
         (!scope.sprint || scope.sprint === r.sprint) &&
-        (!scope.tag || scope.tag === r.tag),
+        (!scope.tag || (r.tags ?? [r.tag]).includes(scope.tag)),
     )
     .sort((a, b) => {
       const av =
@@ -207,12 +289,12 @@ export function TorqueOperations({
   const returnAdmission = useRef({
     identity,
     ids: visible.map((r) => r.task.id),
-    accessible: model.accessible,
+    accessible: accessible,
   })
   returnAdmission.current = {
     identity,
     ids: visible.map((r) => r.task.id),
-    accessible: model.accessible,
+    accessible: accessible,
   }
   function resolveReturnTarget(request: BoardIntentRequest | null) {
     const current = returnAdmission.current
@@ -235,13 +317,13 @@ export function TorqueOperations({
     onTrigger: () => anchorRef.current?.focus(),
     allowInInteractive: false,
     sourceGeneration: identity,
-    accessible: model.accessible,
+    accessible: accessible,
     isAdmitted: admitted,
   })
   useQuickSearchShortcut({
     onOpen: () => anchorRef.current?.focus(),
     sourceGeneration: identity,
-    accessible: model.accessible,
+    accessible: accessible,
     isAdmitted: admitted,
   })
   const cursorIds = JSON.stringify(visible.map((r) => r.task.id))
@@ -262,6 +344,23 @@ export function TorqueOperations({
     observer.observe(sentinel.current)
     return () => observer.disconnect()
   }, [visibleCount, matching.length, filterFrame])
+  function previewAction(id: string, action: string, status: string) {
+    if (!admitted()) return
+    if (!statuses.includes(status)) {
+      setNotice("Action previews are unavailable for an unrecognized task status.")
+      return
+    }
+    const terminalTransition =
+      ["done", "archived"].includes(status) &&
+      (action.startsWith("Move") || action.startsWith("Transition"))
+    setIntent({
+      id,
+      identity,
+      action,
+      outcome: terminalTransition ? "refusal" : status === "blocked" ? "error" : "preview",
+      returnTarget: document.querySelector<HTMLElement>(`[aria-label="Task actions ${id}"]`),
+    })
+  }
   const filters =
     Number(
       active.length !== 8 ||
@@ -290,54 +389,60 @@ export function TorqueOperations({
         <span>Fictional workspace · read only</span>
       </div>
       <div className="torque-ops-summary">
-        {summaries.map(([label, value, color]) => (
-          <div key={label}>
-            <span>{label}</span>
-            <strong data-status={color}>{model.accessible ? value : "Unknown"}</strong>
-          </div>
-        ))}
+        <SummaryCards
+          cards={summaries.map(([label, value, status]) => ({
+            label: String(label),
+            value: accessible ? value : "Unknown",
+            accentColor:
+              status === "open" ? "var(--color-fg-faint)" : `var(--torque-summary-${status})`,
+          }))}
+        />
       </div>
       <div className="torque-ops-filters">
-        <div className="torque-ops-search">
+        <div className="torque-ops-search dash-filter-caption">
           <button
             type="button"
             className="torque-eligible"
+            aria-label="ϟ Eligible"
             aria-disabled="true"
-            title="Eligibility unavailable: these fixtures have no scheduler eligibility evidence. Auto is only an authored mode."
+            title="Eligibility unavailable: these fixtures have no scheduler eligibility evidence. Auto describes the task mode."
             onClick={() =>
               setNotice(
-                "Eligibility unavailable: no scheduler eligibility evidence is supplied. Auto is an authored task mode, not eligibility.",
+                "Eligibility unavailable: no scheduler eligibility evidence is supplied. Auto is a task mode, not eligibility.",
               )
             }
           >
-            ϟ Eligible
+            <Zap className="size-3.5" /> Eligible
           </button>
-          <Search size={14} />
-          <input
-            ref={anchorRef}
-            aria-label="Example task filter"
-            placeholder="Search…"
-            value={state.query}
-            onChange={(e) => {
-              if (admitted()) onQuery(e.target.value)
-            }}
-            onKeyDown={(e) => {
-              if (
-                e.key === "Escape" &&
-                !e.nativeEvent.isComposing &&
-                e.nativeEvent.keyCode !== 229
-              ) {
-                e.preventDefault()
-                e.stopPropagation()
-                if (typeof e.nativeEvent?.stopImmediatePropagation === "function") {
-                  e.nativeEvent.stopImmediatePropagation()
+          <label className="dash-search-field torque-search-field">
+            <Search className="size-3.5" />
+            <input
+              ref={anchorRef}
+              aria-label="Example task filter"
+              placeholder="Search…"
+              value={state.query}
+              onChange={(e) => {
+                if (admitted()) onQuery(e.target.value)
+              }}
+              onKeyDown={(e) => {
+                if (
+                  e.key === "Escape" &&
+                  !e.nativeEvent.isComposing &&
+                  e.nativeEvent.keyCode !== 229
+                ) {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  if (typeof e.nativeEvent?.stopImmediatePropagation === "function") {
+                    e.nativeEvent.stopImmediatePropagation()
+                  }
+                  if (state.query !== "" && admitted()) {
+                    onQuery("")
+                  }
                 }
-                if (state.query !== "" && admitted()) {
-                  onQuery("")
-                }
-              }
-            }}
-          />
+              }}
+            />
+            <kbd className="dash-shortcut">/</kbd>
+          </label>
           <button
             type="button"
             className="torque-filter-count torque-filter-toggle"
@@ -346,16 +451,16 @@ export function TorqueOperations({
             aria-expanded={filtersOpen}
             onClick={() => edit(() => setFiltersOpen(!filtersOpen))}
           >
-            <SlidersHorizontal size={13} />
+            <SlidersHorizontal className="size-3.5" />
             {filters}
           </button>
           <span className="torque-filter-count torque-filter-desktop">
-            <SlidersHorizontal size={13} />
+            <SlidersHorizontal className="size-3.5" />
             {filters}
           </span>
           {(filters > 0 || state.query || sort.key !== "date" || !sort.desc) && (
             <>
-              <span>{model.accessible ? `${matching.length} matches` : "Matches unknown"}</span>
+              <span>{accessible ? `${matching.length} matches` : "Matches unknown"}</span>
               <button
                 type="button"
                 onClick={() =>
@@ -381,96 +486,116 @@ export function TorqueOperations({
           )}
         </div>
         <div id="torque-operation-facets" className="torque-ops-chips" data-open={filtersOpen}>
-          <div>
-            <span>Status:</span>
-            {statuses.map((status) => (
-              <button
-                type="button"
-                key={status}
-                data-status={status}
-                aria-pressed={active.includes(status)}
-                onClick={() =>
-                  edit(() =>
-                    setActive((v) =>
-                      v.includes(status) ? v.filter((s) => s !== status) : [...v, status],
-                    ),
-                  )
-                }
-              >
-                {status}
-              </button>
-            ))}
-          </div>
-          <div>
-            <span>Priority:</span>
-            {[1, 2, 3].map((p) => (
-              <button
-                type="button"
-                key={p}
-                aria-pressed={priority.includes(p)}
-                onClick={() =>
-                  edit(() =>
-                    setPriority((v) => (v.includes(p) ? v.filter((n) => n !== p) : [...v, p])),
-                  )
-                }
-              >
-                P{p}
-              </button>
-            ))}
-          </div>
-          <div>
-            {["Manual", "Auto"].map((value) => (
-              <button
-                type="button"
-                key={value}
-                aria-pressed={manual === "Both" || manual === value}
-                onClick={() =>
-                  edit(() =>
-                    setManual(
-                      manual === "Both"
-                        ? value === "Manual"
-                          ? "Auto"
-                          : "Manual"
-                        : manual === value
-                          ? "Both"
-                          : value,
-                    ),
-                  )
-                }
-              >
-                {value}
-              </button>
-            ))}
-          </div>
-          <div>
-            <span>System:</span>
-            <button
-              type="button"
-              aria-pressed={system}
-              onClick={() => edit(() => setSystem(!system))}
-            >
-              {system ? "Shown" : "Hidden"}
-            </button>
-          </div>
+          <FilterChipGroup
+            label="Status:"
+            chips={statuses.map((value) => {
+              const tone = statusTone(value)
+              return { value, activeClassName: `${tone.border} ${tone.bg} ${tone.text}` }
+            })}
+            selected={active}
+            onToggle={(status) =>
+              edit(() =>
+                setActive((v) =>
+                  v.includes(status) ? v.filter((s) => s !== status) : [...v, status],
+                ),
+              )
+            }
+          />
+          <FilterChipGroup
+            label="Priority:"
+            chips={[1, 2, 3].map((p) => ({ value: String(p), label: `P${p}` }))}
+            selected={priority.map(String)}
+            onToggle={(value) =>
+              edit(() => {
+                const p = Number(value)
+                setPriority((v) => (v.includes(p) ? v.filter((n) => n !== p) : [...v, p]))
+              })
+            }
+          />
+          <FilterChipGroup
+            chips={["Manual", "Auto"].map((value) => {
+              const tone = statusTone("doing")
+              return { value, activeClassName: `${tone.border} ${tone.bg} ${tone.text}` }
+            })}
+            selected={manual === "Both" ? ["Manual", "Auto"] : [manual]}
+            onToggle={(value) =>
+              edit(() =>
+                setManual(
+                  manual === "Both"
+                    ? value === "Manual"
+                      ? "Auto"
+                      : "Manual"
+                    : manual === value
+                      ? "Both"
+                      : value,
+                ),
+              )
+            }
+          />
+          <FilterChipGroup
+            label="System:"
+            chips={[{ value: "system", label: system ? "Shown" : "Hidden" }]}
+            selected={system ? ["system"] : []}
+            onToggle={() => edit(() => setSystem(!system))}
+          />
           <div className="torque-ops-scopes">
             {(
               [
-                ["project", projects, Folder],
-                ["epic", epics, BookOpen],
-                ["sprint", ["Review sprint 1", "Review sprint 2"], Calendar],
-                ["tag", tags, Hash],
+                [
+                  "project",
+                  captured ? [...new Set(rows.map((r) => r.project).filter(Boolean))] : projects,
+                  Folder,
+                ],
+                [
+                  "epic",
+                  captured ? [...new Set(rows.map((r) => r.epic).filter(Boolean))] : epics,
+                  BookOpen,
+                ],
+                [
+                  "sprint",
+                  captured
+                    ? [...new Set(rows.map((r) => r.sprint).filter(Boolean))]
+                    : ["Review sprint 1", "Review sprint 2"],
+                  Calendar,
+                ],
+                [
+                  "tag",
+                  captured
+                    ? [...new Set(rows.flatMap((r) => r.tags ?? [r.tag]).filter(Boolean))]
+                    : tags,
+                  Hash,
+                ],
               ] as const
-            ).map(([key, values, Icon]) => (
-              <label key={key}>
-                <Icon size={13} />
-                <select
-                  aria-label={`Filter by ${key}`}
-                  value={scope[key]}
-                  onChange={(e) =>
+            ).map(([key, values]) => (
+              <div key={key} className="torque-scope-control">
+                <FilterEntityCombobox
+                  key={fixtureFrame}
+                  icon={key === "tag" ? <Hash className="size-3.5" /> : null}
+                  triggerClassName={
+                    key === "tag"
+                      ? "text-xs tracking-normal font-sans"
+                      : "w-40 justify-between text-xs tracking-normal font-medium font-sans rounded-lg px-2.5"
+                  }
+                  ariaLabel={`Filter by ${key}`}
+                  allLabel={key === "tag" ? "All tags" : `${key[0].toUpperCase()}${key.slice(1)}s`}
+                  value={scope[key] || null}
+                  items={values
+                    .filter((value) => {
+                      if (key === "epic" || key === "sprint")
+                        return (captured ? rows : Object.values(operationsMetadata)).some(
+                          (m) =>
+                            m[key] === value &&
+                            (!scope.project || m.project === scope.project) &&
+                            (key !== "sprint" || !scope.epic || m.epic === scope.epic),
+                        )
+                      return true
+                    })
+                    .map((value) => ({ id: value, name: value }))}
+                  onChange={(value) =>
                     edit(() =>
                       setScope((v) => ({
                         ...v,
-                        [key]: e.target.value,
+                        [key]: value ?? "",
                         ...(key === "project"
                           ? { epic: "", sprint: "" }
                           : key === "epic"
@@ -479,24 +604,20 @@ export function TorqueOperations({
                       })),
                     )
                   }
-                >
-                  <option value="">All {key}s</option>
-                  {values
-                    .filter((value) => {
-                      if (key === "epic" || key === "sprint")
-                        return Object.values(operationsMetadata).some(
-                          (m) =>
-                            m[key] === value &&
-                            (!scope.project || m.project === scope.project) &&
-                            (key !== "sprint" || !scope.epic || m.epic === scope.epic),
-                        )
-                      return true
-                    })
-                    .map((v) => (
-                      <option key={v}>{v}</option>
-                    ))}
-                </select>
-              </label>
+                />
+                {key !== "tag" && (
+                  <Button
+                    variant="outline"
+                    size="icon-sm"
+                    aria-label={`Create ${key} preview`}
+                    onClick={() =>
+                      setNotice(`Create ${key} is unavailable in this read-only fixture.`)
+                    }
+                  >
+                    <Plus />
+                  </Button>
+                )}
+              </div>
             ))}
           </div>
         </div>
@@ -509,8 +630,8 @@ export function TorqueOperations({
           </button>
         </p>
       )}
-      {!model.accessible ? (
-        <ResourceNotice model={model} />
+      {!accessible ? (
+        unavailable
       ) : (
         <section
           className="torque-ops-table-region"
@@ -522,7 +643,7 @@ export function TorqueOperations({
           <table>
             <thead>
               <tr>
-                <th>
+                <th className="dash-table-heading">
                   <input
                     ref={selectAll}
                     type="checkbox"
@@ -550,6 +671,7 @@ export function TorqueOperations({
                   ["date", "Date"],
                 ].map(([key, label]) => (
                   <th
+                    className="dash-table-heading"
                     key={key}
                     aria-sort={
                       key === "usage"
@@ -619,7 +741,7 @@ export function TorqueOperations({
                     }
                   }}
                 >
-                  <td>
+                  <DataTableCell kind="selection">
                     <input
                       type="checkbox"
                       {...rowInteractiveProps(true)}
@@ -635,60 +757,118 @@ export function TorqueOperations({
                         )
                       }
                     />
-                  </td>
-                  <td className="torque-ops-task">
-                    <a
-                      {...rowInteractiveProps(true)}
-                      href={torqueHref(state, { route: "task", selected: r.task.id })}
-                      onClick={(e) => {
-                        if (
-                          admitted() &&
-                          e.button === 0 &&
-                          !e.ctrlKey &&
-                          !e.metaKey &&
-                          !e.shiftKey &&
-                          !e.altKey
-                        ) {
-                          e.preventDefault()
-                          e.currentTarget.focus({ preventScroll: true })
-                          onSelect(r.task.id)
-                        }
-                      }}
-                      title={r.task.title}
-                    >
-                      {r.task.title}
-                    </a>
-                    <div>
-                      <span>{r.executor}</span>
-                      <span>
-                        id: <code>{r.task.id}</code>
-                      </span>
-                      <span>
-                        {r.project} / {r.epic}
-                      </span>
-                      <span>
-                        tags: <em>{r.tag}</em>
-                      </span>
-                      {r.manual && <span>manual</span>}
-                    </div>
-                  </td>
-                  <td>
+                  </DataTableCell>
+                  <DataTableCell className="torque-ops-task w-full max-w-0 text-left">
+                    <RecordSummary
+                      title={
+                        <a
+                          {...rowInteractiveProps(true)}
+                          href={rowHref(r.task.id)}
+                          onClick={(e) => {
+                            if (
+                              admitted() &&
+                              e.button === 0 &&
+                              !e.ctrlKey &&
+                              !e.metaKey &&
+                              !e.shiftKey &&
+                              !e.altKey
+                            ) {
+                              e.preventDefault()
+                              e.currentTarget.focus({ preventScroll: true })
+                              onSelect(r.task.id)
+                            }
+                          }}
+                          title={r.task.title}
+                        >
+                          {r.task.title}
+                        </a>
+                      }
+                      metadata={
+                        <>
+                          <span>{r.executor}</span>
+                          <span>id:</span>
+                          <code>
+                            <CopyableId id={r.task.id} />
+                          </code>
+                          <span
+                            className="inline-flex items-center gap-0.5"
+                            {...rowInteractiveProps(true)}
+                          >
+                            {r.collection ? (
+                              <Badge
+                                variant="outline"
+                                className="gap-1 rounded border-border-subtle bg-surface/60 px-1.5 py-px dash-record-metadata text-fg-secondary"
+                              >
+                                <Folder className="size-3" />
+                                {r.collection}
+                              </Badge>
+                            ) : r.inInbox ? (
+                              <Badge
+                                variant="outline"
+                                className="gap-1 rounded border-border-subtle bg-surface/60 px-1.5 py-px dash-record-metadata uppercase tracking-dash-record-date text-fg-muted"
+                              >
+                                <Inbox className="size-3" />
+                                Inbox
+                              </Badge>
+                            ) : (
+                              <Button
+                                {...rowInteractiveProps(true)}
+                                variant="outline"
+                                size="icon-xs"
+                                className="size-5 rounded border-border bg-surface/60 p-0 text-fg-faint hover:bg-surface"
+                                aria-label={`Preview send ${r.task.id} to inbox`}
+                                onClick={() =>
+                                  setNotice(
+                                    `Send ${r.task.id} to inbox is unavailable in this read-only fixture.`,
+                                  )
+                                }
+                              >
+                                <Inbox className="size-3" />
+                              </Button>
+                            )}
+                            {!r.collection && (
+                              <Button
+                                {...rowInteractiveProps(true)}
+                                variant="outline"
+                                size="icon-xs"
+                                className="size-5 rounded border-border bg-surface/60 p-0 text-fg-faint hover:bg-surface"
+                                aria-label={`Preview add ${r.task.id} to collection`}
+                                onClick={() =>
+                                  setNotice(
+                                    `Add ${r.task.id} to collection is unavailable in this read-only fixture.`,
+                                  )
+                                }
+                              >
+                                <FolderPlus className="size-3" />
+                              </Button>
+                            )}
+                          </span>
+                          <span>tags:</span>
+                          <span className="text-fg-muted">{r.tag}</span>
+                          {r.manual && <span>manual</span>}
+                        </>
+                      }
+                    />
+                  </DataTableCell>
+                  <DataTableCell className="whitespace-nowrap px-1.5">
                     <span className="torque-ops-status" data-status={r.status}>
-                      {r.status}
+                      <StatusBadge status={r.status} className="dash-record-status" />
                     </span>
-                  </td>
-                  <td>
-                    <span className="torque-ops-priority" data-priority={r.priority}>
-                      {r.priority == null ? "Unknown" : `P${r.priority}`}
-                    </span>
-                  </td>
-                  <td className="torque-ops-usage">
+                  </DataTableCell>
+                  <DataTableCell className="whitespace-nowrap px-1.5">
+                    {r.priority == null ? (
+                      "Unknown"
+                    ) : (
+                      <PriorityBadge priority={r.priority} className="dash-record-priority" />
+                    )}
+                  </DataTableCell>
+                  <DataTableCell className="torque-ops-usage dash-record-number whitespace-nowrap px-1.5">
                     {r.receipt ? (
                       <>
                         <span>
                           {r.receipt.cost == null ? "USD unknown" : `$${r.receipt.cost.toFixed(4)}`}
                         </span>
-                        <small>
+                        <small className="dash-record-metadata">
                           {r.receipt.tokens == null
                             ? "Tokens unknown"
                             : `${r.receipt.tokens.toLocaleString("en-US")} tokens`}
@@ -697,8 +877,8 @@ export function TorqueOperations({
                     ) : (
                       <span>Unknown</span>
                     )}
-                  </td>
-                  <td className="torque-ops-date">
+                  </DataTableCell>
+                  <DataTableCell className="torque-ops-date dash-record-date whitespace-nowrap px-1.5">
                     <time dateTime={r.update}>
                       {r.update
                         ? new Date(r.update).toLocaleDateString("en-US", {
@@ -708,9 +888,11 @@ export function TorqueOperations({
                           })
                         : "Unknown"}
                     </time>
-                    <small>{r.update ? relativeUpdate(r.update, state.cutoff) : "Unknown"}</small>
-                  </td>
-                  <td>
+                    <small className="dash-record-date">
+                      {r.update ? relativeUpdate(r.update, state.cutoff) : "Unknown"}
+                    </small>
+                  </DataTableCell>
+                  <DataTableCell className="whitespace-nowrap px-1.5">
                     <DropdownMenu>
                       <DropdownMenuTrigger
                         {...rowInteractiveProps(true)}
@@ -718,95 +900,86 @@ export function TorqueOperations({
                       >
                         <MoreHorizontal size={14} />
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end" {...rowInteractiveProps(true)}>
+                      <DropdownMenuContent
+                        className="dash-menu min-w-44"
+                        {...typography}
+                        align="end"
+                        {...rowInteractiveProps(true)}
+                      >
+                        {r.status === "review" && (
+                          <DropdownMenuItem
+                            onClick={() => previewAction(r.task.id, "Approve", r.status)}
+                          >
+                            Approve
+                          </DropdownMenuItem>
+                        )}
+                        {!["done", "archived"].includes(r.status) && (
+                          <DropdownMenuItem
+                            onClick={() => previewAction(r.task.id, "Mark done", r.status)}
+                          >
+                            Mark done
+                          </DropdownMenuItem>
+                        )}
+                        {r.status !== "todo" && (
+                          <DropdownMenuItem
+                            onClick={() => previewAction(r.task.id, "Move to todo", r.status)}
+                          >
+                            Move to todo
+                          </DropdownMenuItem>
+                        )}
+                        {!["done", "archived"].includes(r.status) &&
+                          !(r.status === "todo" && r.manual) && (
+                            <DropdownMenuItem
+                              onClick={() => previewAction(r.task.id, "Move to backlog", r.status)}
+                            >
+                              Move to backlog
+                            </DropdownMenuItem>
+                          )}
+                        {!["done", "archived", "paused"].includes(r.status) && (
+                          <DropdownMenuItem
+                            onClick={() => previewAction(r.task.id, "Pause", r.status)}
+                          >
+                            Pause
+                          </DropdownMenuItem>
+                        )}
+                        <DropdownMenuSeparator />
                         <DropdownMenuItem
-                          onClick={() => {
-                            if (admitted()) {
-                              document
-                                .querySelector<HTMLElement>(
-                                  `[aria-label="Task actions ${r.task.id}"]`,
-                                )
-                                ?.focus()
-                              onSelect(r.task.id)
-                            }
-                          }}
+                          onClick={() => previewAction(r.task.id, "Add to collection", r.status)}
                         >
-                          Inspect task {r.task.id}
+                          Add to collection…
                         </DropdownMenuItem>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuSub>
+                          <DropdownMenuSubTrigger>Transition to…</DropdownMenuSubTrigger>
+                          <DropdownMenuSubContent
+                            className="dash-menu min-w-44"
+                            {...typography}
+                            {...rowInteractiveProps(true)}
+                          >
+                            {statuses
+                              .filter((status) => status !== r.status)
+                              .map((status) => (
+                                <DropdownMenuItem
+                                  key={status}
+                                  onClick={() =>
+                                    previewAction(r.task.id, `Transition to ${status}`, r.status)
+                                  }
+                                >
+                                  {status[0].toUpperCase() + status.slice(1)}
+                                </DropdownMenuItem>
+                              ))}
+                          </DropdownMenuSubContent>
+                        </DropdownMenuSub>
+                        <DropdownMenuSeparator />
                         <DropdownMenuItem
-                          onClick={() =>
-                            edit(() =>
-                              setSelected((ids) =>
-                                ids.includes(r.task.id)
-                                  ? ids.filter((id) => id !== r.task.id)
-                                  : [...ids, r.task.id],
-                              ),
-                            )
-                          }
+                          variant="destructive"
+                          onClick={() => previewAction(r.task.id, "Delete", r.status)}
                         >
-                          {selected.includes(r.task.id) ? "Deselect task" : "Select task"}
-                        </DropdownMenuItem>
-                        <DropdownMenuItem
-                          disabled={
-                            ![
-                              "review",
-                              "doing",
-                              "todo",
-                              "queued",
-                              "blocked",
-                              "paused",
-                              "backlog",
-                              "done",
-                            ].includes(r.status)
-                          }
-                          onClick={() => {
-                            if (admitted())
-                              setIntent({
-                                id: r.task.id,
-                                identity,
-                                action:
-                                  r.status === "review"
-                                    ? "Approve"
-                                    : r.status === "done"
-                                      ? "Reopen"
-                                      : "Mark done",
-                                outcome:
-                                  r.status === "done"
-                                    ? "refusal"
-                                    : r.status === "blocked"
-                                      ? "error"
-                                      : "preview",
-                                returnTarget: document.querySelector<HTMLElement>(
-                                  `[aria-label="Task actions ${r.task.id}"]`,
-                                ),
-                              })
-                          }}
-                        >
-                          {![
-                            "review",
-                            "doing",
-                            "todo",
-                            "queued",
-                            "blocked",
-                            "paused",
-                            "backlog",
-                            "done",
-                          ].includes(r.status)
-                            ? "Preview unavailable · unsupported board status"
-                            : r.status === "review"
-                              ? "Preview approval"
-                              : r.status === "done"
-                                ? "Preview reopening · refusal"
-                                : r.status === "blocked"
-                                  ? "Preview completion · error"
-                                  : "Preview completion"}
-                        </DropdownMenuItem>
-                        <DropdownMenuItem disabled>
-                          Execution unavailable · read-only fixture
+                          Delete
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
-                  </td>
+                  </DataTableCell>
                 </tr>
               ))}
               {visible.length < matching.length && (
@@ -831,13 +1004,11 @@ export function TorqueOperations({
         resolveReturnTarget={resolveReturnTarget}
       />
       <footer className="torque-ops-footer">
-        {model.accessible
+        {accessible
           ? `${matching.length} tasks · ${matching.filter((r) => selected.includes(r.task.id)).length} selected`
           : "Records unavailable"}
         <span>
-          Fictional tasks ·{" "}
-          {state.selected &&
-            `${state.selected} / ${model.tasks.find((t) => t.id === state.selected)?.runId} · `}
+          {sourceLabel} · {state.selected && `${state.selected} · `}
           Snapshot {state.cutoff.slice(0, 10)} · {state.cutoff.slice(11, 16)} UTC
         </span>
       </footer>

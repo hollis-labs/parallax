@@ -169,7 +169,7 @@ function ReviewSession({
       : { status: "idle" }
   return (
     <>
-      <div className="example-body">
+      <div className="dash-form-stack">
         <p className="eyebrow">
           {detail.session.id} · {detail.session.sessionId} · {detail.session.runId}
         </p>
@@ -222,7 +222,7 @@ function ReviewSession({
           />
         }
       />
-      <div className="example-body">
+      <div className="dash-form-stack">
         <h3>Related tool calls</h3>
         {detail.tools.map((tool) => (
           <Tool key={tool.id} defaultOpen={true}>
@@ -325,7 +325,7 @@ function ReviewSession({
         title="Card binding inspection"
         meta={card?.id}
       >
-        <div className="example-body">
+        <div className="dash-form-stack">
           <p>{wireKind}</p>
           <p>
             {resolution.ok
@@ -364,7 +364,7 @@ export function ChatView({
       icon={<MessageSquare className="size-4" />}
       meta="shared kit-chat / local fixture"
     >
-      <div className="example-body">
+      <div className="dash-form-stack">
         <div className="communication-controls">
           <label>
             Session
@@ -410,7 +410,7 @@ export function ChatView({
           onIntent={onIntent}
         />
       ) : (
-        <div className="example-body">
+        <div className="dash-form-stack">
           <EmptyState
             variant="empty"
             title="No chat sessions"

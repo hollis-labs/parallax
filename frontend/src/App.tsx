@@ -118,7 +118,7 @@ export function Contributions({
           ))}
         </section>
       )}
-      <fieldset className="example-body">
+      <fieldset className="dash-form-stack">
         <legend>Plugin presentation actions</legend>
         {toolbar.map((view) => (
           <Button
@@ -412,6 +412,10 @@ export function App() {
     <p className="p-4 text-sm text-fg-muted">Loading reviewed contribution…</p>
   )
   function navigate(name: string) {
+    if (name === "App Snapshots") {
+      location.assign(`/?${new URLSearchParams({ example: "snapshots", theme, mode })}`)
+      return
+    }
     if (name === "Workspace Example") {
       location.assign(`/?${new URLSearchParams({ example: "workspace", theme, mode })}`)
       return
@@ -935,7 +939,7 @@ export function App() {
                   <UsageView model={model} onSelect={select} query={query} onQuery={setQuery} />
                 ) : (
                   <Panel title="Transient message draft" icon={<Layers className="size-4" />}>
-                    <div className="example-body">
+                    <div className="dash-form-stack">
                       <p className="muted">Fixture conversation with the operations review team.</p>
                       <Button onClick={() => emit("Run fixture", "plan-fixture-01")}>
                         Inspect run intent

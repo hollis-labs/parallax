@@ -85,7 +85,7 @@ test("portable Operations uses the same automatic modal and local close without 
 }) => {
   await page.goto("http://127.0.0.1:18542/iframe.html?id=app-examples-torque--tasks&viewMode=story")
   const url = page.url()
-  const link = page.locator(".torque-ops-task > a").first()
+  const link = page.locator(".torque-ops-task a").first()
   await link.click()
   const dialog = inspection(page)
   await expect(dialog).toBeVisible()

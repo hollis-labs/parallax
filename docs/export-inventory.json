@@ -260,6 +260,12 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/torque/Operations.tsx",
+      "frontend/src/snapshots/Builder.tsx",
+      "frontend/src/snapshots/Planner.tsx",
+      "frontend/src/snapshots/Review.tsx",
+      "frontend/src/snapshots/Sessions.tsx",
+      "frontend/src/snapshots/TaskDetails.tsx",
       "frontend/src/tether-sysop/AIGatewayPage.tsx"
     ]
   },
@@ -345,6 +351,10 @@
       "frontend/src/operations/Views.tsx",
       "frontend/src/run-explorer/Explorer.tsx",
       "frontend/src/settings-review/Review.tsx",
+      "frontend/src/snapshots/Builder.tsx",
+      "frontend/src/snapshots/Planner.tsx",
+      "frontend/src/snapshots/Review.tsx",
+      "frontend/src/snapshots/Sessions.tsx",
       "frontend/src/tether-sysop/AIGatewayPage.tsx",
       "frontend/src/widgets/Gallery.tsx"
     ]
@@ -386,6 +396,10 @@
     "importEvidence": [
       "frontend/src/evidence/Inspector.tsx",
       "frontend/src/primitives/Gallery.tsx",
+      "frontend/src/snapshots/Builder.tsx",
+      "frontend/src/snapshots/Planner.tsx",
+      "frontend/src/snapshots/Sessions.tsx",
+      "frontend/src/snapshots/TaskDetails.tsx",
       "frontend/src/tether-sysop/AIGatewayPage.tsx"
     ]
   },
@@ -1189,6 +1203,11 @@
       "frontend/src/operations/Views.tsx",
       "frontend/src/pages/dashboard.tsx",
       "frontend/src/run-explorer/Explorer.tsx",
+      "frontend/src/snapshots/Agents.tsx",
+      "frontend/src/snapshots/Builder.tsx",
+      "frontend/src/snapshots/Planner.tsx",
+      "frontend/src/snapshots/Review.tsx",
+      "frontend/src/snapshots/Sessions.tsx",
       "frontend/src/tether-sysop/AIGatewayPage.tsx",
       "frontend/src/tether-sysop/OverviewPage.tsx",
       "frontend/src/usage-evidence/Review.tsx",
@@ -1808,11 +1827,14 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/event-ledger/Ledger.tsx",
       "frontend/src/examples/nil/NilExample.tsx",
       "frontend/src/examples/ops-shell/OpsShellExample.tsx",
       "frontend/src/layouts/Comparison.tsx",
       "frontend/src/operations-list-proof/Proof.tsx",
       "frontend/src/run-explorer/Explorer.tsx",
+      "frontend/src/snapshots/Planner.tsx",
+      "frontend/src/snapshots/Sessions.tsx",
       "frontend/src/tether-sysop/AIGatewayPage.tsx"
     ]
   },
@@ -4109,7 +4131,12 @@
     },
     "importEvidence": [
       "frontend/src/directory-review/Review.tsx",
-      "frontend/src/directory-review/contracts.ts"
+      "frontend/src/directory-review/contracts.ts",
+      "frontend/src/examples/torque/Operations.tsx",
+      "frontend/src/snapshots/Builder.tsx",
+      "frontend/src/snapshots/ConsoleParts.tsx",
+      "frontend/src/snapshots/Planner.tsx",
+      "frontend/src/snapshots/TaskDetails.tsx"
     ]
   },
   {
@@ -4193,6 +4220,7 @@
       "frontend/src/examples/tachyon-nav/lifecycle.tsx",
       "frontend/src/examples/torque/BoardIntent.tsx",
       "frontend/src/examples/torque/Mission.tsx",
+      "frontend/src/examples/torque/Operations.tsx",
       "frontend/src/examples/torque/ReferenceEvidence.tsx",
       "frontend/src/examples/torque/TaskInspection.tsx",
       "frontend/src/examples/torque/TorqueExample.tsx",
@@ -4220,6 +4248,11 @@
       "frontend/src/primitives/Gallery.tsx",
       "frontend/src/run-explorer/Explorer.tsx",
       "frontend/src/settings-review/Review.tsx",
+      "frontend/src/snapshots/Agents.tsx",
+      "frontend/src/snapshots/Builder.tsx",
+      "frontend/src/snapshots/Planner.tsx",
+      "frontend/src/snapshots/Review.tsx",
+      "frontend/src/snapshots/Sessions.tsx",
       "frontend/src/tether-sysop/AIGatewayPage.tsx",
       "frontend/src/tether-sysop/OverviewPage.tsx",
       "frontend/src/usage-evidence/Review.tsx",
@@ -5559,7 +5592,8 @@
       "frontend/src/examples/flux-navigation/Sidebar.tsx",
       "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/examples/torque/Operations.tsx",
-      "frontend/src/flux-rail/Review.tsx"
+      "frontend/src/flux-rail/Review.tsx",
+      "frontend/src/snapshots/Sessions.tsx"
     ]
   },
   {
@@ -5641,7 +5675,8 @@
       "frontend/src/examples/flux-navigation/Sidebar.tsx",
       "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/examples/torque/Operations.tsx",
-      "frontend/src/flux-rail/Review.tsx"
+      "frontend/src/flux-rail/Review.tsx",
+      "frontend/src/snapshots/Sessions.tsx"
     ]
   },
   {
@@ -5709,7 +5744,8 @@
       "frontend/src/examples/flux-navigation/Header.tsx",
       "frontend/src/examples/flux-navigation/Sidebar.tsx",
       "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
-      "frontend/src/examples/torque/Operations.tsx"
+      "frontend/src/examples/torque/Operations.tsx",
+      "frontend/src/snapshots/Sessions.tsx"
     ]
   },
   {
@@ -5804,7 +5840,8 @@
       "frontend/src/examples/flux-navigation/Sidebar.tsx",
       "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
       "frontend/src/examples/torque/Operations.tsx",
-      "frontend/src/flux-rail/Review.tsx"
+      "frontend/src/flux-rail/Review.tsx",
+      "frontend/src/snapshots/Sessions.tsx"
     ]
   },
   {
@@ -5853,11 +5890,62 @@
     "name": "DropdownMenuSeparator",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/torque/Operations.tsx",
+      "frontend/src/snapshots/Sessions.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -5879,11 +5967,61 @@
     "name": "DropdownMenuSub",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/torque/Operations.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -5892,11 +6030,61 @@
     "name": "DropdownMenuSubTrigger",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/torque/Operations.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -5905,11 +6093,61 @@
     "name": "DropdownMenuSubContent",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/torque/Operations.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -6011,7 +6249,10 @@
     },
     "importEvidence": [
       "frontend/src/examples/reader/ReaderInlineActions.tsx",
-      "frontend/src/examples/reader/ReaderTags.tsx"
+      "frontend/src/examples/reader/ReaderTags.tsx",
+      "frontend/src/snapshots/Builder.tsx",
+      "frontend/src/snapshots/Planner.tsx",
+      "frontend/src/snapshots/Sessions.tsx"
     ]
   },
   {
@@ -6152,7 +6393,6 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/directory-review/Review.tsx",
       "frontend/src/usage-evidence/Review.tsx"
     ]
   },
@@ -7318,9 +7558,7 @@
         "evidence-event-ledger--long-literal"
       ]
     },
-    "importEvidence": [
-      "frontend/src/event-ledger/Ledger.tsx"
-    ]
+    "importEvidence": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -7359,9 +7597,7 @@
         "evidence-event-ledger--long-literal"
       ]
     },
-    "importEvidence": [
-      "frontend/src/event-ledger/Ledger.tsx"
-    ]
+    "importEvidence": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -7400,9 +7636,7 @@
         "evidence-event-ledger--long-literal"
       ]
     },
-    "importEvidence": [
-      "frontend/src/event-ledger/Ledger.tsx"
-    ]
+    "importEvidence": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -7441,9 +7675,7 @@
         "evidence-event-ledger--long-literal"
       ]
     },
-    "importEvidence": [
-      "frontend/src/event-ledger/Ledger.tsx"
-    ]
+    "importEvidence": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -7483,7 +7715,6 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/event-ledger/Ledger.tsx",
       "frontend/src/event-ledger/contracts.ts"
     ]
   },
@@ -7524,9 +7755,7 @@
         "evidence-event-ledger--long-literal"
       ]
     },
-    "importEvidence": [
-      "frontend/src/event-ledger/Ledger.tsx"
-    ]
+    "importEvidence": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -7566,7 +7795,6 @@
       ]
     },
     "importEvidence": [
-      "frontend/src/event-ledger/Ledger.tsx",
       "frontend/src/event-ledger/contracts.ts"
     ]
   },
@@ -7607,9 +7835,7 @@
         "evidence-event-ledger--long-literal"
       ]
     },
-    "importEvidence": [
-      "frontend/src/event-ledger/Ledger.tsx"
-    ]
+    "importEvidence": []
   },
   {
     "package": "@hollis-labs/design-components",
@@ -7803,11 +8029,62 @@
     "name": "Textarea",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/App.tsx",
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.tsx",
+        "frontend/src/examples/flux-chat/Conversation.tsx",
+        "docs/flux-chat-composition.md",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/flux-chat.spec.ts",
+        "frontend/tests/flux-chat-custody.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/flux-chat/FluxChat.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--primitives",
+        "app-examples-nil--operations",
+        "examples-flux-chat--default",
+        "examples-flux-chat--workspace",
+        "examples-flux-chat--focus",
+        "examples-flux-chat--reading",
+        "examples-flux-chat--welcome",
+        "examples-flux-chat--loading",
+        "examples-flux-chat--empty",
+        "examples-flux-chat--unavailable",
+        "examples-flux-chat--denied",
+        "examples-flux-chat--locked",
+        "examples-flux-chat--partial",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Builder.tsx",
+      "frontend/src/snapshots/Planner.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/design-components",
@@ -8071,6 +8348,45 @@
     "disposition": "deferred",
     "reason": "Public export tracked; no direct adoption or independent behavior proof.",
     "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DashboardTypographyProvider",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "useDashboardTypography",
+    "category": "nonvisual-function",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": ".",
+    "name": "DashboardTypographyProfile",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
     "evidence": {},
     "importEvidence": []
   },
@@ -8542,11 +8858,47 @@
     "name": "PageHeader",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/operations/Views.tsx",
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--mission-control",
+        "app-examples-nil--operations",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx",
+      "frontend/src/snapshots/Builder.tsx",
+      "frontend/src/snapshots/Planner.tsx",
+      "frontend/src/snapshots/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -8575,7 +8927,9 @@
         "operations-controlled-views--mission-control"
       ]
     },
-    "importEvidence": []
+    "importEvidence": [
+      "frontend/src/examples/torque/TorqueExample.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -8618,6 +8972,11 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/torque/Operations.tsx",
+      "frontend/src/snapshots/Builder.tsx",
+      "frontend/src/snapshots/Planner.tsx",
+      "frontend/src/snapshots/Sessions.tsx",
+      "frontend/src/snapshots/TaskDetails.tsx",
       "frontend/src/tether-sysop/AIGatewayPage.tsx"
     ]
   },
@@ -8628,9 +8987,115 @@
     "name": "PriorityBadge",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/operations/Views.tsx",
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--mission-control",
+        "app-examples-nil--operations",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/torque/Operations.tsx",
+      "frontend/src/snapshots/TaskDetails.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "DashboardTypographyProvider",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "deferred",
     "reason": "Public export tracked; no direct adoption or independent behavior proof.",
     "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "useDashboardTypography",
+    "category": "nonvisual-function",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/operations/Views.tsx",
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--mission-control",
+        "app-examples-nil--operations",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/torque/Operations.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./ui",
+    "name": "DashboardTypographyProfile",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
     "evidence": {},
     "importEvidence": []
   },
@@ -8662,6 +9127,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/torque/Operations.tsx",
       "frontend/src/tether-sysop/AIGatewayPage.tsx"
     ]
   },
@@ -8900,11 +9366,44 @@
     "name": "statusTone",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/operations/Views.tsx",
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--mission-control",
+        "app-examples-nil--operations",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/torque/Operations.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -9030,11 +9529,44 @@
     "name": "applyTheme",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/operations/Views.tsx",
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--mission-control",
+        "app-examples-nil--operations",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Review.tsx"
+    ]
   },
   {
     "package": "@hollis-labs/kit-dashboard",
@@ -9104,6 +9636,9 @@
     },
     "importEvidence": [
       "frontend/src/layouts/Comparison.tsx",
+      "frontend/src/snapshots/Agents.tsx",
+      "frontend/src/snapshots/Builder.tsx",
+      "frontend/src/snapshots/Planner.tsx",
       "frontend/src/tether-sysop/AIGatewayPage.tsx"
     ]
   },
@@ -9197,6 +9732,9 @@
     },
     "importEvidence": [
       "frontend/src/layouts/Comparison.tsx",
+      "frontend/src/snapshots/Builder.tsx",
+      "frontend/src/snapshots/Planner.tsx",
+      "frontend/src/snapshots/Sessions.tsx",
       "frontend/src/tether-sysop/AIGatewayPage.tsx"
     ]
   },
@@ -9240,7 +9778,8 @@
     },
     "importEvidence": [
       "frontend/src/run-explorer/Explorer.tsx",
-      "frontend/src/run-explorer/contracts.ts"
+      "frontend/src/run-explorer/contracts.ts",
+      "frontend/src/snapshots/Sessions.tsx"
     ]
   },
   {
@@ -9448,6 +9987,215 @@
   {
     "package": "@hollis-labs/kit-dashboard",
     "version": "0.4.0",
+    "entry": "./layout",
+    "name": "DashboardToolbar",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/operations/Views.tsx",
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--mission-control",
+        "app-examples-nil--operations",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/directory-review/Review.tsx",
+      "frontend/src/snapshots/Agents.tsx",
+      "frontend/src/snapshots/Builder.tsx",
+      "frontend/src/snapshots/Planner.tsx",
+      "frontend/src/snapshots/Review.tsx",
+      "frontend/src/snapshots/Sessions.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./layout",
+    "name": "DashboardField",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/operations/Views.tsx",
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--mission-control",
+        "app-examples-nil--operations",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/directory-review/Review.tsx",
+      "frontend/src/event-ledger/Ledger.tsx",
+      "frontend/src/ops-dashboard/Dashboard.tsx",
+      "frontend/src/snapshots/Builder.tsx",
+      "frontend/src/snapshots/Planner.tsx",
+      "frontend/src/snapshots/Review.tsx",
+      "frontend/src/snapshots/Sessions.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./layout",
+    "name": "DashboardSection",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/operations/Views.tsx",
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--mission-control",
+        "app-examples-nil--operations",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Planner.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./layout",
+    "name": "DashboardFieldProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./layout",
+    "name": "DashboardSearchToolbar",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/operations/Views.tsx",
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--mission-control",
+        "app-examples-nil--operations",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Builder.tsx",
+      "frontend/src/snapshots/Planner.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
     "entry": "./data",
     "name": "FilterBar",
     "category": "visual-component",
@@ -9484,8 +10232,10 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/event-ledger/Ledger.tsx",
       "frontend/src/run-explorer/Explorer.tsx",
-      "frontend/src/run-explorer/contracts.ts"
+      "frontend/src/run-explorer/contracts.ts",
+      "frontend/src/snapshots/Planner.tsx"
     ]
   },
   {
@@ -9527,6 +10277,7 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/torque/Operations.tsx",
       "frontend/src/run-explorer/Explorer.tsx",
       "frontend/src/run-explorer/contracts.ts"
     ]
@@ -9613,8 +10364,12 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/examples/torque/Operations.tsx",
       "frontend/src/run-explorer/Explorer.tsx",
-      "frontend/src/run-explorer/contracts.ts"
+      "frontend/src/run-explorer/contracts.ts",
+      "frontend/src/snapshots/Builder.tsx",
+      "frontend/src/snapshots/Planner.tsx",
+      "frontend/src/snapshots/Sessions.tsx"
     ]
   },
   {
@@ -9684,7 +10439,10 @@
       ]
     },
     "importEvidence": [
+      "frontend/src/event-ledger/Ledger.tsx",
       "frontend/src/layouts/Comparison.tsx",
+      "frontend/src/snapshots/Builder.tsx",
+      "frontend/src/snapshots/Planner.tsx",
       "frontend/src/tether-sysop/AIGatewayPage.tsx"
     ]
   },
@@ -9698,6 +10456,127 @@
     "disposition": "deferred",
     "reason": "Public export tracked; no direct adoption or independent behavior proof.",
     "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./data",
+    "name": "DataTableCell",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/operations/Views.tsx",
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--mission-control",
+        "app-examples-nil--operations",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/torque/Operations.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./data",
+    "name": "RecordSummary",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/operations/Views.tsx",
+        "frontend/src/examples/nil/NilExample.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
+        "docs/tachyon-nav-example.md"
+      ],
+      "checks": [
+        "frontend/tests/lab.spec.ts",
+        "frontend/tests/nil-example.spec.ts",
+        "frontend/tests/tachyon-nav.spec.ts",
+        "frontend/tests/tachyon-nav-custody.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/operations/Operations.stories.tsx",
+        "frontend/src/examples/nil/Nil.stories.tsx",
+        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
+      ],
+      "storyIds": [
+        "operations-controlled-views--mission-control",
+        "app-examples-nil--operations",
+        "examples-tachyon-navigation--grouped",
+        "examples-tachyon-navigation--left-sub-rail",
+        "examples-tachyon-navigation--hidden-routes",
+        "examples-tachyon-navigation--orphaned",
+        "examples-tachyon-navigation--retired",
+        "examples-tachyon-navigation--empty",
+        "examples-tachyon-navigation--denied",
+        "examples-tachyon-navigation--unavailable",
+        "examples-tachyon-navigation--degraded"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/examples/torque/Operations.tsx",
+      "frontend/src/snapshots/Builder.tsx",
+      "frontend/src/snapshots/Planner.tsx",
+      "frontend/src/snapshots/Sessions.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./data",
+    "name": "DataTableCellProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.4.0",
+    "entry": "./data",
+    "name": "RecordSummaryProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
     "evidence": {},
     "importEvidence": []
   },
@@ -18634,6 +19513,371 @@
     "version": "0.1.0",
     "entry": ".",
     "name": "AdminObservations",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminDirectory",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Builder.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminRecordButton",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Builder.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "AdminFacts",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx",
+      "frontend/src/snapshots/Builder.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "IdentityAvatar",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx",
+      "frontend/src/snapshots/Builder.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityGroup",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityMetric",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityRecord",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityStatus",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityDialog",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityFacts",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivitySection",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityActionButton",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityTimeline",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityBars",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Admin.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/snapshots/Agents.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.1.0",
+    "entry": ".",
+    "name": "ActivityTone",
     "category": "type-export",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "deferred",
