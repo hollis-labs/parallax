@@ -1,6 +1,6 @@
 module github.com/hollis-labs/parallax
 
-go 1.26.9
+go 1.26.10
 
 require (
 	github.com/brianvoe/gofakeit/v7 v7.17.1
