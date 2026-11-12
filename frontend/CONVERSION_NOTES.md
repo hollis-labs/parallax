@@ -23,6 +23,14 @@ Owner-facing. Each gap stops the work it touches until the driver decides.
    `kit-workflow` are installed today from sealed tarballs in `third_party/` (version 0.0.0, not published), and
    design-components, design-app-runtime, kit-account, kit-admin and kit-dashboard are also tarball candidates at 0.4.x,
    not the BOM's 0.5.x. Moving to the BOM pins cannot be done for these four kits without a published, pinned release.
+1a. **app-shell 0.1.0 has no responsive navigation.** Its nav is a docked 240px column at every width (`isNarrow` only moves docked tabs to
+   bottom sheets), so at a 390px viewport the page gets about 150px. Wrapping the lab in the shell (parked on a local branch) fails about 16
+   of the lab's narrow-viewport tests that pass today. The fix belongs in app-shell (a collapsible/overlay nav, or a nav region the host can
+   hide); the app does not hide it with its own CSS and toggle. Until then the shell wrap is not on the branch, and with it the sign-out page
+   (a `nav.footer` surface in `cmd/parallax/app.ui.json`) has no screen to live on.
+1b. **A lab that is itself a shell nests badly.** The lab's own design-components `AppShell` is sized `h-dvh w-dvw`; inside an app-shell page it
+   overflows unless the host overrides the size. The override is small (`.lab-host > .h-dvh`) but it is the host working around the kit.
+
 2. **Identity has no UI kit yet** (CW-20261112-0080). Interim sign-in/setup screens live in one directory and are replaced when the kit ships.
 3. **App-shell has no user-menu region** (CW-20261112-0107): sign-out is a `nav.footer` page.
 
