@@ -40,10 +40,16 @@ signing key (`identity-signing.key`) in the data directory. Both hold accounts o
 ## Config
 
 `httphost.addr` (default `127.0.0.1:8085`, must be loopback), `identity.*`, `database.sqlite.path` and `identity.key_file` (relative defaults, anchored in the data directory by the boot hook),
-all overridable in the file named by `SUBSTRATE_CONFIG`. The app's own `parallax:` block (`internal/settings`) has one
-key, `allowed_hosts` (extra Host names served behind a local TLS proxy; default none, an unknown key is refused at
-start). Its default (`allowed_hosts: []`) is in the manifest; the operator sets names in the override file, which merges
-deeply (lists replace).
+all overridable in the file named by `SUBSTRATE_CONFIG`. The app's own `parallax:` block (`internal/settings`) has two
+keys; an unknown key is refused at start.
+
+- `allowed_hosts`: extra Host names served behind a local TLS proxy; default none. Its default (`allowed_hosts: []`) is in
+  the manifest; the operator sets names in the override file, which merges deeply (lists replace).
+- `snapshot_file`: absolute path to a capture file served by `GET /api/snapshots/current` instead of the embedded one.
+  Unset (the default, not in the manifest) the binary serves the embedded `internal/snapshots/data/current.json` when the
+  build has one, else `data/empty.json`. The file is read once at start and must exist, be at most 16 MiB, parse, and pass
+  the same shape check as the embedded capture (`snapshots.Validate`); otherwise serve refuses to start with an error
+  naming `parallax.snapshot_file`. Use it for test data: a real capture never belongs at the embedded path.
 
 ## Deployment
 

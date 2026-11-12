@@ -13,6 +13,11 @@ func TestParse(t *testing.T) {
 		want []string
 		err  string
 	}{
+		{"snapshot file", map[string]any{"snapshot_file": "/srv/example/capture.json"}, nil, ""},
+		{"snapshot file unset", map[string]any{"snapshot_file": nil}, nil, ""},
+		{"snapshot file empty", map[string]any{"snapshot_file": " "}, nil, ""},
+		{"snapshot file relative", map[string]any{"snapshot_file": "capture.json"}, nil, "parallax.snapshot_file: \"capture.json\" is not an absolute path"},
+		{"snapshot file not a string", map[string]any{"snapshot_file": 3}, nil, "parallax.snapshot_file must be a string"},
 		{"missing", nil, nil, ""},
 		{"empty", map[string]any{}, nil, ""},
 		{"hosts", map[string]any{"allowed_hosts": []any{" Parallax.Example.Test ", "other.example.test:8443"}}, []string{"parallax.example.test", "other.example.test:8443"}, ""},
@@ -36,5 +41,15 @@ func TestParse(t *testing.T) {
 				t.Fatalf("got %v, %v want %v", got.AllowedHosts, err, tc.want)
 			}
 		})
+	}
+}
+
+func TestSnapshotFileIsKeptAndDefaultsToEmpty(t *testing.T) {
+	got, err := Parse(map[string]any{"snapshot_file": " /srv/example/capture.json "})
+	if err != nil || got.SnapshotFile != "/srv/example/capture.json" {
+		t.Fatalf("got %q, %v", got.SnapshotFile, err)
+	}
+	if got, err = Parse(nil); err != nil || got.SnapshotFile != "" {
+		t.Fatalf("default = %q, %v", got.SnapshotFile, err)
 	}
 }
