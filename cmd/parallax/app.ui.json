@@ -1,0 +1,709 @@
+{
+  "schema_version": 0,
+  "module": "parallax",
+  "contributions": [
+    {
+      "kind": "nav.group",
+      "key": "operations",
+      "label": "Operations",
+      "priority": 10
+    },
+    {
+      "kind": "nav.group",
+      "key": "communications",
+      "label": "Communications",
+      "priority": 11
+    },
+    {
+      "kind": "nav.group",
+      "key": "administration",
+      "label": "Administration",
+      "priority": 12
+    },
+    {
+      "kind": "nav.group",
+      "key": "evidence",
+      "label": "Evidence",
+      "priority": 13
+    },
+    {
+      "kind": "nav.group",
+      "key": "developer",
+      "label": "Developer",
+      "priority": 14
+    },
+    {
+      "kind": "nav.group",
+      "key": "voice",
+      "label": "Voice",
+      "priority": 15
+    },
+    {
+      "kind": "nav.group",
+      "key": "app-examples",
+      "label": "App Examples",
+      "priority": 16
+    },
+    {
+      "kind": "nav.item",
+      "key": "review-workbench",
+      "label": "Review Workbench",
+      "icon": "layers",
+      "route": "/",
+      "priority": 1
+    },
+    {
+      "kind": "surface",
+      "key": "review-workbench",
+      "label": "Review Workbench",
+      "title": "Review Workbench",
+      "route": "/",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "ops-dashboard",
+      "label": "Ops Dashboard",
+      "icon": "gauge",
+      "route": "/ops-dashboard",
+      "region": "nav.group:operations",
+      "priority": 20
+    },
+    {
+      "kind": "surface",
+      "key": "ops-dashboard",
+      "label": "Ops Dashboard",
+      "title": "Ops Dashboard",
+      "route": "/ops-dashboard",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "torque-example",
+      "label": "Torque Example",
+      "icon": "gauge",
+      "route": "/torque-example",
+      "region": "nav.group:app-examples",
+      "priority": 21
+    },
+    {
+      "kind": "surface",
+      "key": "torque-example",
+      "label": "Torque Example",
+      "title": "Torque Example",
+      "route": "/torque-example",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "chat-example",
+      "label": "Chat Example",
+      "icon": "message-square",
+      "route": "/chat-example",
+      "region": "nav.group:app-examples",
+      "priority": 22
+    },
+    {
+      "kind": "surface",
+      "key": "chat-example",
+      "label": "Chat Example",
+      "title": "Chat Example",
+      "route": "/chat-example",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "administration-example",
+      "label": "Administration Example",
+      "icon": "users",
+      "route": "/administration-example",
+      "region": "nav.group:app-examples",
+      "priority": 23
+    },
+    {
+      "kind": "surface",
+      "key": "administration-example",
+      "label": "Administration Example",
+      "title": "Administration Example",
+      "route": "/administration-example",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "messaging-example",
+      "label": "Messaging Example",
+      "icon": "mail",
+      "route": "/messaging-example",
+      "region": "nav.group:app-examples",
+      "priority": 24
+    },
+    {
+      "kind": "surface",
+      "key": "messaging-example",
+      "label": "Messaging Example",
+      "title": "Messaging Example",
+      "route": "/messaging-example",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "workspace-example",
+      "label": "Workspace Example",
+      "icon": "layers",
+      "route": "/workspace-example",
+      "region": "nav.group:app-examples",
+      "priority": 25
+    },
+    {
+      "kind": "surface",
+      "key": "workspace-example",
+      "label": "Workspace Example",
+      "title": "Workspace Example",
+      "route": "/workspace-example",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "appearance-review",
+      "label": "Appearance Review",
+      "icon": "layers",
+      "route": "/appearance-review",
+      "region": "nav.group:administration",
+      "priority": 26
+    },
+    {
+      "kind": "surface",
+      "key": "appearance-review",
+      "label": "Appearance Review",
+      "title": "Appearance Review",
+      "route": "/appearance-review",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "evidence-states",
+      "label": "Evidence States",
+      "icon": "activity",
+      "route": "/evidence-states",
+      "region": "nav.group:evidence",
+      "priority": 27
+    },
+    {
+      "kind": "surface",
+      "key": "evidence-states",
+      "label": "Evidence States",
+      "title": "Evidence States",
+      "route": "/evidence-states",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "event-ledger",
+      "label": "Event Ledger",
+      "icon": "activity",
+      "route": "/event-ledger",
+      "region": "nav.group:evidence",
+      "priority": 28
+    },
+    {
+      "kind": "surface",
+      "key": "event-ledger",
+      "label": "Event Ledger",
+      "title": "Event Ledger",
+      "route": "/event-ledger",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "directory-review",
+      "label": "Directory Review",
+      "icon": "users",
+      "route": "/directory-review",
+      "region": "nav.group:administration",
+      "priority": 29
+    },
+    {
+      "kind": "surface",
+      "key": "directory-review",
+      "label": "Directory Review",
+      "title": "Directory Review",
+      "route": "/directory-review",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "activity",
+      "label": "Activity",
+      "icon": "activity",
+      "route": "/activity",
+      "region": "nav.group:operations",
+      "priority": 30
+    },
+    {
+      "kind": "surface",
+      "key": "activity",
+      "label": "Activity",
+      "title": "Activity",
+      "route": "/activity",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "mission-control",
+      "label": "Mission Control",
+      "icon": "compass",
+      "route": "/mission-control",
+      "region": "nav.group:operations",
+      "priority": 31
+    },
+    {
+      "kind": "surface",
+      "key": "mission-control",
+      "label": "Mission Control",
+      "title": "Mission Control",
+      "route": "/mission-control",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "usage",
+      "label": "Usage",
+      "icon": "gauge",
+      "route": "/usage",
+      "region": "nav.group:operations",
+      "priority": 32
+    },
+    {
+      "kind": "surface",
+      "key": "usage",
+      "label": "Usage",
+      "title": "Usage",
+      "route": "/usage",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "contacts",
+      "label": "Contacts",
+      "icon": "users",
+      "route": "/contacts",
+      "region": "nav.group:communications",
+      "priority": 33
+    },
+    {
+      "kind": "surface",
+      "key": "contacts",
+      "label": "Contacts",
+      "title": "Contacts",
+      "route": "/contacts",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "messages",
+      "label": "Messages",
+      "icon": "mail",
+      "route": "/messages",
+      "region": "nav.group:communications",
+      "priority": 34
+    },
+    {
+      "kind": "surface",
+      "key": "messages",
+      "label": "Messages",
+      "title": "Messages",
+      "route": "/messages",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "chat",
+      "label": "Chat",
+      "icon": "message-square",
+      "route": "/chat",
+      "region": "nav.group:communications",
+      "priority": 35
+    },
+    {
+      "kind": "surface",
+      "key": "chat",
+      "label": "Chat",
+      "title": "Chat",
+      "route": "/chat",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "conversation-review",
+      "label": "Conversation Review",
+      "icon": "message-square",
+      "route": "/conversation-review",
+      "region": "nav.group:communications",
+      "priority": 36
+    },
+    {
+      "kind": "surface",
+      "key": "conversation-review",
+      "label": "Conversation Review",
+      "title": "Conversation Review",
+      "route": "/conversation-review",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "administration",
+      "label": "Administration",
+      "icon": "layers",
+      "route": "/administration",
+      "region": "nav.group:administration",
+      "priority": 37
+    },
+    {
+      "kind": "surface",
+      "key": "administration",
+      "label": "Administration",
+      "title": "Administration",
+      "route": "/administration",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "account",
+      "label": "Account",
+      "icon": "users",
+      "route": "/account",
+      "region": "nav.group:administration",
+      "priority": 38
+    },
+    {
+      "kind": "surface",
+      "key": "account",
+      "label": "Account",
+      "title": "Account",
+      "route": "/account",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "settings-review",
+      "label": "Settings Review",
+      "icon": "layers",
+      "route": "/settings-review",
+      "region": "nav.group:administration",
+      "priority": 39
+    },
+    {
+      "kind": "surface",
+      "key": "settings-review",
+      "label": "Settings Review",
+      "title": "Settings Review",
+      "route": "/settings-review",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "account-review",
+      "label": "Account Review",
+      "icon": "users",
+      "route": "/account-review",
+      "region": "nav.group:administration",
+      "priority": 40
+    },
+    {
+      "kind": "surface",
+      "key": "account-review",
+      "label": "Account Review",
+      "title": "Account Review",
+      "route": "/account-review",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "observability",
+      "label": "Observability",
+      "icon": "activity",
+      "route": "/observability",
+      "region": "nav.group:operations",
+      "priority": 41
+    },
+    {
+      "kind": "surface",
+      "key": "observability",
+      "label": "Observability",
+      "title": "Observability",
+      "route": "/observability",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "observation-review",
+      "label": "Observation Review",
+      "icon": "activity",
+      "route": "/observation-review",
+      "region": "nav.group:evidence",
+      "priority": 42
+    },
+    {
+      "kind": "surface",
+      "key": "observation-review",
+      "label": "Observation Review",
+      "title": "Observation Review",
+      "route": "/observation-review",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "admin-review",
+      "label": "Admin Review",
+      "icon": "layers",
+      "route": "/admin-review",
+      "region": "nav.group:administration",
+      "priority": 43
+    },
+    {
+      "kind": "surface",
+      "key": "admin-review",
+      "label": "Admin Review",
+      "title": "Admin Review",
+      "route": "/admin-review",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "developer",
+      "label": "Developer",
+      "icon": "layers",
+      "route": "/developer",
+      "region": "nav.group:developer",
+      "priority": 44
+    },
+    {
+      "kind": "surface",
+      "key": "developer",
+      "label": "Developer",
+      "title": "Developer",
+      "route": "/developer",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "voice",
+      "label": "Voice",
+      "icon": "layers",
+      "route": "/voice",
+      "region": "nav.group:voice",
+      "priority": 45
+    },
+    {
+      "kind": "surface",
+      "key": "voice",
+      "label": "Voice",
+      "title": "Voice",
+      "route": "/voice",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "examples",
+      "label": "Examples",
+      "icon": "message-square",
+      "route": "/examples",
+      "region": "nav.group:evidence",
+      "priority": 46
+    },
+    {
+      "kind": "surface",
+      "key": "examples",
+      "label": "Examples",
+      "title": "Examples",
+      "route": "/examples",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "primitives",
+      "label": "Primitives",
+      "icon": "layers",
+      "route": "/primitives",
+      "region": "nav.group:evidence",
+      "priority": 47
+    },
+    {
+      "kind": "surface",
+      "key": "primitives",
+      "label": "Primitives",
+      "title": "Primitives",
+      "route": "/primitives",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "evidence",
+      "label": "Evidence",
+      "icon": "layers",
+      "route": "/evidence",
+      "region": "nav.group:evidence",
+      "priority": 48
+    },
+    {
+      "kind": "surface",
+      "key": "evidence",
+      "label": "Evidence",
+      "title": "Evidence",
+      "route": "/evidence",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "widgets",
+      "label": "Widgets",
+      "icon": "layers",
+      "route": "/widgets",
+      "region": "nav.group:operations",
+      "priority": 49
+    },
+    {
+      "kind": "surface",
+      "key": "widgets",
+      "label": "Widgets",
+      "title": "Widgets",
+      "route": "/widgets",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "layouts",
+      "label": "Layouts",
+      "icon": "layers",
+      "route": "/layouts",
+      "region": "nav.group:evidence",
+      "priority": 50
+    },
+    {
+      "kind": "surface",
+      "key": "layouts",
+      "label": "Layouts",
+      "title": "Layouts",
+      "route": "/layouts",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "run-explorer",
+      "label": "Run Explorer",
+      "icon": "layers",
+      "route": "/run-explorer",
+      "region": "nav.group:operations",
+      "priority": 51
+    },
+    {
+      "kind": "surface",
+      "key": "run-explorer",
+      "label": "Run Explorer",
+      "title": "Run Explorer",
+      "route": "/run-explorer",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "developer-evidence",
+      "label": "Developer Evidence",
+      "icon": "layers",
+      "route": "/developer-evidence",
+      "region": "nav.group:developer",
+      "priority": 52
+    },
+    {
+      "kind": "surface",
+      "key": "developer-evidence",
+      "label": "Developer Evidence",
+      "title": "Developer Evidence",
+      "route": "/developer-evidence",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "workflow-review",
+      "label": "Workflow Review",
+      "icon": "layers",
+      "route": "/workflow-review",
+      "region": "nav.group:developer",
+      "priority": 53
+    },
+    {
+      "kind": "surface",
+      "key": "workflow-review",
+      "label": "Workflow Review",
+      "title": "Workflow Review",
+      "route": "/workflow-review",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "conversation-evidence",
+      "label": "Conversation Evidence",
+      "icon": "message-square",
+      "route": "/conversation-evidence",
+      "region": "nav.group:communications",
+      "priority": 54
+    },
+    {
+      "kind": "surface",
+      "key": "conversation-evidence",
+      "label": "Conversation Evidence",
+      "title": "Conversation Evidence",
+      "route": "/conversation-evidence",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "usage-evidence",
+      "label": "Usage Evidence",
+      "icon": "gauge",
+      "route": "/usage-evidence",
+      "region": "nav.group:evidence",
+      "priority": 55
+    },
+    {
+      "kind": "surface",
+      "key": "usage-evidence",
+      "label": "Usage Evidence",
+      "title": "Usage Evidence",
+      "route": "/usage-evidence",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "app-snapshots",
+      "label": "App Snapshots",
+      "icon": "gauge",
+      "route": "/app-snapshots",
+      "region": "nav.group:app-examples",
+      "priority": 56
+    },
+    {
+      "kind": "surface",
+      "key": "app-snapshots",
+      "label": "App Snapshots",
+      "title": "App Snapshots",
+      "route": "/app-snapshots",
+      "layout": "dashboard"
+    },
+    {
+      "kind": "nav.item",
+      "key": "sign-out",
+      "label": "Sign out",
+      "icon": "log-out",
+      "route": "/sign-out",
+      "region": "nav.footer"
+    },
+    {
+      "kind": "surface",
+      "key": "sign-out",
+      "label": "Sign out",
+      "title": "Sign out",
+      "route": "/sign-out",
+      "layout": "form"
+    }
+  ]
+}

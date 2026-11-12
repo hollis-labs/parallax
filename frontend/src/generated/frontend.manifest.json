@@ -1,0 +1,1747 @@
+{
+  "manifest_version": 0,
+  "app": "parallax",
+  "variant": "app-host",
+  "profiles": ["minimal"],
+  "modules": ["config", "logging", "health", "auth", "database", "httphost", "identity", "cli"],
+  "contributions": [
+    {
+      "schema_version": 0,
+      "module": "auth",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/me",
+          "scope": "authenticated"
+        }
+      ]
+    },
+    {
+      "schema_version": 0,
+      "module": "identity",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/setup",
+          "scope": "public"
+        },
+        {
+          "method": "POST",
+          "path": "/api/setup",
+          "scope": "public"
+        },
+        {
+          "method": "POST",
+          "path": "/api/login",
+          "scope": "public"
+        },
+        {
+          "method": "GET",
+          "path": "/api/identity/jwks",
+          "scope": "public"
+        },
+        {
+          "method": "POST",
+          "path": "/api/pair",
+          "scope": "public"
+        },
+        {
+          "method": "POST",
+          "path": "/api/logout",
+          "scope": "authenticated"
+        },
+        {
+          "method": "PUT",
+          "path": "/api/password",
+          "scope": "authenticated"
+        },
+        {
+          "method": "PUT",
+          "path": "/api/identity/profile",
+          "scope": "authenticated"
+        },
+        {
+          "method": "POST",
+          "path": "/api/token",
+          "scope": "authenticated"
+        },
+        {
+          "method": "GET",
+          "path": "/api/identity/sessions",
+          "scope": "authenticated"
+        },
+        {
+          "method": "DELETE",
+          "path": "/api/identity/sessions/",
+          "scope": "authenticated"
+        },
+        {
+          "method": "GET",
+          "path": "/api/identity/users",
+          "scope": "{app}.admin"
+        },
+        {
+          "method": "POST",
+          "path": "/api/identity/users",
+          "scope": "{app}.admin"
+        },
+        {
+          "method": "PUT",
+          "path": "/api/identity/users/",
+          "scope": "{app}.admin"
+        },
+        {
+          "method": "GET",
+          "path": "/api/identity/keys",
+          "scope": "{app}.admin"
+        },
+        {
+          "method": "POST",
+          "path": "/api/identity/keys",
+          "scope": "{app}.admin"
+        },
+        {
+          "method": "DELETE",
+          "path": "/api/identity/keys/",
+          "scope": "{app}.admin"
+        },
+        {
+          "method": "POST",
+          "path": "/api/identity/pairing-codes",
+          "scope": "{app}.admin"
+        }
+      ]
+    },
+    {
+      "schema_version": 0,
+      "module": "parallax",
+      "contributions": [
+        {
+          "kind": "nav.group",
+          "key": "operations",
+          "label": "Operations",
+          "priority": 10
+        },
+        {
+          "kind": "nav.group",
+          "key": "communications",
+          "label": "Communications",
+          "priority": 11
+        },
+        {
+          "kind": "nav.group",
+          "key": "administration",
+          "label": "Administration",
+          "priority": 12
+        },
+        {
+          "kind": "nav.group",
+          "key": "evidence",
+          "label": "Evidence",
+          "priority": 13
+        },
+        {
+          "kind": "nav.group",
+          "key": "developer",
+          "label": "Developer",
+          "priority": 14
+        },
+        {
+          "kind": "nav.group",
+          "key": "voice",
+          "label": "Voice",
+          "priority": 15
+        },
+        {
+          "kind": "nav.group",
+          "key": "app-examples",
+          "label": "App Examples",
+          "priority": 16
+        },
+        {
+          "kind": "nav.item",
+          "key": "review-workbench",
+          "label": "Review Workbench",
+          "icon": "layers",
+          "priority": 1,
+          "route": "/"
+        },
+        {
+          "kind": "surface",
+          "key": "review-workbench",
+          "label": "Review Workbench",
+          "route": "/",
+          "layout": "dashboard",
+          "title": "Review Workbench"
+        },
+        {
+          "kind": "nav.item",
+          "key": "ops-dashboard",
+          "label": "Ops Dashboard",
+          "icon": "gauge",
+          "priority": 20,
+          "region": "nav.group:operations",
+          "route": "/ops-dashboard"
+        },
+        {
+          "kind": "surface",
+          "key": "ops-dashboard",
+          "label": "Ops Dashboard",
+          "route": "/ops-dashboard",
+          "layout": "dashboard",
+          "title": "Ops Dashboard"
+        },
+        {
+          "kind": "nav.item",
+          "key": "torque-example",
+          "label": "Torque Example",
+          "icon": "gauge",
+          "priority": 21,
+          "region": "nav.group:app-examples",
+          "route": "/torque-example"
+        },
+        {
+          "kind": "surface",
+          "key": "torque-example",
+          "label": "Torque Example",
+          "route": "/torque-example",
+          "layout": "dashboard",
+          "title": "Torque Example"
+        },
+        {
+          "kind": "nav.item",
+          "key": "chat-example",
+          "label": "Chat Example",
+          "icon": "message-square",
+          "priority": 22,
+          "region": "nav.group:app-examples",
+          "route": "/chat-example"
+        },
+        {
+          "kind": "surface",
+          "key": "chat-example",
+          "label": "Chat Example",
+          "route": "/chat-example",
+          "layout": "dashboard",
+          "title": "Chat Example"
+        },
+        {
+          "kind": "nav.item",
+          "key": "administration-example",
+          "label": "Administration Example",
+          "icon": "users",
+          "priority": 23,
+          "region": "nav.group:app-examples",
+          "route": "/administration-example"
+        },
+        {
+          "kind": "surface",
+          "key": "administration-example",
+          "label": "Administration Example",
+          "route": "/administration-example",
+          "layout": "dashboard",
+          "title": "Administration Example"
+        },
+        {
+          "kind": "nav.item",
+          "key": "messaging-example",
+          "label": "Messaging Example",
+          "icon": "mail",
+          "priority": 24,
+          "region": "nav.group:app-examples",
+          "route": "/messaging-example"
+        },
+        {
+          "kind": "surface",
+          "key": "messaging-example",
+          "label": "Messaging Example",
+          "route": "/messaging-example",
+          "layout": "dashboard",
+          "title": "Messaging Example"
+        },
+        {
+          "kind": "nav.item",
+          "key": "workspace-example",
+          "label": "Workspace Example",
+          "icon": "layers",
+          "priority": 25,
+          "region": "nav.group:app-examples",
+          "route": "/workspace-example"
+        },
+        {
+          "kind": "surface",
+          "key": "workspace-example",
+          "label": "Workspace Example",
+          "route": "/workspace-example",
+          "layout": "dashboard",
+          "title": "Workspace Example"
+        },
+        {
+          "kind": "nav.item",
+          "key": "appearance-review",
+          "label": "Appearance Review",
+          "icon": "layers",
+          "priority": 26,
+          "region": "nav.group:administration",
+          "route": "/appearance-review"
+        },
+        {
+          "kind": "surface",
+          "key": "appearance-review",
+          "label": "Appearance Review",
+          "route": "/appearance-review",
+          "layout": "dashboard",
+          "title": "Appearance Review"
+        },
+        {
+          "kind": "nav.item",
+          "key": "evidence-states",
+          "label": "Evidence States",
+          "icon": "activity",
+          "priority": 27,
+          "region": "nav.group:evidence",
+          "route": "/evidence-states"
+        },
+        {
+          "kind": "surface",
+          "key": "evidence-states",
+          "label": "Evidence States",
+          "route": "/evidence-states",
+          "layout": "dashboard",
+          "title": "Evidence States"
+        },
+        {
+          "kind": "nav.item",
+          "key": "event-ledger",
+          "label": "Event Ledger",
+          "icon": "activity",
+          "priority": 28,
+          "region": "nav.group:evidence",
+          "route": "/event-ledger"
+        },
+        {
+          "kind": "surface",
+          "key": "event-ledger",
+          "label": "Event Ledger",
+          "route": "/event-ledger",
+          "layout": "dashboard",
+          "title": "Event Ledger"
+        },
+        {
+          "kind": "nav.item",
+          "key": "directory-review",
+          "label": "Directory Review",
+          "icon": "users",
+          "priority": 29,
+          "region": "nav.group:administration",
+          "route": "/directory-review"
+        },
+        {
+          "kind": "surface",
+          "key": "directory-review",
+          "label": "Directory Review",
+          "route": "/directory-review",
+          "layout": "dashboard",
+          "title": "Directory Review"
+        },
+        {
+          "kind": "nav.item",
+          "key": "activity",
+          "label": "Activity",
+          "icon": "activity",
+          "priority": 30,
+          "region": "nav.group:operations",
+          "route": "/activity"
+        },
+        {
+          "kind": "surface",
+          "key": "activity",
+          "label": "Activity",
+          "route": "/activity",
+          "layout": "dashboard",
+          "title": "Activity"
+        },
+        {
+          "kind": "nav.item",
+          "key": "mission-control",
+          "label": "Mission Control",
+          "icon": "compass",
+          "priority": 31,
+          "region": "nav.group:operations",
+          "route": "/mission-control"
+        },
+        {
+          "kind": "surface",
+          "key": "mission-control",
+          "label": "Mission Control",
+          "route": "/mission-control",
+          "layout": "dashboard",
+          "title": "Mission Control"
+        },
+        {
+          "kind": "nav.item",
+          "key": "usage",
+          "label": "Usage",
+          "icon": "gauge",
+          "priority": 32,
+          "region": "nav.group:operations",
+          "route": "/usage"
+        },
+        {
+          "kind": "surface",
+          "key": "usage",
+          "label": "Usage",
+          "route": "/usage",
+          "layout": "dashboard",
+          "title": "Usage"
+        },
+        {
+          "kind": "nav.item",
+          "key": "contacts",
+          "label": "Contacts",
+          "icon": "users",
+          "priority": 33,
+          "region": "nav.group:communications",
+          "route": "/contacts"
+        },
+        {
+          "kind": "surface",
+          "key": "contacts",
+          "label": "Contacts",
+          "route": "/contacts",
+          "layout": "dashboard",
+          "title": "Contacts"
+        },
+        {
+          "kind": "nav.item",
+          "key": "messages",
+          "label": "Messages",
+          "icon": "mail",
+          "priority": 34,
+          "region": "nav.group:communications",
+          "route": "/messages"
+        },
+        {
+          "kind": "surface",
+          "key": "messages",
+          "label": "Messages",
+          "route": "/messages",
+          "layout": "dashboard",
+          "title": "Messages"
+        },
+        {
+          "kind": "nav.item",
+          "key": "chat",
+          "label": "Chat",
+          "icon": "message-square",
+          "priority": 35,
+          "region": "nav.group:communications",
+          "route": "/chat"
+        },
+        {
+          "kind": "surface",
+          "key": "chat",
+          "label": "Chat",
+          "route": "/chat",
+          "layout": "dashboard",
+          "title": "Chat"
+        },
+        {
+          "kind": "nav.item",
+          "key": "conversation-review",
+          "label": "Conversation Review",
+          "icon": "message-square",
+          "priority": 36,
+          "region": "nav.group:communications",
+          "route": "/conversation-review"
+        },
+        {
+          "kind": "surface",
+          "key": "conversation-review",
+          "label": "Conversation Review",
+          "route": "/conversation-review",
+          "layout": "dashboard",
+          "title": "Conversation Review"
+        },
+        {
+          "kind": "nav.item",
+          "key": "administration",
+          "label": "Administration",
+          "icon": "layers",
+          "priority": 37,
+          "region": "nav.group:administration",
+          "route": "/administration"
+        },
+        {
+          "kind": "surface",
+          "key": "administration",
+          "label": "Administration",
+          "route": "/administration",
+          "layout": "dashboard",
+          "title": "Administration"
+        },
+        {
+          "kind": "nav.item",
+          "key": "account",
+          "label": "Account",
+          "icon": "users",
+          "priority": 38,
+          "region": "nav.group:administration",
+          "route": "/account"
+        },
+        {
+          "kind": "surface",
+          "key": "account",
+          "label": "Account",
+          "route": "/account",
+          "layout": "dashboard",
+          "title": "Account"
+        },
+        {
+          "kind": "nav.item",
+          "key": "settings-review",
+          "label": "Settings Review",
+          "icon": "layers",
+          "priority": 39,
+          "region": "nav.group:administration",
+          "route": "/settings-review"
+        },
+        {
+          "kind": "surface",
+          "key": "settings-review",
+          "label": "Settings Review",
+          "route": "/settings-review",
+          "layout": "dashboard",
+          "title": "Settings Review"
+        },
+        {
+          "kind": "nav.item",
+          "key": "account-review",
+          "label": "Account Review",
+          "icon": "users",
+          "priority": 40,
+          "region": "nav.group:administration",
+          "route": "/account-review"
+        },
+        {
+          "kind": "surface",
+          "key": "account-review",
+          "label": "Account Review",
+          "route": "/account-review",
+          "layout": "dashboard",
+          "title": "Account Review"
+        },
+        {
+          "kind": "nav.item",
+          "key": "observability",
+          "label": "Observability",
+          "icon": "activity",
+          "priority": 41,
+          "region": "nav.group:operations",
+          "route": "/observability"
+        },
+        {
+          "kind": "surface",
+          "key": "observability",
+          "label": "Observability",
+          "route": "/observability",
+          "layout": "dashboard",
+          "title": "Observability"
+        },
+        {
+          "kind": "nav.item",
+          "key": "observation-review",
+          "label": "Observation Review",
+          "icon": "activity",
+          "priority": 42,
+          "region": "nav.group:evidence",
+          "route": "/observation-review"
+        },
+        {
+          "kind": "surface",
+          "key": "observation-review",
+          "label": "Observation Review",
+          "route": "/observation-review",
+          "layout": "dashboard",
+          "title": "Observation Review"
+        },
+        {
+          "kind": "nav.item",
+          "key": "admin-review",
+          "label": "Admin Review",
+          "icon": "layers",
+          "priority": 43,
+          "region": "nav.group:administration",
+          "route": "/admin-review"
+        },
+        {
+          "kind": "surface",
+          "key": "admin-review",
+          "label": "Admin Review",
+          "route": "/admin-review",
+          "layout": "dashboard",
+          "title": "Admin Review"
+        },
+        {
+          "kind": "nav.item",
+          "key": "developer",
+          "label": "Developer",
+          "icon": "layers",
+          "priority": 44,
+          "region": "nav.group:developer",
+          "route": "/developer"
+        },
+        {
+          "kind": "surface",
+          "key": "developer",
+          "label": "Developer",
+          "route": "/developer",
+          "layout": "dashboard",
+          "title": "Developer"
+        },
+        {
+          "kind": "nav.item",
+          "key": "voice",
+          "label": "Voice",
+          "icon": "layers",
+          "priority": 45,
+          "region": "nav.group:voice",
+          "route": "/voice"
+        },
+        {
+          "kind": "surface",
+          "key": "voice",
+          "label": "Voice",
+          "route": "/voice",
+          "layout": "dashboard",
+          "title": "Voice"
+        },
+        {
+          "kind": "nav.item",
+          "key": "examples",
+          "label": "Examples",
+          "icon": "message-square",
+          "priority": 46,
+          "region": "nav.group:evidence",
+          "route": "/examples"
+        },
+        {
+          "kind": "surface",
+          "key": "examples",
+          "label": "Examples",
+          "route": "/examples",
+          "layout": "dashboard",
+          "title": "Examples"
+        },
+        {
+          "kind": "nav.item",
+          "key": "primitives",
+          "label": "Primitives",
+          "icon": "layers",
+          "priority": 47,
+          "region": "nav.group:evidence",
+          "route": "/primitives"
+        },
+        {
+          "kind": "surface",
+          "key": "primitives",
+          "label": "Primitives",
+          "route": "/primitives",
+          "layout": "dashboard",
+          "title": "Primitives"
+        },
+        {
+          "kind": "nav.item",
+          "key": "evidence",
+          "label": "Evidence",
+          "icon": "layers",
+          "priority": 48,
+          "region": "nav.group:evidence",
+          "route": "/evidence"
+        },
+        {
+          "kind": "surface",
+          "key": "evidence",
+          "label": "Evidence",
+          "route": "/evidence",
+          "layout": "dashboard",
+          "title": "Evidence"
+        },
+        {
+          "kind": "nav.item",
+          "key": "widgets",
+          "label": "Widgets",
+          "icon": "layers",
+          "priority": 49,
+          "region": "nav.group:operations",
+          "route": "/widgets"
+        },
+        {
+          "kind": "surface",
+          "key": "widgets",
+          "label": "Widgets",
+          "route": "/widgets",
+          "layout": "dashboard",
+          "title": "Widgets"
+        },
+        {
+          "kind": "nav.item",
+          "key": "layouts",
+          "label": "Layouts",
+          "icon": "layers",
+          "priority": 50,
+          "region": "nav.group:evidence",
+          "route": "/layouts"
+        },
+        {
+          "kind": "surface",
+          "key": "layouts",
+          "label": "Layouts",
+          "route": "/layouts",
+          "layout": "dashboard",
+          "title": "Layouts"
+        },
+        {
+          "kind": "nav.item",
+          "key": "run-explorer",
+          "label": "Run Explorer",
+          "icon": "layers",
+          "priority": 51,
+          "region": "nav.group:operations",
+          "route": "/run-explorer"
+        },
+        {
+          "kind": "surface",
+          "key": "run-explorer",
+          "label": "Run Explorer",
+          "route": "/run-explorer",
+          "layout": "dashboard",
+          "title": "Run Explorer"
+        },
+        {
+          "kind": "nav.item",
+          "key": "developer-evidence",
+          "label": "Developer Evidence",
+          "icon": "layers",
+          "priority": 52,
+          "region": "nav.group:developer",
+          "route": "/developer-evidence"
+        },
+        {
+          "kind": "surface",
+          "key": "developer-evidence",
+          "label": "Developer Evidence",
+          "route": "/developer-evidence",
+          "layout": "dashboard",
+          "title": "Developer Evidence"
+        },
+        {
+          "kind": "nav.item",
+          "key": "workflow-review",
+          "label": "Workflow Review",
+          "icon": "layers",
+          "priority": 53,
+          "region": "nav.group:developer",
+          "route": "/workflow-review"
+        },
+        {
+          "kind": "surface",
+          "key": "workflow-review",
+          "label": "Workflow Review",
+          "route": "/workflow-review",
+          "layout": "dashboard",
+          "title": "Workflow Review"
+        },
+        {
+          "kind": "nav.item",
+          "key": "conversation-evidence",
+          "label": "Conversation Evidence",
+          "icon": "message-square",
+          "priority": 54,
+          "region": "nav.group:communications",
+          "route": "/conversation-evidence"
+        },
+        {
+          "kind": "surface",
+          "key": "conversation-evidence",
+          "label": "Conversation Evidence",
+          "route": "/conversation-evidence",
+          "layout": "dashboard",
+          "title": "Conversation Evidence"
+        },
+        {
+          "kind": "nav.item",
+          "key": "usage-evidence",
+          "label": "Usage Evidence",
+          "icon": "gauge",
+          "priority": 55,
+          "region": "nav.group:evidence",
+          "route": "/usage-evidence"
+        },
+        {
+          "kind": "surface",
+          "key": "usage-evidence",
+          "label": "Usage Evidence",
+          "route": "/usage-evidence",
+          "layout": "dashboard",
+          "title": "Usage Evidence"
+        },
+        {
+          "kind": "nav.item",
+          "key": "app-snapshots",
+          "label": "App Snapshots",
+          "icon": "gauge",
+          "priority": 56,
+          "region": "nav.group:app-examples",
+          "route": "/app-snapshots"
+        },
+        {
+          "kind": "surface",
+          "key": "app-snapshots",
+          "label": "App Snapshots",
+          "route": "/app-snapshots",
+          "layout": "dashboard",
+          "title": "App Snapshots"
+        },
+        {
+          "kind": "nav.item",
+          "key": "sign-out",
+          "label": "Sign out",
+          "icon": "log-out",
+          "region": "nav.footer",
+          "route": "/sign-out"
+        },
+        {
+          "kind": "surface",
+          "key": "sign-out",
+          "label": "Sign out",
+          "route": "/sign-out",
+          "layout": "form",
+          "title": "Sign out"
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "kind": "nav.item",
+      "key": "review-workbench",
+      "label": "Review Workbench",
+      "icon": "layers",
+      "priority": 1,
+      "route": "/",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "account",
+      "label": "Account",
+      "route": "/account",
+      "layout": "dashboard",
+      "title": "Account",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "account-review",
+      "label": "Account Review",
+      "route": "/account-review",
+      "layout": "dashboard",
+      "title": "Account Review",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "activity",
+      "label": "Activity",
+      "route": "/activity",
+      "layout": "dashboard",
+      "title": "Activity",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "admin-review",
+      "label": "Admin Review",
+      "route": "/admin-review",
+      "layout": "dashboard",
+      "title": "Admin Review",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "administration",
+      "label": "Administration",
+      "route": "/administration",
+      "layout": "dashboard",
+      "title": "Administration",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "administration-example",
+      "label": "Administration Example",
+      "route": "/administration-example",
+      "layout": "dashboard",
+      "title": "Administration Example",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "app-snapshots",
+      "label": "App Snapshots",
+      "route": "/app-snapshots",
+      "layout": "dashboard",
+      "title": "App Snapshots",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "appearance-review",
+      "label": "Appearance Review",
+      "route": "/appearance-review",
+      "layout": "dashboard",
+      "title": "Appearance Review",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "chat",
+      "label": "Chat",
+      "route": "/chat",
+      "layout": "dashboard",
+      "title": "Chat",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "chat-example",
+      "label": "Chat Example",
+      "route": "/chat-example",
+      "layout": "dashboard",
+      "title": "Chat Example",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "contacts",
+      "label": "Contacts",
+      "route": "/contacts",
+      "layout": "dashboard",
+      "title": "Contacts",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "conversation-evidence",
+      "label": "Conversation Evidence",
+      "route": "/conversation-evidence",
+      "layout": "dashboard",
+      "title": "Conversation Evidence",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "conversation-review",
+      "label": "Conversation Review",
+      "route": "/conversation-review",
+      "layout": "dashboard",
+      "title": "Conversation Review",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "developer",
+      "label": "Developer",
+      "route": "/developer",
+      "layout": "dashboard",
+      "title": "Developer",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "developer-evidence",
+      "label": "Developer Evidence",
+      "route": "/developer-evidence",
+      "layout": "dashboard",
+      "title": "Developer Evidence",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "directory-review",
+      "label": "Directory Review",
+      "route": "/directory-review",
+      "layout": "dashboard",
+      "title": "Directory Review",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "event-ledger",
+      "label": "Event Ledger",
+      "route": "/event-ledger",
+      "layout": "dashboard",
+      "title": "Event Ledger",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "evidence",
+      "label": "Evidence",
+      "route": "/evidence",
+      "layout": "dashboard",
+      "title": "Evidence",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "evidence-states",
+      "label": "Evidence States",
+      "route": "/evidence-states",
+      "layout": "dashboard",
+      "title": "Evidence States",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "examples",
+      "label": "Examples",
+      "route": "/examples",
+      "layout": "dashboard",
+      "title": "Examples",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "layouts",
+      "label": "Layouts",
+      "route": "/layouts",
+      "layout": "dashboard",
+      "title": "Layouts",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "messages",
+      "label": "Messages",
+      "route": "/messages",
+      "layout": "dashboard",
+      "title": "Messages",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "messaging-example",
+      "label": "Messaging Example",
+      "route": "/messaging-example",
+      "layout": "dashboard",
+      "title": "Messaging Example",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "mission-control",
+      "label": "Mission Control",
+      "route": "/mission-control",
+      "layout": "dashboard",
+      "title": "Mission Control",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "observability",
+      "label": "Observability",
+      "route": "/observability",
+      "layout": "dashboard",
+      "title": "Observability",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "observation-review",
+      "label": "Observation Review",
+      "route": "/observation-review",
+      "layout": "dashboard",
+      "title": "Observation Review",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.group",
+      "key": "operations",
+      "label": "Operations",
+      "priority": 10,
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "ops-dashboard",
+      "label": "Ops Dashboard",
+      "route": "/ops-dashboard",
+      "layout": "dashboard",
+      "title": "Ops Dashboard",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "primitives",
+      "label": "Primitives",
+      "route": "/primitives",
+      "layout": "dashboard",
+      "title": "Primitives",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "review-workbench",
+      "label": "Review Workbench",
+      "route": "/",
+      "layout": "dashboard",
+      "title": "Review Workbench",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "run-explorer",
+      "label": "Run Explorer",
+      "route": "/run-explorer",
+      "layout": "dashboard",
+      "title": "Run Explorer",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "settings-review",
+      "label": "Settings Review",
+      "route": "/settings-review",
+      "layout": "dashboard",
+      "title": "Settings Review",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "sign-out",
+      "label": "Sign out",
+      "icon": "log-out",
+      "region": "nav.footer",
+      "route": "/sign-out",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "sign-out",
+      "label": "Sign out",
+      "route": "/sign-out",
+      "layout": "form",
+      "title": "Sign out",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "torque-example",
+      "label": "Torque Example",
+      "route": "/torque-example",
+      "layout": "dashboard",
+      "title": "Torque Example",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "usage",
+      "label": "Usage",
+      "route": "/usage",
+      "layout": "dashboard",
+      "title": "Usage",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "usage-evidence",
+      "label": "Usage Evidence",
+      "route": "/usage-evidence",
+      "layout": "dashboard",
+      "title": "Usage Evidence",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "voice",
+      "label": "Voice",
+      "route": "/voice",
+      "layout": "dashboard",
+      "title": "Voice",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "widgets",
+      "label": "Widgets",
+      "route": "/widgets",
+      "layout": "dashboard",
+      "title": "Widgets",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "workflow-review",
+      "label": "Workflow Review",
+      "route": "/workflow-review",
+      "layout": "dashboard",
+      "title": "Workflow Review",
+      "module": "parallax"
+    },
+    {
+      "kind": "surface",
+      "key": "workspace-example",
+      "label": "Workspace Example",
+      "route": "/workspace-example",
+      "layout": "dashboard",
+      "title": "Workspace Example",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.group",
+      "key": "communications",
+      "label": "Communications",
+      "priority": 11,
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.group",
+      "key": "administration",
+      "label": "Administration",
+      "priority": 12,
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.group",
+      "key": "evidence",
+      "label": "Evidence",
+      "priority": 13,
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.group",
+      "key": "developer",
+      "label": "Developer",
+      "priority": 14,
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.group",
+      "key": "voice",
+      "label": "Voice",
+      "priority": 15,
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.group",
+      "key": "app-examples",
+      "label": "App Examples",
+      "priority": 16,
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "ops-dashboard",
+      "label": "Ops Dashboard",
+      "icon": "gauge",
+      "priority": 20,
+      "region": "nav.group:operations",
+      "route": "/ops-dashboard",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "torque-example",
+      "label": "Torque Example",
+      "icon": "gauge",
+      "priority": 21,
+      "region": "nav.group:app-examples",
+      "route": "/torque-example",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "chat-example",
+      "label": "Chat Example",
+      "icon": "message-square",
+      "priority": 22,
+      "region": "nav.group:app-examples",
+      "route": "/chat-example",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "administration-example",
+      "label": "Administration Example",
+      "icon": "users",
+      "priority": 23,
+      "region": "nav.group:app-examples",
+      "route": "/administration-example",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "messaging-example",
+      "label": "Messaging Example",
+      "icon": "mail",
+      "priority": 24,
+      "region": "nav.group:app-examples",
+      "route": "/messaging-example",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "workspace-example",
+      "label": "Workspace Example",
+      "icon": "layers",
+      "priority": 25,
+      "region": "nav.group:app-examples",
+      "route": "/workspace-example",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "appearance-review",
+      "label": "Appearance Review",
+      "icon": "layers",
+      "priority": 26,
+      "region": "nav.group:administration",
+      "route": "/appearance-review",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "evidence-states",
+      "label": "Evidence States",
+      "icon": "activity",
+      "priority": 27,
+      "region": "nav.group:evidence",
+      "route": "/evidence-states",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "event-ledger",
+      "label": "Event Ledger",
+      "icon": "activity",
+      "priority": 28,
+      "region": "nav.group:evidence",
+      "route": "/event-ledger",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "directory-review",
+      "label": "Directory Review",
+      "icon": "users",
+      "priority": 29,
+      "region": "nav.group:administration",
+      "route": "/directory-review",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "activity",
+      "label": "Activity",
+      "icon": "activity",
+      "priority": 30,
+      "region": "nav.group:operations",
+      "route": "/activity",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "mission-control",
+      "label": "Mission Control",
+      "icon": "compass",
+      "priority": 31,
+      "region": "nav.group:operations",
+      "route": "/mission-control",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "usage",
+      "label": "Usage",
+      "icon": "gauge",
+      "priority": 32,
+      "region": "nav.group:operations",
+      "route": "/usage",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "contacts",
+      "label": "Contacts",
+      "icon": "users",
+      "priority": 33,
+      "region": "nav.group:communications",
+      "route": "/contacts",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "messages",
+      "label": "Messages",
+      "icon": "mail",
+      "priority": 34,
+      "region": "nav.group:communications",
+      "route": "/messages",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "chat",
+      "label": "Chat",
+      "icon": "message-square",
+      "priority": 35,
+      "region": "nav.group:communications",
+      "route": "/chat",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "conversation-review",
+      "label": "Conversation Review",
+      "icon": "message-square",
+      "priority": 36,
+      "region": "nav.group:communications",
+      "route": "/conversation-review",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "administration",
+      "label": "Administration",
+      "icon": "layers",
+      "priority": 37,
+      "region": "nav.group:administration",
+      "route": "/administration",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "account",
+      "label": "Account",
+      "icon": "users",
+      "priority": 38,
+      "region": "nav.group:administration",
+      "route": "/account",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "settings-review",
+      "label": "Settings Review",
+      "icon": "layers",
+      "priority": 39,
+      "region": "nav.group:administration",
+      "route": "/settings-review",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "account-review",
+      "label": "Account Review",
+      "icon": "users",
+      "priority": 40,
+      "region": "nav.group:administration",
+      "route": "/account-review",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "observability",
+      "label": "Observability",
+      "icon": "activity",
+      "priority": 41,
+      "region": "nav.group:operations",
+      "route": "/observability",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "observation-review",
+      "label": "Observation Review",
+      "icon": "activity",
+      "priority": 42,
+      "region": "nav.group:evidence",
+      "route": "/observation-review",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "admin-review",
+      "label": "Admin Review",
+      "icon": "layers",
+      "priority": 43,
+      "region": "nav.group:administration",
+      "route": "/admin-review",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "developer",
+      "label": "Developer",
+      "icon": "layers",
+      "priority": 44,
+      "region": "nav.group:developer",
+      "route": "/developer",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "voice",
+      "label": "Voice",
+      "icon": "layers",
+      "priority": 45,
+      "region": "nav.group:voice",
+      "route": "/voice",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "examples",
+      "label": "Examples",
+      "icon": "message-square",
+      "priority": 46,
+      "region": "nav.group:evidence",
+      "route": "/examples",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "primitives",
+      "label": "Primitives",
+      "icon": "layers",
+      "priority": 47,
+      "region": "nav.group:evidence",
+      "route": "/primitives",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "evidence",
+      "label": "Evidence",
+      "icon": "layers",
+      "priority": 48,
+      "region": "nav.group:evidence",
+      "route": "/evidence",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "widgets",
+      "label": "Widgets",
+      "icon": "layers",
+      "priority": 49,
+      "region": "nav.group:operations",
+      "route": "/widgets",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "layouts",
+      "label": "Layouts",
+      "icon": "layers",
+      "priority": 50,
+      "region": "nav.group:evidence",
+      "route": "/layouts",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "run-explorer",
+      "label": "Run Explorer",
+      "icon": "layers",
+      "priority": 51,
+      "region": "nav.group:operations",
+      "route": "/run-explorer",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "developer-evidence",
+      "label": "Developer Evidence",
+      "icon": "layers",
+      "priority": 52,
+      "region": "nav.group:developer",
+      "route": "/developer-evidence",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "workflow-review",
+      "label": "Workflow Review",
+      "icon": "layers",
+      "priority": 53,
+      "region": "nav.group:developer",
+      "route": "/workflow-review",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "conversation-evidence",
+      "label": "Conversation Evidence",
+      "icon": "message-square",
+      "priority": 54,
+      "region": "nav.group:communications",
+      "route": "/conversation-evidence",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "usage-evidence",
+      "label": "Usage Evidence",
+      "icon": "gauge",
+      "priority": 55,
+      "region": "nav.group:evidence",
+      "route": "/usage-evidence",
+      "module": "parallax"
+    },
+    {
+      "kind": "nav.item",
+      "key": "app-snapshots",
+      "label": "App Snapshots",
+      "icon": "gauge",
+      "priority": 56,
+      "region": "nav.group:app-examples",
+      "route": "/app-snapshots",
+      "module": "parallax"
+    }
+  ],
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/me",
+      "scope": "authenticated",
+      "module": "auth"
+    },
+    {
+      "method": "GET",
+      "path": "/api/setup",
+      "scope": "public",
+      "module": "identity"
+    },
+    {
+      "method": "POST",
+      "path": "/api/setup",
+      "scope": "public",
+      "module": "identity"
+    },
+    {
+      "method": "POST",
+      "path": "/api/login",
+      "scope": "public",
+      "module": "identity"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/jwks",
+      "scope": "public",
+      "module": "identity"
+    },
+    {
+      "method": "POST",
+      "path": "/api/pair",
+      "scope": "public",
+      "module": "identity"
+    },
+    {
+      "method": "POST",
+      "path": "/api/logout",
+      "scope": "authenticated",
+      "module": "identity"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/password",
+      "scope": "authenticated",
+      "module": "identity"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/identity/profile",
+      "scope": "authenticated",
+      "module": "identity"
+    },
+    {
+      "method": "POST",
+      "path": "/api/token",
+      "scope": "authenticated",
+      "module": "identity"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/sessions",
+      "scope": "authenticated",
+      "module": "identity"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/identity/sessions/",
+      "scope": "authenticated",
+      "module": "identity"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/users",
+      "scope": "{app}.admin",
+      "module": "identity"
+    },
+    {
+      "method": "POST",
+      "path": "/api/identity/users",
+      "scope": "{app}.admin",
+      "module": "identity"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/identity/users/",
+      "scope": "{app}.admin",
+      "module": "identity"
+    },
+    {
+      "method": "GET",
+      "path": "/api/identity/keys",
+      "scope": "{app}.admin",
+      "module": "identity"
+    },
+    {
+      "method": "POST",
+      "path": "/api/identity/keys",
+      "scope": "{app}.admin",
+      "module": "identity"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/identity/keys/",
+      "scope": "{app}.admin",
+      "module": "identity"
+    },
+    {
+      "method": "POST",
+      "path": "/api/identity/pairing-codes",
+      "scope": "{app}.admin",
+      "module": "identity"
+    }
+  ],
+  "regions": [],
+  "kits": [
+    {
+      "name": "@hollis-labs/design-app-runtime",
+      "version": "0.5.0"
+    },
+    {
+      "name": "@hollis-labs/design-components",
+      "version": "0.5.1"
+    },
+    {
+      "name": "@hollis-labs/design-tokens",
+      "version": "0.5.0"
+    }
+  ],
+  "bindings": []
+}

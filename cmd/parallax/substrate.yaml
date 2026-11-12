@@ -3,6 +3,7 @@
 app: parallax
 variant: app-host
 profiles: [minimal]
+frontend: { contributions: app.ui.json }
 modules:
   add: [auth, database, identity, cli]
 config:
