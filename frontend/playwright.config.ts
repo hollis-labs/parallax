@@ -16,6 +16,13 @@ export default defineConfig({
   globalSetup: "./e2e/global-setup.ts",
   outputDir: `${repo}.scratch/test-results`,
   reporter: [["list"]],
+  // Two projects over the same files. Tests whose title carries @popup-timing open a floating popup from the keyboard
+  // and fail a few percent of the time under CPU contention (the public runner): they run as their own, non-blocking
+  // CI job (browser-popup-timing); everything else is the blocking suite. Both run in a plain `playwright test`.
+  projects: [
+    { name: "blocking", grepInvert: /@popup-timing/ },
+    { name: "popup-timing", grep: /@popup-timing/ },
+  ],
   use: {
     baseURL: backend,
     headless: true,

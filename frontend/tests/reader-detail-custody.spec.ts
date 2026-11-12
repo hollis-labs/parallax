@@ -210,7 +210,7 @@ test.describe("Reader Detail Custody and Lifecycle Leases", () => {
     })
   }
 
-  test("MediaDialog finalFocus binds to opening activation, refuses reopen revival, and yields to foreground/competing layers", async ({
+  test("MediaDialog finalFocus binds to opening activation, refuses reopen revival, and yields to foreground/competing layers @popup-timing", async ({
     page,
   }) => {
     await page.goto("/?example=reader&fragmentId=FRAG-002&scope=inbox")

@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test"
 import { ports } from "./ports"
 
 const view = "/?view=Evidence+States&theme=p4-white&mode=light"
-test("native supplemental help has actual description, Escape and current visible evidence", async ({
+test("native supplemental help has actual description, Escape and current visible evidence @popup-timing", async ({
   page,
 }) => {
   await page.goto(view)
@@ -97,7 +97,7 @@ test("declared loading alone has passive pulse and actual reduced motion; blocke
     ).toContainText("Admitted matching runs Unknown")
   }
 })
-test("actual complete desktop and dark narrow source-help portal are bounded inert and contrasted", async ({
+test("actual complete desktop and dark narrow source-help portal are bounded inert and contrasted @popup-timing", async ({
   page,
 }, info) => {
   await page.setViewportSize({ width: 1440, height: 1000 })
