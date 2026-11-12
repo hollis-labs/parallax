@@ -3,6 +3,7 @@
 //
 //	parallax:
 //	  allowed_hosts: []   # extra Host values (besides loopback) served behind a local TLS proxy
+//	  snapshot_file: ""   # absolute path of a capture file to serve instead of the embedded one; unset = embedded
 //
 // The manifest cannot carry the block (it accepts config only for catalog modules), so the
 // operator sets it in the file named by SUBSTRATE_CONFIG. Behind a proxy also set
@@ -12,6 +13,7 @@ package settings
 import (
 	"fmt"
 	"net"
+	"path/filepath"
 	"sort"
 	"strings"
 )
@@ -22,6 +24,9 @@ const Key = "parallax"
 // Settings are the parsed block.
 type Settings struct {
 	AllowedHosts []string
+	// SnapshotFile is an absolute path, or empty for the embedded capture. The file itself is
+	// checked when the capture is loaded.
+	SnapshotFile string
 }
 
 // Parse reads the block (nil for a missing one). An unknown key is an error, so a typo is found
@@ -37,13 +42,24 @@ func Parse(raw any) (Settings, error) {
 	}
 	var unknown []string
 	for k := range block {
-		if k != "allowed_hosts" {
+		if k != "allowed_hosts" && k != "snapshot_file" {
 			unknown = append(unknown, k)
 		}
 	}
 	if len(unknown) > 0 {
 		sort.Strings(unknown)
 		return s, fmt.Errorf("parallax: unknown config key(s): %s", strings.Join(unknown, ", "))
+	}
+	switch f := block["snapshot_file"].(type) {
+	case nil:
+	case string:
+		f = strings.TrimSpace(f)
+		if f != "" && !filepath.IsAbs(f) {
+			return s, fmt.Errorf("parallax.snapshot_file: %q is not an absolute path", f)
+		}
+		s.SnapshotFile = f
+	default:
+		return s, fmt.Errorf("parallax.snapshot_file must be a string")
 	}
 	switch hosts := block["allowed_hosts"].(type) {
 	case nil:

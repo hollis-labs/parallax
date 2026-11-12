@@ -18,6 +18,7 @@ import (
 	"github.com/hollis-labs/parallax/internal/demoplugin"
 	"github.com/hollis-labs/parallax/internal/hostguard"
 	"github.com/hollis-labs/parallax/internal/settings"
+	"github.com/hollis-labs/parallax/internal/snapshots"
 	"github.com/hollis-labs/parallax/internal/webui"
 )
 
@@ -53,6 +54,13 @@ func (p *parallax) serve(ctx context.Context) error {
 	}
 	api.RegisterScopes(table)
 
+	captures, err := snapshots.Load(cfg.SnapshotFile)
+	if err != nil {
+		if cfg.SnapshotFile != "" {
+			return fmt.Errorf("%s.snapshot_file: %w", settings.Key, err)
+		}
+		return err
+	}
 	delivery, err := demoplugin.Delivery()
 	if err != nil {
 		return err
@@ -65,7 +73,7 @@ func (p *parallax) serve(ctx context.Context) error {
 	// and the auth guard covers the mount (parallax.read), so it is not an open mount.
 	handler, err := httphost.Handler(app, httphost.Options{
 		Assets: assets,
-		Routes: api.Handler(),
+		Routes: api.Handler(captures),
 		Mounts: []httphost.Mount{{Pattern: api.PluginsPattern, Handler: delivery}},
 	})
 	if err != nil {

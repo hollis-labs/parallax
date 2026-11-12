@@ -12,7 +12,7 @@ import (
 // Every route the API serves has ScopeRead in the table the guard enforces, and the mux and the
 // table are built from one list, so this fails if either side stops using it.
 func TestEveryRouteHasItsScope(t *testing.T) {
-	routes := Routes()
+	routes := Routes(nil)
 	if len(routes) == 0 {
 		t.Fatal("no routes")
 	}
@@ -40,7 +40,7 @@ func TestEveryRouteHasItsScope(t *testing.T) {
 }
 
 func TestScenarioProfiles(t *testing.T) {
-	srv := Handler()
+	srv := Handler(nil)
 	for profile, want := range map[string]string{"": "RUN-008", "large": "RUN-080"} {
 		rec := httptest.NewRecorder()
 		srv.ServeHTTP(rec, httptest.NewRequest(http.MethodGet, "/api/scenario?profile="+profile, nil))

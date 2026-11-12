@@ -29,18 +29,18 @@ type Route struct {
 	Handler                http.HandlerFunc
 }
 
-// Routes lists every route under /api/.
-func Routes() []Route {
+// Routes lists every route under /api/. captures is the capture the snapshot route serves.
+func Routes(captures *snapshots.Store) []Route {
 	return []Route{
-		{http.MethodGet, "/api/snapshots/current", ScopeRead, snapshots.Serve},
+		{http.MethodGet, "/api/snapshots/current", ScopeRead, captures.Serve},
 		{http.MethodGet, "/api/scenario", ScopeRead, scenario},
 	}
 }
 
 // Handler builds the mux httphost mounts under /api/.
-func Handler() *http.ServeMux {
+func Handler(captures *snapshots.Store) *http.ServeMux {
 	mux := http.NewServeMux()
-	for _, rt := range Routes() {
+	for _, rt := range Routes(captures) {
 		mux.HandleFunc(rt.Method+" "+rt.Pattern, rt.Handler)
 	}
 	return mux
@@ -49,7 +49,7 @@ func Handler() *http.ServeMux {
 // RegisterScopes declares the scope of every route and of the plugin delivery mount. A route
 // not listed is unmapped, which the guard refuses in enforce mode.
 func RegisterScopes(t *libauth.ScopeTable) {
-	for _, rt := range Routes() {
+	for _, rt := range Routes(nil) {
 		t.Route(rt.Method, rt.Pattern, rt.Scope)
 	}
 	t.Route(http.MethodGet, PluginsScopePattern, ScopeRead)

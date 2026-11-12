@@ -75,6 +75,7 @@ belongs to the GUI agent and is listed under "For the frontend".
 | `LISTEN_ADDR` (default `127.0.0.1:18441`) | `httphost.addr` (default `127.0.0.1:8085`); must be loopback |
 | (none) | `PARALLAX_DATA_DIR` data directory; `SUBSTRATE_CONFIG` YAML overrides |
 | (none) | `parallax.allowed_hosts` (proxy names), read from `app.Config["parallax"]`; defaults in the manifest (`allowed_hosts: []`), parsed by `internal/settings` |
+| (none) | `parallax.snapshot_file` (absolute path to a capture file served instead of the embedded one); unset by default; validated at start, error names the key |
 
 ### HTTP
 

@@ -274,3 +274,64 @@ func TestDataPaths(t *testing.T) {
 		}
 	})
 }
+
+const captureBody = `{"version":"parallax-capture/v1","id":"synthetic","sources":{"torque":{"tasks":{"items":[]}},"tether":{"overview":{"body":{}},"sessions":{"items":[]}}}}`
+
+// parallax.snapshot_file: unset serves the embedded capture; a valid file is served; a missing or
+// malformed file refuses to start and the error names the key.
+func TestSnapshotFile(t *testing.T) {
+	signIn := func(c *client) {
+		c.want(200, "POST", "/api/setup", map[string]string{"username": "owner", "display_name": "Owner", "password": "correct horse battery staple"}, xrw)
+	}
+	t.Run("unset serves the embedded capture", func(t *testing.T) {
+		c := newClient(t, started(t, loopbackOverride))
+		signIn(c)
+		if body := c.want(200, "GET", "/api/snapshots/current", nil, nil); bytes.Contains(body, []byte("synthetic")) {
+			t.Fatalf("embedded capture expected, got %s", body)
+		}
+	})
+	t.Run("a valid file is served", func(t *testing.T) {
+		file := filepath.Join(t.TempDir(), "capture.json")
+		if err := os.WriteFile(file, []byte(captureBody), 0o600); err != nil {
+			t.Fatal(err)
+		}
+		c := newClient(t, started(t, loopbackOverride+"parallax:\n  snapshot_file: "+file+"\n"))
+		signIn(c)
+		if body := c.want(200, "GET", "/api/snapshots/current", nil, nil); string(body) != captureBody {
+			t.Fatalf("body = %s", body)
+		}
+	})
+	for name, content := range map[string]string{"missing": "", "malformed": "{nope", "wrong version": `{"version":"x","id":null,"sources":null}`} {
+		t.Run(name+" file refuses to start", func(t *testing.T) {
+			file := filepath.Join(t.TempDir(), "capture.json")
+			if content != "" {
+				if err := os.WriteFile(file, []byte(content), 0o600); err != nil {
+					t.Fatal(err)
+				}
+			}
+			err := serveWith(t, loopbackOverride+"parallax:\n  snapshot_file: "+file+"\n")
+			if err == nil || !strings.Contains(err.Error(), "parallax.snapshot_file") {
+				t.Fatalf("serve error = %v, want one naming parallax.snapshot_file", err)
+			}
+		})
+	}
+}
+
+// serveWith boots the stack with an override and returns the error serve ends with.
+func serveWith(t *testing.T, override string) error {
+	t.Helper()
+	file := filepath.Join(t.TempDir(), "override.yaml")
+	if err := os.WriteFile(file, []byte(override), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	env := map[string]string{"PARALLAX_DATA_DIR": t.TempDir(), "SUBSTRATE_CONFIG": file}
+	t.Setenv("SUBSTRATE_CONFIG", file)
+	run, err := boot.StartWith(context.Background(), substrateApp, substrateModules, substrateConfigJSON, bootOptions(func(k string) string { return env[k] }))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = run.Stop(context.Background()) }()
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	return (&parallax{app: run.App}).serve(ctx)
+}
