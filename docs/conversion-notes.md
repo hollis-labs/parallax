@@ -141,13 +141,17 @@ Setup and login bodies: `{username, display_name, password}` / `{username, passw
 
 ## For the operator
 
-- `parallax.cerberus.yaml` still sets `LISTEN_ADDR` and port 18441: both no longer mean anything. Set `httphost.addr`
-  in a `SUBSTRATE_CONFIG` file (hand the descriptor change to Cerberus' owner). Not edited here.
+- `parallax.cerberus.yaml` (the repo's descriptor proposal) now sets `SUBSTRATE_CONFIG` and `PARALLAX_DATA_DIR` to placeholder paths instead of
+  `LISTEN_ADDR`; the listen address is `httphost.addr` in that file. The deployed registration changes only at cutover, by the Cerberus owner.
 - Behind a local TLS proxy that forwards a name (the frontend's workbench catalogue already knows public names for
   this app, and the descriptor calls an external URL "a separate operator decision"): in the `SUBSTRATE_CONFIG` file
   set `parallax.allowed_hosts: [<name>]`, `identity.trusted_proxy: true` and, if the page origin differs from the
   proxied Host, `identity.allowed_origins`. The proxy must reach the backend over loopback and send
   `X-Forwarded-Proto: https`. Without the list, a proxied name answers 403. `cmd/parallax/boot_test.go` covers this.
+- Behind a proxy, every client reaches the backend from the proxy's loopback address (the Host check strips `X-Forwarded-For`), so
+  identity's login limiter (five failures per username and address in five minutes) is effectively per username: someone who can reach
+  the site can lock the owner out for a few minutes. This is the framework's design (a validated client address for the limiter is on
+  the framework's list), not an app setting.
 - First start creates the data directory (`0700`), `parallax.db` and the signing key; first-run setup creates the owner.
 
 ## Deployed instance and cutover outline

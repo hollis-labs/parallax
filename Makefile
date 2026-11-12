@@ -13,7 +13,8 @@ build: prepare
 	cd frontend && npm ci && npm run build
 	go build -o .scratch/parallax ./cmd/parallax
 run: build
-	.scratch/parallax
+	@echo "data directory: $(CURDIR)/.scratch/data"
+	PARALLAX_DATA_DIR=$(CURDIR)/.scratch/data .scratch/parallax
 check: prepare
 	cd frontend && npm ci
 	go test -race ./cmd/... ./internal/...
