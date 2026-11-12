@@ -7,7 +7,7 @@ belongs to the GUI agent and is listed under "For the frontend".
 
 1. **scan-public: the tree is cleaned in two steps; history is left for a program-wide pass.** Owner rule (2026-11-12, via
    the driver): the TREE must be clean in the port PR; HISTORY is not rewritten during the port and gets one planned pass over all
-   repos afterwards. CI and `make scan` therefore run `scan-public --tree`; the history gate (`--ref HEAD`) returns after that pass.
+   repos afterwards. CI and `make scan` therefore run `substrate scan-public --tree` (Substrate's scanner; the copied `scripts/scan-public` is deleted); the history gate (`--ref HEAD`) returns after that pass.
    Status: done in this branch: home paths, hosts and addresses in `docs/` and `third_party/` provenance, replay scripts and
    `docs/review-workbench.md`; `scan-public.allow` lists the reviewed tree false positives, each with a reason (design-token
    property names, sha256 checksums beside file names containing "token", one model name). Still open (35 findings), waiting for

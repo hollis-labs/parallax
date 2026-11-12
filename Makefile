@@ -46,4 +46,4 @@ lint:
 	go run github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.11.4 run
 # Tree only. The history gate (--ref HEAD) returns after the program-wide history pass.
 scan:
-	python3 scripts/scan-public --tree
+	$(SUBSTRATE) scan-public --tree

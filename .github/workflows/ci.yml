@@ -23,7 +23,7 @@ jobs:
           version: v2.11.4
       # Tree only: the history gate (--ref HEAD) returns after the program-wide history pass.
       - name: Public hygiene (tree)
-        run: python3 scripts/scan-public --tree
+        run: go run github.com/hollis-labs/substrate/cmd/substrate scan-public --tree
       - run: npm run build-storybook --prefix frontend
       - name: Actionable export inventory freshness and evidence pointers
         run: node scripts/coverage.mjs --check
