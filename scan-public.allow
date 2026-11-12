@@ -4,4 +4,4 @@ secret-assignment docs/flux-fidelity/source-token-inventory.json design-token pr
 generic-api-key docs/flux-fidelity/proof-manifest.json sha256 checksums beside file names containing "token"
 generic-api-key docs/flux-settings-source-map.json sha256 checksums beside file names containing "token"
 generic-api-key docs/nil-radial-candidate.json sha256 checksum beside an image file name
-generic-api-key frontend/src/fixtures/tether-sysop.json:1744 a model name ("claude-3-7-sonnet") under a "key" field, not a credential
+generic-api-key frontend/src/fixtures/tether-sysop.json a model name ("claude-3-7-sonnet") under a "key" field, not a credential (the scanner matches by path, not line)

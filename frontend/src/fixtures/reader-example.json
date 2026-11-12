@@ -184,7 +184,7 @@
       "revision": 1,
       "source": {
         "provider": "screenshot_intake",
-        "canonical_url": "https://nanite.cloud/docs/diagrams/mesh"
+        "canonical_url": "https://example.test/docs/diagrams/mesh"
       },
       "renderer": "image",
       "display": {
@@ -1228,7 +1228,7 @@
       "revision": 1,
       "source": {
         "provider": "screenshot_intake",
-        "canonical_url": "https://nanite.cloud/docs/diagrams/mesh"
+        "canonical_url": "https://example.test/docs/diagrams/mesh"
       },
       "renderer": "image",
       "display": {
@@ -3299,7 +3299,7 @@
       "revision": 1,
       "source": {
         "provider": "screenshot_intake",
-        "canonical_url": "https://nanite.cloud/docs/diagrams/mesh"
+        "canonical_url": "https://example.test/docs/diagrams/mesh"
       },
       "renderer": "image",
       "display": {
@@ -5370,7 +5370,7 @@
       "revision": 1,
       "source": {
         "provider": "screenshot_intake",
-        "canonical_url": "https://nanite.cloud/docs/diagrams/mesh"
+        "canonical_url": "https://example.test/docs/diagrams/mesh"
       },
       "renderer": "image",
       "display": {
@@ -7444,7 +7444,7 @@
       "revision": 1,
       "source": {
         "provider": "screenshot_intake",
-        "canonical_url": "https://nanite.cloud/docs/diagrams/mesh"
+        "canonical_url": "https://example.test/docs/diagrams/mesh"
       },
       "renderer": "image",
       "display": {

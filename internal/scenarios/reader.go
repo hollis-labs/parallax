@@ -300,7 +300,7 @@ func GenerateReaderExample() ReaderExampleFixture {
 		Revision:           1,
 		Source: ReaderSourceIdentity{
 			Provider:     "screenshot_intake",
-			CanonicalURL: "https://nanite.cloud/docs/diagrams/mesh",
+			CanonicalURL: "https://example.test/docs/diagrams/mesh",
 		},
 		Renderer: "image",
 		Display: ReaderDisplay{
