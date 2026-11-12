@@ -1,9 +1,12 @@
 import { expect, test } from "@playwright/test"
+import { ports } from "./ports"
 
 test("drawer dispatchers never revive after session retirement or Activity reactivation", async ({
   page,
 }) => {
-  await page.goto(`${process.env.DRAWER_SOURCE_URL || "http://127.0.0.1:18545"}/?example=drawers`)
+  await page.goto(
+    `${process.env.DRAWER_SOURCE_URL || `http://127.0.0.1:${ports.dev}`}/?example=drawers`,
+  )
   const result = await page.evaluate(async () => {
     const modulePath = "/tests/fixtures/drawer-lifecycle.tsx"
     const harness = await import(modulePath)

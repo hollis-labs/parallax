@@ -776,7 +776,7 @@
   },
   "archiveMembersEqualInstalled": true,
   "installedExtraFiles": [],
-  "sourceSnapshot": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0091/.scratch/nil-radial/kit-source-fa096cd2ffd2",
+  "sourceSnapshot": "$HOME/dev/hollis-labs/worktrees/parallax/CW-20261010-0091/.scratch/nil-radial/kit-source-fa096cd2ffd2",
   "lockSha256": "b201a8294c1bb9e8b412aef544d9a0a2d4b895b3884476aa795e6988ee3c82b3",
   "admission": "background roots only; active stack layer or visible unregistered overlay veto; future in-dialog contract separate",
   "authorEvidence": "owned raw hook/browser/gate logs and screenshots; CDP touch and synthetic composition labelled",

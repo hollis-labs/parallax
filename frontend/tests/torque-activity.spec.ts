@@ -7,6 +7,7 @@ import {
 import { torqueSource } from "../src/examples/torque/reference"
 import { operationsModel } from "../src/operations/model"
 import { sourceDataset, timelineFrames } from "../src/playback/model"
+import { ports } from "./ports"
 
 const source = torqueSource("populated", "torque-16w")
 const at = (scenario = "populated", cutoff = source.clock, query = "") =>
@@ -114,7 +115,7 @@ test("native Activity reference renders discrete paint, exact UTC operands and f
 test("native UTC disclosures recent keyboard detail and fresh StrictMode callbacks preserve admitted lifecycle", async ({
   page,
 }, info) => {
-  await page.goto("http://127.0.0.1:18545" + entry + "&cutoff=2026-10-04T14:15:15Z")
+  await page.goto(`http://127.0.0.1:${ports.dev}` + entry + "&cutoff=2026-10-04T14:15:15Z")
   const activity = page.getByRole("region", { name: "Torque reference Activity", exact: true })
   await activity.getByText("Exact recorded pulse intervals", { exact: true }).click()
   await page.keyboard.press("Tab")
@@ -320,7 +321,7 @@ test("portable Activity states distinguish known empty unknown coverage degraded
     ["activity-unknown", "external-review"],
   ]) {
     await page.goto(
-      `http://127.0.0.1:18542/iframe.html?id=app-examples-torque--${story}&viewMode=story`,
+      `http://127.0.0.1:${ports.storybook}/iframe.html?id=app-examples-torque--${story}&viewMode=story`,
     )
     await expect(page.locator(".torque-page")).toContainText(text)
     if (story === "activity-empty")

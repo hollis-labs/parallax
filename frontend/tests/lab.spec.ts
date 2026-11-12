@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test"
+import { ports } from "./ports"
 
 test("coherent detail, transient intent, reset, themes and scroll", async ({ page }, testInfo) => {
   await page.goto("/")
@@ -61,9 +62,15 @@ test("real admitted widget/panel follows controlled scenario and uses reviewed b
   const dto = await registry.json()
   expect(dto.registry_version).toBe(2)
   expect(dto.plugins.ops.bundle_version).toMatch(/^sha256:/)
-  expect((await page.request.post("/api/scenario", { data: { action: "save" } })).status()).toBe(
-    405,
-  )
+  const write = await page.request.post("/api/scenario", {
+    data: { action: "save" },
+    headers: { "X-Requested-With": "parallax-e2e" },
+  })
+  expect(write.status()).toBe(403)
+  expect((await write.json()).code).toBe("route_not_mapped")
+  const bare = await page.request.post("/api/scenario", { data: { action: "save" } })
+  expect(bare.status()).toBe(403)
+  expect((await bare.json()).code).toBe("csrf")
 })
 test("theme colors change and authored error is not reported healthy", async ({ page }) => {
   await page.goto("/")
@@ -102,7 +109,7 @@ test("plugin unload preserves embedded view and shareable review URL", async ({ 
 })
 test("built Storybook uses the same controlled fixed-clock records", async ({ page }) => {
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=operations-fixed-activity--populated&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=operations-fixed-activity--populated&viewMode=story`,
   )
   await expect(page.getByText("24-hour execution pulse")).toBeVisible()
   await expect(page.getByText("8 recorded starts")).toBeVisible()
@@ -206,7 +213,7 @@ test("portable operations stories inspect the same graph without an API", async 
       apiRequests.push(request.url())
   })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=operations-controlled-views--mission-control&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=operations-controlled-views--mission-control&viewMode=story`,
   )
   await expect(page.getByText("14-day run volume", { exact: true })).toBeVisible()
   await page
@@ -216,7 +223,7 @@ test("portable operations stories inspect the same graph without an API", async 
   await expect(page.getByText("Session messages", { exact: true })).toBeVisible()
   expect(apiRequests).toEqual([])
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=operations-controlled-views--unavailable&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=operations-controlled-views--unavailable&viewMode=story`,
   )
   await expect(page.getByText("Resource unavailable", { exact: true })).toBeVisible()
 })

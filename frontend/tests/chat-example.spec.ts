@@ -1,4 +1,5 @@
 import { expect, type Locator, test } from "@playwright/test"
+import { ports } from "./ports"
 
 const entry = "/?example=chat&theme=p4-white&mode=light"
 async function captured(locator: Locator, key: string) {
@@ -143,7 +144,7 @@ test("finite native history preserves anchor and jump latest while authored prev
 test("current selected card annotation overlay and held ignored-abort outcomes retire on edit prior session and reset", async ({
   page,
 }, info) => {
-  await page.goto("http://127.0.0.1:18545" + entry)
+  await page.goto(`http://127.0.0.1:${ports.dev}` + entry)
   await page.getByRole("button", { name: "Inspect inspect candidate", exact: true }).click()
   await expect(
     page.getByRole("dialog", { name: "Card response candidate", exact: true }),
@@ -275,7 +276,7 @@ test("same fullscreen portable shell states are API-free and honest about empty 
     "unknown-card",
   ]) {
     await page.goto(
-      `http://127.0.0.1:18542/iframe.html?id=app-examples-chat--${story}&viewMode=story`,
+      `http://127.0.0.1:${ports.storybook}/iframe.html?id=app-examples-chat--${story}&viewMode=story`,
     )
     await expect(page.locator(".chat-example")).toBeVisible()
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)

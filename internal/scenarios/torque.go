@@ -38,7 +38,7 @@ type TorqueReference struct {
 	Attribution         string             `json:"attribution"`
 }
 
-// This separate profile never changes the records-8/80 generators or their dependent joins.
+// GenerateTorque is a separate profile: it never changes the records-8/80 generators or their dependent joins.
 func GenerateTorque() (Scenario, TorqueReference) {
 	s := GenerateProfile(96)
 	clock, _ := time.Parse(time.RFC3339, s.Clock)
@@ -317,7 +317,7 @@ func WriteTorque(graphPath, referencePath string) error {
 		if e != nil {
 			return e
 		}
-		if e = os.WriteFile(path, append(b, '\n'), 0644); e != nil {
+		if e = os.WriteFile(path, append(b, '\n'), 0o600); e != nil {
 			return e
 		}
 	}

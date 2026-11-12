@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test"
 import { operationsModel } from "../src/operations/model"
 import { sourceDataset, timelineFrames } from "../src/playback/model"
 import { widgetModel, widgetStates } from "../src/widgets/model"
+import { ports } from "./ports"
 
 test("widget buckets use admitted receipts preserve null positions and same-unit partitions", () => {
   for (const scenario of ["populated", "large", "empty", "permission-denied"])
@@ -120,6 +121,7 @@ test("actual widget normalized paint geometry denominator and recent keyboard in
   })
   page.on("pageerror", (e) => errors.push(e.message))
   await page.goto("/?view=Widgets&theme=p4-white&mode=light")
+  await page.getByRole("navigation", { name: "Application navigation" }).waitFor()
   await geometry(page)
   await expect(page.getByTestId("widget-actual-peak")).toHaveText("2")
   const circles = page.locator(".widget-gallery svg circle[stroke]")
@@ -247,6 +249,7 @@ test("narrow dark long list and portable fixed-prefix widgets preserve bounds an
   page,
 }, info) => {
   await page.goto("/?view=Widgets&theme=p1-green-phosphor&mode=dark")
+  await page.getByRole("navigation", { name: "Application navigation" }).waitFor()
   await page.getByLabel("Widget state").selectOption("long")
   await page.getByLabel("Widget layout").selectOption("stack")
   await page.setViewportSize({ width: 390, height: 844 })
@@ -271,7 +274,7 @@ test("narrow dark long list and portable fixed-prefix widgets preserve bounds an
     if (/\/(api|plugins)\//.test(r.url())) api.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=widgets-recorded-review--partial-prefix&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=widgets-recorded-review--partial-prefix&viewMode=story`,
   )
   await expect(page.getByTestId("widget-cutoff")).toHaveText("2026-10-04T14:14:15Z")
   await expect(page.getByTestId("widget-spark").locator('[aria-hidden="true"]>div')).toHaveCount(2)
@@ -280,7 +283,7 @@ test("narrow dark long list and portable fixed-prefix widgets preserve bounds an
   await expect(page.getByTestId("widget-spark").locator('[aria-hidden="true"]>div')).toHaveCount(2)
   await expect(page.getByText(/future gaps do not erase the covered leading prefix/)).toBeVisible()
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=widgets-recorded-review--before-window&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=widgets-recorded-review--before-window&viewMode=story`,
   )
   await expect(page.getByTestId("widget-spark")).toHaveCount(0)
   await expect(page.getByTestId("widget-actual-peak")).toHaveText("Unavailable")

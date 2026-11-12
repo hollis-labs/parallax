@@ -1,0 +1,21 @@
+# Parallax on Substrate. The manifest is the shell: modules and config.
+# Secure by default: the auth guard enforces, and the app is its own identity provider.
+app: parallax
+variant: app-host
+profiles: [minimal]
+frontend: { contributions: app.ui.json }
+modules:
+  add: [auth, database, identity, cli]
+config:
+  logging: { level: info, format: text }
+  httphost: { addr: "127.0.0.1:18441" }
+  # The two paths below are defaults: a relative path is anchored in the data directory (XDG data
+  # home, or PARALLAX_DATA_DIR) by the AfterConfig hook in cmd/parallax/config.go; an absolute path
+  # from the SUBSTRATE_CONFIG override is kept.
+  database:
+    sqlite: { path: parallax.db }
+  auth: { mode: enforce }
+  identity: { key_file: identity-signing.key, session_ttl: 12h }
+  # The app's own block (internal/settings). Extra Host names served behind a local TLS proxy; also
+  # set identity.trusted_proxy in the override file.
+  parallax: { allowed_hosts: [] }

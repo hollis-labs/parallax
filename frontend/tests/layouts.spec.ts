@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test"
+import { ports } from "./ports"
 
 test("shared list/table/split/drawer keep selection and one body owner", async ({ page }, info) => {
   await page.goto("/?view=Layouts&scenario=large")
@@ -110,7 +111,7 @@ test("comparison plugins and portable layouts reuse records without business req
     if (r.url().includes("/api/") || r.url().includes("/plugins/")) api.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=layouts-controlled-comparison--split&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=layouts-controlled-comparison--split&viewMode=story`,
   )
   await page.getByRole("button", { name: /Review gateway permission.*TASK-001/ }).click()
   await expect(page.getByLabel("Comparison selected record")).toContainText("SESSION-001")

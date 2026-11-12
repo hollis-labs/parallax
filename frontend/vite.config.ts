@@ -42,7 +42,7 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: {
-    // `make ui-dev` proxies same-origin /api calls to `make run` on 127.0.0.1:18441.
+    // `make ui-dev` proxies same-origin /api calls to `make run` on 127.0.0.1:18441 (PARALLAX_PROXY_URL overrides).
     proxy: {
       "/api": reviewProxy,
       "/plugins": reviewProxy,

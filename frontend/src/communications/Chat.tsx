@@ -329,11 +329,11 @@ function ReviewSession({
           <p>{wireKind}</p>
           <p>
             {resolution.ok
-              ? `available · ${resolution.binding.rendererId} · ${resolution.binding.trustClass} · ${resolution.binding.entry}`
+              ? `available · ${resolution.binding.rendererId} · ${resolution.binding.isolation} · ${resolution.binding.entry}`
               : `${resolution.code} · ${resolution.reason}`}
           </p>
           <p className="muted">
-            Host-local fixture rows resolved through design-bindings0.1.0. No dynamic renderer
+            Host-local fixture rows resolved through design-bindings0.2.0. No dynamic renderer
             imports or real server envelope claim.
           </p>
         </div>

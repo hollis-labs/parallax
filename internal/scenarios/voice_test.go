@@ -40,9 +40,9 @@ func TestVoiceFixturesAndMedia(t *testing.T) {
 	}
 	for name, mutate := range map[string]func(*Voice){"wrong chat": func(s *Voice) { s.Clips[0].ChatID = "CHAT-003" }, "wrong span": func(s *Voice) { s.Clips[0].SpanID = "SPAN-TOOL-003" }, "future": func(s *Voice) { s.Clips[0].RecordedAt = "2027-01-01T00:00:00Z" }, "media hash": func(s *Voice) { s.Clips[0].SHA256 = "invalid" }, "remote asset": func(s *Voice) { s.Clips[0].Asset = "https://example.invalid/audio.wav" }, "overlap": func(s *Voice) { s.Clips[0].Segments[1].StartSecond = 1 }, "out of bounds": func(s *Voice) { s.Clips[0].Segments[0].EndSecond = 99 }, "oversize text": func(s *Voice) { s.Clips[0].Segments[0].Text = strings.Repeat("x", 513) }, "missing provenance": func(s *Voice) { s.Clips[0].License = "" }} {
 		t.Run(name, func(t *testing.T) {
-			copy := GenerateVoice()
-			mutate(&copy)
-			if ValidateVoice(copy) == nil {
+			fixture := GenerateVoice()
+			mutate(&fixture)
+			if ValidateVoice(fixture) == nil {
 				t.Fatal("invalid voice accepted")
 			}
 		})
@@ -51,7 +51,9 @@ func TestVoiceFixturesAndMedia(t *testing.T) {
 
 func TestToneFadeOutAndSilence(t *testing.T) {
 	b := GenerateTone(1, 80)
-	sample := func(frame int) int16 { return int16(binary.LittleEndian.Uint16(b[44+frame*2:])) }
+	sample := func(frame int) int16 {
+		return int16(binary.LittleEndian.Uint16(b[44+frame*2:])) //nolint:gosec // reinterpret PCM sample bits
+	}
 	// Frame6745 is immediately inside the 256-frame fade-out. It must not
 	// jump to zero as the earlier incorrect subtraction did.
 	if sample(6745) == 0 {

@@ -26,7 +26,7 @@ For a cheap provenance replay without building a kit:
 
 ```sh
 python3 scripts/nil-example-provenance.py \
-  --kit-repo /home/chrispian/dev/hollis-labs/libs/design-kit
+  --kit-repo $HOME/dev/hollis-labs/libs/design-kit
 ```
 
 The script reads the exact accepted Git heads, archives, package pins, lock and

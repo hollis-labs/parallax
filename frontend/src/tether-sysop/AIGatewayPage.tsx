@@ -2007,7 +2007,7 @@ export function AIGatewayPage({
             <h1 className="tether-ai-caption">Tether AI Gateway</h1>
             <span className="tether-ai-specimen-badge">Specimen</span>
           </div>
-          <div className="tether-ai-catalog-root">/home/chrispian/.tether/catalog</div>
+          <div className="tether-ai-catalog-root">/srv/example/.tether/catalog</div>
         </div>
 
         {showIdentityLinks && (

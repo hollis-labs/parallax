@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test"
+import { ports } from "./ports"
 
 test.describe("Tether Sysop AI Gateway Recreation", () => {
   test("route /?example=tether&screen=ai loads standard AI gateway with summary cards and tabs", async ({
@@ -11,7 +12,7 @@ test.describe("Tether Sysop AI Gateway Recreation", () => {
     const header = page.locator("header.tether-ai-header")
     await expect(header).toBeVisible()
     await expect(header.getByText("Tether AI Gateway", { exact: true })).toBeVisible()
-    await expect(header.getByText("/home/chrispian/.tether/catalog", { exact: true })).toBeVisible()
+    await expect(header.getByText("/srv/example/.tether/catalog", { exact: true })).toBeVisible()
 
     // Status badge (reachable -> done)
     const statusBadge = header.locator(".dash-status-badge")
@@ -925,8 +926,8 @@ test.describe("Tether Sysop AI Gateway Recreation", () => {
   }) => {
     const sourceBase =
       process.env.TETHER_AI_SOURCE_URL ||
-      (baseURL?.includes(":18541")
-        ? "http://127.0.0.1:18545"
+      (baseURL?.includes(`:${ports.backend}`)
+        ? `http://127.0.0.1:${ports.dev}`
         : baseURL?.includes(":19021")
           ? "http://127.0.0.1:19025"
           : baseURL || "http://127.0.0.1:19025")

@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test"
+import { ports } from "./ports"
 
 const entry = "/?example=administration&theme=p4-white&mode=light"
 test("administration directory typing routes native profile roles permissions and current principal remain distinct", async ({
@@ -80,7 +81,7 @@ test("desired settings native readonly provenance preserves source locks restart
 test("StrictMode local account draft inspection releases without changing principal and page retirement refuses old producers", async ({
   page,
 }, info) => {
-  await page.goto("http://127.0.0.1:18545" + entry + "&page=account&user=USER-003")
+  await page.goto(`http://127.0.0.1:${ports.dev}` + entry + "&page=account&user=USER-003")
   await page.getByLabel("Display name", { exact: true }).fill("Local alias candidate")
   const save = page.getByRole("button", { name: "Save profile", exact: true })
   await save.click()
@@ -269,7 +270,7 @@ test("all fullscreen administration stories remain API-free with honest blocked 
     "retained-degraded",
   ]) {
     await page.goto(
-      `http://127.0.0.1:18542/iframe.html?id=app-examples-administration--${story}&viewMode=story`,
+      `http://127.0.0.1:${ports.storybook}/iframe.html?id=app-examples-administration--${story}&viewMode=story`,
     )
     await expect(page.locator(".administration-example")).toBeVisible()
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)

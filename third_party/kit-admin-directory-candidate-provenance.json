@@ -5,7 +5,7 @@
   "archive": "hollis-labs-kit-admin-0.1.0-cw0007-directory-0665dff2.tgz",
   "sha256": "0665dff2f27844717f16035ff2baf7c9205182a211ed3f2bb02b7b8a7b776513",
   "baseline_source_commit": "cd3a90b16866548d6226c910e48f6f54177a3a40",
-  "upstream_checkout": "/home/chrispian/dev/hollis-labs/libs/design-kit",
+  "upstream_checkout": "$HOME/dev/hollis-labs/libs/design-kit",
   "source_files": {
     "src/index.ts": "6bb6ab04aa99f6ae984d95bdd3022cc0bc8a38a9a17260d8951e05fe1a66b661",
     "src/directory.tsx": "983b956879c13a8934aea0b49a250645d0c4ccd69365f5e23afeb772f17113f2",

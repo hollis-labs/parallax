@@ -6,7 +6,7 @@
   },
   "note": "Tracked manifest snapshot records source files commit e588485; separate final head/tree/ancestor receipt generated directly from git via replay.",
   "files": {
-    "docs/reader-detail-replay.py": "88f1b9b4215d1a9aa90c2475a5e9c3eb1442655d591a23d26134b634d8d44dbc",
+    "docs/reader-detail-replay.py": "3c768fdf47982afbddd75fba8a33f8ae55717a9bcd0f225c22c8b8943c98851c",
     "docs/reader-example.md": "cfbb1dfaa99e237c784df9fcdba578e58c71386118a431d8ade9660042458a9a",
     "docs/reader-owner-questions.md": "8d232c475481aa26534e0960caa772329aeeb9ba588ebc75cfb1a980e3cf3faf",
     "frontend/reader-lifecycle.html": "945f5b11d4cb0fef25193d7d83dfcb52d606c66b3dd110e5aec958c21f742631",
@@ -30,7 +30,7 @@
     "frontend/src/examples/reader/renderers/VideoRenderer.tsx": "3540175c39e2a52e5981d10f97fcb91e33486db7b35f31b52016ad2df4f65ff1",
     "frontend/src/examples/reader/renderers/index.ts": "cbe4c961080b081cd8a010f7870c071f742f8737357630442e0a154067c9b9bd",
     "frontend/src/examples/reader/renderers/media.ts": "009e82e766c265d1b8a195a4b3b21c61bb5ca78e5e82fa66327d5d84f55a7ece",
-    "frontend/src/fixtures/reader-example.json": "b64517481a3df8be8ba01fa60a9c7b57105859fdfc12d824dd44a3043760bfad",
+    "frontend/src/fixtures/reader-example.json": "9083f375f6e0a0058324dd54b523bdb5c8dc88c946a150eac4c5b562d2f81eaf",
     "frontend/tests/reader-detail-custody.spec.ts": "4e6b055380fe675f7ac377b557e49b9f0fa81977cd2030073cd88283904d4815",
     "frontend/tests/reader-detail.spec.ts": "db78d7e966f532f1bd6a7a69bbe7f2eecbdc6be9013d19753459fc8289e17000"
   },

@@ -23,6 +23,7 @@ import { DirectoryReview } from "./directory-review/Review"
 import { EventLedger } from "./event-ledger/Ledger"
 import { EvidenceInspector } from "./evidence/Inspector"
 import { EvidenceStates } from "./evidence-states/Review"
+import { SignOutButton } from "./identity/SignOut"
 import { Comparison, type Layout, layouts } from "./layouts/Comparison"
 import { Navigation, type NavigationMode } from "./layouts/Navigation"
 import { ObservationLab } from "./observability/Lab"
@@ -475,6 +476,7 @@ export function App() {
             >
               Review Workbench
             </Button>
+            <SignOutButton />
             {asideEnabled && asideCollapsed && (
               <Button
                 size="sm"

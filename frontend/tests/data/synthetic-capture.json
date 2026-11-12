@@ -1,0 +1,2950 @@
+{
+  "version": "parallax-capture/v1",
+  "capturedAt": "2026-10-18T16:00:00.000Z",
+  "sources": {
+    "torque": {
+      "origin": "https://torque.example.test",
+      "tasks": {
+        "path": "/api/v1/tasks?limit=50",
+        "capturedAt": "2026-10-18T16:00:00.000Z",
+        "items": [
+          {
+            "id": "CW-20261001-0001",
+            "title": "Align filter bar spacing",
+            "status": "doing",
+            "priority": 1,
+            "manual": true,
+            "kind": "task",
+            "executor": "codex",
+            "project_id": "proj-console",
+            "epic_id": "epic-board",
+            "sprint_id": null,
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-01T08:00:00.000Z",
+            "updated_at": "2026-10-13T06:00:00.000Z",
+            "tags": [],
+            "metadata": {
+              "tether_workstream_id": "ws-001",
+              "tether_workstream_status": "active"
+            }
+          },
+          {
+            "id": "CW-20261001-0002",
+            "title": "Document narrow layout wrapping",
+            "status": "todo",
+            "priority": 2,
+            "manual": false,
+            "kind": "task",
+            "executor": "claude",
+            "project_id": "proj-platform",
+            "epic_id": "epic-fleet",
+            "sprint_id": "sprint-01",
+            "parent_id": null,
+            "collection_id": "coll-reading-list",
+            "collection_name": "Reading list",
+            "added_to_collections_at": "2026-10-02T09:07:00.000Z",
+            "created_at": "2026-10-02T09:07:00.000Z",
+            "updated_at": "2026-10-14T09:11:00.000Z",
+            "tags": [
+              {
+                "name": "ui",
+                "slug": "ui",
+                "color": "blue"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0003",
+            "title": "Audit dialog close behaviour",
+            "status": "review",
+            "priority": 3,
+            "manual": false,
+            "kind": "task",
+            "executor": "",
+            "project_id": "proj-docs",
+            "epic_id": "epic-docs",
+            "sprint_id": null,
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": "2026-10-03T10:14:00.000Z",
+            "created_at": "2026-10-03T10:14:00.000Z",
+            "updated_at": "2026-10-15T12:22:00.000Z",
+            "tags": [
+              {
+                "name": "docs",
+                "slug": "docs",
+                "color": "green"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0004",
+            "title": "Refactor agent timeline labels",
+            "status": "queued",
+            "priority": 4,
+            "manual": false,
+            "kind": "task",
+            "executor": "codex",
+            "project_id": "proj-console",
+            "epic_id": null,
+            "sprint_id": "sprint-02",
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-04T11:21:00.000Z",
+            "updated_at": "2026-10-16T15:33:00.000Z",
+            "tags": [
+              {
+                "name": "ui",
+                "slug": "ui",
+                "color": "blue"
+              },
+              {
+                "name": "a11y",
+                "slug": "a11y",
+                "color": "orange"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0005",
+            "title": "Tighten empty state wording",
+            "status": "backlog",
+            "priority": 1,
+            "manual": false,
+            "kind": "task",
+            "executor": "claude",
+            "project_id": "proj-platform",
+            "epic_id": "epic-fleet",
+            "sprint_id": null,
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-05T12:28:00.000Z",
+            "updated_at": "2026-10-17T18:44:00.000Z",
+            "tags": [
+              {
+                "name": "ops",
+                "slug": "ops",
+                "color": "gray"
+              }
+            ],
+            "metadata": {
+              "tether_workstream_id": "ws-002",
+              "tether_workstream_status": "active"
+            }
+          },
+          {
+            "id": "CW-20261001-0006",
+            "title": "Prototype session table sort",
+            "status": "done",
+            "priority": 2,
+            "manual": true,
+            "kind": "task",
+            "executor": "",
+            "project_id": "proj-docs",
+            "epic_id": "epic-docs",
+            "sprint_id": "sprint-01",
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-06T13:35:00.000Z",
+            "updated_at": "2026-10-18T07:55:00.000Z",
+            "tags": [],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0007",
+            "title": "Review team seat editor",
+            "status": "blocked",
+            "priority": 3,
+            "manual": false,
+            "kind": "task",
+            "executor": "codex",
+            "project_id": "proj-console",
+            "epic_id": "epic-board",
+            "sprint_id": null,
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-07T08:42:00.000Z",
+            "updated_at": "2026-10-13T10:06:00.000Z",
+            "tags": [
+              {
+                "name": "ui",
+                "slug": "ui",
+                "color": "blue"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0008",
+            "title": "Split overview trend chart",
+            "status": "paused",
+            "priority": 4,
+            "manual": false,
+            "kind": "task",
+            "executor": "claude",
+            "project_id": "proj-platform",
+            "epic_id": null,
+            "sprint_id": "sprint-02",
+            "parent_id": null,
+            "collection_id": "coll-reading-list",
+            "collection_name": "Reading list",
+            "added_to_collections_at": "2026-10-08T09:49:00.000Z",
+            "created_at": "2026-10-08T09:49:00.000Z",
+            "updated_at": "2026-10-14T13:17:00.000Z",
+            "tags": [
+              {
+                "name": "docs",
+                "slug": "docs",
+                "color": "green"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0009",
+            "title": "Measure keyboard focus order",
+            "status": "done",
+            "priority": 1,
+            "manual": false,
+            "kind": "internal",
+            "executor": "",
+            "project_id": "proj-docs",
+            "epic_id": "epic-docs",
+            "sprint_id": null,
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": "2026-10-09T10:56:00.000Z",
+            "created_at": "2026-10-09T10:56:00.000Z",
+            "updated_at": "2026-10-15T16:28:00.000Z",
+            "tags": [
+              {
+                "name": "ui",
+                "slug": "ui",
+                "color": "blue"
+              },
+              {
+                "name": "a11y",
+                "slug": "a11y",
+                "color": "orange"
+              }
+            ],
+            "metadata": {
+              "tether_workstream_id": "ws-003",
+              "tether_workstream_status": "active"
+            }
+          },
+          {
+            "id": "CW-20261001-0010",
+            "title": "Simplify tag colour tokens",
+            "status": "todo",
+            "priority": 2,
+            "manual": false,
+            "kind": "task",
+            "executor": "codex",
+            "project_id": "proj-console",
+            "epic_id": "epic-board",
+            "sprint_id": "sprint-01",
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-10T11:03:00.000Z",
+            "updated_at": "2026-10-16T19:39:00.000Z",
+            "tags": [
+              {
+                "name": "ops",
+                "slug": "ops",
+                "color": "gray"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0011",
+            "title": "Verify planner board ages",
+            "status": "doing",
+            "priority": 3,
+            "manual": true,
+            "kind": "task",
+            "executor": "claude",
+            "project_id": "proj-platform",
+            "epic_id": "epic-fleet",
+            "sprint_id": null,
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-11T12:10:00.000Z",
+            "updated_at": "2026-10-17T08:50:00.000Z",
+            "tags": [],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0012",
+            "title": "Sketch export button states",
+            "status": "backlog",
+            "priority": 4,
+            "manual": false,
+            "kind": "task",
+            "executor": "",
+            "project_id": "proj-docs",
+            "epic_id": null,
+            "sprint_id": "sprint-02",
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-12T13:17:00.000Z",
+            "updated_at": "2026-10-18T11:01:00.000Z",
+            "tags": [
+              {
+                "name": "ui",
+                "slug": "ui",
+                "color": "blue"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0013",
+            "title": "Align filter bar spacing",
+            "status": "doing",
+            "priority": 1,
+            "manual": false,
+            "kind": "task",
+            "executor": "codex",
+            "project_id": "proj-console",
+            "epic_id": "epic-board",
+            "sprint_id": null,
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-01T08:24:00.000Z",
+            "updated_at": "2026-10-13T14:12:00.000Z",
+            "tags": [
+              {
+                "name": "docs",
+                "slug": "docs",
+                "color": "green"
+              }
+            ],
+            "metadata": {
+              "tether_workstream_id": "ws-001",
+              "tether_workstream_status": "active"
+            }
+          },
+          {
+            "id": "CW-20261001-0014",
+            "title": "Document narrow layout wrapping",
+            "status": "todo",
+            "priority": 2,
+            "manual": false,
+            "kind": "task",
+            "executor": "claude",
+            "project_id": "proj-platform",
+            "epic_id": "epic-fleet",
+            "sprint_id": "sprint-01",
+            "parent_id": null,
+            "collection_id": "coll-reading-list",
+            "collection_name": "Reading list",
+            "added_to_collections_at": "2026-10-02T09:31:00.000Z",
+            "created_at": "2026-10-02T09:31:00.000Z",
+            "updated_at": "2026-10-14T17:23:00.000Z",
+            "tags": [
+              {
+                "name": "ui",
+                "slug": "ui",
+                "color": "blue"
+              },
+              {
+                "name": "a11y",
+                "slug": "a11y",
+                "color": "orange"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0015",
+            "title": "Audit dialog close behaviour",
+            "status": "review",
+            "priority": 3,
+            "manual": false,
+            "kind": "task",
+            "executor": "",
+            "project_id": "proj-docs",
+            "epic_id": "epic-docs",
+            "sprint_id": null,
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": "2026-10-03T10:38:00.000Z",
+            "created_at": "2026-10-03T10:38:00.000Z",
+            "updated_at": "2026-10-15T06:34:00.000Z",
+            "tags": [
+              {
+                "name": "ops",
+                "slug": "ops",
+                "color": "gray"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0016",
+            "title": "Refactor agent timeline labels",
+            "status": "queued",
+            "priority": 4,
+            "manual": true,
+            "kind": "task",
+            "executor": "codex",
+            "project_id": "proj-console",
+            "epic_id": null,
+            "sprint_id": "sprint-02",
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-04T11:45:00.000Z",
+            "updated_at": "2026-10-16T09:45:00.000Z",
+            "tags": [],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0017",
+            "title": "Tighten empty state wording",
+            "status": "backlog",
+            "priority": 1,
+            "manual": false,
+            "kind": "task",
+            "executor": "claude",
+            "project_id": "proj-platform",
+            "epic_id": "epic-fleet",
+            "sprint_id": null,
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-05T12:52:00.000Z",
+            "updated_at": "2026-10-17T12:56:00.000Z",
+            "tags": [
+              {
+                "name": "ui",
+                "slug": "ui",
+                "color": "blue"
+              }
+            ],
+            "metadata": {
+              "tether_workstream_id": "ws-002",
+              "tether_workstream_status": "active"
+            }
+          },
+          {
+            "id": "CW-20261001-0018",
+            "title": "Prototype session table sort",
+            "status": "done",
+            "priority": 2,
+            "manual": false,
+            "kind": "internal",
+            "executor": "",
+            "project_id": "proj-docs",
+            "epic_id": "epic-docs",
+            "sprint_id": "sprint-01",
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-06T13:59:00.000Z",
+            "updated_at": "2026-10-18T15:07:00.000Z",
+            "tags": [
+              {
+                "name": "docs",
+                "slug": "docs",
+                "color": "green"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0019",
+            "title": "Review team seat editor",
+            "status": "blocked",
+            "priority": 3,
+            "manual": false,
+            "kind": "task",
+            "executor": "codex",
+            "project_id": "proj-console",
+            "epic_id": "epic-board",
+            "sprint_id": null,
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-07T08:06:00.000Z",
+            "updated_at": "2026-10-13T18:18:00.000Z",
+            "tags": [
+              {
+                "name": "ui",
+                "slug": "ui",
+                "color": "blue"
+              },
+              {
+                "name": "a11y",
+                "slug": "a11y",
+                "color": "orange"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0020",
+            "title": "Split overview trend chart",
+            "status": "paused",
+            "priority": 4,
+            "manual": false,
+            "kind": "task",
+            "executor": "claude",
+            "project_id": "proj-platform",
+            "epic_id": null,
+            "sprint_id": "sprint-02",
+            "parent_id": null,
+            "collection_id": "coll-reading-list",
+            "collection_name": "Reading list",
+            "added_to_collections_at": "2026-10-08T09:13:00.000Z",
+            "created_at": "2026-10-08T09:13:00.000Z",
+            "updated_at": "2026-10-14T07:29:00.000Z",
+            "tags": [
+              {
+                "name": "ops",
+                "slug": "ops",
+                "color": "gray"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0021",
+            "title": "Measure keyboard focus order",
+            "status": "done",
+            "priority": 1,
+            "manual": true,
+            "kind": "task",
+            "executor": "",
+            "project_id": "proj-docs",
+            "epic_id": "epic-docs",
+            "sprint_id": null,
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": "2026-10-09T10:20:00.000Z",
+            "created_at": "2026-10-09T10:20:00.000Z",
+            "updated_at": "2026-10-15T10:40:00.000Z",
+            "tags": [],
+            "metadata": {
+              "tether_workstream_id": "ws-003",
+              "tether_workstream_status": "active"
+            }
+          },
+          {
+            "id": "CW-20261001-0022",
+            "title": "Simplify tag colour tokens",
+            "status": "todo",
+            "priority": 2,
+            "manual": false,
+            "kind": "task",
+            "executor": "codex",
+            "project_id": "proj-console",
+            "epic_id": "epic-board",
+            "sprint_id": "sprint-01",
+            "parent_id": "CW-20261001-0002",
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-10T11:27:00.000Z",
+            "updated_at": "2026-10-16T13:51:00.000Z",
+            "tags": [
+              {
+                "name": "ui",
+                "slug": "ui",
+                "color": "blue"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0023",
+            "title": "Verify planner board ages",
+            "status": "doing",
+            "priority": 3,
+            "manual": false,
+            "kind": "task",
+            "executor": "claude",
+            "project_id": "proj-platform",
+            "epic_id": "epic-fleet",
+            "sprint_id": null,
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-11T12:34:00.000Z",
+            "updated_at": "2026-10-17T16:02:00.000Z",
+            "tags": [
+              {
+                "name": "docs",
+                "slug": "docs",
+                "color": "green"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0024",
+            "title": "Sketch export button states",
+            "status": "backlog",
+            "priority": 4,
+            "manual": false,
+            "kind": "task",
+            "executor": "",
+            "project_id": "proj-docs",
+            "epic_id": null,
+            "sprint_id": "sprint-02",
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-12T13:41:00.000Z",
+            "updated_at": "2026-10-18T19:13:00.000Z",
+            "tags": [
+              {
+                "name": "ui",
+                "slug": "ui",
+                "color": "blue"
+              },
+              {
+                "name": "a11y",
+                "slug": "a11y",
+                "color": "orange"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0025",
+            "title": "Align filter bar spacing",
+            "status": "doing",
+            "priority": 1,
+            "manual": false,
+            "kind": "task",
+            "executor": "codex",
+            "project_id": "proj-console",
+            "epic_id": "epic-board",
+            "sprint_id": null,
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-01T08:48:00.000Z",
+            "updated_at": "2026-10-13T08:24:00.000Z",
+            "tags": [
+              {
+                "name": "ops",
+                "slug": "ops",
+                "color": "gray"
+              }
+            ],
+            "metadata": {
+              "tether_workstream_id": "ws-001",
+              "tether_workstream_status": "active"
+            }
+          },
+          {
+            "id": "CW-20261001-0026",
+            "title": "Document narrow layout wrapping",
+            "status": "todo",
+            "priority": 2,
+            "manual": true,
+            "kind": "task",
+            "executor": "claude",
+            "project_id": "proj-platform",
+            "epic_id": "epic-fleet",
+            "sprint_id": "sprint-01",
+            "parent_id": null,
+            "collection_id": "coll-reading-list",
+            "collection_name": "Reading list",
+            "added_to_collections_at": "2026-10-02T09:55:00.000Z",
+            "created_at": "2026-10-02T09:55:00.000Z",
+            "updated_at": "2026-10-14T11:35:00.000Z",
+            "tags": [],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0027",
+            "title": "Audit dialog close behaviour",
+            "status": "review",
+            "priority": 3,
+            "manual": false,
+            "kind": "internal",
+            "executor": "",
+            "project_id": "proj-docs",
+            "epic_id": "epic-docs",
+            "sprint_id": null,
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": "2026-10-03T10:02:00.000Z",
+            "created_at": "2026-10-03T10:02:00.000Z",
+            "updated_at": "2026-10-15T14:46:00.000Z",
+            "tags": [
+              {
+                "name": "ui",
+                "slug": "ui",
+                "color": "blue"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0028",
+            "title": "Refactor agent timeline labels",
+            "status": "queued",
+            "priority": 4,
+            "manual": false,
+            "kind": "task",
+            "executor": "codex",
+            "project_id": "proj-console",
+            "epic_id": null,
+            "sprint_id": "sprint-02",
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-04T11:09:00.000Z",
+            "updated_at": "2026-10-16T17:57:00.000Z",
+            "tags": [
+              {
+                "name": "docs",
+                "slug": "docs",
+                "color": "green"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0029",
+            "title": "Tighten empty state wording",
+            "status": "backlog",
+            "priority": 1,
+            "manual": false,
+            "kind": "task",
+            "executor": "claude",
+            "project_id": "proj-platform",
+            "epic_id": "epic-fleet",
+            "sprint_id": null,
+            "parent_id": "CW-20261001-0009",
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-05T12:16:00.000Z",
+            "updated_at": "2026-10-17T06:08:00.000Z",
+            "tags": [
+              {
+                "name": "ui",
+                "slug": "ui",
+                "color": "blue"
+              },
+              {
+                "name": "a11y",
+                "slug": "a11y",
+                "color": "orange"
+              }
+            ],
+            "metadata": {
+              "tether_workstream_id": "ws-002",
+              "tether_workstream_status": "active"
+            }
+          },
+          {
+            "id": "CW-20261001-0030",
+            "title": "Prototype session table sort",
+            "status": "done",
+            "priority": 2,
+            "manual": false,
+            "kind": "task",
+            "executor": "",
+            "project_id": "proj-docs",
+            "epic_id": "epic-docs",
+            "sprint_id": "sprint-01",
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-06T13:23:00.000Z",
+            "updated_at": "2026-10-18T09:19:00.000Z",
+            "tags": [
+              {
+                "name": "ops",
+                "slug": "ops",
+                "color": "gray"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0031",
+            "title": "Review team seat editor",
+            "status": "blocked",
+            "priority": 3,
+            "manual": true,
+            "kind": "task",
+            "executor": "codex",
+            "project_id": "proj-console",
+            "epic_id": "epic-board",
+            "sprint_id": null,
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-07T08:30:00.000Z",
+            "updated_at": "2026-10-13T12:30:00.000Z",
+            "tags": [],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0032",
+            "title": "Split overview trend chart",
+            "status": "paused",
+            "priority": 4,
+            "manual": false,
+            "kind": "task",
+            "executor": "claude",
+            "project_id": "proj-platform",
+            "epic_id": null,
+            "sprint_id": "sprint-02",
+            "parent_id": null,
+            "collection_id": "coll-reading-list",
+            "collection_name": "Reading list",
+            "added_to_collections_at": "2026-10-08T09:37:00.000Z",
+            "created_at": "2026-10-08T09:37:00.000Z",
+            "updated_at": "2026-10-14T15:41:00.000Z",
+            "tags": [
+              {
+                "name": "ui",
+                "slug": "ui",
+                "color": "blue"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0033",
+            "title": "Measure keyboard focus order",
+            "status": "done",
+            "priority": 1,
+            "manual": false,
+            "kind": "task",
+            "executor": "",
+            "project_id": "proj-docs",
+            "epic_id": "epic-docs",
+            "sprint_id": null,
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": "2026-10-09T10:44:00.000Z",
+            "created_at": "2026-10-09T10:44:00.000Z",
+            "updated_at": "2026-10-15T18:52:00.000Z",
+            "tags": [
+              {
+                "name": "docs",
+                "slug": "docs",
+                "color": "green"
+              }
+            ],
+            "metadata": {
+              "tether_workstream_id": "ws-003",
+              "tether_workstream_status": "active"
+            }
+          },
+          {
+            "id": "CW-20261001-0034",
+            "title": "Simplify tag colour tokens",
+            "status": "todo",
+            "priority": 2,
+            "manual": false,
+            "kind": "task",
+            "executor": "codex",
+            "project_id": "proj-console",
+            "epic_id": "epic-board",
+            "sprint_id": "sprint-01",
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-10T11:51:00.000Z",
+            "updated_at": "2026-10-16T07:03:00.000Z",
+            "tags": [
+              {
+                "name": "ui",
+                "slug": "ui",
+                "color": "blue"
+              },
+              {
+                "name": "a11y",
+                "slug": "a11y",
+                "color": "orange"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0035",
+            "title": "Verify planner board ages",
+            "status": "doing",
+            "priority": 3,
+            "manual": false,
+            "kind": "task",
+            "executor": "claude",
+            "project_id": "proj-platform",
+            "epic_id": "epic-fleet",
+            "sprint_id": null,
+            "parent_id": null,
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-11T12:58:00.000Z",
+            "updated_at": "2026-10-17T10:14:00.000Z",
+            "tags": [
+              {
+                "name": "ops",
+                "slug": "ops",
+                "color": "gray"
+              }
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "CW-20261001-0036",
+            "title": "Sketch export button states",
+            "status": "backlog",
+            "priority": 4,
+            "manual": true,
+            "kind": "internal",
+            "executor": "",
+            "project_id": "proj-docs",
+            "epic_id": null,
+            "sprint_id": "sprint-02",
+            "parent_id": "CW-20261001-0016",
+            "collection_id": null,
+            "collection_name": null,
+            "added_to_collections_at": null,
+            "created_at": "2026-10-12T13:05:00.000Z",
+            "updated_at": "2026-10-18T13:25:00.000Z",
+            "tags": [],
+            "metadata": {}
+          }
+        ],
+        "meta": {
+          "has_more": true,
+          "total": 112,
+          "returned": 36,
+          "limit": 50
+        }
+      },
+      "scopes": [
+        {
+          "kind": "project",
+          "id": "proj-console",
+          "name": "Example Console"
+        },
+        {
+          "kind": "project",
+          "id": "proj-platform",
+          "name": "Example Platform"
+        },
+        {
+          "kind": "project",
+          "id": "proj-docs",
+          "name": "Example Docs"
+        },
+        {
+          "kind": "epic",
+          "id": "epic-board",
+          "name": "Review board polish"
+        },
+        {
+          "kind": "epic",
+          "id": "epic-fleet",
+          "name": "Fleet visibility"
+        },
+        {
+          "kind": "epic",
+          "id": "epic-docs",
+          "name": "Reference docs"
+        },
+        {
+          "kind": "sprint",
+          "id": "sprint-01",
+          "name": "Sprint 2026-10-A"
+        },
+        {
+          "kind": "sprint",
+          "id": "sprint-02",
+          "name": "Sprint 2026-10-B"
+        }
+      ],
+      "planner": {
+        "origin": "https://torque.example.test",
+        "capturedAt": "2026-10-18T16:00:00.000Z",
+        "lists": {
+          "priorities": {
+            "path": "/api/v1/planner/priorities",
+            "capturedAt": "2026-10-18T16:00:00.000Z",
+            "items": [
+              {
+                "id": "pri-001",
+                "title": "Ship the review board",
+                "status": "active",
+                "tldr": "Ship the review board (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "owner": "team-a",
+                "rank": 1,
+                "comment_count": 3
+              },
+              {
+                "id": "pri-002",
+                "title": "Stabilise browser tests",
+                "status": "planned",
+                "tldr": "Stabilise browser tests (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "owner": "team-b",
+                "rank": 2,
+                "comment_count": 3
+              },
+              {
+                "id": "pri-003",
+                "title": "Trim bundle size",
+                "status": "planned",
+                "tldr": "Trim bundle size (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "owner": "team-a",
+                "rank": 3,
+                "comment_count": 3
+              },
+              {
+                "id": "pri-004",
+                "title": "Retire legacy export",
+                "status": "done",
+                "tldr": "Retire legacy export (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "owner": "team-b",
+                "rank": 4,
+                "comment_count": 3
+              }
+            ],
+            "sourceTotal": 4,
+            "truncated": false
+          },
+          "workstreams": {
+            "path": "/api/v1/planner/workstreams",
+            "capturedAt": "2026-10-18T16:00:00.000Z",
+            "items": [
+              {
+                "id": "ws-001",
+                "title": "Dashboard polish",
+                "status": "active",
+                "tldr": "Dashboard polish (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "owner": "team-a",
+                "phase": "build",
+                "next_step": "Review spacing tokens",
+                "tags": ["ui"],
+                "task_counts": {
+                  "doing": 2,
+                  "todo": 3,
+                  "done": 4
+                },
+                "comment_count": 2
+              },
+              {
+                "id": "ws-002",
+                "title": "Docs sweep",
+                "status": "active",
+                "tldr": "Docs sweep (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "owner": "team-b",
+                "phase": "review",
+                "blockers": ["Waiting for a reviewer"],
+                "task_counts": {
+                  "review": 2,
+                  "todo": 1
+                },
+                "comment_count": 2
+              },
+              {
+                "id": "ws-003",
+                "title": "Fleet timeline",
+                "status": "planned",
+                "tldr": "Fleet timeline (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "owner": "team-a",
+                "phase": "design",
+                "task_counts": {
+                  "backlog": 5
+                },
+                "comment_count": 2
+              },
+              {
+                "id": "ws-004",
+                "title": "Legacy cleanup",
+                "status": "paused",
+                "tldr": "Legacy cleanup (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "owner": "team-b",
+                "phase": "build",
+                "comment_count": 2
+              },
+              {
+                "id": "ws-005",
+                "title": "Export format v2",
+                "status": "done",
+                "tldr": "Export format v2 (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "owner": "team-a",
+                "phase": "landed",
+                "comment_count": 2
+              }
+            ],
+            "sourceTotal": 5,
+            "truncated": false
+          },
+          "roadmap": {
+            "path": "/api/v1/planner/roadmap",
+            "capturedAt": "2026-10-18T16:00:00.000Z",
+            "items": [
+              {
+                "id": "road-001",
+                "title": "Read-only review mode",
+                "status": "planned",
+                "tldr": "Read-only review mode (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "area": "review",
+                "horizon": "now",
+                "mvp": true,
+                "comment_count": 0
+              },
+              {
+                "id": "road-002",
+                "title": "Team seat editor",
+                "status": "exploring",
+                "tldr": "Team seat editor (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "area": "builder",
+                "horizon": "next",
+                "comment_count": 0
+              },
+              {
+                "id": "road-003",
+                "title": "Overview trends",
+                "status": "planned",
+                "tldr": "Overview trends (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "area": "ops",
+                "horizon": "later",
+                "comment_count": 0
+              },
+              {
+                "id": "road-004",
+                "title": "Dark theme tokens",
+                "status": "done",
+                "tldr": "Dark theme tokens (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "area": "ui",
+                "horizon": "now",
+                "mvp": true,
+                "comment_count": 0
+              }
+            ],
+            "sourceTotal": 4,
+            "truncated": false
+          },
+          "ideas": {
+            "path": "/api/v1/planner/ideas",
+            "capturedAt": "2026-10-18T16:00:00.000Z",
+            "items": [
+              {
+                "id": "idea-001",
+                "title": "Keyboard cheat sheet",
+                "status": "idea",
+                "tldr": "Keyboard cheat sheet (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "kind": "feature",
+                "discuss_in": "ws-001",
+                "comment_count": 0
+              },
+              {
+                "id": "idea-002",
+                "title": "Session diff view",
+                "status": "exploring",
+                "tldr": "Session diff view (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "kind": "feature",
+                "comment_count": 0
+              },
+              {
+                "id": "idea-003",
+                "title": "Planner digest email",
+                "status": "promoted",
+                "tldr": "Planner digest email (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "kind": "process",
+                "comment_count": 0
+              }
+            ],
+            "sourceTotal": 3,
+            "truncated": false
+          },
+          "decisions": {
+            "path": "/api/v1/planner/decisions",
+            "capturedAt": "2026-10-18T16:00:00.000Z",
+            "items": [
+              {
+                "id": "dec-001",
+                "title": "Adopt the shared table component",
+                "status": "needs-decision",
+                "tldr": "Adopt the shared table component (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "area": "ui",
+                "date": "2026-10-14",
+                "comment_count": 3
+              },
+              {
+                "id": "dec-002",
+                "title": "Keep captures read-only",
+                "status": "decided",
+                "tldr": "Keep captures read-only (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "area": "review",
+                "date": "2026-10-08",
+                "comment_count": 3
+              },
+              {
+                "id": "dec-003",
+                "title": "Defer the export redesign",
+                "status": "discussing",
+                "tldr": "Defer the export redesign (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "area": "ops",
+                "date": "2026-10-16",
+                "comment_count": 3
+              }
+            ],
+            "sourceTotal": 9,
+            "truncated": true
+          },
+          "risks": {
+            "path": "/api/v1/planner/risks",
+            "capturedAt": "2026-10-18T16:00:00.000Z",
+            "items": [
+              {
+                "id": "risk-001",
+                "title": "Fixture drift from live data",
+                "status": "open",
+                "tldr": "Fixture drift from live data (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "kind": "quality",
+                "severity": "medium",
+                "comment_count": 0
+              },
+              {
+                "id": "risk-002",
+                "title": "Slow table on large lists",
+                "status": "mitigating",
+                "tldr": "Slow table on large lists (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "kind": "performance",
+                "severity": "low",
+                "comment_count": 0
+              },
+              {
+                "id": "risk-003",
+                "title": "Stale reference doc",
+                "status": "closed",
+                "tldr": "Stale reference doc (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "kind": "docs",
+                "severity": "low",
+                "comment_count": 0
+              }
+            ],
+            "sourceTotal": 3,
+            "truncated": false
+          },
+          "inbox": {
+            "path": "/api/v1/planner/inbox",
+            "capturedAt": "2026-10-18T16:00:00.000Z",
+            "items": [
+              {
+                "id": "inb-001",
+                "title": "Typo in settings label",
+                "status": "new",
+                "tldr": "Typo in settings label (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "kind": "bug",
+                "comment_count": 3
+              },
+              {
+                "id": "inb-002",
+                "title": "Request: pin a view",
+                "status": "triaged",
+                "tldr": "Request: pin a view (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "kind": "request",
+                "comment_count": 3
+              },
+              {
+                "id": "inb-003",
+                "title": "Duplicate of an older report",
+                "status": "dismissed",
+                "tldr": "Duplicate of an older report (synthetic summary).",
+                "created": "2026-10-03T09:00:00.000Z",
+                "updated": "2026-10-15T11:00:00.000Z",
+                "kind": "bug",
+                "comment_count": 3
+              }
+            ],
+            "sourceTotal": 3,
+            "truncated": false
+          }
+        },
+        "boards": {
+          "curated": {
+            "path": "/api/v1/planner/board?scope=curated&limit=50",
+            "capturedAt": "2026-10-18T16:00:00.000Z",
+            "body": {
+              "scope": "curated",
+              "generated_at": "2026-10-18T16:00:00.000Z",
+              "recent_hours": 72,
+              "active_hours": 24,
+              "limit": 50,
+              "sections": {
+                "in_flight": [
+                  {
+                    "id": "ws-001",
+                    "title": "Dashboard polish",
+                    "status": "active",
+                    "tldr": "Dashboard polish (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "owner": "team-a",
+                    "phase": "build",
+                    "next_step": "Review spacing tokens",
+                    "source": "workstream",
+                    "tags": ["ui"],
+                    "task_counts": {
+                      "doing": 2,
+                      "todo": 3,
+                      "done": 4
+                    },
+                    "comment_count": 2
+                  },
+                  {
+                    "id": "ws-002",
+                    "title": "Docs sweep",
+                    "status": "active",
+                    "tldr": "Docs sweep (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "owner": "team-b",
+                    "phase": "review",
+                    "source": "workstream",
+                    "blockers": ["Waiting for a reviewer"],
+                    "task_counts": {
+                      "review": 2,
+                      "todo": 1
+                    },
+                    "comment_count": 2
+                  },
+                  {
+                    "id": "CW-20261001-0001",
+                    "title": "Align filter bar spacing",
+                    "status": "doing",
+                    "tldr": "Align filter bar spacing (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "source": "task",
+                    "workstream": "Dashboard polish",
+                    "comment_count": 0
+                  }
+                ],
+                "pre_flight": [
+                  {
+                    "id": "ws-003",
+                    "title": "Fleet timeline",
+                    "status": "planned",
+                    "tldr": "Fleet timeline (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "owner": "team-a",
+                    "phase": "design",
+                    "source": "workstream",
+                    "task_counts": {
+                      "backlog": 5
+                    },
+                    "comment_count": 2
+                  },
+                  {
+                    "id": "CW-20261001-0002",
+                    "title": "Document session table sort",
+                    "status": "queued",
+                    "tldr": "Document session table sort (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "source": "task",
+                    "workstream": "Fleet timeline",
+                    "comment_count": 0
+                  }
+                ],
+                "landed": [
+                  {
+                    "id": "ws-005",
+                    "title": "Export format v2",
+                    "status": "done",
+                    "tldr": "Export format v2 (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "owner": "team-a",
+                    "phase": "landed",
+                    "source": "workstream",
+                    "comment_count": 2
+                  },
+                  {
+                    "id": "CW-20261001-0006",
+                    "title": "Verify export button states",
+                    "status": "done",
+                    "tldr": "Verify export button states (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "source": "task",
+                    "workstream": "Export format v2",
+                    "comment_count": 0
+                  }
+                ],
+                "holds": [
+                  {
+                    "id": "dec-001",
+                    "title": "Adopt the shared table component",
+                    "status": "needs-decision",
+                    "tldr": "Adopt the shared table component (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "area": "ui",
+                    "date": "2026-10-14",
+                    "source": "decision",
+                    "comment_count": 3
+                  },
+                  {
+                    "id": "inb-001",
+                    "title": "Typo in settings label",
+                    "status": "new",
+                    "tldr": "Typo in settings label (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "kind": "bug",
+                    "source": "inbox",
+                    "comment_count": 3
+                  },
+                  {
+                    "id": "risk-001",
+                    "title": "Fixture drift from live data",
+                    "status": "open",
+                    "tldr": "Fixture drift from live data (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "kind": "quality",
+                    "severity": "medium",
+                    "source": "risk",
+                    "comment_count": 0
+                  },
+                  {
+                    "id": "ws-004",
+                    "title": "Legacy cleanup",
+                    "status": "paused",
+                    "tldr": "Legacy cleanup (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "owner": "team-b",
+                    "phase": "build",
+                    "source": "workstream",
+                    "comment_count": 2
+                  }
+                ]
+              },
+              "totals": {
+                "in_flight": 5,
+                "pre_flight": 7,
+                "landed": 12,
+                "holds": 6
+              },
+              "notices": ["Curated view: only workstreams tagged board are shown."]
+            }
+          },
+          "all": {
+            "path": "/api/v1/planner/board?scope=all&limit=50",
+            "capturedAt": "2026-10-18T16:00:00.000Z",
+            "body": {
+              "scope": "all",
+              "generated_at": "2026-10-18T16:00:00.000Z",
+              "recent_hours": 72,
+              "active_hours": 24,
+              "limit": 50,
+              "sections": {
+                "in_flight": [
+                  {
+                    "id": "ws-001",
+                    "title": "Dashboard polish",
+                    "status": "active",
+                    "tldr": "Dashboard polish (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "owner": "team-a",
+                    "phase": "build",
+                    "next_step": "Review spacing tokens",
+                    "source": "workstream",
+                    "tags": ["ui"],
+                    "task_counts": {
+                      "doing": 2,
+                      "todo": 3,
+                      "done": 4
+                    },
+                    "comment_count": 2
+                  },
+                  {
+                    "id": "ws-002",
+                    "title": "Docs sweep",
+                    "status": "active",
+                    "tldr": "Docs sweep (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "owner": "team-b",
+                    "phase": "review",
+                    "source": "workstream",
+                    "blockers": ["Waiting for a reviewer"],
+                    "task_counts": {
+                      "review": 2,
+                      "todo": 1
+                    },
+                    "comment_count": 2
+                  },
+                  {
+                    "id": "CW-20261001-0001",
+                    "title": "Align filter bar spacing",
+                    "status": "doing",
+                    "tldr": "Align filter bar spacing (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "source": "task",
+                    "workstream": "Dashboard polish",
+                    "comment_count": 0
+                  }
+                ],
+                "pre_flight": [
+                  {
+                    "id": "ws-003",
+                    "title": "Fleet timeline",
+                    "status": "planned",
+                    "tldr": "Fleet timeline (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "owner": "team-a",
+                    "phase": "design",
+                    "source": "workstream",
+                    "task_counts": {
+                      "backlog": 5
+                    },
+                    "comment_count": 2
+                  },
+                  {
+                    "id": "CW-20261001-0002",
+                    "title": "Document session table sort",
+                    "status": "queued",
+                    "tldr": "Document session table sort (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "source": "task",
+                    "workstream": "Fleet timeline",
+                    "comment_count": 0
+                  }
+                ],
+                "landed": [
+                  {
+                    "id": "ws-005",
+                    "title": "Export format v2",
+                    "status": "done",
+                    "tldr": "Export format v2 (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "owner": "team-a",
+                    "phase": "landed",
+                    "source": "workstream",
+                    "comment_count": 2
+                  },
+                  {
+                    "id": "CW-20261001-0006",
+                    "title": "Verify export button states",
+                    "status": "done",
+                    "tldr": "Verify export button states (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "source": "task",
+                    "workstream": "Export format v2",
+                    "comment_count": 0
+                  }
+                ],
+                "holds": [
+                  {
+                    "id": "dec-001",
+                    "title": "Adopt the shared table component",
+                    "status": "needs-decision",
+                    "tldr": "Adopt the shared table component (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "area": "ui",
+                    "date": "2026-10-14",
+                    "source": "decision",
+                    "comment_count": 3
+                  },
+                  {
+                    "id": "inb-001",
+                    "title": "Typo in settings label",
+                    "status": "new",
+                    "tldr": "Typo in settings label (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "kind": "bug",
+                    "source": "inbox",
+                    "comment_count": 3
+                  },
+                  {
+                    "id": "risk-001",
+                    "title": "Fixture drift from live data",
+                    "status": "open",
+                    "tldr": "Fixture drift from live data (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "kind": "quality",
+                    "severity": "medium",
+                    "source": "risk",
+                    "comment_count": 0
+                  },
+                  {
+                    "id": "ws-004",
+                    "title": "Legacy cleanup",
+                    "status": "paused",
+                    "tldr": "Legacy cleanup (synthetic summary).",
+                    "created": "2026-10-03T09:00:00.000Z",
+                    "updated": "2026-10-15T11:00:00.000Z",
+                    "owner": "team-b",
+                    "phase": "build",
+                    "source": "workstream",
+                    "comment_count": 2
+                  }
+                ]
+              },
+              "totals": {
+                "in_flight": 5,
+                "pre_flight": 7,
+                "landed": 12,
+                "holds": 6
+              },
+              "notices": []
+            }
+          }
+        }
+      }
+    },
+    "tether": {
+      "origin": "https://tether.example.test",
+      "overview": {
+        "path": "/api/overview",
+        "capturedAt": "2026-10-18T16:00:00.000Z",
+        "body": {
+          "sessions": {
+            "total": 8,
+            "running": 2,
+            "ended": 6,
+            "success_pct": 83,
+            "failure_pct": 16,
+            "avg_seconds": 13800,
+            "recent_24h": 7,
+            "by_state": [
+              {
+                "name": "ended",
+                "count": 6
+              },
+              {
+                "name": "running",
+                "count": 2
+              }
+            ],
+            "by_provider": [
+              {
+                "name": "claude",
+                "count": 3
+              },
+              {
+                "name": "codex",
+                "count": 3
+              },
+              {
+                "name": "agy",
+                "count": 2
+              }
+            ],
+            "by_project": [
+              {
+                "name": "parallax",
+                "count": 4
+              },
+              {
+                "name": "tangent",
+                "count": 2
+              },
+              {
+                "name": "tether",
+                "count": 2
+              }
+            ],
+            "trend": [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1]
+          },
+          "tool_calls": {
+            "total": 30,
+            "ok": 29,
+            "errors": 1,
+            "success_pct": 96,
+            "p50_ms": 210,
+            "p95_ms": 1450,
+            "avg_ms": 461,
+            "recent_1h": 2,
+            "slow_calls": 4,
+            "sessions": 7,
+            "top_tools": [
+              {
+                "name": "fixture.inspect",
+                "count": 5
+              },
+              {
+                "name": "git_status",
+                "count": 5
+              },
+              {
+                "name": "read_file",
+                "count": 5
+              },
+              {
+                "name": "replace_file_content",
+                "count": 5
+              },
+              {
+                "name": "run_command",
+                "count": 5
+              }
+            ],
+            "top_errors": [
+              {
+                "name": "run_command",
+                "count": 1
+              }
+            ],
+            "by_server": [
+              {
+                "name": "mcp-fs",
+                "count": 8
+              },
+              {
+                "name": "native",
+                "count": 8
+              },
+              {
+                "name": "mcp-eval",
+                "count": 7
+              },
+              {
+                "name": "mcp-git",
+                "count": 7
+              }
+            ],
+            "latency": [
+              {
+                "name": "10-99ms",
+                "count": 10
+              },
+              {
+                "name": "100-499ms",
+                "count": 12
+              },
+              {
+                "name": "500-999ms",
+                "count": 4
+              },
+              {
+                "name": ">=1s",
+                "count": 4
+              }
+            ],
+            "trend": [2, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 2]
+          },
+          "messages": {
+            "total": 24,
+            "unread": 0,
+            "archived": 4,
+            "recent_24h": 24,
+            "by_kind": [
+              {
+                "name": "turn",
+                "count": 14
+              },
+              {
+                "name": "notice",
+                "count": 8
+              },
+              {
+                "name": "system",
+                "count": 2
+              }
+            ],
+            "by_scope": [
+              {
+                "name": "agent",
+                "count": 15
+              },
+              {
+                "name": "user",
+                "count": 6
+              },
+              {
+                "name": "group",
+                "count": 3
+              }
+            ],
+            "trend": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+          },
+          "events": {
+            "total": 64,
+            "recent_1h": 3,
+            "latest_seq": 64,
+            "by_scope": [
+              {
+                "name": "agent",
+                "count": 13
+              },
+              {
+                "name": "router",
+                "count": 13
+              },
+              {
+                "name": "session",
+                "count": 13
+              },
+              {
+                "name": "system",
+                "count": 13
+              },
+              {
+                "name": "mesh",
+                "count": 12
+              }
+            ],
+            "by_kind": [
+              {
+                "name": "agent.registered",
+                "count": 4
+              },
+              {
+                "name": "catalog.reloaded",
+                "count": 4
+              },
+              {
+                "name": "route.resolved",
+                "count": 4
+              },
+              {
+                "name": "agent.heartbeat",
+                "count": 3
+              },
+              {
+                "name": "agent.skill_invoked",
+                "count": 3
+              },
+              {
+                "name": "agent.state_changed",
+                "count": 3
+              },
+              {
+                "name": "budget.evaluated",
+                "count": 3
+              },
+              {
+                "name": "cache.hit",
+                "count": 3
+              }
+            ],
+            "trend": [3, 3, 2, 3, 3, 2, 3, 2, 3, 3, 2, 3, 3, 2, 3, 2, 3, 3, 2, 3, 3, 2, 3, 3]
+          },
+          "ai": {
+            "configured_providers": 4,
+            "enabled_providers": 3,
+            "routes": 6,
+            "requests": 140,
+            "successes": 136,
+            "errors": 4,
+            "budget_rejections": 1,
+            "input_tokens": 384000,
+            "output_tokens": 96000,
+            "estimated_cost_usd": 1.84,
+            "by_provider": [
+              {
+                "name": "anthropic",
+                "count": 70
+              },
+              {
+                "name": "google",
+                "count": 45
+              },
+              {
+                "name": "openai",
+                "count": 25
+              }
+            ],
+            "by_model": [
+              {
+                "name": "claude-3-7-sonnet",
+                "count": 55
+              },
+              {
+                "name": "gemini-2.0-flash",
+                "count": 30
+              },
+              {
+                "name": "gpt-4o",
+                "count": 20
+              },
+              {
+                "name": "claude-3-5-haiku",
+                "count": 15
+              },
+              {
+                "name": "gemini-2.5-pro",
+                "count": 15
+              },
+              {
+                "name": "gpt-4o-mini",
+                "count": 5
+              }
+            ],
+            "by_event_type": [
+              {
+                "name": "completion",
+                "count": 95
+              },
+              {
+                "name": "chat",
+                "count": 40
+              },
+              {
+                "name": "embeddings",
+                "count": 5
+              },
+              {
+                "name": "refusal",
+                "count": 1
+              },
+              {
+                "name": "budget_rejection",
+                "count": 1
+              }
+            ],
+            "trend": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+          },
+          "catalog": {
+            "projects": 4,
+            "agents": 8,
+            "providers": 4,
+            "launches": 8
+          },
+          "health": {
+            "status": "ok",
+            "catalog_root": "Path omitted from review capture"
+          }
+        }
+      },
+      "sessions": {
+        "path": "/api/sessions",
+        "capturedAt": "2026-10-18T16:00:00.000Z",
+        "items": [
+          {
+            "id": "sess-0002-example",
+            "launch_id": "launch-002",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-002",
+            "provider_id": "codex",
+            "provider_kind": "cli",
+            "state": "completed",
+            "created_at": "2026-10-11T07:01:00.000Z",
+            "updated_at": "2026-10-18T14:58:00.000Z",
+            "ended_at": "2026-10-17T14:58:00.000Z"
+          },
+          {
+            "id": "sess-0016-example",
+            "launch_id": "launch-004",
+            "project_id": "example-platform",
+            "logical_agent_id": "agent-004",
+            "provider_id": "codex",
+            "provider_kind": "cli",
+            "state": "failed",
+            "created_at": "2026-10-17T07:15:00.000Z",
+            "updated_at": "2026-10-18T14:44:00.000Z"
+          },
+          {
+            "id": "sess-0030-example",
+            "launch_id": "launch-006",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-006",
+            "provider_id": "codex",
+            "provider_kind": "cli",
+            "state": "completed",
+            "created_at": "2026-10-15T07:29:00.000Z",
+            "updated_at": "2026-10-18T14:30:00.000Z"
+          },
+          {
+            "id": "sess-0004-example",
+            "launch_id": "launch-004",
+            "project_id": "example-platform",
+            "logical_agent_id": "agent-004",
+            "provider_id": "codex",
+            "provider_kind": "cli",
+            "state": "failed",
+            "created_at": "2026-10-13T07:03:00.000Z",
+            "updated_at": "2026-10-18T12:56:00.000Z"
+          },
+          {
+            "id": "sess-0018-example",
+            "launch_id": "launch-006",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-006",
+            "provider_id": "codex",
+            "provider_kind": "cli",
+            "state": "completed",
+            "created_at": "2026-10-11T07:17:00.000Z",
+            "updated_at": "2026-10-18T12:42:00.000Z"
+          },
+          {
+            "id": "sess-0032-example",
+            "launch_id": "launch-002",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-002",
+            "provider_id": "codex",
+            "provider_kind": "cli",
+            "state": "completed",
+            "created_at": "2026-10-17T07:31:00.000Z",
+            "updated_at": "2026-10-18T12:28:00.000Z",
+            "ended_at": "2026-10-17T14:28:00.000Z"
+          },
+          {
+            "id": "sess-0006-example",
+            "launch_id": "launch-006",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-006",
+            "provider_id": "codex",
+            "provider_kind": "cli",
+            "state": "completed",
+            "created_at": "2026-10-15T07:05:00.000Z",
+            "updated_at": "2026-10-18T10:54:00.000Z"
+          },
+          {
+            "id": "sess-0020-example",
+            "launch_id": "launch-002",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-002",
+            "provider_id": "codex",
+            "provider_kind": "cli",
+            "state": "completed",
+            "created_at": "2026-10-13T07:19:00.000Z",
+            "updated_at": "2026-10-18T10:40:00.000Z",
+            "ended_at": "2026-10-17T14:40:00.000Z"
+          },
+          {
+            "id": "sess-0034-example",
+            "launch_id": "launch-004",
+            "project_id": "example-platform",
+            "logical_agent_id": "agent-004",
+            "provider_id": "codex",
+            "provider_kind": "cli",
+            "state": "failed",
+            "created_at": "2026-10-11T07:33:00.000Z",
+            "updated_at": "2026-10-18T10:26:00.000Z"
+          },
+          {
+            "id": "sess-0008-example",
+            "launch_id": "launch-002",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-002",
+            "provider_id": "codex",
+            "provider_kind": "cli",
+            "state": "completed",
+            "created_at": "2026-10-17T07:07:00.000Z",
+            "updated_at": "2026-10-18T08:52:00.000Z",
+            "ended_at": "2026-10-17T14:52:00.000Z"
+          },
+          {
+            "id": "sess-0022-example",
+            "launch_id": "launch-004",
+            "project_id": "example-platform",
+            "logical_agent_id": "agent-004",
+            "provider_id": "codex",
+            "provider_kind": "cli",
+            "state": "failed",
+            "created_at": "2026-10-15T07:21:00.000Z",
+            "updated_at": "2026-10-18T08:38:00.000Z"
+          },
+          {
+            "id": "sess-0036-example",
+            "launch_id": "launch-006",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-006",
+            "provider_id": "codex",
+            "provider_kind": "cli",
+            "state": "completed",
+            "created_at": "2026-10-13T07:35:00.000Z",
+            "updated_at": "2026-10-18T08:24:00.000Z"
+          },
+          {
+            "id": "sess-0010-example",
+            "launch_id": "launch-004",
+            "project_id": "example-platform",
+            "logical_agent_id": "agent-004",
+            "provider_id": "codex",
+            "provider_kind": "cli",
+            "state": "failed",
+            "created_at": "2026-10-11T07:09:00.000Z",
+            "updated_at": "2026-10-18T06:50:00.000Z"
+          },
+          {
+            "id": "sess-0024-example",
+            "launch_id": "launch-006",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-006",
+            "provider_id": "codex",
+            "provider_kind": "cli",
+            "state": "completed",
+            "created_at": "2026-10-17T07:23:00.000Z",
+            "updated_at": "2026-10-18T06:36:00.000Z"
+          },
+          {
+            "id": "sess-0012-example",
+            "launch_id": "launch-006",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-006",
+            "provider_id": "codex",
+            "provider_kind": "cli",
+            "state": "completed",
+            "created_at": "2026-10-13T07:11:00.000Z",
+            "updated_at": "2026-10-18T04:48:00.000Z"
+          },
+          {
+            "id": "sess-0026-example",
+            "launch_id": "launch-002",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-002",
+            "provider_id": "codex",
+            "provider_kind": "cli",
+            "state": "completed",
+            "created_at": "2026-10-11T07:25:00.000Z",
+            "updated_at": "2026-10-18T04:34:00.000Z",
+            "ended_at": "2026-10-17T14:34:00.000Z"
+          },
+          {
+            "id": "sess-0014-example",
+            "launch_id": "launch-002",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-002",
+            "provider_id": "codex",
+            "provider_kind": "cli",
+            "state": "completed",
+            "created_at": "2026-10-15T07:13:00.000Z",
+            "updated_at": "2026-10-18T02:46:00.000Z",
+            "ended_at": "2026-10-17T14:46:00.000Z"
+          },
+          {
+            "id": "sess-0028-example",
+            "launch_id": "launch-004",
+            "project_id": "example-platform",
+            "logical_agent_id": "agent-004",
+            "provider_id": "codex",
+            "provider_kind": "cli",
+            "state": "failed",
+            "created_at": "2026-10-13T07:27:00.000Z",
+            "updated_at": "2026-10-18T02:32:00.000Z"
+          },
+          {
+            "id": "sess-0001-example",
+            "launch_id": "launch-001",
+            "project_id": "example-platform",
+            "logical_agent_id": "agent-001",
+            "provider_id": "claude",
+            "provider_kind": "cli",
+            "state": "running",
+            "created_at": "2026-10-10T07:00:00.000Z",
+            "updated_at": "2026-10-17T15:59:00.000Z"
+          },
+          {
+            "id": "sess-0015-example",
+            "launch_id": "launch-003",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-003",
+            "provider_id": "claude",
+            "provider_kind": "cli",
+            "state": "completed",
+            "created_at": "2026-10-16T07:14:00.000Z",
+            "updated_at": "2026-10-17T15:45:00.000Z",
+            "ended_at": "2026-10-17T14:45:00.000Z"
+          },
+          {
+            "id": "sess-0029-example",
+            "launch_id": "launch-005",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-005",
+            "provider_id": "claude",
+            "provider_kind": "cli",
+            "state": "detached",
+            "created_at": "2026-10-14T07:28:00.000Z",
+            "updated_at": "2026-10-17T15:31:00.000Z"
+          },
+          {
+            "id": "sess-0003-example",
+            "launch_id": "launch-003",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-003",
+            "provider_id": "claude",
+            "provider_kind": "cli",
+            "state": "completed",
+            "created_at": "2026-10-12T07:02:00.000Z",
+            "updated_at": "2026-10-17T13:57:00.000Z",
+            "ended_at": "2026-10-17T14:57:00.000Z"
+          },
+          {
+            "id": "sess-0017-example",
+            "launch_id": "launch-005",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-005",
+            "provider_id": "claude",
+            "provider_kind": "cli",
+            "state": "detached",
+            "created_at": "2026-10-10T07:16:00.000Z",
+            "updated_at": "2026-10-17T13:43:00.000Z"
+          },
+          {
+            "id": "sess-0031-example",
+            "launch_id": "launch-001",
+            "project_id": "example-platform",
+            "logical_agent_id": "agent-001",
+            "provider_id": "claude",
+            "provider_kind": "cli",
+            "state": "running",
+            "created_at": "2026-10-16T07:30:00.000Z",
+            "updated_at": "2026-10-17T13:29:00.000Z"
+          },
+          {
+            "id": "sess-0005-example",
+            "launch_id": "launch-005",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-005",
+            "provider_id": "claude",
+            "provider_kind": "cli",
+            "state": "detached",
+            "created_at": "2026-10-14T07:04:00.000Z",
+            "updated_at": "2026-10-17T11:55:00.000Z"
+          },
+          {
+            "id": "sess-0019-example",
+            "launch_id": "launch-001",
+            "project_id": "example-platform",
+            "logical_agent_id": "agent-001",
+            "provider_id": "claude",
+            "provider_kind": "cli",
+            "state": "running",
+            "created_at": "2026-10-12T07:18:00.000Z",
+            "updated_at": "2026-10-17T11:41:00.000Z"
+          },
+          {
+            "id": "sess-0033-example",
+            "launch_id": "launch-003",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-003",
+            "provider_id": "claude",
+            "provider_kind": "cli",
+            "state": "completed",
+            "created_at": "2026-10-10T07:32:00.000Z",
+            "updated_at": "2026-10-17T11:27:00.000Z",
+            "ended_at": "2026-10-17T14:27:00.000Z"
+          },
+          {
+            "id": "sess-0007-example",
+            "launch_id": "launch-001",
+            "project_id": "example-platform",
+            "logical_agent_id": "agent-001",
+            "provider_id": "claude",
+            "provider_kind": "cli",
+            "state": "running",
+            "created_at": "2026-10-16T07:06:00.000Z",
+            "updated_at": "2026-10-17T09:53:00.000Z"
+          },
+          {
+            "id": "sess-0021-example",
+            "launch_id": "launch-003",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-003",
+            "provider_id": "claude",
+            "provider_kind": "cli",
+            "state": "completed",
+            "created_at": "2026-10-14T07:20:00.000Z",
+            "updated_at": "2026-10-17T09:39:00.000Z",
+            "ended_at": "2026-10-17T14:39:00.000Z"
+          },
+          {
+            "id": "sess-0035-example",
+            "launch_id": "launch-005",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-005",
+            "provider_id": "claude",
+            "provider_kind": "cli",
+            "state": "detached",
+            "created_at": "2026-10-12T07:34:00.000Z",
+            "updated_at": "2026-10-17T09:25:00.000Z"
+          },
+          {
+            "id": "sess-0009-example",
+            "launch_id": "launch-003",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-003",
+            "provider_id": "claude",
+            "provider_kind": "cli",
+            "state": "completed",
+            "created_at": "2026-10-10T07:08:00.000Z",
+            "updated_at": "2026-10-17T07:51:00.000Z",
+            "ended_at": "2026-10-17T14:51:00.000Z"
+          },
+          {
+            "id": "sess-0023-example",
+            "launch_id": "launch-005",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-005",
+            "provider_id": "claude",
+            "provider_kind": "cli",
+            "state": "detached",
+            "created_at": "2026-10-16T07:22:00.000Z",
+            "updated_at": "2026-10-17T07:37:00.000Z"
+          },
+          {
+            "id": "sess-0011-example",
+            "launch_id": "launch-005",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-005",
+            "provider_id": "claude",
+            "provider_kind": "cli",
+            "state": "detached",
+            "created_at": "2026-10-12T07:10:00.000Z",
+            "updated_at": "2026-10-17T05:49:00.000Z"
+          },
+          {
+            "id": "sess-0025-example",
+            "launch_id": "launch-001",
+            "project_id": "example-platform",
+            "logical_agent_id": "agent-001",
+            "provider_id": "claude",
+            "provider_kind": "cli",
+            "state": "running",
+            "created_at": "2026-10-10T07:24:00.000Z",
+            "updated_at": "2026-10-17T05:35:00.000Z"
+          },
+          {
+            "id": "sess-0013-example",
+            "launch_id": "launch-001",
+            "project_id": "example-platform",
+            "logical_agent_id": "agent-001",
+            "provider_id": "claude",
+            "provider_kind": "cli",
+            "state": "running",
+            "created_at": "2026-10-14T07:12:00.000Z",
+            "updated_at": "2026-10-17T03:47:00.000Z"
+          },
+          {
+            "id": "sess-0027-example",
+            "launch_id": "launch-003",
+            "project_id": "example-console",
+            "logical_agent_id": "agent-003",
+            "provider_id": "claude",
+            "provider_kind": "cli",
+            "state": "completed",
+            "created_at": "2026-10-12T07:26:00.000Z",
+            "updated_at": "2026-10-17T03:33:00.000Z",
+            "ended_at": "2026-10-17T14:33:00.000Z"
+          }
+        ],
+        "returned": 36,
+        "sourceTotal": 48,
+        "truncated": null
+      }
+    },
+    "console": {
+      "version": "console-capture/v1",
+      "capturedAt": "2026-10-18T16:00:00.000Z",
+      "agents": {
+        "origin": "https://tachyon.example.test",
+        "path": "/api/agents",
+        "capturedAt": "2026-10-18T16:00:00.000Z",
+        "items": [
+          {
+            "id": "agent-reviewer",
+            "name": "Example Reviewer",
+            "urn": "urn:example:agent:agent-reviewer",
+            "enabled": true,
+            "roles": ["reviewer"],
+            "summary": "Reads diffs and reports findings.",
+            "skills": ["review-diff"],
+            "scopes": ["torque.read"],
+            "tools": ["mcp-fs"],
+            "permissionMode": "default",
+            "sandbox": "read-only",
+            "network": false
+          },
+          {
+            "id": "agent-builder",
+            "name": "Example Builder",
+            "urn": "urn:example:agent:agent-builder",
+            "enabled": true,
+            "roles": ["worker"],
+            "summary": "Implements scoped changes.",
+            "skills": ["build", "test"],
+            "scopes": ["torque.read", "torque.write"],
+            "tools": ["mcp-fs", "mcp-vcs"],
+            "permissionMode": "acceptEdits",
+            "sandbox": "workspace-write",
+            "network": true
+          },
+          {
+            "id": "agent-planner",
+            "name": "Example Planner",
+            "urn": "urn:example:agent:agent-planner",
+            "enabled": true,
+            "roles": ["planner"],
+            "summary": "Drafts and orders plans.",
+            "skills": ["plan"],
+            "scopes": ["torque.read"],
+            "tools": ["mcp-fs"],
+            "permissionMode": "default",
+            "sandbox": "read-only",
+            "network": false
+          },
+          {
+            "id": "agent-operator",
+            "name": "Example Operator",
+            "urn": "urn:example:agent:agent-operator",
+            "enabled": true,
+            "roles": ["operator"],
+            "summary": "Runs maintenance with full access.",
+            "skills": ["ops"],
+            "scopes": ["*"],
+            "tools": ["mcp-fs", "mcp-vcs"],
+            "permissionMode": "bypassPermissions",
+            "sandbox": "danger-full-access",
+            "network": true
+          },
+          {
+            "id": "agent-writer",
+            "name": "Example Writer",
+            "urn": "urn:example:agent:agent-writer",
+            "enabled": true,
+            "roles": ["worker"],
+            "summary": "Writes reference documentation.",
+            "skills": ["docs"],
+            "scopes": ["torque.read"],
+            "tools": ["mcp-fs"],
+            "permissionMode": "default",
+            "sandbox": "workspace-write",
+            "network": false
+          },
+          {
+            "id": "agent-retired",
+            "name": "Example Retired",
+            "urn": "urn:example:agent:agent-retired",
+            "enabled": false,
+            "roles": ["worker"],
+            "summary": "Disabled definition kept for history.",
+            "skills": [],
+            "scopes": [],
+            "tools": ["mcp-fs", "mcp-vcs"],
+            "permissionMode": "default",
+            "sandbox": "read-only",
+            "network": false
+          }
+        ],
+        "sourceTotal": 6,
+        "truncated": false
+      },
+      "launches": {
+        "origin": "https://tachyon.example.test",
+        "path": "/api/launches",
+        "capturedAt": "2026-10-18T16:00:00.000Z",
+        "items": [
+          {
+            "id": "launch-001",
+            "agent": "agent-reviewer",
+            "provider": "claude",
+            "project": "example-console",
+            "enabled": true
+          },
+          {
+            "id": "launch-002",
+            "agent": "agent-reviewer",
+            "provider": "codex",
+            "project": "example-platform",
+            "enabled": true
+          },
+          {
+            "id": "launch-003",
+            "agent": "agent-builder",
+            "provider": "codex",
+            "project": "example-console",
+            "enabled": true
+          },
+          {
+            "id": "launch-004",
+            "agent": "agent-builder",
+            "provider": "claude",
+            "project": "example-platform",
+            "enabled": true
+          },
+          {
+            "id": "launch-005",
+            "agent": "agent-planner",
+            "provider": "claude",
+            "project": "example-console",
+            "enabled": true
+          },
+          {
+            "id": "launch-006",
+            "agent": "agent-operator",
+            "provider": "codex",
+            "project": "example-platform",
+            "enabled": true
+          },
+          {
+            "id": "launch-007",
+            "agent": "agent-writer",
+            "provider": "claude",
+            "project": "example-console",
+            "enabled": true
+          },
+          {
+            "id": "launch-008",
+            "agent": "agent-retired",
+            "provider": "codex",
+            "project": "example-platform",
+            "enabled": false
+          }
+        ],
+        "sourceTotal": 8,
+        "truncated": false
+      },
+      "teams": {
+        "origin": "https://tachyon.example.test",
+        "path": "/api/teams",
+        "capturedAt": "2026-10-18T16:00:00.000Z",
+        "items": [
+          {
+            "id": "team-review",
+            "name": "Review squad",
+            "version": 1,
+            "slots": [
+              {
+                "name": "lead",
+                "role": "reviewer",
+                "required": true,
+                "min": 1,
+                "max": 1,
+                "activation": "on-demand",
+                "resolution": "pinned",
+                "definition": {
+                  "id": "agent-reviewer",
+                  "revision": "rev-3",
+                  "digest": "sha256:34b4e6de8fae"
+                }
+              },
+              {
+                "name": "scribe",
+                "role": "worker",
+                "required": true,
+                "min": 1,
+                "max": 1,
+                "activation": "on-demand",
+                "resolution": "pinned",
+                "definition": {
+                  "id": "agent-writer",
+                  "revision": "rev-3",
+                  "digest": "sha256:ce0bd39d764b"
+                }
+              }
+            ],
+            "coordinator": "lead",
+            "authority": "scoped",
+            "history": "summary"
+          },
+          {
+            "id": "team-review",
+            "name": "Review squad",
+            "version": 2,
+            "slots": [
+              {
+                "name": "lead",
+                "role": "reviewer",
+                "required": true,
+                "min": 1,
+                "max": 1,
+                "activation": "on-demand",
+                "resolution": "pinned",
+                "definition": {
+                  "id": "agent-reviewer",
+                  "revision": "rev-3",
+                  "digest": "sha256:34b4e6de8fae"
+                }
+              },
+              {
+                "name": "scribe",
+                "role": "worker",
+                "required": true,
+                "min": 1,
+                "max": 1,
+                "activation": "on-demand",
+                "resolution": "pinned",
+                "definition": {
+                  "id": "agent-writer",
+                  "revision": "rev-3",
+                  "digest": "sha256:ce0bd39d764b"
+                }
+              },
+              {
+                "name": "builder",
+                "role": "worker",
+                "required": false,
+                "min": 0,
+                "max": 2,
+                "activation": "on-demand",
+                "resolution": "pinned",
+                "definition": {
+                  "id": "agent-builder",
+                  "revision": "rev-3",
+                  "digest": "sha256:5709cb590880"
+                }
+              }
+            ],
+            "coordinator": "lead",
+            "authority": "scoped",
+            "history": "full"
+          },
+          {
+            "id": "team-delivery",
+            "name": "Delivery pair",
+            "version": 1,
+            "slots": [
+              {
+                "name": "planner",
+                "role": "planner",
+                "required": true,
+                "min": 1,
+                "max": 1,
+                "activation": "on-demand",
+                "resolution": "pinned",
+                "definition": {
+                  "id": "agent-planner",
+                  "revision": "rev-3",
+                  "digest": "sha256:bc0d103ee114"
+                }
+              },
+              {
+                "name": "builder",
+                "role": "worker",
+                "required": true,
+                "min": 1,
+                "max": 1,
+                "activation": "on-demand",
+                "resolution": "pinned",
+                "definition": {
+                  "id": "agent-builder",
+                  "revision": "rev-3",
+                  "digest": "sha256:5709cb590880"
+                }
+              }
+            ],
+            "coordinator": "planner",
+            "authority": "delegated",
+            "history": "summary"
+          }
+        ],
+        "sourceTotal": 3,
+        "truncated": false,
+        "importedAt": "2026-10-12T10:00:00.000Z"
+      },
+      "fleet": {
+        "origin": "https://tachyon.example.test",
+        "path": "/api/fleet",
+        "capturedAt": "2026-10-18T16:00:00.000Z",
+        "items": [
+          {
+            "id": "proc-101",
+            "provider": "claude",
+            "pid": 4101,
+            "sessionId": "fleet-sess-101",
+            "name": "Reviewer on dashboard",
+            "group": "Dashboard polish",
+            "workstreamId": "ws-001",
+            "state": "busy",
+            "confidence": "exact",
+            "model": "example-model-large",
+            "startedAt": "2026-10-18T08:21:00.000Z",
+            "lastActivity": "2026-10-18T15:52:00.000Z",
+            "messages": 3,
+            "kind": "chat",
+            "launchId": "launch-001",
+            "history": [
+              {
+                "at": "2026-10-18T15:30:00.000Z",
+                "kind": "seen",
+                "state": "idle"
+              },
+              {
+                "at": "2026-10-18T15:40:00.000Z",
+                "kind": "state",
+                "state": "busy"
+              }
+            ]
+          },
+          {
+            "id": "proc-102",
+            "provider": "codex",
+            "pid": 4102,
+            "sessionId": "fleet-sess-102",
+            "name": "Builder on timeline",
+            "group": "Dashboard polish",
+            "workstreamId": "ws-001",
+            "state": "idle",
+            "confidence": "exact",
+            "model": "example-model-code",
+            "startedAt": "2026-10-18T08:22:00.000Z",
+            "lastActivity": "2026-10-18T15:48:00.000Z",
+            "messages": 3,
+            "kind": "chat",
+            "launchId": "launch-004",
+            "history": [
+              {
+                "at": "2026-10-18T15:20:00.000Z",
+                "kind": "seen",
+                "state": "busy"
+              },
+              {
+                "at": "2026-10-18T15:45:00.000Z",
+                "kind": "state",
+                "state": "idle"
+              }
+            ]
+          },
+          {
+            "id": "proc-103",
+            "provider": "claude",
+            "pid": 4103,
+            "sessionId": "fleet-sess-103",
+            "name": "docs-sweep",
+            "group": "Docs sweep",
+            "workstreamId": "ws-002",
+            "state": "waiting",
+            "confidence": "exact",
+            "model": "example-model-large",
+            "startedAt": "2026-10-18T08:23:00.000Z",
+            "lastActivity": "2026-10-18T15:37:00.000Z",
+            "messages": 2,
+            "kind": "process",
+            "history": [
+              {
+                "at": "2026-10-18T15:10:00.000Z",
+                "kind": "seen",
+                "state": "busy"
+              },
+              {
+                "at": "2026-10-18T15:50:00.000Z",
+                "kind": "state",
+                "state": "waiting"
+              }
+            ]
+          },
+          {
+            "id": "proc-104",
+            "provider": "codex",
+            "pid": 4104,
+            "sessionId": "fleet-sess-104",
+            "name": "planner-board",
+            "group": "Docs sweep",
+            "workstreamId": "ws-002",
+            "state": "busy",
+            "confidence": "exact",
+            "model": "example-model-code",
+            "startedAt": "2026-10-18T08:24:00.000Z",
+            "lastActivity": "2026-10-18T15:56:00.000Z",
+            "messages": 3,
+            "kind": "process",
+            "history": [
+              {
+                "at": "2026-10-18T15:30:00.000Z",
+                "kind": "seen",
+                "state": "idle"
+              },
+              {
+                "at": "2026-10-18T15:40:00.000Z",
+                "kind": "state",
+                "state": "busy"
+              }
+            ]
+          },
+          {
+            "id": "proc-105",
+            "provider": "claude",
+            "pid": 4105,
+            "sessionId": "fleet-sess-105",
+            "name": "scratch-review",
+            "group": "scratch-review",
+            "state": "unknown",
+            "confidence": "exact",
+            "model": "example-model-large",
+            "startedAt": "2026-10-18T08:25:00.000Z",
+            "lastActivity": "2026-10-18T15:09:00.000Z",
+            "messages": 2,
+            "kind": "process"
+          },
+          {
+            "id": "proc-106",
+            "provider": "codex",
+            "pid": 4106,
+            "sessionId": "fleet-sess-106",
+            "name": "ops-maintenance",
+            "group": "ops-maintenance",
+            "state": "idle",
+            "confidence": "exact",
+            "model": "example-model-code",
+            "startedAt": "2026-10-18T08:26:00.000Z",
+            "lastActivity": "2026-10-18T15:18:00.000Z",
+            "messages": 1,
+            "kind": "process",
+            "history": [
+              {
+                "at": "2026-10-18T15:20:00.000Z",
+                "kind": "seen",
+                "state": "busy"
+              },
+              {
+                "at": "2026-10-18T15:45:00.000Z",
+                "kind": "state",
+                "state": "idle"
+              }
+            ]
+          },
+          {
+            "id": "chat:launch-005",
+            "name": "Planner standby",
+            "launchId": "launch-005",
+            "provider": "tether",
+            "sessionId": "chat-sess-005",
+            "group": "tether",
+            "kind": "chat",
+            "state": "waiting",
+            "lastActivity": "2026-10-18T15:40:00.000Z",
+            "confidence": "exact",
+            "history": [
+              {
+                "at": "2026-10-18T15:10:00.000Z",
+                "kind": "seen",
+                "state": "busy"
+              },
+              {
+                "at": "2026-10-18T15:50:00.000Z",
+                "kind": "state",
+                "state": "waiting"
+              }
+            ]
+          },
+          {
+            "id": "chat:launch-007",
+            "name": "Writer idle",
+            "launchId": "launch-007",
+            "provider": "tether",
+            "group": "tether",
+            "kind": "chat",
+            "state": "unknown",
+            "confidence": "exact"
+          }
+        ],
+        "sourceTotal": 6,
+        "rosterTotal": 4,
+        "truncated": false,
+        "roster": {
+          "origin": "https://tachyon.example.test",
+          "path": "/api/roster",
+          "capturedAt": "2026-10-18T16:00:00.000Z"
+        },
+        "observation": {
+          "method": "tachyon-page",
+          "endedAt": "2026-10-18T16:00:00.000Z"
+        }
+      }
+    }
+  },
+  "projection": "Synthetic test data, not a live capture. Invented tasks, sessions, agents and Planner items shaped like a real capture; see frontend/tests/data/README.md.",
+  "id": "c0f9bf536d4868d9"
+}

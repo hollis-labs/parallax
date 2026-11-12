@@ -7,6 +7,7 @@ import {
   normalizeView,
   storyDestination,
 } from "../src/workbench/catalog"
+import { ports } from "./ports"
 
 test("catalogue routes and available representative stories resolve without discovery", () => {
   const stories = JSON.parse(
@@ -22,21 +23,25 @@ test("catalogue routes and available representative stories resolve without disc
   expect(normalizeView("not-declared")).toBe("Activity")
   expect(normalizeView("Review Workbench")).toBe("Review Workbench")
   for (const host of [
-    "parallax.nanite.cloud",
-    "parallax.os.nanite.cloud",
-    "parallax-stories.nanite.cloud",
-    "192.168.1.195:18441",
-    "100.112.71.40:18441",
+    "parallax.example.test",
+    "parallax-os.example.test",
+    "parallax-stories.example.test",
+    "192.0.2.10:18441",
+    "198.51.100.10:18441",
   ])
     expect(storyDestination(host, destinations[0].story)).toMatch(
-      /^https:\/\/parallax-stories.nanite.cloud\/iframe.html\?/,
+      /^https:\/\/parallax-stories.example.test\/iframe.html\?/,
     )
-  for (const host of ["127.0.0.1:18541", "localhost:18545", "127.0.0.1:18542"])
-    expect(storyDestination(host, destinations[0].story)).toContain("127.0.0.1:18542")
+  for (const host of [
+    `127.0.0.1:${ports.backend}`,
+    `localhost:${ports.dev}`,
+    `127.0.0.1:${ports.storybook}`,
+  ])
+    expect(storyDestination(host, destinations[0].story)).toContain(`127.0.0.1:${ports.storybook}`)
   for (const host of ["localhost:18441", "localhost:5173"])
     expect(storyDestination(host, destinations[0].story)).toContain("localhost:18442")
-  expect(storyDestination("parallax.nanite.cloud.evil", destinations[0].story)).toBeNull()
-  expect(storyDestination("parallax.nanite.cloud", "unknown-story")).toBeNull()
+  expect(storyDestination("parallax.example.test.evil", destinations[0].story)).toBeNull()
+  expect(storyDestination("parallax.example.test", "unknown-story")).toBeNull()
 })
 test("native Workbench sequential search groups keyboard local navigation and readonly story URL remain coherent", async ({
   page,
@@ -63,7 +68,7 @@ test("native Workbench sequential search groups keyboard local navigation and re
   const link = page.getByRole("link", { name: "Portable Usage Evidence story", exact: true })
   await expect(link).toHaveAttribute(
     "href",
-    storyDestination("127.0.0.1:18541", "chat-usage-evidence--recorded")!,
+    storyDestination(`127.0.0.1:${ports.backend}`, "chat-usage-evidence--recorded")!,
   )
   await page.getByRole("button", { name: "Open Usage Evidence", exact: true }).focus()
   await page.keyboard.press("Enter")
@@ -139,7 +144,7 @@ test("source filter phase and unmount native callbacks retire while390dark cards
 }, info) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto(
-    "http://127.0.0.1:18545/?view=Review%20Workbench&theme=p1-green-phosphor&navigation=drawer",
+    `http://127.0.0.1:${ports.dev}/?view=Review%20Workbench&theme=p1-green-phosphor&navigation=drawer`,
   )
   const node = page.getByRole("button", { name: "Open Voice", exact: true })
   await node.evaluate((node) => {
@@ -192,7 +197,7 @@ test("portable catalogue controlled navigation and actual native representative 
     if (/\/api\/|\/plugins\//.test(r.url()) || r.method() !== "GET") bad.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=workbench-review-catalogue--operations&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=workbench-review-catalogue--operations&viewMode=story`,
   )
   await expect(page.locator(".workbench-grid article")).toHaveCount(
     matchDestinations("", "Operations").length,
@@ -202,7 +207,7 @@ test("portable catalogue controlled navigation and actual native representative 
   await page.getByRole("link", { name: "Portable Activity story", exact: true }).click()
   await expect(page.getByText("24-hour execution pulse", { exact: false })).toBeVisible()
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=workbench-review-catalogue--unknown-host&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=workbench-review-catalogue--unknown-host&viewMode=story`,
   )
   await expect(page.locator(".workbench-grid a")).toHaveCount(0)
   await expect(

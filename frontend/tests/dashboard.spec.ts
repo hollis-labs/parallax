@@ -51,6 +51,7 @@ test("reference dashboard compositions preserve intensity exact date tables them
   page,
 }, info) => {
   await page.goto("/?scenario=large&view=Activity&mode=light")
+  await page.locator(".calendar-intensity").first().waitFor()
   const weights = await page
     .locator(".calendar-intensity")
     .evaluateAll((nodes) =>

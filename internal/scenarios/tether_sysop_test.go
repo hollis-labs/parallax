@@ -166,9 +166,10 @@ func TestValidateTetherSysop_RegistryBounds(t *testing.T) {
 	hasDeprecated := false
 
 	for _, r := range rows {
-		if r.Kind == "agent" {
+		switch r.Kind {
+		case "agent":
 			agents++
-		} else if r.Kind == "project" {
+		case "project":
 			projects++
 		}
 		if r.Status == "deprecated" {
@@ -195,7 +196,7 @@ func TestWriteTetherSysop(t *testing.T) {
 		t.Fatalf("WriteTetherSysop failed: %v", err)
 	}
 
-	data, err := os.ReadFile(path)
+	data, err := os.ReadFile(path) //nolint:gosec // test reads its own fixture path
 	if err != nil {
 		t.Fatalf("read written fixture: %v", err)
 	}
@@ -238,7 +239,7 @@ func TestValidateTetherSysop_NegativeMutations(t *testing.T) {
 
 	t.Run("overview_tool_calls_ok_mismatch", func(t *testing.T) {
 		f := GenerateTetherSysop()
-		f.Overview.ToolCalls.OK -= 1
+		f.Overview.ToolCalls.OK--
 		if err := ValidateTetherSysop(f); err == nil {
 			t.Errorf("expected error for mismatched overview tool calls ok count, got nil")
 		}
@@ -305,7 +306,7 @@ func TestValidateTetherSysop_NegativeMutations(t *testing.T) {
 
 	t.Run("projection_mismatch_sessions", func(t *testing.T) {
 		f := GenerateTetherSysop()
-		f.Sessions.Total += 1
+		f.Sessions.Total++
 		if err := ValidateTetherSysop(f); err == nil {
 			t.Errorf("expected error when flat Sessions projection does not equal Activity.Sessions, got nil")
 		}

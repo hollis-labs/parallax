@@ -2,6 +2,7 @@ import { fileURLToPath } from "node:url"
 import type { OperationsActionScope } from "@hollis-labs/kit-dashboard/layout"
 import { expect, test } from "@playwright/test"
 import type { OperationsProofDiagnostics } from "../src/operations-list-proof/Proof"
+import { ports } from "./ports"
 
 declare global {
   interface Window {
@@ -12,7 +13,7 @@ declare global {
 }
 // The standalone HTML entry is served by Vite; the default suite's base URL is Go.
 test.use({
-  baseURL: `http://127.0.0.1:${process.env.OPS_PORT ?? 18545}`,
+  baseURL: `http://127.0.0.1:${process.env.OPS_PORT ?? ports.dev}`,
   launchOptions: { executablePath: process.env.OPS_CHROMIUM, args: ["--no-sandbox"] },
 })
 const screenshotRoot = fileURLToPath(
@@ -80,6 +81,9 @@ for (const consumer of ["torque", "runs"]) {
     await search.fill("no-such-record")
     await expect(page.locator('[data-ops-count="selected"]')).toHaveText("0 selected")
     await search.fill("")
+    // Clearing the search repopulates the list; open the inspector only once the rows are back.
+    await expect(page.locator('[data-ops-count="matched"]')).not.toHaveText("0 matched")
+    await expect(row).toBeVisible()
     await row.focus()
     await page.keyboard.press("Enter")
     const inspector =

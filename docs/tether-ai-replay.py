@@ -87,7 +87,7 @@ receipt = {
 }
 
 # Short newly owned browser temp directory
-browser_tmp = Path(f"/home/chrispian/.cache/team-tmp/cw0100-b-{head[:7]}-{os.getpid()}")
+browser_tmp = Path.home() / f".cache/team-tmp/cw0100-b-{head[:7]}-{os.getpid()}"
 browser_tmp.mkdir(parents=True, exist_ok=True)
 receipt["browser_tmp"] = str(browser_tmp)
 

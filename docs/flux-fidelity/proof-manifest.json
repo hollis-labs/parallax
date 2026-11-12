@@ -36,17 +36,17 @@
     "token-mapping.md": "35a86b7b3d60c2e732dfc0aedb23fd9c31f35af6efd5290563cafe5de80ba7af",
     "capture-index.json": "46902d3824f250b288a5a58eed264ee72248d04a8841084ec83300980a4f649d",
     "replay/api.ts": "66afac4b8ecc45d22f9ce347e23688ca6e867d43b1e05dcf68e56eb50f7914c8",
-    "replay/capture.cjs": "00e3bd91ababd87fa7b1d7cec58065ba3432306cdccca54e58d8c480130036c8",
+    "replay/capture.cjs": "fb99038ef6671c71e10584992d2dce05557f8ddee5115b450b1a84c7aa3340b3",
     "replay/entry.tsx": "594b0e5a5d17fcccb43b241dbdab8114c7294e1d81780d6f50f63698ae3c17b9",
     "replay/fixture.html": "1c5328936392408431c693a9d17fc20a7721d6d7dfd2dac0c551e8b28b05994e",
-    "replay/fonts.conf": "6cd3c8f23a6ea5c66be0f40b5734b0cfe180f366e99a4cf3709e8a5ceb2f88cf",
+    "replay/fonts.conf": "1c57cc24a392be81bcca084103801cf52ee48e01bc74fb376aebac90b5b26446",
     "replay/query.ts": "da76d4f33c8a00b80221a2cb29d75ec3e211e756f17ef58bac67d382784753b1",
     "replay/vite.config.ts": "1faf5bfdc0ba263f3dd1dcddaa2c6d1fb28f2f1cc91172ff1ae41ec661e4e512",
-    "replay/capture-banner.cjs": "55ad047771fde98e9d44b407dc54718ed500892e6d604f8360cfa415b749ef40",
-    "replay/capture-full-observed.cjs": "e9de9ce8706d08888eee9a82543d5c76e94b68dd1f2534511706ed24f51bc68e"
+    "replay/capture-banner.cjs": "cde6b44cbe40344cd562bc4e411b880c78f842f308646867a7fcca537e9560d1",
+    "replay/capture-full-observed.cjs": "eef7bba2c0e69a3a66a9e138ea766fca71fda9e2605c0d9c2fadb61e59ea0183"
   },
   "retained_raw_proof": {
-    "path": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0083/.scratch/flux-fidelity",
+    "path": "$HOME/dev/hollis-labs/worktrees/parallax/CW-20261010-0083/.scratch/flux-fidelity",
     "native-final.json": "afc7cb2f3b669cba6799869565ad877740fc478f6141ba00f61a97acd0ea7790",
     "native-final.log": "10fbd1a154c1ecbefebe19e851097a689ab990a4a19cce2a086fd639e7322035",
     "native-banner-final.json": "c0a6105c30c6eec59dd68be84e9721eea24be796fec2bbd0dc3feeecc3947165",

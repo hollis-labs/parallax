@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test"
 import { exampleContext, fixtureContracts, torqueDefinition } from "../src/examples/contracts"
 import { sourceDataset, timelineFrames } from "../src/playback/model"
+import { ports } from "./ports"
 
 test("example admission distinguishes original identity, declared profiles and exact recorded boundary", () => {
   for (const scenario of ["populated", "large"]) {
@@ -98,7 +99,9 @@ test("portable About consumes the same family manifest without a Go or plugin re
     )
       calls.push(r.url())
   })
-  await page.goto("http://127.0.0.1:18542/iframe.html?id=app-examples-torque--about&viewMode=story")
+  await page.goto(
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=app-examples-torque--about&viewMode=story`,
+  )
   await expect(
     page
       .getByRole("region", { name: "Bundled fixture-family contracts", exact: true })

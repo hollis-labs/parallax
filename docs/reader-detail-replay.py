@@ -43,9 +43,9 @@ if (root / ".scratch/tooling").exists():
         if (root / ".scratch/tooling" / name).exists():
             tooling[name] = tree(root / ".scratch/tooling" / name)
 
-chromium_path = Path("/home/chrispian/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome")
-node_path = Path("/home/chrispian/.local/node/bin/node")
-npm_path = Path("/home/chrispian/.local/node/bin/npm")
+chromium_path = Path.home() / ".cache/ms-playwright/chromium-1243/chrome-linux64/chrome"
+node_path = Path.home() / ".local/node/bin/node"
+npm_path = Path.home() / ".local/node/bin/npm"
 fonts_path = Path("/usr/share/fonts/truetype/dejavu")
 
 prerequisites = {
@@ -149,7 +149,7 @@ else:
                        '"storybook":tree(stage/".scratch/storybook") if (stage/".scratch/storybook").exists() else {},'
                        '"go_binary_sha256":sha(stage/".scratch/parallax") if (stage/".scratch/parallax").exists() else None}\n'
                        '(proof/"receipt.json").write_text(json.dumps(receipt,indent=2)+"\\n")\n')
-    cache_dir = Path("/home/chrispian/.cache/team-tmp")
+    cache_dir = Path.home() / ".cache/team-tmp"
     cache_dir.mkdir(parents=True, exist_ok=True)
     browser_tmp = Path(tempfile.mkdtemp(prefix=f"cw0097-b-{head[:7]}-", dir=cache_dir))
     receipt["owned_browser_tmp"] = str(browser_tmp)

@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from "node:fs"
 import { expect, test } from "@playwright/test"
 import { destinations } from "../src/workbench/catalog"
+import { ports } from "./ports"
 
 async function settledPaint(page: import("@playwright/test").Page) {
   await expect(page.locator("html")).toHaveAttribute("data-theme", "p4-white")
@@ -64,7 +65,7 @@ test("native Workbench admits all five complete shells with current routes and e
   for (const app of examples) {
     await page.goto("/?view=Review+Workbench&theme=p4-white&mode=light")
     await page.getByLabel("Review group", { exact: true }).selectOption("App Examples")
-    await expect(page.locator(".workbench-grid article")).toHaveCount(5)
+    await expect(page.locator(".workbench-grid article")).toHaveCount(examples.length + 1) // the five shells and App Snapshots
     const card = page.getByRole("article", { name: `${app.id} review destination`, exact: true })
     await expect(card).toContainText(app.story)
     await expect(
@@ -124,7 +125,7 @@ test("all five representative fullscreen stories share App Examples group and bo
   ).entries
   expect(
     destinations
-      .filter((d) => d.group === "App Examples")
+      .filter((d) => d.group === "App Examples" && d.id !== "App Snapshots")
       .map((d) => d.id)
       .sort(),
   ).toEqual(examples.map((d) => d.id).sort())
@@ -137,7 +138,9 @@ test("all five representative fullscreen stories share App Examples group and bo
     expect(index[app.story].title).toBe(
       `App Examples/${app.route === "workspace" ? "Workspace" : app.route[0].toUpperCase() + app.route.slice(1)}`,
     )
-    await page.goto(`http://127.0.0.1:18542/iframe.html?id=${app.story}&viewMode=story`)
+    await page.goto(
+      `http://127.0.0.1:${ports.storybook}/iframe.html?id=${app.story}&viewMode=story`,
+    )
     const root = page.locator(app.root)
     await expect(root).toBeVisible()
     await expect(root.getByRole("heading", { level: 1 }).first()).toBeVisible()

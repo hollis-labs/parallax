@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test"
 import { inspectionModel } from "../src/observability/model"
 import { operationsModel, runDetail } from "../src/operations/model"
 import { projectDataset, sourceDataset, timelineFrames } from "../src/playback/model"
+import { ports } from "./ports"
 
 test("ordered deterministic evidence frames preserve every cutoff relationship", () => {
   for (const scenario of ["populated", "large"]) {
@@ -199,7 +200,7 @@ test("narrow keyboard seek and portable frame retirement require no external str
     if (/\/api\/|\/plugins\//.test(r.url())) api.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=playback-recorded-frames--before-outcome&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=playback-recorded-frames--before-outcome&viewMode=story`,
   )
   await page.getByRole("button", { name: /Inspect telemetry sampling drift.*TASK-003/ }).click()
   await expect(page.getByLabel("Playback selected run")).toContainText(
@@ -207,7 +208,7 @@ test("narrow keyboard seek and portable frame retirement require no external str
   )
   await page.getByRole("button", { name: "Play recorded events", exact: true }).click()
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=playback-recorded-frames--task-blocked&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=playback-recorded-frames--task-blocked&viewMode=story`,
   )
   await page.clock.install()
   await page.clock.runFor(3000)

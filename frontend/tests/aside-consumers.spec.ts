@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test"
+import { ports } from "./ports"
 
-const storybook = `http://127.0.0.1:${process.env.STORYBOOK_PORT ?? "18542"}/iframe.html`
+const storybook = `http://127.0.0.1:${process.env.STORYBOOK_PORT ?? ports.storybook}/iframe.html`
 const story = (idiom: string, extra = "") =>
   `${storybook}?id=layouts-aside-consumers--${idiom}&viewMode=story${extra}`
 

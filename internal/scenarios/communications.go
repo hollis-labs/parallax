@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-// Communications is an app presentation fixture, not an email/SMS/wire protocol.
+// Contact is part of an app presentation fixture, not an email/SMS/wire protocol.
 type Contact struct {
 	ID    string `json:"id"`
 	Name  string `json:"name"`
@@ -110,5 +110,5 @@ func WriteCommunications(path string) error {
 	if err != nil {
 		return err
 	}
-	return os.WriteFile(path, append(b, '\n'), 0644)
+	return os.WriteFile(path, append(b, '\n'), 0o600)
 }

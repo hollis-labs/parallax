@@ -36,7 +36,7 @@ Mirrors the `GET /api/overview` dashboard aggregate payload:
 - **Events** (`OverviewEvents`): total 64, recent1h 3 (derived strictly using Tether clock cutoff `clock.Add(-time.Hour)`), latest_seq 64. Distributions: `by_scope` (`session`, `agent`, `system`, `router`, `mesh`), `by_kind` (`session.turn`, `tool.dispatched`, `tool.completed`, `session.started`, `checkpoint.saved`).
 - **AI Gateway** (`OverviewAI`): configured providers 4, enabled 3, routes 6. Requests 140, successes 136, errors 4, budget rejections 1. Tokens: 384k input, 96k output, estimated cost $1.84. Distributions: `by_provider`, `by_model`, `by_event_type`.
 - **Catalog** (`OverviewCatalog`): projects 4, agents 8, providers 4, launches 8.
-- **Health** (`HealthInfo`): status `"ok"`, catalog_root `"/home/chrispian/.tether/catalog"`.
+- **Health** (`HealthInfo`): status `"ok"`, catalog_root `"/srv/example/.tether/catalog"`.
 - **Trend Buckets**: 24 variable-range equal-width bins spanning `[min(times), max(times)]` oldest-to-newest, matching Tether `main.go:3346`.
 
 ### 2. Trend Bucket Projection Semantics (`bucketCounts`)

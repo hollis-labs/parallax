@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs"
 import { getBuiltinTheme } from "@hollis-labs/design-tokens"
 import { expect, type Page, test } from "@playwright/test"
+import { ports } from "./ports"
 
 const identities: string[] = JSON.parse(
   readFileSync(new URL("../src/examples/flux-cards/operands.json", import.meta.url), "utf8"),
@@ -23,7 +24,7 @@ async function paletteColor(page: Page, value: string | undefined) {
 function lifecycleEntry() {
   const base = new URL(String(test.info().project.use.baseURL))
   // This isolated development HTML is served by the configured Vite listener.
-  if (base.port === "18541") base.port = "18545"
+  if (base.port === `${ports.backend}`) base.port = `${ports.dev}`
   return new URL("/flux-cards-lifecycle.html", base).href
 }
 test.beforeEach(async ({ page }) => {

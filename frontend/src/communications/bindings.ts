@@ -12,7 +12,7 @@ export const bindingRows: readonly BindingRequest[] = [
     rendererClass: "react-component",
     entry: "@hollis-labs/kit-chat#ConfirmationCard",
     payload: { from: "data" },
-    requestedTrust: "core-trusted",
+    requestedIsolation: "main-origin",
     fallback: { kind: "none" },
   },
   {
@@ -22,7 +22,7 @@ export const bindingRows: readonly BindingRequest[] = [
     rendererClass: "react-component",
     entry: "@hollis-labs/kit-chat#PromptCard",
     payload: { from: "data" },
-    requestedTrust: "core-trusted",
+    requestedIsolation: "main-origin",
     fallback: { kind: "none" },
   },
 ]
@@ -30,7 +30,8 @@ export const bindingRows: readonly BindingRequest[] = [
 export const chatBindings = defineBindingTable({
   contractDigest: "parallax-fixture-bindings/v1",
   resolverConfig: { inlinePayloadLimitBytes: 16384 },
-  trust: constantTrust("core-trusted"),
+  trust: constantTrust("main-origin"),
   rows: bindingRows,
 })
-export const classifyCard = (kind: string) => resolve(chatBindings, kind)
+export const classifyCard = (kind: string) =>
+  resolve(chatBindings, kind, { version: "1", origin: "host" })

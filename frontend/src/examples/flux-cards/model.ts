@@ -7,7 +7,7 @@ export type WireEnvelope = {
   type: string
   data?: Record<string, unknown>
   prior_response?: { status: string; data?: Record<string, unknown> }
-  cancel_token?: string
+  cancel_ref?: string
 }
 export const cardStates = [
   "complete",

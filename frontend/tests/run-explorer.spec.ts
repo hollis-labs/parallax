@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test"
 import { operationsModel } from "../src/operations/model"
 import { explorerProjection } from "../src/run-explorer/model"
+import { ports } from "./ports"
 
 const rows = '[data-testid="data-table-row"]'
 test("explorer receipts join admitted runs and filters never convert withheld evidence into zero", () => {
@@ -227,7 +228,7 @@ test("portable direct FilterBar and actual table share fixture filters without a
     if (/\/(api|plugins)\//.test(r.url())) requests.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=operations-run-explorer--direct-filter-bar&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=operations-run-explorer--direct-filter-bar&viewMode=story`,
   )
   await page.getByLabel("Search admitted runs").pressSequentially("gateway", { delay: 300 })
   await expect(page.locator(".explorer-direct-results button")).toHaveCount(1)
@@ -238,7 +239,7 @@ test("portable direct FilterBar and actual table share fixture filters without a
   await expect(page.getByLabel("Search admitted runs")).toHaveValue("")
   await expect(page.locator(".explorer-direct-results button")).toHaveCount(8)
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=operations-run-explorer--recorded&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=operations-run-explorer--recorded&viewMode=story`,
   )
   await expect(page.locator(rows)).toHaveCount(8)
   await page.getByRole("button", { name: "unknown", exact: true }).click()
@@ -247,7 +248,7 @@ test("portable direct FilterBar and actual table share fixture filters without a
   await expect(page.locator(rows)).toHaveCount(8)
   for (const state of ["empty", "loading", "resource-error"]) {
     await page.goto(
-      `http://127.0.0.1:18542/iframe.html?id=operations-run-explorer--${state}&viewMode=story`,
+      `http://127.0.0.1:${ports.storybook}/iframe.html?id=operations-run-explorer--${state}&viewMode=story`,
     )
     await expect(page.locator(rows)).toHaveCount(0)
     await expect(page.locator(".explorer-footer")).toContainText(
@@ -256,7 +257,7 @@ test("portable direct FilterBar and actual table share fixture filters without a
     if (state === "loading") await expect(page.locator('[data-slot="skeleton"]')).toHaveCount(6)
   }
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=operations-run-explorer--owner-unavailable&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=operations-run-explorer--owner-unavailable&viewMode=story`,
   )
   await page.getByRole("button", { name: "Filter run owner", exact: true }).click()
   await page.getByRole("option", { name: "Owner unavailable 8", exact: true }).click()

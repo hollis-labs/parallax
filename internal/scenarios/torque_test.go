@@ -17,7 +17,7 @@ func TestTorqueReferenceGenerationAndFreshness(t *testing.T) {
 		t.Fatal(err)
 	}
 	for path, value := range map[string]any{"operations-torque.json": s, "torque-reference.json": r} {
-		b, e := os.ReadFile("../../frontend/src/fixtures/" + path)
+		b, e := os.ReadFile("../../frontend/src/fixtures/" + path) //nolint:gosec // test reads its own fixture
 		if e != nil {
 			t.Fatal(e)
 		}
@@ -42,7 +42,7 @@ func TestTorqueRejectsIncompleteOrMismatchedEvidence(t *testing.T) {
 		"missing covered graph start": func(s *Scenario, r *TorqueReference) {
 			events := []Event{}
 			for _, e := range s.Events {
-				if !(e.RunID == "RUN-001" && e.Type == "run.started") {
+				if e.RunID != "RUN-001" || e.Type != "run.started" {
 					events = append(events, e)
 				}
 			}
@@ -73,7 +73,7 @@ func TestTorqueRejectsIncompleteOrMismatchedEvidence(t *testing.T) {
 		"missing task state graph": func(s *Scenario, r *TorqueReference) {
 			events := []Event{}
 			for _, e := range s.Events {
-				if !(e.TaskID == "TASK-009" && len(e.Type) > 5 && e.Type[:5] == "task.") {
+				if e.TaskID != "TASK-009" || len(e.Type) <= 5 || e.Type[:5] != "task." {
 					events = append(events, e)
 				}
 			}

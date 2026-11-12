@@ -8,7 +8,7 @@ presets:
     resolved_path: bundled:presets/app-dashboard
 inputs:
   base_path: /
-  description: Fixture-only GUI laboratory on Chimera
+  description: Fixture-only GUI laboratory on Substrate
   design_kit_version: 0.4.0
   github_owner: hollis-labs
   go_packages: ./...

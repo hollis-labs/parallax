@@ -18,9 +18,31 @@ jobs:
         with:
           node-version: '24'
       - run: make check
+      - uses: golangci/golangci-lint-action@v7
+        with:
+          version: v2.11.4
+      # Tree only: the history gate (--ref HEAD) returns after the program-wide history pass.
+      - name: Public hygiene (tree)
+        run: go run github.com/hollis-labs/substrate/cmd/substrate scan-public --tree
       - run: npm run build-storybook --prefix frontend
       - name: Actionable export inventory freshness and evidence pointers
         run: node scripts/coverage.mjs --check
       - run: npm exec --prefix frontend -- playwright install --with-deps chromium
+      # The browser proof starts the real binary (.scratch/parallax) on a throwaway data directory.
+      # make check already builds it as its last line, after the frontend build, so it embeds the
+      # built SPA; this step rebuilds it so the proof does not depend on make check's step order.
+      - name: Build the binary the browser proof starts
+        run: go build -o .scratch/parallax ./cmd/parallax
       - name: Browser proof
+        # CI installs the bundled Chromium; the config defaults to the system Chrome channel.
+        env:
+          PLAYWRIGHT_CHANNEL: chromium
         run: npm exec --prefix frontend -- playwright test --config frontend/playwright.config.ts
+      # Playwright traces of failing tests (trace: retain-on-failure on CI) land in the config's outputDir.
+      - name: Upload browser traces
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-test-results
+          path: .scratch/test-results
+          if-no-files-found: ignore

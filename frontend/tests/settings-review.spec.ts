@@ -11,6 +11,7 @@ import {
   replaceDraft,
   settingsReviewModel,
 } from "../src/settings-review/model"
+import { ports } from "./ports"
 
 test("settings projections keep original desired values and fail closed without losing scalar meaning", () => {
   const original = JSON.stringify(settingsReviewModel().fixture)
@@ -167,6 +168,10 @@ test("actual four settings exports provide scalar schema ARIA provenance and loc
   await expect(limit).toHaveAttribute("aria-required", "true")
   await expect(limit).not.toHaveAttribute("min", /.+/)
   await expect(page.getByText("Enter a complete number.", { exact: true })).toBeVisible()
+  // The field paints its background through a colour transition; read it once it is painted, not at load.
+  await expect
+    .poll(() => limit.evaluate((n) => getComputedStyle(n).backgroundColor))
+    .not.toBe("rgba(0, 0, 0, 0)")
   const paint = await limit.evaluate((n) => ({
     fg: getComputedStyle(n).color,
     bg: getComputedStyle(n).backgroundColor,
@@ -416,7 +421,7 @@ test("narrow dark portable settings show locked not-set error busy and empty sta
     ["busy", "Working…"],
   ]) {
     await page.goto(
-      `http://127.0.0.1:18542/iframe.html?id=settings-controlled-field-review--${story}&viewMode=story`,
+      `http://127.0.0.1:${ports.storybook}/iframe.html?id=settings-controlled-field-review--${story}&viewMode=story`,
     )
     await expect(page.getByText(text, { exact: false }).first()).toBeVisible()
     if (story === "busy")
@@ -431,7 +436,7 @@ test("development StrictMode creates fresh session after replay and retires earl
 }) => {
   const errors: string[] = []
   page.on("pageerror", (e) => errors.push(e.message))
-  await page.goto("http://127.0.0.1:18545/?view=Settings%20Review")
+  await page.goto(`http://127.0.0.1:${ports.dev}/?view=Settings%20Review`)
   await page
     .getByLabel("Workspace label (required)", { exact: true })
     .fill("Strict lifecycle candidate")

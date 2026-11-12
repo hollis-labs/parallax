@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test"
 import { operationsModel } from "../src/operations/model"
 import { sourceDataset, timelineFrames } from "../src/playback/model"
 import { workflowModel, workflowTarget } from "../src/workflow-review/model"
+import { ports } from "./ports"
 
 test("workflow source graph and current receipt span joins admit only recorded compatible evidence", () => {
   const source = sourceDataset("populated"),
@@ -160,7 +161,7 @@ test("actual bounded connection ring danger paths and edge namespace specimens p
 test("actual StrictMode source selection viewport and captured node callbacks retire before later inspection", async ({
   page,
 }) => {
-  await page.goto("http://127.0.0.1:18545/?view=Workflow%20Review")
+  await page.goto(`http://127.0.0.1:${ports.dev}/?view=Workflow%20Review`)
   const button = page.getByRole("button", { name: "Inspect NODE-001: Run review", exact: true })
   await button.evaluate((node) => {
     const k = Object.keys(node).find((k) => k.startsWith("__reactProps$"))
@@ -315,13 +316,13 @@ test("portable workflow shares readonly supported empty blocked unknown and curr
     "incompatible-source",
   ]) {
     await page.goto(
-      `http://127.0.0.1:18542/iframe.html?id=developer-workflow-review--${name}&viewMode=story`,
+      `http://127.0.0.1:${ports.storybook}/iframe.html?id=developer-workflow-review--${name}&viewMode=story`,
     )
     await expect(page.locator(".react-flow__node")).toHaveCount(0)
     await expect(page.getByTestId("animated-specimen")).toHaveCount(0)
   }
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=developer-workflow-review--unknown-kind&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=developer-workflow-review--unknown-kind&viewMode=story`,
   )
   await expect(
     page.getByText("Unknown authored kind: unrecognized-fixture-step", { exact: true }),

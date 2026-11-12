@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test"
 import { directoryModel, relationships } from "../src/directory-review/model"
+import { ports } from "./ports"
 
 test("directory supplied joins distinguish missing metadata from successful empty and deny personal records", () => {
   const d = directoryModel("recorded")
@@ -126,7 +127,7 @@ test("authored unknown missing locked and denied states are metadata only and es
 test("StrictMode captured callbacks cannot select or inspect after source state selection and unmount retirement", async ({
   page,
 }) => {
-  await page.goto("http://127.0.0.1:18545/?view=Directory+Review")
+  await page.goto(`http://127.0.0.1:${ports.dev}/?view=Directory+Review`)
   await page.getByRole("button", { name: "Inspect provenance", exact: true }).click()
   await page.getByRole("button", { name: "Inspect current metadata" }).evaluate((e) => {
     const key = Object.keys(e).find((k) => k.startsWith("__reactProps$"))!
@@ -177,7 +178,7 @@ test("portable Directory native selected profile stays API free and snapshot ind
     if (/\/api\/|\/plugins\//.test(r.url()) || r.method() !== "GET") calls.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=administration-directory-review--recorded&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=administration-directory-review--recorded&viewMode=story`,
   )
   await page.getByRole("button", { name: /USER-003 ·/ }).click()
   await expect(page.getByRole("heading", { name: "Della Rivera", exact: true })).toBeVisible()

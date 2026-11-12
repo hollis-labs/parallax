@@ -4,6 +4,7 @@ import {
   accountCandidate,
   accountReviewModel,
 } from "../src/account-review/model"
+import { ports } from "./ports"
 
 test("account candidates preserve fictional principal and metadata and refuse invalid access drafts", () => {
   const data = accountReviewModel(),
@@ -191,7 +192,7 @@ test("token scope create revoke confirmation and provider callbacks preserve imm
 test("source principal draft reset unmount and StrictMode fence held inspections and stale native callbacks", async ({
   page,
 }) => {
-  await page.goto("http://127.0.0.1:18545/?view=Account%20Review")
+  await page.goto(`http://127.0.0.1:${ports.dev}/?view=Account%20Review`)
   await page.getByRole("button", { name: "Save profile", exact: true }).click()
   await page
     .getByRole("dialog")
@@ -246,6 +247,7 @@ test("narrow dark account metadata dialog and portable supported states are read
 }, info) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto("/?view=Account%20Review&theme=p1-green-phosphor&mode=dark")
+  await page.getByRole("navigation", { name: "Application navigation" }).waitFor()
   await page.getByRole("heading", { name: "Profile", exact: true }).scrollIntoViewIfNeeded()
   await page.screenshot({ path: info.outputPath("account-profile-narrow.png") })
   await page.getByLabel("Account composition").selectOption("metadata")
@@ -279,7 +281,7 @@ test("narrow dark account metadata dialog and portable supported states are read
     "metadata-error",
   ]) {
     await page.goto(
-      `http://127.0.0.1:18542/iframe.html?id=account-controlled-account-review--${state}&viewMode=story`,
+      `http://127.0.0.1:${ports.storybook}/iframe.html?id=account-controlled-account-review--${state}&viewMode=story`,
     )
     await expect(page.getByLabel("Controlled account review")).toBeVisible()
   }

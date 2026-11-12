@@ -1,7 +1,8 @@
 import { expect, test } from "@playwright/test"
 import { expectPopupClosed, expectPopupFocus } from "./helpers/popup-focus"
+import { ports } from "./ports"
 
-const server = process.env.NIL_STORYBOOK_URL ?? "http://127.0.0.1:18542"
+const server = process.env.NIL_STORYBOOK_URL ?? `http://127.0.0.1:${ports.storybook}`
 const story = `${server}/iframe.html?id=primitives-nil-dialog-behavior--nil-keyboard&viewMode=story`
 const variants = [
   "detail",

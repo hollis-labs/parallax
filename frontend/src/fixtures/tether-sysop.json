@@ -311,7 +311,7 @@
     },
     "health": {
       "status": "ok",
-      "catalog_root": "/home/chrispian/.tether/catalog"
+      "catalog_root": "/srv/example/.tether/catalog"
     }
   },
   "overviewVariants": {
@@ -621,8 +621,8 @@
       },
       "health": {
         "status": "blocked",
-        "catalog_root": "/home/chrispian/.tether/catalog",
-        "error": "catalog root inaccessible: permission denied /home/chrispian/.tether/catalog"
+        "catalog_root": "/srv/example/.tether/catalog",
+        "error": "catalog root inaccessible: permission denied /srv/example/.tether/catalog"
       }
     },
     "combined-adverse": {
@@ -931,7 +931,7 @@
       },
       "health": {
         "status": "blocked",
-        "catalog_root": "/home/chrispian/.tether/catalog",
+        "catalog_root": "/srv/example/.tether/catalog",
         "error": "catalog corrupted: unexpected EOF in provider schema"
       }
     },
@@ -1241,7 +1241,7 @@
       },
       "health": {
         "status": "degraded",
-        "catalog_root": "/home/chrispian/.tether/catalog",
+        "catalog_root": "/srv/example/.tether/catalog",
         "error": "proxy event error rate above threshold (10%)"
       }
     }
@@ -1255,7 +1255,7 @@
         "logical_agent_id": "agent-001",
         "provider_id": "claude",
         "provider_kind": "anthropic",
-        "workspace": "/home/chrispian/dev/hollis-labs/worktrees/parallax/review",
+        "workspace": "/srv/example/dev/hollis-labs/worktrees/parallax/review",
         "state": "ended",
         "pid": 4101,
         "exit_code": 0,
@@ -1270,7 +1270,7 @@
         "logical_agent_id": "agent-002",
         "provider_id": "codex",
         "provider_kind": "openai",
-        "workspace": "/home/chrispian/dev/hollis-labs/tether",
+        "workspace": "/srv/example/dev/hollis-labs/tether",
         "state": "ended",
         "pid": 4102,
         "exit_code": 0,
@@ -1285,7 +1285,7 @@
         "logical_agent_id": "agent-003",
         "provider_id": "agy",
         "provider_kind": "google",
-        "workspace": "/home/chrispian/dev/hollis-labs/tangent",
+        "workspace": "/srv/example/dev/hollis-labs/tangent",
         "state": "ended",
         "pid": 4103,
         "exit_code": 1,
@@ -1300,7 +1300,7 @@
         "logical_agent_id": "agent-001",
         "provider_id": "claude",
         "provider_kind": "anthropic",
-        "workspace": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
+        "workspace": "/srv/example/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
         "state": "ended",
         "pid": 4104,
         "exit_code": 0,
@@ -1315,7 +1315,7 @@
         "logical_agent_id": "agent-004",
         "provider_id": "codex",
         "provider_kind": "openai",
-        "workspace": "/home/chrispian/dev/hollis-labs/tether",
+        "workspace": "/srv/example/dev/hollis-labs/tether",
         "state": "ended",
         "pid": 4105,
         "exit_code": 0,
@@ -1330,7 +1330,7 @@
         "logical_agent_id": "agent-003",
         "provider_id": "agy",
         "provider_kind": "google",
-        "workspace": "/home/chrispian/dev/hollis-labs/tangent",
+        "workspace": "/srv/example/dev/hollis-labs/tangent",
         "state": "ended",
         "pid": 4106,
         "exit_code": 0,
@@ -1345,7 +1345,7 @@
         "logical_agent_id": "agent-001",
         "provider_id": "claude",
         "provider_kind": "anthropic",
-        "workspace": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
+        "workspace": "/srv/example/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
         "state": "running",
         "pid": 4107,
         "created_at": "2026-10-04T12:30:00Z",
@@ -1358,7 +1358,7 @@
         "logical_agent_id": "agent-002",
         "provider_id": "codex",
         "provider_kind": "openai",
-        "workspace": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
+        "workspace": "/srv/example/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
         "state": "running",
         "pid": 4108,
         "created_at": "2026-10-04T14:00:00Z",
@@ -1877,7 +1877,7 @@
           "event_type": "completion",
           "request_id": "req-0003",
           "session_id": "sess-002",
-          "caller_id": "launch-agent-os",
+          "caller_id": "launch-worker-host",
           "operation": "completion",
           "provider": "anthropic",
           "model": "claude-3-7-sonnet",
@@ -2053,7 +2053,7 @@
           "event_type": "completion",
           "request_id": "req-0011",
           "session_id": "sess-004",
-          "caller_id": "launch-agent-os",
+          "caller_id": "launch-worker-host",
           "operation": "completion",
           "provider": "openai",
           "model": "gpt-4o",
@@ -2231,7 +2231,7 @@
           "event_type": "chat",
           "request_id": "req-0019",
           "session_id": "sess-005",
-          "caller_id": "launch-agent-os",
+          "caller_id": "launch-worker-host",
           "operation": "chat",
           "provider": "google",
           "model": "gemini-2.0-flash",
@@ -3480,7 +3480,7 @@
           "logical_agent_id": "agent-001",
           "provider_id": "claude",
           "provider_kind": "anthropic",
-          "workspace": "/home/chrispian/dev/hollis-labs/worktrees/parallax/review",
+          "workspace": "/srv/example/dev/hollis-labs/worktrees/parallax/review",
           "state": "ended",
           "pid": 4101,
           "exit_code": 0,
@@ -3495,7 +3495,7 @@
           "logical_agent_id": "agent-002",
           "provider_id": "codex",
           "provider_kind": "openai",
-          "workspace": "/home/chrispian/dev/hollis-labs/tether",
+          "workspace": "/srv/example/dev/hollis-labs/tether",
           "state": "ended",
           "pid": 4102,
           "exit_code": 0,
@@ -3510,7 +3510,7 @@
           "logical_agent_id": "agent-003",
           "provider_id": "agy",
           "provider_kind": "google",
-          "workspace": "/home/chrispian/dev/hollis-labs/tangent",
+          "workspace": "/srv/example/dev/hollis-labs/tangent",
           "state": "ended",
           "pid": 4103,
           "exit_code": 1,
@@ -3525,7 +3525,7 @@
           "logical_agent_id": "agent-001",
           "provider_id": "claude",
           "provider_kind": "anthropic",
-          "workspace": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
+          "workspace": "/srv/example/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
           "state": "ended",
           "pid": 4104,
           "exit_code": 0,
@@ -3540,7 +3540,7 @@
           "logical_agent_id": "agent-004",
           "provider_id": "codex",
           "provider_kind": "openai",
-          "workspace": "/home/chrispian/dev/hollis-labs/tether",
+          "workspace": "/srv/example/dev/hollis-labs/tether",
           "state": "ended",
           "pid": 4105,
           "exit_code": 0,
@@ -3555,7 +3555,7 @@
           "logical_agent_id": "agent-003",
           "provider_id": "agy",
           "provider_kind": "google",
-          "workspace": "/home/chrispian/dev/hollis-labs/tangent",
+          "workspace": "/srv/example/dev/hollis-labs/tangent",
           "state": "ended",
           "pid": 4106,
           "exit_code": 0,
@@ -3570,7 +3570,7 @@
           "logical_agent_id": "agent-001",
           "provider_id": "claude",
           "provider_kind": "anthropic",
-          "workspace": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
+          "workspace": "/srv/example/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
           "state": "running",
           "pid": 4107,
           "created_at": "2026-10-04T12:30:00Z",
@@ -3583,7 +3583,7 @@
           "logical_agent_id": "agent-002",
           "provider_id": "codex",
           "provider_kind": "openai",
-          "workspace": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
+          "workspace": "/srv/example/dev/hollis-labs/worktrees/parallax/CW-20261010-0098",
           "state": "running",
           "pid": 4108,
           "created_at": "2026-10-04T14:00:00Z",
@@ -3601,16 +3601,16 @@
         "urn": "msg://agent/agent-mux/agt_knoibzkhsk",
         "kind": "agent",
         "tether_instance_id": "tether-main",
-        "display_name": "sup-agent-os",
-        "title": "Agent-OS Run Supervisor",
+        "display_name": "sup-worker-host",
+        "title": "Worker-Host Run Supervisor",
         "role": "supervisor",
         "description": "Monitors run health, gate transitions, and unblocks agents across the team.",
-        "avatar": "https://avatar.nanite.cloud/sup-agent-os.png",
+        "avatar": "https://avatar.example.test/sup-worker-host.png",
         "project": "tether",
         "status": "active",
         "callback": {
           "scheme": "file",
-          "target": "/home/chrispian/.tether/run/sup-agent-os.sock"
+          "target": "/srv/example/.tether/run/sup-worker-host.sock"
         },
         "health_status": "healthy",
         "last_seen_at": "2026-10-04T14:28:00Z",
@@ -3634,11 +3634,11 @@
         "links": [
           {
             "kind": "repo",
-            "target": "https://github.com/hollis-labs/agent-os"
+            "target": "https://github.com/hollis-labs/worker-host"
           },
           {
             "kind": "doc",
-            "target": "https://agent-os.nanite.cloud/briefs/supervisor"
+            "target": "https://worker-host.example.test/briefs/supervisor"
           }
         ],
         "created_at": "2026-09-04T14:30:00Z",
@@ -3652,12 +3652,12 @@
         "title": "System Architect",
         "role": "architect",
         "description": "Designs wave decomposition, ADR alignments, and cross-monorepo interfaces.",
-        "avatar": "https://avatar.nanite.cloud/architect.png",
+        "avatar": "https://avatar.example.test/architect.png",
         "project": "tether",
         "status": "active",
         "callback": {
           "scheme": "file",
-          "target": "/home/chrispian/.tether/run/architect.sock"
+          "target": "/srv/example/.tether/run/architect.sock"
         },
         "health_status": "healthy",
         "last_seen_at": "2026-10-04T14:25:00Z",
@@ -3685,16 +3685,16 @@
         "urn": "msg://agent/agent-mux/agt_h6i20mqrcn",
         "kind": "agent",
         "tether_instance_id": "tether-main",
-        "display_name": "launch-agent-os",
-        "title": "Agent-OS Execution Lead",
+        "display_name": "launch-worker-host",
+        "title": "Worker-Host Execution Lead",
         "role": "lead",
         "description": "Chrispian's proxy: approves merges, releases, and directs next tasks.",
-        "avatar": "https://avatar.nanite.cloud/launch-agent-os.png",
+        "avatar": "https://avatar.example.test/launch-worker-host.png",
         "project": "tether",
         "status": "active",
         "callback": {
           "scheme": "file",
-          "target": "/home/chrispian/.tether/run/lead.sock"
+          "target": "/srv/example/.tether/run/lead.sock"
         },
         "health_status": "healthy",
         "last_seen_at": "2026-10-04T14:29:00Z",
@@ -3712,7 +3712,7 @@
         "links": [
           {
             "kind": "torque",
-            "target": "https://torque.nanite.cloud"
+            "target": "https://torque.example.test"
           }
         ],
         "created_at": "2026-09-04T14:30:00Z",
@@ -3726,12 +3726,12 @@
         "title": "Worker-1 Orchestrator",
         "role": "orchestrator",
         "description": "Manages independent task worker assignments and execution on worker-1.",
-        "avatar": "https://avatar.nanite.cloud/launch-worker-1.png",
+        "avatar": "https://avatar.example.test/launch-worker-1.png",
         "project": "parallax",
         "status": "active",
         "callback": {
           "scheme": "file",
-          "target": "/home/chrispian/.tether/run/worker-1.sock"
+          "target": "/srv/example/.tether/run/worker-1.sock"
         },
         "health_status": "healthy",
         "last_seen_at": "2026-10-04T14:27:00Z",
@@ -3749,7 +3749,7 @@
         "links": [
           {
             "kind": "assignment",
-            "target": "/home/chrispian/dev/agent-os/team/assignments/parallax-tether-fixtures.md"
+            "target": "/srv/example/dev/worker-host/team/assignments/parallax-tether-fixtures.md"
           }
         ],
         "created_at": "2026-09-24T14:30:00Z",
@@ -3763,12 +3763,12 @@
         "title": "Tether Fixtures Task Agent",
         "role": "task",
         "description": "Implements the tether-sysop/v1 fixture family and validation contracts.",
-        "avatar": "https://avatar.nanite.cloud/task-parallax-4.png",
+        "avatar": "https://avatar.example.test/task-parallax-4.png",
         "project": "parallax",
         "status": "active",
         "callback": {
           "scheme": "file",
-          "target": "/home/chrispian/.tether/run/task-parallax-4.sock"
+          "target": "/srv/example/.tether/run/task-parallax-4.sock"
         },
         "health_status": "healthy",
         "last_seen_at": "2026-10-04T14:30:00Z",
@@ -3792,7 +3792,7 @@
         "links": [
           {
             "kind": "worktree",
-            "target": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0098"
+            "target": "/srv/example/dev/hollis-labs/worktrees/parallax/CW-20261010-0098"
           }
         ],
         "created_at": "2026-10-04T12:30:00Z",
@@ -3806,12 +3806,12 @@
         "title": "Flux Fidelity Task Agent",
         "role": "task",
         "description": "Executes Flux chat card recreation and tokens fidelity verification.",
-        "avatar": "https://avatar.nanite.cloud/task-parallax-1.png",
+        "avatar": "https://avatar.example.test/task-parallax-1.png",
         "project": "parallax",
         "status": "active",
         "callback": {
           "scheme": "file",
-          "target": "/home/chrispian/.tether/run/task-parallax-1.sock"
+          "target": "/srv/example/.tether/run/task-parallax-1.sock"
         },
         "health_status": "healthy",
         "last_seen_at": "2026-10-04T14:23:00Z",
@@ -3829,7 +3829,7 @@
         "links": [
           {
             "kind": "worktree",
-            "target": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0083"
+            "target": "/srv/example/dev/hollis-labs/worktrees/parallax/CW-20261010-0083"
           }
         ],
         "created_at": "2026-10-04T11:30:00Z",
@@ -3843,16 +3843,16 @@
         "title": "Legacy Process Runner (Deprecated)",
         "role": "task",
         "description": "Pre-vNext raw process runner; replaced by sandboxed container executor.",
-        "avatar": "https://avatar.nanite.cloud/legacy.png",
+        "avatar": "https://avatar.example.test/legacy.png",
         "project": "tether",
         "status": "deprecated",
         "callback": {
           "scheme": "file",
-          "target": "/home/chrispian/.tether/run/legacy.sock"
+          "target": "/srv/example/.tether/run/legacy.sock"
         },
         "health_status": "inactive",
         "last_seen_at": "2026-09-20T14:30:00Z",
-        "host_address": "agent-os",
+        "host_address": "worker-host",
         "last_updated_by": "sysop-migration",
         "capabilities": ["process.exec"],
         "skills": [
@@ -3880,7 +3880,7 @@
         "title": "V1 Compatibility Shim (Deprecated)",
         "role": "shim",
         "description": "Early Wave-0 inter-runtime compatibility translator; retired per Clean Breaks policy.",
-        "avatar": "https://avatar.nanite.cloud/shim.png",
+        "avatar": "https://avatar.example.test/shim.png",
         "project": "tangent",
         "status": "deprecated",
         "callback": {
@@ -3889,7 +3889,7 @@
         },
         "health_status": "inactive",
         "last_seen_at": "2026-09-13T14:30:00Z",
-        "host_address": "agent-os",
+        "host_address": "worker-host",
         "last_updated_by": "sysop-migration",
         "capabilities": ["wire.translate"],
         "skills": [
@@ -3917,7 +3917,7 @@
         "title": "Tether Local Agent Session Control Plane",
         "role": "runtime",
         "description": "Local daemon owning session lifecycle, sandboxed execution, messaging, and proxy tools.",
-        "avatar": "https://avatar.nanite.cloud/proj-tether.png",
+        "avatar": "https://avatar.example.test/proj-tether.png",
         "status": "active",
         "callback": {
           "scheme": "http",
@@ -3935,7 +3935,7 @@
           },
           {
             "kind": "docs",
-            "target": "https://tether.nanite.cloud"
+            "target": "https://tether.example.test"
           }
         ],
         "created_at": "2026-08-25T14:30:00Z",
@@ -3949,7 +3949,7 @@
         "title": "Parallax UI \u0026 Fixture Framework",
         "role": "application",
         "description": "Component showcase, deterministic presentation fixture generators, and recreation workbench.",
-        "avatar": "https://avatar.nanite.cloud/proj-parallax.png",
+        "avatar": "https://avatar.example.test/proj-parallax.png",
         "status": "active",
         "callback": {
           "scheme": "http",
@@ -3977,7 +3977,7 @@
         "title": "Tangent Agent Workspace \u0026 Inbox",
         "role": "application",
         "description": "Desktop UI for agent oversight, approval queues, messaging turns, and review workflows.",
-        "avatar": "https://avatar.nanite.cloud/proj-tangent.png",
+        "avatar": "https://avatar.example.test/proj-tangent.png",
         "status": "active",
         "callback": {
           "scheme": "http",
@@ -4005,7 +4005,7 @@
         "title": "Early Wave-0 Monolithic Runner (Archived)",
         "role": "prototype",
         "description": "Historical prototype codebase; archived and replaced by modular substrate services.",
-        "avatar": "https://avatar.nanite.cloud/proj-archived.png",
+        "avatar": "https://avatar.example.test/proj-archived.png",
         "status": "deprecated",
         "callback": {
           "scheme": "file",
@@ -4013,7 +4013,7 @@
         },
         "health_status": "inactive",
         "last_seen_at": "2026-09-04T14:30:00Z",
-        "host_address": "agent-os",
+        "host_address": "worker-host",
         "last_updated_by": "sysop-migration",
         "links": [
           {
@@ -4974,16 +4974,16 @@
       "urn": "msg://agent/agent-mux/agt_knoibzkhsk",
       "kind": "agent",
       "tether_instance_id": "tether-main",
-      "display_name": "sup-agent-os",
-      "title": "Agent-OS Run Supervisor",
+      "display_name": "sup-worker-host",
+      "title": "Worker-Host Run Supervisor",
       "role": "supervisor",
       "description": "Monitors run health, gate transitions, and unblocks agents across the team.",
-      "avatar": "https://avatar.nanite.cloud/sup-agent-os.png",
+      "avatar": "https://avatar.example.test/sup-worker-host.png",
       "project": "tether",
       "status": "active",
       "callback": {
         "scheme": "file",
-        "target": "/home/chrispian/.tether/run/sup-agent-os.sock"
+        "target": "/srv/example/.tether/run/sup-worker-host.sock"
       },
       "health_status": "healthy",
       "last_seen_at": "2026-10-04T14:28:00Z",
@@ -5007,11 +5007,11 @@
       "links": [
         {
           "kind": "repo",
-          "target": "https://github.com/hollis-labs/agent-os"
+          "target": "https://github.com/hollis-labs/worker-host"
         },
         {
           "kind": "doc",
-          "target": "https://agent-os.nanite.cloud/briefs/supervisor"
+          "target": "https://worker-host.example.test/briefs/supervisor"
         }
       ],
       "created_at": "2026-09-04T14:30:00Z",
@@ -5025,12 +5025,12 @@
       "title": "System Architect",
       "role": "architect",
       "description": "Designs wave decomposition, ADR alignments, and cross-monorepo interfaces.",
-      "avatar": "https://avatar.nanite.cloud/architect.png",
+      "avatar": "https://avatar.example.test/architect.png",
       "project": "tether",
       "status": "active",
       "callback": {
         "scheme": "file",
-        "target": "/home/chrispian/.tether/run/architect.sock"
+        "target": "/srv/example/.tether/run/architect.sock"
       },
       "health_status": "healthy",
       "last_seen_at": "2026-10-04T14:25:00Z",
@@ -5058,16 +5058,16 @@
       "urn": "msg://agent/agent-mux/agt_h6i20mqrcn",
       "kind": "agent",
       "tether_instance_id": "tether-main",
-      "display_name": "launch-agent-os",
-      "title": "Agent-OS Execution Lead",
+      "display_name": "launch-worker-host",
+      "title": "Worker-Host Execution Lead",
       "role": "lead",
       "description": "Chrispian's proxy: approves merges, releases, and directs next tasks.",
-      "avatar": "https://avatar.nanite.cloud/launch-agent-os.png",
+      "avatar": "https://avatar.example.test/launch-worker-host.png",
       "project": "tether",
       "status": "active",
       "callback": {
         "scheme": "file",
-        "target": "/home/chrispian/.tether/run/lead.sock"
+        "target": "/srv/example/.tether/run/lead.sock"
       },
       "health_status": "healthy",
       "last_seen_at": "2026-10-04T14:29:00Z",
@@ -5085,7 +5085,7 @@
       "links": [
         {
           "kind": "torque",
-          "target": "https://torque.nanite.cloud"
+          "target": "https://torque.example.test"
         }
       ],
       "created_at": "2026-09-04T14:30:00Z",
@@ -5099,12 +5099,12 @@
       "title": "Worker-1 Orchestrator",
       "role": "orchestrator",
       "description": "Manages independent task worker assignments and execution on worker-1.",
-      "avatar": "https://avatar.nanite.cloud/launch-worker-1.png",
+      "avatar": "https://avatar.example.test/launch-worker-1.png",
       "project": "parallax",
       "status": "active",
       "callback": {
         "scheme": "file",
-        "target": "/home/chrispian/.tether/run/worker-1.sock"
+        "target": "/srv/example/.tether/run/worker-1.sock"
       },
       "health_status": "healthy",
       "last_seen_at": "2026-10-04T14:27:00Z",
@@ -5122,7 +5122,7 @@
       "links": [
         {
           "kind": "assignment",
-          "target": "/home/chrispian/dev/agent-os/team/assignments/parallax-tether-fixtures.md"
+          "target": "/srv/example/dev/worker-host/team/assignments/parallax-tether-fixtures.md"
         }
       ],
       "created_at": "2026-09-24T14:30:00Z",
@@ -5136,12 +5136,12 @@
       "title": "Tether Fixtures Task Agent",
       "role": "task",
       "description": "Implements the tether-sysop/v1 fixture family and validation contracts.",
-      "avatar": "https://avatar.nanite.cloud/task-parallax-4.png",
+      "avatar": "https://avatar.example.test/task-parallax-4.png",
       "project": "parallax",
       "status": "active",
       "callback": {
         "scheme": "file",
-        "target": "/home/chrispian/.tether/run/task-parallax-4.sock"
+        "target": "/srv/example/.tether/run/task-parallax-4.sock"
       },
       "health_status": "healthy",
       "last_seen_at": "2026-10-04T14:30:00Z",
@@ -5165,7 +5165,7 @@
       "links": [
         {
           "kind": "worktree",
-          "target": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0098"
+          "target": "/srv/example/dev/hollis-labs/worktrees/parallax/CW-20261010-0098"
         }
       ],
       "created_at": "2026-10-04T12:30:00Z",
@@ -5179,12 +5179,12 @@
       "title": "Flux Fidelity Task Agent",
       "role": "task",
       "description": "Executes Flux chat card recreation and tokens fidelity verification.",
-      "avatar": "https://avatar.nanite.cloud/task-parallax-1.png",
+      "avatar": "https://avatar.example.test/task-parallax-1.png",
       "project": "parallax",
       "status": "active",
       "callback": {
         "scheme": "file",
-        "target": "/home/chrispian/.tether/run/task-parallax-1.sock"
+        "target": "/srv/example/.tether/run/task-parallax-1.sock"
       },
       "health_status": "healthy",
       "last_seen_at": "2026-10-04T14:23:00Z",
@@ -5202,7 +5202,7 @@
       "links": [
         {
           "kind": "worktree",
-          "target": "/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0083"
+          "target": "/srv/example/dev/hollis-labs/worktrees/parallax/CW-20261010-0083"
         }
       ],
       "created_at": "2026-10-04T11:30:00Z",
@@ -5216,16 +5216,16 @@
       "title": "Legacy Process Runner (Deprecated)",
       "role": "task",
       "description": "Pre-vNext raw process runner; replaced by sandboxed container executor.",
-      "avatar": "https://avatar.nanite.cloud/legacy.png",
+      "avatar": "https://avatar.example.test/legacy.png",
       "project": "tether",
       "status": "deprecated",
       "callback": {
         "scheme": "file",
-        "target": "/home/chrispian/.tether/run/legacy.sock"
+        "target": "/srv/example/.tether/run/legacy.sock"
       },
       "health_status": "inactive",
       "last_seen_at": "2026-09-20T14:30:00Z",
-      "host_address": "agent-os",
+      "host_address": "worker-host",
       "last_updated_by": "sysop-migration",
       "capabilities": ["process.exec"],
       "skills": [
@@ -5253,7 +5253,7 @@
       "title": "V1 Compatibility Shim (Deprecated)",
       "role": "shim",
       "description": "Early Wave-0 inter-runtime compatibility translator; retired per Clean Breaks policy.",
-      "avatar": "https://avatar.nanite.cloud/shim.png",
+      "avatar": "https://avatar.example.test/shim.png",
       "project": "tangent",
       "status": "deprecated",
       "callback": {
@@ -5262,7 +5262,7 @@
       },
       "health_status": "inactive",
       "last_seen_at": "2026-09-13T14:30:00Z",
-      "host_address": "agent-os",
+      "host_address": "worker-host",
       "last_updated_by": "sysop-migration",
       "capabilities": ["wire.translate"],
       "skills": [
@@ -5290,7 +5290,7 @@
       "title": "Tether Local Agent Session Control Plane",
       "role": "runtime",
       "description": "Local daemon owning session lifecycle, sandboxed execution, messaging, and proxy tools.",
-      "avatar": "https://avatar.nanite.cloud/proj-tether.png",
+      "avatar": "https://avatar.example.test/proj-tether.png",
       "status": "active",
       "callback": {
         "scheme": "http",
@@ -5308,7 +5308,7 @@
         },
         {
           "kind": "docs",
-          "target": "https://tether.nanite.cloud"
+          "target": "https://tether.example.test"
         }
       ],
       "created_at": "2026-08-25T14:30:00Z",
@@ -5322,7 +5322,7 @@
       "title": "Parallax UI \u0026 Fixture Framework",
       "role": "application",
       "description": "Component showcase, deterministic presentation fixture generators, and recreation workbench.",
-      "avatar": "https://avatar.nanite.cloud/proj-parallax.png",
+      "avatar": "https://avatar.example.test/proj-parallax.png",
       "status": "active",
       "callback": {
         "scheme": "http",
@@ -5350,7 +5350,7 @@
       "title": "Tangent Agent Workspace \u0026 Inbox",
       "role": "application",
       "description": "Desktop UI for agent oversight, approval queues, messaging turns, and review workflows.",
-      "avatar": "https://avatar.nanite.cloud/proj-tangent.png",
+      "avatar": "https://avatar.example.test/proj-tangent.png",
       "status": "active",
       "callback": {
         "scheme": "http",
@@ -5378,7 +5378,7 @@
       "title": "Early Wave-0 Monolithic Runner (Archived)",
       "role": "prototype",
       "description": "Historical prototype codebase; archived and replaced by modular substrate services.",
-      "avatar": "https://avatar.nanite.cloud/proj-archived.png",
+      "avatar": "https://avatar.example.test/proj-archived.png",
       "status": "deprecated",
       "callback": {
         "scheme": "file",
@@ -5386,7 +5386,7 @@
       },
       "health_status": "inactive",
       "last_seen_at": "2026-09-04T14:30:00Z",
-      "host_address": "agent-os",
+      "host_address": "worker-host",
       "last_updated_by": "sysop-migration",
       "links": [
         {
@@ -5560,7 +5560,7 @@
       "event_type": "completion",
       "request_id": "req-0003",
       "session_id": "sess-002",
-      "caller_id": "launch-agent-os",
+      "caller_id": "launch-worker-host",
       "operation": "completion",
       "provider": "anthropic",
       "model": "claude-3-7-sonnet",
@@ -5736,7 +5736,7 @@
       "event_type": "completion",
       "request_id": "req-0011",
       "session_id": "sess-004",
-      "caller_id": "launch-agent-os",
+      "caller_id": "launch-worker-host",
       "operation": "completion",
       "provider": "openai",
       "model": "gpt-4o",
@@ -5914,7 +5914,7 @@
       "event_type": "chat",
       "request_id": "req-0019",
       "session_id": "sess-005",
-      "caller_id": "launch-agent-os",
+      "caller_id": "launch-worker-host",
       "operation": "chat",
       "provider": "google",
       "model": "gemini-2.0-flash",
