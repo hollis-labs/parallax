@@ -35,6 +35,8 @@ func startedIn(t *testing.T, dataDir, override string) string {
 	env := map[string]string{"PARALLAX_DATA_DIR": dataDir, "SUBSTRATE_CONFIG": file}
 	// The config module reads SUBSTRATE_CONFIG from the process environment.
 	t.Setenv("SUBSTRATE_CONFIG", file)
+	// First-run setup is offline: the owner exists before the server starts.
+	createOwner(t, env)
 
 	ctx, cancel := context.WithCancel(context.Background())
 	run, err := boot.StartWith(ctx, substrateApp, substrateModules, substrateConfigJSON, bootOptions(func(k string) string { return env[k] }, true))
@@ -67,6 +69,29 @@ func startedIn(t *testing.T, dataDir, override string) string {
 		t.Fatal("serve never listened")
 	}
 	return ""
+}
+
+const ownerPassword = "correct horse battery staple"
+
+// createOwner runs `parallax identity setup` against the data directory in env, as an operator
+// does on the host before the first start (POST /api/setup is refused).
+func createOwner(t *testing.T, env map[string]string) {
+	t.Helper()
+	args := []string{"identity", "setup", "--username", "owner", "--display-name", "Owner"}
+	modules, prepare := plan(args)
+	run, err := boot.StartWith(context.Background(), substrateApp, modules, substrateConfigJSON, bootOptions(func(k string) string { return env[k] }, prepare))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = run.Stop(context.Background()) }()
+	root := (&parallax{app: run.App}).root(context.Background(), args)
+	root.SetIn(strings.NewReader(ownerPassword + "\n"))
+	var out bytes.Buffer
+	root.SetOut(&out)
+	root.SetErr(&out)
+	if err := root.Execute(); err != nil {
+		t.Fatalf("identity setup: %v\n%s", err, out.String())
+	}
 }
 
 type client struct {
@@ -144,9 +169,13 @@ func TestAcceptance(t *testing.T) {
 	c.want(401, "GET", "/api/snapshots/current", nil, nil)
 	c.want(401, "GET", "/plugins/ops/g1/bundle.js", nil, nil)
 
-	creds := map[string]string{"username": "owner", "display_name": "Owner", "password": "correct horse battery staple"}
-	c.want(200, "POST", "/api/setup", creds, xrw)
-	c.want(200, "POST", "/api/login", map[string]string{"username": "owner", "password": creds["password"]}, xrw)
+	// First-run setup is offline: the owner was created before the server started, so setup is
+	// closed, and over HTTP it is refused outright.
+	if body := c.want(200, "GET", "/api/setup", nil, nil); !bytes.Contains(body, []byte(`"setup_required":false`)) || !bytes.Contains(body, []byte(`"setup_over_http":false`)) {
+		t.Fatalf("GET /api/setup = %s", body)
+	}
+	c.want(403, "POST", "/api/setup", map[string]string{"username": "x", "display_name": "X", "password": ownerPassword}, xrw)
+	c.want(200, "POST", "/api/login", map[string]string{"username": "owner", "password": ownerPassword}, xrw)
 
 	if body := c.want(200, "GET", "/api/scenario", nil, nil); !bytes.Contains(body, []byte("RUN-008")) {
 		t.Fatalf("scenario body lacks RUN-008: %.200s", body)
@@ -182,10 +211,10 @@ func TestProxiedHost(t *testing.T) {
 	c.want(403, "GET", "/healthz", nil, map[string]string{"Host": name, "X-Forwarded-Proto": "http"})                  // plaintext
 	c.want(403, "GET", "/healthz", nil, map[string]string{"Host": "other.example.test", "X-Forwarded-Proto": "https"}) // not listed
 
-	// End to end through the proxy name: setup with the page's own origin, then a signed-in read.
+	// End to end through the proxy name: sign in with the page's own origin, then a signed-in read.
 	// The session cookie is Secure behind https and the test client speaks http, so it is carried by hand.
-	body, _ := json.Marshal(map[string]string{"username": "owner", "display_name": "Owner", "password": "correct horse battery staple"})
-	req, _ := http.NewRequest("POST", base+"/api/setup", bytes.NewReader(body))
+	body, _ := json.Marshal(map[string]string{"username": "owner", "password": ownerPassword})
+	req, _ := http.NewRequest("POST", base+"/api/login", bytes.NewReader(body))
 	req.Host = name
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("X-Forwarded-Proto", "https")
@@ -197,7 +226,7 @@ func TestProxiedHost(t *testing.T) {
 	}
 	_ = res.Body.Close()
 	if res.StatusCode != 200 || len(res.Cookies()) == 0 {
-		t.Fatalf("proxied setup: status %d, %d cookies", res.StatusCode, len(res.Cookies()))
+		t.Fatalf("proxied login: status %d, %d cookies", res.StatusCode, len(res.Cookies()))
 	}
 	read := func(host string) int {
 		r, _ := http.NewRequest("GET", base+"/api/scenario", nil)
@@ -245,7 +274,7 @@ func TestDataPaths(t *testing.T) {
 	t.Run("defaults are anchored in the data directory", func(t *testing.T) {
 		data := filepath.Join(t.TempDir(), "data")
 		c := newClient(t, startedIn(t, data, loopbackOverride))
-		c.want(200, "POST", "/api/setup", map[string]string{"username": "owner", "display_name": "Owner", "password": "correct horse battery staple"}, xrw)
+		c.want(200, "POST", "/api/login", map[string]string{"username": "owner", "password": ownerPassword}, xrw)
 		for name, want := range map[string]os.FileMode{"parallax.db": 0o600, "identity-signing.key": 0o600} {
 			fi, err := os.Stat(filepath.Join(data, name))
 			if err != nil || fi.Mode().Perm() != want {
@@ -261,7 +290,7 @@ func TestDataPaths(t *testing.T) {
 		elsewhere := t.TempDir()
 		override := loopbackOverride + "database:\n  sqlite:\n    path: " + filepath.Join(elsewhere, "custom.db") + "\nidentity:\n  key_file: " + filepath.Join(elsewhere, "custom.key") + "\n"
 		c := newClient(t, startedIn(t, data, override))
-		c.want(200, "POST", "/api/setup", map[string]string{"username": "owner", "display_name": "Owner", "password": "correct horse battery staple"}, xrw)
+		c.want(200, "POST", "/api/login", map[string]string{"username": "owner", "password": ownerPassword}, xrw)
 		for _, name := range []string{"custom.db", "custom.key"} {
 			if _, err := os.Stat(filepath.Join(elsewhere, name)); err != nil {
 				t.Errorf("%s not created where the override says: %v", name, err)
@@ -281,7 +310,7 @@ const captureBody = `{"version":"parallax-capture/v1","id":"synthetic","sources"
 // malformed file refuses to start and the error names the key.
 func TestSnapshotFile(t *testing.T) {
 	signIn := func(c *client) {
-		c.want(200, "POST", "/api/setup", map[string]string{"username": "owner", "display_name": "Owner", "password": "correct horse battery staple"}, xrw)
+		c.want(200, "POST", "/api/login", map[string]string{"username": "owner", "password": ownerPassword}, xrw)
 	}
 	t.Run("unset serves the embedded capture", func(t *testing.T) {
 		c := newClient(t, started(t, loopbackOverride))
@@ -341,7 +370,7 @@ func serveWith(t *testing.T, override string) error {
 func TestIdentityContract(t *testing.T) {
 	c := newClient(t, started(t, loopbackOverride))
 	c.want(401, "GET", "/api/identity/profile", nil, nil)
-	c.want(200, "POST", "/api/setup", map[string]string{"username": "owner", "display_name": "Owner", "password": "correct horse battery staple"}, xrw)
+	c.want(200, "POST", "/api/login", map[string]string{"username": "owner", "password": ownerPassword}, xrw)
 	var me struct {
 		Username  string   `json:"username"`
 		Scopes    []string `json:"scopes"`

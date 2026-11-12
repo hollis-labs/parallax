@@ -9,7 +9,7 @@ endpoints and a registry-v2 plugin delivery. It runs on Substrate (`app-host` va
 |---|---|
 | Migrated data or fresh start? | Fresh. The old app had no database and no persisted state; nothing to migrate. |
 | Binary | `cmd/parallax`, variant `app-host`, serves the SPA, `/api/` and `/plugins/`. |
-| Identity | Own accounts through the `identity` module (first account made by `/api/setup` holds `*`). |
+| Identity | Own accounts through the `identity` module (the first account, made offline with `parallax identity setup`, holds `*`; `POST /api/setup` is always refused, 403 `setup_offline`). |
 | Routes | `GET /api/snapshots/current` and `GET /api/scenario` need `parallax.read`; `GET /plugins/*` needs `parallax.read`. No open mounts. |
 | Background work | None. |
 | UI needs from the framework | App-shell and the BOM kits; sign-in screens are app-owned until the identity UI kit exists (see conversion-notes Gaps). |

@@ -7,6 +7,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"slices"
+	"strings"
 	"testing"
 	"time"
 
@@ -14,6 +15,28 @@ import (
 
 	"github.com/hollis-labs/substrate/boot"
 )
+
+// binary builds the app once for the test and returns a constructor for commands that run it with
+// an empty HOME (and so no data directory) and a listen address on port 0.
+func binary(t *testing.T) func(ctx context.Context, home string, args ...string) *exec.Cmd {
+	t.Helper()
+	bin := filepath.Join(t.TempDir(), "parallax")
+	build := exec.Command("go", "build", "-o", bin, ".") //nolint:gosec // fixed arguments, and bin is a temp path
+	if out, err := build.CombinedOutput(); err != nil {
+		t.Fatalf("build: %v\n%s", err, out)
+	}
+	cfg := filepath.Join(t.TempDir(), "cfg.yaml")
+	if err := os.WriteFile(cfg, []byte("httphost:\n  addr: \"127.0.0.1:0\"\n"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	return func(ctx context.Context, home string, args ...string) *exec.Cmd {
+		c := exec.CommandContext(ctx, bin, args...) //nolint:gosec // bin is the binary this test just built
+		c.Dir = home
+		c.Env = []string{"PATH=" + os.Getenv("PATH"), "HOME=" + home, "XDG_DATA_HOME=" + home + "/data",
+			"XDG_STATE_HOME=" + home + "/state", "XDG_CONFIG_HOME=" + home + "/config", "SUBSTRATE_CONFIG=" + cfg}
+		return c
+	}
+}
 
 func TestPlan(t *testing.T) {
 	for _, tc := range []struct {
@@ -24,6 +47,9 @@ func TestPlan(t *testing.T) {
 		{nil, substrateModules, true},
 		{[]string{"serve"}, substrateModules, true},
 		{[]string{"serve", "--help"}, pick(readOnly), false},
+		{[]string{"identity", "setup", "--username", "owner"}, pick(withIdentity), true},
+		{[]string{"identity", "key", "create", "--name", "k"}, pick(withIdentity), true},
+		{[]string{"identity", "--help"}, pick(readOnly), false},
 		{[]string{"version"}, pick(readOnly), false},
 		{[]string{"config"}, pick(readOnly), false},
 		{[]string{"health"}, pick(readOnly), false},
@@ -43,22 +69,7 @@ func TestPlan(t *testing.T) {
 // and no PARALLAX_DATA_DIR, the tree stays empty. Serving is the positive control, so the
 // emptiness check is known to be able to see a write.
 func TestReadOnlyCommandsCreateNothing(t *testing.T) {
-	bin := filepath.Join(t.TempDir(), "parallax")
-	build := exec.Command("go", "build", "-o", bin, ".") //nolint:gosec // fixed arguments, and bin is a temp path
-	if out, err := build.CombinedOutput(); err != nil {
-		t.Fatalf("build: %v\n%s", err, out)
-	}
-	cfg := filepath.Join(t.TempDir(), "cfg.yaml")
-	if err := os.WriteFile(cfg, []byte("httphost:\n  addr: \"127.0.0.1:0\"\n"), 0o600); err != nil {
-		t.Fatal(err)
-	}
-	command := func(ctx context.Context, home string, args ...string) *exec.Cmd {
-		c := exec.CommandContext(ctx, bin, args...) //nolint:gosec // bin is the binary this test just built
-		c.Dir = home
-		c.Env = []string{"PATH=" + os.Getenv("PATH"), "HOME=" + home, "XDG_DATA_HOME=" + home + "/data",
-			"XDG_STATE_HOME=" + home + "/state", "XDG_CONFIG_HOME=" + home + "/config", "SUBSTRATE_CONFIG=" + cfg}
-		return c
-	}
+	command := binary(t)
 	entries := func(home string) []string {
 		var got []string
 		_ = filepath.WalkDir(home, func(p string, _ fs.DirEntry, _ error) error {
@@ -92,6 +103,41 @@ func TestReadOnlyCommandsCreateNothing(t *testing.T) {
 		if time.Now().After(deadline) {
 			t.Fatal("control: serve created nothing, so the emptiness check proves nothing")
 		}
+	}
+}
+
+// The offline bootstrap is a command that writes: `identity setup` creates the data directory, the
+// database and the signing key (private) and the owner; a second run refuses; `identity key create`
+// prints an API key; the password comes from stdin, never an argument.
+func TestIdentityCommandsBootstrapOffline(t *testing.T) {
+	command := binary(t)
+	home := t.TempDir()
+	run := func(stdin string, args ...string) (string, error) {
+		c := command(context.Background(), home, args...)
+		c.Stdin = strings.NewReader(stdin)
+		out, err := c.CombinedOutput()
+		return string(out), err
+	}
+	if out, err := run("", "identity", "key", "create", "--name", "k", "--scope", "parallax.read", "--stdout"); err == nil {
+		t.Fatalf("a key without an owner must be refused, got %q", out)
+	}
+	if out, err := run(ownerPassword+"\n", "identity", "setup", "--username", "owner"); err != nil || !strings.Contains(out, "owner owner created") {
+		t.Fatalf("setup: %v\n%s", err, out)
+	}
+	if out, err := run(ownerPassword+"\n", "identity", "setup", "--username", "again"); err == nil || !strings.Contains(out, "an owner exists") {
+		t.Fatalf("a second setup must refuse: %v\n%s", err, out)
+	}
+	if out, err := run("", "identity", "key", "create", "--name", "k", "--scope", "parallax.read", "--stdout"); err != nil || !strings.HasPrefix(out, "key_") {
+		t.Fatalf("key create: %v\n%s", err, out)
+	}
+	data := filepath.Join(home, "data", "parallax")
+	for name, want := range map[string]os.FileMode{"parallax.db": 0o600, "identity-signing.key": 0o600} {
+		if fi, err := os.Stat(filepath.Join(data, name)); err != nil || fi.Mode().Perm() != want {
+			t.Errorf("%s: %v, %v, want %o", name, err, fi, want)
+		}
+	}
+	if fi, err := os.Stat(data); err != nil || fi.Mode().Perm() != 0o700 {
+		t.Errorf("data directory: %v, %v", err, fi)
 	}
 }
 

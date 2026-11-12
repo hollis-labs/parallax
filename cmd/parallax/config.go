@@ -25,7 +25,9 @@ func bootOptions(getenv func(string) string, prepare bool) boot.Options {
 }
 
 // plan decides, from the command line, which framework modules to start and whether the data
-// directory may be created. Only serving (the default) writes anything. Every other command,
+// directory may be created. Only serving (the default) and `identity` (the offline owner and API
+// key bootstrap) write anything: they need the database and identity modules and create the data
+// directory, the database and the signing key, exactly as serving does. Every other command,
 // including version, config, health and help, reads configuration and starts no module that opens
 // a file, so running one without PARALLAX_DATA_DIR cannot touch the live data directory of the
 // app name.
@@ -44,14 +46,21 @@ func plan(args []string) (modules []string, prepare bool) {
 			words = append(words, a)
 		}
 	}
-	if len(words) == 0 || words[0] == "serve" {
+	switch {
+	case len(words) == 0 || words[0] == "serve":
 		return substrateModules, true
+	case words[0] == "identity":
+		return pick(withIdentity), true
 	}
 	return pick(readOnly), false
 }
 
 // readOnly are the modules that open no file and bind no port when started.
 var readOnly = []string{"config", "logging", "health", "cli"}
+
+// withIdentity adds what the offline identity commands need: the database and the identity module
+// (the auth module is where identity looks for the guard it serves; it binds no port).
+var withIdentity = []string{"config", "logging", "health", "auth", "database", "identity", "cli"}
 
 // pick keeps the start order of substrateModules.
 func pick(want []string) []string {

@@ -100,8 +100,7 @@ Scope table (all enforced by the auth guard; the first account made by setup hol
 | `GET/POST /api/identity/users`, `PUT /api/identity/users/{id}`, `GET/POST /api/identity/keys`, `DELETE /api/identity/keys/{id}`, `POST /api/identity/pairing-codes` | `parallax.admin` |
 | `GET /healthz` | unauthenticated |
 
-Session flow for the SPA: `GET /api/setup` says whether first-run setup is still open (show the setup screen, then
-`POST /api/setup`); otherwise `POST /api/login`. `GET /api/identity/profile` is the "who am I" route (Substrate bac8c60): signed in -> `200 {id, username, display_name, email, scopes, assurance}`
+Session flow for the SPA: `GET /api/setup` answers `{setup_required, setup_over_http}` (since Substrate d453ac8, `setup_over_http` is false: `POST /api/setup` is always refused, `403 {"code":"setup_offline"}`). When `setup_required` is true the screen tells the operator to run `parallax identity setup --username NAME` on the host and then sign in; otherwise `POST /api/login`. `GET /api/identity/profile` is the "who am I" route (Substrate bac8c60): signed in -> `200 {id, username, display_name, email, scopes, assurance}`
 (`assurance` is `"local"`), signed out -> `401`, an API key -> `403 user_required`. A 401 from any `/api/` call means
 signed out, and sign-out is `POST /api/logout` (204). Host and origin: the backend answers only to loopback Host names (`localhost`, `127.0.0.1`, `[::1]`, any port) and
 to the names in `parallax.allowed_hosts`; any other Host gets a plain 403. A listed name is served only for a loopback
@@ -113,7 +112,7 @@ the manifest took the deployed port): that is the GUI agent's to change.
 
 Observed on the real binary (Torque CW-20261112-0080, comment 23312, checked against it; first start, throwaway data dir):
 
-- `GET /api/setup` -> `200 {"setup_required": bool}`; a second `POST /api/setup` -> `409 {"code":"setup_closed","message":"setup is already done"}`.
+- `GET /api/setup` -> `200 {"setup_required": bool, "setup_over_http": false}`; `POST /api/setup` -> `403 {"code":"setup_offline","message":"first-run setup over HTTP is disabled; create the owner on the host with `parallax identity setup`"}` (before d453ac8 it created the owner, and a second call gave `409 setup_closed`).
 - A cookie-authenticated write **without `X-Requested-With`** -> `403 {"code":"csrf","message":"missing X-Requested-With"}`. A **foreign `Origin`**
   (header present) -> `403 {"code":"bad_origin","message":"the request did not come from this app"}`: the two cases have different
   codes (comment 23312 lists both under `csrf`).
@@ -160,7 +159,7 @@ Setup and login bodies: `{username, display_name, password}` / `{username, passw
   identity's login limiter (five failures per username and address in five minutes) is effectively per username: someone who can reach
   the site can lock the owner out for a few minutes. This is the framework's design (a validated client address for the limiter is on
   the framework's list), not an app setting.
-- First start creates the data directory (`0700`), `parallax.db` and the signing key; first-run setup creates the owner.
+- First start creates the data directory (`0700`), `parallax.db` and the signing key; the owner is created offline with `parallax identity setup --username NAME` (password from a no-echo prompt or the first line of stdin; refuses when an owner exists), API keys with `parallax identity key create`. Both commands create the data directory, database and signing key; no other command except serving does.
 
 ## Deployed instance and cutover outline
 
@@ -184,5 +183,5 @@ Outline (owner approves the deploy; Cerberus' owner changes the descriptor):
    previous release directory, dry-run, then switch.
 4. **Rollback**: relink the previous release and restore the previous descriptor; the old app keeps no state, so
    nothing else needs restoring. The new data directory can be left or deleted.
-5. **Verify live**: first-run setup, sign in, read `/api/scenario` through the real URL, open the UI and check the
+5. **Verify live**: `parallax identity setup` on the host, sign in, read `/api/scenario` through the real URL, open the UI and check the
    plugin panel loads, an unknown `Host` is refused (403), unauthenticated `/api/scenario` is 401.

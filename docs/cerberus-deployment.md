@@ -36,7 +36,7 @@ operator decision.
 
 Substrate supplies `GET /healthz` (no sign-in needed), returning
 `{"status":"ok","checks":{"database":"ok"}}`. That proves HTTP liveness and
-the identity database. Everything else needs a session: after first-run setup
+the identity database. Everything else needs a session: after first-run setup (`parallax identity setup --username NAME` on the host, before or after the first start; the HTTP route is refused)
 (owner account) and sign-in, check `/`, `/api/scenario`, `/plugins/ops/g1/bundle.js`
 (401 signed out, 200 signed in) and one local `/?example=...` fixture journey to
 verify the embedded UI and scenario delivery. An unknown `Host` is refused (403). Browser acceptance and owner visual approval remain

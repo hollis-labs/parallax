@@ -1,4 +1,4 @@
-.PHONY: run build check fixtures ui-dev storybook pins lint scan generate
+.PHONY: run owner build check fixtures ui-dev storybook pins lint scan generate
 SUBSTRATE := go run github.com/hollis-labs/substrate/cmd/substrate
 export TMPDIR := $(CURDIR)/.scratch/tmp
 export GOCACHE := $(CURDIR)/.scratch/gocache
@@ -12,6 +12,10 @@ fixtures: prepare
 build: prepare
 	cd frontend && npm ci && npm run build
 	go build -o .scratch/parallax ./cmd/parallax
+# First-run setup is offline (POST /api/setup is refused): create the owner once, before `make run`.
+# The password is read from the terminal; OWNER names the account.
+owner: build
+	PARALLAX_DATA_DIR=$(CURDIR)/.scratch/data .scratch/parallax identity setup --username $(or $(OWNER),owner)
 run: build
 	@echo "data directory: $(CURDIR)/.scratch/data"
 	PARALLAX_DATA_DIR=$(CURDIR)/.scratch/data .scratch/parallax
