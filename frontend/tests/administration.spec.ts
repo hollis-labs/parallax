@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test"
 import { ports } from "./ports"
+import { shellLink } from "./shell-nav"
 
 test("embedded admin preserves provenance and fences edited or retired scripted outcomes", async ({
   page,
@@ -199,7 +200,7 @@ test("admin and account portable stories use no API and keep one narrow scroll o
       .map((e) => e.dataset.testid ?? e.className),
   )
   expect(owners).toEqual(["page-scroll"])
-  await page.getByRole("link", { name: "Administration", exact: true }).click()
+  await (await shellLink(page, "Administration")).click()
   await page
     .getByRole("group", { name: "Canonical admin pages" })
     .getByRole("button", { name: "Settings", exact: true })
