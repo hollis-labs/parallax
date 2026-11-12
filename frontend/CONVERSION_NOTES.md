@@ -130,3 +130,13 @@ on the host; the owner form stays only for a backend that reports `setup_over_ht
 Failed once on CI (PR #35 run 43250608571: `Record inspector` not visible within 5s after `Enter`) and passed in every other run. Not reproduced in 360+ local
 runs (CPU oversubscription, cold Vite cache, the headless shell 1248). The test now waits for the cleared search to bring the rows back before pressing Enter;
 that is not claimed as the cause. A recurrence leaves a trace (see Browser suites).
+
+## Known product defect the suite no longer checks (Torque CW-20261112-0125)
+
+`snapshot-sessions.spec.ts` "session inspection and stop previews are keyboard accessible and never write" is `test.fixme`. It hides a real keyboard
+defect, not a flaky test: with the "Stop session · local preview" dialog open over the "Session details" dialog, one Escape closes the preview and,
+under load (CI), the details dialog under it too. It failed on CI in 4 of 9 full runs (main and PRs, one worker included: PR #38 run 43281623348) and
+locally under CPU starvation. The two dialogs are sibling `DetailDialog`s (`src/snapshots/Sessions.tsx`, Base UI dialogs through design-components),
+not nested in the React tree; dismissal is the kit's (`onOpenChange` -> `onClose`). No deterministic reproduction was found: CPU throttling through
+CDP (6x and 20x), a 250 ms main-thread stall on the Escape keydown or keyup, and separating keydown from keyup all passed or failed no more than 1 in 8.
+The `test.fixme` comes out in the pull request that fixes it. The related reader dialog race is CW-20261112-0126 (`reader-detail-custody.spec.ts:213`).
