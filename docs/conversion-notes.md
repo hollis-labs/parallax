@@ -163,6 +163,8 @@ Setup and login bodies: `{username, display_name, password}` / `{username, passw
 
 ## Deployed instance and cutover outline
 
+The full plan is `docs/cutover-plan.md` (draft, not run); the outline below is the first sketch.
+
 Parallax is deployed. On the Cerberus host, a Cerberus-managed service (`com.hollis-labs.cerberus.parallax.parallax-uat`,
 binary under `~/.cerberus/apps/parallax/parallax-uat`) and a storybook review service (`parallax-stories-review`,
 127.0.0.1:18444, served from a checkout) run. `~/.config/parallax/` holds two Cerberus project descriptor files
