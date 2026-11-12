@@ -6,7 +6,7 @@
 - **Authority:** `PM01a12388-09fc-7ca4-8f09-e00c95cb06d4`, tracker relay `01M4HV1FTKSY20B9RKVPNY683E`
 - **Parent Task:** CW-20261010-0098 (landed merge `71a1dd9`, fixture SHA `25dfb04`, parent record `01M4J12YMWXHRW2Q1JRMS7ZPS9`)
 - **Upstream Primary Readback:**
-  - Upstream Repository: `/home/chrispian/dev/hollis-labs/apps/tether`
+  - Upstream Repository: `$HOME/dev/hollis-labs/apps/tether`
   - Upstream HEAD Commit: `fd17c80b0c4a7861afb877a61e9be9d976926617`
   - Upstream Tree Hash: `a506862471eaf4a16917e44b4ec035229377ad98`
   - Upstream File Commit: `4c07bf4c63633fe9ddfdf5d8246974f8e752db7b`

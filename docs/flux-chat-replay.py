@@ -92,7 +92,7 @@ else:
                        'receipt["mapped_emitted"]={"webui":tree(stage/"internal/webui/dist"),'
                        '"storybook":tree(stage/".scratch/storybook"),"go_binary_sha256":sha(stage/".scratch/parallax")}\n'
                        '(proof/"receipt.json").write_text(json.dumps(receipt,indent=2)+"\\n")\n')
-    browser_tmp = Path(f"/home/chrispian/.cache/team-tmp/cw0088-b-{head[:7]}")
+    browser_tmp = Path.home() / f".cache/team-tmp/cw0088-b-{head[:7]}"
     browser_tmp.mkdir(parents=True, exist_ok=False)
     receipt["owned_browser_tmp"] = str(browser_tmp)
     cleanup = proof / "cleanup.py"

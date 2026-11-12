@@ -6,7 +6,7 @@
   },
   "note": "Tracked manifest snapshot records source files commit e588485; separate final head/tree/ancestor receipt generated directly from git via replay.",
   "files": {
-    "docs/reader-detail-replay.py": "88f1b9b4215d1a9aa90c2475a5e9c3eb1442655d591a23d26134b634d8d44dbc",
+    "docs/reader-detail-replay.py": "3c768fdf47982afbddd75fba8a33f8ae55717a9bcd0f225c22c8b8943c98851c",
     "docs/reader-example.md": "cfbb1dfaa99e237c784df9fcdba578e58c71386118a431d8ade9660042458a9a",
     "docs/reader-owner-questions.md": "8d232c475481aa26534e0960caa772329aeeb9ba588ebc75cfb1a980e3cf3faf",
     "frontend/reader-lifecycle.html": "945f5b11d4cb0fef25193d7d83dfcb52d606c66b3dd110e5aec958c21f742631",

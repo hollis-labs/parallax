@@ -105,9 +105,9 @@ machine must replace the toolkit/font/browser paths in the driver and fonts file
 No claim of portable font equivalence is made.
 
 ```bash
-PARALLAX_ROOT=/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0083
-FLUX_ROOT=/home/chrispian/dev/hollis-labs/worktrees/flux/CW-20261010-0083
-TOOLKIT_READONLY=/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261009-0007/.scratch/operations-audit-tooling
+PARALLAX_ROOT=$HOME/dev/hollis-labs/worktrees/parallax/CW-20261010-0083
+FLUX_ROOT=$HOME/dev/hollis-labs/worktrees/flux/CW-20261010-0083
+TOOLKIT_READONLY=$HOME/dev/hollis-labs/worktrees/parallax/CW-20261009-0007/.scratch/operations-audit-tooling
 export PATH="$TOOLKIT_READONLY/node-v22.19.0-linux-x64/bin:$PATH"
 
 # Verify source heads against proof-manifest.json before replay.
@@ -124,8 +124,8 @@ node node_modules/vite/bin/vite.js --config .scratch/flux-fidelity/vite.config.t
 The last command starts only the fixture asset server. In a second owned shell:
 
 ```bash
-PARALLAX_ROOT=/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261010-0083
-TOOLKIT_READONLY=/home/chrispian/dev/hollis-labs/worktrees/parallax/CW-20261009-0007/.scratch/operations-audit-tooling
+PARALLAX_ROOT=$HOME/dev/hollis-labs/worktrees/parallax/CW-20261010-0083
+TOOLKIT_READONLY=$HOME/dev/hollis-labs/worktrees/parallax/CW-20261009-0007/.scratch/operations-audit-tooling
 cd "$PARALLAX_ROOT"
 mkdir -p .scratch/flux-fidelity/browser-home .scratch/flux-fidelity/font-cache
 cp docs/flux-fidelity/replay/capture.cjs .scratch/flux-fidelity/capture-final.cjs

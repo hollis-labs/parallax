@@ -6,7 +6,7 @@
   "archive": "hollis-labs-kit-dashboard-0.4.0-cw0040-planner-88884f34.tgz",
   "sha256": "88884f34f00289b3cc11fcf8afbfab312119934acf017f7411adfc86cbcccf35",
   "baseline_source_commit": "cd3a90b16866548d6226c910e48f6f54177a3a40",
-  "upstream_checkout": "/home/chrispian/dev/hollis-labs/libs/design-kit",
+  "upstream_checkout": "$HOME/dev/hollis-labs/libs/design-kit",
   "upstream_head": "1669672759a61fd4e3ade95517e7ada85b4d836a",
   "note": "Dashboard-defaults review backport onto the existing Parallax 0.4.0 candidate baseline; changes shared presentation defaults. Same authored source changes are present in the current 0.5.0 design-kit tree. Source checkpoint is recorded in upstream_checkpoint_commit. Publication and fleet adoption remain separate.",
   "source_files": {

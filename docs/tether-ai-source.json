@@ -10,8 +10,8 @@
   },
   "sources": {
     "docs/export-inventory.json": "f631bd405b6d16b185273443d8d946bbd811468da2fb9f5205b1a2a892db1d58",
-    "docs/tether-ai-dec073.md": "54538ecbb8a8c2ec56fbd307ffdf228579ebf125c09ff4164d43b083b6b6a2b9",
-    "docs/tether-ai-replay.py": "5c4b009aa80622aefceb19af629bcb58d3c849c436191f3165bf81dd528dfa3a",
+    "docs/tether-ai-dec073.md": "618b8d8f8f2b07213739ee71a540189cf6e3ebdcad232e238af711dba7674631",
+    "docs/tether-ai-replay.py": "40bf650bfd37075062784b9ff3aca82d34f907b06cc75d0a6ec5dd50a85d6f7b",
     "frontend/playwright.tether-ai.config.ts": "d7dea188fa517e8377ae0b7a85d4b888409b8ec6b2212c17a56eed949ee549b2",
     "frontend/src/examples/tether-ai/AIGateway.stories.tsx": "35beb566ba5f9b9b85b130da8c26bc56e85fb8b8019a67ab24691f0d522e4305",
     "frontend/src/examples/tether-ai/Standalone.tsx": "7d2dcf6a875a30f95c435eff369ea9927980ad6af27800aeaec5f34a12bc33d1",

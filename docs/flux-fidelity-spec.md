@@ -157,7 +157,7 @@ not a claim that the npm registry publishes these APIs at 0.4.0.
 | Widget context/details inspection | Exact 0035 chrome and 0036 controlled navigation | Reuse `InspectionDialog` for bounded arbitrary detail, with host purpose-specific initial/final focus and one scroll body. Use record navigation only for real admitted record siblings, not tab switching. |
 | Whole chat, 0088 | Existing `ChatExample`/model/routes/story/native contracts | Extend its admitted fictional companion with a named Flux appearance/composition and matching standalone/portable entry. Every send/stop/resume/approve/pin control is an inert labelled specimen or explicit local preview; no saved/produced outcome implied. |
 
-Do not duplicate [CW-20261003-0073](https://torque.nanite.cloud/tasks/CW-20261003-0073):
+Do not duplicate [CW-20261003-0073](https://torque.example.test/tasks/CW-20261003-0073):
 the Flux rebuild/plugin-host-ui decision is separately owned by the Flux/ops-chat
 track. This spec may inform its visual work; it does not cover its Model A loader
 retirement, agent-kit adoption or release. Plugin-host-ui release prep 0104 and
