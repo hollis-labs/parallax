@@ -19,13 +19,13 @@ installed copy with `run_from: artifact`; a workspace rebuild or resource reload
 alone does not install a new binary. `dir: .` resolves relative to this config's
 repo directory. The existing Makefile needs no deployment target change.
 
-The proposed listener is `127.0.0.1:18441`. The binary has no `LISTEN_ADDR`: the
-address is `httphost.addr` in the YAML file that `SUBSTRATE_CONFIG` names (an
-absolute path the operator provides; the descriptor holds a placeholder). That
+The listener is `127.0.0.1:18441`, the binary's default. The binary has no `LISTEN_ADDR`: the
+address is `httphost.addr`, changeable in a YAML file that `SUBSTRATE_CONFIG` names (an
+absolute path the operator provides; the descriptor sets none). That
 file also holds `identity.trusted_proxy` and `parallax.allowed_hosts` if a proxy
 name is ever used. The data directory (the identity database and signing key)
-is `PARALLAX_DATA_DIR`, also a placeholder here; it must be a private directory
-the service user owns. The declaration contains no secrets or secret
+is `PARALLAX_DATA_DIR`, or the XDG data home of the service user when unset; it is created private
+(0700). Set the variable in the resource `env` when the service user has no usable home. The declaration contains no secrets or secret
 references: the fixture-only runtime needs none. Any later environment reference must use the operator's
 Cerberus secret-reference contract and stay outside the repository. Confirm
 the port is free on the eventual runtime host before activation. The proposed

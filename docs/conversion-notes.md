@@ -72,7 +72,7 @@ belongs to the GUI agent and is listed under "For the frontend".
 
 | Old | New |
 |---|---|
-| `LISTEN_ADDR` (default `127.0.0.1:18441`) | `httphost.addr` (default `127.0.0.1:8085`); must be loopback |
+| `LISTEN_ADDR` (default `127.0.0.1:18441`) | `httphost.addr` (default `127.0.0.1:18441`, the same port as before); must be loopback |
 | (none) | `PARALLAX_DATA_DIR` data directory; `SUBSTRATE_CONFIG` YAML overrides |
 | (none) | `parallax.allowed_hosts` (proxy names), read from `app.Config["parallax"]`; defaults in the manifest (`allowed_hosts: []`), parsed by `internal/settings` |
 | (none) | `parallax.snapshot_file` (absolute path to a capture file served instead of the embedded one); unset by default; validated at start, error names the key |
@@ -107,9 +107,9 @@ signed out, and sign-out is `POST /api/logout` (204). Host and origin: the backe
 to the names in `parallax.allowed_hosts`; any other Host gets a plain 403. A listed name is served only for a loopback
 peer carrying exactly one `X-Forwarded-Proto: https` (a local TLS proxy). Writes need `X-Requested-With` and a
 same-origin `Origin`. The dev frontend proxies `/api`, `/plugins` and
-`/healthz` to `http://127.0.0.1:8085` (the default `httphost.addr`; agents set their own port in
-`SUBSTRATE_CONFIG`, for example 18130). The `vite.config.ts` and Playwright configs still name 18441/18541: that is
-the GUI agent's to change.
+`/healthz` to `http://127.0.0.1:18441` (the default `httphost.addr`; agents set their own port in
+`SUBSTRATE_CONFIG`, for example 18130). `vite.config.ts` and the workbench catalogue still name 8085 (the default before
+the manifest took the deployed port): that is the GUI agent's to change.
 
 Observed on the real binary (Torque CW-20261112-0080, comment 23312, checked against it; first start, throwaway data dir):
 
@@ -138,13 +138,19 @@ Setup and login bodies: `{username, display_name, password}` / `{username, passw
 - Errors are `{code, message, details?}`. Writes (setup, login, logout) need `X-Requested-With` and a same-origin `Origin`.
 - Every `/api/` and `/plugins/` request needs the session cookie; unauthenticated gives 401. Build setup/sign-in first.
 - Dev proxy targets and Playwright configs still name ports 18441/18541 and the Chimera layout; they must point at the
-  backend's `httphost.addr` (default 8085).
+  backend's `httphost.addr` (default 18441).
 - The Storybook review service (127.0.0.1:18444) is frontend-only and unaffected by the backend.
 
 ## For the operator
 
-- `parallax.cerberus.yaml` (the repo's descriptor proposal) now sets `SUBSTRATE_CONFIG` and `PARALLAX_DATA_DIR` to placeholder paths instead of
-  `LISTEN_ADDR`; the listen address is `httphost.addr` in that file. The deployed registration changes only at cutover, by the Cerberus owner.
+- `parallax.cerberus.yaml` (the repo's descriptor) sets no `env`: the binary needs none. The listen address defaults to
+  `127.0.0.1:18441` (the descriptor's port and health URL), and the data directory defaults to the XDG data home of the service
+  user; an operator who wants another port or directory adds `SUBSTRATE_CONFIG` and `PARALLAX_DATA_DIR` to the resource's `env`
+  at registration time. Cerberus records a pointer to this file and re-reads it (docs: config-registry), so the file must hold
+  nothing that is only an example. Ports: `parallax-uat` listens on 18441 (the default; no `SUBSTRATE_CONFIG` needed); the
+  storybook review service is 18444 and is not this binary. Any other instance of this binary must set its own
+  `httphost.addr` in its `SUBSTRATE_CONFIG`; the repository names none. The deployed registration changes only at cutover, by the
+  Cerberus owner.
 - Behind a local TLS proxy that forwards a name (the frontend's workbench catalogue already knows public names for
   this app, and the descriptor calls an external URL "a separate operator decision"): in the `SUBSTRATE_CONFIG` file
   set `parallax.allowed_hosts: [<name>]`, `identity.trusted_proxy: true` and, if the page origin differs from the
@@ -171,7 +177,7 @@ Outline (owner approves the deploy; Cerberus' owner changes the descriptor):
 1. **Clients**: the browser UI only, as far as the code shows (no other app calls its two APIs). Every caller now needs
    a session. Confirm with the owner that there are no scripted callers or health checks other than `/healthz`.
 2. **Descriptor changes (hand to Cerberus)**: drop `env.LISTEN_ADDR`; set the listen address with `httphost.addr` in a
-   `SUBSTRATE_CONFIG` YAML file (keep 127.0.0.1:18441 if the proxy and `health_check` URL stay); keep the
+   `SUBSTRATE_CONFIG` YAML file (the default is now 127.0.0.1:18441, so no override is needed while the proxy and `health_check` URL stay); keep the
    `/healthz` health check (now includes the database); optionally set `PARALLAX_DATA_DIR`. The storybook service
    is unaffected by the backend but its frontend build path is the GUI agent's.
 3. **Deploy**: build once in CI (frontend first, then Go), install the new binary beside the old one, keep the

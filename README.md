@@ -4,7 +4,7 @@ A fixture-only GUI laboratory built with Go, React, Tailwind 4, Hollis Labs desi
 
 ```sh
 make run
-# http://127.0.0.1:8085
+# http://127.0.0.1:18441
 ```
 
 `make run` builds the frontend and the binary and starts it with its data directory in `.scratch/data` (it prints the path). On the first start the app asks for first-run setup: create the owner account, then sign in; every page and API needs a session. Outside `make run` the data directory (the identity database and signing key, nothing else) is `PARALLAX_DATA_DIR` or the XDG data home's `parallax` directory. Settings (listen address, proxy host names) go in the YAML file named by `SUBSTRATE_CONFIG`; see docs/architecture.md and docs/conversion-notes.md.

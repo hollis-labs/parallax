@@ -39,7 +39,7 @@ signing key (`identity-signing.key`) in the data directory. Both hold accounts o
 
 ## Config
 
-`httphost.addr` (default `127.0.0.1:8085`, must be loopback), `identity.*`, `database.sqlite.path` and `identity.key_file` (relative defaults, anchored in the data directory by the boot hook),
+`httphost.addr` (default `127.0.0.1:18441`, the port the deployed `parallax-uat` instance uses; must be loopback), `identity.*`, `database.sqlite.path` and `identity.key_file` (relative defaults, anchored in the data directory by the boot hook),
 all overridable in the file named by `SUBSTRATE_CONFIG`. The app's own `parallax:` block (`internal/settings`) has two
 keys; an unknown key is refused at start.
 

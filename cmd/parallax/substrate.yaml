@@ -8,7 +8,7 @@ modules:
   add: [auth, database, identity, cli]
 config:
   logging: { level: info, format: text }
-  httphost: { addr: "127.0.0.1:8085" }
+  httphost: { addr: "127.0.0.1:18441" }
   # The two paths below are defaults: a relative path is anchored in the data directory (XDG data
   # home, or PARALLAX_DATA_DIR) by the AfterConfig hook in cmd/parallax/config.go; an absolute path
   # from the SUBSTRATE_CONFIG override is kept.
