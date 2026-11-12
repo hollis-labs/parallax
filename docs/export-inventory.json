@@ -1201,7 +1201,6 @@
       "frontend/src/observation-review/Review.tsx",
       "frontend/src/operations/Operations.stories.tsx",
       "frontend/src/operations/Views.tsx",
-      "frontend/src/pages/dashboard.tsx",
       "frontend/src/run-explorer/Explorer.tsx",
       "frontend/src/snapshots/Agents.tsx",
       "frontend/src/snapshots/Builder.tsx",
@@ -4228,6 +4227,9 @@
       "frontend/src/flux-rail/Contents.tsx",
       "frontend/src/flux-rail/Rail.tsx",
       "frontend/src/flux-rail/Review.tsx",
+      "frontend/src/identity/Entry.tsx",
+      "frontend/src/identity/Gate.tsx",
+      "frontend/src/identity/SignOut.tsx",
       "frontend/src/layouts/AppShellAside.stories.tsx",
       "frontend/src/layouts/AsideConsumers.stories.tsx",
       "frontend/src/layouts/Comparison.stories.tsx",
@@ -6250,6 +6252,7 @@
     "importEvidence": [
       "frontend/src/examples/reader/ReaderInlineActions.tsx",
       "frontend/src/examples/reader/ReaderTags.tsx",
+      "frontend/src/identity/Entry.tsx",
       "frontend/src/snapshots/Builder.tsx",
       "frontend/src/snapshots/Planner.tsx",
       "frontend/src/snapshots/Sessions.tsx"
@@ -8419,8 +8422,7 @@
     },
     "importEvidence": [
       "frontend/src/operations/Views.tsx",
-      "frontend/src/ops-dashboard/Dashboard.tsx",
-      "frontend/src/pages/dashboard.tsx"
+      "frontend/src/ops-dashboard/Dashboard.tsx"
     ]
   },
   {
@@ -29468,38 +29470,11 @@
     "name": "createApiClient",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
-    "evidence": {
-      "pages": [
-        "frontend/src/App.tsx",
-        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
-        "docs/tachyon-nav-example.md"
-      ],
-      "checks": [
-        "frontend/tests/layouts.spec.ts",
-        "frontend/tests/tachyon-nav.spec.ts",
-        "frontend/tests/tachyon-nav-custody.spec.ts"
-      ],
-      "stories": [
-        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
-      ],
-      "storyIds": [
-        "examples-tachyon-navigation--grouped",
-        "examples-tachyon-navigation--left-sub-rail",
-        "examples-tachyon-navigation--hidden-routes",
-        "examples-tachyon-navigation--orphaned",
-        "examples-tachyon-navigation--retired",
-        "examples-tachyon-navigation--empty",
-        "examples-tachyon-navigation--denied",
-        "examples-tachyon-navigation--unavailable",
-        "examples-tachyon-navigation--degraded"
-      ]
-    },
-    "importEvidence": [
-      "frontend/src/api/client.ts"
-    ]
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
   },
   {
     "package": "@hollis-labs/design-app-runtime",
@@ -29664,38 +29639,11 @@
     "name": "createApiContext",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "partial",
-    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
-    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
-    "evidence": {
-      "pages": [
-        "frontend/src/App.tsx",
-        "frontend/src/examples/tachyon-nav/TachyonNav.tsx",
-        "docs/tachyon-nav-example.md"
-      ],
-      "checks": [
-        "frontend/tests/layouts.spec.ts",
-        "frontend/tests/tachyon-nav.spec.ts",
-        "frontend/tests/tachyon-nav-custody.spec.ts"
-      ],
-      "stories": [
-        "frontend/src/examples/tachyon-nav/TachyonNav.stories.tsx"
-      ],
-      "storyIds": [
-        "examples-tachyon-navigation--grouped",
-        "examples-tachyon-navigation--left-sub-rail",
-        "examples-tachyon-navigation--hidden-routes",
-        "examples-tachyon-navigation--orphaned",
-        "examples-tachyon-navigation--retired",
-        "examples-tachyon-navigation--empty",
-        "examples-tachyon-navigation--denied",
-        "examples-tachyon-navigation--unavailable",
-        "examples-tachyon-navigation--degraded"
-      ]
-    },
-    "importEvidence": [
-      "frontend/src/api/context.tsx"
-    ]
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
   },
   {
     "package": "@hollis-labs/design-app-runtime",
