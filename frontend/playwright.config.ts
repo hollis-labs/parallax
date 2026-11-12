@@ -6,6 +6,9 @@ const repo = fileURLToPath(new URL("../", import.meta.url))
 // The suites run the real binary on a throwaway data directory under .scratch, with its own
 // SUBSTRATE_CONFIG. Ports come from tests/ports.ts (PARALLAX_E2E_*_PORT overrides them).
 const e2e = `${repo}.scratch/e2e`
+// A synthetic, committed capture (scripts/synthetic-capture.mjs) stands in for the live one, so
+// the snapshot suites run against the real backend in a clean checkout.
+const capture = `${repo}frontend/tests/data/synthetic-capture.json`
 const backend = `http://127.0.0.1:${ports.backend}`
 const dev = `http://127.0.0.1:${ports.dev}`
 export default defineConfig({
@@ -28,7 +31,7 @@ export default defineConfig({
       reuseExistingServer: !process.env.CI,
     },
     {
-      command: `rm -rf ${e2e} && mkdir -p ${e2e} && printf 'httphost:\\n  addr: "127.0.0.1:${ports.backend}"\\n' > ${e2e}/substrate.yaml && SUBSTRATE_CONFIG=${e2e}/substrate.yaml PARALLAX_DATA_DIR=${e2e}/data .scratch/parallax`,
+      command: `rm -rf ${e2e} && mkdir -p ${e2e} && printf 'httphost:\\n  addr: "127.0.0.1:${ports.backend}"\\nparallax:\\n  snapshot_file: "${capture}"\\n' > ${e2e}/substrate.yaml && SUBSTRATE_CONFIG=${e2e}/substrate.yaml PARALLAX_DATA_DIR=${e2e}/data .scratch/parallax`,
       cwd: repo,
       url: backend,
       reuseExistingServer: !process.env.CI,
