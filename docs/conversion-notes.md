@@ -5,11 +5,19 @@ belongs to the GUI agent and is listed under "For the frontend".
 
 ## Gaps
 
-1. **scan-public is not clean, tree and history; the repository is public. WAITING FOR THE OWNER'S DECISION.**
-   Tree: 301 findings; `--history --ref HEAD`: 304. Nothing was changed: no history rewrite, no fixture text change,
-   no allowlist file. Triage (driver verified on a fresh clone): the 7 gitleaks hits and the 238 `secret` hits in
-   `docs/flux-fidelity/source-token-inventory.json` are sha256 checksums beside file names containing "token"
-   (false positives); the real leaks are home paths, a tailnet address, a LAN address and internal host names.
+1. **scan-public: the tree is cleaned in two steps; history is left for a program-wide pass.** Owner rule (2026-11-12, via
+   the driver): the TREE must be clean in the port PR; HISTORY is not rewritten during the port and gets one planned pass over all
+   repos afterwards. CI and `make scan` therefore run `scan-public --tree`; the history gate (`--ref HEAD`) returns after that pass.
+   Status: done in this branch: home paths, hosts and addresses in `docs/` and `third_party/` provenance, replay scripts and
+   `docs/review-workbench.md`; `scan-public.allow` lists the reviewed tree false positives, each with a reason (design-token
+   property names, sha256 checksums beside file names containing "token", one model name). Still open (35 findings), waiting for
+   gui-parallax and agreed placeholder strings: the generator and its generated fixtures (`internal/scenarios/tether_sysop.go`,
+   `reader.go`, `frontend/src/fixtures/tether-sysop.json`, `reader-example.json`, `docs/tether-sysop-fixtures.md`) and the
+   frontend-owned files (`catalog.ts`, specs, `AIGatewayPage.tsx`, `StreamStates.tsx`, `scripts/capture-*.mjs`). The table below
+   was the plan and is also the history findings record for the later pass. Placeholders used so far:
+   `parallax.example.test`, `parallax-os.example.test`, `parallax-stories.example.test`, `torque.example.test`, `192.0.2.10`,
+   `198.51.100.10`, `$HOME`. Where a replay script or manifest recorded a hash of a file whose text changed, the recorded hash was
+   updated (`docs/tether-ai-source.json`, `docs/reader-detail-source.json`, `docs/flux-fidelity/proof-manifest.json`).
    The list to execute the decision from (placeholder in the last column; "backend" means a Go generator whose
    output is a frontend fixture, so the generator is changed and the fixture regenerated with `make fixtures`):
 
@@ -49,8 +57,8 @@ belongs to the GUI agent and is listed under "For the frontend".
    tests) is guide section 5 rule 7 written again, as Basalisk did: loopback Host names, a configured list, the
    validated `X-Forwarded-Proto`, forwarding-header stripping, hardening headers. It belongs in `httphost`. The copy
    stays until then; the allowed list is read from the app's own `parallax:` block (`internal/settings`).
-7. **CI `scan-public --ref HEAD` is red until the owner decides Gap 1.** The step is in `.github/workflows/ci.yml` and
-   is not weakened: no allowlist, no `continue-on-error`.
+7. **CI runs `scan-public --tree` only** until the program-wide history pass (see Gap 1). The tree step stays red until
+   the 35 generator and frontend findings are fixed with gui-parallax.
 8. **No pre-boot data-directory or config-path hook** (known framework gap, same as Basalisk): `main` rewrites the
    database path and key file in the generated config. No legacy-data guard is needed (nothing existed).
 
