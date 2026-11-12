@@ -92,7 +92,7 @@ test("chat uses related operations tools and shared card classification; context
   })
   await page.getByRole("button", { name: "Inspect card binding" }).click()
   await expect(page.getByRole("dialog")).toContainText(
-    "available · fixture-confirmation · core-trusted",
+    "available · fixture-confirmation · main-origin",
   )
   await page.keyboard.press("Escape")
   for (const [state, classification] of [

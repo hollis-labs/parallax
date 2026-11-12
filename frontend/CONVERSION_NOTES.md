@@ -4,6 +4,17 @@ Owner-facing. Each gap stops the work it touches until the driver decides.
 
 ## Framework gaps
 
+0. **Where the kits stand against the BOM (`bom/bom.yaml` `kits:`).** Moved to the pin: design-tokens 0.5.0, design-bindings 0.2.0,
+   design-app-runtime 0.5.0, kit-account 0.1.0, kit-admin 0.2.0, plugin-host-ui 0.3.0 (kit-settings 0.2.0 and plugin-registry 0.2.0 already were);
+   `@hollis-labs/eslint-config-design` 0.5.0 (not a BOM kit; 0.4's peer is design-tokens ^0.4). Not moved, and why:
+   - design-components (cw0091 candidate tarball, BOM 0.5.1) and kit-dashboard (planner candidate tarball, BOM 0.6.0): at the pins 10 browser tests
+     regress (compact/root-scaling typography, the Combobox `ariaLabel` on its trigger, root-scaled menu items; the kit-dashboard CHANGELOG lists
+     the compact typography profile under *Unreleased*). Upstream: Torque CW-20261112-0113. They cannot be mixed (the candidate kit-dashboard
+     needs the candidate design-components). Owner decision pending.
+   - kit-observe stays 0.1.1: 0.1.2 declares `peerOptional kit-dashboard ^0.5 || ^0.6`, which the 0.4 candidate cannot satisfy (ERESOLVE).
+   - design-bindings 0.2.0 is a documented breaking release (isolation vocabulary): `src/communications/bindings.ts` and `Chat.tsx` follow it; the
+     rendered text is `main-origin` where it was `core-trusted`.
+
 1. **Kits the app uses are not in the BOM `kits:` list.** Substrate `bom/bom.yaml` pins design-tokens, design-components,
    design-app-runtime, design-bindings, kit-settings, kit-admin, kit-cards, kit-account, kit-observe, app-shell,
    kit-dashboard, plugin-host-ui and plugin-registry. The app imports, in addition:
