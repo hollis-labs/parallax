@@ -18,7 +18,7 @@ test("unified dashboard metrics follow admitted task lifecycle and joined receip
     inventory.find(
       (r: { name: string; entry: string }) => r.name === "PageHeader" && r.entry === "./ui",
     ).disposition,
-  ).toBe("deferred")
+  ).toBe("partial")
   for (const cutoff of timelineFrames(sourceDataset("populated"))) {
     const model = operationsModel("populated", "", { cutoff }),
       m = dashboardMetrics(model)

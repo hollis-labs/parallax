@@ -65,7 +65,7 @@ test("native Workbench admits all five complete shells with current routes and e
   for (const app of examples) {
     await page.goto("/?view=Review+Workbench&theme=p4-white&mode=light")
     await page.getByLabel("Review group", { exact: true }).selectOption("App Examples")
-    await expect(page.locator(".workbench-grid article")).toHaveCount(5)
+    await expect(page.locator(".workbench-grid article")).toHaveCount(examples.length + 1) // the five shells and App Snapshots
     const card = page.getByRole("article", { name: `${app.id} review destination`, exact: true })
     await expect(card).toContainText(app.story)
     await expect(
@@ -125,7 +125,7 @@ test("all five representative fullscreen stories share App Examples group and bo
   ).entries
   expect(
     destinations
-      .filter((d) => d.group === "App Examples")
+      .filter((d) => d.group === "App Examples" && d.id !== "App Snapshots")
       .map((d) => d.id)
       .sort(),
   ).toEqual(examples.map((d) => d.id).sort())
