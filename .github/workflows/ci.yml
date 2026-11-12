@@ -28,5 +28,13 @@ jobs:
       - name: Actionable export inventory freshness and evidence pointers
         run: node scripts/coverage.mjs --check
       - run: npm exec --prefix frontend -- playwright install --with-deps chromium
+      # The browser proof starts the real binary (.scratch/parallax) on a throwaway data directory.
+      # make check already builds it as its last line, after the frontend build, so it embeds the
+      # built SPA; this step rebuilds it so the proof does not depend on make check's step order.
+      - name: Build the binary the browser proof starts
+        run: go build -o .scratch/parallax ./cmd/parallax
       - name: Browser proof
+        # CI installs the bundled Chromium; the config defaults to the system Chrome channel.
+        env:
+          PLAYWRIGHT_CHANNEL: chromium
         run: npm exec --prefix frontend -- playwright test --config frontend/playwright.config.ts
