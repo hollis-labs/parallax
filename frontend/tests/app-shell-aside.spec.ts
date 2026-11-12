@@ -76,6 +76,7 @@ test("independent aside and body scroll ownership with pinned header and footer"
   expect(await bodyScroll.evaluate((el) => el.scrollTop)).toBe(0)
   expect(await asideScroll.evaluate((el) => el.scrollTop)).toBe(0)
 
+  const headerYBefore = (await page.locator(".workbench-header-entry").boundingBox())?.y
   // Scroll body: aside scrollTop remains 0
   await bodyScroll.evaluate((el) => {
     el.scrollTop = 150
@@ -90,11 +91,17 @@ test("independent aside and body scroll ownership with pinned header and footer"
   expect(await asideScroll.evaluate((el) => el.scrollTop)).toBe(200)
   expect(await bodyScroll.evaluate((el) => el.scrollTop)).toBe(150)
 
-  // Verify pinned header bounds (y = 0)
+  // Verify the header is pinned at the top of the lab. The shell's page frame (title row and padding) sits above the
+  // lab by design (design review, CW-20261112-0110 comment 23419), so the bound is relative to the lab host, and the
+  // header must not move when the body and the aside scroll.
   const header = page.locator(".workbench-header-entry")
+  const host = page.locator(".lab-host")
   const headerBox = await header.boundingBox()
+  const hostBox = await host.boundingBox()
   expect(headerBox).not.toBeNull()
-  expect(headerBox?.y).toBeLessThanOrEqual(5)
+  expect(hostBox).not.toBeNull()
+  expect((headerBox?.y ?? 0) - (hostBox?.y ?? 0)).toBeLessThanOrEqual(5)
+  expect(headerBox?.y).toBe(headerYBefore)
 
   // Document itself does not scroll vertically
   const docScrolls = await page.evaluate(() => document.documentElement.scrollHeight > innerHeight)

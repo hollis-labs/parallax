@@ -71,3 +71,9 @@ test("the nav lists every group with its destinations and the sign-out footer", 
   await nav.getByRole("link", { name: "Sign out", exact: true }).click()
   await expect(page.getByRole("button", { name: "Sign out", exact: true })).toBeVisible()
 })
+
+test("an unknown path shows the shell's Page not found state", async ({ page }) => {
+  await page.goto("/not-a-page")
+  await expect(page.getByText("Page not found", { exact: true })).toBeVisible()
+  await expect(page.getByText("/not-a-page", { exact: true })).toBeVisible()
+})
