@@ -16,6 +16,10 @@ export default defineConfig({
   globalSetup: "./e2e/global-setup.ts",
   outputDir: `${repo}.scratch/test-results`,
   reporter: [["list"]],
+  // One worker on CI. Focus, popup and portal assertions (layered Escape, dialog final focus) race CPU contention between
+  // parallel browsers: on 4 cores, 2 workers failed 2 of 30 runs of three such tests and 1 worker 0 of 30; a longer expect
+  // timeout did not help (still 14 of 36 failed at 20 s under 3x oversubscription). No retries: a flaky test stays red.
+  workers: process.env.CI ? 1 : undefined,
   use: {
     baseURL: backend,
     headless: true,
