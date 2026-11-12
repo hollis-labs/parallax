@@ -3,6 +3,9 @@ import { expect, test } from "@playwright/test"
 
 const password = () => readFileSync(new URL("../../.scratch/e2e-password", import.meta.url), "utf8")
 
+// A throwaway value for requests the backend must refuse.
+const phrase = "correct-horse-battery-1"
+
 test.describe("signed out", () => {
   test.use({ storageState: { cookies: [], origins: [] } })
 
@@ -66,7 +69,7 @@ test.describe("signed out", () => {
     expect(await state.json()).toMatchObject({ setup_required: false })
     const post = await request.post("/api/setup", {
       headers: { "X-Requested-With": "parallax-e2e" },
-      data: { username: "intruder", display_name: "X", password: "correct-horse-battery-1" },
+      data: { username: "intruder", display_name: "X", password: phrase },
     })
     expect(post.status()).toBe(403)
     expect((await post.json()).code).toBe("setup_offline")
@@ -96,8 +99,8 @@ test.describe("signed out", () => {
     await page.goto("/")
     await page.getByLabel("Display name").fill("Owner")
     await page.getByLabel("Username").fill("owner")
-    await page.getByLabel("Password", { exact: true }).fill("correct-horse-battery-1")
-    await page.getByLabel("Confirm password").fill("correct-horse-battery-1")
+    await page.getByLabel("Password", { exact: true }).fill(phrase)
+    await page.getByLabel("Confirm password").fill(phrase)
     await page.getByRole("button", { name: "Create account" }).click()
     await expect(page.getByRole("heading", { name: "No owner account yet" })).toBeVisible()
   })
