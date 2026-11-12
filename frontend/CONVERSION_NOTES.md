@@ -79,8 +79,12 @@ Tachyon Agents", #33) rewrote `src/examples/torque/Operations.tsx` and
 Whether #33 meant to drop them is the Torque reference owner's call. They are `test.fixme` with the reason
 `CW-20261112-0112: predates the Substrate port (1ea2574)`.
 
-Suspected browser difference, still failing here (system Chrome), left as they are until the CI workflow runs them with the bundled Chromium:
-`appearance` (select keyboard handling), `messaging-example` (focus after `selectOption`), `nil-example` x2 (inspection body scroll height).
+Four more are `test.fixme` with the reason `CW-20261112-0116: fails on main since before the Substrate port`. They are not a browser difference and not the
+port: they fail on bundled Chromium in CI (PR #35 run 43250608571) and on `main`'s last CI run (2026-10-21, `33401f5`; main's CI has been red since
+2026-10-16): `appearance.spec.ts` "native palette selection..." (root cause: kit-dashboard's `theme.css` sets `select { appearance: base-select }`; ArrowDown on
+the closed select emits no `change` in current Chromium), `messaging-example.spec.ts` "StrictMode current-message..." (focus after `selectOption`, probably the
+same control family, unproven), `nil-example.spec.ts` "complete native bounds and scroll" at 1280x800 and 390x844 (the inspection body no longer overflows its
+box; not root-caused; the 390x420 variant passes and stays on).
 
 ## Shell wrap: what is already known (for the follow-up when CW-20261112-0110 ships)
 
