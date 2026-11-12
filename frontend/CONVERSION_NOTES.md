@@ -7,11 +7,14 @@ Owner-facing. Each gap stops the work it touches until the driver decides.
 0. **Where the kits stand against the BOM (`bom/bom.yaml` `kits:`).** Moved to the pin: design-tokens 0.5.0, design-bindings 0.2.0,
    design-app-runtime 0.5.0, kit-account 0.1.0, kit-admin 0.2.0, plugin-host-ui 0.3.0 (kit-settings 0.2.0 and plugin-registry 0.2.0 already were);
    `@hollis-labs/eslint-config-design` 0.5.0 (not a BOM kit; 0.4's peer is design-tokens ^0.4). Not moved, and why:
-   - design-components (cw0091 candidate tarball, BOM 0.5.1) and kit-dashboard (planner candidate tarball, BOM 0.6.0): at the pins 10 browser tests
-     regress (compact/root-scaling typography, the Combobox `ariaLabel` on its trigger, root-scaled menu items; the kit-dashboard CHANGELOG lists
-     the compact typography profile under *Unreleased*). Upstream: Torque CW-20261112-0113. They cannot be mixed (the candidate kit-dashboard
-     needs the candidate design-components). Owner decision pending.
-   - kit-observe stays 0.1.1: 0.1.2 declares `peerOptional kit-dashboard ^0.5 || ^0.6`, which the 0.4 candidate cannot satisfy (ERESOLVE).
+   - **Recorded exception (owner decision, 2026-11-12, option B): design-components (cw0091 candidate tarball, BOM 0.5.1) and kit-dashboard
+     (planner candidate tarball, BOM 0.6.0) stay on their candidate tarballs in `third_party/`, beside the four unreleased kits (kit-chat,
+     kit-code, kit-voice, kit-workflow).** It ends when Torque CW-20261112-0113 ships (compact/root-scaling typography in kit-dashboard, the
+     Combobox `ariaLabel` on its trigger and root-scaled menu items in design-components); each then moves to its BOM pin. If that release is a
+     minor bump (design-components 0.6.0), app-shell's `^0.5` dependency would not accept it (raised with Task Ops). At the pins 10 browser tests
+     regress (dashboard x4, torque-board x5, primitives gallery x1); the local branch `gui/kit-pins` (3752196) keeps that move as the record of
+     what it costs. They cannot be mixed (the candidate kit-dashboard needs the candidate design-components).
+   - kit-observe stays 0.1.1 (a consequence of the same exception): 0.1.2 declares `peerOptional kit-dashboard ^0.5 || ^0.6`, which the 0.4 candidate cannot satisfy (ERESOLVE).
    - design-bindings 0.2.0 is a documented breaking release (isolation vocabulary): `src/communications/bindings.ts` and `Chat.tsx` follow it; the
      rendered text is `main-origin` where it was `core-trusted`.
 
@@ -23,10 +26,13 @@ Owner-facing. Each gap stops the work it touches until the driver decides.
    `kit-workflow` are installed today from sealed tarballs in `third_party/` (version 0.0.0, not published), and
    design-components, design-app-runtime, kit-account, kit-admin and kit-dashboard are also tarball candidates at 0.4.x,
    not the BOM's 0.5.x. Moving to the BOM pins cannot be done for these four kits without a published, pinned release.
-1a. **app-shell 0.1.0 has no responsive navigation.** Its nav is a docked 240px column at every width (`isNarrow` only moves docked tabs to
+1a. **app-shell 0.1.0 has no responsive navigation (Torque CW-20261112-0110).** Its nav is a docked 240px column at every width (`isNarrow` only moves docked tabs to
    bottom sheets), so at a 390px viewport the page gets about 150px. Wrapping the lab in the shell (parked on a local branch) fails about 16
-   of the lab's narrow-viewport tests that pass today. The fix belongs in app-shell (a collapsible/overlay nav, or a nav region the host can
-   hide); the app does not hide it with its own CSS and toggle. Until then the shell wrap is not on the branch, and with it the sign-out page
+   of the lab's narrow-viewport tests that pass today. The 16 failing tests (file:line on the parked branch `gui/shell-wip`, 63ddb6a): administration.spec.ts:184, app-shell-aside.spec.ts:57 and :139,
+   communications.spec.ts:132, lab.spec.ts:4 and :26, layouts.spec.ts:4 and :43, observability.spec.ts:158, ops-dashboard.spec.ts:171,
+   playback.spec.ts:175, run-explorer.spec.ts:176, usage-evidence.spec.ts:249, workbench.spec.ts:119 and :142, workflow-review.spec.ts:212.
+   The fix belongs in app-shell (a collapsible/overlay nav, or a nav region the host can hide); the app does not hide it with its own CSS
+   and toggle. They are not fixme'd and not accepted: the shell wrap waits for the app-shell release. Until then the shell wrap is not on the branch, and with it the sign-out page
    (a `nav.footer` surface in `cmd/parallax/app.ui.json`) has no screen to live on.
 1b. **A lab that is itself a shell nests badly.** The lab's own design-components `AppShell` is sized `h-dvh w-dvw`; inside an app-shell page it
    overflows unless the host overrides the size. The override is small (`.lab-host > .h-dvh`) but it is the host working around the kit.
@@ -75,3 +81,33 @@ Whether #33 meant to drop them is the Torque reference owner's call. They are `t
 
 Suspected browser difference, still failing here (system Chrome), left as they are until the CI workflow runs them with the bundled Chromium:
 `appearance` (select keyboard handling), `messaging-example` (focus after `selectOption`), `nil-example` x2 (inspection body scroll height).
+
+## Shell wrap: what is already known (for the follow-up when CW-20261112-0110 ships)
+
+The wrap is parked on the local branch `gui/shell-wip` (63ddb6a); nothing of it is on `feat/substrate-conversion`. Findings from that run
+(642 passed, 27 failed of 671; 4 are the known browser-difference tests, 16 are the narrow-viewport gap above):
+1. **Install**: `@hollis-labs/app-shell` 0.1.0 installs beside the candidate design-components and kit-dashboard. It depends directly on
+   design-components ^0.5, design-bindings ^0.2 and plugin-host-ui ^0.3, so npm nests its own copies; the bundle then holds design-components
+   0.4 (the lab) and 0.5.1 (the shell chrome). Main chunk 2,816,884 -> 2,888,453 bytes. It needs `allowImportingTsExtensions` in tsconfig
+   (app-shell publishes raw `.ts`) and `@source "../node_modules/@hollis-labs/app-shell/src"` in `index.css` (no `source.css`).
+2. **Nested shell**: the lab's own `AppShell` is `h-dvh w-dvw`; a wrapper `.lab-host` with `.lab-host > .h-dvh { width: 100%; height: auto }` makes
+   it fill the shell page. Its rail/header/drawer navigation stays only as the Layouts demo (the nested shell there is a demo, not a second app
+   shell); the rest of the lab uses the shell nav.
+3. **Headings and landmarks**: every lab surface gets the generic shell title "Parallax design lab" (`app.ui.json`) so the view name stays the only
+   heading with that name; the lab's own `h1` becomes an `h2` with the same size rule (`.page-title h2 { font-size: var(--dash-page-heading-size) }`).
+   The shell adds two `main` landmarks: `lab.spec.ts:75` (`locator('main')`) needs a selector change.
+4. **Nav selectors**: 33 test lines click the old rail by role `button` (`getByRole("button", { name: "Usage", exact: true })`); in the shell they are
+   `link`s. Plus `dashboard.spec.ts:144` (`locator("h1").first()` -> `main main` `h1, .page-title h2`) and `torque-board.spec.ts:347`
+   (`.page-title h1` -> `h2`). The four `getByRole("navigation", { name: "Application navigation" })` waits become `{ name: "Primary" }`.
+5. **Routes**: `/` shows Activity (the old default view), the Review Workbench is `/review-workbench`, every other destination is `/<slug>`
+   (`src/shell/routes.ts`). `/?view=Name&...` is redirected client-side to the route keeping every other query parameter in order; an
+   unknown name lands on `/` with `view` kept so the page says what was asked. `tests/shell-routes.spec.ts` covers it (4 unit, 3 browser).
+   Not yet diagnosed on that branch: `run-explorer.spec.ts:87` and `conversation-review.spec.ts:292`.
+6. **Sign-out** is a `nav.footer` surface (`SignOutPage`); without the shell the app has no sign-out screen (the browser pass signs out through
+   `POST /api/logout`).
+
+## Why a `waitFor` and not a cover (dashboard.spec heatmap test)
+
+`dashboard.spec.ts` "reference dashboard compositions..." read `.calendar-intensity` cells with `evaluateAll` straight after `goto`. `evaluateAll`
+does not wait, and the sign-in gate adds an async step before the page renders, so the test sometimes read an empty page (`new Set([]).size` is 0).
+The test measures the cells' `--activity-weight`; waiting for the first cell to exist makes it measure them. No assertion changed.
