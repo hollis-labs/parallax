@@ -168,6 +168,10 @@ test("actual four settings exports provide scalar schema ARIA provenance and loc
   await expect(limit).toHaveAttribute("aria-required", "true")
   await expect(limit).not.toHaveAttribute("min", /.+/)
   await expect(page.getByText("Enter a complete number.", { exact: true })).toBeVisible()
+  // The field paints its background through a colour transition; read it once it is painted, not at load.
+  await expect
+    .poll(() => limit.evaluate((n) => getComputedStyle(n).backgroundColor))
+    .not.toBe("rgba(0, 0, 0, 0)")
   const paint = await limit.evaluate((n) => ({
     fg: getComputedStyle(n).color,
     bg: getComputedStyle(n).backgroundColor,
