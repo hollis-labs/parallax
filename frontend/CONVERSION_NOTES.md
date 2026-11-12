@@ -159,13 +159,14 @@ lab's own composition (sibling dialogs) and is fixed (CW-20261112-0125): it stay
 **How a test leaves quarantine:** twenty consecutive green runs of the `browser-popup-timing` job on `main`, or a fix with a measured before and after
 (repeated runs pinned to 2 cores with 2 workers, as for CW-20261112-0125), in the pull request that removes the `@popup-timing` tag.
 
-## App snapshots on a normal instance: open question for the owner
+## App snapshots on a normal instance: the live capture is installed by configuration
 
-`/?example=snapshots` ("App snapshots": Torque task board, Tether overview and sessions, Tachyon Planner, Agents, Builder) reads `/api/snapshots/current`. A normal
-instance serves the embedded empty capture, so the view shows "No captured data installed". The live capture is a gitignored build input
-(`internal/snapshots/data/current.json`, `docs/fixture-contracts.md`) that used to be copied into the preview build checkout before deployment; the port does not
-carry one, and the committed `frontend/tests/data/synthetic-capture.json` is test data only. Whether "no captured data" is the intended state for the live lab, or a
-capture is meant to be installed (the operator can point `parallax.snapshot_file` at one), is **not known to the GUI side: an open question for the owner**.
+`/?example=snapshots` ("App snapshots": Torque task board, Tether overview and sessions, Tachyon Planner, Agents, Builder) reads `/api/snapshots/current`. A build
+embeds only the empty capture, so a plain instance shows "No captured data installed". The old live build had embedded a capture from an untracked, ignored build
+input (`internal/snapshots/data/current.json`, `docs/fixture-contracts.md`), and the port carries none; the committed `frontend/tests/data/synthetic-capture.json`
+is test data only. On the live instance the driver installed that capture through configuration on 2026-11-12 (the file copied unchanged into the config directory,
+`parallax.snapshot_file` set, unit restarted); signed in, the route went from the empty capture to the full one. The owner may have it removed. A real capture never
+belongs in the repository.
 
 ## Retired host name in the UI
 
