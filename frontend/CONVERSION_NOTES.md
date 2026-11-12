@@ -21,7 +21,7 @@ Owner-facing. Each gap stops the work it touches until the driver decides.
   Storybook 18164; the sibling `playwright.*.config.ts` files that used their own ports now share 18163/18164 (run one at a time).
 - `playwright.config.ts` starts the real binary on a throwaway data directory (`.scratch/e2e`) with its own `SUBSTRATE_CONFIG`,
   `e2e/global-setup.ts` runs first-run setup (or signs in) once and stores the session cookie as `storageState`. The browser channel
-  is `chrome` unless `PLAYWRIGHT_CHANNEL` says otherwise (CI sets `chromium`). Writes from tests carry `X-Requested-With`.
+  is `chrome` unless `PLAYWRIGHT_CHANNEL` says otherwise (CI must set `PLAYWRIGHT_CHANNEL=chromium` (the workflow edit needs a token with the workflow scope; see the driver mail)). Writes from tests carry `X-Requested-With`.
 - An unmapped write answers `403 route_not_mapped` (the old host answered 405); `tests/lab.spec.ts` asserts that and the
   `403 csrf` for a write without the header.
 - **Baseline, same environment (system Chrome, real binary, no live capture):** the pre-port app (`main`, Chimera host) passes

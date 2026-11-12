@@ -4,6 +4,7 @@ import { applyTheme, PageHeader } from "@hollis-labs/kit-dashboard/ui"
 import { useEffect, useRef, useState } from "react"
 import { TorqueOperationsBoard } from "../examples/torque/Operations"
 import { initialTorqueState } from "../examples/torque/routes"
+import { apiFetch } from "../identity/api"
 import { OverviewPage } from "../tether-sysop/OverviewPage"
 import { CapturedAgents } from "./Agents"
 import { CapturedBuilder } from "./Builder"
@@ -43,7 +44,7 @@ export function SnapshotReview() {
     document.documentElement.classList.toggle("light", mode === "light")
     document.documentElement.style.colorScheme = mode
     const abort = new AbortController()
-    fetch("/api/snapshots/current", { signal: abort.signal })
+    apiFetch("/api/snapshots/current", { signal: abort.signal })
       .then(async (r) => {
         if (!r.ok) throw Error(`Snapshot load failed (${r.status})`)
         return r.json()

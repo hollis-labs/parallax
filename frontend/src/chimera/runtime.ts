@@ -4,6 +4,7 @@ import {
   type PluginRegistryOptions,
   type PluginRegistryResponse,
 } from "@hollis-labs/plugin-registry"
+import { apiFetch } from "../identity/api"
 
 /** Shared wire loader + shared typed presentation runtime. Catalog, approved
  * runtime exports, action/identity policy and explicit isolation remain host inputs. */
@@ -17,7 +18,7 @@ export function createPresentationHost(
     registry,
     runtime,
     async load(url = "/plugins/registry", signal?: AbortSignal) {
-      const response = await fetch(url, { signal, credentials: "same-origin" })
+      const response = await apiFetch(url, { signal })
       if (!response.ok) throw new Error("Registry unavailable")
       // Preserve raw JSON so upstream rejects duplicate and noncanonical keys/tokens.
       return runtime.sync(await response.text())
