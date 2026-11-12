@@ -97,6 +97,24 @@ same-origin `Origin`. The dev frontend proxies `/api`, `/plugins` and
 `SUBSTRATE_CONFIG`, for example 18130). The `vite.config.ts` and Playwright configs still name 18441/18541: that is
 the GUI agent's to change.
 
+Observed on the real binary (Torque CW-20261112-0080, comment 23312, checked against it; first start, throwaway data dir):
+
+- `GET /api/setup` -> `200 {"setup_required": bool}`; a second `POST /api/setup` -> `409 {"code":"setup_closed","message":"setup is already done"}`.
+- A cookie-authenticated write **without `X-Requested-With`** -> `403 {"code":"csrf","message":"missing X-Requested-With"}`. A **foreign `Origin`**
+  (header present) -> `403 {"code":"bad_origin","message":"the request did not come from this app"}`: the two cases have different
+  codes (comment 23312 lists both under `csrf`).
+- A revoked key **disappears** from `GET /api/identity/keys` (no revoked flag). An empty list is `{"keys":null}`, not `[]`: the client
+  must treat `null` as empty. Revoking again -> `404 not_found`. `POST /api/identity/keys` -> `201 {"credential":{id,name,scopes,created_by,created_at},"key":"key_..."}`;
+  empty `scopes` or a scope the caller does not hold -> `400 invalid_request`, message "give a name, and scopes the caller itself holds".
+- **429 carries no `Retry-After` header** (headers: `Cache-Control: no-store`, `Content-Type`, `Referrer-Policy`, `X-Frame-Options`). Body
+  `{"code":"rate_limited","message":"too many attempts; wait a few minutes"}`. Five wrong logins return 401; the sixth is 429, and the
+  correct password is also refused with 429 until the window passes.
+- `PUT /api/password` with a wrong current password -> `401 invalid_login` (not a signed-out 401); a too-short new password ->
+  `400 invalid_request`, message "password must be at least 12 characters".
+- Session lifetime here is 12 hours (`identity.session_ttl: 12h` in the manifest), not the module default of 720 hours; the sessions list marks only the
+  current one with `"current": true`.
+- Setup and login answer `{id, username, display_name, email, scopes}` (email is `""` until set); the owner's scopes are `["*"]`.
+
 Setup/sign-in screens are the GUI agent's; use Basalisk's as the reference until the identity UI kit exists.
 Setup and login bodies: `{username, display_name, password}` / `{username, password}`; both answer the identity user
 `{id, username, display_name, email, scopes}`.
