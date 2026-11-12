@@ -49,7 +49,7 @@ keys; an unknown key is refused at start.
   Unset (the default, not in the manifest) the binary serves the embedded `internal/snapshots/data/current.json` when the
   build has one, else `data/empty.json`. The file is read once at start and must exist, be at most 16 MiB, parse, and pass
   the same shape check as the embedded capture (`snapshots.Validate`); otherwise serve refuses to start with an error
-  naming `parallax.snapshot_file`. Use it for test data: a real capture never belongs at the embedded path.
+  naming `parallax.snapshot_file`. It is how the browser suites serve a synthetic capture, and also how an operator installs a real capture on a deployed instance (the file lives in the instance's config directory, mode 600); a real capture never belongs in the repository or at the embedded path.
 
 ## Deployment
 
