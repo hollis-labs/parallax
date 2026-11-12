@@ -1,4 +1,4 @@
-// Package webui owns the app's embedded assets; Chimera owns HTTP assembly.
+// Package webui embeds the built SPA (frontend/ builds into dist/).
 package webui
 
 import (
@@ -9,10 +9,8 @@ import (
 //go:embed all:dist
 var embedded embed.FS
 
-func Assets() fs.FS {
-	assets, err := fs.Sub(embedded, "dist")
-	if err != nil {
-		panic(err)
-	}
-	return assets
+// Assets returns the built SPA rooted at dist/, for httphost.Options{Assets: ...}.
+// An unbuilt tree holds only dist/.gitkeep, which still compiles and serves nothing.
+func Assets() (fs.FS, error) {
+	return fs.Sub(embedded, "dist")
 }

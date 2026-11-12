@@ -1,4 +1,5 @@
-.PHONY: run build check fixtures ui-dev storybook
+.PHONY: run build check fixtures ui-dev storybook pins lint scan generate
+SUBSTRATE := go run github.com/hollis-labs/substrate/cmd/substrate
 export TMPDIR := $(CURDIR)/.scratch/tmp
 export GOCACHE := $(CURDIR)/.scratch/gocache
 export GOMODCACHE := $(CURDIR)/.scratch/gomodcache
@@ -17,6 +18,7 @@ check: prepare
 	cd frontend && npm ci
 	go test -race ./cmd/... ./internal/...
 	go vet ./cmd/... ./internal/...
+	$(SUBSTRATE) pins check --app .
 	cd frontend && npm run typecheck && npm run lint && npm run build
 	node scripts/check-design-css.mjs
 	node scripts/check-optional-imports.mjs
@@ -31,3 +33,11 @@ browser: check
 	STORYBOOK_DISABLE_TELEMETRY=1 npm run build-storybook --prefix frontend
 	node scripts/coverage.mjs --check
 	CI=true npm exec --prefix frontend -- playwright test --config frontend/playwright.config.ts
+pins:
+	$(SUBSTRATE) pins check --app .
+generate:
+	$(SUBSTRATE) generate -f cmd/parallax/substrate.yaml
+lint:
+	go run github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.11.4 run
+scan:
+	python3 scripts/scan-public --ref HEAD

@@ -1,0 +1,16 @@
+# Parallax on Substrate. The manifest is the shell: modules and config.
+# Secure by default: the auth guard enforces, and the app is its own identity provider.
+app: parallax
+variant: app-host
+profiles: [minimal]
+modules:
+  add: [auth, database, identity, cli]
+config:
+  logging: { level: info, format: text }
+  httphost: { addr: "127.0.0.1:8085" }
+  # Paths are defaults relative to the working directory. The binary resolves the data
+  # directory (XDG data home or PARALLAX_DATA_DIR) and replaces them before the modules start.
+  database:
+    sqlite: { path: parallax.db }
+  auth: { mode: enforce }
+  identity: { key_file: identity-signing.key, session_ttl: 12h }
