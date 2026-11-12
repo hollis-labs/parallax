@@ -62,8 +62,8 @@ async function get(origin,path,token) {
  return {path,capturedAt:new Date().toISOString(),body:await r.json()}
 }
 export async function capture() {
- const torque=process.env.TORQUE_SNAPSHOT_URL??'https://torque.nanite.cloud'
- const tether=process.env.TETHER_SNAPSHOT_URL??'https://tether.nanite.cloud'
+ const torque=process.env.TORQUE_SNAPSHOT_URL??'https://torque.example.test'
+ const tether=process.env.TETHER_SNAPSHOT_URL??'https://tether.example.test'
  const tasks=await get(torque,taskPath,process.env.TORQUE_API_TOKEN)
  const scopes=[]
  for(const kind of ['project','epic','sprint']) for(const id of new Set(tasks.body.items.map(t=>t[`${kind}_id`]).filter(Boolean))) {

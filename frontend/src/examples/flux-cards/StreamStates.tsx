@@ -126,7 +126,7 @@ export function StreamBanner({
       <EnvelopeFooter>
         <Button
           disabled={!editable}
-          onClick={() => inspect("Cancel retry candidate", { cancel_token: "fixture-recovery-17" })}
+          onClick={() => inspect("Cancel retry candidate", { cancel_ref: "fixture-recovery-17" })}
         >
           Inspect cancel retry candidate
         </Button>

@@ -11,7 +11,7 @@ test.describe("Tether Sysop Overview Recreation", () => {
     const header = page.locator("header.tether-overview-header")
     await expect(header).toBeVisible()
     await expect(header.getByText("Agent Ops Control Plane", { exact: true })).toBeVisible()
-    await expect(header.getByText("/home/chrispian/.tether/catalog", { exact: true })).toBeVisible()
+    await expect(header.getByText("/srv/example/.tether/catalog", { exact: true })).toBeVisible()
 
     // Status badge (ok -> done)
     const statusBadge = header.locator(".dash-status-badge")

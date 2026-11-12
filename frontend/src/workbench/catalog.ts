@@ -394,14 +394,14 @@ export function storyDestination(host: string, story: string) {
   let origin: string | null = null
   if (
     [
-      "parallax.nanite.cloud",
-      "parallax.os.nanite.cloud",
-      "parallax-stories.nanite.cloud",
-      "192.168.1.195",
-      "100.112.71.40",
+      "parallax.example.test",
+      "parallax-os.example.test",
+      "parallax-stories.example.test",
+      "192.0.2.10",
+      "198.51.100.10",
     ].includes(host.split(":")[0])
   )
-    origin = "https://parallax-stories.nanite.cloud"
+    origin = "https://parallax-stories.example.test"
   else if (
     [
       "127.0.0.1:18541",

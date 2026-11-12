@@ -11,7 +11,7 @@ test.describe("Tether Sysop AI Gateway Recreation", () => {
     const header = page.locator("header.tether-ai-header")
     await expect(header).toBeVisible()
     await expect(header.getByText("Tether AI Gateway", { exact: true })).toBeVisible()
-    await expect(header.getByText("/home/chrispian/.tether/catalog", { exact: true })).toBeVisible()
+    await expect(header.getByText("/srv/example/.tether/catalog", { exact: true })).toBeVisible()
 
     // Status badge (reachable -> done)
     const statusBadge = header.locator(".dash-status-badge")

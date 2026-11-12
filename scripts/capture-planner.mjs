@@ -53,7 +53,7 @@ async function get(origin,path,token) {
   return {path,capturedAt:new Date().toISOString(),body:await r.json()}
 }
 export async function capturePlanner() {
-  const origin=process.env.TORQUE_SNAPSHOT_URL??'https://torque.nanite.cloud',token=process.env.TORQUE_API_TOKEN
+  const origin=process.env.TORQUE_SNAPSHOT_URL??'https://torque.example.test',token=process.env.TORQUE_API_TOKEN
   const lists={},boards={}
   for(const db of databases)lists[db]=await get(origin,`/api/v1/planner/${db}`,token)
   for(const scope of ['curated','all'])boards[scope]=await get(origin,`/api/v1/planner/board?scope=${scope}&limit=50`,token)
