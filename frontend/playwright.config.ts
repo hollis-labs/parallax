@@ -16,11 +16,14 @@ export default defineConfig({
   globalSetup: "./e2e/global-setup.ts",
   outputDir: `${repo}.scratch/test-results`,
   reporter: [["list"]],
+  // A failure on CI leaves a trace to read; one retry tells a timing flake from a defect (a pass on retry is reported as flaky).
+  retries: process.env.CI ? 1 : 0,
   use: {
     baseURL: backend,
     headless: true,
     // Unset uses Playwright's bundled Chromium; PLAYWRIGHT_CHANNEL=chrome uses the installed Chrome.
     channel: process.env.PLAYWRIGHT_CHANNEL || undefined,
+    trace: "on-first-retry",
     storageState: `${repo}.scratch/e2e-auth.json`,
   },
   webServer: [
