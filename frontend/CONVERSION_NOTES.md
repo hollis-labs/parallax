@@ -130,3 +130,11 @@ on the host; the owner form stays only for a backend that reports `setup_over_ht
 Failed once on CI (PR #35 run 43250608571: `Record inspector` not visible within 5s after `Enter`) and passed in every other run. Not reproduced in 360+ local
 runs (CPU oversubscription, cold Vite cache, the headless shell 1248). The test now waits for the cleared search to bring the rows back before pressing Enter;
 that is not claimed as the cause. A recurrence leaves a trace (see Browser suites).
+
+## Layered Escape in the session details (Torque CW-20261112-0125): fixed in the lab
+
+On CI, one Escape sometimes closed the "Stop session · local preview" dialog and the "Session details" dialog under it (`snapshot-sessions.spec.ts`
+"session inspection and stop previews...", red in several full runs). The lab rendered the two `DetailDialog`s (Base UI dialogs) as siblings; the library
+coordinates Escape between nested dialogs only. The preview is now rendered inside the details dialog (`src/snapshots/Sessions.tsx`). Measured on 2 cores
+(`taskset -c 0,1`) with 2 workers, the test repeated 60 times: siblings 21 failed, nested 0 failed. Other members of the same CI flake family are not
+fixed: `reader-detail-custody.spec.ts:213` (CW-20261112-0126, a single dialog; 1 of 40 under the same condition) and `evidence-states.spec.ts:5` and `:100`.
