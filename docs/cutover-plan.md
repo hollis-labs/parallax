@@ -61,7 +61,7 @@ should be the first run to find out.
    `PARALLAX_DATA_DIR` names in the descriptor, if it sets one). Change nothing.
 2. The expected content is: **the directory does not exist.** The old build never wrote there. (`~/.config/parallax/`
    is the descriptor directory; the new binary does not read or write it.)
-3. (Driver) Read the service's request log for the last week and name the callers (step 0.5).
+3. (Owner) Name who uses the lab and any script that calls it: there is no request log to read (step 0.5).
 4. **If anything is there, stop and report; do not proceed and do not delete it.** In particular `parallax.db`
    (with `-wal` and `-shm`), `identity-signing.key` or `identity-signing.key.jwks.json`: each means a new build has already
    run there, and what it created (an owner, keys) must be understood first. A signing key that already exists decides
@@ -79,8 +79,13 @@ should be the first run to find out.
    `239bcb6` with 71 uncommitted or untracked entries, so it cannot be brought to the deploy commit without risking
    changes nobody has looked at. Make a **fresh clone (or `git worktree`) beside it at the deploy commit** (`<new build
    checkout>`), and build there. The descriptor's `dir` is pointed at it only in step 1.3, and the old checkout stays as it
-   is (it is part of the rollback). The 71 entries are the owner's to read before any later cleanup of the old checkout;
-   this plan does not need their content and does not touch them. The build needs nothing from the old checkout: the
+   is (it is part of the rollback). The 71 entries are 34 modified tracked files (28 of them under `frontend/src`) and 37
+   untracked files (mostly candidate kit tarballs, patches and provenance files under `third_party`, and four under
+   `frontend/tests`). **The binary serving `parallax-uat` today was therefore built from a tree that is not any commit: it
+   may contain frontend work that exists nowhere else.** That checkout must **not be cleaned, reset, checked out over or
+   deleted by anyone, as part of the cutover or after it, until the owner has decided what in it is worth keeping.** The
+   lab people see after the cutover is `main`, which may differ from what they see today in ways a diff of that checkout
+   against `main` would show. The plan does not need the content of the 71 entries and does not touch them. The build needs nothing from the old checkout: the
    binary embeds its frontend and locates nothing by the working directory.
 3. **Write the new config file** `~/.config/parallax/substrate.yaml` (mode 600; the path is the operator's choice, it is
    named by `SUBSTRATE_CONFIG`). The listen address needs no entry: the default is `127.0.0.1:18441`. For the two public names:
@@ -209,8 +214,9 @@ Settled by the driver's read-only look (2026-11-12) and folded into the plan abo
 
 Still open:
 
-1. **Callers of the service** beyond people with the public URLs: the driver reads the request log for the last week
-   before the window (step zero, item 3) and reports; each caller then gets an account or an API key, or is retired.
+1. **Callers of the service** beyond people with the public URLs: no request log is available (the unit writes none to the
+   journal, and the proxy's access log is not readable by the driver), so there is no evidence either way; the owner is the
+   source for who uses the lab. Each caller then gets an account or an API key, or is retired.
 2. **The proxy's `X-Forwarded-Proto` behaviour** (exactly one `https`, a client-supplied value replaced) is untested; it is
    the first proxied check in the window (step 8), through each name. If it fails, the loopback address keeps working and
    the fix is a header directive in the proxy (the owner of the proxy), not in this repository.
