@@ -335,3 +335,45 @@ func serveWith(t *testing.T, override string) error {
 	defer cancel()
 	return (&parallax{app: run.App}).serve(ctx)
 }
+
+// The identity behavior the frontend contract relies on (Substrate bac8c60): a who-am-I route,
+// empty lists as [] and Retry-After on a rate-limited login.
+func TestIdentityContract(t *testing.T) {
+	c := newClient(t, started(t, loopbackOverride))
+	c.want(401, "GET", "/api/identity/profile", nil, nil)
+	c.want(200, "POST", "/api/setup", map[string]string{"username": "owner", "display_name": "Owner", "password": "correct horse battery staple"}, xrw)
+	var me struct {
+		Username  string   `json:"username"`
+		Scopes    []string `json:"scopes"`
+		Assurance string   `json:"assurance"`
+	}
+	if err := json.Unmarshal(c.want(200, "GET", "/api/identity/profile", nil, nil), &me); err != nil {
+		t.Fatal(err)
+	}
+	if me.Username != "owner" || me.Assurance != "local" || len(me.Scopes) != 1 || me.Scopes[0] != "*" {
+		t.Fatalf("profile = %+v", me)
+	}
+	if body := c.want(200, "GET", "/api/identity/keys", nil, nil); strings.Contains(string(body), "null") {
+		t.Fatalf("an empty list must be [], got %s", body)
+	}
+
+	anon := newClient(t, c.base)
+	bad := map[string]string{"username": "owner", "password": "wrong password here"}
+	for range 5 {
+		anon.want(401, "POST", "/api/login", bad, xrw)
+	}
+	req, err := http.NewRequest(http.MethodPost, c.base+"/api/login", strings.NewReader(`{"username":"owner","password":"wrong password here"}`))
+	if err != nil {
+		t.Fatal(err)
+	}
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("X-Requested-With", "parallax-ui")
+	res, err := anon.http.Do(req)
+	if err != nil {
+		t.Fatal(err)
+	}
+	_ = res.Body.Close()
+	if res.StatusCode != 429 || res.Header.Get("Retry-After") == "" {
+		t.Fatalf("sixth login: %d, Retry-After %q", res.StatusCode, res.Header.Get("Retry-After"))
+	}
+}
