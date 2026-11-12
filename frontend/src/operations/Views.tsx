@@ -219,7 +219,7 @@ export function ActivityView({
         <RunList model={model} onSelect={onSelect} query={query} onQuery={onQuery} />
       </div>
       {plugin && (
-        <Panel title="Chimera contribution" icon={<Layers className="size-4" />}>
+        <Panel title="Plugin contribution" icon={<Layers className="size-4" />}>
           {plugin}
         </Panel>
       )}
