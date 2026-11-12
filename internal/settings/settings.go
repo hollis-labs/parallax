@@ -5,9 +5,10 @@
 //	  allowed_hosts: []   # extra Host values (besides loopback) served behind a local TLS proxy
 //	  snapshot_file: ""   # absolute path of a capture file to serve instead of the embedded one; unset = embedded
 //
-// The manifest cannot carry the block (it accepts config only for catalog modules), so the
-// operator sets it in the file named by SUBSTRATE_CONFIG. Behind a proxy also set
-// identity.trusted_proxy: true (and identity.allowed_origins when the page origin differs).
+// The manifest carries the block's defaults (cmd/parallax/substrate.yaml: allowed_hosts: []);
+// the operator overrides them in the file named by SUBSTRATE_CONFIG, which merges deeply. Behind
+// a proxy also set identity.trusted_proxy: true (and identity.allowed_origins when the page
+// origin differs).
 package settings
 
 import (
