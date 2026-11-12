@@ -96,12 +96,13 @@ Scope table (all enforced by the auth guard; the first account made by setup hol
 | `GET /api/snapshots/current`, `GET /api/scenario[?profile=large]` | `parallax.read` |
 | `GET /plugins/*` (registry, `ops/g1` bundle) | `parallax.read` |
 | `GET /api/setup`, `POST /api/setup`, `POST /api/login`, `GET /api/identity/jwks`, `POST /api/pair` | `public` |
-| `POST /api/logout`, `PUT /api/password`, `PUT /api/identity/profile`, `POST /api/token`, `GET /api/identity/sessions`, `DELETE /api/identity/sessions/{id}` | `authenticated` |
+| `POST /api/logout`, `PUT /api/password`, `GET /api/identity/profile`, `PUT /api/identity/profile`, `POST /api/token`, `GET /api/identity/sessions`, `DELETE /api/identity/sessions/{id}` | `authenticated` |
 | `GET/POST /api/identity/users`, `PUT /api/identity/users/{id}`, `GET/POST /api/identity/keys`, `DELETE /api/identity/keys/{id}`, `POST /api/identity/pairing-codes` | `parallax.admin` |
 | `GET /healthz` | unauthenticated |
 
 Session flow for the SPA: `GET /api/setup` says whether first-run setup is still open (show the setup screen, then
-`POST /api/setup`); otherwise `POST /api/login`. There is no "who am I" route; a 401 from any `/api/` call means
+`POST /api/setup`); otherwise `POST /api/login`. `GET /api/identity/profile` is the "who am I" route (Substrate bac8c60): signed in -> `200 {id, username, display_name, email, scopes, assurance}`
+(`assurance` is `"local"`), signed out -> `401`, an API key -> `403 user_required`. A 401 from any `/api/` call means
 signed out, and sign-out is `POST /api/logout` (204). Host and origin: the backend answers only to loopback Host names (`localhost`, `127.0.0.1`, `[::1]`, any port) and
 to the names in `parallax.allowed_hosts`; any other Host gets a plain 403. A listed name is served only for a loopback
 peer carrying exactly one `X-Forwarded-Proto: https` (a local TLS proxy). Writes need `X-Requested-With` and a
@@ -116,10 +117,10 @@ Observed on the real binary (Torque CW-20261112-0080, comment 23312, checked aga
 - A cookie-authenticated write **without `X-Requested-With`** -> `403 {"code":"csrf","message":"missing X-Requested-With"}`. A **foreign `Origin`**
   (header present) -> `403 {"code":"bad_origin","message":"the request did not come from this app"}`: the two cases have different
   codes (comment 23312 lists both under `csrf`).
-- A revoked key **disappears** from `GET /api/identity/keys` (no revoked flag). An empty list is `{"keys":null}`, not `[]`: the client
-  must treat `null` as empty. Revoking again -> `404 not_found`. `POST /api/identity/keys` -> `201 {"credential":{id,name,scopes,created_by,created_at},"key":"key_..."}`;
+- A revoked key **disappears** from `GET /api/identity/keys` (no revoked flag). Since Substrate bac8c60 an empty list is `[]` (it was `null` before; the list routes now
+  answer `[]` and `GET /api/identity/keys` is verified to contain no `null`). Revoking again -> `404 not_found`. `POST /api/identity/keys` -> `201 {"credential":{id,name,scopes,created_by,created_at},"key":"key_..."}`;
   empty `scopes` or a scope the caller does not hold -> `400 invalid_request`, message "give a name, and scopes the caller itself holds".
-- **429 carries no `Retry-After` header** (headers: `Cache-Control: no-store`, `Content-Type`, `Referrer-Policy`, `X-Frame-Options`). Body
+- **429 carries `Retry-After`** since Substrate bac8c60 (verified on the sixth wrong login; it was absent before). Body
   `{"code":"rate_limited","message":"too many attempts; wait a few minutes"}`. Five wrong logins return 401; the sixth is 429, and the
   correct password is also refused with 429 until the window passes.
 - `PUT /api/password` with a wrong current password -> `401 invalid_login` (not a signed-out 401); a too-short new password ->
