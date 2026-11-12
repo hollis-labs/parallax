@@ -6,7 +6,7 @@ reload or deploy a resource. First activation remains an operator step.
 
 ## Build and runtime
 
-Use Go 1.26.10 and Node 24 with npm 11 on the build host. From a clean checkout,
+Use Go 1.26.11 and Node 24 with npm 11 on the build host. From a clean checkout,
 `make build` runs the locked frontend `npm ci` and Vite build before compiling
 `.scratch/parallax`. The frontend is embedded in that binary. Tracked
 `third_party/*.tgz` candidate packages referenced by the lockfile must remain
