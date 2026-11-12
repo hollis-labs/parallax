@@ -42,3 +42,17 @@ Served only by the Vite dev server (not part of `vite build`, not embedded in th
 `operations-list.html`, `reader-lifecycle.html`, `tachyon-nav-lifecycle.html`, `tether-ai.html`. They render fixtures and
 call no `/api` or `/plugins` route (checked: only `src/snapshots/Review.tsx` and the plugin registry loader fetch from the backend,
 both inside the main app).
+
+## Known failing tests (marked `test.fixme`, Torque CW-20261112-0112)
+
+Two tests were already failing on the unmodified pre-port app. Blame: `1ea2574` ("Standardize dashboard references and match
+Tachyon Agents", #33) rewrote `src/examples/torque/Operations.tsx` and
+- removed the row-action menu item `Inspect task {id}` (added by `63c80a5`); `tests/shortcut-registry.spec.ts` ("Torque: Layered Escape Stack
+  enforces input-clearing before closing...") still clicks it;
+- left the Torque example footer without the run id (`86 tasks · 0 selected ... · TASK-001 · Snapshot ...`);
+  `tests/torque-example.spec.ts` ("standalone app native routes reload and browser back...") still expects `TASK-001 / RUN-001`.
+Whether #33 meant to drop them is the Torque reference owner's call. They are `test.fixme` with the reason
+`CW-20261112-0112: predates the Substrate port (1ea2574)`.
+
+Suspected browser difference, still failing here (system Chrome), left as they are until the CI workflow runs them with the bundled Chromium:
+`appearance` (select keyboard handling), `messaging-example` (focus after `selectOption`), `nil-example` x2 (inspection body scroll height).

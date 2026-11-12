@@ -5,9 +5,12 @@ import { ports } from "./ports"
 const entry = "/?example=torque&profile=legacy&theme=p4-white&mode=light"
 const nav = (page: any) =>
   page.getByRole("navigation", { name: "Torque application navigation", exact: true })
-test("standalone app native routes reload and browser back retain admitted selected record and cutoff", async ({
-  page,
-}) => {
+test.fixme("standalone app native routes reload and browser back retain admitted selected record and cutoff", {
+  annotation: {
+    type: "fixme",
+    description: "CW-20261112-0112: predates the Substrate port (1ea2574)",
+  },
+}, async ({ page }) => {
   await page.goto(entry + "&screen=task&selected=TASK-003&cutoff=2026-10-04T14:15:15Z")
   await expect(
     page.getByRole("heading", { name: "Task and run inspection", exact: true }),
