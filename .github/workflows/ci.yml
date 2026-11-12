@@ -47,7 +47,7 @@ jobs:
           path: .scratch/test-results
           if-no-files-found: ignore
   # Popup and focus timing tests race under CPU contention on the public runner. They run on their
-  # own, visible and non-blocking: no retries, no fixme (the owner's ruling via the driver).
+  # own, visible and non-blocking: no retries, no fixme (the driver's ruling, 2026-11-12; see frontend/CONVERSION_NOTES.md).
   browser-popup-timing:
     name: browser-popup-timing (non-blocking)
     runs-on: ubuntu-latest
