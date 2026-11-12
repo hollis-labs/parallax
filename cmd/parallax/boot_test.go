@@ -336,7 +336,7 @@ func serveWith(t *testing.T, override string) error {
 	return (&parallax{app: run.App}).serve(ctx)
 }
 
-// The identity behaviour the frontend contract relies on (Substrate bac8c60): a who-am-I route,
+// The identity behavior the frontend contract relies on (Substrate bac8c60): a who-am-I route,
 // empty lists as [] and Retry-After on a rate-limited login.
 func TestIdentityContract(t *testing.T) {
 	c := newClient(t, started(t, loopbackOverride))
