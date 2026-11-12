@@ -1,0 +1,220 @@
+# Cutover plan: parallax-uat moves to the Substrate build
+
+Status: **draft for the owner's approval. Nothing here has been run on the live host.** Merging the port (PR #35,
+merge commit `6cdb6c8`) changed no running system: `parallax-uat` is the same process as before. This plan is the
+separate step that changes it.
+
+**Pre-merge `main`: `33401f5`** ("Go 1.26.10: fix GO-2026-6809 (crypto/x509) (#34)"), the last commit of the old
+version. A fix to the running version is cut from `33401f5`, not from `main`, until the cutover is done.
+
+## What changes for people (the visible change)
+
+Today anyone who can reach the public name sees the lab: the page, `/api/scenario`, `/api/snapshots/current` and the
+plugin bundles need no sign-in. **After the cutover every data request needs an account.** The page itself still
+loads without one (the static shell is served), and shows a sign-in screen. The owner account is created on the host
+before the service starts (step 5). Nobody else has an account until the owner makes one; this build has no screen for
+adding people (the identity routes `POST /api/identity/users` and `POST /api/identity/keys` exist and need the
+`parallax.admin` scope, which the owner holds), so the owner decides who is added and how. Script or health-check callers
+of the old URLs other than `/healthz` stop working until they hold an API key (step 5).
+
+There is no data to migrate: the old build kept no state. The new build gains one small identity database
+(`parallax.db`) and a signing key in its data directory.
+
+## What runs today (facts from the repository and the driver's read of the registry)
+
+| Piece | Where | How it runs |
+|---|---|---|
+| The served instance | the server host | Cerberus resource `parallax-uat`, user unit `com.hollis-labs.cerberus.parallax.parallax-uat.service`, `127.0.0.1:18441`, `mode: os_service`, `run_from: artifact`, `auto_restart: true`, health check `GET /healthz` |
+| Its descriptor | the operator's copy under `~/.config/parallax/` (one descriptor file) | registered with Cerberus from that copy, not from the repository's `parallax.cerberus.yaml`, which is a template |
+| Its binary | `~/.cerberus/apps/parallax/parallax-uat` (installed artifact) | built by the descriptor's `make_standard` strategy (`make build`, output `.scratch/parallax`) in the checkout its `dir` names, copied to the installed artifact by Cerberus; the unit runs the installed copy |
+| How clients reach it | a local TLS proxy, by a public name | the proxy forwards to `127.0.0.1:18441` |
+| Its data | none | the old binary keeps no state |
+| The storybook review service | `parallax-stories-review`, `127.0.0.1:18444`, from `~/.config/parallax-stories/` | a static Storybook; the backend change does not touch it |
+
+The binary is Cerberus-built and installed as an artifact (not fleet-installed, not a plain file): the repository's own
+descriptor template and `docs/cerberus-deployment.md` say so, and the driver's read confirms the unit. What I cannot tell
+from the repository, and need looked at (read-only) before the window, is listed under "Open items".
+
+## Principles
+
+- **No open setup window, ever.** `POST /api/setup` is refused by this build (`403 setup_offline`), so there is no window
+  to leave open. The owner and keys are made by the offline bootstrap **before the unit starts on the new build**, and
+  the first check after start is that `GET /api/setup` answers `{"setup_required":false}`.
+- The old binary is kept as a file, never overwritten, so rollback is a file swap and a restart (it keeps no state).
+- Nothing in this plan is run on the live host by me. Each step names who runs it.
+- The order is the rule: **build, sync, bootstrap, restart.** The service must not start on the new build before the
+  owner exists (it would answer, with everything refused, but the first check would fail and a stray start creates the
+  data directory). Cerberus `deploy` builds, syncs and activates in one command, so it is not used; `sync` and `reload`
+  are (the lifecycle verbs are in the Cerberus setup guide: `sync` updates installed artifacts without applying the
+  runtime backend; `reload` restarts the current installed service without syncing).
+
+## Step zero: the data directory holds nothing of the new build (before anything else)
+
+Any run of the new binary that writes (serving, `identity setup`, `identity key create`) **creates** a data directory, a
+database, a signing key and its JWKS file in whichever directory it resolves. The read-only commands (`version`,
+`config`, `health`, `help`) create nothing (tested with the real binary and an empty home), but nothing in this plan
+should be the first run to find out.
+
+1. As the service's user, with the unit's `HOME`: `find ~/.local/share/parallax -ls` (or the directory
+   `PARALLAX_DATA_DIR` names in the descriptor, if it sets one). Change nothing.
+2. The expected content is: **the directory does not exist.** The old build never wrote there. (`~/.config/parallax/`
+   is the descriptor directory; the new binary does not read or write it.)
+3. **If anything is there, stop and report; do not proceed and do not delete it.** In particular `parallax.db`
+   (with `-wal` and `-shm`), `identity-signing.key` or `identity-signing.key.jwks.json`: each means a new build has already
+   run there, and what it created (an owner, keys) must be understood first. A signing key that already exists decides
+   which issuer the database belongs to.
+4. Record the listing in the task. It is the "before" for the checks below.
+
+## 0. Before the window (anyone, no downtime)
+
+1. Merge is done; record the commit to deploy (the head of `main` after any later fix) and that CI is green on it.
+2. **Keep the old binary aside, once:** copy the installed artifact (`~/.cerberus/apps/parallax/parallax-uat`) to a
+   dated file outside Cerberus' managed tree, and record its sha256. Cerberus `sync` replaces the installed binary and
+   there is no retained-version rollback (`docs/cerberus-deployment.md`), so this copy is the rollback.
+3. **Write the new config file** `~/.config/parallax/substrate.yaml` (mode 600; the path is the operator's choice, it is
+   named by `SUBSTRATE_CONFIG`). The listen address needs no entry: the default is `127.0.0.1:18441`. For the public name:
+
+   ```yaml
+   parallax:
+     allowed_hosts: ["<public-name>"]
+   identity:
+     trusted_proxy: true
+     allowed_origins: ["https://<public-name>"]
+   ```
+
+   `allowed_hosts` makes the backend answer to that Host name; `trusted_proxy` lets it read the proxy's
+   `X-Forwarded-Proto`; `allowed_origins` is the page origin the identity module accepts for writes, needed because the
+   proxied Host differs from the loopback address. A name that is not listed gets a plain 403. The file holds no secret.
+4. **Rehearse on a scratch host** (done, see "Rehearsal"). Repeat it on the build that will be deployed.
+5. Inventory the callers of the public name and of `127.0.0.1:18441` (people with bookmarks, scripts, other apps, any
+   check other than `/healthz`). Each person gets an account decision, each script an API key with `parallax.read`, or is
+   retired. The owner names them; nothing in the repository calls the service.
+6. Add the config path to the unit's environment in the operator's descriptor copy, at the cutover and not before:
+   `env: { SUBSTRATE_CONFIG: <absolute path of the file in step 3> }`. `PARALLAX_DATA_DIR` is optional; leave it unset
+   to use the service user's XDG data home (`~/.local/share/parallax`), or set it to decide the place explicitly. The
+   `LISTEN_ADDR` variable, if the copy sets it, is ignored by the new binary and may stay or go (the default port is the
+   same).
+7. Announce a short window to the people from step 5.
+
+## 1. The window (server host)
+
+Downtime: **seconds.** The unit is stopped from the moment the old process is stopped to the moment the new one answers
+`/healthz`; on the rehearsal the new binary was healthy 0.08 s after start. The longer parts (build, copying) happen
+while the old process keeps serving; the stop-to-healthy gap is the restart plus the checks.
+
+1. **Build** the new binary in the checkout the descriptor names (the operator or the Cerberus owner; I do not run it):
+   `make build` (Node 24 and Go 1.26.10 on the build host; the frontend is built first and embedded). Nothing runs yet.
+2. **Sync, not deploy:** `cerberus resource sync parallax-uat --ack`. It updates the installed artifact without
+   activating. **Ask the driver to confirm with a dry run** that `sync` neither builds nor restarts (the guide says it only
+   updates installed artifacts), and that the running process is unaffected until step 6. If `sync` also rebuilds, step 1
+   is still harmless.
+3. Back up (nothing to back up on the new side yet): the old binary copy from step 0.2 is the backup.
+4. **Stop the unit:** `cerberus resource stop parallax-uat` (or `systemctl --user stop` on the unit). The old process
+   exits; nothing else holds the port.
+5. **Offline bootstrap**, as the service's user, with the unit's `HOME`, the same `SUBSTRATE_CONFIG` and the new
+   installed binary:
+   - `parallax identity setup --username NAME` (password from the no-echo prompt, or the first line of stdin; never an
+     argument or an environment variable). It refuses if an owner exists.
+   - `parallax identity key create --name CALLER --scope parallax.read --out PATH` for each script from step 0.5 (a new
+     0600 file, never overwritten; `--stdout` prints it instead). Any scope may be granted; give `parallax.read` unless
+     a caller needs more.
+
+   These create the data directory (0700), the database and the signing key (0600) exactly where the service will look.
+6. **Start on the new build:** `cerberus resource reload parallax-uat` (restart of the installed artifact, which is now
+   the new one). If the descriptor's `env` changed in step 0.6, the descriptor change is applied by the Cerberus owner
+   first (`cerberus resource apply`), at the point the plan says "start"; check `systemctl --user cat <unit>` shows
+   `SUBSTRATE_CONFIG` before the unit is started.
+7. **First check, before anything else:** `GET /api/setup` through `127.0.0.1:18441` answers
+   `{"setup_over_http":false,"setup_required":false}`. If `setup_required` is true, stop the unit at once and investigate:
+   the bootstrap did not land where the service looks (a different data directory).
+8. Checks (section 2).
+
+## 2. Checks (the driver or the owner; read-only against the live service)
+
+Through the loopback address, then through the public name:
+
+| Check | Expect |
+|---|---|
+| `GET /healthz` | 200 `{"status":"ok","checks":{"database":"ok"}}` |
+| `GET /api/setup` | `{"setup_over_http":false,"setup_required":false}` |
+| `POST /api/setup` (any body, with `X-Requested-With`) | 403 `setup_offline` |
+| `GET /api/scenario` signed out | 401 |
+| `GET /` signed out | 200: the page loads and shows the sign-in screen |
+| unknown `Host` (`curl -H 'Host: evil.example.test'`) | 403 |
+| the public name through the proxy, `GET /healthz` | 200 (the proxy sends exactly one `X-Forwarded-Proto: https`) |
+| the public name with the proto header missing or `http` (test from the host, not through the proxy) | 403 |
+| sign in as the owner through the public name (a browser) | succeeds; the session cookie is `Secure` and the page works over https |
+| `GET /api/scenario` and `/plugins/ops/g1/bundle.js` signed in | 200 |
+| an API key from step 5, `Authorization: Bearer <key>`, on `/api/scenario` | 200 |
+| `POST /api/logout` with `X-Requested-With`, then `GET /api/scenario` | 204, then 401 |
+| the data directory listing against the "before" | `parallax.db` (+ `-wal`/`-shm`), `identity-signing.key`, its `.jwks.json`; directory 0700, files 0600 |
+
+The proxied-request checks are the same as the repository's `TestProxiedHost` (listed name served only for a loopback
+peer carrying exactly one `X-Forwarded-Proto: https`; sign-in with the page's own origin). If the public check fails with
+403 on a name that is listed, the usual cause is the proxy not sending the header, or sending it twice.
+
+## Rollback
+
+Parallax keeps no state in the old build, so rollback is a file swap:
+
+1. `cerberus resource stop parallax-uat` (the new process exits).
+2. Restore the old binary: copy the file from step 0.2 over the installed artifact (check its sha256 against the
+   recorded one), and restore the previous descriptor `env` (drop `SUBSTRATE_CONFIG`).
+3. `cerberus resource reload parallax-uat`; check `/healthz` and the public name serve the lab without sign-in again.
+4. The new data directory can stay (the old binary ignores it) or be removed after the owner says so; nothing in it is
+   needed by the old build. Do not delete it as part of the rollback.
+
+## Downtime and risk
+
+| Surface | Downtime |
+|---|---|
+| The lab (page, API, plugins) | seconds: stop to healthy, plus the owner's checks if the proxy keeps serving errors meanwhile |
+| The storybook review service | none |
+
+Risks, in the order they would show: the unit starts before the owner exists (step 7 catches it, it is closed by the
+order); the proxy does not send the proto header or sends it twice (403 on the public name, loopback still works);
+a wrong `allowed_origins` (sign-in fails with 403 `bad_origin` through the public name); behind a proxy every client
+reaches the service from the proxy's loopback address, so the login limiter (five failures per username in five minutes)
+is effectively per username: someone who can reach the name can lock the owner out for a few minutes (a framework
+property, noted in `docs/conversion-notes.md`).
+
+## Open items (need the driver's read-only look, or the owner)
+
+1. **Which checkout the descriptor builds from** (`dir`), and on which branch it stands: it must be on the commit to
+   deploy. The repository's template says `dir: .`; the operator's copy may differ.
+2. **What the operator's descriptor sets in `env`** today (names only is enough): `LISTEN_ADDR`? Anything the new
+   binary reads (`SUBSTRATE_CONFIG`, `PARALLAX_DATA_DIR`, `XDG_*`, `HOME`)?
+3. **The public name and the proxy**: the name to put in `allowed_hosts` and `allowed_origins`; whether the proxy sends
+   one `X-Forwarded-Proto: https` and overwrites a client-supplied one; whether it terminates TLS on the same host.
+4. **Confirm with a dry run** that `cerberus resource sync` installs without building or restarting, and that `reload`
+   starts the freshly installed artifact (step 1.2 and 1.6).
+5. **Who calls the service** besides people with the public URL (step 0.5), and who becomes an account holder.
+6. Installed-artifact location: the driver's earlier note says `~/.cerberus/apps/parallax/parallax-uat`; confirm the
+   exact path for the backup copy.
+7. Owner's approval for the window, and the owner's decision on how additional accounts are created (API only in this
+   build).
+
+## Rehearsal (scratch host, nothing on the live host)
+
+Run on 2026-11-12 with the binary built from `main` (`6cdb6c8`), a scratch `HOME` and every XDG variable under it,
+port 18135, `SUBSTRATE_CONFIG` as in step 0.3 with a placeholder public name (`parallax.example.test`). Results:
+
+- Step zero: the scratch data directory did not exist; `parallax version` and `parallax config` created nothing (the
+  config output showed the anchored database and key paths and the allowed host).
+- `identity setup --username owner` (password on stdin): "owner owner created"; `identity key create ... --out`: a 0600
+  key file. The data directory appeared 0700 with `parallax.db` (+ `-wal`, `-shm`) and `identity-signing.key` 0600 and
+  its `.jwks.json`.
+- Start: healthy 0.08 s after launch. `GET /api/setup` `{"setup_over_http":false,"setup_required":false}`;
+  `POST /api/setup` 403; `/api/scenario` signed out 401; `GET /` signed out 200; unknown Host 403; the listed name
+  without the proto header 403 and with `X-Forwarded-Proto: https` 200; sign-in through the listed name with its own
+  `Origin` 200 with a `parallax_session` cookie; the API key read `/api/scenario` and `/plugins/ops/g1/bundle.js` 200.
+- SIGTERM stopped the process; the port was free afterwards.
+
+The scratch is not the live host: the live service, its descriptor and its data were not touched, and no command of this
+plan was run there.
+
+## After
+
+- Keep the old binary copy for at least a release. Remove nothing.
+- Update the repository's template descriptor only if the deployed shape should change; the live copy is the operator's.
+- Record the actual downtime, the data directory listing and the check results in the task.
