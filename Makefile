@@ -1,4 +1,4 @@
-.PHONY: run owner build check fixtures ui-dev storybook pins lint scan generate
+.PHONY: prepare run owner build check fixtures ui-dev storybook pins lint scan generate
 SUBSTRATE := go run github.com/hollis-labs/substrate/cmd/substrate
 export TMPDIR := $(CURDIR)/.scratch/tmp
 export GOCACHE := $(CURDIR)/.scratch/gocache
@@ -38,12 +38,13 @@ browser: check
 	STORYBOOK_DISABLE_TELEMETRY=1 npm run build-storybook --prefix frontend
 	node scripts/coverage.mjs --check
 	CI=true npm exec --prefix frontend -- playwright test --config frontend/playwright.config.ts
-pins:
+pins: prepare
 	$(SUBSTRATE) pins check --app .
-generate:
+generate: prepare
 	$(SUBSTRATE) generate -f cmd/parallax/substrate.yaml
-lint:
+lint: prepare
 	go run github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.11.4 run
-# Tree only. The history gate (--ref HEAD) returns after the program-wide history pass.
-scan:
+# Tree only. The scanner also walks gitignored build output, so .scratch caches left by other
+# targets show up as findings: run it in a clean checkout (CI does). The history gate (--ref HEAD) returns after the program-wide history pass.
+scan: prepare
 	$(SUBSTRATE) scan-public --tree
