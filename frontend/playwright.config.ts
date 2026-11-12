@@ -16,14 +16,13 @@ export default defineConfig({
   globalSetup: "./e2e/global-setup.ts",
   outputDir: `${repo}.scratch/test-results`,
   reporter: [["list"]],
-  // A failure on CI leaves a trace to read; one retry tells a timing flake from a defect (a pass on retry is reported as flaky).
-  retries: process.env.CI ? 1 : 0,
   use: {
     baseURL: backend,
     headless: true,
     // Unset uses Playwright's bundled Chromium; PLAYWRIGHT_CHANNEL=chrome uses the installed Chrome.
     channel: process.env.PLAYWRIGHT_CHANNEL || undefined,
-    trace: "on-first-retry",
+    // A failure on CI keeps its trace under .scratch/test-results; no retries, so a flaky test stays red.
+    trace: process.env.CI ? "retain-on-failure" : "off",
     storageState: `${repo}.scratch/e2e-auth.json`,
   },
   webServer: [
@@ -34,7 +33,16 @@ export default defineConfig({
       reuseExistingServer: !process.env.CI,
     },
     {
-      command: `rm -rf ${e2e} && mkdir -p ${e2e} && printf 'httphost:\\n  addr: "127.0.0.1:${ports.backend}"\\nparallax:\\n  snapshot_file: "${capture}"\\n' > ${e2e}/substrate.yaml && SUBSTRATE_CONFIG=${e2e}/substrate.yaml PARALLAX_DATA_DIR=${e2e}/data .scratch/parallax`,
+      // The owner is created on the host before the server starts (first-run setup over HTTP is closed),
+      // with a fresh random password that global-setup reads from .scratch/e2e-password.
+      command: [
+        `rm -rf ${e2e} && mkdir -p ${e2e}`,
+        `printf 'httphost:\\n  addr: "127.0.0.1:${ports.backend}"\\nparallax:\\n  snapshot_file: "${capture}"\\n' > ${e2e}/substrate.yaml`,
+        "PW=$(head -c 18 /dev/urandom | base64 | tr -d '=+/')",
+        `(umask 077; printf '%s' "$PW" > ${repo}.scratch/e2e-password)`,
+        `printf '%s\\n' "$PW" | SUBSTRATE_CONFIG=${e2e}/substrate.yaml PARALLAX_DATA_DIR=${e2e}/data .scratch/parallax identity setup --username e2e --display-name "E2E Owner"`,
+        `SUBSTRATE_CONFIG=${e2e}/substrate.yaml PARALLAX_DATA_DIR=${e2e}/data .scratch/parallax`,
+      ].join(" && "),
       cwd: repo,
       url: backend,
       reuseExistingServer: !process.env.CI,
