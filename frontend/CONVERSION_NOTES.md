@@ -177,3 +177,14 @@ lab's own composition (sibling dialogs) and is fixed (CW-20261112-0125): it stay
   `LabFrame` (`src/shell/LabFrame.tsx`: header, a labelled region, no `main`). Layouts keeps the real `AppShell` because it demonstrates the kit's aside and
   navigation variants; it therefore still has two `main` elements (`app-shell-aside.spec.ts` "narrow-short 390x420..." targets it and stays failing). A way for
   `AppShell` to render its content without `main` belongs to design-components.
+
+## Expected failures (`test.fail`), shell wrap: known failures, not passing
+
+Two Parallax tests are Playwright expected failures: they fail today, the run stays green, and a run fails if one of them starts passing, so the annotation is removed in the
+change that adopts the kit fix.
+- `layouts.spec.ts` "narrow drawers keyboard navigation and short rail remain reachable": `layout-scroll` is 206 px at 390x844 (the test needs > 250). Chrome budget: bottom nav 57 +
+  the shell's page title row 60 (16 padding + 28 h1 + 16 gap) + lab header 74 + controls strip 120. Passes (266) once a surface can opt out of the generic page title:
+  Torque CW-20261112-0134 (frontend-support). The threshold stays 250.
+- `app-shell-aside.spec.ts` "narrow-short 390x420 viewport preserves geometry and usability": the Layouts page demonstrates the kit AppShell's aside and navigation variants, so
+  it keeps the real design-components `AppShell`, which always renders its own `<main>` inside the shell's `main` (two `main` elements). Needs an AppShell content mode
+  without `main`: Torque CW-20261112-0135 (design-components).
