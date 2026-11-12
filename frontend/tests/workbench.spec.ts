@@ -137,7 +137,8 @@ test("known URL reload and unknown route fallback preserve declared settings und
   await expect(
     page.getByText("Unknown requested view not-declared; showing Activity."),
   ).toBeVisible()
-  await expect.poll(() => new URL(page.url()).searchParams.get("view")).toBe("Activity")
+  await expect.poll(() => new URL(page.url()).pathname).toBe("/")
+  expect(new URL(page.url()).searchParams.has("view")).toBe(false)
 })
 test("source filter phase and unmount native callbacks retire while390dark cards remain reachable bounded", async ({
   page,

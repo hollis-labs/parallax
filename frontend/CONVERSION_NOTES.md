@@ -158,3 +158,12 @@ lab's own composition (sibling dialogs) and is fixed (CW-20261112-0125): it stay
 
 **How a test leaves quarantine:** twenty consecutive green runs of the `browser-popup-timing` job on `main`, or a fix with a measured before and after
 (repeated runs pinned to 2 cores with 2 workers, as for CW-20261112-0125), in the pull request that removes the `@popup-timing` tag.
+
+## What changed for people (shell wrap, branch gui/shell-wip)
+
+- A **known** `?view=NAME` link (the lab was used with these until the cutover; the owner may have bookmarks) still opens that view: the page redirects to its
+  path (`/<slug>`, `/` for Activity) and keeps every other query parameter. Test: `tests/shell-routes.spec.ts` "/?view=Name reaches the route, keeps the other
+  parameters and shows that view", with the unit tests of `legacyViewRedirect` beside it.
+- An **unknown** `?view=NAME` lands on `/` (Activity), says "Unknown requested view NAME; showing Activity.", and leaves no `view` parameter in the URL (it used to
+  rewrite `view` to "Activity"). Test: `tests/workbench.spec.ts` "known URL reload and unknown route fallback..." (last assertion: path is `/`, no `view` parameter), ruled by the driver.
+- Navigation is the shell's: a column at wide widths, a top bar with a "More" sheet at narrow widths; sign-out is its footer surface (the header button is gone).

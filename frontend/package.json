@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@base-ui/react": "1.8.0",
-    "@hollis-labs/app-shell": "file:../third_party/hollis-labs-app-shell-0.11.0-cw0110-09712bf.tgz",
+    "@hollis-labs/app-shell": "file:../third_party/hollis-labs-app-shell-0.11.0-cw0110-8f123e1.tgz",
     "@hollis-labs/design-app-runtime": "0.6.0",
     "@hollis-labs/design-bindings": "0.2.0",
     "@hollis-labs/design-components": "file:../third_party/hollis-labs-design-components-0.4.0-cw0091-candidate.tgz",
@@ -58,8 +58,5 @@
     "typescript": "5.9.3",
     "typescript-eslint": "8.71.0",
     "vite": "7.3.6"
-  },
-  "overrides": {
-    "@hollis-labs/design-app-runtime": "$@hollis-labs/design-app-runtime"
   }
 }
