@@ -238,7 +238,7 @@ test("source principal draft reset unmount and StrictMode fence held inspections
   await expect(page.getByLabel("Current identity")).toContainText("Identity unavailable")
   await page.getByLabel("Account appearance").selectOption("denied")
   await expect(page.getByText("Account evidence withheld")).toBeVisible()
-  await page.getByRole("button", { name: "Activity", exact: true }).click()
+  await page.getByRole("link", { name: "Activity", exact: true }).click()
   await invoke(page, "beforeUnmount")
   await expect(page.getByRole("dialog")).toHaveCount(0)
 })
@@ -247,7 +247,7 @@ test("narrow dark account metadata dialog and portable supported states are read
 }, info) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto("/?view=Account%20Review&theme=p1-green-phosphor&mode=dark")
-  await page.getByRole("navigation", { name: "Application navigation" }).waitFor()
+  await page.getByRole("navigation", { name: "Primary" }).waitFor()
   await page.getByRole("heading", { name: "Profile", exact: true }).scrollIntoViewIfNeeded()
   await page.screenshot({ path: info.outputPath("account-profile-narrow.png") })
   await page.getByLabel("Account composition").selectOption("metadata")

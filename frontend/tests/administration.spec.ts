@@ -198,7 +198,7 @@ test("admin and account portable stories use no API and keep one narrow scroll o
       .map((e) => e.dataset.testid ?? e.className),
   )
   expect(owners).toEqual(["page-scroll"])
-  await page.getByRole("button", { name: "Administration", exact: true }).click()
+  await page.getByRole("link", { name: "Administration", exact: true }).click()
   await page
     .getByRole("group", { name: "Canonical admin pages" })
     .getByRole("button", { name: "Settings", exact: true })

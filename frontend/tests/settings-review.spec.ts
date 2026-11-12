@@ -361,7 +361,7 @@ test("settings source state selection reset and unmount retire held inspections 
   await page.getByLabel("Settings appearance").selectOption("denied")
   await expect(page.locator(".settings-review form input")).toHaveCount(0)
   await expect(page.getByText("Fixture review lab", { exact: true })).toHaveCount(0)
-  await page.getByRole("button", { name: "Activity", exact: true }).click()
+  await page.getByRole("link", { name: "Activity", exact: true }).click()
   await invoke(page, "oldSettingsInspect")
   await expect(dialog).not.toBeVisible()
 })

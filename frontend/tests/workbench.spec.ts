@@ -74,7 +74,7 @@ test("native Workbench sequential search groups keyboard local navigation and re
   await page.keyboard.press("Enter")
   await expect(page.getByRole("heading", { name: "Usage Evidence", exact: true })).toBeVisible()
   await expect(
-    page.getByRole("button", { name: "Usage Evidence", exact: true }).locator("svg"),
+    page.getByRole("link", { name: "Usage Evidence", exact: true }).locator("svg"),
   ).toHaveCount(1)
   await page.getByRole("button", { name: "Open Review Workbench", exact: true }).click()
   await page
@@ -98,7 +98,7 @@ test("Workbench pauses current prefix while ordinary playback navigation and sel
   await page.getByLabel("Playback position").fill(String(index))
   await page.clock.install()
   await page.getByRole("button", { name: "Play recorded events", exact: true }).click()
-  await page.getByRole("button", { name: "Usage", exact: true }).click()
+  await page.getByRole("link", { name: "Usage", exact: true }).click()
   await expect(page.getByRole("button", { name: "Pause playback", exact: true })).toBeVisible()
   await page.getByRole("button", { name: "Open Review Workbench", exact: true }).click()
   await expect(

@@ -6,58 +6,65 @@
       "kind": "nav.group",
       "key": "operations",
       "label": "Operations",
-      "priority": 10
+      "priority": 10,
+      "default_open": true
     },
     {
       "kind": "nav.group",
       "key": "communications",
       "label": "Communications",
-      "priority": 11
+      "priority": 11,
+      "default_open": true
     },
     {
       "kind": "nav.group",
       "key": "administration",
       "label": "Administration",
-      "priority": 12
+      "priority": 12,
+      "default_open": true
     },
     {
       "kind": "nav.group",
       "key": "evidence",
       "label": "Evidence",
-      "priority": 13
+      "priority": 13,
+      "default_open": true
     },
     {
       "kind": "nav.group",
       "key": "developer",
       "label": "Developer",
-      "priority": 14
+      "priority": 14,
+      "default_open": true
     },
     {
       "kind": "nav.group",
       "key": "voice",
       "label": "Voice",
-      "priority": 15
+      "priority": 15,
+      "default_open": true
     },
     {
       "kind": "nav.group",
       "key": "app-examples",
       "label": "App Examples",
-      "priority": 16
+      "priority": 16,
+      "default_open": true
     },
     {
       "kind": "nav.item",
       "key": "review-workbench",
       "label": "Review Workbench",
       "icon": "layers",
-      "route": "/",
+      "route": "/review-workbench",
       "priority": 1
     },
     {
       "kind": "surface",
       "key": "review-workbench",
       "label": "Review Workbench",
-      "title": "Review Workbench",
-      "route": "/",
+      "title": "Parallax design lab",
+      "route": "/review-workbench",
       "layout": "dashboard"
     },
     {
@@ -73,7 +80,7 @@
       "kind": "surface",
       "key": "ops-dashboard",
       "label": "Ops Dashboard",
-      "title": "Ops Dashboard",
+      "title": "Parallax design lab",
       "route": "/ops-dashboard",
       "layout": "dashboard"
     },
@@ -90,7 +97,7 @@
       "kind": "surface",
       "key": "torque-example",
       "label": "Torque Example",
-      "title": "Torque Example",
+      "title": "Parallax design lab",
       "route": "/torque-example",
       "layout": "dashboard"
     },
@@ -107,7 +114,7 @@
       "kind": "surface",
       "key": "chat-example",
       "label": "Chat Example",
-      "title": "Chat Example",
+      "title": "Parallax design lab",
       "route": "/chat-example",
       "layout": "dashboard"
     },
@@ -124,7 +131,7 @@
       "kind": "surface",
       "key": "administration-example",
       "label": "Administration Example",
-      "title": "Administration Example",
+      "title": "Parallax design lab",
       "route": "/administration-example",
       "layout": "dashboard"
     },
@@ -141,7 +148,7 @@
       "kind": "surface",
       "key": "messaging-example",
       "label": "Messaging Example",
-      "title": "Messaging Example",
+      "title": "Parallax design lab",
       "route": "/messaging-example",
       "layout": "dashboard"
     },
@@ -158,7 +165,7 @@
       "kind": "surface",
       "key": "workspace-example",
       "label": "Workspace Example",
-      "title": "Workspace Example",
+      "title": "Parallax design lab",
       "route": "/workspace-example",
       "layout": "dashboard"
     },
@@ -175,7 +182,7 @@
       "kind": "surface",
       "key": "appearance-review",
       "label": "Appearance Review",
-      "title": "Appearance Review",
+      "title": "Parallax design lab",
       "route": "/appearance-review",
       "layout": "dashboard"
     },
@@ -192,7 +199,7 @@
       "kind": "surface",
       "key": "evidence-states",
       "label": "Evidence States",
-      "title": "Evidence States",
+      "title": "Parallax design lab",
       "route": "/evidence-states",
       "layout": "dashboard"
     },
@@ -209,7 +216,7 @@
       "kind": "surface",
       "key": "event-ledger",
       "label": "Event Ledger",
-      "title": "Event Ledger",
+      "title": "Parallax design lab",
       "route": "/event-ledger",
       "layout": "dashboard"
     },
@@ -226,7 +233,7 @@
       "kind": "surface",
       "key": "directory-review",
       "label": "Directory Review",
-      "title": "Directory Review",
+      "title": "Parallax design lab",
       "route": "/directory-review",
       "layout": "dashboard"
     },
@@ -235,7 +242,7 @@
       "key": "activity",
       "label": "Activity",
       "icon": "activity",
-      "route": "/activity",
+      "route": "/",
       "region": "nav.group:operations",
       "priority": 30
     },
@@ -243,8 +250,8 @@
       "kind": "surface",
       "key": "activity",
       "label": "Activity",
-      "title": "Activity",
-      "route": "/activity",
+      "title": "Parallax design lab",
+      "route": "/",
       "layout": "dashboard"
     },
     {
@@ -260,7 +267,7 @@
       "kind": "surface",
       "key": "mission-control",
       "label": "Mission Control",
-      "title": "Mission Control",
+      "title": "Parallax design lab",
       "route": "/mission-control",
       "layout": "dashboard"
     },
@@ -277,7 +284,7 @@
       "kind": "surface",
       "key": "usage",
       "label": "Usage",
-      "title": "Usage",
+      "title": "Parallax design lab",
       "route": "/usage",
       "layout": "dashboard"
     },
@@ -294,7 +301,7 @@
       "kind": "surface",
       "key": "contacts",
       "label": "Contacts",
-      "title": "Contacts",
+      "title": "Parallax design lab",
       "route": "/contacts",
       "layout": "dashboard"
     },
@@ -311,7 +318,7 @@
       "kind": "surface",
       "key": "messages",
       "label": "Messages",
-      "title": "Messages",
+      "title": "Parallax design lab",
       "route": "/messages",
       "layout": "dashboard"
     },
@@ -328,7 +335,7 @@
       "kind": "surface",
       "key": "chat",
       "label": "Chat",
-      "title": "Chat",
+      "title": "Parallax design lab",
       "route": "/chat",
       "layout": "dashboard"
     },
@@ -345,7 +352,7 @@
       "kind": "surface",
       "key": "conversation-review",
       "label": "Conversation Review",
-      "title": "Conversation Review",
+      "title": "Parallax design lab",
       "route": "/conversation-review",
       "layout": "dashboard"
     },
@@ -362,7 +369,7 @@
       "kind": "surface",
       "key": "administration",
       "label": "Administration",
-      "title": "Administration",
+      "title": "Parallax design lab",
       "route": "/administration",
       "layout": "dashboard"
     },
@@ -379,7 +386,7 @@
       "kind": "surface",
       "key": "account",
       "label": "Account",
-      "title": "Account",
+      "title": "Parallax design lab",
       "route": "/account",
       "layout": "dashboard"
     },
@@ -396,7 +403,7 @@
       "kind": "surface",
       "key": "settings-review",
       "label": "Settings Review",
-      "title": "Settings Review",
+      "title": "Parallax design lab",
       "route": "/settings-review",
       "layout": "dashboard"
     },
@@ -413,7 +420,7 @@
       "kind": "surface",
       "key": "account-review",
       "label": "Account Review",
-      "title": "Account Review",
+      "title": "Parallax design lab",
       "route": "/account-review",
       "layout": "dashboard"
     },
@@ -430,7 +437,7 @@
       "kind": "surface",
       "key": "observability",
       "label": "Observability",
-      "title": "Observability",
+      "title": "Parallax design lab",
       "route": "/observability",
       "layout": "dashboard"
     },
@@ -447,7 +454,7 @@
       "kind": "surface",
       "key": "observation-review",
       "label": "Observation Review",
-      "title": "Observation Review",
+      "title": "Parallax design lab",
       "route": "/observation-review",
       "layout": "dashboard"
     },
@@ -464,7 +471,7 @@
       "kind": "surface",
       "key": "admin-review",
       "label": "Admin Review",
-      "title": "Admin Review",
+      "title": "Parallax design lab",
       "route": "/admin-review",
       "layout": "dashboard"
     },
@@ -481,7 +488,7 @@
       "kind": "surface",
       "key": "developer",
       "label": "Developer",
-      "title": "Developer",
+      "title": "Parallax design lab",
       "route": "/developer",
       "layout": "dashboard"
     },
@@ -498,7 +505,7 @@
       "kind": "surface",
       "key": "voice",
       "label": "Voice",
-      "title": "Voice",
+      "title": "Parallax design lab",
       "route": "/voice",
       "layout": "dashboard"
     },
@@ -515,7 +522,7 @@
       "kind": "surface",
       "key": "examples",
       "label": "Examples",
-      "title": "Examples",
+      "title": "Parallax design lab",
       "route": "/examples",
       "layout": "dashboard"
     },
@@ -532,7 +539,7 @@
       "kind": "surface",
       "key": "primitives",
       "label": "Primitives",
-      "title": "Primitives",
+      "title": "Parallax design lab",
       "route": "/primitives",
       "layout": "dashboard"
     },
@@ -549,7 +556,7 @@
       "kind": "surface",
       "key": "evidence",
       "label": "Evidence",
-      "title": "Evidence",
+      "title": "Parallax design lab",
       "route": "/evidence",
       "layout": "dashboard"
     },
@@ -566,7 +573,7 @@
       "kind": "surface",
       "key": "widgets",
       "label": "Widgets",
-      "title": "Widgets",
+      "title": "Parallax design lab",
       "route": "/widgets",
       "layout": "dashboard"
     },
@@ -583,7 +590,7 @@
       "kind": "surface",
       "key": "layouts",
       "label": "Layouts",
-      "title": "Layouts",
+      "title": "Parallax design lab",
       "route": "/layouts",
       "layout": "dashboard"
     },
@@ -600,7 +607,7 @@
       "kind": "surface",
       "key": "run-explorer",
       "label": "Run Explorer",
-      "title": "Run Explorer",
+      "title": "Parallax design lab",
       "route": "/run-explorer",
       "layout": "dashboard"
     },
@@ -617,7 +624,7 @@
       "kind": "surface",
       "key": "developer-evidence",
       "label": "Developer Evidence",
-      "title": "Developer Evidence",
+      "title": "Parallax design lab",
       "route": "/developer-evidence",
       "layout": "dashboard"
     },
@@ -634,7 +641,7 @@
       "kind": "surface",
       "key": "workflow-review",
       "label": "Workflow Review",
-      "title": "Workflow Review",
+      "title": "Parallax design lab",
       "route": "/workflow-review",
       "layout": "dashboard"
     },
@@ -651,7 +658,7 @@
       "kind": "surface",
       "key": "conversation-evidence",
       "label": "Conversation Evidence",
-      "title": "Conversation Evidence",
+      "title": "Parallax design lab",
       "route": "/conversation-evidence",
       "layout": "dashboard"
     },
@@ -668,7 +675,7 @@
       "kind": "surface",
       "key": "usage-evidence",
       "label": "Usage Evidence",
-      "title": "Usage Evidence",
+      "title": "Parallax design lab",
       "route": "/usage-evidence",
       "layout": "dashboard"
     },
@@ -685,7 +692,7 @@
       "kind": "surface",
       "key": "app-snapshots",
       "label": "App Snapshots",
-      "title": "App Snapshots",
+      "title": "Parallax design lab",
       "route": "/app-snapshots",
       "layout": "dashboard"
     },

@@ -207,7 +207,7 @@ test("native local destination held inspection and captured navigation close ret
   await page.getByLabel("Admin appearance").selectOption("initial-error")
   await page.getByRole("button", { name: /Release oldest destination inspection/ }).click()
   await expect(page.getByText("Locally inspected only.", { exact: false })).toHaveCount(0)
-  await page.getByRole("button", { name: "Activity", exact: true }).click()
+  await page.getByRole("link", { name: "Activity", exact: true }).click()
   await invoke(page, "oldNav")
   await expect(page.getByRole("heading", { name: "Activity", exact: true })).toBeVisible()
   expect(writes).toEqual([])

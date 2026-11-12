@@ -1,6 +1,5 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
-import { App } from "./App"
 import { StandaloneAdminReview } from "./admin-review/Review"
 import { StandaloneDrawersReview } from "./drawers/Standalone"
 import { StandaloneAdministrationExample } from "./examples/administration/Standalone"
@@ -19,6 +18,7 @@ import { StandaloneTorqueExample } from "./examples/torque/Standalone"
 import { StandaloneWorkspaceExample } from "./examples/workspace/Standalone"
 import { StandaloneFluxRailReview } from "./flux-rail/Review"
 import { Gate } from "./identity/Gate"
+import { Root } from "./shell/Root"
 import { SnapshotReview } from "./snapshots/Review"
 import "./index.css"
 
@@ -68,7 +68,7 @@ ReactDOM.createRoot(root).render(
       <StandaloneAdminReview />
     ) : (
       <Gate>
-        <App />
+        <Root />
       </Gate>
     )}
   </React.StrictMode>,

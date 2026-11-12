@@ -29,9 +29,9 @@ test("shared list/table/split/drawer keep selection and one body owner", async (
     animations: "disabled",
   })
   await page.getByLabel("Navigation variant").selectOption("header")
-  await page.getByRole("button", { name: "Usage", exact: true }).click()
+  await page.getByRole("link", { name: "Usage", exact: true }).click()
   await expect(page.getByLabel("Selected run")).toContainText("TASK-003")
-  await page.getByRole("button", { name: "Layouts", exact: true }).click()
+  await page.getByRole("link", { name: "Layouts", exact: true }).click()
   await expect(page.getByLabel("Comparison selected record")).toContainText("TASK-003")
   await page.getByLabel("Scenario").selectOption("permission-denied")
   await expect(page.getByText("Access denied by fixture policy")).toBeVisible()
@@ -64,8 +64,8 @@ test("narrow drawers keyboard navigation and short rail remain reachable", async
   )
   await page.screenshot({ path: info.outputPath("layout-narrow.png"), animations: "disabled" })
   await page.getByLabel("Navigation variant").selectOption("header")
-  await page.getByRole("button", { name: "Layouts", exact: true }).scrollIntoViewIfNeeded()
-  await expect(page.getByRole("button", { name: "Layouts", exact: true })).toBeVisible()
+  await page.getByRole("link", { name: "Layouts", exact: true }).scrollIntoViewIfNeeded()
+  await expect(page.getByRole("link", { name: "Layouts", exact: true })).toBeVisible()
   expect(await page.getByTestId("layout-scroll").evaluate((e) => e.clientHeight)).toBeGreaterThan(
     250,
   )
@@ -77,8 +77,8 @@ test("narrow drawers keyboard navigation and short rail remain reachable", async
   )
   await page.setViewportSize({ width: 1280, height: 600 })
   await page.getByLabel("Navigation variant").selectOption("rail")
-  await page.getByRole("button", { name: "Layouts", exact: true }).scrollIntoViewIfNeeded()
-  await expect(page.getByRole("button", { name: "Layouts", exact: true })).toBeVisible()
+  await page.getByRole("link", { name: "Layouts", exact: true }).scrollIntoViewIfNeeded()
+  await expect(page.getByRole("link", { name: "Layouts", exact: true })).toBeVisible()
   expect(
     await page.locator(".navigation-scroll").evaluate((e) => e.scrollHeight > e.clientHeight),
   ).toBeTruthy()

@@ -199,8 +199,8 @@ test("context policy retirement and actual keyframes preserve narrow theme and p
   await form.getByRole("button", { name: "Reset gallery context" }).scrollIntoViewIfNeeded()
   await expect(form.getByRole("button", { name: "Reset gallery context" })).toBeInViewport()
   await page.keyboard.press("Escape")
-  await page.getByRole("button", { name: "Activity", exact: true }).click()
-  await page.getByRole("button", { name: "Primitives", exact: true }).click()
+  await page.getByRole("link", { name: "Activity", exact: true }).click()
+  await page.getByRole("link", { name: "Primitives", exact: true }).click()
   await expect(page.getByText("No local record selected", { exact: true })).toBeVisible()
   const requests: string[] = []
   page.on("request", (request) => {
@@ -236,7 +236,7 @@ test("rendered tone and clamp contracts use actual library paint and dimensions"
   page,
 }, info) => {
   await page.goto("/?view=Primitives&theme=p4-white&mode=light")
-  await page.getByRole("navigation", { name: "Application navigation" }).waitFor()
+  await page.getByRole("navigation", { name: "Primary" }).waitFor()
   const pills = page.getByRole("group", { name: "Supported pill tones" })
   const paint = await pills.locator("span").evaluateAll((nodes) =>
     nodes
@@ -293,14 +293,14 @@ test("gallery entry ignores operations filter and retires focus and held outcome
   await page.getByLabel("Playback position").fill("0")
   await page.getByLabel("Filter tasks", { exact: true }).fill("TASK-003")
   await page.getByRole("button", { name: "Play recorded events", exact: true }).click()
-  await page.getByRole("button", { name: "Primitives", exact: true }).click()
+  await page.getByRole("link", { name: "Primitives", exact: true }).click()
   await expect(page.getByText(/Full-snapshot review/)).toBeVisible()
-  await page.getByRole("button", { name: "Activity", exact: true }).click()
+  await page.getByRole("link", { name: "Activity", exact: true }).click()
   await page.getByText("Fixture timeline review", { exact: true }).click()
   await expect(
     page.getByRole("button", { name: "Play recorded events", exact: true }),
   ).toBeVisible()
-  await page.getByRole("button", { name: "Primitives", exact: true }).click()
+  await page.getByRole("link", { name: "Primitives", exact: true }).click()
   await choose(page, "TASK-001")
   await page.getByRole("button", { name: "Review note form", exact: true }).click()
   const form = page.getByRole("dialog", { name: "Review local note", exact: true })

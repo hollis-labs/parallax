@@ -285,7 +285,7 @@ test("source session prior mode draft step reset and unmount retire held candida
   await expect(
     page.getByRole("combobox", { name: "Local composer draft", exact: true }),
   ).toHaveValue("")
-  await page.getByRole("button", { name: "Activity", exact: true }).click()
+  await page.getByRole("link", { name: "Activity", exact: true }).click()
   await invoke(page, "oldResponse")
   await expect(page.getByRole("dialog")).toHaveCount(0)
 })

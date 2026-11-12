@@ -187,7 +187,7 @@ export function Contributions({
     </>
   )
 }
-export function App() {
+export function App({ view, onNavigate }: { view: string; onNavigate: (name: string) => void }) {
   const asideReturnRef = useRef<HTMLButtonElement | null>(null)
   const params = new URLSearchParams(location.search)
   const pageScroll = useRef<HTMLDivElement>(null)
@@ -206,7 +206,7 @@ export function App() {
     ),
   )
 
-  const [page, setPage] = useState(normalizeView(params.get("view"))),
+  const page = view,
     [routeNotice, setRouteNotice] = useState(
       params.get("view") && normalizeView(params.get("view")) !== params.get("view")
         ? `Unknown requested view ${params.get("view")}; showing Activity.`
@@ -363,7 +363,7 @@ export function App() {
     history.replaceState(
       null,
       "",
-      `?${new URLSearchParams({ view: page, scenario, theme, mode, viewport, layout, navigation, ...(page === "Admin Review" ? initialAdminQuery.current : {}) })}`,
+      `?${new URLSearchParams({ scenario, theme, mode, viewport, layout, navigation, ...(page === "Admin Review" ? initialAdminQuery.current : {}) })}`,
     )
   }, [page, scenario, theme, mode, viewport, layout, navigation])
   useEffect(() => {
@@ -446,7 +446,7 @@ export function App() {
       retiredView: page,
       nextView: name,
     })
-    setPage(name)
+    onNavigate(name)
     setRouteNotice("")
     setDetailOpen(false)
   }
@@ -463,7 +463,11 @@ export function App() {
   })
   const shell = (
     <AppShell
-      nav={navigation === "rail" ? <Navigation mode="rail" items={navigationItems} /> : undefined}
+      nav={
+        page === "Layouts" && navigation === "rail" ? (
+          <Navigation mode="rail" items={navigationItems} />
+        ) : undefined
+      }
       header={
         <div>
           <div className="workbench-header-entry">
@@ -489,7 +493,9 @@ export function App() {
               </Button>
             )}
           </div>
-          {navigation !== "rail" && <Navigation mode={navigation} items={navigationItems} />}
+          {page === "Layouts" && navigation !== "rail" && (
+            <Navigation mode={navigation} items={navigationItems} />
+          )}
           <div className="review-controls">
             {page === "Layouts" && (
               <>
@@ -722,7 +728,7 @@ export function App() {
                       : "OPERATIONS"}{" "}
                   / DESIGN LAB
                 </p>
-                <h1>{page}</h1>
+                <h2>{page}</h2>
                 <p className="muted">
                   October 4, 2026 · deterministic seed {model.dataset.seed} ·{" "}
                   {isWorkbench

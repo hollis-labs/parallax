@@ -101,7 +101,7 @@ test("reference dashboard compositions preserve intensity exact date tables them
     path: info.outputPath("activity-pulse-recent.png"),
     animations: "disabled",
   })
-  await page.getByRole("button", { name: "Mission Control", exact: true }).click()
+  await page.getByRole("link", { name: "Mission Control", exact: true }).click()
   await expect(
     page.getByRole("img", { name: "14-day run volume with coverage gaps" }),
   ).toBeVisible()
@@ -110,7 +110,7 @@ test("reference dashboard compositions preserve intensity exact date tables them
     n.scrollTop = 0
   })
   await page.screenshot({ path: info.outputPath("mission-reference.png"), animations: "disabled" })
-  await page.getByRole("button", { name: "Usage", exact: true }).click()
+  await page.getByRole("link", { name: "Usage", exact: true }).click()
   await expect(page.getByRole("img", { name: "14-day cost with coverage gaps" })).toBeVisible()
   await page.screenshot({ path: info.outputPath("usage-reference.png"), animations: "disabled" })
   await page.setViewportSize({ width: 390, height: 844 })
@@ -142,7 +142,10 @@ for (const rootSize of [16, 20, 24]) {
       await page.evaluate((size) => {
         document.documentElement.style.fontSize = `${size}px`
       }, rootSize)
-      await expect(page.locator("h1").first()).toHaveCSS("font-size", "11px")
+      await expect(page.locator("main main").locator("h1, .page-title h2").first()).toHaveCSS(
+        "font-size",
+        "11px",
+      )
       if (view !== "Run Explorer") {
         await expect(page.getByRole("heading", { name: view, exact: true })).toHaveCSS(
           "font-size",

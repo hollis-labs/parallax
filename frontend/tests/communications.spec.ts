@@ -158,7 +158,7 @@ test("chat flow has one page scroll owner and themed narrow cards", async ({ pag
     path: testInfo.outputPath("chat-cards-narrow.png"),
   })
   await page.getByLabel("Scenario", { exact: true }).selectOption("long-labels")
-  await page.getByRole("button", { name: "Messages", exact: true }).click()
+  await page.getByRole("link", { name: "Messages", exact: true }).click()
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
   await page.screenshot({
     animations: "disabled",

@@ -347,7 +347,7 @@ for (const rootSize of [16, 20, 24]) {
 test("lab heading defaults yield to explicit component typography", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 })
   await page.goto("/?view=Review+Workbench")
-  await expect(page.locator(".page-title h1")).toHaveCSS("font-size", "11px")
+  await expect(page.locator(".page-title h2")).toHaveCSS("font-size", "11px")
   await page.goto("/?example=reader&fragmentId=FRAG-001")
   const heading = page.getByRole("heading", { level: 1 })
   await expect(heading).toContainText("How Durable Content Memory Reshapes Knowledge Tools")

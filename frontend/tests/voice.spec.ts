@@ -90,7 +90,7 @@ test("actual local AudioPlayer keyboard playback seeks transcript and retires ol
   page.on("request", (r) => requests.push(r.url()))
   await page.goto("/?view=Activity&mode=light")
   expect(requests.filter((r) => /\/Player-|media-chrome|\/media\//.test(r))).toEqual([])
-  await page.getByRole("button", { name: "Voice", exact: true }).click()
+  await page.getByRole("link", { name: "Voice", exact: true }).click()
   await expect(page.getByRole("heading", { name: "Authored timed review text" })).toBeVisible()
   expect(requests.filter((r) => /\/Player-|media-chrome|\/media\//.test(r))).toEqual([])
   await page.getByRole("button", { name: "Audio", exact: true }).click()
