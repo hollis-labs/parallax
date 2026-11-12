@@ -30,9 +30,9 @@ func TestDeveloperFreshnessAndBounds(t *testing.T) {
 	cases := map[string]func(*Developer){"dangling edge": func(s *Developer) { s.Edges[0].Target = "UNKNOWN" }, "wrong tool": func(s *Developer) { s.Files[0].ToolID = "TOOL-002" }, "wrong span": func(s *Developer) { s.Nodes[0].SpanID = "SPAN-unknown" }, "future": func(s *Developer) { s.RecordedAt = "2027-01-01T00:00:00Z" }, "path traversal": func(s *Developer) { s.Files[0].Path = "../secret" }, "oversize": func(s *Developer) { s.Terminal = strings.Repeat("x", 8193) }, "duplicate node": func(s *Developer) { s.Nodes[1].ID = s.Nodes[0].ID }}
 	for name, mutate := range cases {
 		t.Run(name, func(t *testing.T) {
-			copy := GenerateDeveloper()
-			mutate(&copy)
-			if ValidateDeveloper(copy) == nil {
+			fixture := GenerateDeveloper()
+			mutate(&fixture)
+			if ValidateDeveloper(fixture) == nil {
 				t.Fatal("invalid fixture accepted")
 			}
 		})

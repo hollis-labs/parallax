@@ -505,7 +505,11 @@ type RegistryInfo struct {
 // Helper functions for deterministic trends and buckets
 // ─────────────────────────────────────────────────────────────────────────────
 
-func bucketCounts(times []time.Time, n int) []int {
+// trendBuckets is the number of bins in every overview trend.
+const trendBuckets = 24
+
+func bucketCounts(times []time.Time) []int {
+	n := trendBuckets
 	buckets := make([]int, n)
 	if len(times) == 0 || n <= 0 {
 		return buckets
@@ -1161,7 +1165,8 @@ func GenerateTetherSysop() TetherSysopFixture {
 			mod = "gpt-4o"
 		}
 
-		if i == 11 {
+		switch i {
+		case 11:
 			// Required refusal event
 			evType = "refusal"
 			op = "chat"
@@ -1169,7 +1174,7 @@ func GenerateTetherSysop() TetherSysopFixture {
 			mod = "claude-3-7-sonnet"
 			success = false
 			refusalStr = "Refusal: safety policy denied unreviewed tool execution"
-		} else if i == 17 {
+		case 17:
 			evType = "budget_rejection"
 			op = "completion"
 			prov = "anthropic"
@@ -1278,7 +1283,7 @@ func GenerateTetherSysop() TetherSysopFixture {
 
 	// Build AI Settings (3-4 providers incl disabled, >=5 routes)
 	aiProviders := []AIProviderSettingsInfo{
-		{
+		{ //nolint:gosec // SecretRef is a reference string in a fixture, not a credential
 			ID:           "anthropic",
 			Type:         "anthropic",
 			Model:        "claude-3-7-sonnet",
@@ -1293,7 +1298,7 @@ func GenerateTetherSysop() TetherSysopFixture {
 				MaxCostUSD:      floatPtr(15.0),
 			},
 		},
-		{
+		{ //nolint:gosec // SecretRef is a reference string in a fixture, not a credential
 			ID:           "google",
 			Type:         "google",
 			Model:        "gemini-2.0-flash",
@@ -1308,7 +1313,7 @@ func GenerateTetherSysop() TetherSysopFixture {
 				MaxCostUSD:      floatPtr(10.0),
 			},
 		},
-		{
+		{ //nolint:gosec // SecretRef is a reference string in a fixture, not a credential
 			ID:           "openai",
 			Type:         "openai",
 			Model:        "gpt-4o",
@@ -1854,7 +1859,7 @@ func GenerateTetherSysop() TetherSysopFixture {
 			FailurePct:  sessionFailurePct,
 			AvgSeconds:  sessionAvgSec,
 			Recent24h:   sessionRecent24h,
-			Trend:       bucketCounts(sessionStarts, 24),
+			Trend:       bucketCounts(sessionStarts),
 			ByState:     topN(sessionStateCounts, 6),
 			ByProvider:  topN(sessionProviderCounts, 6),
 			ByProject:   topN(sessionProjectCounts, 6),
@@ -1874,7 +1879,7 @@ func GenerateTetherSysop() TetherSysopFixture {
 			TopErrors:  topN(errorCounts, 5),
 			ByServer:   topN(serverCounts, 6),
 			Latency:    orderedLatencyCounts(toolLatencyCounts),
-			Trend:      bucketCounts(toolTimes, 24),
+			Trend:      bucketCounts(toolTimes),
 		},
 		Messages: OverviewMessages{
 			Total:     24,
@@ -1883,7 +1888,7 @@ func GenerateTetherSysop() TetherSysopFixture {
 			Recent24h: 24,
 			ByKind:    topN(messageKinds, 6),
 			ByScope:   topN(messageScopes, 6),
-			Trend:     bucketCounts(messageTimes, 24),
+			Trend:     bucketCounts(messageTimes),
 		},
 		Events: OverviewEvents{
 			Total:     len(events),
@@ -1891,7 +1896,7 @@ func GenerateTetherSysop() TetherSysopFixture {
 			LatestSeq: maxEventSeq,
 			ByScope:   topN(eventScopeCounts, 6),
 			ByKind:    topN(eventKindCounts, 8),
-			Trend:     bucketCounts(eventTimes, 24),
+			Trend:     bucketCounts(eventTimes),
 		},
 		AI: OverviewAI{
 			ConfiguredProviders: 4,
@@ -1924,7 +1929,7 @@ func GenerateTetherSysop() TetherSysopFixture {
 				{Name: "refusal", Count: 1},
 				{Name: "budget_rejection", Count: 1},
 			},
-			Trend: bucketCounts(aiTimes, 24),
+			Trend: bucketCounts(aiTimes),
 		},
 		Catalog: OverviewCatalog{
 			Projects:  4,
@@ -2027,5 +2032,5 @@ func WriteTetherSysop(path string) error {
 	if err != nil {
 		return fmt.Errorf("marshal tether-sysop fixture: %w", err)
 	}
-	return os.WriteFile(path, append(b, '\n'), 0644)
+	return os.WriteFile(path, append(b, '\n'), 0o600)
 }

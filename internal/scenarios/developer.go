@@ -117,5 +117,5 @@ func WriteDeveloper(path string) error {
 	if e != nil {
 		return e
 	}
-	return os.WriteFile(path, append(b, '\n'), 0644)
+	return os.WriteFile(path, append(b, '\n'), 0o600)
 }

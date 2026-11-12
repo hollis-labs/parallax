@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-// Reader types match schema fe.reader.list.v1 and fe.reader.item.v1
+// ReaderResolvedText and the reader types match schema fe.reader.list.v1 and fe.reader.item.v1.
 type ReaderResolvedText struct {
 	Value  string `json:"value"`
 	Source string `json:"source"`
@@ -1025,5 +1025,5 @@ func WriteReaderExample(path string) error {
 	if err != nil {
 		return err
 	}
-	return os.WriteFile(path, append(b, '\n'), 0644)
+	return os.WriteFile(path, append(b, '\n'), 0o600)
 }

@@ -72,21 +72,21 @@ func GenerateTone(seconds, period int) []byte {
 			}
 		}
 		v = v * gain / 256
-		binary.LittleEndian.PutUint16(data[i*2:], uint16(int16(v)))
+		binary.LittleEndian.PutUint16(data[i*2:], uint16(int16(v))) //nolint:gosec // v is within the int16 range by construction (|v| <= 8192)
 	}
 	b := new(bytes.Buffer)
 	b.WriteString("RIFF")
-	binary.Write(b, binary.LittleEndian, uint32(36+len(data)))
+	_ = binary.Write(b, binary.LittleEndian, uint32(36+len(data))) //nolint:gosec // a generated tone is a few KB
 	b.WriteString("WAVEfmt ")
-	binary.Write(b, binary.LittleEndian, uint32(16))
-	binary.Write(b, binary.LittleEndian, uint16(1))
-	binary.Write(b, binary.LittleEndian, uint16(1))
-	binary.Write(b, binary.LittleEndian, uint32(rate))
-	binary.Write(b, binary.LittleEndian, uint32(rate*2))
-	binary.Write(b, binary.LittleEndian, uint16(2))
-	binary.Write(b, binary.LittleEndian, uint16(16))
+	_ = binary.Write(b, binary.LittleEndian, uint32(16))
+	_ = binary.Write(b, binary.LittleEndian, uint16(1))
+	_ = binary.Write(b, binary.LittleEndian, uint16(1))
+	_ = binary.Write(b, binary.LittleEndian, uint32(rate))
+	_ = binary.Write(b, binary.LittleEndian, uint32(rate*2))
+	_ = binary.Write(b, binary.LittleEndian, uint16(2))
+	_ = binary.Write(b, binary.LittleEndian, uint16(16))
 	b.WriteString("data")
-	binary.Write(b, binary.LittleEndian, uint32(len(data)))
+	_ = binary.Write(b, binary.LittleEndian, uint32(len(data))) //nolint:gosec // a generated tone is a few KB
 	b.Write(data)
 	return b.Bytes()
 }
@@ -150,14 +150,14 @@ func WriteVoice(path, mediaDir string) error {
 	if e != nil {
 		return e
 	}
-	if e = os.WriteFile(path, append(b, '\n'), 0644); e != nil {
+	if e = os.WriteFile(path, append(b, '\n'), 0o600); e != nil {
 		return e
 	}
-	if e = os.MkdirAll(mediaDir, 0755); e != nil {
+	if e = os.MkdirAll(mediaDir, 0o750); e != nil {
 		return e
 	}
 	for _, c := range s.Clips {
-		if e = os.WriteFile(filepath.Join(mediaDir, filepath.Base(c.Asset)), GenerateTone(c.DurationSeconds, c.PeriodFrames), 0644); e != nil {
+		if e = os.WriteFile(filepath.Join(mediaDir, filepath.Base(c.Asset)), GenerateTone(c.DurationSeconds, c.PeriodFrames), 0o600); e != nil {
 			return e
 		}
 	}

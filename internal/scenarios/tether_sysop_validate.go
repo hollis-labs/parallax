@@ -78,12 +78,13 @@ func ValidateTetherSysop(f TetherSysopFixture) error {
 		if sStart.After(recent24hCutoff) {
 			sessionRecent24h++
 		}
-		if s.State == "running" {
+		switch s.State {
+		case "running":
 			sessionRunning++
 			if s.EndedAt != "" {
 				return fmt.Errorf("running session [%d] must not have ended_at", i)
 			}
-		} else if s.State == "ended" {
+		case "ended":
 			sessionEnded++
 			if s.EndedAt == "" {
 				return fmt.Errorf("ended session [%d] missing ended_at", i)
@@ -98,7 +99,7 @@ func ValidateTetherSysop(f TetherSysopFixture) error {
 			if s.ExitCode != nil && *s.ExitCode == 0 {
 				sessionSuccesses++
 			}
-		} else {
+		default:
 			return fmt.Errorf("session [%d] invalid state %q", i, s.State)
 		}
 		sessionMap[s.ID] = s
@@ -127,7 +128,7 @@ func ValidateTetherSysop(f TetherSysopFixture) error {
 	}
 
 	// 3. Overview Validation (Standard)
-	if err := validateOverview(f.Overview, clock); err != nil {
+	if err := validateOverview(f.Overview); err != nil {
 		return fmt.Errorf("standard overview invalid: %w", err)
 	}
 
@@ -156,7 +157,7 @@ func ValidateTetherSysop(f TetherSysopFixture) error {
 	}
 
 	for name, v := range f.OverviewVariants {
-		if err := validateOverview(v, clock); err != nil {
+		if err := validateOverview(v); err != nil {
 			return fmt.Errorf("variant %q invalid: %w", name, err)
 		}
 	}
@@ -170,7 +171,7 @@ func ValidateTetherSysop(f TetherSysopFixture) error {
 		return fmt.Errorf("activity events total %d does not match length %d", f.Activity.Events.Total, len(events))
 	}
 
-	var lastSeq int64 = 0
+	var lastSeq int64
 	scopeEvents := map[string][]EventInfo{}
 	for i, ev := range events {
 		if ev.Seq <= lastSeq {
@@ -333,7 +334,7 @@ func ValidateTetherSysop(f TetherSysopFixture) error {
 		if tcTime.After(clock.Add(-time.Hour)) {
 			derivedToolRecent1h++
 		}
-		derivedToolDurations = append(derivedToolDurations, int64(tc.DurationMs))
+		derivedToolDurations = append(derivedToolDurations, tc.DurationMs)
 	}
 	if !hasError {
 		return fmt.Errorf("tool calls must include error cases for visual error state testing")
@@ -598,7 +599,7 @@ func ValidateTetherSysop(f TetherSysopFixture) error {
 	return nil
 }
 
-func validateOverview(o OverviewInfo, clock time.Time) error {
+func validateOverview(o OverviewInfo) error {
 	// Derivable totals in sessions
 	if o.Sessions.Total != o.Sessions.Running+o.Sessions.Ended {
 		return fmt.Errorf("sessions total %d != running %d + ended %d",

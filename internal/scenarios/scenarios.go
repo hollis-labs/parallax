@@ -201,5 +201,5 @@ func WriteProfile(path string, count int) error {
 	if err != nil {
 		return err
 	}
-	return os.WriteFile(path, append(b, '\n'), 0644)
+	return os.WriteFile(path, append(b, '\n'), 0o600)
 }
