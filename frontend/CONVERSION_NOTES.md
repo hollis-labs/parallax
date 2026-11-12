@@ -135,7 +135,7 @@ that is not claimed as the cause. A recurrence leaves a trace (see Browser suite
 
 `snapshot-sessions.spec.ts` "session inspection and stop previews are keyboard accessible and never write" is `test.fixme`. It hides a real keyboard
 defect, not a flaky test: with the "Stop session · local preview" dialog open over the "Session details" dialog, one Escape closes the preview and,
-under load (CI), the details dialog under it too. It failed on CI in 4 of 9 full runs (main and PRs, one worker included: PR #38 run 43281623348) and
+under load (CI), the details dialog under it too. It failed on CI in at least four full runs (docs and pin pull requests, and PR #38 with one worker, run 43281623348) and
 locally under CPU starvation. The two dialogs are sibling `DetailDialog`s (`src/snapshots/Sessions.tsx`, Base UI dialogs through design-components),
 not nested in the React tree; dismissal is the kit's (`onOpenChange` -> `onClose`). No deterministic reproduction was found: CPU throttling through
 CDP (6x and 20x), a 250 ms main-thread stall on the Escape keydown or keyup, and separating keydown from keyup all passed or failed no more than 1 in 8.
