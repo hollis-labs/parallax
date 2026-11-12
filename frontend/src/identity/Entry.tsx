@@ -2,6 +2,11 @@ import { Button, Input } from "@hollis-labs/design-components"
 import { type FormEvent, useId, useState } from "react"
 import { ApiError, type Me, request } from "./api"
 
+function passwordHint(creating: boolean) {
+  if (creating) return "new-password"
+  return "current-password"
+}
+
 function Field({ label, children }: { label: string; children: (id: string) => React.ReactNode }) {
   const id = useId()
   return (
@@ -67,7 +72,7 @@ export function Entry({ setup, onReady }: { setup: boolean; onReady: (me: Me) =>
                   id={id}
                   name="password"
                   type="password"
-                  autoComplete={mode ? "new-password" : "current-password"}
+                  autoComplete={passwordHint(mode)}
                   required
                   minLength={mode ? 12 : undefined}
                   maxLength={72}
