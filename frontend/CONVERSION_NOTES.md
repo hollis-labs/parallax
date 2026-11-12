@@ -45,11 +45,11 @@ Owner-facing. Each gap stops the work it touches until the driver decides.
 - Ports: the repository defaults are the old proof ports (backend 18541, Vite 18545, static Storybook 18542, `tests/ports.ts`).
   `PARALLAX_E2E_BACKEND_PORT`, `PARALLAX_E2E_DEV_PORT` and `PARALLAX_E2E_STORYBOOK_PORT` move them; the Vite dev server and the
   Storybook build also need `VITE_PARALLAX_E2E_*_PORT` with the same values (the workbench's story-link host table reads them).
-  The dev proxy targets `PARALLAX_PROXY_URL`, default `127.0.0.1:8085` (the manifest's `httphost.addr`). Agents run in their own block through
+  The dev proxy targets `PARALLAX_PROXY_URL`, default `127.0.0.1:18441` (the manifest's `httphost.addr`). Agents run in their own block through
   the environment; no agent block is a committed default. The sibling `playwright.*.config.ts` files keep their own ports and have no sign-in
   fixture yet (they proxy to the backend, so only fixture pages work there).
 - `playwright.config.ts` starts the real binary on a throwaway data directory (`.scratch/e2e`) with its own `SUBSTRATE_CONFIG`,
-  `e2e/global-setup.ts` runs first-run setup (or signs in) once and stores the session cookie as `storageState`. The browser is Playwright's bundled Chromium unless `PLAYWRIGHT_CHANNEL` names another (`chrome`; CI sets `chromium`). Writes from tests carry `X-Requested-With`.
+  the owner `e2e` is created on the host before the server starts (`parallax identity setup`, password from a fresh random value written to `.scratch/e2e-password`; first-run setup over HTTP is closed since Substrate d453ac8), and `e2e/global-setup.ts` signs in once and stores the session cookie as `storageState`. On CI a failing test keeps its trace under `.scratch/test-results` (`trace: retain-on-failure`, no retries); uploading that directory as an artifact is a workflow step. The browser is Playwright's bundled Chromium unless `PLAYWRIGHT_CHANNEL` names another (`chrome`; CI sets `chromium`). Writes from tests carry `X-Requested-With`.
 - An unmapped write answers `403 route_not_mapped` (the old host answered 405); `tests/lab.spec.ts` asserts that and the
   `403 csrf` for a write without the header.
 - **Baseline, same environment (system Chrome, real binary, no live capture):** the pre-port app (`main`, Chimera host) passes
@@ -118,3 +118,15 @@ generator (`internal/scenarios/families.go`) and `docs/coverage-policy.json` / `
 `dashboard.spec.ts` "reference dashboard compositions..." read `.calendar-intensity` cells with `evaluateAll` straight after `goto`. `evaluateAll`
 does not wait, and the sign-in gate adds an async step before the page renders, so the test sometimes read an empty page (`new Set([]).size` is 0).
 The test measures the cells' `--activity-weight`; waiting for the first cell to exist makes it measure them. No assertion changed.
+
+## Sign-in screens and first-run setup (Substrate d453ac8)
+
+`GET /api/setup` answers `{setup_required, setup_over_http}`; `POST /api/setup` is refused (`403 setup_offline`). The interim `Entry` screen therefore shows,
+when no owner exists and setup is closed (or after a `setup_offline` answer), a plain screen with no form that names `parallax identity setup --username NAME`
+on the host; the owner form stays only for a backend that reports `setup_over_http: true`. Tests: `tests/identity.spec.ts`.
+
+## Unproven CI failure (operations-list-candidate "runs")
+
+Failed once on CI (PR #35 run 43250608571: `Record inspector` not visible within 5s after `Enter`) and passed in every other run. Not reproduced in 360+ local
+runs (CPU oversubscription, cold Vite cache, the headless shell 1248). The test now waits for the cleared search to bring the rows back before pressing Enter;
+that is not claimed as the cause. A recurrence leaves a trace (see Browser suites).

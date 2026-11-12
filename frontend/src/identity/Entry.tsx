@@ -17,9 +17,21 @@ function Field({ label, children }: { label: string; children: (id: string) => R
   )
 }
 
-/** First-run setup (no owner yet) or sign-in. Both start the session cookie. */
-export function Entry({ setup, onReady }: { setup: boolean; onReady: (me: Me) => void }) {
+/**
+ * Sign-in, or, when the operator opened first-run setup over HTTP, the owner form. By default the owner is
+ * created on the host (`parallax identity setup`), so a missing owner gets a plain screen that says so.
+ */
+export function Entry({
+  setup,
+  setupOverHttp,
+  onReady,
+}: {
+  setup: boolean
+  setupOverHttp: boolean
+  onReady: (me: Me) => void
+}) {
   const [mode, setMode] = useState(setup)
+  const [offline, setOffline] = useState(setup && !setupOverHttp)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState("")
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -42,6 +54,7 @@ export function Entry({ setup, onReady }: { setup: boolean; onReady: (me: Me) =>
       onReady(me)
     } catch (e) {
       if (e instanceof ApiError && e.status === 409) setMode(false)
+      if (e instanceof ApiError && e.code === "setup_offline") setOffline(true)
       setError(
         e instanceof ApiError && e.status === 429
           ? `Too many attempts. Try again ${e.retryAfter === undefined ? "in a few minutes" : waitPhrase(e.retryAfter)}.`
@@ -53,6 +66,20 @@ export function Entry({ setup, onReady }: { setup: boolean; onReady: (me: Me) =>
       setBusy(false)
     }
   }
+  if (offline)
+    return (
+      <main className="identity-entry">
+        <section className="identity-panel">
+          <p className="identity-eyebrow">PARALLAX</p>
+          <h1>No owner account yet</h1>
+          <p>
+            Parallax has no owner yet, and the owner is not created from this page. On the host that
+            runs Parallax, run <code>parallax identity setup --username NAME</code>, then reload
+            this page and sign in.
+          </p>
+        </section>
+      </main>
+    )
   return (
     <main className="identity-entry">
       <section className="identity-panel">

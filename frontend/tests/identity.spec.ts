@@ -59,6 +59,49 @@ test.describe("signed out", () => {
     expect((await request.get("/api/identity/profile")).status()).toBe(401)
   })
 
+  test("POST /api/setup is always refused on the real backend (403 setup_offline)", async ({
+    request,
+  }) => {
+    const state = await request.get("/api/setup")
+    expect(await state.json()).toMatchObject({ setup_required: false })
+    const post = await request.post("/api/setup", {
+      headers: { "X-Requested-With": "parallax-e2e" },
+      data: { username: "intruder", display_name: "X", password: "correct-horse-battery-1" },
+    })
+    expect(post.status()).toBe(403)
+    expect((await post.json()).code).toBe("setup_offline")
+  })
+
+  test("no owner yet and setup closed: a plain screen names the host command and has no form", async ({
+    page,
+  }) => {
+    await page.route("**/api/setup", (route) =>
+      route.fulfill({ json: { setup_required: true, setup_over_http: false } }),
+    )
+    await page.goto("/")
+    await expect(page.getByRole("heading", { name: "No owner account yet" })).toBeVisible()
+    await expect(page.getByText("parallax identity setup --username NAME")).toBeVisible()
+    await expect(page.getByLabel("Password")).toHaveCount(0)
+  })
+
+  test("a 403 setup_offline from the owner form shows the same screen", async ({ page }) => {
+    await page.route("**/api/setup", (route) =>
+      route.request().method() === "GET"
+        ? route.fulfill({ json: { setup_required: true, setup_over_http: true } })
+        : route.fulfill({
+            status: 403,
+            json: { code: "setup_offline", message: "first-run setup over HTTP is disabled" },
+          }),
+    )
+    await page.goto("/")
+    await page.getByLabel("Display name").fill("Owner")
+    await page.getByLabel("Username").fill("owner")
+    await page.getByLabel("Password", { exact: true }).fill("correct-horse-battery-1")
+    await page.getByLabel("Confirm password").fill("correct-horse-battery-1")
+    await page.getByRole("button", { name: "Create account" }).click()
+    await expect(page.getByRole("heading", { name: "No owner account yet" })).toBeVisible()
+  })
+
   test("a signed-out API call is 401 with the flat error body", async ({ request }) => {
     const response = await request.get("/api/scenario")
     expect(response.status()).toBe(401)

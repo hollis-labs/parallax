@@ -6,7 +6,7 @@ import { defineConfig } from "vite"
 // The Go binary serves this SPA under base_path (see internal/webui).
 // `build.outDir` points at the Go embed directory so `npm run build`
 // drops the bundle exactly where `//go:embed all:dist` expects it.
-const reviewProxy = process.env.PARALLAX_PROXY_URL ?? "http://127.0.0.1:8085"
+const reviewProxy = process.env.PARALLAX_PROXY_URL ?? "http://127.0.0.1:18441"
 export default defineConfig({
   base: "/",
   plugins: [
@@ -42,7 +42,7 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: {
-    // `make ui-dev` proxies same-origin /api calls to `make run` on 127.0.0.1:8085 (PARALLAX_PROXY_URL overrides).
+    // `make ui-dev` proxies same-origin /api calls to `make run` on 127.0.0.1:18441 (PARALLAX_PROXY_URL overrides).
     proxy: {
       "/api": reviewProxy,
       "/plugins": reviewProxy,

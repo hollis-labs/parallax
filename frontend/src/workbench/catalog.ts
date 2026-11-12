@@ -417,8 +417,8 @@ export function storyDestination(host: string, story: string) {
   else if (e2eHosts.includes(host)) origin = `http://127.0.0.1:${e2ePorts.storybook}`
   else if (
     [
-      "localhost:8085",
-      "127.0.0.1:8085",
+      "localhost:18441",
+      "127.0.0.1:18441",
       "localhost:5173",
       "127.0.0.1:5173",
       "localhost:18442",

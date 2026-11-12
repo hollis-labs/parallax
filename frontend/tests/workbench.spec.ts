@@ -38,7 +38,7 @@ test("catalogue routes and available representative stories resolve without disc
     `127.0.0.1:${ports.storybook}`,
   ])
     expect(storyDestination(host, destinations[0].story)).toContain(`127.0.0.1:${ports.storybook}`)
-  for (const host of ["localhost:8085", "localhost:5173"])
+  for (const host of ["localhost:18441", "localhost:5173"])
     expect(storyDestination(host, destinations[0].story)).toContain("localhost:18442")
   expect(storyDestination("parallax.example.test.evil", destinations[0].story)).toBeNull()
   expect(storyDestination("parallax.example.test", "unknown-story")).toBeNull()
