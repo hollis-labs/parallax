@@ -46,3 +46,9 @@
   max-width: 28rem;
   padding: 1.5rem;
 }
+.identity-who {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-inline-start: auto;
+}

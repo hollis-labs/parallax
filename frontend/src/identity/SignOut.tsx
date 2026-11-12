@@ -29,3 +29,32 @@ export function SignOutPage() {
     </div>
   )
 }
+
+/**
+ * The smallest sign-out control, for the lab header until the shell's nav.footer surface (SignOutPage)
+ * replaces it. Shows who is signed in and ends the session.
+ */
+export function SignOutButton() {
+  const { signedOut, displayName } = useSession()
+  const [busy, setBusy] = useState(false)
+  async function logout() {
+    setBusy(true)
+    try {
+      await request("logout", "POST", {})
+    } catch (e) {
+      if (!(e instanceof ApiError && e.status === 401)) {
+        setBusy(false)
+        return
+      }
+    }
+    signedOut()
+  }
+  return (
+    <span className="identity-who">
+      <span>{displayName}</span>
+      <Button size="sm" variant="outline" disabled={busy} onClick={() => void logout()}>
+        Sign out
+      </Button>
+    </span>
+  )
+}

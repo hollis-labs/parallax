@@ -33,7 +33,7 @@ Owner-facing. Each gap stops the work it touches until the driver decides.
    playback.spec.ts:175, run-explorer.spec.ts:176, usage-evidence.spec.ts:249, workbench.spec.ts:119 and :142, workflow-review.spec.ts:212.
    The fix belongs in app-shell (a collapsible/overlay nav, or a nav region the host can hide); the app does not hide it with its own CSS
    and toggle. They are not fixme'd and not accepted: the shell wrap waits for the app-shell release. Until then the shell wrap is not on the branch, and with it the sign-out page
-   (a `nav.footer` surface in `cmd/parallax/app.ui.json`) has no screen to live on.
+   (a `nav.footer` surface in `cmd/parallax/app.ui.json`) has no screen to live on; the lab header has a `SignOutButton` meanwhile.
 1b. **A lab that is itself a shell nests badly.** The lab's own design-components `AppShell` is sized `h-dvh w-dvw`; inside an app-shell page it
    overflows unless the host overrides the size. The override is small (`.lab-host > .h-dvh`) but it is the host working around the kit.
 
@@ -103,8 +103,11 @@ The wrap is parked on the local branch `gui/shell-wip` (63ddb6a); nothing of it 
    (`src/shell/routes.ts`). `/?view=Name&...` is redirected client-side to the route keeping every other query parameter in order; an
    unknown name lands on `/` with `view` kept so the page says what was asked. `tests/shell-routes.spec.ts` covers it (4 unit, 3 browser).
    Not yet diagnosed on that branch: `run-explorer.spec.ts:87` and `conversation-review.spec.ts:292`.
-6. **Sign-out** is a `nav.footer` surface (`SignOutPage`); without the shell the app has no sign-out screen (the browser pass signs out through
-   `POST /api/logout`).
+6. **Sign-out** is a `nav.footer` surface (`SignOutPage`). Until the wrap lands the lab header carries `SignOutButton` (`src/identity/SignOut.tsx`: the
+   signed-in display name and a Sign out button, the same logout call); the shell's footer surface replaces it.
+
+Naming leftover: `src/chimera` is a plugin-registry loader and presentation adapters, not a host any more. It is not renamed because the backend fixture
+generator (`internal/scenarios/families.go`) and `docs/coverage-policy.json` / `docs/export-inventory.json` reference the path.
 
 ## Why a `waitFor` and not a cover (dashboard.spec heatmap test)
 

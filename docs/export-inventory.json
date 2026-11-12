@@ -18613,7 +18613,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "PayloadBinding",
     "category": "type-export",
@@ -18626,7 +18626,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "FallbackBinding",
     "category": "type-export",
@@ -18639,7 +18639,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "BindingState",
     "category": "type-export",
@@ -18652,7 +18652,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "BindingRequest",
     "category": "type-export",
@@ -18674,7 +18674,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "Binding",
     "category": "type-export",
@@ -18687,7 +18687,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "RendererClass",
     "category": "type-export",
@@ -18700,20 +18700,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
-    "entry": ".",
-    "name": "TrustClass",
-    "category": "type-export",
-    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
-    "evidence": {},
-    "importEvidence": []
-  },
-  {
-    "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "Isolation",
     "category": "type-export",
@@ -18726,7 +18713,20 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "Origin",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.2.0",
     "entry": ".",
     "name": "TrustProfile",
     "category": "type-export",
@@ -18739,7 +18739,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "TRUST_PROFILES",
     "category": "runtime-value",
@@ -18752,7 +18752,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "trustProfileFor",
     "category": "nonvisual-function",
@@ -18765,9 +18765,9 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
-    "name": "isolationFor",
+    "name": "isolationPermits",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "deferred",
@@ -18778,20 +18778,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
-    "entry": ".",
-    "name": "trustClassPermits",
-    "category": "nonvisual-function",
-    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
-    "disposition": "deferred",
-    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
-    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
-    "evidence": {},
-    "importEvidence": []
-  },
-  {
-    "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "HostDecision",
     "category": "type-export",
@@ -18804,7 +18791,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "HostPolicy",
     "category": "type-export",
@@ -18817,7 +18804,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "ResolverConfig",
     "category": "type-export",
@@ -18830,7 +18817,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "BindingTableSpec",
     "category": "type-export",
@@ -18843,7 +18830,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "BindingTable",
     "category": "type-export",
@@ -18856,7 +18843,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "defineBindingTable",
     "category": "nonvisual-function",
@@ -18878,7 +18865,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "constantTrust",
     "category": "nonvisual-function",
@@ -18900,7 +18887,20 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "bindingKey",
+    "category": "nonvisual-function",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.2.0",
     "entry": ".",
     "name": "MissCode",
     "category": "type-export",
@@ -18913,7 +18913,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "Drawable",
     "category": "type-export",
@@ -18926,7 +18926,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "Miss",
     "category": "type-export",
@@ -18939,7 +18939,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "Resolution",
     "category": "type-export",
@@ -18952,7 +18952,20 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "ResolveOptions",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.2.0",
     "entry": ".",
     "name": "ParsedEntry",
     "category": "type-export",
@@ -18965,7 +18978,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "resolve",
     "category": "nonvisual-function",
@@ -18987,7 +19000,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "safeFallbackOf",
     "category": "nonvisual-function",
@@ -19000,7 +19013,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "parseEntry",
     "category": "nonvisual-function",
@@ -19013,7 +19026,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminContent",
     "category": "visual-component",
@@ -19071,7 +19084,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminNavigation",
     "category": "visual-component",
@@ -19128,7 +19141,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminShell",
     "category": "visual-component",
@@ -19185,7 +19198,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "adminManifestProblem",
     "category": "nonvisual-function",
@@ -19210,7 +19223,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "adminPages",
     "category": "nonvisual-function",
@@ -19235,7 +19248,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminContentProps",
     "category": "type-export",
@@ -19264,7 +19277,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminDeclaration",
     "category": "type-export",
@@ -19277,7 +19290,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminObservationDeclaration",
     "category": "type-export",
@@ -19290,7 +19303,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminSettingsDeclaration",
     "category": "type-export",
@@ -19303,7 +19316,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminStatDeclaration",
     "category": "type-export",
@@ -19316,7 +19329,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminSeriesDeclaration",
     "category": "type-export",
@@ -19329,7 +19342,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminDiagnosticDeclaration",
     "category": "type-export",
@@ -19342,7 +19355,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminManifest",
     "category": "type-export",
@@ -19368,7 +19381,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminPage",
     "category": "type-export",
@@ -19395,7 +19408,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminTarget",
     "category": "type-export",
@@ -19421,7 +19434,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminDestination",
     "category": "type-export",
@@ -19446,7 +19459,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminSelection",
     "category": "type-export",
@@ -19473,7 +19486,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminDiscovery",
     "category": "type-export",
@@ -19486,7 +19499,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminSettingsRead",
     "category": "type-export",
@@ -19512,7 +19525,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminObservations",
     "category": "type-export",
@@ -19525,7 +19538,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminDirectory",
     "category": "visual-component",
@@ -19550,7 +19563,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminRecordButton",
     "category": "visual-component",
@@ -19575,7 +19588,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "AdminFacts",
     "category": "visual-component",
@@ -19601,7 +19614,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "IdentityAvatar",
     "category": "visual-component",
@@ -19627,7 +19640,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "ActivityGroup",
     "category": "visual-component",
@@ -19652,7 +19665,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "ActivityMetric",
     "category": "visual-component",
@@ -19677,7 +19690,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "ActivityRecord",
     "category": "visual-component",
@@ -19702,7 +19715,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "ActivityStatus",
     "category": "visual-component",
@@ -19727,7 +19740,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "ActivityDialog",
     "category": "visual-component",
@@ -19752,7 +19765,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "ActivityFacts",
     "category": "visual-component",
@@ -19777,7 +19790,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "ActivitySection",
     "category": "visual-component",
@@ -19802,7 +19815,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "ActivityActionButton",
     "category": "visual-component",
@@ -19827,7 +19840,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "ActivityTimeline",
     "category": "visual-component",
@@ -19852,7 +19865,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "ActivityBars",
     "category": "visual-component",
@@ -19877,7 +19890,7 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "entry": ".",
     "name": "ActivityTone",
     "category": "type-export",
@@ -19890,7 +19903,137 @@
   },
   {
     "package": "@hollis-labs/kit-admin",
-    "version": "0.1.0",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "AdminHeading",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "AdminSection",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "AdminFact",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "AdminBadge",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "AdminActionButton",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "AdminTabs",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "AdminField",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "AdminInput",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "AdminSelect",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.2.0",
+    "entry": ".",
+    "name": "AdminTextarea",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-admin",
+    "version": "0.2.0",
     "entry": "./charts",
     "name": "renderAdminSeries",
     "category": "nonvisual-function",
@@ -21333,7 +21476,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "entry": ".",
     "name": "AccountProfile",
     "category": "visual-component",
@@ -21380,7 +21523,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "entry": ".",
     "name": "AccountProfileProps",
     "category": "type-export",
@@ -21405,7 +21548,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "entry": ".",
     "name": "AccountProfileValue",
     "category": "type-export",
@@ -21432,7 +21575,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "entry": ".",
     "name": "AccountPreferences",
     "category": "visual-component",
@@ -21479,7 +21622,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "entry": ".",
     "name": "AccountPreferencesProps",
     "category": "type-export",
@@ -21504,7 +21647,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "entry": ".",
     "name": "WhoamiBadge",
     "category": "visual-component",
@@ -21551,7 +21694,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "entry": ".",
     "name": "AccountIdentity",
     "category": "type-export",
@@ -21576,7 +21719,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "entry": ".",
     "name": "WhoamiBadgeProps",
     "category": "type-export",
@@ -21601,7 +21744,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "entry": ".",
     "name": "ApiTokenManager",
     "category": "visual-component",
@@ -21648,7 +21791,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "entry": ".",
     "name": "ApiTokenDraft",
     "category": "type-export",
@@ -21674,7 +21817,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "entry": ".",
     "name": "ApiTokenManagerProps",
     "category": "type-export",
@@ -21699,7 +21842,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "entry": ".",
     "name": "ApiTokenRecord",
     "category": "type-export",
@@ -21724,7 +21867,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "entry": ".",
     "name": "ApiTokenScope",
     "category": "type-export",
@@ -21749,7 +21892,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "entry": ".",
     "name": "NewTokenDisclosure",
     "category": "visual-component",
@@ -21762,7 +21905,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "entry": ".",
     "name": "NewTokenDisclosureProps",
     "category": "type-export",
@@ -21775,7 +21918,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "entry": ".",
     "name": "ConnectedAccounts",
     "category": "visual-component",
@@ -21822,7 +21965,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "entry": ".",
     "name": "ConnectedAccount",
     "category": "type-export",
@@ -21847,7 +21990,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "entry": ".",
     "name": "ConnectedAccountsProps",
     "category": "type-export",
@@ -26933,7 +27076,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "dispatchPluginAction",
     "category": "nonvisual-function",
@@ -26946,7 +27089,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ActionDispatchContext",
     "category": "type-export",
@@ -26959,7 +27102,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "contributionId",
     "category": "nonvisual-function",
@@ -26972,9 +27115,9 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
-    "name": "drawerTabId",
+    "name": "dockTabId",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "deferred",
@@ -26985,7 +27128,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "createPluginHostRuntime",
     "category": "nonvisual-function",
@@ -27007,7 +27150,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PANEL_KIND",
     "category": "runtime-value",
@@ -27020,9 +27163,9 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
-    "name": "DRAWER_TAB_KIND",
+    "name": "DOCK_TAB_KIND",
     "category": "runtime-value",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "deferred",
@@ -27033,7 +27176,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "WIDGET_KIND",
     "category": "runtime-value",
@@ -27046,7 +27189,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "RegistryEntry",
     "category": "type-export",
@@ -27068,7 +27211,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "AdoptedEntry",
     "category": "type-export",
@@ -27081,7 +27224,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "RegistrySnapshot",
     "category": "type-export",
@@ -27094,7 +27237,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginRegistryInstance",
     "category": "type-export",
@@ -27107,7 +27250,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "Observable",
     "category": "type-export",
@@ -27131,7 +27274,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "HostScope",
     "category": "type-export",
@@ -27156,7 +27299,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ContributionRef",
     "category": "type-export",
@@ -27178,7 +27321,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginIsolationMode",
     "category": "type-export",
@@ -27191,7 +27334,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "AppIsolationSnapshot",
     "category": "type-export",
@@ -27213,7 +27356,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ViewProjection",
     "category": "type-export",
@@ -27226,7 +27369,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ContributionView",
     "category": "type-export",
@@ -27248,7 +27391,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "HostDiagnostic",
     "category": "type-export",
@@ -27261,7 +27404,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginFrameController",
     "category": "type-export",
@@ -27274,7 +27417,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginFrameMount",
     "category": "type-export",
@@ -27287,7 +27430,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginFrameRenderState",
     "category": "type-export",
@@ -27300,7 +27443,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginHostAdapter",
     "category": "type-export",
@@ -27323,7 +27466,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "HostSnapshot",
     "category": "type-export",
@@ -27336,7 +27479,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginHostReader",
     "category": "type-export",
@@ -27358,7 +27501,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "RequiredInactiveEntry",
     "category": "type-export",
@@ -27371,7 +27514,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "HostPlanningResult",
     "category": "type-export",
@@ -27384,7 +27527,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "HostSyncResult",
     "category": "type-export",
@@ -27397,7 +27540,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginHostRuntime",
     "category": "type-export",
@@ -27410,7 +27553,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "orderContributions",
     "category": "nonvisual-function",
@@ -27432,7 +27575,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "OrderingPolicy",
     "category": "type-export",
@@ -27445,7 +27588,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "createPluginLayoutStore",
     "category": "nonvisual-function",
@@ -27467,7 +27610,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "LayoutStorage",
     "category": "type-export",
@@ -27489,7 +27632,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "LayoutPreferences",
     "category": "type-export",
@@ -27502,7 +27645,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "LayoutSnapshot",
     "category": "type-export",
@@ -27515,7 +27658,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginLayoutStore",
     "category": "type-export",
@@ -27528,7 +27671,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginSettingScalar",
     "category": "type-export",
@@ -27541,7 +27684,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "SettingsScope",
     "category": "type-export",
@@ -27554,7 +27697,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "SettingsTarget",
     "category": "type-export",
@@ -27567,7 +27710,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginSettingValue",
     "category": "type-export",
@@ -27580,7 +27723,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginSettingsSnapshot",
     "category": "type-export",
@@ -27593,7 +27736,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginSettingsChanges",
     "category": "type-export",
@@ -27606,7 +27749,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginSettingsValidation",
     "category": "type-export",
@@ -27619,7 +27762,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginSettingsMutationResult",
     "category": "type-export",
@@ -27632,7 +27775,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginSettingsAdapter",
     "category": "type-export",
@@ -27645,7 +27788,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "isSlotCatalog",
     "category": "nonvisual-function",
@@ -27658,7 +27801,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "createSlotCatalog",
     "category": "nonvisual-function",
@@ -27680,7 +27823,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginActionTag",
     "category": "type-export",
@@ -27693,7 +27836,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "RegionActionPolicy",
     "category": "type-export",
@@ -27706,7 +27849,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ContributionRepresentation",
     "category": "type-export",
@@ -27719,7 +27862,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "SlotKindDefinition",
     "category": "type-export",
@@ -27732,7 +27875,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "SlotRegionDefinition",
     "category": "type-export",
@@ -27745,7 +27888,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "SlotCatalogDefinitions",
     "category": "type-export",
@@ -27768,7 +27911,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "CatalogRefusalReason",
     "category": "type-export",
@@ -27781,7 +27924,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "CatalogRefusal",
     "category": "type-export",
@@ -27794,7 +27937,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "CatalogProjection",
     "category": "type-export",
@@ -27807,7 +27950,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "SlotCatalog",
     "category": "type-export",
@@ -27820,7 +27963,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "parsePluginAction",
     "category": "nonvisual-function",
@@ -27833,7 +27976,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "actionFingerprint",
     "category": "nonvisual-function",
@@ -27846,7 +27989,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginJsonValue",
     "category": "type-export",
@@ -27859,7 +28002,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginJsonObject",
     "category": "type-export",
@@ -27872,7 +28015,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginActionIntent",
     "category": "type-export",
@@ -27896,7 +28039,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ActionRefusalReason",
     "category": "type-export",
@@ -27909,7 +28052,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ActionResult",
     "category": "type-export",
@@ -27931,7 +28074,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ActionContext",
     "category": "type-export",
@@ -27953,7 +28096,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginActionBindingResolver",
     "category": "type-export",
@@ -27966,7 +28109,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PluginActionsAdapter",
     "category": "type-export",
@@ -27989,7 +28132,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ParsedPluginAction",
     "category": "type-export",
@@ -28002,7 +28145,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./react",
     "name": "PluginHostProvider",
     "category": "visual-component",
@@ -28025,7 +28168,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./react",
     "name": "usePluginHost",
     "category": "nonvisual-function",
@@ -28038,7 +28181,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./react",
     "name": "usePluginViews",
     "category": "nonvisual-function",
@@ -28051,7 +28194,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./react",
     "name": "usePluginSlots",
     "category": "nonvisual-function",
@@ -28073,7 +28216,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./react",
     "name": "usePluginPanels",
     "category": "nonvisual-function",
@@ -28086,9 +28229,9 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./react",
-    "name": "usePluginDrawerTabs",
+    "name": "usePluginDockTabs",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "deferred",
@@ -28099,7 +28242,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./react",
     "name": "usePluginAction",
     "category": "nonvisual-function",
@@ -28121,7 +28264,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./react",
     "name": "PluginPanelBody",
     "category": "nonvisual-function",
@@ -28143,9 +28286,9 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./react",
-    "name": "PluginDrawerTabBody",
+    "name": "PluginDockTabBody",
     "category": "visual-component",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "deferred",
@@ -28156,7 +28299,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./react",
     "name": "WidgetRenderer",
     "category": "nonvisual-function",
@@ -28178,7 +28321,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./react",
     "name": "PluginDeclarativeBody",
     "category": "nonvisual-function",
@@ -28191,7 +28334,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./react",
     "name": "PluginReviewDialog",
     "category": "visual-component",
@@ -28204,7 +28347,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./react",
     "name": "PluginRenderBoundary",
     "category": "runtime-value",
@@ -28217,7 +28360,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./react",
     "name": "PluginDeclarativeBodyProps",
     "category": "type-export",
@@ -28230,7 +28373,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./react",
     "name": "PluginReviewRow",
     "category": "type-export",
@@ -28243,7 +28386,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./react",
     "name": "PluginReviewIdentity",
     "category": "type-export",
@@ -28256,7 +28399,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./react",
     "name": "PluginReviewBundle",
     "category": "type-export",
@@ -28269,7 +28412,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./react",
     "name": "PluginReviewDialogProps",
     "category": "type-export",
@@ -28282,7 +28425,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./vite",
     "name": "admitPluginVersions",
     "category": "nonvisual-function",
@@ -28295,7 +28438,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./vite",
     "name": "designKitEntries",
     "category": "nonvisual-function",
@@ -28308,7 +28451,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./vite",
     "name": "pluginHostImportmap",
     "category": "nonvisual-function",
@@ -28321,7 +28464,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./vite",
     "name": "buildFrameArtifacts",
     "category": "nonvisual-function",
@@ -28334,7 +28477,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./vite",
     "name": "buildFrameBootstrap",
     "category": "nonvisual-function",
@@ -28347,7 +28490,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./vite",
     "name": "StylesheetOwner",
     "category": "type-export",
@@ -28360,7 +28503,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./vite",
     "name": "StylesheetLeases",
     "category": "type-export",
@@ -28373,7 +28516,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./vite",
     "name": "HostEntry",
     "category": "type-export",
@@ -28386,7 +28529,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./vite",
     "name": "VersionAdmission",
     "category": "type-export",
@@ -28399,7 +28542,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./vite",
     "name": "PluginHostImportmapOptions",
     "category": "type-export",
@@ -28412,7 +28555,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./vite",
     "name": "FrameArtifactBuildOptions",
     "category": "type-export",
@@ -28425,7 +28568,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./settings",
     "name": "PluginConfigForm",
     "category": "visual-component",
@@ -28438,7 +28581,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./settings",
     "name": "AppIsolationConfigForm",
     "category": "visual-component",
@@ -28451,7 +28594,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./settings",
     "name": "projectPluginSettings",
     "category": "nonvisual-function",
@@ -28464,7 +28607,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./settings",
     "name": "projectAppIsolationSettings",
     "category": "nonvisual-function",
@@ -28477,7 +28620,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./settings",
     "name": "PluginSettingsProjection",
     "category": "type-export",
@@ -28490,7 +28633,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./settings",
     "name": "PluginSettingsCapabilities",
     "category": "type-export",
@@ -28503,7 +28646,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./settings",
     "name": "createPluginSettingsController",
     "category": "nonvisual-function",
@@ -28516,7 +28659,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./settings",
     "name": "PluginSettingsController",
     "category": "type-export",
@@ -28529,7 +28672,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./settings",
     "name": "PluginSettingsState",
     "category": "type-export",
@@ -28542,7 +28685,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./settings",
     "name": "PluginSettingScalar",
     "category": "type-export",
@@ -28555,7 +28698,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./settings",
     "name": "SettingsScope",
     "category": "type-export",
@@ -28568,7 +28711,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./settings",
     "name": "SettingsTarget",
     "category": "type-export",
@@ -28581,7 +28724,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./settings",
     "name": "PluginSettingValue",
     "category": "type-export",
@@ -28594,7 +28737,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./settings",
     "name": "PluginSettingsSnapshot",
     "category": "type-export",
@@ -28607,7 +28750,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./settings",
     "name": "PluginSettingsChanges",
     "category": "type-export",
@@ -28620,7 +28763,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./settings",
     "name": "PluginSettingsValidation",
     "category": "type-export",
@@ -28633,7 +28776,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./settings",
     "name": "PluginSettingsMutationResult",
     "category": "type-export",
@@ -28646,7 +28789,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./settings",
     "name": "PluginSettingsAdapter",
     "category": "type-export",
@@ -28659,7 +28802,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "PluginFrameController",
     "category": "type-export",
@@ -28672,7 +28815,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "PluginFrameMount",
     "category": "type-export",
@@ -28685,7 +28828,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "PluginFrameRenderState",
     "category": "type-export",
@@ -28698,7 +28841,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "decodeBridgeJson",
     "category": "nonvisual-function",
@@ -28711,7 +28854,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "parseWindowMessage",
     "category": "nonvisual-function",
@@ -28724,7 +28867,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "parseBridgeMessage",
     "category": "nonvisual-function",
@@ -28737,7 +28880,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "encodeBridgeMessage",
     "category": "nonvisual-function",
@@ -28750,7 +28893,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "BRIDGE_VERSION",
     "category": "runtime-value",
@@ -28763,7 +28906,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "BRIDGE_LIMITS",
     "category": "runtime-value",
@@ -28776,7 +28919,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "BridgeLimits",
     "category": "type-export",
@@ -28789,7 +28932,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "ACTION_REASONS",
     "category": "runtime-value",
@@ -28802,7 +28945,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "BRIDGE_REASONS",
     "category": "runtime-value",
@@ -28815,7 +28958,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "BridgeReason",
     "category": "type-export",
@@ -28828,7 +28971,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "FAILURE_CODES",
     "category": "runtime-value",
@@ -28841,7 +28984,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "FrameFailureCode",
     "category": "type-export",
@@ -28854,7 +28997,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "BridgeArtifact",
     "category": "type-export",
@@ -28867,7 +29010,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "BridgeImport",
     "category": "type-export",
@@ -28880,7 +29023,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "BridgeBinding",
     "category": "type-export",
@@ -28893,7 +29036,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "BridgeOutcome",
     "category": "type-export",
@@ -28906,7 +29049,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "BridgeEnvelope",
     "category": "type-export",
@@ -28919,7 +29062,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "BridgeMessage",
     "category": "type-export",
@@ -28932,7 +29075,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "BRIDGE_FIELDS",
     "category": "runtime-value",
@@ -28945,7 +29088,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "BRIDGE_DTOS",
     "category": "runtime-value",
@@ -28958,7 +29101,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "WindowMessage",
     "category": "type-export",
@@ -28971,7 +29114,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "BridgeParse",
     "category": "type-export",
@@ -28984,7 +29127,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "utf8Bytes",
     "category": "nonvisual-function",
@@ -28997,7 +29140,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "buildFrameCsp",
     "category": "nonvisual-function",
@@ -29010,7 +29153,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "FrameCspPolicy",
     "category": "type-export",
@@ -29023,7 +29166,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "FrameCspResult",
     "category": "type-export",
@@ -29036,7 +29179,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "FRAME_SANDBOX",
     "category": "runtime-value",
@@ -29049,7 +29192,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "FRAME_PERMISSIONS",
     "category": "runtime-value",
@@ -29062,7 +29205,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "createFrameSession",
     "category": "nonvisual-function",
@@ -29075,7 +29218,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "FramePhase",
     "category": "type-export",
@@ -29088,7 +29231,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "BridgeDirection",
     "category": "type-export",
@@ -29101,7 +29244,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "SessionReceipt",
     "category": "type-export",
@@ -29114,7 +29257,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "FrameSessionOptions",
     "category": "type-export",
@@ -29127,7 +29270,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "sameFrameOwner",
     "category": "nonvisual-function",
@@ -29140,7 +29283,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "createFrameNonce",
     "category": "nonvisual-function",
@@ -29153,7 +29296,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "createWindowBinding",
     "category": "nonvisual-function",
@@ -29166,7 +29309,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "createFrameResources",
     "category": "nonvisual-function",
@@ -29179,7 +29322,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "createFrameWindowBinding",
     "category": "nonvisual-function",
@@ -29192,7 +29335,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "FrameOwner",
     "category": "type-export",
@@ -29205,7 +29348,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "BootstrapEvent",
     "category": "type-export",
@@ -29218,7 +29361,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "sha256Bytes",
     "category": "nonvisual-function",
@@ -29231,7 +29374,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "base64Bytes",
     "category": "nonvisual-function",
@@ -29244,7 +29387,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "decodeArtifact",
     "category": "nonvisual-function",
@@ -29257,7 +29400,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "verifyArtifact",
     "category": "nonvisual-function",
@@ -29270,7 +29413,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "artifactModuleUrl",
     "category": "nonvisual-function",
@@ -29283,7 +29426,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "reviewFrameModule",
     "category": "nonvisual-function",
@@ -29296,7 +29439,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "createFrameDocument",
     "category": "nonvisual-function",
@@ -29309,7 +29452,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "FrameDocument",
     "category": "type-export",
@@ -29322,7 +29465,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "FrameDocumentDelivery",
     "category": "type-export",
@@ -29335,7 +29478,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "createPluginFrameBrowser",
     "category": "nonvisual-function",
@@ -29348,7 +29491,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "VerifiedUiBundle",
     "category": "type-export",
@@ -29361,7 +29504,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "ReviewedFramePlan",
     "category": "type-export",
@@ -29374,7 +29517,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "PluginFrameBrowserOptions",
     "category": "type-export",
@@ -29387,7 +29530,7 @@
   },
   {
     "package": "@hollis-labs/plugin-host-ui",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": "./isolation",
     "name": "InertFrameExport",
     "category": "type-export",
@@ -29399,8 +29542,60 @@
     "importEvidence": []
   },
   {
+    "package": "@hollis-labs/plugin-host-ui",
+    "version": "0.3.0",
+    "entry": "./isolation",
+    "name": "admitFrameModuleLocations",
+    "category": "nonvisual-function",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/plugin-host-ui",
+    "version": "0.3.0",
+    "entry": "./isolation",
+    "name": "FrameModuleDelivery",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/plugin-host-ui",
+    "version": "0.3.0",
+    "entry": "./isolation",
+    "name": "FrameModuleManifestEntry",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/plugin-host-ui",
+    "version": "0.3.0",
+    "entry": "./isolation",
+    "name": "FrameModuleLocations",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "ISODateString",
     "category": "type-export",
@@ -29413,7 +29608,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "JsonPrimitive",
     "category": "type-export",
@@ -29426,7 +29621,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "JsonValue",
     "category": "type-export",
@@ -29439,7 +29634,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "JsonObject",
     "category": "type-export",
@@ -29452,7 +29647,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "ApiError",
     "category": "runtime-value",
@@ -29465,7 +29660,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "createApiClient",
     "category": "nonvisual-function",
@@ -29478,7 +29673,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "ApiClient",
     "category": "type-export",
@@ -29491,7 +29686,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "ApiClientOptions",
     "category": "type-export",
@@ -29504,7 +29699,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "ApiRequestOptions",
     "category": "type-export",
@@ -29517,7 +29712,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "QueryValue",
     "category": "type-export",
@@ -29530,7 +29725,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "toSnakeCase",
     "category": "nonvisual-function",
@@ -29543,7 +29738,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "normalizeKeys",
     "category": "nonvisual-function",
@@ -29556,7 +29751,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "parseMetadataJson",
     "category": "nonvisual-function",
@@ -29569,7 +29764,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "normalizeDateString",
     "category": "nonvisual-function",
@@ -29582,7 +29777,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "normalizeOptionalDateString",
     "category": "nonvisual-function",
@@ -29595,7 +29790,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "normalizeStringArray",
     "category": "nonvisual-function",
@@ -29608,7 +29803,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "normalizeNumber",
     "category": "nonvisual-function",
@@ -29621,7 +29816,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "normalizeBoolean",
     "category": "nonvisual-function",
@@ -29634,7 +29829,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "createApiContext",
     "category": "nonvisual-function",
@@ -29647,7 +29842,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "ApiContextHandle",
     "category": "type-export",
@@ -29660,7 +29855,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "usePoll",
     "category": "nonvisual-function",
@@ -29673,7 +29868,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "refreshPolledData",
     "category": "nonvisual-function",
@@ -29686,7 +29881,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "createRefreshRegistry",
     "category": "nonvisual-function",
@@ -29699,7 +29894,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "defaultRefreshRegistry",
     "category": "runtime-value",
@@ -29712,7 +29907,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "UsePollResult",
     "category": "type-export",
@@ -29725,7 +29920,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "UsePollOptions",
     "category": "type-export",
@@ -29738,7 +29933,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "PollFetcher",
     "category": "type-export",
@@ -29751,7 +29946,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "RefreshRegistry",
     "category": "type-export",
@@ -29764,7 +29959,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "useSSE",
     "category": "nonvisual-function",
@@ -29777,7 +29972,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "SSEMessage",
     "category": "type-export",
@@ -29790,7 +29985,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "UseSSEOptions",
     "category": "type-export",
@@ -29803,7 +29998,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "UseSSEResult",
     "category": "type-export",
@@ -29816,7 +30011,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "useElapsed",
     "category": "nonvisual-function",
@@ -29829,7 +30024,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "createRouter",
     "category": "nonvisual-function",
@@ -29842,7 +30037,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "RouterConfig",
     "category": "type-export",
@@ -29855,7 +30050,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "createScopedStorage",
     "category": "nonvisual-function",
@@ -29896,7 +30091,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "StorageArea",
     "category": "type-export",
@@ -29909,7 +30104,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "ScopedStorage",
     "category": "type-export",
@@ -29951,7 +30146,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "ScopedStorageOptions",
     "category": "type-export",
@@ -29964,7 +30159,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "createListCursor",
     "category": "nonvisual-function",
@@ -30004,7 +30199,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "listCursorNeighbors",
     "category": "nonvisual-function",
@@ -30017,7 +30212,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "ListCursor",
     "category": "type-export",
@@ -30030,7 +30225,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "ListCursorNeighbors",
     "category": "type-export",
@@ -30043,7 +30238,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "ListCursorHandle",
     "category": "type-export",
@@ -30056,7 +30251,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "formatRelativeTime",
     "category": "nonvisual-function",
@@ -30069,7 +30264,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "formatShortDate",
     "category": "nonvisual-function",
@@ -30082,7 +30277,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "formatCount",
     "category": "nonvisual-function",
@@ -30095,7 +30290,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "formatDuration",
     "category": "nonvisual-function",
@@ -30108,7 +30303,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "createThemeStore",
     "category": "nonvisual-function",
@@ -30148,7 +30343,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "ColorMode",
     "category": "type-export",
@@ -30161,7 +30356,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "ModePreference",
     "category": "type-export",
@@ -30174,7 +30369,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "ThemeState",
     "category": "type-export",
@@ -30187,7 +30382,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "ThemeStore",
     "category": "type-export",
@@ -30200,7 +30395,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "ThemeStoreOptions",
     "category": "type-export",
@@ -30213,7 +30408,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "useTheme",
     "category": "nonvisual-function",
@@ -30226,7 +30421,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "createAppShellAsideStore",
     "category": "nonvisual-function",
@@ -30269,7 +30464,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "parseAsidePreference",
     "category": "nonvisual-function",
@@ -30282,7 +30477,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "createMemoryStorage",
     "category": "nonvisual-function",
@@ -30326,7 +30521,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "VALID_ASIDE_WIDTHS",
     "category": "runtime-value",
@@ -30339,7 +30534,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "AsideWidth",
     "category": "type-export",
@@ -30352,7 +30547,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "AppShellAsidePreference",
     "category": "type-export",
@@ -30392,7 +30587,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "AppShellAsideStoreOptions",
     "category": "type-export",
@@ -30405,7 +30600,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "AppShellAsideStore",
     "category": "type-export",
@@ -30418,7 +30613,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "useAppShellAside",
     "category": "nonvisual-function",
@@ -30461,7 +30656,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "resolveAdmittedFocusTarget",
     "category": "nonvisual-function",
@@ -30474,7 +30669,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "FocusReturnTargetOptions",
     "category": "type-export",
@@ -30487,7 +30682,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "UseAppShellAsideOptions",
     "category": "type-export",
@@ -30500,7 +30695,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "entry": ".",
     "name": "AppShellAsideHandle",
     "category": "type-export",

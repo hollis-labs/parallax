@@ -73,3 +73,22 @@ test("the signed-in profile route names the person", async ({ request }) => {
   expect(me.username).toBe("e2e")
   expect(me.display_name).toBe("E2E Owner")
 })
+
+test.describe("sign out from the screen", () => {
+  test.use({ storageState: { cookies: [], origins: [] } })
+
+  test("the header shows who is signed in and Sign out lands on the sign-in screen", async ({
+    page,
+  }) => {
+    await page.goto("/")
+    await page.getByLabel("Username").fill("e2e")
+    await page.getByLabel("Password").fill(password())
+    await page.getByRole("button", { name: "Sign in" }).click()
+    await expect(page.getByText("E2E Owner", { exact: true })).toBeVisible()
+    await page.getByRole("button", { name: "Sign out", exact: true }).click()
+    await expect(page.getByRole("heading", { name: "Sign in to Parallax" })).toBeVisible()
+    expect((await page.request.get("/api/scenario")).status()).toBe(401)
+    await page.reload()
+    await expect(page.getByRole("heading", { name: "Sign in to Parallax" })).toBeVisible()
+  })
+})
