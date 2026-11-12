@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test"
+import { ports } from "./ports"
 
 test("embedded admin preserves provenance and fences edited or retired scripted outcomes", async ({
   page,
@@ -212,7 +213,7 @@ test("admin and account portable stories use no API and keep one narrow scroll o
     if (/\/(api|plugins)\//.test(r.url())) requests.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18164/iframe.html?id=administration-controlled-review--profile-draft&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=administration-controlled-review--profile-draft&viewMode=story`,
   )
   await expect(page.getByLabel("Display name", { exact: true })).toHaveValue(
     "Unsaved fixture alias",

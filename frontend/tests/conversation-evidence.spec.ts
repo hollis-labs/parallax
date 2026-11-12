@@ -7,6 +7,7 @@ import {
 } from "../src/conversation-evidence/model"
 import { operationsModel } from "../src/operations/model"
 import { sourceDataset, timelineFrames } from "../src/playback/model"
+import { ports } from "./ports"
 
 test("conversation current tool messages receipt and clock-gated metadata preserve immutable supplied evidence", () => {
   const source = sourceDataset("populated"),
@@ -165,7 +166,7 @@ test("seven native authored tool headers and absent null zero error and inert ou
 test("actual StrictMode repeated selection and captured inspection refuse session phase disclosure source and cutoff retirement", async ({
   page,
 }) => {
-  await page.goto("http://127.0.0.1:18163/?view=Conversation%20Evidence")
+  await page.goto(`http://127.0.0.1:${ports.dev}/?view=Conversation%20Evidence`)
   const inspect = page.getByRole("button", { name: "Inspect recorded TOOL-001", exact: true })
   await inspect.evaluate((node) => {
     const k = Object.keys(node).find((k) => k.startsWith("__reactProps$"))
@@ -316,13 +317,13 @@ test("portable conversation evidence shares blocked empty unknown and receipt-pr
   })
   for (const name of ["empty", "loading", "read-failure", "denied", "incompatible-source"]) {
     await page.goto(
-      `http://127.0.0.1:18164/iframe.html?id=chat-conversation-evidence--${name}&viewMode=story`,
+      `http://127.0.0.1:${ports.storybook}/iframe.html?id=chat-conversation-evidence--${name}&viewMode=story`,
     )
     await expect(page.getByLabel("Recorded messages and tools")).toHaveCount(0)
     await expect(page.getByLabel("Authored tool state specimen")).toHaveCount(0)
   }
   await page.goto(
-    "http://127.0.0.1:18164/iframe.html?id=chat-conversation-evidence--before-tool-finish&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=chat-conversation-evidence--before-tool-finish&viewMode=story`,
   )
   await expect(page.getByLabel("Recorded TOOL-001")).toContainText(
     "No recorded outcome admitted through this cutoff",
@@ -331,7 +332,7 @@ test("portable conversation evidence shares blocked empty unknown and receipt-pr
     "Communication metadata unavailable through this cutoff",
   )
   await page.goto(
-    "http://127.0.0.1:18164/iframe.html?id=chat-conversation-evidence--unknown-tool-state&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=chat-conversation-evidence--unknown-tool-state&viewMode=story`,
   )
   await expect(page.getByRole("status")).toContainText("ToolHeader withheld")
   await page.getByLabel("Conversation evidence appearance").selectOption("locked")

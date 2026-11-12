@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test"
 import type { diagnostics } from "../src/examples/tachyon-nav/TachyonNav"
+import { ports } from "./ports"
 
 declare global {
   interface Window {
@@ -9,7 +10,7 @@ declare global {
     heldHandoff?: () => boolean
   }
 }
-test.use({ baseURL: `http://127.0.0.1:${process.env.TACHYON_NAV_PORT ?? 18163}` })
+test.use({ baseURL: `http://127.0.0.1:${process.env.TACHYON_NAV_PORT ?? ports.dev}` })
 for (const boundary of ["source", "access", "layer", "root", "Activity"] as const)
   test(`once-working retained menu refuses committed ${boundary} retirement with fresh positive`, async ({
     page,

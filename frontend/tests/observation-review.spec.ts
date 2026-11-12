@@ -6,6 +6,7 @@ import {
   reviewClocks,
   reviewedResources,
 } from "../src/observation-review/model"
+import { ports } from "./ports"
 
 test("observation review bounds joins and clocks preserve receipts without fabricating successes", () => {
   const data = observationReviewModel(),
@@ -206,7 +207,7 @@ test("native retry current resource receipt clock policy source and retained cal
     if (!r.url().startsWith("http://127.0.0.1:")) external.push(r.url())
   })
   page.on("pageerror", (e) => errors.push(e.message))
-  await page.goto("http://127.0.0.1:18163/?view=Observation%20Review")
+  await page.goto(`http://127.0.0.1:${ports.dev}/?view=Observation%20Review`)
   await page.getByLabel("Observation appearance").selectOption("refresh-error")
   const retry = page.getByRole("button", { name: "Retry Selected receipt", exact: true })
   await capture(retry, "oldRetry")
@@ -320,7 +321,7 @@ test("390 dark observation chart accessible UTC and local modal footer are bound
     "locked-retry",
   ]) {
     await page.goto(
-      `http://127.0.0.1:18164/iframe.html?id=observation-controlled-observation-review--${story}&viewMode=story`,
+      `http://127.0.0.1:${ports.storybook}/iframe.html?id=observation-controlled-observation-review--${story}&viewMode=story`,
     )
     await expect(page.getByLabel("Controlled observation review")).toBeVisible()
     await expect(page.getByRole("button", { name: /copy/i })).toHaveCount(0)

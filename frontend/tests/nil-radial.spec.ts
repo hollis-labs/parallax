@@ -1,6 +1,7 @@
 import { fileURLToPath } from "node:url"
 import { expect, test } from "@playwright/test"
 import type { controls as specimenControls } from "../src/nil-radial/Specimen"
+import { ports } from "./ports"
 
 declare global {
   interface Window {
@@ -8,7 +9,7 @@ declare global {
   }
 }
 test.use({
-  baseURL: `http://127.0.0.1:${process.env.NIL_PORT ?? 18163}`,
+  baseURL: `http://127.0.0.1:${process.env.NIL_PORT ?? ports.dev}`,
   launchOptions: { executablePath: process.env.NIL_CHROMIUM, args: ["--no-sandbox"] },
 })
 const screenshotRoot = fileURLToPath(new URL("../../.scratch/nil-radial/", import.meta.url))

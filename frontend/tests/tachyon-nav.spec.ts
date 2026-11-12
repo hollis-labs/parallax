@@ -1,7 +1,8 @@
 import { expect, test } from "@playwright/test"
+import { ports } from "./ports"
 
 const entry = "/?example=tachyon-nav"
-test.use({ baseURL: `http://127.0.0.1:${process.env.TACHYON_NAV_PORT ?? 18163}` })
+test.use({ baseURL: `http://127.0.0.1:${process.env.TACHYON_NAV_PORT ?? ports.dev}` })
 test("real groups, parent paths, collapse, footer and icon flyout", async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 700 })
   await page.goto(`${entry}#/work`)
@@ -269,7 +270,7 @@ test("portable stories use the same composition and no backend requests", async 
     "degraded",
   ]) {
     await page.goto(
-      `http://127.0.0.1:18164/iframe.html?id=examples-tachyon-navigation--${story}&viewMode=story`,
+      `http://127.0.0.1:${ports.storybook}/iframe.html?id=examples-tachyon-navigation--${story}&viewMode=story`,
     )
     await expect(page.getByTestId("tachyon-nav")).toBeVisible()
   }

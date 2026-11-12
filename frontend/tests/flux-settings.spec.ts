@@ -6,13 +6,14 @@ import {
   MALFORMED_FIXTURE_PREFERENCES,
   parseLayoutPreferences,
 } from "../src/examples/flux-settings/model"
+import { ports } from "./ports"
 
 function getEntry(baseURL: string | undefined, suffix = ""): string {
   if (process.env.FLUX_SETTINGS_BASE_URL) {
     return `${process.env.FLUX_SETTINGS_BASE_URL}/flux-settings.html${suffix}`
   }
-  if (!baseURL || baseURL.includes(":18160")) {
-    return `http://127.0.0.1:18163/flux-settings.html${suffix}`
+  if (!baseURL || baseURL.includes(`:${ports.backend}`)) {
+    return `http://127.0.0.1:${ports.dev}/flux-settings.html${suffix}`
   }
   return `/flux-settings.html${suffix}`
 }

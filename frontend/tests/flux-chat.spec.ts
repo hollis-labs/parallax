@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs"
 import { expect, type Locator, type Page, test } from "@playwright/test"
+import { ports } from "./ports"
 
 const identities: string[] = JSON.parse(
   readFileSync(new URL("../src/examples/flux-cards/operands.json", import.meta.url), "utf8"),
@@ -49,8 +50,8 @@ async function settlePopup(popup: Locator) {
 }
 function lifecycleEntry() {
   const base = new URL(String(test.info().project.use.baseURL))
-  if (base.port === "18160") base.port = "18163"
-  if (base.port === "18165") base.port = "18166"
+  if (base.port === `${ports.backend}`) base.port = `${ports.dev}`
+  if (base.port === "18951") base.port = "18955"
   return new URL("/flux-chat-lifecycle.html", base).href
 }
 test.beforeEach(async ({ page }) => {
@@ -481,7 +482,7 @@ test("portable composed stories are API-free and keep the single editor boundary
 }, info) => {
   test.setTimeout(60000)
   const base = new URL(String(info.project.use.baseURL))
-  base.port = base.port === "18160" ? "18164" : "18167"
+  base.port = base.port === `${ports.backend}` ? `${ports.storybook}` : "18952"
   for (const story of [
     "default",
     "workspace",

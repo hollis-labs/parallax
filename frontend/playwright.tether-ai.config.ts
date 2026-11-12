@@ -16,7 +16,7 @@ export default defineConfig({
   reporter: [["list"]],
   workers: 1,
   use: {
-    baseURL: "http://127.0.0.1:18163",
+    baseURL: "http://127.0.0.1:19025",
     headless: true,
     launchOptions: {
       ...(chromiumPath ? { executablePath: chromiumPath } : {}),
@@ -34,9 +34,9 @@ export default defineConfig({
     viewport: { width: 1280, height: 900 },
   },
   webServer: {
-    command: "npm run dev -- --host 127.0.0.1 --port 18163 --strictPort",
+    command: "npm run dev -- --host 127.0.0.1 --port 19025 --strictPort",
     cwd: `${repo}frontend`,
-    url: "http://127.0.0.1:18163",
+    url: "http://127.0.0.1:19025",
     reuseExistingServer: !process.env.CI,
     timeout: 30000,
   },

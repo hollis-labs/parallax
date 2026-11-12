@@ -11,6 +11,7 @@ import {
   replaceDraft,
   settingsReviewModel,
 } from "../src/settings-review/model"
+import { ports } from "./ports"
 
 test("settings projections keep original desired values and fail closed without losing scalar meaning", () => {
   const original = JSON.stringify(settingsReviewModel().fixture)
@@ -416,7 +417,7 @@ test("narrow dark portable settings show locked not-set error busy and empty sta
     ["busy", "Working…"],
   ]) {
     await page.goto(
-      `http://127.0.0.1:18164/iframe.html?id=settings-controlled-field-review--${story}&viewMode=story`,
+      `http://127.0.0.1:${ports.storybook}/iframe.html?id=settings-controlled-field-review--${story}&viewMode=story`,
     )
     await expect(page.getByText(text, { exact: false }).first()).toBeVisible()
     if (story === "busy")
@@ -431,7 +432,7 @@ test("development StrictMode creates fresh session after replay and retires earl
 }) => {
   const errors: string[] = []
   page.on("pageerror", (e) => errors.push(e.message))
-  await page.goto("http://127.0.0.1:18163/?view=Settings%20Review")
+  await page.goto(`http://127.0.0.1:${ports.dev}/?view=Settings%20Review`)
   await page
     .getByLabel("Workspace label (required)", { exact: true })
     .fill("Strict lifecycle candidate")

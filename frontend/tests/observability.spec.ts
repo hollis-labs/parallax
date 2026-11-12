@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test"
+import { ports } from "./ports"
 
 test("recorded log trace span tool and usage inspection joins the actual graph", async ({
   page,
@@ -159,6 +160,7 @@ test("portable observation stories and narrow theme preserve shared chart CSS an
 }, info) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto("/?view=Observability&theme=p3-amber-phosphor&mode=dark")
+  await page.getByRole("navigation", { name: "Application navigation" }).waitFor()
   await page
     .getByRole("region", { name: "Exact cumulative token samples", exact: true })
     .scrollIntoViewIfNeeded()
@@ -187,7 +189,7 @@ test("portable observation stories and narrow theme preserve shared chart CSS an
     if (/\/(api|plugins)\//.test(r.url())) requests.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18164/iframe.html?id=observability-controlled-inspection--sparse&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=observability-controlled-inspection--sparse&viewMode=story`,
   )
   await expect(
     page

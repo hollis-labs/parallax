@@ -5,6 +5,7 @@ import {
   adminReviewModel,
   admittedTarget,
 } from "../src/admin-review/model"
+import { ports } from "./ports"
 
 const nav = (page: Page) => page.locator(".admin-inner-navigation")
 async function capture(locator: Locator, key: string) {
@@ -179,7 +180,7 @@ test("native local destination held inspection and captured navigation close ret
     if (!["GET", "HEAD"].includes(r.method())) writes.push(r.url())
   })
   page.on("pageerror", (e) => errors.push(e.message))
-  await page.goto("http://127.0.0.1:18163/?view=Admin%20Review")
+  await page.goto(`http://127.0.0.1:${ports.dev}/?view=Admin%20Review`)
   const inspect = page.getByRole("button", { name: "Inspect selected destination", exact: true })
   await inspect.focus()
   await page.keyboard.press("Enter")
@@ -279,7 +280,7 @@ test("390 dark standalone viewport ownership keyboard modal and API-free portabl
     if (r.url().includes("/api/") || r.url().includes("/plugins/")) requests.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18164/iframe.html?id=admin-controlled-admin-review--standalone-series&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=admin-controlled-admin-review--standalone-series&viewMode=story`,
   )
   await expect(page.locator("main")).toHaveCount(1)
   await expect(page.getByRole("figure")).toBeVisible()
@@ -297,14 +298,14 @@ test("390 dark standalone viewport ownership keyboard modal and API-free portabl
     "series-present",
   ]) {
     await page.goto(
-      `http://127.0.0.1:18164/iframe.html?id=admin-controlled-admin-review--${id}&viewMode=story`,
+      `http://127.0.0.1:${ports.storybook}/iframe.html?id=admin-controlled-admin-review--${id}&viewMode=story`,
     )
     await expect(page.locator("#storybook-root")).not.toBeEmpty()
   }
   await expect(page.getByLabel("Destination mode")).toHaveCount(0)
   await expect(page.getByRole("link", { name: "Open standalone AdminShell" })).toHaveCount(0)
   await page.goto(
-    "http://127.0.0.1:18164/iframe.html?id=admin-controlled-admin-review--read-only-settings&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=admin-controlled-admin-review--read-only-settings&viewMode=story`,
   )
   await expect(page.getByRole("region", { name: "Admin Settings" })).toContainText(
     "Fixture review lab",

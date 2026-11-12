@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test"
+import { ports } from "./ports"
 
 const entry = "/?example=torque&screen=tasks&profile=torque-16w"
 for (const viewport of [
@@ -158,7 +159,9 @@ test("transition submenu hands keyboard focus to the preview and back to its row
 })
 
 test("portable board menu and search remain local and usable", async ({ page }) => {
-  await page.goto("http://127.0.0.1:18164/iframe.html?id=app-examples-torque--tasks&viewMode=story")
+  await page.goto(
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=app-examples-torque--tasks&viewMode=story`,
+  )
   const url = page.url()
   await page
     .getByRole("button", { name: /Task actions/ })

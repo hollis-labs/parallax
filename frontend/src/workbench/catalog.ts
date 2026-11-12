@@ -389,6 +389,18 @@ export function normalizeView(value: string | null) {
 export function viewIcon(name: keyof typeof icons) {
   return icons[name]
 }
+// Ports of the browser suites (backend, dev server, static Storybook). The repository defaults can be
+// moved with VITE_PARALLAX_E2E_*_PORT when the Vite dev server or the Storybook build starts; the
+// suites import this file in Node too, where the variables come from the process environment.
+const viteEnv = (import.meta as { env?: Record<string, string | undefined> }).env
+const e2ePort = (name: string, fallback: string) =>
+  viteEnv?.[name] ?? (typeof process === "undefined" ? undefined : process.env[name]) ?? fallback
+const e2ePorts = {
+  backend: e2ePort("VITE_PARALLAX_E2E_BACKEND_PORT", "18541"),
+  dev: e2ePort("VITE_PARALLAX_E2E_DEV_PORT", "18545"),
+  storybook: e2ePort("VITE_PARALLAX_E2E_STORYBOOK_PORT", "18542"),
+}
+const e2eHosts = Object.values(e2ePorts).flatMap((p) => [`127.0.0.1:${p}`, `localhost:${p}`])
 export function storyDestination(host: string, story: string) {
   if (!story || !destinations.some((d) => d.story === story)) return null
   let origin: string | null = null
@@ -402,19 +414,16 @@ export function storyDestination(host: string, story: string) {
     ].includes(host.split(":")[0])
   )
     origin = "https://parallax-stories.example.test"
+  else if (e2eHosts.includes(host)) origin = `http://127.0.0.1:${e2ePorts.storybook}`
   else if (
     [
-      "127.0.0.1:18160",
-      "localhost:18160",
-      "127.0.0.1:18163",
-      "localhost:18163",
-      "127.0.0.1:18164",
-      "localhost:18164",
+      "localhost:8085",
+      "127.0.0.1:8085",
+      "localhost:5173",
+      "127.0.0.1:5173",
+      "localhost:18442",
+      "127.0.0.1:18442",
     ].includes(host)
-  )
-    origin = "http://127.0.0.1:18164"
-  else if (
-    ["localhost:5173", "127.0.0.1:5173", "localhost:18442", "127.0.0.1:18442"].includes(host)
   )
     origin = "http://localhost:18442"
   return origin

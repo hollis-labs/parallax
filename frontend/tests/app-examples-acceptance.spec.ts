@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from "node:fs"
 import { expect, test } from "@playwright/test"
 import { destinations } from "../src/workbench/catalog"
+import { ports } from "./ports"
 
 async function settledPaint(page: import("@playwright/test").Page) {
   await expect(page.locator("html")).toHaveAttribute("data-theme", "p4-white")
@@ -137,7 +138,9 @@ test("all five representative fullscreen stories share App Examples group and bo
     expect(index[app.story].title).toBe(
       `App Examples/${app.route === "workspace" ? "Workspace" : app.route[0].toUpperCase() + app.route.slice(1)}`,
     )
-    await page.goto(`http://127.0.0.1:18164/iframe.html?id=${app.story}&viewMode=story`)
+    await page.goto(
+      `http://127.0.0.1:${ports.storybook}/iframe.html?id=${app.story}&viewMode=story`,
+    )
     const root = page.locator(app.root)
     await expect(root).toBeVisible()
     await expect(root.getByRole("heading", { level: 1 }).first()).toBeVisible()

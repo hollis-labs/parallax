@@ -1,6 +1,7 @@
 import { expect, type Page, test } from "@playwright/test"
+import { ports } from "./ports"
 
-const base = process.env.NIL_EXAMPLE_URL ?? "http://127.0.0.1:18163"
+const base = process.env.NIL_EXAMPLE_URL ?? `http://127.0.0.1:${ports.dev}`
 const proof = process.env.NIL_EXAMPLE_PROOF_URL ?? base
 const rows = (page: Page) => page.locator("[data-ops-row-id]")
 const rowId = async (page: Page, index = 0) =>

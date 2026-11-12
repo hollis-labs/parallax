@@ -2,8 +2,9 @@ import { randomBytes } from "node:crypto"
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs"
 import { dirname } from "node:path"
 import { request } from "@playwright/test"
+import { ports } from "../tests/ports"
 
-export const backend = "http://127.0.0.1:18160"
+export const backend = `http://127.0.0.1:${ports.backend}`
 export const authState = new URL("../../.scratch/e2e-auth.json", import.meta.url).pathname
 const passwordFile = new URL("../../.scratch/e2e-password", import.meta.url).pathname
 const username = "e2e"

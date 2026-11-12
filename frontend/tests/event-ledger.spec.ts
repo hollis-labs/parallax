@@ -2,6 +2,7 @@ import { expect, type Page, test } from "@playwright/test"
 import { ledgerModel } from "../src/event-ledger/model"
 import { operationsModel } from "../src/operations/model"
 import { sourceDataset, timelineFrames } from "../src/playback/model"
+import { ports } from "./ports"
 
 async function inspectGeometry(page: Page) {
   const dialog = page.getByRole("dialog")
@@ -169,7 +170,7 @@ test("actual bounded viewport native keyboard reaches footer and implicit vertic
 test("StrictMode fresh held inspection and retained native callback retire on close selection filter source and cutoff", async ({
   page,
 }) => {
-  await page.goto("http://127.0.0.1:18163/?view=Event+Ledger")
+  await page.goto(`http://127.0.0.1:${ports.dev}/?view=Event+Ledger`)
   await page.getByRole("button", { name: "Inspect EVENT-START-001", exact: true }).click()
   await page.getByRole("button", { name: "Inspect local metadata", exact: true }).click()
   await page
@@ -313,7 +314,7 @@ test("narrow dark wrapped complete table footer raw modal and withdrawn hint sta
     animations: "disabled",
   })
   await page.goto(
-    "http://127.0.0.1:18164/iframe.html?id=workbench-keyboard-switcher--withdrawn&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=workbench-keyboard-switcher--withdrawn&viewMode=story`,
   )
   await page.getByRole("combobox", { name: "Find review view", exact: true }).fill("withdrawn")
   const hint = page.locator(".switcher-unavailable-hint")
@@ -332,7 +333,7 @@ test("portable missing zero null absent unknown and escaped long specimens remai
     if (r.method() !== "GET" || /\/api\/|\/plugins\//.test(r.url())) effects.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18164/iframe.html?id=evidence-event-ledger--missing&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=evidence-event-ledger--missing&viewMode=story`,
   )
   await page.getByRole("button", { name: "Inspect AUTHORED-MISSING", exact: true }).click()
   await expect(page.getByRole("dialog")).toContainText("count is supplied 0")
@@ -354,7 +355,7 @@ test("portable missing zero null absent unknown and escaped long specimens remai
   await page.keyboard.press("Escape")
   await expect(page.getByRole("dialog")).toHaveCount(0)
   await page.goto(
-    "http://127.0.0.1:18164/iframe.html?id=evidence-event-ledger--recorded&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=evidence-event-ledger--recorded&viewMode=story`,
   )
   await page.getByLabel("Authored operations matching filter", { exact: true }).fill("gateway")
   await expect(page.getByRole("table").locator("tbody tr")).toHaveCount(4)

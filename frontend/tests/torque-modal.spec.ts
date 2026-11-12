@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test"
 import { torqueSource } from "../src/examples/torque/reference"
 import { timelineFrames } from "../src/playback/model"
+import { ports } from "./ports"
 
 const entry = "/?example=torque&screen=tasks&profile=torque-16w"
 const inspection = (page: any) =>
@@ -39,7 +40,7 @@ for (const viewport of [
     expect(rect!.y).toBeGreaterThanOrEqual(0)
     expect(rect!.y + rect!.height).toBeLessThanOrEqual(viewport.height)
     await dialog.getByRole("button", { name: "Next task", exact: true }).click()
-    await expect(page).not.toHaveURL(new URL(href!, "http://127.0.0.1:18160").href)
+    await expect(page).not.toHaveURL(new URL(href!, `http://127.0.0.1:${ports.backend}`).href)
     await page.goBack()
     await expect(dialog).toHaveCount(0)
     await expect(
@@ -83,7 +84,9 @@ test("cold missing, denied and cutoff selections never expose stale joins", asyn
 test("portable Operations uses the same automatic modal and local close without outer routing", async ({
   page,
 }) => {
-  await page.goto("http://127.0.0.1:18164/iframe.html?id=app-examples-torque--tasks&viewMode=story")
+  await page.goto(
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=app-examples-torque--tasks&viewMode=story`,
+  )
   const url = page.url()
   const link = page.locator(".torque-ops-task a").first()
   await link.click()

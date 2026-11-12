@@ -12,8 +12,8 @@ export default defineConfig({
       : undefined,
   },
   webServer: {
-    command: "npm run storybook -- --port 18164 --host 127.0.0.1 --ci",
-    url: "http://127.0.0.1:18164/iframe.html",
+    command: "npm run storybook -- --port 18932 --host 127.0.0.1 --ci",
+    url: "http://127.0.0.1:18932/iframe.html",
     reuseExistingServer: false,
     timeout: 120000,
   },

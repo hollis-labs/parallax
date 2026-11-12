@@ -17,11 +17,14 @@ Owner-facing. Each gap stops the work it touches until the driver decides.
 
 ## Browser suites against the real backend
 
-- Ports (agent block 18160-18169, now the defaults in the configs and tests): backend 18160, Vite dev server 18163, static
-  Storybook 18164; the sibling `playwright.*.config.ts` files that used their own ports now share 18163/18164 (run one at a time).
+- Ports: the repository defaults are the old proof ports (backend 18541, Vite 18545, static Storybook 18542, `tests/ports.ts`).
+  `PARALLAX_E2E_BACKEND_PORT`, `PARALLAX_E2E_DEV_PORT` and `PARALLAX_E2E_STORYBOOK_PORT` move them; the Vite dev server and the
+  Storybook build also need `VITE_PARALLAX_E2E_*_PORT` with the same values (the workbench's story-link host table reads them).
+  The dev proxy targets `PARALLAX_PROXY_URL`, default `127.0.0.1:8085` (the manifest's `httphost.addr`). Agents run in their own block through
+  the environment; no agent block is a committed default. The sibling `playwright.*.config.ts` files keep their own ports and have no sign-in
+  fixture yet (they proxy to the backend, so only fixture pages work there).
 - `playwright.config.ts` starts the real binary on a throwaway data directory (`.scratch/e2e`) with its own `SUBSTRATE_CONFIG`,
-  `e2e/global-setup.ts` runs first-run setup (or signs in) once and stores the session cookie as `storageState`. The browser channel
-  is `chrome` unless `PLAYWRIGHT_CHANNEL` says otherwise (CI must set `PLAYWRIGHT_CHANNEL=chromium` (the workflow edit needs a token with the workflow scope; see the driver mail)). Writes from tests carry `X-Requested-With`.
+  `e2e/global-setup.ts` runs first-run setup (or signs in) once and stores the session cookie as `storageState`. The browser is Playwright's bundled Chromium unless `PLAYWRIGHT_CHANNEL` names another (`chrome`; CI sets `chromium`). Writes from tests carry `X-Requested-With`.
 - An unmapped write answers `403 route_not_mapped` (the old host answered 405); `tests/lab.spec.ts` asserts that and the
   `403 csrf` for a write without the header.
 - **Baseline, same environment (system Chrome, real binary, no live capture):** the pre-port app (`main`, Chimera host) passes

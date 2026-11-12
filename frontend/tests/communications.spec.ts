@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test"
+import { ports } from "./ports"
 
 test("contact identities link conversations, attachments and transient send intent", async ({
   page,
@@ -182,11 +183,11 @@ test("communication model and portable stories preserve related records without 
     if (r.url().includes("/api/") || r.url().includes("/plugins/")) businessRequests.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18164/iframe.html?id=communications-controlled-views--unknown-wire&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=communications-controlled-views--unknown-wire&viewMode=story`,
   )
   await expect(page.getByText("future.review/v99", { exact: true })).toBeVisible()
   await page.goto(
-    "http://127.0.0.1:18164/iframe.html?id=communications-controlled-views--denied-send&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=communications-controlled-views--denied-send&viewMode=story`,
   )
   await expect(page.getByLabel("Conversation draft")).toBeDisabled()
   expect(businessRequests).toEqual([])

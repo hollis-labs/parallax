@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test"
 import { operationsModel } from "../src/operations/model"
 import { galleryModel, galleryStates } from "../src/primitives/model"
+import { ports } from "./ports"
 
 async function choose(page: import("@playwright/test").Page, task = "TASK-003") {
   await page.getByRole("button", { name: "Gallery recorded task", exact: true }).click()
@@ -206,7 +207,7 @@ test("context policy retirement and actual keyframes preserve narrow theme and p
     if (/\/(api|plugins)\//.test(request.url())) requests.push(request.url())
   })
   await page.goto(
-    "http://127.0.0.1:18164/iframe.html?id=primitives-controlled-gallery--recorded&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=primitives-controlled-gallery--recorded&viewMode=story`,
   )
   await choose(page)
   await page.getByRole("button", { name: "Review note form", exact: true }).click()
@@ -215,7 +216,7 @@ test("context policy retirement and actual keyframes preserve narrow theme and p
   await form.getByRole("button", { name: "Reset gallery context" }).click()
   await expect(page.getByText("No local record selected", { exact: true })).toBeVisible()
   await page.goto(
-    "http://127.0.0.1:18164/iframe.html?id=primitives-controlled-gallery--empty&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=primitives-controlled-gallery--empty&viewMode=story`,
   )
   await expect(
     page.getByText("No records in this controlled gallery state.", { exact: true }),
@@ -225,7 +226,7 @@ test("context policy retirement and actual keyframes preserve narrow theme and p
   await expect(page.getByText("No matching recorded tasks", { exact: true })).toBeVisible()
   await page.keyboard.press("Escape")
   await page.goto(
-    "http://127.0.0.1:18164/iframe.html?id=primitives-controlled-gallery--recorded&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=primitives-controlled-gallery--recorded&viewMode=story`,
   )
   await expect(page.getByText("No local record selected", { exact: true })).toBeVisible()
   expect(requests).toEqual([])
@@ -235,6 +236,7 @@ test("rendered tone and clamp contracts use actual library paint and dimensions"
   page,
 }, info) => {
   await page.goto("/?view=Primitives&theme=p4-white&mode=light")
+  await page.getByRole("navigation", { name: "Application navigation" }).waitFor()
   const pills = page.getByRole("group", { name: "Supported pill tones" })
   const paint = await pills.locator("span").evaluateAll((nodes) =>
     nodes

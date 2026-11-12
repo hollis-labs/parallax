@@ -7,6 +7,7 @@ import {
 } from "../src/examples/torque/mission"
 import { torqueSource } from "../src/examples/torque/reference"
 import { operationsModel } from "../src/operations/model"
+import { ports } from "./ports"
 
 const source = torqueSource("populated", "torque-16w")
 const at = (scenario = "populated", cutoff = source.clock, query = "") =>
@@ -268,7 +269,7 @@ test("native UTC companion bounded scroll reaches full final USD coverage and la
 test("fresh StrictMode and previous tab callback retirement refuse captured earlier Mission inspection", async ({
   page,
 }) => {
-  await page.goto("http://127.0.0.1:18163" + entry + "&tab=Mission%20Control&query=TASK-003")
+  await page.goto(`http://127.0.0.1:${ports.dev}` + entry + "&tab=Mission%20Control&query=TASK-003")
   await page.getByText("Exact Mission UTC evidence", { exact: true }).click()
   const b = page.getByRole("button", { name: "Inspect RUN-003", exact: true })
   await b.evaluate((e) => {
@@ -322,7 +323,7 @@ test("portable Mission Usage states and390dark chart pipeline footer remain read
     "usage-denied",
   ]) {
     await page.goto(
-      `http://127.0.0.1:18164/iframe.html?id=app-examples-torque--${slug}&viewMode=story`,
+      `http://127.0.0.1:${ports.storybook}/iframe.html?id=app-examples-torque--${slug}&viewMode=story`,
     )
     await expect(page.locator(".torque-example")).toBeVisible()
   }

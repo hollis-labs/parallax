@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test"
+import { ports } from "./ports"
 
 const view = "/?view=Appearance+Review&theme=p4-white&mode=light"
 const regionName = "Local appearance controls"
@@ -140,7 +141,7 @@ test("StrictMode fresh system listener survives ordinary controls and obsolete l
     }
   })
   await page.emulateMedia({ colorScheme: "light" })
-  await page.goto(`http://127.0.0.1:18163${view}`)
+  await page.goto(`http://127.0.0.1:${ports.dev}${view}`)
   const controls = page.getByRole("region", { name: regionName, exact: true }),
     sample = page.getByRole("region", { name: "Readonly semantic specimen", exact: true })
   await controls.getByLabel("Theme", { exact: true }).selectOption("p3-amber-phosphor")
@@ -279,14 +280,16 @@ test("portable unsupported resources literal labels and same-result context reti
     if (/\/api\/|\/plugins\//.test(r.url()) || r.method() !== "GET") requests.push(r.url())
   })
   for (const id of ["unknown-palette", "unavailable", "denied"]) {
-    await page.goto(`http://127.0.0.1:18164/iframe.html?id=review-appearance--${id}&viewMode=story`)
+    await page.goto(
+      `http://127.0.0.1:${ports.storybook}/iframe.html?id=review-appearance--${id}&viewMode=story`,
+    )
     await expect(page.getByRole("region", { name: regionName, exact: true })).toHaveCount(0)
     await expect(
       page.getByRole("region", { name: "Appearance Review", exact: true }),
     ).toContainText("Controls withheld")
   }
   await page.goto(
-    "http://127.0.0.1:18164/iframe.html?id=review-appearance--long-label&viewMode=story",
+    `http://127.0.0.1:${ports.storybook}/iframe.html?id=review-appearance--long-label&viewMode=story`,
   )
   await expect(
     page

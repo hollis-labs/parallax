@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test"
+import { ports } from "./ports"
 
 test.describe("Tether Sysop AI Gateway Recreation", () => {
   test("route /?example=tether&screen=ai loads standard AI gateway with summary cards and tabs", async ({
@@ -925,11 +926,11 @@ test.describe("Tether Sysop AI Gateway Recreation", () => {
   }) => {
     const sourceBase =
       process.env.TETHER_AI_SOURCE_URL ||
-      (baseURL?.includes(":18160")
-        ? "http://127.0.0.1:18163"
+      (baseURL?.includes(`:${ports.backend}`)
+        ? `http://127.0.0.1:${ports.dev}`
         : baseURL?.includes(":19021")
-          ? "http://127.0.0.1:18163"
-          : baseURL || "http://127.0.0.1:18163")
+          ? "http://127.0.0.1:19025"
+          : baseURL || "http://127.0.0.1:19025")
     await page.setViewportSize({ width: 1280, height: 800 })
     await page.goto(`${sourceBase}/?example=tether&screen=ai`)
     await expect(page.locator("header.tether-ai-header")).toBeVisible()

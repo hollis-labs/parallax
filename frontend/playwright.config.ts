@@ -1,39 +1,42 @@
 import { fileURLToPath } from "node:url"
 import { defineConfig } from "@playwright/test"
+import { ports } from "./tests/ports"
 
 const repo = fileURLToPath(new URL("../", import.meta.url))
-// Ports are the agent block 18160-18169: backend 18160, Vite 18163, static Storybook 18164.
-// The backend runs the real binary on a throwaway data directory under .scratch.
+// The suites run the real binary on a throwaway data directory under .scratch, with its own
+// SUBSTRATE_CONFIG. Ports come from tests/ports.ts (PARALLAX_E2E_*_PORT overrides them).
 const e2e = `${repo}.scratch/e2e`
+const backend = `http://127.0.0.1:${ports.backend}`
+const dev = `http://127.0.0.1:${ports.dev}`
 export default defineConfig({
   testDir: "./tests",
   globalSetup: "./e2e/global-setup.ts",
   outputDir: `${repo}.scratch/test-results`,
   reporter: [["list"]],
   use: {
-    baseURL: "http://127.0.0.1:18160",
+    baseURL: backend,
     headless: true,
-    channel: process.env.PLAYWRIGHT_CHANNEL ?? "chrome",
+    // Unset uses Playwright's bundled Chromium; PLAYWRIGHT_CHANNEL=chrome uses the installed Chrome.
+    channel: process.env.PLAYWRIGHT_CHANNEL || undefined,
     storageState: `${repo}.scratch/e2e-auth.json`,
   },
   webServer: [
     {
-      command:
-        "PARALLAX_PROXY_URL=http://127.0.0.1:18160 npm run dev -- --host 127.0.0.1 --port 18163 --strictPort",
+      command: `PARALLAX_PROXY_URL=${backend} npm run dev -- --host 127.0.0.1 --port ${ports.dev} --strictPort`,
       cwd: `${repo}frontend`,
-      url: "http://127.0.0.1:18163",
+      url: dev,
       reuseExistingServer: !process.env.CI,
     },
     {
-      command: `rm -rf ${e2e} && mkdir -p ${e2e} && printf 'httphost:\\n  addr: "127.0.0.1:18160"\\n' > ${e2e}/substrate.yaml && SUBSTRATE_CONFIG=${e2e}/substrate.yaml PARALLAX_DATA_DIR=${e2e}/data .scratch/parallax`,
+      command: `rm -rf ${e2e} && mkdir -p ${e2e} && printf 'httphost:\\n  addr: "127.0.0.1:${ports.backend}"\\n' > ${e2e}/substrate.yaml && SUBSTRATE_CONFIG=${e2e}/substrate.yaml PARALLAX_DATA_DIR=${e2e}/data .scratch/parallax`,
       cwd: repo,
-      url: "http://127.0.0.1:18160",
+      url: backend,
       reuseExistingServer: !process.env.CI,
     },
     {
-      command: "STORYBOOK_PORT=18164 node scripts/serve-storybook.mjs",
+      command: `STORYBOOK_PORT=${ports.storybook} node scripts/serve-storybook.mjs`,
       cwd: repo,
-      url: "http://127.0.0.1:18164/iframe.html",
+      url: `http://127.0.0.1:${ports.storybook}/iframe.html`,
       reuseExistingServer: !process.env.CI,
     },
   ],
