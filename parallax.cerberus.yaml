@@ -1,8 +1,4 @@
-# The repo-owned descriptor. Cerberus records a pointer to this file and re-reads it, so keep it
-# deployable as it stands: no placeholder paths. The binary needs no env: it listens on
-# 127.0.0.1:18441 and keeps its data in the service user's XDG data home. To change either, add
-# SUBSTRATE_CONFIG (httphost.addr) and/or PARALLAX_DATA_DIR to env at registration.
-# Register and deploy only after operator approval.
+# Template. The live descriptor is the operator's own copy under ~/.config/parallax/; this file is not what Cerberus runs.
 kind: cerberus-project/v1
 owner: parallax
 namespace: local

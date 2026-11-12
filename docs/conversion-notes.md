@@ -142,14 +142,14 @@ Setup and login bodies: `{username, display_name, password}` / `{username, passw
 
 ## For the operator
 
-- `parallax.cerberus.yaml` (the repo's descriptor) sets no `env`: the binary needs none. The listen address defaults to
+- `parallax.cerberus.yaml` is a template: the live resource (`parallax-uat`, the only instance of this binary, on 127.0.0.1:18441) is registered from the operator's own copy under `~/.config/parallax/`, and the storybook review service from `~/.config/parallax-stories/` (checked read-only by the driver). The template sets no `env`: the binary needs none. The listen address defaults to
   `127.0.0.1:18441` (the descriptor's port and health URL), and the data directory defaults to the XDG data home of the service
   user; an operator who wants another port or directory adds `SUBSTRATE_CONFIG` and `PARALLAX_DATA_DIR` to the resource's `env`
-  at registration time. Cerberus records a pointer to this file and re-reads it (docs: config-registry), so the file must hold
-  nothing that is only an example. Ports: `parallax-uat` listens on 18441 (the default; no `SUBSTRATE_CONFIG` needed); the
+  at registration time. Cerberus records a pointer to a descriptor file and re-reads it (docs: config-registry), so a descriptor registered from
+  this file would need no edit before use. Ports: `parallax-uat` listens on 18441 (the default; no `SUBSTRATE_CONFIG` needed); the
   storybook review service is 18444 and is not this binary. Any other instance of this binary must set its own
   `httphost.addr` in its `SUBSTRATE_CONFIG`; the repository names none. The deployed registration changes only at cutover, by the
-  Cerberus owner.
+  Cerberus owner. At cutover the live descriptor (that copy) gains `SUBSTRATE_CONFIG` only if a setting differs from the defaults, and the owner is created with `parallax identity setup` before the unit is started on the new build.
 - Behind a local TLS proxy that forwards a name (the frontend's workbench catalogue already knows public names for
   this app, and the descriptor calls an external URL "a separate operator decision"): in the `SUBSTRATE_CONFIG` file
   set `parallax.allowed_hosts: [<name>]`, `identity.trusted_proxy: true` and, if the page origin differs from the
