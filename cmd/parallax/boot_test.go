@@ -37,7 +37,7 @@ func startedIn(t *testing.T, dataDir, override string) string {
 	t.Setenv("SUBSTRATE_CONFIG", file)
 
 	ctx, cancel := context.WithCancel(context.Background())
-	run, err := boot.StartWith(ctx, substrateApp, substrateModules, substrateConfigJSON, bootOptions(func(k string) string { return env[k] }))
+	run, err := boot.StartWith(ctx, substrateApp, substrateModules, substrateConfigJSON, bootOptions(func(k string) string { return env[k] }, true))
 	if err != nil {
 		cancel()
 		t.Fatal(err)
@@ -228,7 +228,7 @@ func TestBadSettingsRefuseToServe(t *testing.T) {
 	}
 	env := map[string]string{"PARALLAX_DATA_DIR": t.TempDir(), "SUBSTRATE_CONFIG": file}
 	t.Setenv("SUBSTRATE_CONFIG", file)
-	run, err := boot.StartWith(context.Background(), substrateApp, substrateModules, substrateConfigJSON, bootOptions(func(k string) string { return env[k] }))
+	run, err := boot.StartWith(context.Background(), substrateApp, substrateModules, substrateConfigJSON, bootOptions(func(k string) string { return env[k] }, true))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -326,7 +326,7 @@ func serveWith(t *testing.T, override string) error {
 	}
 	env := map[string]string{"PARALLAX_DATA_DIR": t.TempDir(), "SUBSTRATE_CONFIG": file}
 	t.Setenv("SUBSTRATE_CONFIG", file)
-	run, err := boot.StartWith(context.Background(), substrateApp, substrateModules, substrateConfigJSON, bootOptions(func(k string) string { return env[k] }))
+	run, err := boot.StartWith(context.Background(), substrateApp, substrateModules, substrateConfigJSON, bootOptions(func(k string) string { return env[k] }, true))
 	if err != nil {
 		t.Fatal(err)
 	}
