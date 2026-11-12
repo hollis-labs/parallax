@@ -1,6 +1,8 @@
 import { createContext, useContext } from "react"
 
 export interface Session {
+  username: string
+  displayName: string
   /** Back to the sign-in screen. */
   signedOut: () => void
 }

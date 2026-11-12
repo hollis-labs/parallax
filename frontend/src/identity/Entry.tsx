@@ -1,6 +1,6 @@
 import { Button, Input } from "@hollis-labs/design-components"
 import { type FormEvent, useId, useState } from "react"
-import { ApiError, type Me, request } from "./api"
+import { ApiError, type Me, request, waitPhrase } from "./api"
 
 function passwordHint(creating: boolean) {
   if (creating) return "new-password"
@@ -42,7 +42,13 @@ export function Entry({ setup, onReady }: { setup: boolean; onReady: (me: Me) =>
       onReady(me)
     } catch (e) {
       if (e instanceof ApiError && e.status === 409) setMode(false)
-      setError(e instanceof Error ? e.message : "Could not sign in.")
+      setError(
+        e instanceof ApiError && e.status === 429
+          ? `Too many attempts. Try again ${e.retryAfter === undefined ? "in a few minutes" : waitPhrase(e.retryAfter)}.`
+          : e instanceof Error
+            ? e.message
+            : "Could not sign in.",
+      )
     } finally {
       setBusy(false)
     }

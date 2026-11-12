@@ -5,7 +5,7 @@ import { useSession } from "./session"
 
 /** The shell has no user-menu region, so signing out is a nav.footer page with one button. */
 export function SignOutPage() {
-  const { signedOut } = useSession()
+  const { signedOut, displayName } = useSession()
   const [error, setError] = useState("")
   async function logout() {
     try {
@@ -19,7 +19,7 @@ export function SignOutPage() {
   return (
     <div className="identity-signout">
       <h2>Sign out</h2>
-      <p>You will need your password to come back.</p>
+      <p>Signed in as {displayName}. You will need your password to come back.</p>
       {error && (
         <p className="identity-error" role="alert">
           {error}

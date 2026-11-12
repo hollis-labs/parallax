@@ -1,26 +1,22 @@
 import { Button } from "@hollis-labs/design-components"
 import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react"
-import { ApiError, request, UNAUTHORIZED_EVENT } from "./api"
+import { ApiError, type Me, request, UNAUTHORIZED_EVENT } from "./api"
 import { Entry } from "./Entry"
 import "./identity.css"
 import { type Session, SessionContext } from "./session"
 
-interface SessionRow {
-  current?: boolean
-}
-
 /**
- * Nothing under the gate calls `/api/` or `/plugins/` before a session exists. There is no
- * "who am I" route: `GET /api/setup` says whether setup is open, then the sessions list
- * (any signed-in caller) answers 200 or 401.
+ * Nothing under the gate calls `/api/` or `/plugins/` before a session exists. `GET /api/setup`
+ * says whether setup is open; `GET /api/identity/profile` is the who-am-I route (200 signed in,
+ * 401 signed out).
  */
 export function Gate({ children }: { children: ReactNode }) {
-  const [signedIn, setSignedIn] = useState(false)
+  const [me, setMe] = useState<Me | null>(null)
   const [setup, setSetup] = useState(false)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
   const signedOut = useCallback(() => {
-    setSignedIn(false)
+    setMe(null)
     setSetup(false)
   }, [])
   useEffect(() => {
@@ -30,8 +26,7 @@ export function Gate({ children }: { children: ReactNode }) {
         setSetup(state.setup_required)
         if (!state.setup_required) {
           try {
-            await request<SessionRow[]>("identity/sessions")
-            setSignedIn(true)
+            setMe(await request<Me>("identity/profile"))
           } catch (e) {
             if (!(e instanceof ApiError && e.status === 401)) throw e
           }
@@ -49,8 +44,8 @@ export function Gate({ children }: { children: ReactNode }) {
     return () => window.removeEventListener(UNAUTHORIZED_EVENT, signedOut)
   }, [signedOut])
   const session = useMemo<Session | null>(
-    () => (signedIn ? { signedOut } : null),
-    [signedIn, signedOut],
+    () => (me ? { username: me.username, displayName: me.display_name, signedOut } : null),
+    [me, signedOut],
   )
   if (loading)
     return (
@@ -58,7 +53,7 @@ export function Gate({ children }: { children: ReactNode }) {
         Opening Parallax…
       </main>
     )
-  if (error && !signedIn)
+  if (error && !me)
     return (
       <main className="identity-entry">
         <p className="identity-error" role="alert">
@@ -67,6 +62,6 @@ export function Gate({ children }: { children: ReactNode }) {
         <Button onClick={() => window.location.reload()}>Try again</Button>
       </main>
     )
-  if (!session) return <Entry setup={setup} onReady={() => setSignedIn(true)} />
+  if (!session) return <Entry setup={setup} onReady={setMe} />
   return <SessionContext.Provider value={session}>{children}</SessionContext.Provider>
 }

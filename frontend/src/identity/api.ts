@@ -8,6 +8,8 @@ export class ApiError extends Error {
     public status: number,
     public code = "",
     public details?: unknown,
+    /** Seconds from the Retry-After header of a 429, when the answer carried one. */
+    public retryAfter?: number,
   ) {
     super(message)
   }
@@ -39,6 +41,21 @@ export async function apiFetch(path: string, init: RequestInit = {}): Promise<Re
   return response
 }
 
+/** Retry-After is delta-seconds or an HTTP date; anything else (or a past date) is absent. */
+export function retryAfterSeconds(value: string | null, now = Date.now()): number | undefined {
+  if (!value) return undefined
+  if (/^\d+$/.test(value)) return Number(value)
+  const at = Date.parse(value)
+  return Number.isFinite(at) && at > now ? Math.ceil((at - now) / 1000) : undefined
+}
+
+/** "in 5 minutes" for a Retry-After wait, rounded up to whole minutes above a minute. */
+export function waitPhrase(seconds: number): string {
+  if (seconds < 60) return `in ${seconds} second${seconds === 1 ? "" : "s"}`
+  const minutes = Math.ceil(seconds / 60)
+  return `in ${minutes} minute${minutes === 1 ? "" : "s"}`
+}
+
 /** JSON request against `/api/<path>`; an empty body (204) resolves to undefined. */
 export async function request<T>(path: string, method = "GET", body?: unknown): Promise<T> {
   const response = await apiFetch(`/api/${path}`, {
@@ -61,15 +78,18 @@ export async function request<T>(path: string, method = "GET", body?: unknown): 
       response.status,
       data?.code,
       data?.details,
+      retryAfterSeconds(response.headers.get("Retry-After")),
     )
   }
   return data as T
 }
 
+/** The signed-in person: GET /api/identity/profile (and the answer of setup and login, without assurance). */
 export interface Me {
   id: string
   username: string
   display_name: string
   email: string
   scopes: string[]
+  assurance?: string
 }
