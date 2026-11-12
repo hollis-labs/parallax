@@ -1,14 +1,14 @@
 module github.com/hollis-labs/parallax
 
-go 1.26.10
+go 1.26.11
 
 require (
 	github.com/brianvoe/gofakeit/v7 v7.17.1
 	github.com/hollis-labs/libs/app/app-host v0.1.0
 	github.com/hollis-labs/libs/core/util v0.6.0
 	github.com/hollis-labs/libs/mcp/plugin-mcp v0.6.0
-	github.com/hollis-labs/libs/security/auth v0.3.0
-	github.com/hollis-labs/substrate v0.1.1-0.20261112162132-d453ac897397
+	github.com/hollis-labs/libs/security/auth v0.3.1
+	github.com/hollis-labs/substrate v0.1.1-0.20261112164520-da9f59bb59b7
 	github.com/spf13/cobra v1.10.2
 	github.com/spf13/pflag v1.0.9
 )
