@@ -109,5 +109,5 @@ func requireLoopback(app *module.App) error {
 			return nil
 		}
 	}
-	return fmt.Errorf("parallax requires a loopback httphost.addr (for example 127.0.0.1:8085), got %q", addr)
+	return fmt.Errorf("parallax requires a loopback httphost.addr (for example 127.0.0.1:18441), got %q", addr)
 }

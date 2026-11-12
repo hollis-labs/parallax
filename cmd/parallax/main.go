@@ -19,26 +19,32 @@ import (
 func main() {
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
-	if err := run(ctx, os.Getenv); err != nil {
+	if err := run(ctx, os.Getenv, os.Args[1:]); err != nil {
 		fmt.Fprintln(os.Stderr, "parallax:", err)
 		stop()
 		os.Exit(1)
 	}
 }
 
-func run(ctx context.Context, getenv func(string) string) error {
-	started, err := boot.StartWith(ctx, substrateApp, substrateModules, substrateConfigJSON, bootOptions(getenv))
+func run(ctx context.Context, getenv func(string) string, args []string) error {
+	modules, prepare := plan(args)
+	started, err := boot.StartWith(ctx, substrateApp, modules, substrateConfigJSON, bootOptions(getenv, prepare))
 	if err != nil {
 		return err
 	}
 	defer func() { _ = started.Stop(context.Background()) }()
 
-	p := &parallax{app: started.App}
-	rootCmd := cli.Root(started.App)
+	return (&parallax{app: started.App}).root(ctx, args).ExecuteContext(ctx)
+}
+
+// root is the command tree: the framework's skeleton plus serve. `parallax` with no command
+// serves, like `parallax serve`.
+func (p *parallax) root(ctx context.Context, args []string) *cobra.Command {
+	rootCmd := cli.Root(p.app)
+	rootCmd.SetArgs(args) // the same words plan() looked at
 	serve := p.serveCmd(ctx)
-	// `parallax` with no command serves, like `parallax serve`.
 	rootCmd.RunE = func(c *cobra.Command, args []string) error { return serve.RunE(c, args) }
 	rootCmd.Args = cobra.NoArgs
 	rootCmd.AddCommand(serve)
-	return rootCmd.ExecuteContext(ctx)
+	return rootCmd
 }

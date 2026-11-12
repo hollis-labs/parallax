@@ -1,4 +1,8 @@
-# Source proposal only. Register and deploy after operator approval.
+# The repo-owned descriptor. Cerberus records a pointer to this file and re-reads it, so keep it
+# deployable as it stands: no placeholder paths. The binary needs no env: it listens on
+# 127.0.0.1:18441 and keeps its data in the service user's XDG data home. To change either, add
+# SUBSTRATE_CONFIG (httphost.addr) and/or PARALLAX_DATA_DIR to env at registration.
+# Register and deploy only after operator approval.
 kind: cerberus-project/v1
 owner: parallax
 namespace: local
@@ -34,12 +38,6 @@ resources:
       restart_delay: 2s
       port: 18441
       url: http://127.0.0.1:18441/
-      # Placeholders: the operator supplies real absolute paths at registration. The file named by
-      # SUBSTRATE_CONFIG holds httphost.addr ("127.0.0.1:18441"); the data directory holds the
-      # identity database and signing key (private, owned by the service user).
-      env:
-        SUBSTRATE_CONFIG: /srv/example/parallax/substrate.yaml
-        PARALLAX_DATA_DIR: /srv/example/parallax/data
       health_check:
         url: http://127.0.0.1:18441/healthz
         timeout: 5s
