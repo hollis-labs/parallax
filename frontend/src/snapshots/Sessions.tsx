@@ -333,46 +333,47 @@ export function CapturedSessions({ capture, onReset }: { capture: Capture; onRes
             </DetailSection>
           </div>
         )}
-      </DetailDialog>
-      <DetailDialog
-        open={stop !== null}
-        onClose={() => setStop(null)}
-        title="Stop session · local preview"
-        footer={
-          <DashboardToolbar>
-            <Button variant="outline" onClick={() => setStop(null)}>
-              {previewed ? "Close preview" : "Cancel preview"}
-            </Button>
-            <Button
-              disabled={!stop || typed.trim() !== stop.id.slice(0, 12) || previewed}
-              onClick={() => setPreviewed(true)}
-            >
-              Confirm stop preview
-            </Button>
-          </DashboardToolbar>
-        }
-      >
-        {stop && (
-          <div className="dash-form-stack">
-            <p className="dash-support">
-              This previews Tether’s stop confirmation for {stop.id}. No command is sent and the
-              captured session stays unchanged.
-            </p>
-            <DashboardField label={`Type ${stop.id.slice(0, 12)} to confirm`}>
-              <Input
-                aria-label="Confirm session ID"
-                value={typed}
-                onChange={(e) => setTyped(e.target.value)}
-                autoComplete="off"
-              />
-            </DashboardField>
-            <p role="status" className="dash-support">
-              {previewed
-                ? "Preview complete. No runtime was stopped; captured data is unchanged."
-                : "In the live application, this action stops the runtime and ends live input."}
-            </p>
-          </div>
-        )}
+        {/* Nested in the details dialog: the dialog library coordinates Escape between nested dialogs only. */}
+        <DetailDialog
+          open={stop !== null}
+          onClose={() => setStop(null)}
+          title="Stop session · local preview"
+          footer={
+            <DashboardToolbar>
+              <Button variant="outline" onClick={() => setStop(null)}>
+                {previewed ? "Close preview" : "Cancel preview"}
+              </Button>
+              <Button
+                disabled={!stop || typed.trim() !== stop.id.slice(0, 12) || previewed}
+                onClick={() => setPreviewed(true)}
+              >
+                Confirm stop preview
+              </Button>
+            </DashboardToolbar>
+          }
+        >
+          {stop && (
+            <div className="dash-form-stack">
+              <p className="dash-support">
+                This previews Tether’s stop confirmation for {stop.id}. No command is sent and the
+                captured session stays unchanged.
+              </p>
+              <DashboardField label={`Type ${stop.id.slice(0, 12)} to confirm`}>
+                <Input
+                  aria-label="Confirm session ID"
+                  value={typed}
+                  onChange={(e) => setTyped(e.target.value)}
+                  autoComplete="off"
+                />
+              </DashboardField>
+              <p role="status" className="dash-support">
+                {previewed
+                  ? "Preview complete. No runtime was stopped; captured data is unchanged."
+                  : "In the live application, this action stops the runtime and ends live input."}
+              </p>
+            </div>
+          )}
+        </DetailDialog>
       </DetailDialog>
     </>
   )
