@@ -15,7 +15,7 @@ import (
 
 const (
 	substrateApp        = "parallax"
-	substrateConfigJSON = "{\"auth\":{\"mode\":\"enforce\"},\"database\":{\"sqlite\":{\"path\":\"parallax.db\"}},\"httphost\":{\"addr\":\"127.0.0.1:8085\"},\"identity\":{\"key_file\":\"identity-signing.key\",\"session_ttl\":\"12h\"},\"logging\":{\"format\":\"text\",\"level\":\"info\"}}"
+	substrateConfigJSON = "{\"auth\":{\"mode\":\"enforce\"},\"database\":{\"sqlite\":{\"path\":\"parallax.db\"}},\"httphost\":{\"addr\":\"127.0.0.1:8085\"},\"identity\":{\"key_file\":\"identity-signing.key\",\"session_ttl\":\"12h\"},\"logging\":{\"format\":\"text\",\"level\":\"info\"},\"parallax\":{\"allowed_hosts\":[]}}"
 )
 
 // substrateModules is the start order.

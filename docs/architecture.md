@@ -18,11 +18,11 @@ endpoints and a registry-v2 plugin delivery. It runs on Substrate (`app-host` va
 ## Layout
 
 - `cmd/parallax`: `substrate.yaml` and generated `substrate_wiring.go` (manifest), `main.go` (boot, CLI root),
-  `config.go` (data directory into the generated config), `serve.go` (handler assembly).
+  `config.go` (the `AfterConfig` boot hook: data directory resolved after the override, relative paths anchored in it), `serve.go` (handler assembly).
 - `internal/api`: the route list (one list builds the mux and the scope table) and its test.
 - `internal/hostguard`: Host check against loopback plus `parallax.allowed_hosts` (DNS rebinding), forwarding-header
   stripping; `internal/settings` parses that block.
-- `internal/appdirs`: data directory (`PARALLAX_DATA_DIR` or XDG data home); `0700` directory, `0600` database.
+- `internal/appdirs`: data directory (`PARALLAX_DATA_DIR` or XDG data home); `0700` directory, `0600` database; relative manifest paths are anchored there, absolute override paths are kept.
 - `internal/demoplugin`: the reviewed `ops/g1` plugin registry and bundle, served by libs `app-host/plugins.Delivery`.
 - `internal/scenarios`, `internal/snapshots`: deterministic fixture generators and the embedded capture. Unchanged.
 - `internal/webui`: embeds `dist/`; `cmd/fixtures` regenerates bundled JSON.
@@ -39,10 +39,11 @@ signing key (`identity-signing.key`) in the data directory. Both hold accounts o
 
 ## Config
 
-`httphost.addr` (default `127.0.0.1:8085`, must be loopback), `identity.*`, `database.sqlite.path` (set by `main`),
+`httphost.addr` (default `127.0.0.1:8085`, must be loopback), `identity.*`, `database.sqlite.path` and `identity.key_file` (relative defaults, anchored in the data directory by the boot hook),
 all overridable in the file named by `SUBSTRATE_CONFIG`. The app's own `parallax:` block (`internal/settings`) has one
 key, `allowed_hosts` (extra Host names served behind a local TLS proxy; default none, an unknown key is refused at
-start). The manifest cannot carry it, so it is set in the override file.
+start). Its default (`allowed_hosts: []`) is in the manifest; the operator sets names in the override file, which merges
+deeply (lists replace).
 
 ## Deployment
 

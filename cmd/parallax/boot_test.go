@@ -22,20 +22,22 @@ import (
 // between the HTTP client and the database.
 func started(t *testing.T, override string) string {
 	t.Helper()
+	return startedIn(t, t.TempDir(), override)
+}
+
+// startedIn is started with a chosen data directory.
+func startedIn(t *testing.T, dataDir, override string) string {
+	t.Helper()
 	file := filepath.Join(t.TempDir(), "override.yaml")
 	if err := os.WriteFile(file, []byte(override), 0o600); err != nil {
 		t.Fatal(err)
 	}
-	env := map[string]string{"PARALLAX_DATA_DIR": t.TempDir(), "SUBSTRATE_CONFIG": file}
-	config, err := prepare(func(k string) string { return env[k] })
-	if err != nil {
-		t.Fatal(err)
-	}
+	env := map[string]string{"PARALLAX_DATA_DIR": dataDir, "SUBSTRATE_CONFIG": file}
 	// The config module reads SUBSTRATE_CONFIG from the process environment.
 	t.Setenv("SUBSTRATE_CONFIG", file)
 
 	ctx, cancel := context.WithCancel(context.Background())
-	run, err := boot.Start(ctx, substrateApp, substrateModules, config)
+	run, err := boot.StartWith(ctx, substrateApp, substrateModules, substrateConfigJSON, bootOptions(func(k string) string { return env[k] }))
 	if err != nil {
 		cancel()
 		t.Fatal(err)
@@ -225,12 +227,8 @@ func TestBadSettingsRefuseToServe(t *testing.T) {
 		t.Fatal(err)
 	}
 	env := map[string]string{"PARALLAX_DATA_DIR": t.TempDir(), "SUBSTRATE_CONFIG": file}
-	config, err := prepare(func(k string) string { return env[k] })
-	if err != nil {
-		t.Fatal(err)
-	}
 	t.Setenv("SUBSTRATE_CONFIG", file)
-	run, err := boot.Start(context.Background(), substrateApp, substrateModules, config)
+	run, err := boot.StartWith(context.Background(), substrateApp, substrateModules, substrateConfigJSON, bootOptions(func(k string) string { return env[k] }))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -239,4 +237,40 @@ func TestBadSettingsRefuseToServe(t *testing.T) {
 	if err == nil || !strings.Contains(err.Error(), "unknown config key(s): allowed_host") {
 		t.Fatalf("serve error = %v", err)
 	}
+}
+
+// The manifest's relative defaults land in the data directory, private; an absolute path from
+// the override is kept and nothing is created at the default.
+func TestDataPaths(t *testing.T) {
+	t.Run("defaults are anchored in the data directory", func(t *testing.T) {
+		data := filepath.Join(t.TempDir(), "data")
+		c := newClient(t, startedIn(t, data, loopbackOverride))
+		c.want(200, "POST", "/api/setup", map[string]string{"username": "owner", "display_name": "Owner", "password": "correct horse battery staple"}, xrw)
+		for name, want := range map[string]os.FileMode{"parallax.db": 0o600, "identity-signing.key": 0o600} {
+			fi, err := os.Stat(filepath.Join(data, name))
+			if err != nil || fi.Mode().Perm() != want {
+				t.Errorf("%s: %v, mode %v, want %o", name, err, fi, want)
+			}
+		}
+		if fi, err := os.Stat(data); err != nil || fi.Mode().Perm() != 0o700 {
+			t.Errorf("data directory: %v, %v", err, fi)
+		}
+	})
+	t.Run("an absolute path from the override is kept", func(t *testing.T) {
+		data := filepath.Join(t.TempDir(), "data")
+		elsewhere := t.TempDir()
+		override := loopbackOverride + "database:\n  sqlite:\n    path: " + filepath.Join(elsewhere, "custom.db") + "\nidentity:\n  key_file: " + filepath.Join(elsewhere, "custom.key") + "\n"
+		c := newClient(t, startedIn(t, data, override))
+		c.want(200, "POST", "/api/setup", map[string]string{"username": "owner", "display_name": "Owner", "password": "correct horse battery staple"}, xrw)
+		for _, name := range []string{"custom.db", "custom.key"} {
+			if _, err := os.Stat(filepath.Join(elsewhere, name)); err != nil {
+				t.Errorf("%s not created where the override says: %v", name, err)
+			}
+		}
+		for _, name := range []string{"parallax.db", "identity-signing.key"} {
+			if _, err := os.Stat(filepath.Join(data, name)); err == nil {
+				t.Errorf("%s created in the data directory despite the override", name)
+			}
+		}
+	})
 }

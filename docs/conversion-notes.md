@@ -59,8 +59,12 @@ belongs to the GUI agent and is listed under "For the frontend".
    stays until then; the allowed list is read from the app's own `parallax:` block (`internal/settings`).
 7. **CI runs `scan-public --tree` only** until the program-wide history pass (see Gap 1). The tree step stays red until
    the 35 generator and frontend findings are fixed with gui-parallax.
-8. **No pre-boot data-directory or config-path hook** (known framework gap, same as Basalisk): `main` rewrites the
-   database path and key file in the generated config. No legacy-data guard is needed (nothing existed).
+8. **Run-time data directory: resolved with the Substrate boot hooks (09c04e5).** The manifest carries relative defaults
+   (`database.sqlite.path: parallax.db`, `identity.key_file: identity-signing.key`) and the app's own `parallax:` block
+   (`allowed_hosts: []`). `boot.StartWith` with an `AfterConfig` hook (`cmd/parallax/config.go`) resolves the data directory
+   after the `SUBSTRATE_CONFIG` override is applied, anchors a relative path in it and keeps an absolute one from the
+   override. The earlier JSON rewrite of the generated config is gone. No framework data-directory concept yet (the
+   framework's own note). No legacy-data guard is needed (nothing existed).
 
 ## Old to new
 
@@ -70,7 +74,7 @@ belongs to the GUI agent and is listed under "For the frontend".
 |---|---|
 | `LISTEN_ADDR` (default `127.0.0.1:18441`) | `httphost.addr` (default `127.0.0.1:8085`); must be loopback |
 | (none) | `PARALLAX_DATA_DIR` data directory; `SUBSTRATE_CONFIG` YAML overrides |
-| (none) | `parallax.allowed_hosts` (proxy names), read from `app.Config["parallax"]`; defaults in `internal/settings` (empty) |
+| (none) | `parallax.allowed_hosts` (proxy names), read from `app.Config["parallax"]`; defaults in the manifest (`allowed_hosts: []`), parsed by `internal/settings` |
 
 ### HTTP
 

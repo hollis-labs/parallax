@@ -27,11 +27,7 @@ func main() {
 }
 
 func run(ctx context.Context, getenv func(string) string) error {
-	config, err := prepare(getenv)
-	if err != nil {
-		return err
-	}
-	started, err := boot.Start(ctx, substrateApp, substrateModules, config)
+	started, err := boot.StartWith(ctx, substrateApp, substrateModules, substrateConfigJSON, bootOptions(getenv))
 	if err != nil {
 		return err
 	}

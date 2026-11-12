@@ -17,8 +17,11 @@ func TestResolveHonoursTheOverride(t *testing.T) {
 	if err != nil || d.Data != want {
 		t.Fatalf("Resolve = %q, %v; want %q", d.Data, err, want)
 	}
-	if d.Database() != filepath.Join(want, DatabaseFile) || d.SigningKey() != filepath.Join(want, SigningKeyFile) {
-		t.Fatalf("paths: %s %s", d.Database(), d.SigningKey())
+	if got := d.Anchor("parallax.db"); got != filepath.Join(want, "parallax.db") {
+		t.Fatalf("relative path anchored to %s", got)
+	}
+	if got := d.Anchor("/abs/elsewhere/x.db"); got != "/abs/elsewhere/x.db" {
+		t.Fatalf("absolute path changed to %s", got)
 	}
 }
 
@@ -46,15 +49,19 @@ func mode(t *testing.T, path string) os.FileMode {
 	return fi.Mode().Perm()
 }
 
-func TestPrepareCreatesPrivateFiles(t *testing.T) {
+func TestPrepareDirAndEnsurePrivateCreatePrivateFiles(t *testing.T) {
 	d := Dirs{Data: filepath.Join(t.TempDir(), "a", "data")}
-	if err := d.Prepare(); err != nil {
+	if err := d.PrepareDir(); err != nil {
+		t.Fatal(err)
+	}
+	db := d.Anchor("parallax.db")
+	if err := EnsurePrivate(db); err != nil {
 		t.Fatal(err)
 	}
 	if m := mode(t, d.Data); m != 0o700 {
 		t.Errorf("directory mode %o, want 700", m)
 	}
-	if m := mode(t, d.Database()); m != 0o600 {
+	if m := mode(t, db); m != 0o600 {
 		t.Errorf("database mode %o, want 600", m)
 	}
 }
@@ -65,19 +72,23 @@ func TestPrepareTightensExistingLooseModes(t *testing.T) {
 		t.Fatal(err)
 	}
 	d := Dirs{Data: dir}
-	if err := os.WriteFile(d.Database(), []byte("keep"), 0o644); err != nil { //nolint:gosec // the test makes it loose on purpose
+	db := d.Anchor("parallax.db")
+	if err := os.WriteFile(db, []byte("keep"), 0o644); err != nil { //nolint:gosec // the test makes it loose on purpose
 		t.Fatal(err)
 	}
-	if err := d.Prepare(); err != nil {
+	if err := d.PrepareDir(); err != nil {
+		t.Fatal(err)
+	}
+	if err := EnsurePrivate(db); err != nil {
 		t.Fatal(err)
 	}
 	if m := mode(t, dir); m != 0o700 {
 		t.Errorf("directory mode %o, want 700", m)
 	}
-	if m := mode(t, d.Database()); m != 0o600 {
+	if m := mode(t, db); m != 0o600 {
 		t.Errorf("database mode %o, want 600", m)
 	}
-	if b, _ := os.ReadFile(d.Database()); string(b) != "keep" { //nolint:gosec // test path
-		t.Errorf("Prepare changed the database content: %q", b)
+	if b, _ := os.ReadFile(db); string(b) != "keep" { //nolint:gosec // test path
+		t.Errorf("content changed: %q", b)
 	}
 }
