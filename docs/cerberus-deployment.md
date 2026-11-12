@@ -6,7 +6,7 @@ reload or deploy a resource. First activation remains an operator step.
 
 ## Build and runtime
 
-Use Go 1.26.9 and Node 24 with npm 11 on the build host. From a clean checkout,
+Use Go 1.26.10 and Node 24 with npm 11 on the build host. From a clean checkout,
 `make build` runs the locked frontend `npm ci` and Vite build before compiling
 `.scratch/parallax`. The frontend is embedded in that binary. Tracked
 `third_party/*.tgz` candidate packages referenced by the lockfile must remain
@@ -19,9 +19,14 @@ installed copy with `run_from: artifact`; a workspace rebuild or resource reload
 alone does not install a new binary. `dir: .` resolves relative to this config's
 repo directory. The existing Makefile needs no deployment target change.
 
-The proposed listener is `127.0.0.1:18441`, supplied through `LISTEN_ADDR`.
-The declaration contains no secrets or secret references: this fixture-only
-runtime needs none. Any later environment reference must use the operator's
+The proposed listener is `127.0.0.1:18441`. The binary has no `LISTEN_ADDR`: the
+address is `httphost.addr` in the YAML file that `SUBSTRATE_CONFIG` names (an
+absolute path the operator provides; the descriptor holds a placeholder). That
+file also holds `identity.trusted_proxy` and `parallax.allowed_hosts` if a proxy
+name is ever used. The data directory (the identity database and signing key)
+is `PARALLAX_DATA_DIR`, also a placeholder here; it must be a private directory
+the service user owns. The declaration contains no secrets or secret
+references: the fixture-only runtime needs none. Any later environment reference must use the operator's
 Cerberus secret-reference contract and stay outside the repository. Confirm
 the port is free on the eventual runtime host before activation. The proposed
 URL is loopback only; an externally reachable URL or proxy is a separate
@@ -29,10 +34,12 @@ operator decision.
 
 ## Health and activation
 
-Chimera already supplies `GET /healthz`, returning `{"status":"ok"}`. That
-endpoint proves HTTP liveness. Check `/`, `/api/scenario`, and one local
-`/?example=...` fixture journey separately to verify the embedded UI and
-scenario delivery. Browser acceptance and owner visual approval remain
+Substrate supplies `GET /healthz` (no sign-in needed), returning
+`{"status":"ok","checks":{"database":"ok"}}`. That proves HTTP liveness and
+the identity database. Everything else needs a session: after first-run setup
+(owner account) and sign-in, check `/`, `/api/scenario`, `/plugins/ops/g1/bundle.js`
+(401 signed out, 200 signed in) and one local `/?example=...` fixture journey to
+verify the embedded UI and scenario delivery. An unknown `Host` is refused (403). Browser acceptance and owner visual approval remain
 separate from a healthy daemon.
 
 After this declaration lands on main, the operator can validate the exact

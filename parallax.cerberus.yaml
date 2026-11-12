@@ -34,8 +34,12 @@ resources:
       restart_delay: 2s
       port: 18441
       url: http://127.0.0.1:18441/
+      # Placeholders: the operator supplies real absolute paths at registration. The file named by
+      # SUBSTRATE_CONFIG holds httphost.addr ("127.0.0.1:18441"); the data directory holds the
+      # identity database and signing key (private, owned by the service user).
       env:
-        LISTEN_ADDR: 127.0.0.1:18441
+        SUBSTRATE_CONFIG: /srv/example/parallax/substrate.yaml
+        PARALLAX_DATA_DIR: /srv/example/parallax/data
       health_check:
         url: http://127.0.0.1:18441/healthz
         timeout: 5s
