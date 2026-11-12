@@ -31,7 +31,7 @@ test("shared list/table/split/drawer keep selection and one body owner", async (
   await page.getByLabel("Navigation variant").selectOption("header")
   await page.getByRole("link", { name: "Usage", exact: true }).click()
   await expect(page.getByLabel("Selected run")).toContainText("TASK-003")
-  await page.getByRole("button", { name: "Layouts", exact: true }).click()
+  await page.getByRole("link", { name: "Layouts", exact: true }).click()
   await expect(page.getByLabel("Comparison selected record")).toContainText("TASK-003")
   await page.getByLabel("Scenario").selectOption("permission-denied")
   await expect(page.getByText("Access denied by fixture policy")).toBeVisible()

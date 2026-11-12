@@ -167,3 +167,13 @@ lab's own composition (sibling dialogs) and is fixed (CW-20261112-0125): it stay
 - An **unknown** `?view=NAME` lands on `/` (Activity), says "Unknown requested view NAME; showing Activity.", and leaves no `view` parameter in the URL (it used to
   rewrite `view` to "Activity"). Test: `tests/workbench.spec.ts` "known URL reload and unknown route fallback..." (last assertion: path is `/`, no `view` parameter), ruled by the driver.
 - Navigation is the shell's: a column at wide widths, a top bar with a "More" sheet at narrow widths; sign-out is its footer surface (the header button is gone).
+
+## Shell wrap: scroll owners, the header strip and the second `main`
+
+- The three "one page scroll owner" tests (`administration`, `communications`, `observability`) now count scroll containers inside the lab's page body
+  (`[data-lab-body]`), not inside `main *`: in the old layout the header control strip sat outside `main`; in the shell page the whole lab is inside the kit's `main`.
+  The strip (`.review-controls`) still scrolls inside itself at narrow widths (`max-height: 120px; overflow-y: auto`); unchanged behaviour, now inside the shell's `main`.
+- The kit `AppShell` always renders a `<main>`, and the app-shell already has one, so a nested `AppShell` is a second landmark. Every page except Layouts now uses
+  `LabFrame` (`src/shell/LabFrame.tsx`: header, a labelled region, no `main`). Layouts keeps the real `AppShell` because it demonstrates the kit's aside and
+  navigation variants; it therefore still has two `main` elements (`app-shell-aside.spec.ts` "narrow-short 390x420..." targets it and stays failing). A way for
+  `AppShell` to render its content without `main` belongs to design-components.

@@ -43,6 +43,7 @@ import { usePlayback } from "./playback/usePlayback"
 import { PrimitiveGallery } from "./primitives/Gallery"
 import { RunExplorer } from "./run-explorer/Explorer"
 import { SettingsReview } from "./settings-review/Review"
+import { LabFrame } from "./shell/LabFrame"
 import { WidgetGallery } from "./widgets/Gallery"
 import { destinations, normalizeView, viewIcon, workbenchEntry } from "./workbench/catalog"
 import { ReviewWorkbench } from "./workbench/Workbench"
@@ -461,8 +462,9 @@ export function App({ view, onNavigate }: { view: string; onNavigate: (name: str
       onSelect: () => navigate(entry.id),
     }
   })
+  const Frame = (page === "Layouts" ? AppShell : LabFrame) as typeof AppShell
   const shell = (
-    <AppShell
+    <Frame
       nav={
         page === "Layouts" && navigation === "rail" ? (
           <Navigation mode="rail" items={navigationItems} />
@@ -1005,7 +1007,7 @@ export function App({ view, onNavigate }: { view: string; onNavigate: (name: str
           <p>{intent}</p>
         </div>
       )}
-    </AppShell>
+    </Frame>
   )
   return pluginHost ? (
     <PluginHostProvider runtime={pluginHost.runtime}>{shell}</PluginHostProvider>

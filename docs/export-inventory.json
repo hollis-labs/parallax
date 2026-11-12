@@ -29595,7 +29595,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "ISODateString",
     "category": "type-export",
@@ -29608,7 +29608,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "JsonPrimitive",
     "category": "type-export",
@@ -29621,7 +29621,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "JsonValue",
     "category": "type-export",
@@ -29634,7 +29634,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "JsonObject",
     "category": "type-export",
@@ -29647,7 +29647,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "ApiError",
     "category": "runtime-value",
@@ -29660,7 +29660,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "createApiClient",
     "category": "nonvisual-function",
@@ -29673,7 +29673,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "ApiClient",
     "category": "type-export",
@@ -29686,7 +29686,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "ApiClientOptions",
     "category": "type-export",
@@ -29699,7 +29699,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "ApiRequestOptions",
     "category": "type-export",
@@ -29712,7 +29712,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "QueryValue",
     "category": "type-export",
@@ -29725,7 +29725,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "toSnakeCase",
     "category": "nonvisual-function",
@@ -29738,7 +29738,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "normalizeKeys",
     "category": "nonvisual-function",
@@ -29751,7 +29751,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "parseMetadataJson",
     "category": "nonvisual-function",
@@ -29764,7 +29764,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "normalizeDateString",
     "category": "nonvisual-function",
@@ -29777,7 +29777,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "normalizeOptionalDateString",
     "category": "nonvisual-function",
@@ -29790,7 +29790,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "normalizeStringArray",
     "category": "nonvisual-function",
@@ -29803,7 +29803,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "normalizeNumber",
     "category": "nonvisual-function",
@@ -29816,7 +29816,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "normalizeBoolean",
     "category": "nonvisual-function",
@@ -29829,7 +29829,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "createApiContext",
     "category": "nonvisual-function",
@@ -29842,7 +29842,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "ApiContextHandle",
     "category": "type-export",
@@ -29855,7 +29855,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "usePoll",
     "category": "nonvisual-function",
@@ -29868,7 +29868,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "refreshPolledData",
     "category": "nonvisual-function",
@@ -29881,7 +29881,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "createRefreshRegistry",
     "category": "nonvisual-function",
@@ -29894,7 +29894,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "defaultRefreshRegistry",
     "category": "runtime-value",
@@ -29907,7 +29907,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "UsePollResult",
     "category": "type-export",
@@ -29920,7 +29920,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "UsePollOptions",
     "category": "type-export",
@@ -29933,7 +29933,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "PollFetcher",
     "category": "type-export",
@@ -29946,7 +29946,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "RefreshRegistry",
     "category": "type-export",
@@ -29959,7 +29959,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "useSSE",
     "category": "nonvisual-function",
@@ -29972,7 +29972,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "SSEMessage",
     "category": "type-export",
@@ -29985,7 +29985,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "UseSSEOptions",
     "category": "type-export",
@@ -29998,7 +29998,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "UseSSEResult",
     "category": "type-export",
@@ -30011,7 +30011,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "useElapsed",
     "category": "nonvisual-function",
@@ -30024,7 +30024,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "createRouter",
     "category": "nonvisual-function",
@@ -30037,7 +30037,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "RouterConfig",
     "category": "type-export",
@@ -30050,7 +30050,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "createScopedStorage",
     "category": "nonvisual-function",
@@ -30091,7 +30091,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "StorageArea",
     "category": "type-export",
@@ -30104,7 +30104,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "ScopedStorage",
     "category": "type-export",
@@ -30146,7 +30146,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "ScopedStorageOptions",
     "category": "type-export",
@@ -30159,7 +30159,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "createListCursor",
     "category": "nonvisual-function",
@@ -30199,7 +30199,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "listCursorNeighbors",
     "category": "nonvisual-function",
@@ -30212,7 +30212,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "ListCursor",
     "category": "type-export",
@@ -30225,7 +30225,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "ListCursorNeighbors",
     "category": "type-export",
@@ -30238,7 +30238,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "ListCursorHandle",
     "category": "type-export",
@@ -30251,7 +30251,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "formatRelativeTime",
     "category": "nonvisual-function",
@@ -30264,7 +30264,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "formatShortDate",
     "category": "nonvisual-function",
@@ -30277,7 +30277,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "formatCount",
     "category": "nonvisual-function",
@@ -30290,7 +30290,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "formatDuration",
     "category": "nonvisual-function",
@@ -30303,7 +30303,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "createThemeStore",
     "category": "nonvisual-function",
@@ -30343,7 +30343,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "ColorMode",
     "category": "type-export",
@@ -30356,7 +30356,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "ModePreference",
     "category": "type-export",
@@ -30369,7 +30369,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "ThemeState",
     "category": "type-export",
@@ -30382,7 +30382,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "ThemeStore",
     "category": "type-export",
@@ -30395,7 +30395,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "ThemeStoreOptions",
     "category": "type-export",
@@ -30408,7 +30408,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "useTheme",
     "category": "nonvisual-function",
@@ -30421,7 +30421,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "createAppShellAsideStore",
     "category": "nonvisual-function",
@@ -30464,7 +30464,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "parseAsidePreference",
     "category": "nonvisual-function",
@@ -30477,7 +30477,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "createMemoryStorage",
     "category": "nonvisual-function",
@@ -30521,7 +30521,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "VALID_ASIDE_WIDTHS",
     "category": "runtime-value",
@@ -30534,7 +30534,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "AsideWidth",
     "category": "type-export",
@@ -30547,7 +30547,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "AppShellAsidePreference",
     "category": "type-export",
@@ -30587,7 +30587,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "AppShellAsideStoreOptions",
     "category": "type-export",
@@ -30600,7 +30600,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "AppShellAsideStore",
     "category": "type-export",
@@ -30613,7 +30613,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "useAppShellAside",
     "category": "nonvisual-function",
@@ -30656,7 +30656,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "resolveAdmittedFocusTarget",
     "category": "nonvisual-function",
@@ -30669,7 +30669,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "FocusReturnTargetOptions",
     "category": "type-export",
@@ -30682,7 +30682,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "UseAppShellAsideOptions",
     "category": "type-export",
@@ -30695,7 +30695,7 @@
   },
   {
     "package": "@hollis-labs/design-app-runtime",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "entry": ".",
     "name": "AppShellAsideHandle",
     "category": "type-export",
@@ -30703,6 +30703,45 @@
     "disposition": "deferred",
     "reason": "Public export tracked; no direct adoption or independent behavior proof.",
     "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-app-runtime",
+    "version": "0.6.0",
+    "entry": ".",
+    "name": "createVersionedStore",
+    "category": "nonvisual-function",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-app-runtime",
+    "version": "0.6.0",
+    "entry": ".",
+    "name": "VersionedStore",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-app-runtime",
+    "version": "0.6.0",
+    "entry": ".",
+    "name": "useVersionedStore",
+    "category": "nonvisual-function",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
     "evidence": {},
     "importEvidence": []
   }

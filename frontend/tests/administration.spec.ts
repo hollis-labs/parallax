@@ -189,7 +189,8 @@ test("admin and account portable stories use no API and keep one narrow scroll o
   await page.screenshot({ animations: "disabled", path: info.outputPath("account-narrow.png") })
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
   const owners = await page.evaluate(() =>
-    [...document.querySelectorAll<HTMLElement>("main *")]
+    // The lab's page body (the header control strip scrolls inside itself at narrow widths and is not the page body).
+    [...document.querySelectorAll<HTMLElement>("[data-lab-body] *")]
       .filter(
         (e) =>
           e.scrollHeight > e.clientHeight + 1 &&

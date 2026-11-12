@@ -137,7 +137,8 @@ test("chat flow has one page scroll owner and themed narrow cards", async ({ pag
   expect(await transcript.evaluate((el) => getComputedStyle(el).overflowY)).toBe("visible")
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
   const owners = await page.evaluate(() =>
-    [...document.querySelectorAll<HTMLElement>("main *")]
+    // The lab's page body (the header control strip scrolls inside itself at narrow widths and is not the page body).
+    [...document.querySelectorAll<HTMLElement>("[data-lab-body] *")]
       .filter(
         (el) =>
           el.scrollHeight > el.clientHeight + 1 &&
