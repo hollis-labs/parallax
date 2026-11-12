@@ -138,3 +138,23 @@ On CI, one Escape sometimes closed the "Stop session · local preview" dialog an
 coordinates Escape between nested dialogs only. The preview is now rendered inside the details dialog (`src/snapshots/Sessions.tsx`). Measured on 2 cores
 (`taskset -c 0,1`) with 2 workers, the test repeated 60 times: siblings 21 failed, nested 0 failed. Other members of the same CI flake family are not
 fixed: `reader-detail-custody.spec.ts:213` (CW-20261112-0126, a single dialog; 1 of 40 under the same condition) and `evidence-states.spec.ts:5` and `:100`.
+
+## Popup-timing quarantine (non-blocking CI job `browser-popup-timing`)
+
+Three tests are tagged `@popup-timing` in their titles and run as the Playwright project `popup-timing`, in their own CI job `browser-popup-timing (non-blocking)`
+(`continue-on-error`), so a red result is visible in the checks and does not block the merge. Everything else is the `blocking` project and the job that
+gates the merge, at the default worker count. No retries, no `fixme`. A plain `playwright test` (and `make browser`) runs both projects.
+
+| Test | Why it is here | Task |
+|---|---|---|
+| `reader-detail-custody.spec.ts` "MediaDialog finalFocus binds to opening activation..." | the reader dialog is still present after Escape; 1 of 40 runs at 2 cores / 2 workers (a single dialog) | CW-20261112-0126 |
+| `evidence-states.spec.ts` "native supplemental help has actual description, Escape and current visible evidence" | the tooltip is visible but its trigger never gets `aria-describedby`; 4 of 60 at 2 cores / 2 workers (1 of 60 with a settling poll) | CW-20261112-0129 |
+| `evidence-states.spec.ts` "actual complete desktop and dark narrow source-help portal are bounded inert and contrasted" | the tooltip's geometry or paint never settles, or the tooltip is gone; 7 of 60 at 2 cores / 2 workers (5 of 60 with settling polls) | CW-20261112-0129 |
+
+Pattern: keyboard-opened floating popups whose result depends on event ordering and commits under CPU contention (0 failures at 4 cores with 1 worker locally;
+a few percent per test at 2 cores or 2 workers; still failing on the public runner with one worker, which was tried and dropped). A longer expect timeout and
+test-side settling each helped a little and did not remove it. The fifth member, `snapshot-sessions.spec.ts` "session inspection and stop previews...", was the
+lab's own composition (sibling dialogs) and is fixed (CW-20261112-0125): it stays in the blocking suite.
+
+**How a test leaves quarantine:** twenty consecutive green runs of the `browser-popup-timing` job on `main`, or a fix with a measured before and after
+(repeated runs pinned to 2 cores with 2 workers, as for CW-20261112-0125), in the pull request that removes the `@popup-timing` tag.
