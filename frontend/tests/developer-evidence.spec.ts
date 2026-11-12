@@ -106,7 +106,7 @@ test("actual test progress status duration errors and native readonly disclosure
 test("declared stack and commit file navigation stays local and old callbacks refuse after selection source and StrictMode replay", async ({
   page,
 }) => {
-  await page.goto("http://127.0.0.1:18545/?view=Developer%20Evidence")
+  await page.goto("http://127.0.0.1:18163/?view=Developer%20Evidence")
   const path = page.getByRole("button", { name: "src/review.ts:1:1", exact: true })
   await path.evaluate((node) => {
     const k = Object.keys(node).find((k) => k.startsWith("__reactProps$"))
@@ -218,13 +218,13 @@ test("portable independent developer evidence supports guarded resource raw-fram
     "incompatible-source",
   ]) {
     await page.goto(
-      `http://127.0.0.1:18542/iframe.html?id=developer-independent-evidence--${name}&viewMode=story`,
+      `http://127.0.0.1:18164/iframe.html?id=developer-independent-evidence--${name}&viewMode=story`,
     )
     await expect(page.getByRole("progressbar")).toHaveCount(0)
     await expect(page.getByRole("button", { name: /Inspect case file/ })).toHaveCount(0)
   }
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=developer-independent-evidence--unknown-raw-frame&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=developer-independent-evidence--unknown-raw-frame&viewMode=story",
   )
   await expect(
     page.getByText("Authored unknown frame: no file path classified", { exact: true }),

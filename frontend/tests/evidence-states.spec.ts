@@ -47,7 +47,7 @@ test("native supplemental help has actual description, Escape and current visibl
 test("delayed native hover and captured source callbacks retire on context and appearance", async ({
   page,
 }) => {
-  await page.goto("http://127.0.0.1:18545" + view)
+  await page.goto("http://127.0.0.1:18163" + view)
   const trigger = page.getByRole("button", { name: "Source help", exact: true })
   await trigger.hover()
   await expect(page.getByRole("tooltip")).toHaveCount(0)
@@ -154,7 +154,7 @@ test("portable current query and native phase states remain API-free", async ({ 
     "long",
   ]) {
     await page.goto(
-      `http://127.0.0.1:18542/iframe.html?id=review-evidence-states--${state}&viewMode=story`,
+      `http://127.0.0.1:18164/iframe.html?id=review-evidence-states--${state}&viewMode=story`,
     )
     await expect(page.getByRole("region", { name: "Evidence States", exact: true })).toBeVisible()
   }

@@ -41,7 +41,7 @@ test("voice capture appearances are controlled and never request devices or serv
     external: string[] = []
   page.on("request", (r) => {
     if (!["GET", "HEAD"].includes(r.method())) writes.push(r.url())
-    if (!r.url().startsWith("http://127.0.0.1:18541") && !r.url().startsWith("data:"))
+    if (!r.url().startsWith("http://127.0.0.1:18160") && !r.url().startsWith("data:"))
       external.push(r.url())
   })
   await page.goto("/?view=Voice&mode=light")
@@ -159,7 +159,7 @@ test("actual local AudioPlayer keyboard playback seeks transcript and retires ol
   await expect(page.locator("audio")).toHaveCount(0)
   await expect(page.getByText(/Scripted media error/)).toBeVisible()
   expect(
-    requests.filter((r) => /^https?:\/\//.test(r) && !r.startsWith("http://127.0.0.1:18541")),
+    requests.filter((r) => /^https?:\/\//.test(r) && !r.startsWith("http://127.0.0.1:18160")),
   ).toEqual([])
 })
 test("sample selector keyboard focus and timed transcript bounds share fixture graph", async ({
@@ -219,7 +219,7 @@ test("narrow themed media controls and portable voice stories need no capture or
     if (/\/api\/|\/plugins\//.test(r.url())) api.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=voice-controlled-review--local-audio&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=voice-controlled-review--local-audio&viewMode=story",
   )
   await expect(page.locator("audio")).toHaveAttribute("src", "/media/review-tone-001.wav")
   await expect

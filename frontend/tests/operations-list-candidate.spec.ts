@@ -12,7 +12,7 @@ declare global {
 }
 // The standalone HTML entry is served by Vite; the default suite's base URL is Go.
 test.use({
-  baseURL: `http://127.0.0.1:${process.env.OPS_PORT ?? 18545}`,
+  baseURL: `http://127.0.0.1:${process.env.OPS_PORT ?? 18163}`,
   launchOptions: { executablePath: process.env.OPS_CHROMIUM, args: ["--no-sandbox"] },
 })
 const screenshotRoot = fileURLToPath(

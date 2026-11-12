@@ -110,7 +110,7 @@ test("comparison plugins and portable layouts reuse records without business req
     if (r.url().includes("/api/") || r.url().includes("/plugins/")) api.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=layouts-controlled-comparison--split&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=layouts-controlled-comparison--split&viewMode=story",
   )
   await page.getByRole("button", { name: /Review gateway permission.*TASK-001/ }).click()
   await expect(page.getByLabel("Comparison selected record")).toContainText("SESSION-001")

@@ -102,7 +102,7 @@ test("native compact review source and prefix retirement withhold old selection 
 test("history roundtrips and StrictMode native first interaction retire captured callbacks and invalid reload selection", async ({
   page,
 }) => {
-  await page.goto("http://127.0.0.1:18545" + entry + "&screen=tasks")
+  await page.goto("http://127.0.0.1:18163" + entry + "&screen=tasks")
   const dashboard = nav(page).getByRole("link", { name: "Observability", exact: true })
   await dashboard.evaluate((e) => {
     const key = Object.keys(e).find((k) => k.startsWith("__reactProps"))!
@@ -297,7 +297,7 @@ test("fullscreen portable complete app shares native routes and resource policy 
     "long-tasks",
   ]) {
     await page.goto(
-      `http://127.0.0.1:18542/iframe.html?id=app-examples-torque--${story}&viewMode=story`,
+      `http://127.0.0.1:18164/iframe.html?id=app-examples-torque--${story}&viewMode=story`,
     )
     if (await page.getByRole("dialog", { name: "Task and run inspection", exact: true }).count())
       await page.keyboard.press("Escape")

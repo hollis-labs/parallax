@@ -14,7 +14,7 @@ declare global {
 const entry = "/?example=ops-shell"
 const rows = "[data-ops-row-id]"
 const list = '[data-ops-scroll="list"]'
-test.use({ baseURL: `http://127.0.0.1:${process.env.OPS_SHELL_PORT ?? 18545}` })
+test.use({ baseURL: `http://127.0.0.1:${process.env.OPS_SHELL_PORT ?? 18163}` })
 
 test("one shell, independent list/transcript scroll, pinned composer and collapse", async ({
   page,
@@ -304,7 +304,7 @@ test("portable Storybook story has no API dependency", async ({ page }) => {
     if (/\/api\/|\/events|\/sse/.test(r.url())) requests.push(r.url())
   })
   await page.goto(
-    `http://127.0.0.1:${process.env.STORYBOOK_PORT ?? 18542}/iframe.html?id=templates-operations-shell--run-explorer-inline&viewMode=story`,
+    `http://127.0.0.1:${process.env.STORYBOOK_PORT ?? 18164}/iframe.html?id=templates-operations-shell--run-explorer-inline&viewMode=story`,
   )
   await expect(page.locator('[data-slot="app-shell"]')).toHaveCount(1)
   await expect(page.locator(rows).first()).toBeVisible()

@@ -141,7 +141,7 @@ test("portable developer stories and narrow themes share bounded drafts and grap
     if (/\/api\/|\/plugins\//.test(r.url())) api.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=developer-controlled-review--unknown&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=developer-controlled-review--unknown&viewMode=story",
   )
   await expect(
     page.getByText("Unknown kind: unrecognized-fixture-step", { exact: true }),

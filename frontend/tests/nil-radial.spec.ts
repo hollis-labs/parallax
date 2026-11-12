@@ -8,7 +8,7 @@ declare global {
   }
 }
 test.use({
-  baseURL: `http://127.0.0.1:${process.env.NIL_PORT ?? 18545}`,
+  baseURL: `http://127.0.0.1:${process.env.NIL_PORT ?? 18163}`,
   launchOptions: { executablePath: process.env.NIL_CHROMIUM, args: ["--no-sandbox"] },
 })
 const screenshotRoot = fileURLToPath(new URL("../../.scratch/nil-radial/", import.meta.url))

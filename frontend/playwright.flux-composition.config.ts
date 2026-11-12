@@ -11,7 +11,7 @@ export default defineConfig({
   outputDir: `${repo}.scratch/flux-composition/${run}/results`,
   reporter: [["list"]],
   use: {
-    baseURL: remote ?? "http://127.0.0.1:18975",
+    baseURL: remote ?? "http://127.0.0.1:18163",
     headless: true,
     screenshot: "only-on-failure",
     trace: "retain-on-failure",
@@ -32,9 +32,9 @@ export default defineConfig({
     ? {}
     : {
         webServer: {
-          command: "npm run dev -- --host 127.0.0.1 --port 18975 --strictPort",
+          command: "npm run dev -- --host 127.0.0.1 --port 18163 --strictPort",
           cwd: `${repo}frontend`,
-          url: "http://127.0.0.1:18975",
+          url: "http://127.0.0.1:18163",
           reuseExistingServer: false,
           timeout: 30000,
         },

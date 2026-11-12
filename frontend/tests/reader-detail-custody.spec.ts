@@ -31,7 +31,7 @@ type BaseUIFinalFocusElement = HTMLElement & {
   __baseUIFinalFocus?: () => HTMLElement | false
 }
 
-test.use({ baseURL: `http://127.0.0.1:${process.env.READER_PORT ?? 18545}` })
+test.use({ baseURL: `http://127.0.0.1:${process.env.READER_PORT ?? 18163}` })
 
 test.describe("Reader Detail Custody and Lifecycle Leases", () => {
   test("once-working retained action refuses committed source retirement and does not revive on A -> B -> A", async ({

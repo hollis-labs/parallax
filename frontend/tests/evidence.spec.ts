@@ -204,7 +204,7 @@ test("long nested dark narrow payload and standalone story share the same artifa
     if (/\/(api|plugins)\//.test(r.url())) api.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=evidence-controlled-inspector--nested&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=evidence-controlled-inspector--nested&viewMode=story",
   )
   await page.getByLabel("Evidence kind").selectOption("tool")
   await page.getByRole("button", { name: "Inspect tool TOOL-003", exact: true }).click()
@@ -214,7 +214,7 @@ test("long nested dark narrow payload and standalone story share the same artifa
   await modal.getByRole("button", { name: "Reset evidence context" }).click()
   await expect(page.locator(".evidence-json")).toHaveCount(0)
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=evidence-controlled-inspector--empty&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=evidence-controlled-inspector--empty&viewMode=story",
   )
   await expect(page.getByText("0 of 0 indexed records", { exact: true })).toBeVisible()
   await expect(page.locator(".evidence-json")).toHaveCount(0)
@@ -225,7 +225,7 @@ test("same-scenario reviewed source replacement retires payload and pending sear
   page,
 }) => {
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=evidence-controlled-inspector--same-scenario-replacement&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=evidence-controlled-inspector--same-scenario-replacement&viewMode=story",
   )
   const search = page.getByRole("searchbox", { name: "Search evidence" })
   await page.clock.install()

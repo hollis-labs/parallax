@@ -1,8 +1,8 @@
 import { expect, test } from "@playwright/test"
 
-const app = "http://127.0.0.1:18545"
+const app = "http://127.0.0.1:18163"
 const portable =
-  "http://127.0.0.1:18542/iframe.html?id=app-examples-administration--directory&viewMode=story"
+  "http://127.0.0.1:18164/iframe.html?id=app-examples-administration--directory&viewMode=story"
 
 for (const surface of ["app", "portable"]) {
   for (const viewport of [

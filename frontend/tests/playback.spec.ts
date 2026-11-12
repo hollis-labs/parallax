@@ -199,7 +199,7 @@ test("narrow keyboard seek and portable frame retirement require no external str
     if (/\/api\/|\/plugins\//.test(r.url())) api.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=playback-recorded-frames--before-outcome&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=playback-recorded-frames--before-outcome&viewMode=story",
   )
   await page.getByRole("button", { name: /Inspect telemetry sampling drift.*TASK-003/ }).click()
   await expect(page.getByLabel("Playback selected run")).toContainText(
@@ -207,7 +207,7 @@ test("narrow keyboard seek and portable frame retirement require no external str
   )
   await page.getByRole("button", { name: "Play recorded events", exact: true }).click()
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=playback-recorded-frames--task-blocked&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=playback-recorded-frames--task-blocked&viewMode=story",
   )
   await page.clock.install()
   await page.clock.runFor(3000)

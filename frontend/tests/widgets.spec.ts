@@ -271,7 +271,7 @@ test("narrow dark long list and portable fixed-prefix widgets preserve bounds an
     if (/\/(api|plugins)\//.test(r.url())) api.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=widgets-recorded-review--partial-prefix&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=widgets-recorded-review--partial-prefix&viewMode=story",
   )
   await expect(page.getByTestId("widget-cutoff")).toHaveText("2026-10-04T14:14:15Z")
   await expect(page.getByTestId("widget-spark").locator('[aria-hidden="true"]>div')).toHaveCount(2)
@@ -280,7 +280,7 @@ test("narrow dark long list and portable fixed-prefix widgets preserve bounds an
   await expect(page.getByTestId("widget-spark").locator('[aria-hidden="true"]>div')).toHaveCount(2)
   await expect(page.getByText(/future gaps do not erase the covered leading prefix/)).toBeVisible()
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=widgets-recorded-review--before-window&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=widgets-recorded-review--before-window&viewMode=story",
   )
   await expect(page.getByTestId("widget-spark")).toHaveCount(0)
   await expect(page.getByTestId("widget-actual-peak")).toHaveText("Unavailable")

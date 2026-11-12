@@ -11,8 +11,8 @@ function getEntry(baseURL: string | undefined, suffix = ""): string {
   if (process.env.FLUX_SETTINGS_BASE_URL) {
     return `${process.env.FLUX_SETTINGS_BASE_URL}/flux-settings.html${suffix}`
   }
-  if (!baseURL || baseURL.includes(":18541")) {
-    return `http://127.0.0.1:18545/flux-settings.html${suffix}`
+  if (!baseURL || baseURL.includes(":18160")) {
+    return `http://127.0.0.1:18163/flux-settings.html${suffix}`
   }
   return `/flux-settings.html${suffix}`
 }

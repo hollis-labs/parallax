@@ -191,7 +191,7 @@ test("token scope create revoke confirmation and provider callbacks preserve imm
 test("source principal draft reset unmount and StrictMode fence held inspections and stale native callbacks", async ({
   page,
 }) => {
-  await page.goto("http://127.0.0.1:18545/?view=Account%20Review")
+  await page.goto("http://127.0.0.1:18163/?view=Account%20Review")
   await page.getByRole("button", { name: "Save profile", exact: true }).click()
   await page
     .getByRole("dialog")
@@ -279,7 +279,7 @@ test("narrow dark account metadata dialog and portable supported states are read
     "metadata-error",
   ]) {
     await page.goto(
-      `http://127.0.0.1:18542/iframe.html?id=account-controlled-account-review--${state}&viewMode=story`,
+      `http://127.0.0.1:18164/iframe.html?id=account-controlled-account-review--${state}&viewMode=story`,
     )
     await expect(page.getByLabel("Controlled account review")).toBeVisible()
   }

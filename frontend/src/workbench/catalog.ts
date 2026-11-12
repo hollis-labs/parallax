@@ -404,24 +404,17 @@ export function storyDestination(host: string, story: string) {
     origin = "https://parallax-stories.example.test"
   else if (
     [
-      "127.0.0.1:18541",
-      "localhost:18541",
-      "127.0.0.1:18545",
-      "localhost:18545",
-      "127.0.0.1:18542",
-      "localhost:18542",
+      "127.0.0.1:18160",
+      "localhost:18160",
+      "127.0.0.1:18163",
+      "localhost:18163",
+      "127.0.0.1:18164",
+      "localhost:18164",
     ].includes(host)
   )
-    origin = "http://127.0.0.1:18542"
+    origin = "http://127.0.0.1:18164"
   else if (
-    [
-      "localhost:18441",
-      "127.0.0.1:18441",
-      "localhost:5173",
-      "127.0.0.1:5173",
-      "localhost:18442",
-      "127.0.0.1:18442",
-    ].includes(host)
+    ["localhost:5173", "127.0.0.1:5173", "localhost:18442", "127.0.0.1:18442"].includes(host)
   )
     origin = "http://localhost:18442"
   return origin

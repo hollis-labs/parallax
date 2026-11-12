@@ -49,8 +49,8 @@ async function settlePopup(popup: Locator) {
 }
 function lifecycleEntry() {
   const base = new URL(String(test.info().project.use.baseURL))
-  if (base.port === "18541") base.port = "18545"
-  if (base.port === "18951") base.port = "18955"
+  if (base.port === "18160") base.port = "18163"
+  if (base.port === "18165") base.port = "18166"
   return new URL("/flux-chat-lifecycle.html", base).href
 }
 test.beforeEach(async ({ page }) => {
@@ -481,7 +481,7 @@ test("portable composed stories are API-free and keep the single editor boundary
 }, info) => {
   test.setTimeout(60000)
   const base = new URL(String(info.project.use.baseURL))
-  base.port = base.port === "18541" ? "18542" : "18952"
+  base.port = base.port === "18160" ? "18164" : "18167"
   for (const story of [
     "default",
     "workspace",

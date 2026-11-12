@@ -230,7 +230,7 @@ test("confirmation and prompt preserve supplied prior and enforce actual open pe
 test("source session prior mode draft step reset and unmount retire held candidates and captured callbacks in StrictMode", async ({
   page,
 }) => {
-  await page.goto("http://127.0.0.1:18545/?view=Conversation%20Review")
+  await page.goto("http://127.0.0.1:18163/?view=Conversation%20Review")
   await page.getByRole("button", { name: "Inspect handoff candidate", exact: true }).click()
   await page
     .getByRole("dialog")
@@ -365,7 +365,7 @@ test("portable conversation states and finite history error retry require no API
     "history-loading",
   ]) {
     await page.goto(
-      `http://127.0.0.1:18542/iframe.html?id=conversation-controlled-conversation-review--${state}&viewMode=story`,
+      `http://127.0.0.1:18164/iframe.html?id=conversation-controlled-conversation-review--${state}&viewMode=story`,
     )
     await expect(page.getByLabel("Controlled conversation review")).toBeVisible()
     if (state === "empty")

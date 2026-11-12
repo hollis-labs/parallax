@@ -9,7 +9,7 @@ export default defineConfig({
   reporter: [["list"]],
   workers: 1,
   use: {
-    baseURL: "http://127.0.0.1:18915",
+    baseURL: "http://127.0.0.1:18163",
     headless: true,
     launchOptions: process.env.FLUX_BROWSER
       ? {
@@ -20,9 +20,9 @@ export default defineConfig({
     viewport: { width: 1280, height: 900 },
   },
   webServer: {
-    command: "npm run dev -- --host 127.0.0.1 --port 18915 --strictPort",
+    command: "npm run dev -- --host 127.0.0.1 --port 18163 --strictPort",
     cwd: `${repo}frontend`,
-    url: "http://127.0.0.1:18915",
+    url: "http://127.0.0.1:18163",
     reuseExistingServer: !process.env.CI,
   },
 })

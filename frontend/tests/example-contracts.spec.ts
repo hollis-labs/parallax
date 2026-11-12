@@ -98,7 +98,7 @@ test("portable About consumes the same family manifest without a Go or plugin re
     )
       calls.push(r.url())
   })
-  await page.goto("http://127.0.0.1:18542/iframe.html?id=app-examples-torque--about&viewMode=story")
+  await page.goto("http://127.0.0.1:18164/iframe.html?id=app-examples-torque--about&viewMode=story")
   await expect(
     page
       .getByRole("region", { name: "Bundled fixture-family contracts", exact: true })

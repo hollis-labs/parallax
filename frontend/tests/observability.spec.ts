@@ -187,7 +187,7 @@ test("portable observation stories and narrow theme preserve shared chart CSS an
     if (/\/(api|plugins)\//.test(r.url())) requests.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=observability-controlled-inspection--sparse&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=observability-controlled-inspection--sparse&viewMode=story",
   )
   await expect(
     page

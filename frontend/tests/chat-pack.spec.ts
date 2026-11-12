@@ -102,7 +102,7 @@ test("portable snapshot history is keyboard-scrollable and all controlled states
   })
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=examples-chat-fixture-pack--long-history&viewMode=story&globals=theme:p1-green-phosphor;mode:dark",
+    "http://127.0.0.1:18164/iframe.html?id=examples-chat-fixture-pack--long-history&viewMode=story&globals=theme:p1-green-phosphor;mode:dark",
   )
   const pack = page.getByRole("region", { name: "Full-snapshot chat fixture pack", exact: true })
   const region = pack.getByRole("region", { name: "Supplied snapshot transcript", exact: true })

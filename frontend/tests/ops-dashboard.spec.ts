@@ -229,7 +229,7 @@ test("390 dark dashboard and metrics maintain real grid bounds raw amounts and c
 test("StrictMode current first callbacks and retired tab cutoff source inspector callbacks remain fenced", async ({
   page,
 }) => {
-  await page.goto("http://127.0.0.1:18545/?view=Ops+Dashboard")
+  await page.goto("http://127.0.0.1:18163/?view=Ops+Dashboard")
   await page.getByRole("tab", { name: "Usage", exact: true }).click()
   await expect(page.getByRole("tab", { name: "Usage", exact: true })).toHaveAttribute(
     "aria-selected",
@@ -279,7 +279,7 @@ test("portable unified review long root header literal and metric zero unknown r
     if (/\/api\/|\/plugins\//.test(r.url()) || r.method() !== "GET") calls.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=operations-unified-dashboard--long-header&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=operations-unified-dashboard--long-header&viewMode=story",
   )
   await expect(
     page.getByText(
@@ -294,7 +294,7 @@ test("portable unified review long root header literal and metric zero unknown r
     "true",
   )
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=operations-unified-dashboard--before-receipt&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=operations-unified-dashboard--before-receipt&viewMode=story",
   )
   await expect(
     page.getByRole("table", { name: "Exact raw current-prefix metric amounts" }),

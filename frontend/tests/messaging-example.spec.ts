@@ -104,7 +104,7 @@ test("messaging native Enter trim ShiftEnter IME and ignored-abort local drafts 
 test("StrictMode current-message attachment intersection and captured query channel source callbacks refuse replay", async ({
   page,
 }) => {
-  await page.goto("http://127.0.0.1:18545" + email)
+  await page.goto("http://127.0.0.1:18163" + email)
   const attachment = page.getByRole("button", { name: "Inspect run-001-evidence.txt", exact: true })
   await attachment.evaluate((n) => {
     const p = Object.keys(n).find((k) => k.startsWith("__reactProps$"))!
@@ -276,7 +276,7 @@ test("shared fullscreen portable messaging states are API-free with known zero u
     "retained-degraded",
   ]) {
     await page.goto(
-      `http://127.0.0.1:18542/iframe.html?id=app-examples-messaging--${story}&viewMode=story`,
+      `http://127.0.0.1:18164/iframe.html?id=app-examples-messaging--${story}&viewMode=story`,
     )
     await expect(page.locator(".messaging-example")).toBeVisible()
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)

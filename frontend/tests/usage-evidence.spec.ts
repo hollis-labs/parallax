@@ -167,7 +167,7 @@ test("authored finite zero overbudget invalid capacity uses real native progress
 test("actual StrictMode held inspection current leases close selection popup source cutoff and unmount refuse retired callbacks", async ({
   page,
 }) => {
-  await page.goto("http://127.0.0.1:18545/?view=Usage%20Evidence")
+  await page.goto("http://127.0.0.1:18163/?view=Usage%20Evidence")
   const preview = page.getByRole("button", { name: "Preview raw receipt", exact: true }),
     inspect = page.getByRole("button", { name: "Inspect current receipt", exact: true }),
     close = page.getByRole("button", { name: "Close receipt preview", exact: true }),
@@ -238,7 +238,7 @@ test("actual StrictMode held inspection current leases close selection popup sou
   await invoke(page, "cutoffInspectUsage")
   await expect(page.getByText("Receipt unavailable at this cutoff", { exact: false })).toBeVisible()
   await expect(inspect).toHaveCount(0)
-  await page.goto("http://127.0.0.1:18545/?view=Usage%20Evidence")
+  await page.goto("http://127.0.0.1:18163/?view=Usage%20Evidence")
   await preview.click()
   await capture(inspect, "unmountInspectUsage")
   await page.getByRole("button", { name: "Activity", exact: true }).click()
@@ -326,12 +326,12 @@ test("portable usage states preserve before receipt unknown empty denied and iso
     ["global-denied", "Operations permission-denied resource"],
   ]) {
     await page.goto(
-      `http://127.0.0.1:18542/iframe.html?id=chat-usage-evidence--${story}&viewMode=story`,
+      `http://127.0.0.1:18164/iframe.html?id=chat-usage-evidence--${story}&viewMode=story`,
     )
     await expect(page.getByLabel("Usage Evidence review")).toContainText(text)
   }
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=chat-usage-evidence--over-budget&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=chat-usage-evidence--over-budget&viewMode=story",
   )
   await page.getByRole("button", { name: "Inspect authored capacity sample", exact: true }).click()
   await expect(page.getByRole("progressbar")).toHaveAttribute("value", "100")

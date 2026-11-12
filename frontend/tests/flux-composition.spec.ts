@@ -23,7 +23,7 @@ async function open(page: Page, section = "profile", query = "") {
 test.beforeEach(async ({ page, baseURL }) => {
   await page.route("**/*", (route) => {
     const url = new URL(route.request().url())
-    return url.origin === new URL(baseURL ?? "http://127.0.0.1:18975").origin &&
+    return url.origin === new URL(baseURL ?? "http://127.0.0.1:18163").origin &&
       ["GET", "HEAD"].includes(route.request().method()) &&
       !url.pathname.startsWith("/api")
       ? route.continue()

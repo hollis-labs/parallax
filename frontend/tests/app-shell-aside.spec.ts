@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test"
 
-const storybookPort = process.env.STORYBOOK_PORT ?? "18542"
+const storybookPort = process.env.STORYBOOK_PORT ?? "18164"
 const storybookBase = `http://127.0.0.1:${storybookPort}`
 
 test("desktop aside width presets and collapsed sliver-free reservation", async ({

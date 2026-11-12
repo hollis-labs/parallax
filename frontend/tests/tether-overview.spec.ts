@@ -646,7 +646,7 @@ test.describe("Tether Sysop Overview Recreation", () => {
   }) => {
     const sourceBase =
       process.env.TETHER_OVERVIEW_SOURCE_URL ||
-      (baseURL?.includes(":18541") ? "http://127.0.0.1:18545" : baseURL || "http://127.0.0.1:18545")
+      (baseURL?.includes(":18160") ? "http://127.0.0.1:18163" : baseURL || "http://127.0.0.1:18163")
     await page.setViewportSize({ width: 1280, height: 800 })
     await page.goto(`${sourceBase}/?example=tether&screen=overview`)
     await expect(page.locator("header.tether-overview-header")).toBeVisible()

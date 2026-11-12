@@ -52,7 +52,7 @@ test("workspace native file search caret diagnostic path tool graph and route hi
 test("StrictMode first metadata inspection held close query panel source and retained file callbacks refuse old frames", async ({
   page,
 }, info) => {
-  await page.goto("http://127.0.0.1:18545" + entry + "&panel=tool")
+  await page.goto("http://127.0.0.1:18163" + entry + "&panel=tool")
   const inspect = page.getByRole("button", { name: "Inspect linked metadata", exact: true })
   await inspect.evaluate((n) => {
     const k = Object.keys(n).find((k) => k.startsWith("__reactProps$"))!
@@ -337,7 +337,7 @@ test("all twelve workspace full-app stories are API-free finite readonly snapsho
     "retained-degraded",
   ]) {
     await page.goto(
-      `http://127.0.0.1:18542/iframe.html?id=app-examples-workspace--${state}&viewMode=story`,
+      `http://127.0.0.1:18164/iframe.html?id=app-examples-workspace--${state}&viewMode=story`,
     )
     await expect(
       page.getByRole("heading", { name: "Developer workspace", exact: true }),

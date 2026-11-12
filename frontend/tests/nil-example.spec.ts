@@ -1,6 +1,6 @@
 import { expect, type Page, test } from "@playwright/test"
 
-const base = process.env.NIL_EXAMPLE_URL ?? "http://127.0.0.1:18545"
+const base = process.env.NIL_EXAMPLE_URL ?? "http://127.0.0.1:18163"
 const proof = process.env.NIL_EXAMPLE_PROOF_URL ?? base
 const rows = (page: Page) => page.locator("[data-ops-row-id]")
 const rowId = async (page: Page, index = 0) =>

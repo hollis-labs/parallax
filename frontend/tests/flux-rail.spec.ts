@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test"
 
-const sourceBase = process.env.FLUX_RAIL_SOURCE_URL ?? "http://127.0.0.1:18545"
+const sourceBase = process.env.FLUX_RAIL_SOURCE_URL ?? "http://127.0.0.1:18163"
 const themes = [
   "nanite-default",
   "dir-a",
@@ -356,7 +356,7 @@ for (const viewport of [
 }
 test("Storybook uses the same candidate and known-empty operands", async ({ page }) => {
   await page.goto(
-    `http://127.0.0.1:${process.env.STORYBOOK_PORT ?? "18542"}/iframe.html?id=candidates-flux-right-rail--known-empty&viewMode=story`,
+    `http://127.0.0.1:${process.env.STORYBOOK_PORT ?? "18164"}/iframe.html?id=candidates-flux-right-rail--known-empty&viewMode=story`,
   )
   await expect(
     page.getByRole("heading", { name: "Flux right rail candidate", exact: true }),

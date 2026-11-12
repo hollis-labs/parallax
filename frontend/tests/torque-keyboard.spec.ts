@@ -1,7 +1,7 @@
 import { expect, type Locator, type Page, test } from "@playwright/test"
 
 const entry = "/?example=torque&screen=tasks&profile=torque-16w"
-const portable = "http://127.0.0.1:18542/iframe.html?id=app-examples-torque--tasks&viewMode=story"
+const portable = "http://127.0.0.1:18164/iframe.html?id=app-examples-torque--tasks&viewMode=story"
 const inspection = (page: Page) =>
   page.getByRole("dialog", { name: "Task and run inspection", exact: true })
 const title = (page: Page) =>
@@ -180,7 +180,7 @@ for (const surface of ["standalone", "portable"]) {
 test("inspection respects native editing/control keys and diagnostic composition/consumption/child ownership", async ({
   page,
 }) => {
-  await page.goto(`http://127.0.0.1:18545${entry}`)
+  await page.goto(`http://127.0.0.1:18163${entry}`)
   await rows(page).first().locator("a").click()
   await expect(title(page)).toBeFocused()
   const before = await record(page).textContent()
@@ -282,7 +282,7 @@ test("held navigation retires after order, selection and source changes; return 
   page,
 }) => {
   // Vite preserves authored React handlers for explicit retained-callback proof.
-  await page.goto(`http://127.0.0.1:18545${entry}`)
+  await page.goto(`http://127.0.0.1:18163${entry}`)
   const first = rows(page).first()
   const originalId = (await first.getAttribute("data-task-id"))!
   await first.locator("a").click()

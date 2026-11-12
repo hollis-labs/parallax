@@ -206,7 +206,7 @@ test("context policy retirement and actual keyframes preserve narrow theme and p
     if (/\/(api|plugins)\//.test(request.url())) requests.push(request.url())
   })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=primitives-controlled-gallery--recorded&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=primitives-controlled-gallery--recorded&viewMode=story",
   )
   await choose(page)
   await page.getByRole("button", { name: "Review note form", exact: true }).click()
@@ -215,7 +215,7 @@ test("context policy retirement and actual keyframes preserve narrow theme and p
   await form.getByRole("button", { name: "Reset gallery context" }).click()
   await expect(page.getByText("No local record selected", { exact: true })).toBeVisible()
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=primitives-controlled-gallery--empty&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=primitives-controlled-gallery--empty&viewMode=story",
   )
   await expect(
     page.getByText("No records in this controlled gallery state.", { exact: true }),
@@ -225,7 +225,7 @@ test("context policy retirement and actual keyframes preserve narrow theme and p
   await expect(page.getByText("No matching recorded tasks", { exact: true })).toBeVisible()
   await page.keyboard.press("Escape")
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=primitives-controlled-gallery--recorded&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=primitives-controlled-gallery--recorded&viewMode=story",
   )
   await expect(page.getByText("No local record selected", { exact: true })).toBeVisible()
   expect(requests).toEqual([])

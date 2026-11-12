@@ -94,7 +94,7 @@ test("actual successful no-match Empty differs unavailable and disabled authored
   page,
 }, info) => {
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=workbench-keyboard-switcher--withdrawn&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=workbench-keyboard-switcher--withdrawn&viewMode=story",
   )
   const input = page.getByRole("combobox", { name: "Find review view", exact: true })
   await input.focus()
@@ -124,7 +124,7 @@ test("actual successful no-match Empty differs unavailable and disabled authored
     animations: "disabled",
   })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=workbench-keyboard-switcher--unavailable&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=workbench-keyboard-switcher--unavailable&viewMode=story",
   )
   await expect(
     page.getByText("Authored unavailable catalogue appearance.", { exact: false }),
@@ -134,7 +134,7 @@ test("actual successful no-match Empty differs unavailable and disabled authored
 test("current prefix selected record is retained on local command navigation and old query source hidden consumer callbacks refuse", async ({
   page,
 }) => {
-  await page.goto("http://127.0.0.1:18545/")
+  await page.goto("http://127.0.0.1:18163/")
   await page.getByRole("button", { name: /Review gateway permission/ }).click()
   await page.keyboard.press("Escape")
   await page.getByText("Fixture timeline review", { exact: true }).click()
@@ -251,7 +251,7 @@ test("390 dark native list scroll selected paint and escaped long literal remain
     animations: "disabled",
   })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=workbench-keyboard-switcher--long-literal&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=workbench-keyboard-switcher--long-literal&viewMode=story",
   )
   await page.getByRole("combobox", { name: "Find review view", exact: true }).fill("Voice")
   await expect(page.locator(".keyboard-switcher script")).toHaveCount(0)
@@ -269,7 +269,7 @@ test("portable current switcher Enter only reports local navigation and noAPI re
     if (/\/api\/|\/plugins\//.test(r.url()) || r.method() !== "GET") calls.push(r.url())
   })
   await page.goto(
-    "http://127.0.0.1:18542/iframe.html?id=workbench-keyboard-switcher--recorded&viewMode=story",
+    "http://127.0.0.1:18164/iframe.html?id=workbench-keyboard-switcher--recorded&viewMode=story",
   )
   const input = page.getByRole("combobox", { name: "Find review view", exact: true })
   await input.fill("Directory Review")

@@ -23,7 +23,7 @@ async function paletteColor(page: Page, value: string | undefined) {
 function lifecycleEntry() {
   const base = new URL(String(test.info().project.use.baseURL))
   // This isolated development HTML is served by the configured Vite listener.
-  if (base.port === "18541") base.port = "18545"
+  if (base.port === "18160") base.port = "18163"
   return new URL("/flux-cards-lifecycle.html", base).href
 }
 test.beforeEach(async ({ page }) => {
