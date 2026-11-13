@@ -142,7 +142,7 @@ for (const rootSize of [16, 20, 24]) {
       await page.evaluate((size) => {
         document.documentElement.style.fontSize = `${size}px`
       }, rootSize)
-      await expect(page.locator("main main").locator("h1, .page-title h2").first()).toHaveCSS(
+      await expect(page.locator("[data-lab-body]").locator("h1, .page-title h2").first()).toHaveCSS(
         "font-size",
         "11px",
       )

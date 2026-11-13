@@ -42,50 +42,57 @@ test("shared list/table/split/drawer keep selection and one body owner", async (
 })
 test.fail(
   "narrow drawers keyboard navigation and short rail remain reachable",
-  { annotation: { type: "expected-failure", description: "CW-20261112-0134: layout-scroll is 206 px at 390x844 (needs > 250): bottom nav 57 + shell title row 60 + lab header 74 + controls 120; passes (266) once a surface can opt out of the generic page title" } },
-  async ({
-  page,
-}, info) => {
-  await page.setViewportSize({ width: 390, height: 844 })
-  await page.goto("/?view=Layouts&layout=split&navigation=drawer&scenario=long-labels")
-  await page.getByRole("button", { name: /Review gateway permission.*TASK-001/ }).click()
-  await expect(page.getByRole("dialog")).toContainText("TASK-001")
-  await page.keyboard.press("Escape")
-  await expect(
-    page.getByRole("button", { name: /Review gateway permission.*TASK-001/ }),
-  ).toBeFocused()
-  await page.getByRole("button", { name: "Open detail drawer" }).click()
-  await page.keyboard.press("Escape")
-  await expect(page.getByRole("button", { name: "Open detail drawer" })).toBeFocused()
-  await page.getByRole("button", { name: "Open navigation" }).click()
-  await expect(page.getByRole("dialog")).toContainText("Parallax navigation")
-  await page.keyboard.press("Escape")
-  await expect(page.getByRole("button", { name: "Open navigation" })).toBeFocused()
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
-  expect(await page.getByTestId("layout-scroll").evaluate((e) => e.clientHeight)).toBeGreaterThan(
-    250,
-  )
-  await page.screenshot({ path: info.outputPath("layout-narrow.png"), animations: "disabled" })
-  await page.getByLabel("Navigation variant").selectOption("header")
-  await page.getByRole("button", { name: "Layouts", exact: true }).scrollIntoViewIfNeeded()
-  await expect(page.getByRole("button", { name: "Layouts", exact: true })).toBeVisible()
-  expect(await page.getByTestId("layout-scroll").evaluate((e) => e.clientHeight)).toBeGreaterThan(
-    250,
-  )
-  await page.reload()
-  await expect(page.getByLabel("Navigation variant")).toHaveValue("header")
-  await expect(page.getByTestId("layout-scroll")).toHaveAttribute(
-    "data-context",
-    "long-labels/split",
-  )
-  await page.setViewportSize({ width: 1280, height: 600 })
-  await page.getByLabel("Navigation variant").selectOption("rail")
-  await page.getByRole("button", { name: "Layouts", exact: true }).scrollIntoViewIfNeeded()
-  await expect(page.getByRole("button", { name: "Layouts", exact: true })).toBeVisible()
-  expect(
-    await page.locator(".navigation-scroll").evaluate((e) => e.scrollHeight > e.clientHeight),
-  ).toBeTruthy()
-})
+  {
+    annotation: {
+      type: "expected-failure",
+      description:
+        "CW-20261112-0134: layout-scroll is 206 px at 390x844 (needs > 250): bottom nav 57 + shell title row 60 + lab header 74 + controls 120; passes (266) once a surface can opt out of the generic page title",
+    },
+  },
+  async ({ page }, info) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+    await page.goto("/?view=Layouts&layout=split&navigation=drawer&scenario=long-labels")
+    await page.getByRole("button", { name: /Review gateway permission.*TASK-001/ }).click()
+    await expect(page.getByRole("dialog")).toContainText("TASK-001")
+    await page.keyboard.press("Escape")
+    await expect(
+      page.getByRole("button", { name: /Review gateway permission.*TASK-001/ }),
+    ).toBeFocused()
+    await page.getByRole("button", { name: "Open detail drawer" }).click()
+    await page.keyboard.press("Escape")
+    await expect(page.getByRole("button", { name: "Open detail drawer" })).toBeFocused()
+    await page.getByRole("button", { name: "Open navigation" }).click()
+    await expect(page.getByRole("dialog")).toContainText("Parallax navigation")
+    await page.keyboard.press("Escape")
+    await expect(page.getByRole("button", { name: "Open navigation" })).toBeFocused()
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+    ).toBeTruthy()
+    expect(await page.getByTestId("layout-scroll").evaluate((e) => e.clientHeight)).toBeGreaterThan(
+      250,
+    )
+    await page.screenshot({ path: info.outputPath("layout-narrow.png"), animations: "disabled" })
+    await page.getByLabel("Navigation variant").selectOption("header")
+    await page.getByRole("button", { name: "Layouts", exact: true }).scrollIntoViewIfNeeded()
+    await expect(page.getByRole("button", { name: "Layouts", exact: true })).toBeVisible()
+    expect(await page.getByTestId("layout-scroll").evaluate((e) => e.clientHeight)).toBeGreaterThan(
+      250,
+    )
+    await page.reload()
+    await expect(page.getByLabel("Navigation variant")).toHaveValue("header")
+    await expect(page.getByTestId("layout-scroll")).toHaveAttribute(
+      "data-context",
+      "long-labels/split",
+    )
+    await page.setViewportSize({ width: 1280, height: 600 })
+    await page.getByLabel("Navigation variant").selectOption("rail")
+    await page.getByRole("button", { name: "Layouts", exact: true }).scrollIntoViewIfNeeded()
+    await expect(page.getByRole("button", { name: "Layouts", exact: true })).toBeVisible()
+    expect(
+      await page.locator(".navigation-scroll").evaluate((e) => e.scrollHeight > e.clientHeight),
+    ).toBeTruthy()
+  },
+)
 test("comparison plugins and portable layouts reuse records without business requests", async ({
   page,
 }, info) => {

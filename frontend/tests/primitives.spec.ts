@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test"
 import { operationsModel } from "../src/operations/model"
 import { galleryModel, galleryStates } from "../src/primitives/model"
 import { ports } from "./ports"
+import { shellLink } from "./shell-nav"
 
 async function choose(page: import("@playwright/test").Page, task = "TASK-003") {
   await page.getByRole("button", { name: "Gallery recorded task", exact: true }).click()
@@ -199,8 +200,8 @@ test("context policy retirement and actual keyframes preserve narrow theme and p
   await form.getByRole("button", { name: "Reset gallery context" }).scrollIntoViewIfNeeded()
   await expect(form.getByRole("button", { name: "Reset gallery context" })).toBeInViewport()
   await page.keyboard.press("Escape")
-  await page.getByRole("link", { name: "Activity", exact: true }).click()
-  await page.getByRole("link", { name: "Primitives", exact: true }).click()
+  await (await shellLink(page, "Activity")).click()
+  await (await shellLink(page, "Primitives")).click()
   await expect(page.getByText("No local record selected", { exact: true })).toBeVisible()
   const requests: string[] = []
   page.on("request", (request) => {
