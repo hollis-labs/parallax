@@ -89,11 +89,13 @@ test("menu slots deliver local typed command/navigation/modal and nested Escape"
   await page.goto(`${entry}#/work`)
   await page.getByRole("button", { name: "Header menu", exact: true }).click()
   await page.getByRole("menuitem", { name: "Inspect fixture locally" }).click()
+  await expect(page.getByRole("menu")).toHaveCount(0)
   await expect(
     page.getByRole("status").filter({ hasText: "Fixture inspected locally" }),
   ).toBeVisible()
   await page.getByRole("button", { name: "Hamburger menu", exact: true }).click()
   await page.getByRole("menuitem", { name: "Navigate to Board" }).click()
+  await expect(page.getByRole("menu")).toHaveCount(0)
   await expect(page).toHaveURL(/#\/work\/board$/)
   await page.getByRole("button", { name: "Page toolbar", exact: true }).click()
   await page.getByRole("menuitem", { name: "Open fixture details" }).click()

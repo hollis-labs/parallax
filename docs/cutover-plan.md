@@ -1,8 +1,8 @@
 # Cutover plan: parallax-uat moves to the Substrate build
 
-Status: **draft for the owner's approval. Nothing here has been run on the live host.** Merging the port (PR #35,
-merge commit `6cdb6c8`) changed no running system: `parallax-uat` is the same process as before. This plan is the
-separate step that changes it.
+Status: **done.** The cutover ran on 2026-11-12 (21:03 UTC) and the live `parallax-uat` now runs the build of `main` at
+`42f933d` (see "Outcome" below). The text that follows is the plan as it was approved; where the run differed, "Outcome"
+says so. Merging the port (PR #35, merge commit `6cdb6c8`) had changed no running system; the cutover is the step that did.
 
 **Pre-merge `main`: `33401f5`** ("Go 1.26.10: fix GO-2026-6809 (crypto/x509) (#34)"), the last commit of the old
 version. A fix to the running version is cut from `33401f5`, not from `main`, until the cutover is done.
@@ -61,7 +61,10 @@ should be the first run to find out.
    `PARALLAX_DATA_DIR` names in the descriptor, if it sets one). Change nothing.
 2. The expected content is: **the directory does not exist.** The old build never wrote there. (`~/.config/parallax/`
    is the descriptor directory; the new binary does not read or write it.)
-3. (Owner) Name who uses the lab and any script that calls it: there is no request log to read (step 0.5).
+3. List the old build checkout's **ignored** files too (`git status --ignored`), not only its uncommitted ones, and decide
+   for each whether the new build needs it (the old binary embedded an ignored capture; see "Outcome", second deviation).
+   Read-only; change nothing.
+3a. (Owner) Name who uses the lab and any script that calls it: there is no request log to read (step 0.5).
 4. **If anything is there, stop and report; do not proceed and do not delete it.** In particular `parallax.db`
    (with `-wal` and `-shm`), `identity-signing.key` or `identity-signing.key.jwks.json`: each means a new build has already
    run there, and what it created (an owner, keys) must be understood first. A signing key that already exists decides
@@ -205,6 +208,41 @@ a wrong `allowed_origins` (sign-in fails with 403 `bad_origin` through the publi
 reaches the service from the proxy's loopback address, so the login limiter (five failures per username in five minutes)
 is effectively per username: someone who can reach the name can lock the owner out for a few minutes (a framework
 property, noted in `docs/conversion-notes.md`).
+
+## Outcome (2026-11-12, 21:03 UTC)
+
+The owner ran the Cerberus block. The lab on the primary host runs the build of `main` at `42f933d`. Verified afterwards by
+the driver (read-only checks against the live service):
+
+- the installed binary equals the one built in the fresh checkout;
+- the unit carries `SUBSTRATE_CONFIG`;
+- `/healthz` is ok; `GET /api/setup` says setup is closed; a signed-out request is 401; an unknown Host is 403;
+- both public names answer through the proxy;
+- the owner signs in on the loopback address and through a public name (the session cookie is `HttpOnly`, `Secure` and
+  `SameSite=Strict` through the proxy); a signed-in read and a plugin bundle are 200; sign-out works.
+
+**Deviation from the plan:** the owner account was created before the window, with the built binary (`parallax identity
+setup`), so the owner's part of the window was one block of Cerberus steps and not a separate bootstrap step in it. The
+order the plan insists on (owner exists before the new build serves) held.
+
+**Second deviation, and a lesson: the old build embedded a capture that was not in the repository.** The plan said the old
+build keeps no state. That was true of its database but not of what the binary embedded from untracked build inputs: the
+old build checkout held an ignored capture file (about 568 KB, dated 18 October) that the old binary served from
+`/api/snapshots/current`; the new build embeds only the empty capture, so the app-snapshots view was empty after the cutover.
+The driver found it, checked on a scratch instance that the new build accepts the file through `parallax.snapshot_file`, then
+on the live host copied it unchanged into the config directory (mode 600), set `parallax.snapshot_file` in the config (the
+previous config backed up) and restarted the unit (about one second). Signed in, `GET /api/snapshots/current` went from the
+59-byte empty capture to the 568 KB one. The owner is told and can have it removed (delete the key and the file, restart).
+**For any later cutover of an app with ignored build inputs, step zero must list them** (`git status --ignored` in the old
+build checkout) **and decide for each** whether the new build needs it, and how it reaches the new build (here: a runtime
+setting, never the repository).
+
+**Not checked:** the page in a real browser against the live instance (nobody but the owner has an account there; a real-browser
+pass runs against a scratch instance of `main` instead). The old build checkout on the host, with its uncommitted entries,
+was left untouched, as the plan requires.
+
+The open items below are kept as they were when the plan was approved; the owner has since said he is the only user of the lab,
+so no other accounts or API keys were made.
 
 ## Open items
 
