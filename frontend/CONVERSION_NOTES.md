@@ -4,23 +4,25 @@ Owner-facing. Each gap stops the work it touches until the driver decides.
 
 ## Framework gaps
 
-0. **Where the kits stand against the BOM (`bom/bom.yaml` `kits:`, Substrate add408c4).** Every BOM kit the app uses is pinned exactly:
+0. **Where the kits stand against the BOM (`bom/bom.yaml` `kits:`, Substrate 628daf0f).** Every BOM kit the app uses is pinned exactly:
    app-shell 0.11.0, design-app-runtime 0.6.0, design-bindings 0.3.0, design-components 0.5.1, design-tokens 0.5.0, kit-account 0.3.0, kit-admin 0.2.0,
-   kit-dashboard 0.6.1, kit-observe 0.1.2, kit-settings 0.2.0, plugin-host-ui 0.3.0, plugin-registry 0.2.0 (`make pins`: "app pins match the bom").
-   kit-identity 0.1.0 is in the BOM but not imported yet (the identity UI swap is CW-20261112-0118). `@hollis-labs/eslint-config-design` 0.5.0 is not a BOM kit.
+   kit-chat 0.8.0, kit-dashboard 0.6.2, kit-observe 0.1.2, kit-settings 0.2.0, plugin-host-ui 0.3.0, plugin-registry 0.2.0 (`make pins`: "app pins match the
+   bom"); kit-cards 0.3.0 comes in through kit-chat (the lab does not import it). kit-identity 0.1.1 is in the BOM but not imported yet (the identity UI swap is CW-20261112-0118). `@hollis-labs/eslint-config-design` 0.5.0 is not a BOM kit.
    - **The candidate tarballs for design-components and kit-dashboard are gone (driver ruling 2026-11-13: BOM-exact wins).** The released kits carry
      the candidate features; kit-dashboard 0.6.x defaults to its reviewed fixed geometry (4px spacing, 12px controls, 14px menus), and the lab, built on
      the earlier root-relative default, opts back in once for the whole app: `<html data-dashboard-scale="root-relative">` in `frontend/index.html`
      (the kit README: set it at the application boundary, never per route). Typography stays the kit's default compact profile.
-     What still differs from the candidates (CW-20261112-0113): kit-dashboard 0.6.1 gives `.dash-search-field` a `min-height` of 8 spacing units, so the
-     Torque board's search field is 32/40/48px at roots 16/20/24 (the reference is 26/32/38); and design-components 0.5.1 `FormDialog` ignores Escape and
+     What still differs from the candidates (CW-20261112-0113): kit-dashboard 0.6.x gives `.dash-search-field` a `min-height` of 8 spacing units, so the
+     Torque board's search field is 32/40/48px at roots 16/20/24 (the reference is 26/32/38). 0.6.2 adds a `--dash-search-min-height` token
+     (default: the control height, so it renders as 0.6.1); the lab leaves it at the default until the owner decides; and design-components 0.5.1 `FormDialog` ignores Escape and
      close while `submitting`, so the gallery's note form no longer closes while an inspection is held.
    - **kit-settings 0.2.0** still depends on design-tokens ^0.4 and design-components ^0.4 (BOM `kit_exceptions`). `package.json` `overrides`, scoped to
      kit-settings, point both at the root versions so no nested 0.4 copy installs for it.
-   - **kit-chat 0.4.0 is the one kit outside the BOM** (CW-20261113-0024): it declares design-bindings ^0.1, design-components ^0.4 and design-tokens ^0.4, so
-     npm nests its own copies. Its built code never imports design-bindings; its design-components imports resolve to its nested 0.4.0. Beside design-bindings
-     0.3.0 nothing breaks (install, typecheck, build, browser suite). It moves to kit-chat 0.8.0 (built for bindings 0.3) once the BOM pins it. kit-cards is not used.
-   - kit-code, kit-voice and kit-workflow are still unpublished tarballs (0.0.0) in `third_party/`, with nested design-components/design-tokens 0.4.
+   - **kit-chat 0.8.0** (was 0.4.0 outside the BOM, CW-20261113-0024) is built for design-bindings ^0.3, design-components ^0.5 and design-tokens ^0.5, so its
+     nested 0.4 copies are gone: its Popover and Button resolve to the lab's own design-components 0.5.1, the same instance (and escape stack) as the rest of
+     the lab. No source change was needed for 0.4 -> 0.8 (typecheck, build and the browser suite pass).
+   - kit-code, kit-voice and kit-workflow are still unpublished tarballs (0.0.0) in `third_party/`, with nested design-components/design-tokens 0.4 (the npm
+     0.4.0 has no escape-stack module): the Voice lab's voice and mic selectors still render their popovers from that copy.
    - **kit-account 0.1.0 -> 0.3.0**: 0.2.0 is a breaking release. `ApiTokenRecord.createdAt` and `ApiTokenDraft.expiry` are required, `status` is a closed set
      (anything else renders as "Unknown" and is never echoed), creation moved into a controlled dialog (`createOpen` / `onCreateOpenChange`), a denied create keeps
      a disabled button with its reason, and the revoke dialog has new wording. `src/administration/Account.tsx` and `src/account-review/` follow it; the
