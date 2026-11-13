@@ -286,13 +286,30 @@ test("rendered tone and clamp contracts use actual library paint and dimensions"
   await page.screenshot({ path: info.outputPath("gallery-desktop.png"), animations: "disabled" })
 })
 
-test.fixme("gallery entry ignores operations filter and retires focus and held outcomes on source replacement", {
+// Split from the gallery-entry test below: only the Escape-during-a-held-inspection path, steps unchanged.
+test.fixme("Escape closes the note form while its inspection is held, and source replacement retires the held outcome", {
   annotation: {
     type: "fixme",
     description:
       "CW-20261113-0027: design-components 0.5.1 FormDialog ignores Escape and close while submitting; Escape leaves 'Review local note' open while its inspection is held; the page behind stays inert, so 'Gallery recorded task' is not found (30 s timeout)",
   },
 }, async ({ page }) => {
+  await page.goto("/?view=Primitives")
+  await choose(page, "TASK-001")
+  await page.getByRole("button", { name: "Review note form", exact: true }).click()
+  const form = page.getByRole("dialog", { name: "Review local note", exact: true })
+  await form.getByLabel("Primitive review note").fill("source-retired-note")
+  await form.getByRole("button", { name: "Inspect note intent", exact: true }).click()
+  await page.keyboard.press("Escape")
+  await choose(page, "TASK-003")
+  await page.getByRole("button", { name: "Release oldest producer (1)" }).click()
+  await expect(page.getByText(/source-retired-note/)).toHaveCount(0)
+})
+// The Escape-while-held path is its own test above (CW-20261113-0027). Here each inspection is released the ordinary way
+// (the form's "Release oldest scripted outcome") before Escape, so the filter, retirement and focus checks run.
+test("gallery entry ignores operations filter and retires focus and held outcomes on source replacement", async ({
+  page,
+}) => {
   await page.goto("/?view=Activity")
   await page.getByText("Fixture timeline review", { exact: true }).click()
   await page.getByLabel("Playback position").fill("0")
@@ -311,14 +328,19 @@ test.fixme("gallery entry ignores operations filter and retires focus and held o
   const form = page.getByRole("dialog", { name: "Review local note", exact: true })
   await form.getByLabel("Primitive review note").fill("source-retired-note")
   await form.getByRole("button", { name: "Inspect note intent", exact: true }).click()
+  await form.getByRole("button", { name: "Release oldest scripted outcome", exact: true }).click()
+  await expect(form.getByText(/source-retired-note/)).toBeVisible()
   await page.keyboard.press("Escape")
+  await expect(form).not.toBeVisible()
   await choose(page, "TASK-003")
-  await page.getByRole("button", { name: "Release oldest producer (1)" }).click()
   await expect(page.getByText(/source-retired-note/)).toHaveCount(0)
   await page.getByRole("button", { name: "Review note form", exact: true }).click()
   await form.getByLabel("Primitive review note").fill("source-replacement-note")
   await form.getByRole("button", { name: "Inspect note intent", exact: true }).click()
+  await form.getByRole("button", { name: "Release oldest scripted outcome", exact: true }).click()
+  await expect(form.getByText(/source-replacement-note/)).toBeVisible()
   await page.keyboard.press("Escape")
+  await expect(form).not.toBeVisible()
   await page.getByLabel("Scenario", { exact: true }).selectOption("empty")
   await expect(page.getByRole("button", { name: "Release oldest producer (0)" })).toBeDisabled()
   await expect(page.getByText(/source-replacement-note/)).toHaveCount(0)

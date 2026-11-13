@@ -143,8 +143,9 @@ test("narrow 390px fallback to OverlaySidebar with admitted focus return", async
   await expect(trigger).toBeFocused()
 })
 
+// Split from "narrow-short 390x420 viewport preserves geometry and usability" so that test's other assertions keep running.
 test.fail(
-  "narrow-short 390x420 viewport preserves geometry and usability",
+  "narrow-short 390x420 viewport keeps one main landmark with geometry",
   {
     annotation: {
       type: "expected-failure",
@@ -152,37 +153,43 @@ test.fail(
         "CW-20261112-0135: the Layouts demo uses the real kit AppShell, which renders its own main inside the shell main (2 main elements); needs an AppShell content mode without main",
     },
   },
-  async ({ page }, info) => {
+  async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 420 })
     await page.goto("/?view=Layouts&aside=1&navigation=drawer")
-
-    const trigger = page.locator('[data-slot="app-shell-aside-trigger"]')
-    await expect(trigger).toBeVisible()
-
-    // Shell main preserves geometry
+    await expect(page.locator('[data-slot="app-shell-aside-trigger"]')).toBeVisible()
     const main = page.locator("main")
     await expect(main).toBeVisible()
     expect(await main.evaluate((el) => el.clientHeight)).toBeGreaterThan(100)
-
-    // Open overlay sidebar
-    await trigger.click()
-    const drawer = page.getByRole("dialog")
-    await expect(drawer).toBeVisible()
-    await expect(page.getByTestId("aside-companion")).toBeVisible()
-
-    // No horizontal document overflow
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
-
-    await page.screenshot({
-      path: info.outputPath("app-shell-aside-narrow-short.png"),
-      animations: "disabled",
-    })
-
-    await page.keyboard.press("Escape")
-    await expect(drawer).not.toBeVisible()
-    await expect(trigger).toBeFocused()
   },
 )
+
+test("narrow-short 390x420 viewport preserves geometry and usability", async ({ page }, info) => {
+  await page.setViewportSize({ width: 390, height: 420 })
+  await page.goto("/?view=Layouts&aside=1&navigation=drawer")
+
+  const trigger = page.locator('[data-slot="app-shell-aside-trigger"]')
+  await expect(trigger).toBeVisible()
+
+  // The shell main's geometry is asserted in "narrow-short 390x420 viewport keeps one main landmark with geometry".
+
+  // Open overlay sidebar
+  await trigger.click()
+  const drawer = page.getByRole("dialog")
+  await expect(drawer).toBeVisible()
+  await expect(page.getByTestId("aside-companion")).toBeVisible()
+
+  // No horizontal document overflow
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+
+  await page.screenshot({
+    path: info.outputPath("app-shell-aside-narrow-short.png"),
+    animations: "disabled",
+  })
+
+  await page.keyboard.press("Escape")
+  await expect(drawer).not.toBeVisible()
+  await expect(trigger).toBeFocused()
+})
 
 test("desktop preference preservation across breakpoint resize", async ({ page }) => {
   // Start on desktop with wide preset

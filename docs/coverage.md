@@ -101,6 +101,7 @@ CW-20261010-0113 adds the fixture-only Tachyon navigation composition and nine p
 
 ## Known failures in the browser suite (not counted as passing evidence)
 
-Five tests are Playwright expected failures, so the pages they cover are not claimed as passing evidence for those assertions: the Layouts narrow
-drawers/rail test (Torque CW-20261112-0134), the Layouts narrow-short geometry test (CW-20261112-0135), and the Torque board's "compact header and filters"
-test at roots 16, 20 and 24 (search field height at the BOM pin kit-dashboard 0.6.1, CW-20261112-0113). See `frontend/CONVERSION_NOTES.md` "Expected failures".
+Six tests are Playwright expected failures, each holding only its failing assertion, so those assertions are not claimed as passing evidence: two Layouts
+`layout-scroll` heights at 390x844 (drawer and header variants, Torque CW-20261112-0134), the Layouts narrow-short single-`main` check (CW-20261112-0135), and the
+Torque board's compact search-field height at roots 16, 20 and 24 (CW-20261112-0113). One test is `fixme` (Escape on a note form while its inspection is held,
+CW-20261113-0027). See `frontend/CONVERSION_NOTES.md` "Expected failures".

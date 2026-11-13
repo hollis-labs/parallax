@@ -32,14 +32,9 @@ Owner-facing. Each gap stops the work it touches until the driver decides.
    the BOM leaves kit-chat out until a release on design-bindings 0.3 is pinned, CW-20261113-0024), `@hollis-labs/kit-code` (9),
    `@hollis-labs/kit-voice` (4) and `@hollis-labs/kit-workflow` (6). The last three are installed from sealed tarballs in `third_party/`
    (version 0.0.0, not published); they cannot move to a pin without a published, pinned release.
-1a. **app-shell 0.1.0 has no responsive navigation (Torque CW-20261112-0110).** Its nav is a docked 240px column at every width (`isNarrow` only moves docked tabs to
-   bottom sheets), so at a 390px viewport the page gets about 150px. Wrapping the lab in the shell (parked on a local branch) fails about 16
-   of the lab's narrow-viewport tests that pass today. The 16 failing tests (file:line on the parked branch `gui/shell-wip`, 63ddb6a): administration.spec.ts:184, app-shell-aside.spec.ts:57 and :139,
-   communications.spec.ts:132, lab.spec.ts:4 and :26, layouts.spec.ts:4 and :43, observability.spec.ts:158, ops-dashboard.spec.ts:171,
-   playback.spec.ts:175, run-explorer.spec.ts:176, usage-evidence.spec.ts:249, workbench.spec.ts:119 and :142, workflow-review.spec.ts:212.
-   The fix belongs in app-shell (a collapsible/overlay nav, or a nav region the host can hide); the app does not hide it with its own CSS
-   and toggle. They are not fixme'd and not accepted: the shell wrap waits for the app-shell release. Until then the shell wrap is not on the branch, and with it the sign-out page
-   (a `nav.footer` surface in `cmd/parallax/app.ui.json`) has no screen to live on; the lab header has a `SignOutButton` meanwhile.
+1a. **app-shell responsive navigation (Torque CW-20261112-0110): resolved by app-shell 0.11.0.** 0.1.0 docked a 240px column at every width, which
+   failed 16 narrow-viewport tests when the lab was wrapped. 0.11.0 has a top bar with a "More" sheet at narrow widths (breakpoint 1023px); the wrap is on
+   this branch with it, and the narrow-viewport tests pass except the two expected failures listed below (CW-20261112-0134, -0135).
 1b. **A lab that is itself a shell nests badly.** The lab's own design-components `AppShell` is sized `h-dvh w-dvw`; inside an app-shell page it
    overflows unless the host overrides the size. The override is small (`.lab-host > .h-dvh`) but it is the host working around the kit.
 
@@ -92,20 +87,22 @@ the closed select emits no `change` in current Chromium), `messaging-example.spe
 same control family, unproven), `nil-example.spec.ts` "complete native bounds and scroll" at 1280x800 and 390x844 (the inspection body no longer overflows its
 box; not root-caused; the 390x420 variant passes and stays on).
 
-One more is `test.fixme` against its own design-components task (CW-20261113-0027, driver ruling 2026-11-13): `primitives.spec.ts` "gallery entry ignores operations
-filter and retires focus and held outcomes on source replacement". design-components 0.5.1 `FormDialog` ignores Escape and close while `submitting`; the test
-presses Escape while the "Review local note" form holds an inspection, so the dialog stays open, the page behind it stays inert and the next step times out
-(30 s). The 0.4.0 candidate closed regardless. A timeout does not count as an expected failure in Playwright, so `test.fail` cannot hold it. The test's steps and
-assertions are unchanged and the lab does not work around the dialog.
+One more is `test.fixme` against its own design-components task (CW-20261113-0027, driver ruling 2026-11-13): `primitives.spec.ts` "Escape closes the note form
+while its inspection is held, and source replacement retires the held outcome". design-components 0.5.1 `FormDialog` ignores Escape and close while `submitting`;
+the test presses Escape while the "Review local note" form holds an inspection, so the dialog stays open, the page behind it stays inert and the next step times
+out (30 s). The 0.4.0 candidate closed regardless. A timeout does not count as an expected failure in Playwright, so `test.fail` cannot hold it. It was split from
+"gallery entry ignores operations filter and retires focus and held outcomes on source replacement", which now runs: it releases each inspection with the form's
+"Release oldest scripted outcome" before Escape, so its filter, retirement and focus checks assert. The lab still passes `submitting={busy.form}`; whether a held
+local inspection counts as submitting is the question on CW-20261113-0027 (the reviewer's reading, documented kit behaviour, is recorded there).
 
-## Shell wrap: what is already known (for the follow-up when CW-20261112-0110 ships)
+## Shell wrap: how it is built (app-shell 0.11.0)
 
-The wrap is parked on the local branch `gui/shell-wip` (63ddb6a); nothing of it is on `feat/substrate-conversion`. Findings from that run
-(642 passed, 27 failed of 671; 4 are the known browser-difference tests, 16 are the narrow-viewport gap above):
-1. **Install**: `@hollis-labs/app-shell` 0.1.0 installs beside the candidate design-components and kit-dashboard. It depends directly on
-   design-components ^0.5, design-bindings ^0.2 and plugin-host-ui ^0.3, so npm nests its own copies; the bundle then holds design-components
-   0.4 (the lab) and 0.5.1 (the shell chrome). Main chunk 2,816,884 -> 2,888,453 bytes. It needs `allowImportingTsExtensions` in tsconfig
-   (app-shell publishes raw `.ts`) and `@source "../node_modules/@hollis-labs/app-shell/src"` in `index.css` (no `source.css`).
+The wrap is on the branch `gui/shell-wip` (pull request #44). It was first tried on app-shell 0.1.0 (local only, 27 failures of 671, 16 of them the
+narrow-viewport gap that 0.11.0 closed); the points below hold for 0.11.0 unless they say otherwise.
+1. **Install**: `@hollis-labs/app-shell` 0.11.0 from npm depends on design-components ^0.5, design-bindings ^0.3, design-app-runtime ^0.6 and
+   plugin-host-ui ^0.3; at the BOM pins all of them dedupe to the root versions (no nested copies under app-shell). It needs
+   `allowImportingTsExtensions` in tsconfig (app-shell publishes raw `.ts`) and `@source "../node_modules/@hollis-labs/app-shell/src"` in
+   `index.css` (no `source.css`).
 2. **Nested shell**: the lab's own `AppShell` is `h-dvh w-dvw`; a wrapper `.lab-host` with `.lab-host > .h-dvh { width: 100%; height: auto }` makes
    it fill the shell page. Its rail/header/drawer navigation stays only as the Layouts demo (the nested shell there is a demo, not a second app
    shell); the rest of the lab uses the shell nav.
@@ -118,9 +115,8 @@ The wrap is parked on the local branch `gui/shell-wip` (63ddb6a); nothing of it 
 5. **Routes**: `/` shows Activity (the old default view), the Review Workbench is `/review-workbench`, every other destination is `/<slug>`
    (`src/shell/routes.ts`). `/?view=Name&...` is redirected client-side to the route keeping every other query parameter in order; an
    unknown name lands on `/` with `view` kept so the page says what was asked. `tests/shell-routes.spec.ts` covers it (4 unit, 3 browser).
-   Not yet diagnosed on that branch: `run-explorer.spec.ts:87` and `conversation-review.spec.ts:292`.
-6. **Sign-out** is a `nav.footer` surface (`SignOutPage`). Until the wrap lands the lab header carries `SignOutButton` (`src/identity/SignOut.tsx`: the
-   signed-in display name and a Sign out button, the same logout call); the shell's footer surface replaces it.
+6. **Sign-out** is a `nav.footer` surface (`SignOutPage`). The lab header still carries `SignOutButton` (`src/identity/SignOut.tsx`: the signed-in
+   display name and a Sign out button, the same logout call); it goes with the identity UI swap (CW-20261112-0118).
 
 Naming leftover: `src/chimera` is a plugin-registry loader and presentation adapters, not a host any more. It is not renamed because the backend fixture
 generator (`internal/scenarios/families.go`) and `docs/coverage-policy.json` / `docs/export-inventory.json` reference the path.
@@ -182,9 +178,10 @@ lab's own composition (sibling dialogs) and is fixed (CW-20261112-0125): it stay
 - A **known** `?view=NAME` link (the lab was used with these until the cutover; the owner may have bookmarks) still opens that view: the page redirects to its
   path (`/<slug>`, `/` for Activity) and keeps every other query parameter. Test: `tests/shell-routes.spec.ts` "/?view=Name reaches the route, keeps the other
   parameters and shows that view", with the unit tests of `legacyViewRedirect` beside it.
+- `/activity` is not a route (Activity is `/`, and was never a path before the wrap): it shows the shell's "Page not found". `?view=Activity` redirects to `/` (driver ruling 2026-11-13).
 - An **unknown** `?view=NAME` lands on `/` (Activity), says "Unknown requested view NAME; showing Activity.", and leaves no `view` parameter in the URL (it used to
   rewrite `view` to "Activity"). Test: `tests/workbench.spec.ts` "known URL reload and unknown route fallback..." (last assertion: path is `/`, no `view` parameter), ruled by the driver.
-- Navigation is the shell's: a column at wide widths, a top bar with a "More" sheet at narrow widths; sign-out is its footer surface (the header button is gone).
+- Navigation is the shell's: a column at wide widths, a top bar with a "More" sheet at narrow widths; sign-out is its footer surface (the lab header's sign-out button is still there until CW-20261112-0118).
 
 ## Shell wrap: scroll owners, the header strip and the second `main`
 
@@ -198,17 +195,21 @@ lab's own composition (sibling dialogs) and is fixed (CW-20261112-0125): it stay
 
 ## Expected failures (`test.fail`): known failures, not passing
 
-Five Parallax tests are Playwright expected failures: they fail today, the run stays green, and a run fails if one of them starts passing, so the annotation is removed in the
-change that adopts the kit fix.
-- `layouts.spec.ts` "narrow drawers keyboard navigation and short rail remain reachable": `layout-scroll` is 206 px at 390x844 (the test needs > 250). Chrome budget: bottom nav 57 +
-  the shell's page title row 60 (16 padding + 28 h1 + 16 gap) + lab header 74 + controls strip 120. Passes (266) once a surface can opt out of the generic page title:
-  Torque CW-20261112-0134 (frontend-support). The threshold stays 250.
-- `app-shell-aside.spec.ts` "narrow-short 390x420 viewport preserves geometry and usability": the Layouts page demonstrates the kit AppShell's aside and navigation variants, so
-  it keeps the real design-components `AppShell`, which always renders its own `<main>` inside the shell's `main` (two `main` elements). Needs an AppShell content mode
-  without `main`: Torque CW-20261112-0135 (design-components).
-- `torque-board.spec.ts` "compact header and filters preserve audited scaling" at root 16, 20 and 24 (Torque CW-20261112-0113): `.torque-search-field` is
-  32/40/48px high, the reference 26/32/38. kit-dashboard 0.6.1 sets `.dash-search-field { min-height: calc(var(--spacing) * 8) }`; the candidate had none.
-  The other assertions of the test (compact 11/13/10px type, the root-scaled scope buttons) pass.
+Six Parallax tests are Playwright expected failures: they fail today, the run stays green, and a run fails if one of them starts passing, so the annotation is removed in the
+change that adopts the kit fix. Each holds only the failing assertion (driver ruling 2026-11-13, after review): the test it was split from keeps every other assertion and
+runs normally, with a comment naming the split test.
+- `layouts.spec.ts` "narrow drawer variant leaves the layout scroll more than 250 px" (from "narrow drawers keyboard navigation and short rail remain reachable"):
+  `layout-scroll` is 206 px at 390x844 (needs > 250). Chrome budget: bottom nav 57 + the shell's page title row 60 (16 padding + 28 h1 + 16 gap) + lab header 74 +
+  controls strip 120. Passes (266) once a surface can opt out of the generic page title: Torque CW-20261112-0134 (frontend-support). The threshold stays 250.
+- `layouts.spec.ts` "narrow header variant leaves the layout scroll more than 250 px" (same source test): `layout-scroll` is 190 px at 390x844 with the header
+  navigation variant. It never ran before the split, because the drawer assertion failed first. Same shell chrome (CW-20261112-0134); whether the title opt-out alone
+  clears 250 is not measured.
+- `app-shell-aside.spec.ts` "narrow-short 390x420 viewport keeps one main landmark with geometry" (from "narrow-short 390x420 viewport preserves geometry and usability"):
+  the Layouts page demonstrates the kit AppShell's aside and navigation variants, so it keeps the real design-components `AppShell`, which always renders its own `<main>`
+  inside the shell's `main` (two `main` elements). Needs an AppShell content mode without `main`: Torque CW-20261112-0135 (design-components).
+- `torque-board.spec.ts` "compact search field keeps the audited height" at root 16, 20 and 24 (from "compact header and filters preserve audited scaling"; Torque
+  CW-20261112-0113): `.torque-search-field` is 32/40/48px high, the reference 26/32/38. kit-dashboard 0.6.1 sets `.dash-search-field { min-height: calc(var(--spacing) * 8) }`;
+  the candidate had none. kit-dashboard 0.6.2 adds a `--dash-search-min-height` token; whether the lab sets it to `auto` is the owner's decision.
 
 ## App snapshots on a normal instance: the live capture is installed by configuration
 

@@ -40,8 +40,9 @@ test("shared list/table/split/drawer keep selection and one body owner", async (
     await page.evaluate(() => document.documentElement.scrollHeight === innerHeight),
   ).toBeTruthy()
 })
+// Split from "narrow drawers keyboard navigation and short rail remain reachable" so that test's other assertions keep running.
 test.fail(
-  "narrow drawers keyboard navigation and short rail remain reachable",
+  "narrow drawer variant leaves the layout scroll more than 250 px",
   {
     annotation: {
       type: "expected-failure",
@@ -49,50 +50,73 @@ test.fail(
         "CW-20261112-0134: layout-scroll is 206 px at 390x844 (needs > 250): bottom nav 57 + shell title row 60 + lab header 74 + controls 120; passes (266) once a surface can opt out of the generic page title",
     },
   },
-  async ({ page }, info) => {
+  async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await page.goto("/?view=Layouts&layout=split&navigation=drawer&scenario=long-labels")
-    await page.getByRole("button", { name: /Review gateway permission.*TASK-001/ }).click()
-    await expect(page.getByRole("dialog")).toContainText("TASK-001")
-    await page.keyboard.press("Escape")
-    await expect(
-      page.getByRole("button", { name: /Review gateway permission.*TASK-001/ }),
-    ).toBeFocused()
-    await page.getByRole("button", { name: "Open detail drawer" }).click()
-    await page.keyboard.press("Escape")
-    await expect(page.getByRole("button", { name: "Open detail drawer" })).toBeFocused()
-    await page.getByRole("button", { name: "Open navigation" }).click()
-    await expect(page.getByRole("dialog")).toContainText("Parallax navigation")
-    await page.keyboard.press("Escape")
-    await expect(page.getByRole("button", { name: "Open navigation" })).toBeFocused()
-    expect(
-      await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
-    ).toBeTruthy()
+    await expect(page.getByTestId("layout-scroll")).toBeVisible()
     expect(await page.getByTestId("layout-scroll").evaluate((e) => e.clientHeight)).toBeGreaterThan(
       250,
     )
-    await page.screenshot({ path: info.outputPath("layout-narrow.png"), animations: "disabled" })
-    await page.getByLabel("Navigation variant").selectOption("header")
-    await page.getByRole("button", { name: "Layouts", exact: true }).scrollIntoViewIfNeeded()
-    await expect(page.getByRole("button", { name: "Layouts", exact: true })).toBeVisible()
-    expect(await page.getByTestId("layout-scroll").evaluate((e) => e.clientHeight)).toBeGreaterThan(
-      250,
-    )
-    await page.reload()
-    await expect(page.getByLabel("Navigation variant")).toHaveValue("header")
-    await expect(page.getByTestId("layout-scroll")).toHaveAttribute(
-      "data-context",
-      "long-labels/split",
-    )
-    await page.setViewportSize({ width: 1280, height: 600 })
-    await page.getByLabel("Navigation variant").selectOption("rail")
-    await page.getByRole("button", { name: "Layouts", exact: true }).scrollIntoViewIfNeeded()
-    await expect(page.getByRole("button", { name: "Layouts", exact: true })).toBeVisible()
-    expect(
-      await page.locator(".navigation-scroll").evaluate((e) => e.scrollHeight > e.clientHeight),
-    ).toBeTruthy()
   },
 )
+// Found when the drawer check above was split out: it never ran while that assertion failed first.
+test.fail(
+  "narrow header variant leaves the layout scroll more than 250 px",
+  {
+    annotation: {
+      type: "expected-failure",
+      description:
+        "CW-20261112-0134: layout-scroll is 190 px at 390x844 with the header navigation variant (needs > 250); the shell's bottom nav and 60 px generic title row sit above the lab header and controls. Not measured: whether the title opt-out alone clears 250",
+    },
+  },
+  async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+    await page.goto("/?view=Layouts&layout=split&navigation=header&scenario=long-labels")
+    await expect(page.getByTestId("layout-scroll")).toBeVisible()
+    expect(await page.getByTestId("layout-scroll").evaluate((e) => e.clientHeight)).toBeGreaterThan(
+      250,
+    )
+  },
+)
+test("narrow drawers keyboard navigation and short rail remain reachable", async ({
+  page,
+}, info) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto("/?view=Layouts&layout=split&navigation=drawer&scenario=long-labels")
+  await page.getByRole("button", { name: /Review gateway permission.*TASK-001/ }).click()
+  await expect(page.getByRole("dialog")).toContainText("TASK-001")
+  await page.keyboard.press("Escape")
+  await expect(
+    page.getByRole("button", { name: /Review gateway permission.*TASK-001/ }),
+  ).toBeFocused()
+  await page.getByRole("button", { name: "Open detail drawer" }).click()
+  await page.keyboard.press("Escape")
+  await expect(page.getByRole("button", { name: "Open detail drawer" })).toBeFocused()
+  await page.getByRole("button", { name: "Open navigation" }).click()
+  await expect(page.getByRole("dialog")).toContainText("Parallax navigation")
+  await page.keyboard.press("Escape")
+  await expect(page.getByRole("button", { name: "Open navigation" })).toBeFocused()
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
+  // The drawer variant's layout-scroll > 250 is asserted in "narrow drawer variant leaves the layout scroll more than 250 px".
+  await page.screenshot({ path: info.outputPath("layout-narrow.png"), animations: "disabled" })
+  await page.getByLabel("Navigation variant").selectOption("header")
+  await page.getByRole("button", { name: "Layouts", exact: true }).scrollIntoViewIfNeeded()
+  await expect(page.getByRole("button", { name: "Layouts", exact: true })).toBeVisible()
+  // The header variant's layout-scroll > 250 is asserted in "narrow header variant leaves the layout scroll more than 250 px".
+  await page.reload()
+  await expect(page.getByLabel("Navigation variant")).toHaveValue("header")
+  await expect(page.getByTestId("layout-scroll")).toHaveAttribute(
+    "data-context",
+    "long-labels/split",
+  )
+  await page.setViewportSize({ width: 1280, height: 600 })
+  await page.getByLabel("Navigation variant").selectOption("rail")
+  await page.getByRole("button", { name: "Layouts", exact: true }).scrollIntoViewIfNeeded()
+  await expect(page.getByRole("button", { name: "Layouts", exact: true })).toBeVisible()
+  expect(
+    await page.locator(".navigation-scroll").evaluate((e) => e.scrollHeight > e.clientHeight),
+  ).toBeTruthy()
+})
 test("comparison plugins and portable layouts reuse records without business requests", async ({
   page,
 }, info) => {
