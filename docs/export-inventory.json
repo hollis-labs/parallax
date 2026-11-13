@@ -8254,7 +8254,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "PageHeader",
     "category": "visual-component",
@@ -8299,7 +8299,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "NavRail",
     "category": "visual-component",
@@ -8330,7 +8330,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "NavRailItem",
     "category": "type-export",
@@ -8343,7 +8343,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "StatusBadge",
     "category": "visual-component",
@@ -8382,7 +8382,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "PriorityBadge",
     "category": "visual-component",
@@ -8395,7 +8395,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "DashboardTypographyProvider",
     "category": "visual-component",
@@ -8408,7 +8408,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "useDashboardTypography",
     "category": "nonvisual-function",
@@ -8421,7 +8421,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "DashboardTypographyProfile",
     "category": "type-export",
@@ -8434,7 +8434,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "SummaryCards",
     "category": "visual-component",
@@ -8466,7 +8466,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "SummaryCard",
     "category": "type-export",
@@ -8479,7 +8479,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "SettingsField",
     "category": "visual-component",
@@ -8492,7 +8492,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "SettingsGrid",
     "category": "visual-component",
@@ -8505,7 +8505,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "SettingsNotice",
     "category": "visual-component",
@@ -8518,7 +8518,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "SettingsPanel",
     "category": "visual-component",
@@ -8531,7 +8531,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "SettingsStatusPill",
     "category": "visual-component",
@@ -8544,7 +8544,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "SettingsFieldProps",
     "category": "type-export",
@@ -8557,7 +8557,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "SettingsGridProps",
     "category": "type-export",
@@ -8570,7 +8570,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "SettingsNoticeProps",
     "category": "type-export",
@@ -8583,7 +8583,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "SettingsPanelProps",
     "category": "type-export",
@@ -8596,7 +8596,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "SettingsStatusPillProps",
     "category": "type-export",
@@ -8609,7 +8609,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "ThemeSwitcher",
     "category": "visual-component",
@@ -8622,7 +8622,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "STATUS_KEYS",
     "category": "runtime-value",
@@ -8635,7 +8635,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "STATUS_TONES",
     "category": "runtime-value",
@@ -8648,7 +8648,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "DEFAULT_STATUS_TONE",
     "category": "runtime-value",
@@ -8661,7 +8661,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "statusTone",
     "category": "nonvisual-function",
@@ -8674,7 +8674,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "StatusKey",
     "category": "type-export",
@@ -8687,7 +8687,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "StatusTone",
     "category": "type-export",
@@ -8700,7 +8700,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "THEME_STORAGE_KEY",
     "category": "runtime-value",
@@ -8713,7 +8713,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "DEFAULT_THEME",
     "category": "runtime-value",
@@ -8726,7 +8726,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "THEME_OPTIONS",
     "category": "runtime-value",
@@ -8739,7 +8739,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "isThemeName",
     "category": "nonvisual-function",
@@ -8752,7 +8752,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "resolveTheme",
     "category": "nonvisual-function",
@@ -8765,7 +8765,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "readStoredTheme",
     "category": "nonvisual-function",
@@ -8778,7 +8778,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "persistTheme",
     "category": "nonvisual-function",
@@ -8791,7 +8791,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "applyTheme",
     "category": "nonvisual-function",
@@ -8855,7 +8855,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "getInitialTheme",
     "category": "nonvisual-function",
@@ -8868,7 +8868,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "ThemeName",
     "category": "type-export",
@@ -8881,7 +8881,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "DASHBOARD_DEPRECATED_TOKENS",
     "category": "runtime-value",
@@ -8894,7 +8894,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "useDashboardDocumentScale",
     "category": "nonvisual-function",
@@ -8907,7 +8907,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": ".",
     "name": "DashboardDocumentScale",
     "category": "type-export",
@@ -8920,7 +8920,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "PageHeader",
     "category": "visual-component",
@@ -8969,7 +8969,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "NavRail",
     "category": "visual-component",
@@ -9000,7 +9000,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "NavRailItem",
     "category": "type-export",
@@ -9013,7 +9013,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "StatusBadge",
     "category": "visual-component",
@@ -9049,7 +9049,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "PriorityBadge",
     "category": "visual-component",
@@ -9096,7 +9096,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "DashboardTypographyProvider",
     "category": "visual-component",
@@ -9109,7 +9109,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "useDashboardTypography",
     "category": "nonvisual-function",
@@ -9155,7 +9155,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "DashboardTypographyProfile",
     "category": "type-export",
@@ -9168,7 +9168,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "SummaryCards",
     "category": "visual-component",
@@ -9200,7 +9200,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "SummaryCard",
     "category": "type-export",
@@ -9246,7 +9246,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "SettingsField",
     "category": "visual-component",
@@ -9259,7 +9259,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "SettingsGrid",
     "category": "visual-component",
@@ -9272,7 +9272,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "SettingsNotice",
     "category": "visual-component",
@@ -9285,7 +9285,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "SettingsPanel",
     "category": "visual-component",
@@ -9298,7 +9298,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "SettingsStatusPill",
     "category": "visual-component",
@@ -9311,7 +9311,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "SettingsFieldProps",
     "category": "type-export",
@@ -9324,7 +9324,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "SettingsGridProps",
     "category": "type-export",
@@ -9337,7 +9337,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "SettingsNoticeProps",
     "category": "type-export",
@@ -9350,7 +9350,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "SettingsPanelProps",
     "category": "type-export",
@@ -9363,7 +9363,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "SettingsStatusPillProps",
     "category": "type-export",
@@ -9376,7 +9376,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "ThemeSwitcher",
     "category": "visual-component",
@@ -9389,7 +9389,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "STATUS_KEYS",
     "category": "runtime-value",
@@ -9402,7 +9402,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "STATUS_TONES",
     "category": "runtime-value",
@@ -9415,7 +9415,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "DEFAULT_STATUS_TONE",
     "category": "runtime-value",
@@ -9428,7 +9428,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "statusTone",
     "category": "nonvisual-function",
@@ -9474,7 +9474,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "StatusKey",
     "category": "type-export",
@@ -9487,7 +9487,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "StatusTone",
     "category": "type-export",
@@ -9500,7 +9500,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "THEME_STORAGE_KEY",
     "category": "runtime-value",
@@ -9513,7 +9513,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "DEFAULT_THEME",
     "category": "runtime-value",
@@ -9526,7 +9526,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "THEME_OPTIONS",
     "category": "runtime-value",
@@ -9539,7 +9539,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "isThemeName",
     "category": "nonvisual-function",
@@ -9552,7 +9552,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "resolveTheme",
     "category": "nonvisual-function",
@@ -9565,7 +9565,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "readStoredTheme",
     "category": "nonvisual-function",
@@ -9578,7 +9578,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "persistTheme",
     "category": "nonvisual-function",
@@ -9591,7 +9591,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "applyTheme",
     "category": "nonvisual-function",
@@ -9637,7 +9637,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "getInitialTheme",
     "category": "nonvisual-function",
@@ -9650,7 +9650,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "ThemeName",
     "category": "type-export",
@@ -9663,7 +9663,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "DASHBOARD_DEPRECATED_TOKENS",
     "category": "runtime-value",
@@ -9676,7 +9676,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "useDashboardDocumentScale",
     "category": "nonvisual-function",
@@ -9689,7 +9689,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./ui",
     "name": "DashboardDocumentScale",
     "category": "type-export",
@@ -9702,7 +9702,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./layout",
     "name": "ListPageLayout",
     "category": "visual-component",
@@ -9737,7 +9737,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./layout",
     "name": "DetailHeader",
     "category": "visual-component",
@@ -9783,7 +9783,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./layout",
     "name": "TabStrip",
     "category": "visual-component",
@@ -9833,7 +9833,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./layout",
     "name": "OperationsTablePage",
     "category": "visual-component",
@@ -9877,7 +9877,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./layout",
     "name": "TabStripItem",
     "category": "type-export",
@@ -9923,7 +9923,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./layout",
     "name": "OperationsListPage",
     "category": "visual-component",
@@ -9960,7 +9960,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./layout",
     "name": "OperationsListPageProps",
     "category": "type-export",
@@ -9973,7 +9973,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./layout",
     "name": "OperationsFacet",
     "category": "type-export",
@@ -10019,7 +10019,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./layout",
     "name": "OperationsInspector",
     "category": "type-export",
@@ -10032,7 +10032,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./layout",
     "name": "OperationsActionScope",
     "category": "type-export",
@@ -10079,7 +10079,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./layout",
     "name": "DashboardToolbar",
     "category": "visual-component",
@@ -10130,7 +10130,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./layout",
     "name": "DashboardField",
     "category": "visual-component",
@@ -10182,7 +10182,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./layout",
     "name": "DashboardSection",
     "category": "visual-component",
@@ -10228,7 +10228,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./layout",
     "name": "DashboardFieldProps",
     "category": "type-export",
@@ -10241,7 +10241,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./layout",
     "name": "DashboardSearchToolbar",
     "category": "visual-component",
@@ -10288,7 +10288,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./layout",
     "name": "DashboardViewTabs",
     "category": "visual-component",
@@ -10301,7 +10301,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./layout",
     "name": "DashboardViewTab",
     "category": "type-export",
@@ -10314,7 +10314,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "FilterBar",
     "category": "visual-component",
@@ -10359,7 +10359,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "FilterChipGroup",
     "category": "visual-component",
@@ -10403,7 +10403,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "FilterCycleToggle",
     "category": "visual-component",
@@ -10446,7 +10446,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "FilterEntityCombobox",
     "category": "visual-component",
@@ -10493,7 +10493,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "CycleOption",
     "category": "type-export",
@@ -10506,7 +10506,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "FilterChip",
     "category": "type-export",
@@ -10519,7 +10519,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "FilterEntityComboboxItem",
     "category": "type-export",
@@ -10532,7 +10532,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "DataTable",
     "category": "visual-component",
@@ -10567,7 +10567,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "DataTableRow",
     "category": "visual-component",
@@ -10580,7 +10580,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "DataTableCell",
     "category": "visual-component",
@@ -10626,7 +10626,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "RecordSummary",
     "category": "visual-component",
@@ -10675,7 +10675,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "DataTableCellProps",
     "category": "type-export",
@@ -10688,7 +10688,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "RecordSummaryProps",
     "category": "type-export",
@@ -10701,7 +10701,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "TableDensity",
     "category": "type-export",
@@ -10747,7 +10747,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "useArrowNav",
     "category": "nonvisual-function",
@@ -10760,7 +10760,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "ArrowNavOptions",
     "category": "type-export",
@@ -10773,7 +10773,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "useListNavigation",
     "category": "nonvisual-function",
@@ -10786,7 +10786,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "ListNavigationOptions",
     "category": "type-export",
@@ -10799,7 +10799,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "RecordListContent",
     "category": "visual-component",
@@ -10812,7 +10812,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "RecordListHeader",
     "category": "visual-component",
@@ -10825,7 +10825,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "RecordTag",
     "category": "visual-component",
@@ -10838,7 +10838,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./data",
     "name": "RankBadge",
     "category": "visual-component",
@@ -10851,7 +10851,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "Sparkbars",
     "category": "visual-component",
@@ -10893,7 +10893,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "SparkbarsProps",
     "category": "type-export",
@@ -10906,7 +10906,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "SignalBars",
     "category": "visual-component",
@@ -10949,7 +10949,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "SignalBarsProps",
     "category": "type-export",
@@ -10962,7 +10962,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "BarList",
     "category": "visual-component",
@@ -10994,7 +10994,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "BarListItem",
     "category": "type-export",
@@ -11007,7 +11007,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "BarListProps",
     "category": "type-export",
@@ -11020,7 +11020,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "CompositionBars",
     "category": "visual-component",
@@ -11052,7 +11052,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "CompositionBarsProps",
     "category": "type-export",
@@ -11065,7 +11065,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "DonutChart",
     "category": "visual-component",
@@ -11108,7 +11108,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "DonutChartProps",
     "category": "type-export",
@@ -11121,7 +11121,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "DonutSegment",
     "category": "type-export",
@@ -11167,7 +11167,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "BarMeter",
     "category": "visual-component",
@@ -11199,7 +11199,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "BarMeterProps",
     "category": "type-export",
@@ -11212,7 +11212,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "BarMeterRow",
     "category": "type-export",
@@ -11225,7 +11225,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "ActivityHeatmap",
     "category": "visual-component",
@@ -11246,7 +11246,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "ActivityHeatmapProps",
     "category": "type-export",
@@ -11259,7 +11259,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "HourlyPulse",
     "category": "visual-component",
@@ -11280,7 +11280,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "HourlyPulseProps",
     "category": "type-export",
@@ -11293,7 +11293,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "RecentList",
     "category": "visual-component",
@@ -11336,7 +11336,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "RecentListProps",
     "category": "type-export",
@@ -11349,7 +11349,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "Panel",
     "category": "visual-component",
@@ -11393,7 +11393,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "PanelProps",
     "category": "type-export",
@@ -11406,7 +11406,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "Kpi",
     "category": "visual-component",
@@ -11451,7 +11451,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "KpiProps",
     "category": "type-export",
@@ -11464,7 +11464,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "KpiGrid",
     "category": "visual-component",
@@ -11508,7 +11508,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "KpiGridProps",
     "category": "type-export",
@@ -11521,7 +11521,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "MiniTrend",
     "category": "visual-component",
@@ -11565,7 +11565,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "MiniTrendProps",
     "category": "type-export",
@@ -11578,7 +11578,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "IntelligenceRow",
     "category": "visual-component",
@@ -11622,7 +11622,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./widgets",
     "name": "IntelligenceRowProps",
     "category": "type-export",
@@ -11635,7 +11635,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./charts",
     "name": "TimeSeriesChart",
     "category": "visual-component",
@@ -11656,7 +11656,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./charts",
     "name": "TimeSeriesChartProps",
     "category": "type-export",
@@ -11669,7 +11669,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./charts",
     "name": "TimeSeriesSeries",
     "category": "type-export",
@@ -11682,7 +11682,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./charts",
     "name": "TimestampSampleChart",
     "category": "visual-component",
@@ -11705,7 +11705,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./charts",
     "name": "TimestampSampleChartProps",
     "category": "type-export",
@@ -11718,7 +11718,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./charts",
     "name": "TimestampSample",
     "category": "type-export",
@@ -11731,7 +11731,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "entry": "./charts",
     "name": "SampleUnit",
     "category": "type-export",
@@ -11744,7 +11744,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChatInput",
     "category": "visual-component",
@@ -11804,7 +11804,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChatInputProps",
     "category": "type-export",
@@ -11848,7 +11848,33 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
+    "entry": ".",
+    "name": "ChatComposer",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.8.0",
+    "entry": ".",
+    "name": "ChatComposerProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChatStream",
     "category": "visual-component",
@@ -11906,7 +11932,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChatStreamProps",
     "category": "type-export",
@@ -11950,7 +11976,72 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
+    "entry": ".",
+    "name": "ResizableChatPanel",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.8.0",
+    "entry": ".",
+    "name": "ResizableChatPanelProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.8.0",
+    "entry": ".",
+    "name": "ForwardMessageDialog",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.8.0",
+    "entry": ".",
+    "name": "ForwardMessageDialogProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.8.0",
+    "entry": ".",
+    "name": "ForwardRecipient",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-chat",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ArtifactCard",
     "category": "visual-component",
@@ -11983,7 +12074,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "DocumentCard",
     "category": "visual-component",
@@ -12015,7 +12106,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PromptCard",
     "category": "visual-component",
@@ -12070,7 +12161,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "CardBoundary",
     "category": "runtime-value",
@@ -12114,7 +12205,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "CardFallbackDeclined",
     "category": "visual-component",
@@ -12127,7 +12218,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "CardMiss",
     "category": "visual-component",
@@ -12171,7 +12262,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ConfirmationCard",
     "category": "visual-component",
@@ -12226,7 +12317,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "DiffCard",
     "category": "visual-component",
@@ -12258,7 +12349,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "Envelope",
     "category": "visual-component",
@@ -12291,7 +12382,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "EnvelopeBody",
     "category": "visual-component",
@@ -12324,7 +12415,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "EnvelopeFooter",
     "category": "visual-component",
@@ -12357,7 +12448,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "EnvelopeHeader",
     "category": "visual-component",
@@ -12390,7 +12481,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "EnvelopeSection",
     "category": "visual-component",
@@ -12422,7 +12513,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InfoCard",
     "category": "visual-component",
@@ -12456,7 +12547,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ListCard",
     "category": "visual-component",
@@ -12488,7 +12579,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "MetricCard",
     "category": "visual-component",
@@ -12520,7 +12611,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ProgressCard",
     "category": "visual-component",
@@ -12552,7 +12643,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "TableCard",
     "category": "visual-component",
@@ -12584,7 +12675,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "TimelineCard",
     "category": "visual-component",
@@ -12616,7 +12707,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ArtifactCardProps",
     "category": "type-export",
@@ -12629,7 +12720,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "DocumentCardProps",
     "category": "type-export",
@@ -12642,7 +12733,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PromptCardProps",
     "category": "type-export",
@@ -12686,7 +12777,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "CardBoundaryProps",
     "category": "type-export",
@@ -12699,7 +12790,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "CardFallbackDeclinedProps",
     "category": "type-export",
@@ -12712,7 +12803,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "CardMissProps",
     "category": "type-export",
@@ -12725,7 +12816,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ConfirmationAction",
     "category": "type-export",
@@ -12738,7 +12829,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ConfirmationCardProps",
     "category": "type-export",
@@ -12782,7 +12873,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "DiffCardProps",
     "category": "type-export",
@@ -12795,7 +12886,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "DiffSide",
     "category": "type-export",
@@ -12808,7 +12899,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "EnvelopeBodyProps",
     "category": "type-export",
@@ -12821,7 +12912,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "EnvelopeFooterProps",
     "category": "type-export",
@@ -12834,7 +12925,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "EnvelopeHeaderProps",
     "category": "type-export",
@@ -12847,7 +12938,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "EnvelopeProps",
     "category": "type-export",
@@ -12860,7 +12951,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "EnvelopeSectionProps",
     "category": "type-export",
@@ -12873,7 +12964,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InfoCardProps",
     "category": "type-export",
@@ -12886,7 +12977,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ListCardItem",
     "category": "type-export",
@@ -12899,7 +12990,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ListCardProps",
     "category": "type-export",
@@ -12912,7 +13003,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "MetricCardProps",
     "category": "type-export",
@@ -12925,7 +13016,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "MetricTrend",
     "category": "type-export",
@@ -12938,7 +13029,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ProgressCardProps",
     "category": "type-export",
@@ -12951,7 +13042,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ProgressStep",
     "category": "type-export",
@@ -12964,7 +13055,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "TableCardProps",
     "category": "type-export",
@@ -12977,7 +13068,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "TableColumn",
     "category": "type-export",
@@ -12990,7 +13081,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "TimelineCardProps",
     "category": "type-export",
@@ -13003,7 +13094,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "TimelineEvent",
     "category": "type-export",
@@ -13016,7 +13107,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "TimelineStatus",
     "category": "type-export",
@@ -13029,7 +13120,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "acceptsInput",
     "category": "nonvisual-function",
@@ -13075,7 +13166,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "classifyPriorResponse",
     "category": "nonvisual-function",
@@ -13121,7 +13212,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "CardAnswer",
     "category": "type-export",
@@ -13134,7 +13225,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "CardDecision",
     "category": "type-export",
@@ -13147,7 +13238,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "CardOutcome",
     "category": "type-export",
@@ -13194,7 +13285,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "CardResponder",
     "category": "type-export",
@@ -13207,7 +13298,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PriorResponseState",
     "category": "type-export",
@@ -13220,7 +13311,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "useStallDetector",
     "category": "nonvisual-function",
@@ -13233,7 +13324,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "useChatHistory",
     "category": "nonvisual-function",
@@ -13246,7 +13337,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChatHistoryCursor",
     "category": "type-export",
@@ -13259,7 +13350,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChatHistoryPage",
     "category": "type-export",
@@ -13272,7 +13363,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChatHistoryRequest",
     "category": "type-export",
@@ -13285,7 +13376,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "UseChatHistoryOptions",
     "category": "type-export",
@@ -13298,7 +13389,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "applyReference",
     "category": "nonvisual-function",
@@ -13311,7 +13402,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "detectSuggestion",
     "category": "nonvisual-function",
@@ -13324,7 +13415,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "filterSuggestions",
     "category": "nonvisual-function",
@@ -13337,7 +13428,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "removeSuggestion",
     "category": "nonvisual-function",
@@ -13350,7 +13441,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ActiveSuggestion",
     "category": "type-export",
@@ -13363,7 +13454,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChatTrigger",
     "category": "type-export",
@@ -13408,7 +13499,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "CommandTrigger",
     "category": "type-export",
@@ -13421,7 +13512,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ReferenceTrigger",
     "category": "type-export",
@@ -13434,7 +13525,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "SuggestionItem",
     "category": "type-export",
@@ -13447,7 +13538,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChatCardItem",
     "category": "type-export",
@@ -13460,7 +13551,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChatItem",
     "category": "type-export",
@@ -13510,7 +13601,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChatMarkerItem",
     "category": "type-export",
@@ -13523,7 +13614,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChatMessageItem",
     "category": "type-export",
@@ -13536,7 +13627,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChatRole",
     "category": "type-export",
@@ -13549,7 +13640,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChatStreamStatus",
     "category": "type-export",
@@ -13595,7 +13686,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "Reasoning",
     "category": "visual-component",
@@ -13646,7 +13737,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ReasoningTrigger",
     "category": "visual-component",
@@ -13697,7 +13788,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ReasoningContent",
     "category": "visual-component",
@@ -13748,7 +13839,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ReasoningProps",
     "category": "type-export",
@@ -13761,7 +13852,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ReasoningTriggerProps",
     "category": "type-export",
@@ -13774,7 +13865,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ReasoningContentProps",
     "category": "type-export",
@@ -13787,7 +13878,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChainOfThought",
     "category": "visual-component",
@@ -13800,7 +13891,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChainOfThoughtHeader",
     "category": "visual-component",
@@ -13813,7 +13904,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChainOfThoughtStep",
     "category": "visual-component",
@@ -13826,7 +13917,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChainOfThoughtSearchResults",
     "category": "visual-component",
@@ -13839,7 +13930,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChainOfThoughtSearchResult",
     "category": "visual-component",
@@ -13852,7 +13943,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChainOfThoughtContent",
     "category": "visual-component",
@@ -13865,7 +13956,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChainOfThoughtImage",
     "category": "visual-component",
@@ -13878,7 +13969,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChainOfThoughtProps",
     "category": "type-export",
@@ -13891,7 +13982,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChainOfThoughtHeaderProps",
     "category": "type-export",
@@ -13904,7 +13995,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChainOfThoughtStepProps",
     "category": "type-export",
@@ -13917,7 +14008,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChainOfThoughtSearchResultsProps",
     "category": "type-export",
@@ -13930,7 +14021,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChainOfThoughtSearchResultProps",
     "category": "type-export",
@@ -13943,7 +14034,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChainOfThoughtContentProps",
     "category": "type-export",
@@ -13956,7 +14047,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ChainOfThoughtImageProps",
     "category": "type-export",
@@ -13969,7 +14060,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "Sources",
     "category": "visual-component",
@@ -14020,7 +14111,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "SourcesTrigger",
     "category": "visual-component",
@@ -14071,7 +14162,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "SourcesContent",
     "category": "visual-component",
@@ -14122,7 +14213,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "Source",
     "category": "visual-component",
@@ -14173,7 +14264,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "SourcesProps",
     "category": "type-export",
@@ -14186,7 +14277,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "SourcesTriggerProps",
     "category": "type-export",
@@ -14199,7 +14290,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "SourcesContentProps",
     "category": "type-export",
@@ -14212,7 +14303,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "SourceProps",
     "category": "type-export",
@@ -14225,7 +14316,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "Plan",
     "category": "visual-component",
@@ -14270,7 +14361,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PlanHeader",
     "category": "visual-component",
@@ -14315,7 +14406,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PlanTitle",
     "category": "visual-component",
@@ -14360,7 +14451,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PlanDescription",
     "category": "visual-component",
@@ -14405,7 +14496,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PlanAction",
     "category": "visual-component",
@@ -14418,7 +14509,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PlanContent",
     "category": "visual-component",
@@ -14463,7 +14554,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PlanFooter",
     "category": "visual-component",
@@ -14476,7 +14567,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PlanTrigger",
     "category": "visual-component",
@@ -14520,7 +14611,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PlanProps",
     "category": "type-export",
@@ -14533,7 +14624,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PlanHeaderProps",
     "category": "type-export",
@@ -14546,7 +14637,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PlanTitleProps",
     "category": "type-export",
@@ -14559,7 +14650,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PlanDescriptionProps",
     "category": "type-export",
@@ -14572,7 +14663,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PlanActionProps",
     "category": "type-export",
@@ -14585,7 +14676,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PlanContentProps",
     "category": "type-export",
@@ -14598,7 +14689,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PlanFooterProps",
     "category": "type-export",
@@ -14611,7 +14702,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PlanTriggerProps",
     "category": "type-export",
@@ -14624,7 +14715,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "Shimmer",
     "category": "visual-component",
@@ -14637,7 +14728,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "TextShimmerProps",
     "category": "type-export",
@@ -14650,7 +14741,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "MessageActions",
     "category": "visual-component",
@@ -14663,7 +14754,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "MessageAction",
     "category": "visual-component",
@@ -14676,7 +14767,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "MessageBranch",
     "category": "visual-component",
@@ -14689,7 +14780,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "MessageBranchContent",
     "category": "nonvisual-function",
@@ -14702,7 +14793,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "MessageBranchSelector",
     "category": "visual-component",
@@ -14715,7 +14806,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "MessageBranchPrevious",
     "category": "visual-component",
@@ -14728,7 +14819,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "MessageBranchNext",
     "category": "visual-component",
@@ -14741,7 +14832,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "MessageBranchPage",
     "category": "visual-component",
@@ -14754,7 +14845,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "MessageActionsProps",
     "category": "type-export",
@@ -14767,7 +14858,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "MessageActionProps",
     "category": "type-export",
@@ -14780,7 +14871,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "MessageBranchProps",
     "category": "type-export",
@@ -14793,7 +14884,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "MessageBranchContentProps",
     "category": "type-export",
@@ -14806,7 +14897,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "MessageBranchSelectorProps",
     "category": "type-export",
@@ -14819,7 +14910,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "MessageBranchPreviousProps",
     "category": "type-export",
@@ -14832,7 +14923,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "MessageBranchNextProps",
     "category": "type-export",
@@ -14845,7 +14936,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "MessageBranchPageProps",
     "category": "type-export",
@@ -14858,7 +14949,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "Attachments",
     "category": "visual-component",
@@ -14902,7 +14993,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "Attachment",
     "category": "visual-component",
@@ -14946,7 +15037,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentPreview",
     "category": "visual-component",
@@ -14959,7 +15050,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentInfo",
     "category": "visual-component",
@@ -15003,7 +15094,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentRemove",
     "category": "visual-component",
@@ -15016,7 +15107,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentEmpty",
     "category": "visual-component",
@@ -15029,7 +15120,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentHoverCard",
     "category": "visual-component",
@@ -15042,7 +15133,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentHoverCardTrigger",
     "category": "visual-component",
@@ -15055,7 +15146,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentHoverCardContent",
     "category": "visual-component",
@@ -15068,7 +15159,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentData",
     "category": "type-export",
@@ -15081,7 +15172,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentMediaCategory",
     "category": "type-export",
@@ -15094,7 +15185,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentVariant",
     "category": "type-export",
@@ -15107,7 +15198,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentsProps",
     "category": "type-export",
@@ -15120,7 +15211,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentProps",
     "category": "type-export",
@@ -15133,7 +15224,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentPreviewProps",
     "category": "type-export",
@@ -15146,7 +15237,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentInfoProps",
     "category": "type-export",
@@ -15159,7 +15250,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentRemoveProps",
     "category": "type-export",
@@ -15172,7 +15263,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentEmptyProps",
     "category": "type-export",
@@ -15185,7 +15276,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentHoverCardProps",
     "category": "type-export",
@@ -15198,7 +15289,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentHoverCardTriggerProps",
     "category": "type-export",
@@ -15211,7 +15302,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentHoverCardContentProps",
     "category": "type-export",
@@ -15224,7 +15315,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentDropzone",
     "category": "visual-component",
@@ -15237,7 +15328,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PromptInputActionAddAttachments",
     "category": "visual-component",
@@ -15250,7 +15341,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentDropzoneProps",
     "category": "type-export",
@@ -15263,7 +15354,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "AttachmentRejection",
     "category": "type-export",
@@ -15276,7 +15367,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "PromptInputActionAddAttachmentsProps",
     "category": "type-export",
@@ -15289,7 +15380,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "getMediaCategory",
     "category": "nonvisual-function",
@@ -15302,7 +15393,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "getAttachmentLabel",
     "category": "nonvisual-function",
@@ -15315,7 +15406,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelector",
     "category": "visual-component",
@@ -15328,7 +15419,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorTrigger",
     "category": "visual-component",
@@ -15341,7 +15432,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorContent",
     "category": "visual-component",
@@ -15354,7 +15445,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorDialog",
     "category": "visual-component",
@@ -15367,7 +15458,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorInput",
     "category": "visual-component",
@@ -15380,7 +15471,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorList",
     "category": "visual-component",
@@ -15393,7 +15484,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorEmpty",
     "category": "visual-component",
@@ -15406,7 +15497,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorGroup",
     "category": "visual-component",
@@ -15419,7 +15510,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorItem",
     "category": "visual-component",
@@ -15432,7 +15523,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorShortcut",
     "category": "visual-component",
@@ -15445,7 +15536,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorSeparator",
     "category": "visual-component",
@@ -15458,7 +15549,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorLogo",
     "category": "visual-component",
@@ -15471,7 +15562,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorLogoGroup",
     "category": "visual-component",
@@ -15484,7 +15575,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorName",
     "category": "visual-component",
@@ -15497,7 +15588,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorProps",
     "category": "type-export",
@@ -15510,7 +15601,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorTriggerProps",
     "category": "type-export",
@@ -15523,7 +15614,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorContentProps",
     "category": "type-export",
@@ -15536,7 +15627,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorDialogProps",
     "category": "type-export",
@@ -15549,7 +15640,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorInputProps",
     "category": "type-export",
@@ -15562,7 +15653,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorListProps",
     "category": "type-export",
@@ -15575,7 +15666,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorEmptyProps",
     "category": "type-export",
@@ -15588,7 +15679,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorGroupProps",
     "category": "type-export",
@@ -15601,7 +15692,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorItemProps",
     "category": "type-export",
@@ -15614,7 +15705,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorShortcutProps",
     "category": "type-export",
@@ -15627,7 +15718,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorSeparatorProps",
     "category": "type-export",
@@ -15640,7 +15731,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorLogoProps",
     "category": "type-export",
@@ -15653,7 +15744,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorLogoGroupProps",
     "category": "type-export",
@@ -15666,7 +15757,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ModelSelectorNameProps",
     "category": "type-export",
@@ -15679,7 +15770,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "Tool",
     "category": "visual-component",
@@ -15730,7 +15821,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ToolHeader",
     "category": "visual-component",
@@ -15781,7 +15872,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ToolContent",
     "category": "visual-component",
@@ -15832,7 +15923,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ToolInput",
     "category": "visual-component",
@@ -15883,7 +15974,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ToolOutput",
     "category": "visual-component",
@@ -15934,7 +16025,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ToolState",
     "category": "type-export",
@@ -15947,7 +16038,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ToolProps",
     "category": "type-export",
@@ -15960,7 +16051,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ToolHeaderProps",
     "category": "type-export",
@@ -15973,7 +16064,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ToolContentProps",
     "category": "type-export",
@@ -15986,7 +16077,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ToolInputProps",
     "category": "type-export",
@@ -15999,7 +16090,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ToolOutputProps",
     "category": "type-export",
@@ -16012,7 +16103,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ConfirmationTitle",
     "category": "visual-component",
@@ -16025,7 +16116,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ConfirmationRequest",
     "category": "nonvisual-function",
@@ -16038,7 +16129,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ConfirmationAccepted",
     "category": "nonvisual-function",
@@ -16051,7 +16142,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ConfirmationRejected",
     "category": "nonvisual-function",
@@ -16064,7 +16155,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ConfirmationTitleProps",
     "category": "type-export",
@@ -16077,7 +16168,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ConfirmationRequestProps",
     "category": "type-export",
@@ -16090,7 +16181,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ConfirmationAcceptedProps",
     "category": "type-export",
@@ -16103,7 +16194,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ConfirmationRejectedProps",
     "category": "type-export",
@@ -16116,7 +16207,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueItem",
     "category": "visual-component",
@@ -16161,7 +16252,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueItemIndicator",
     "category": "visual-component",
@@ -16206,7 +16297,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueItemContent",
     "category": "visual-component",
@@ -16251,7 +16342,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueItemDescription",
     "category": "visual-component",
@@ -16295,7 +16386,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueItemActions",
     "category": "visual-component",
@@ -16308,7 +16399,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueItemAction",
     "category": "visual-component",
@@ -16321,7 +16412,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueItemAttachment",
     "category": "visual-component",
@@ -16334,7 +16425,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueItemImage",
     "category": "visual-component",
@@ -16347,7 +16438,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueItemFile",
     "category": "visual-component",
@@ -16360,7 +16451,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueList",
     "category": "visual-component",
@@ -16405,7 +16496,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueSection",
     "category": "visual-component",
@@ -16449,7 +16540,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueSectionTrigger",
     "category": "visual-component",
@@ -16493,7 +16584,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueSectionLabel",
     "category": "visual-component",
@@ -16537,7 +16628,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueSectionContent",
     "category": "visual-component",
@@ -16581,7 +16672,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "Queue",
     "category": "visual-component",
@@ -16626,7 +16717,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueMessagePart",
     "category": "type-export",
@@ -16639,7 +16730,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueMessage",
     "category": "type-export",
@@ -16652,7 +16743,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueTodo",
     "category": "type-export",
@@ -16665,7 +16756,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueItemProps",
     "category": "type-export",
@@ -16678,7 +16769,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueItemIndicatorProps",
     "category": "type-export",
@@ -16691,7 +16782,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueItemContentProps",
     "category": "type-export",
@@ -16704,7 +16795,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueItemDescriptionProps",
     "category": "type-export",
@@ -16717,7 +16808,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueItemActionsProps",
     "category": "type-export",
@@ -16730,7 +16821,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueItemActionProps",
     "category": "type-export",
@@ -16743,7 +16834,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueItemAttachmentProps",
     "category": "type-export",
@@ -16756,7 +16847,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueItemImageProps",
     "category": "type-export",
@@ -16769,7 +16860,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueItemFileProps",
     "category": "type-export",
@@ -16782,7 +16873,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueListProps",
     "category": "type-export",
@@ -16795,7 +16886,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueSectionProps",
     "category": "type-export",
@@ -16808,7 +16899,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueSectionTriggerProps",
     "category": "type-export",
@@ -16821,7 +16912,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueSectionLabelProps",
     "category": "type-export",
@@ -16834,7 +16925,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueSectionContentProps",
     "category": "type-export",
@@ -16847,7 +16938,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QueueProps",
     "category": "type-export",
@@ -16860,7 +16951,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "OpenIn",
     "category": "visual-component",
@@ -16873,7 +16964,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "OpenInTrigger",
     "category": "visual-component",
@@ -16886,7 +16977,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "OpenInContent",
     "category": "visual-component",
@@ -16899,7 +16990,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "OpenInItem",
     "category": "visual-component",
@@ -16912,7 +17003,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "OpenInGroup",
     "category": "visual-component",
@@ -16925,7 +17016,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "OpenInLabel",
     "category": "visual-component",
@@ -16938,7 +17029,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "OpenInSeparator",
     "category": "visual-component",
@@ -16951,7 +17042,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "OpenInProvider",
     "category": "type-export",
@@ -16964,7 +17055,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "OpenInProps",
     "category": "type-export",
@@ -16977,7 +17068,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "OpenInTriggerProps",
     "category": "type-export",
@@ -16990,7 +17081,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "OpenInContentProps",
     "category": "type-export",
@@ -17003,7 +17094,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "OpenInItemProps",
     "category": "type-export",
@@ -17016,7 +17107,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "OpenInGroupProps",
     "category": "type-export",
@@ -17029,7 +17120,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "OpenInLabelProps",
     "category": "type-export",
@@ -17042,7 +17133,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "OpenInSeparatorProps",
     "category": "type-export",
@@ -17055,7 +17146,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "Suggestions",
     "category": "visual-component",
@@ -17068,7 +17159,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "Suggestion",
     "category": "visual-component",
@@ -17081,7 +17172,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "SuggestionsProps",
     "category": "type-export",
@@ -17094,7 +17185,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "SuggestionProps",
     "category": "type-export",
@@ -17107,7 +17198,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "Context",
     "category": "visual-component",
@@ -17159,7 +17250,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextTrigger",
     "category": "visual-component",
@@ -17211,7 +17302,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextContent",
     "category": "visual-component",
@@ -17262,7 +17353,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextContentHeader",
     "category": "visual-component",
@@ -17314,7 +17405,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextContentBody",
     "category": "visual-component",
@@ -17358,7 +17449,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextContentFooter",
     "category": "visual-component",
@@ -17371,7 +17462,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextInputUsage",
     "category": "visual-component",
@@ -17423,7 +17514,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextOutputUsage",
     "category": "visual-component",
@@ -17475,7 +17566,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextReasoningUsage",
     "category": "visual-component",
@@ -17526,7 +17617,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextCacheUsage",
     "category": "visual-component",
@@ -17577,7 +17668,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextProps",
     "category": "type-export",
@@ -17590,7 +17681,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextUsage",
     "category": "type-export",
@@ -17603,7 +17694,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextCost",
     "category": "type-export",
@@ -17616,7 +17707,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextTriggerProps",
     "category": "type-export",
@@ -17629,7 +17720,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextContentProps",
     "category": "type-export",
@@ -17642,7 +17733,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextContentHeaderProps",
     "category": "type-export",
@@ -17655,7 +17746,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextContentBodyProps",
     "category": "type-export",
@@ -17668,7 +17759,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextContentFooterProps",
     "category": "type-export",
@@ -17681,7 +17772,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextInputUsageProps",
     "category": "type-export",
@@ -17694,7 +17785,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextOutputUsageProps",
     "category": "type-export",
@@ -17707,7 +17798,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextReasoningUsageProps",
     "category": "type-export",
@@ -17720,7 +17811,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ContextCacheUsageProps",
     "category": "type-export",
@@ -17733,7 +17824,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "Question",
     "category": "visual-component",
@@ -17746,7 +17837,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QuestionPrompt",
     "category": "visual-component",
@@ -17759,7 +17850,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QuestionDescription",
     "category": "visual-component",
@@ -17772,7 +17863,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QuestionOptions",
     "category": "visual-component",
@@ -17785,7 +17876,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QuestionOption",
     "category": "visual-component",
@@ -17798,7 +17889,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QuestionInput",
     "category": "visual-component",
@@ -17811,7 +17902,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QuestionActions",
     "category": "visual-component",
@@ -17824,7 +17915,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QuestionSubmit",
     "category": "visual-component",
@@ -17837,7 +17928,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QuestionValue",
     "category": "type-export",
@@ -17850,7 +17941,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QuestionResponse",
     "category": "type-export",
@@ -17863,7 +17954,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QuestionSelectionMode",
     "category": "type-export",
@@ -17876,7 +17967,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QuestionProps",
     "category": "type-export",
@@ -17889,7 +17980,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QuestionPromptProps",
     "category": "type-export",
@@ -17902,7 +17993,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QuestionDescriptionProps",
     "category": "type-export",
@@ -17915,7 +18006,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QuestionOptionsProps",
     "category": "type-export",
@@ -17928,7 +18019,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QuestionOptionProps",
     "category": "type-export",
@@ -17941,7 +18032,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QuestionInputProps",
     "category": "type-export",
@@ -17954,7 +18045,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QuestionActionsProps",
     "category": "type-export",
@@ -17967,7 +18058,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "QuestionSubmitProps",
     "category": "type-export",
@@ -17980,7 +18071,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "Image",
     "category": "visual-component",
@@ -17993,7 +18084,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ImageProps",
     "category": "type-export",
@@ -18006,7 +18097,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitation",
     "category": "visual-component",
@@ -18019,7 +18110,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationText",
     "category": "visual-component",
@@ -18032,7 +18123,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCard",
     "category": "visual-component",
@@ -18045,7 +18136,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCardTrigger",
     "category": "visual-component",
@@ -18058,7 +18149,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCardBody",
     "category": "visual-component",
@@ -18071,7 +18162,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCarousel",
     "category": "visual-component",
@@ -18084,7 +18175,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCarouselContent",
     "category": "visual-component",
@@ -18097,7 +18188,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCarouselItem",
     "category": "visual-component",
@@ -18110,7 +18201,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCarouselHeader",
     "category": "visual-component",
@@ -18123,7 +18214,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCarouselIndex",
     "category": "visual-component",
@@ -18136,7 +18227,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCarouselPrev",
     "category": "visual-component",
@@ -18149,7 +18240,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCarouselNext",
     "category": "visual-component",
@@ -18162,7 +18253,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationSource",
     "category": "visual-component",
@@ -18175,7 +18266,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationQuote",
     "category": "visual-component",
@@ -18188,7 +18279,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationProps",
     "category": "type-export",
@@ -18201,7 +18292,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationTextProps",
     "category": "type-export",
@@ -18214,7 +18305,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCardProps",
     "category": "type-export",
@@ -18227,7 +18318,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCardTriggerProps",
     "category": "type-export",
@@ -18240,7 +18331,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCardBodyProps",
     "category": "type-export",
@@ -18253,7 +18344,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCarouselProps",
     "category": "type-export",
@@ -18266,7 +18357,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCarouselContentProps",
     "category": "type-export",
@@ -18279,7 +18370,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCarouselItemProps",
     "category": "type-export",
@@ -18292,7 +18383,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCarouselHeaderProps",
     "category": "type-export",
@@ -18305,7 +18396,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCarouselIndexProps",
     "category": "type-export",
@@ -18318,7 +18409,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCarouselPrevProps",
     "category": "type-export",
@@ -18331,7 +18422,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationCarouselNextProps",
     "category": "type-export",
@@ -18344,7 +18435,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationSourceProps",
     "category": "type-export",
@@ -18357,7 +18448,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "InlineCitationQuoteProps",
     "category": "type-export",
@@ -18370,7 +18461,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "Artifact",
     "category": "visual-component",
@@ -18421,7 +18512,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ArtifactHeader",
     "category": "visual-component",
@@ -18434,7 +18525,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ArtifactTitle",
     "category": "visual-component",
@@ -18447,7 +18538,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ArtifactDescription",
     "category": "visual-component",
@@ -18460,7 +18551,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ArtifactClose",
     "category": "visual-component",
@@ -18511,7 +18602,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ArtifactActions",
     "category": "visual-component",
@@ -18524,7 +18615,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ArtifactAction",
     "category": "visual-component",
@@ -18575,7 +18666,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ArtifactContent",
     "category": "visual-component",
@@ -18626,7 +18717,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ArtifactProps",
     "category": "type-export",
@@ -18639,7 +18730,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ArtifactHeaderProps",
     "category": "type-export",
@@ -18652,7 +18743,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ArtifactTitleProps",
     "category": "type-export",
@@ -18665,7 +18756,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ArtifactDescriptionProps",
     "category": "type-export",
@@ -18678,7 +18769,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ArtifactCloseProps",
     "category": "type-export",
@@ -18691,7 +18782,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ArtifactActionsProps",
     "category": "type-export",
@@ -18704,7 +18795,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ArtifactActionProps",
     "category": "type-export",
@@ -18717,7 +18808,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": ".",
     "name": "ArtifactContentProps",
     "category": "type-export",
@@ -18730,7 +18821,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": "./markdown",
     "name": "ChatMarkdown",
     "category": "visual-component",
@@ -18743,7 +18834,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": "./markdown",
     "name": "ChatMarkdownProps",
     "category": "type-export",
@@ -18756,7 +18847,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": "./markdown",
     "name": "StreamdownProps",
     "category": "runtime-value",
@@ -18769,7 +18860,7 @@
   },
   {
     "package": "@hollis-labs/kit-chat",
-    "version": "0.4.0",
+    "version": "0.8.0",
     "entry": "./markdown",
     "name": "ChatMarkdownNode",
     "category": "type-export",
