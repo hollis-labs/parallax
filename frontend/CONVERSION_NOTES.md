@@ -89,13 +89,18 @@ the closed select emits no `change` in current Chromium), `messaging-example.spe
 same control family, unproven), `nil-example.spec.ts` "complete native bounds and scroll" at 1280x800 and 390x844 (the inspection body no longer overflows its
 box; not root-caused; the 390x420 variant passes and stays on).
 
-One more is `test.fixme` against its own design-components task (CW-20261113-0027, driver ruling 2026-11-13): `primitives.spec.ts` "Escape closes the note form
-while its inspection is held, and source replacement retires the held outcome". design-components 0.5.1 `FormDialog` ignores Escape and close while `submitting`;
-the test presses Escape while the "Review local note" form holds an inspection, so the dialog stays open, the page behind it stays inert and the next step times
-out (30 s). The 0.4.0 candidate closed regardless. A timeout does not count as an expected failure in Playwright, so `test.fail` cannot hold it. It was split from
-"gallery entry ignores operations filter and retires focus and held outcomes on source replacement", which now runs: it releases each inspection with the form's
-"Release oldest scripted outcome" before Escape, so its filter, retirement and focus checks assert. The lab still passes `submitting={busy.form}`; whether a held
-local inspection counts as submitting is the question on CW-20261113-0027 (the reviewer's reading, documented kit behaviour, is recorded there).
+One more is `test.fixme` against its own design-components task (CW-20261113-0027, driver rulings 2026-11-13): `primitives.spec.ts` "Escape closes the note
+form while its inspection is held, and task or scenario replacement retires the held outcome". design-components 0.5.1 `FormDialog` ignores Escape and close while
+`submitting`; the test presses Escape while the "Review local note" form holds an inspection, so the dialog stays open, the page behind it stays inert and the next
+step times out (30 s). The 0.4.0 candidate closed regardless. A timeout does not count as an expected failure in Playwright, so `test.fail` cannot hold it. What
+is parked there: closing the form while an inspection is held, and the held outcome's retirement when the source is replaced (another task, another scenario),
+because those controls sit behind the modal. The rest runs:
+- "a held note inspection is retired by editing the note or resetting the gallery context while the form stays open" proves held-outcome retirement without
+  Escape (releasing the queued producer afterwards reports "Retired producer ignored").
+- "gallery entry ignores operations filter, clears completed outcomes on task and scenario replacement, and returns focus" releases each inspection with the
+  form's "Release oldest scripted outcome" before Escape.
+The lab still passes `submitting={busy.form}`; whether a held local inspection counts as submitting is the question on CW-20261113-0027 (the reviewer's reading,
+documented kit behaviour, is recorded there).
 
 ## Shell wrap: how it is built (app-shell 0.11.0)
 

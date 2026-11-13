@@ -286,8 +286,9 @@ test("rendered tone and clamp contracts use actual library paint and dimensions"
   await page.screenshot({ path: info.outputPath("gallery-desktop.png"), animations: "disabled" })
 })
 
-// Split from the gallery-entry test below: only the Escape-during-a-held-inspection path, steps unchanged.
-test.fixme("Escape closes the note form while its inspection is held, and source replacement retires the held outcome", {
+// Parked on CW-20261113-0027: the Escape-during-a-held-inspection path, with both source replacements (another task, another
+// scenario), steps as in the original gallery-entry test.
+test.fixme("Escape closes the note form while its inspection is held, and task or scenario replacement retires the held outcome", {
   annotation: {
     type: "fixme",
     description:
@@ -304,10 +305,57 @@ test.fixme("Escape closes the note form while its inspection is held, and source
   await choose(page, "TASK-003")
   await page.getByRole("button", { name: "Release oldest producer (1)" }).click()
   await expect(page.getByText(/source-retired-note/)).toHaveCount(0)
+  await page.getByRole("button", { name: "Review note form", exact: true }).click()
+  await form.getByLabel("Primitive review note").fill("source-replacement-note")
+  await form.getByRole("button", { name: "Inspect note intent", exact: true }).click()
+  await page.keyboard.press("Escape")
+  await page.getByLabel("Scenario", { exact: true }).selectOption("empty")
+  await expect(page.getByRole("button", { name: "Release oldest producer (0)" })).toBeDisabled()
+  await expect(page.getByText(/source-replacement-note/)).toHaveCount(0)
 })
-// The Escape-while-held path is its own test above (CW-20261113-0027). Here each inspection is released the ordinary way
-// (the form's "Release oldest scripted outcome") before Escape, so the filter, retirement and focus checks run.
-test("gallery entry ignores operations filter and retires focus and held outcomes on source replacement", async ({
+// Held-outcome retirement with the form open (no Escape, so it does not depend on CW-20261113-0027).
+test("a held note inspection is retired by editing the note or resetting the gallery context while the form stays open", async ({
+  page,
+}) => {
+  await page.goto("/?view=Primitives")
+  await choose(page, "TASK-001")
+  const form = page.getByRole("dialog", { name: "Review local note", exact: true })
+  const held = form.getByText("Held note inspection; no network request.", { exact: true })
+  // Editing the note retires the held inspection; the form stays open.
+  await page.getByRole("button", { name: "Review note form", exact: true }).click()
+  await form.getByLabel("Primitive review note").fill("held-edit-note")
+  await form.getByRole("button", { name: "Inspect note intent", exact: true }).click()
+  await expect(held).toBeVisible()
+  await form.getByLabel("Primitive review note").fill("held-edit-note, edited")
+  await expect(held).toHaveCount(0)
+  await expect(form).toBeVisible()
+  await expect(
+    form.getByRole("button", { name: "Release oldest scripted outcome", exact: true }),
+  ).toBeDisabled()
+  await page.keyboard.press("Escape")
+  await expect(form).not.toBeVisible()
+  await page.getByRole("button", { name: "Release oldest producer (1)" }).click()
+  await expect(
+    page.getByText("Retired producer ignored; current presentation unchanged.", { exact: true }),
+  ).toBeVisible()
+  await expect(page.getByText(/held-edit-note/)).toHaveCount(0)
+  // Reset gallery context inside the open form retires the held inspection too.
+  await page.getByRole("button", { name: "Review note form", exact: true }).click()
+  await form.getByLabel("Primitive review note").fill("held-reset-note")
+  await form.getByRole("button", { name: "Inspect note intent", exact: true }).click()
+  await expect(held).toBeVisible()
+  await form.getByRole("button", { name: "Reset gallery context", exact: true }).click()
+  await expect(held).toHaveCount(0)
+  await page.getByRole("button", { name: "Release oldest producer (1)" }).click()
+  await expect(
+    page.getByText("Retired producer ignored; current presentation unchanged.", { exact: true }),
+  ).toBeVisible()
+  await expect(page.getByText(/held-reset-note/)).toHaveCount(0)
+})
+// The Escape-while-held path is parked above (CW-20261113-0027) and held-outcome retirement is proven above with the form open.
+// Here each inspection is released the ordinary way (the form's "Release oldest scripted outcome") before Escape, so this proves
+// the filter is ignored, a completed outcome is cleared on task and scenario replacement, and focus returns.
+test("gallery entry ignores operations filter, clears completed outcomes on task and scenario replacement, and returns focus", async ({
   page,
 }) => {
   await page.goto("/?view=Activity")
