@@ -17,8 +17,8 @@ import { StandaloneTetherAIExample } from "./examples/tether-ai/Standalone"
 import { StandaloneTorqueExample } from "./examples/torque/Standalone"
 import { StandaloneWorkspaceExample } from "./examples/workspace/Standalone"
 import { StandaloneFluxRailReview } from "./flux-rail/Review"
-import { Gate } from "./identity/Gate"
 import { Root } from "./shell/Root"
+import { Signed } from "./shell/Signed"
 import { SnapshotReview } from "./snapshots/Review"
 import "./index.css"
 
@@ -27,9 +27,9 @@ if (!root) throw new Error("root element missing")
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
     {new URLSearchParams(location.search).get("example") === "snapshots" ? (
-      <Gate>
+      <Signed>
         <SnapshotReview />
-      </Gate>
+      </Signed>
     ) : new URLSearchParams(location.search).get("example") === "tachyon-nav" ? (
       <StandaloneTachyonNav />
     ) : new URLSearchParams(location.search).get("example") === "tether-ai" ||
@@ -67,9 +67,9 @@ ReactDOM.createRoot(root).render(
     ) : new URLSearchParams(location.search).get("adminShellReview") === "1" ? (
       <StandaloneAdminReview />
     ) : (
-      <Gate>
+      <Signed>
         <Root />
-      </Gate>
+      </Signed>
     )}
   </React.StrictMode>,
 )

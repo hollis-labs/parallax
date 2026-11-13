@@ -58,6 +58,13 @@
 .workbench-header-entry > button {
   margin-right: calc(var(--spacing) * 3);
 }
+/* The header's identity control (shell/Signed.tsx): who is signed in, then Sign out. */
+.signed-in-as {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+  margin-inline-start: auto;
+}
 @media (max-width: 64rem) {
   .workbench-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

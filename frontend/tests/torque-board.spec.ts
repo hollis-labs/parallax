@@ -254,13 +254,14 @@ test("large browser text keeps the short mobile table and portalled actions reac
 // Expected failure at the BOM pin kit-dashboard 0.6.1, with the lab's root-relative document scale (index.html).
 // Split from "compact header and filters preserve audited scaling" so that test's other assertions keep running.
 const searchFieldHeight: Record<number, number> = { 16: 32, 20: 40, 24: 48 }
+const auditedSearchFieldHeight: Record<number, number> = { 16: 26, 20: 32, 24: 38 }
 for (const rootSize of [16, 20, 24]) {
   test.fail(
     `compact search field keeps the audited height at root ${rootSize}`,
     {
       annotation: {
         type: "expected-failure",
-        description: `CW-20261112-0113: .torque-search-field is ${searchFieldHeight[rootSize]}px high at root ${rootSize} (needs ${{ 16: 26, 20: 32, 24: 38 }[rootSize]}px); kit-dashboard 0.6.1 gives .dash-search-field min-height calc(var(--spacing) * 8), which the candidate did not have`,
+        description: `CW-20261112-0113: .torque-search-field is ${searchFieldHeight[rootSize]}px high at root ${rootSize} (needs ${auditedSearchFieldHeight[rootSize]}px); kit-dashboard 0.6.1 gives .dash-search-field min-height calc(var(--spacing) * 8), which the candidate did not have`,
       },
     },
     async ({ page }) => {
@@ -270,9 +271,8 @@ for (const rootSize of [16, 20, 24]) {
       await page.evaluate((size) => {
         document.documentElement.style.fontSize = `${size}px`
       }, rootSize)
-      const expected = { 16: 26, 20: 32, 24: 38 }[rootSize]!
       expect((await page.locator(".torque-search-field").boundingBox())!.height).toBeCloseTo(
-        expected,
+        auditedSearchFieldHeight[rootSize],
         1,
       )
     },

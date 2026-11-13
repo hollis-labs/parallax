@@ -23,7 +23,6 @@ import { DirectoryReview } from "./directory-review/Review"
 import { EventLedger } from "./event-ledger/Ledger"
 import { EvidenceInspector } from "./evidence/Inspector"
 import { EvidenceStates } from "./evidence-states/Review"
-import { SignOutButton } from "./identity/SignOut"
 import { Comparison, type Layout, layouts } from "./layouts/Comparison"
 import { Navigation, type NavigationMode } from "./layouts/Navigation"
 import { ObservationLab } from "./observability/Lab"
@@ -44,6 +43,7 @@ import { PrimitiveGallery } from "./primitives/Gallery"
 import { RunExplorer } from "./run-explorer/Explorer"
 import { SettingsReview } from "./settings-review/Review"
 import { LabFrame } from "./shell/LabFrame"
+import { SignedInAs } from "./shell/Signed"
 import { WidgetGallery } from "./widgets/Gallery"
 import { destinations, normalizeView, viewIcon, workbenchEntry } from "./workbench/catalog"
 import { ReviewWorkbench } from "./workbench/Workbench"
@@ -482,7 +482,7 @@ export function App({ view, onNavigate }: { view: string; onNavigate: (name: str
             >
               Review Workbench
             </Button>
-            <SignOutButton />
+            <SignedInAs />
             {asideEnabled && asideCollapsed && (
               <Button
                 size="sm"

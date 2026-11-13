@@ -4,7 +4,7 @@ import {
   type PluginRegistryOptions,
   type PluginRegistryResponse,
 } from "@hollis-labs/plugin-registry"
-import { apiFetch } from "../identity/api"
+import { apiFetch } from "../http/request"
 
 /** Shared wire loader + shared typed presentation runtime. Catalog, approved
  * runtime exports, action/identity policy and explicit isolation remain host inputs. */

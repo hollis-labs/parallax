@@ -4266,9 +4266,6 @@
       "frontend/src/flux-rail/Contents.tsx",
       "frontend/src/flux-rail/Rail.tsx",
       "frontend/src/flux-rail/Review.tsx",
-      "frontend/src/identity/Entry.tsx",
-      "frontend/src/identity/Gate.tsx",
-      "frontend/src/identity/SignOut.tsx",
       "frontend/src/layouts/AppShellAside.stories.tsx",
       "frontend/src/layouts/AsideConsumers.stories.tsx",
       "frontend/src/layouts/Comparison.stories.tsx",
@@ -6291,7 +6288,6 @@
     "importEvidence": [
       "frontend/src/examples/reader/ReaderInlineActions.tsx",
       "frontend/src/examples/reader/ReaderTags.tsx",
-      "frontend/src/identity/Entry.tsx",
       "frontend/src/snapshots/Builder.tsx",
       "frontend/src/snapshots/Planner.tsx",
       "frontend/src/snapshots/Sessions.tsx"
@@ -22118,7 +22114,8 @@
     },
     "importEvidence": [
       "frontend/src/account-review/Review.tsx",
-      "frontend/src/administration/Account.tsx"
+      "frontend/src/administration/Account.tsx",
+      "frontend/src/shell/Signed.tsx"
     ]
   },
   {

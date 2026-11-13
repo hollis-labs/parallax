@@ -4,10 +4,10 @@ Owner-facing. Each gap stops the work it touches until the driver decides.
 
 ## Framework gaps
 
-0. **Where the kits stand against the BOM (`bom/bom.yaml` `kits:`, Substrate 628daf0f).** Every BOM kit the app uses is pinned exactly:
+0. **Where the kits stand against the BOM (`bom/bom.yaml` `kits:`, Substrate c224093a).** Every BOM kit the app uses is pinned exactly:
    app-shell 0.11.0, design-app-runtime 0.6.0, design-bindings 0.3.0, design-components 0.5.1, design-tokens 0.5.0, kit-account 0.3.0, kit-admin 0.2.0,
    kit-chat 0.8.0, kit-dashboard 0.6.2, kit-observe 0.1.2, kit-settings 0.2.0, plugin-host-ui 0.3.0, plugin-registry 0.2.0 (`make pins`: "app pins match the
-   bom"); kit-cards 0.3.0 comes in through kit-chat (the lab does not import it). kit-identity 0.1.1 is in the BOM but not imported yet (the identity UI swap is CW-20261112-0118). `@hollis-labs/eslint-config-design` 0.5.0 is not a BOM kit.
+   bom"); kit-cards 0.3.0 comes in through kit-chat (the lab does not import it). kit-identity 0.1.3 is the identity UI (CW-20261113-0034). `@hollis-labs/eslint-config-design` 0.5.0 is not a BOM kit.
    - **The candidate tarballs for design-components and kit-dashboard are gone (driver ruling 2026-11-13: BOM-exact wins).** The released kits carry
      the candidate features; kit-dashboard 0.6.x defaults to its reviewed fixed geometry (4px spacing, 12px controls, 14px menus), and the lab, built on
      the earlier root-relative default, opts back in once for the whole app: `<html data-dashboard-scale="root-relative">` in `frontend/index.html`
@@ -40,7 +40,15 @@ Owner-facing. Each gap stops the work it touches until the driver decides.
 1b. **A lab that is itself a shell nests badly.** The lab's own design-components `AppShell` is sized `h-dvh w-dvw`; inside an app-shell page it
    overflows unless the host overrides the size. The override is small (`.lab-host > .h-dvh`) but it is the host working around the kit.
 
-2. **Identity has no UI kit yet** (CW-20261112-0080). Interim sign-in/setup screens live in one directory and are replaced when the kit ships.
+2. **Identity is kit-identity 0.1.3** (CW-20261113-0034; the interim `src/identity/` is gone). `src/shell/Signed.tsx` wraps the two signed-in entries
+   (the shell and `?example=snapshots`) in `IdentityProvider` + `IdentityGate appName="parallax"`, which render boot, the no-owner screen and sign-in outside
+   the shell. A 401 on the app's own `/api` and `/plugins` calls (`src/http/request.ts` `apiFetch`, used by the snapshots page and the plugin runtime) raises
+   `parallax:unauthorized`; a bridge then asks the kit something only a live session answers, so its own 401 shows "session expired" (Loom's wiring). The
+   `/sign-out` footer surface is the kit's `SignOutPage`; the lab header shows kit-account's `WhoamiBadge` (fed by `useIdentity().badge`) and the kit's
+   `SignOutButton`. Known differences from the interim screens, both in the kit (Torque CW-20261113-0035): the no-owner screen shows
+   `parallax identity setup` without the required `--username NAME` (the binary answers "--username is required"), and `SignOutPage` does not say who is
+   signed in. Parallax takes the kit's fix as a pin bump; it does not patch the screens. Wording is the kit's ("Sign in", "No owner yet", the 429 text
+   "<server message>. Try again in 5 minutes (at HH:MM).").
 3. **App-shell has no user-menu region** (CW-20261112-0107): sign-out is a `nav.footer` page.
 
 ## Browser suites against the real backend
@@ -122,8 +130,7 @@ narrow-viewport gap that 0.11.0 closed); the points below hold for 0.11.0 unless
 5. **Routes**: `/` shows Activity (the old default view), the Review Workbench is `/review-workbench`, every other destination is `/<slug>`
    (`src/shell/routes.ts`). `/?view=Name&...` is redirected client-side to the route keeping every other query parameter in order; an
    unknown name lands on `/` with `view` kept so the page says what was asked. `tests/shell-routes.spec.ts` covers it (4 unit, 3 browser).
-6. **Sign-out** is a `nav.footer` surface (`SignOutPage`). The lab header still carries `SignOutButton` (`src/identity/SignOut.tsx`: the signed-in
-   display name and a Sign out button, the same logout call); it goes with the identity UI swap (CW-20261112-0118).
+6. **Sign-out** is a `nav.footer` surface (kit-identity's `SignOutPage`). The lab header carries the signed-in badge and kit-identity's `SignOutButton`.
 
 Naming leftover: `src/chimera` is a plugin-registry loader and presentation adapters, not a host any more. It is not renamed because the backend fixture
 generator (`internal/scenarios/families.go`) and `docs/coverage-policy.json` / `docs/export-inventory.json` reference the path.
@@ -136,9 +143,11 @@ The test measures the cells' `--activity-weight`; waiting for the first cell to 
 
 ## Sign-in screens and first-run setup (Substrate d453ac8)
 
-`GET /api/setup` answers `{setup_required, setup_over_http}`; `POST /api/setup` is refused (`403 setup_offline`). The interim `Entry` screen therefore shows,
-when no owner exists and setup is closed (or after a `setup_offline` answer), a plain screen with no form that names `parallax identity setup --username NAME`
-on the host; the owner form stays only for a backend that reports `setup_over_http: true`. Tests: `tests/identity.spec.ts`.
+`GET /api/setup` answers `{setup_required, setup_over_http}`; `POST /api/setup` is refused (`403 setup_offline`). kit-identity's gate therefore shows,
+when no owner exists and setup is closed (or after a `setup_offline` answer), a plain no-owner screen with no form; the owner form only for a backend that reports
+`setup_over_http: true`. The screen's command lacks `--username NAME` (CW-20261113-0035), so `tests/identity.spec.ts` asserts that the screen renders, not its
+command. The interim helpers' unit test (`identity-api.spec.ts`, Retry-After parsing) went with them; the kit's client owns that now, and the 429 browser test
+still covers it.
 
 ## Unproven CI failure (operations-list-candidate "runs")
 
@@ -188,7 +197,7 @@ lab's own composition (sibling dialogs) and is fixed (CW-20261112-0125): it stay
 - `/activity` is not a route (Activity is `/`, and was never a path before the wrap): it shows the shell's "Page not found". `?view=Activity` redirects to `/` (driver ruling 2026-11-13).
 - An **unknown** `?view=NAME` lands on `/` (Activity), says "Unknown requested view NAME; showing Activity.", and leaves no `view` parameter in the URL (it used to
   rewrite `view` to "Activity"). Test: `tests/workbench.spec.ts` "known URL reload and unknown route fallback..." (last assertion: path is `/`, no `view` parameter), ruled by the driver.
-- Navigation is the shell's: a column at wide widths, a top bar with a "More" sheet at narrow widths; sign-out is its footer surface (the lab header's sign-out button is still there until CW-20261112-0118).
+- Navigation is the shell's: a column at wide widths, a top bar with a "More" sheet at narrow widths; sign-out is its footer surface, and the lab header shows who is signed in with a Sign out button (kit-identity).
 
 ## Shell wrap: scroll owners, the header strip and the second `main`
 

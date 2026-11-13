@@ -34,7 +34,7 @@ test.describe("browser pass", () => {
     await page.getByLabel("Username").fill("e2e")
     await page.getByLabel("Password").fill(password())
     await page.getByRole("button", { name: "Sign in" }).click()
-    await expect(page.getByRole("heading", { name: "Sign in to Parallax" })).toBeHidden()
+    await expect(page.getByRole("heading", { name: "Sign in", exact: true })).toBeHidden()
     failures.length = 0 // the signed-out probes above are expected 401s
 
     // Each surface opens by its URL and shows its own title.
@@ -73,6 +73,6 @@ test.describe("browser pass", () => {
     expect((await page.request.get("/api/scenario")).status()).toBe(401)
     expect((await page.request.get("/plugins/registry")).status()).toBe(401)
     await page.goto("/")
-    await expect(page.getByRole("heading", { name: "Sign in to Parallax" })).toBeVisible()
+    await expect(page.getByRole("heading", { name: "Sign in", exact: true })).toBeVisible()
   })
 })

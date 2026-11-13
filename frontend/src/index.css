@@ -3,6 +3,7 @@
 @import "@hollis-labs/kit-settings/source.css";
 @import "@hollis-labs/kit-observe/source.css";
 @import "@hollis-labs/kit-account/source.css";
+@import "@hollis-labs/kit-identity/source.css";
 @import "tailwindcss";
 @import "@hollis-labs/kit-dashboard/theme.css";
 @import "@hollis-labs/design-app-runtime/shell-reset.css";

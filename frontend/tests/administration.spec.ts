@@ -150,7 +150,8 @@ test("account candidate drafts and related directories stay local with fail-clos
     if (!["GET", "HEAD"].includes(r.method())) writes.push(r.url())
   })
   await page.goto("/?view=Account&mode=light")
-  const identity = page.getByLabel("Current identity"),
+  // The page's fixture identity, inside the lab body: the shell header also shows the signed-in session's badge (kit-identity).
+  const identity = page.locator("[data-lab-body]").getByLabel("Current identity"),
     initial = await identity.textContent()
   await page.getByLabel("Display name", { exact: true }).fill("Unsaved alias")
   await expect(identity).toHaveText(initial ?? "")
