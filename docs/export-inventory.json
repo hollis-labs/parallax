@@ -1,7 +1,7 @@
 [
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "cn",
     "category": "nonvisual-function",
@@ -75,7 +75,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "notifyError",
     "category": "nonvisual-function",
@@ -88,7 +88,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "notifySuccess",
     "category": "nonvisual-function",
@@ -101,7 +101,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Pill",
     "category": "visual-component",
@@ -143,7 +143,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "LiveDot",
     "category": "visual-component",
@@ -156,7 +156,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Callout",
     "category": "visual-component",
@@ -202,7 +202,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CopyableId",
     "category": "visual-component",
@@ -271,7 +271,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ConfirmDialog",
     "category": "visual-component",
@@ -313,7 +313,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DetailDialog",
     "category": "visual-component",
@@ -361,7 +361,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DetailSection",
     "category": "visual-component",
@@ -405,7 +405,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "InspectionDialog",
     "category": "visual-component",
@@ -446,7 +446,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "InspectionDialogProps",
     "category": "type-export",
@@ -471,7 +471,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "FormDialog",
     "category": "visual-component",
@@ -511,7 +511,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "JsonViewer",
     "category": "visual-component",
@@ -564,7 +564,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "MetaList",
     "category": "visual-component",
@@ -611,7 +611,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "MetaItem",
     "category": "type-export",
@@ -624,7 +624,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Metric",
     "category": "visual-component",
@@ -666,7 +666,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ProgressBar",
     "category": "visual-component",
@@ -706,7 +706,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "AppShell",
     "category": "visual-component",
@@ -744,7 +744,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "AppShellProps",
     "category": "type-export",
@@ -757,7 +757,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "AsideWidth",
     "category": "type-export",
@@ -821,7 +821,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "AppShellAsideProps",
     "category": "type-export",
@@ -885,7 +885,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "OverlaySidebar",
     "category": "visual-component",
@@ -921,7 +921,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "OverlaySidebarProps",
     "category": "type-export",
@@ -934,7 +934,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DetailPageLayout",
     "category": "visual-component",
@@ -962,7 +962,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "OverflowMenu",
     "category": "visual-component",
@@ -1000,7 +1000,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "OverflowAction",
     "category": "type-export",
@@ -1013,7 +1013,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CollapsibleSection",
     "category": "visual-component",
@@ -1051,7 +1051,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Combobox",
     "category": "visual-component",
@@ -1092,7 +1092,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ComboboxItem",
     "category": "type-export",
@@ -1105,7 +1105,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CopyButton",
     "category": "visual-component",
@@ -1127,7 +1127,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "EmptyState",
     "category": "visual-component",
@@ -1215,7 +1215,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "EmptyStateVariant",
     "category": "type-export",
@@ -1228,7 +1228,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "JsonModal",
     "category": "visual-component",
@@ -1253,7 +1253,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "PayloadActions",
     "category": "visual-component",
@@ -1275,7 +1275,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "PayloadSummary",
     "category": "visual-component",
@@ -1316,7 +1316,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "JsonModalProps",
     "category": "type-export",
@@ -1329,7 +1329,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "PayloadActionsProps",
     "category": "type-export",
@@ -1342,7 +1342,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "PayloadSummaryProps",
     "category": "type-export",
@@ -1355,7 +1355,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SearchInput",
     "category": "visual-component",
@@ -1397,7 +1397,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "TransferList",
     "category": "visual-component",
@@ -1460,7 +1460,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "TransferListItem",
     "category": "type-export",
@@ -1473,7 +1473,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "safeParseObject",
     "category": "nonvisual-function",
@@ -1486,7 +1486,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "scalarStr",
     "category": "nonvisual-function",
@@ -1499,7 +1499,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "IconComponent",
     "category": "type-export",
@@ -1512,7 +1512,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ROW_INTERACTIVE_ATTR",
     "category": "runtime-value",
@@ -1525,7 +1525,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ROW_INTERACTIVE_SELECTOR",
     "category": "runtime-value",
@@ -1588,7 +1588,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "rowInteractiveProps",
     "category": "nonvisual-function",
@@ -1651,7 +1651,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "TONES",
     "category": "runtime-value",
@@ -1664,7 +1664,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "TONE_CLASSES",
     "category": "runtime-value",
@@ -1677,7 +1677,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "TONE_FILL_CLASSES",
     "category": "runtime-value",
@@ -1690,7 +1690,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ACCENT_TEXT_CLASSES",
     "category": "runtime-value",
@@ -1703,7 +1703,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ACCENT_BORDER_L_CLASSES",
     "category": "runtime-value",
@@ -1716,7 +1716,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Tone",
     "category": "type-export",
@@ -1729,7 +1729,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Accent",
     "category": "type-export",
@@ -1742,7 +1742,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "alignClass",
     "category": "nonvisual-function",
@@ -1755,7 +1755,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "compareBy",
     "category": "nonvisual-function",
@@ -1768,7 +1768,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ColumnDef",
     "category": "type-export",
@@ -1839,7 +1839,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SortDir",
     "category": "type-export",
@@ -1852,7 +1852,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SortState",
     "category": "type-export",
@@ -1915,7 +1915,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "useCopy",
     "category": "nonvisual-function",
@@ -1928,7 +1928,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "UseCopyResult",
     "category": "type-export",
@@ -1941,7 +1941,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "useArrowNav",
     "category": "nonvisual-function",
@@ -1954,7 +1954,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ModeToggle",
     "category": "visual-component",
@@ -1996,7 +1996,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ModeToggleProps",
     "category": "type-export",
@@ -2009,7 +2009,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ThemePicker",
     "category": "visual-component",
@@ -2051,7 +2051,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ThemePickerProps",
     "category": "type-export",
@@ -2064,7 +2064,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "useControllableState",
     "category": "nonvisual-function",
@@ -2077,7 +2077,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "UseControllableStateParams",
     "category": "type-export",
@@ -2090,7 +2090,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SetControllableState",
     "category": "type-export",
@@ -2103,7 +2103,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "useControlledRecordNavigation",
     "category": "nonvisual-function",
@@ -2140,7 +2140,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ControlledRecordNavigationOptions",
     "category": "type-export",
@@ -2153,7 +2153,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ControlledRecordNavigation",
     "category": "type-export",
@@ -2166,7 +2166,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "EDITABLE_TARGET_SELECTOR",
     "category": "runtime-value",
@@ -2229,7 +2229,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "NATIVE_INTERACTIVE_SELECTOR",
     "category": "runtime-value",
@@ -2242,7 +2242,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "OVERLAY_SELECTOR",
     "category": "runtime-value",
@@ -2255,7 +2255,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "isEditableTarget",
     "category": "nonvisual-function",
@@ -2268,7 +2268,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "isInteractiveTarget",
     "category": "nonvisual-function",
@@ -2281,7 +2281,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "isComposingEvent",
     "category": "nonvisual-function",
@@ -2349,7 +2349,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "isMacPlatform",
     "category": "nonvisual-function",
@@ -2362,7 +2362,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "matchExactModifiers",
     "category": "nonvisual-function",
@@ -2425,7 +2425,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "hasActiveModalOverlay",
     "category": "nonvisual-function",
@@ -2489,7 +2489,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ExactModifierConfig",
     "category": "type-export",
@@ -2502,7 +2502,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "resolveAdmittedFocusTarget",
     "category": "nonvisual-function",
@@ -2568,7 +2568,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "restoreAdmittedFocus",
     "category": "nonvisual-function",
@@ -2631,7 +2631,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "FocusReturnOptions",
     "category": "type-export",
@@ -2644,7 +2644,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "EscapeStack",
     "category": "runtime-value",
@@ -2657,7 +2657,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "defaultEscapeStack",
     "category": "runtime-value",
@@ -2670,7 +2670,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "EscapeHandlingAction",
     "category": "type-export",
@@ -2683,7 +2683,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "LayeredEscapeRegistration",
     "category": "type-export",
@@ -2696,7 +2696,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "useLayeredEscape",
     "category": "nonvisual-function",
@@ -2763,7 +2763,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "UseLayeredEscapeOptions",
     "category": "type-export",
@@ -2776,7 +2776,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "UseLayeredEscapeResult",
     "category": "type-export",
@@ -2789,7 +2789,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "useShiftShift",
     "category": "nonvisual-function",
@@ -2852,7 +2852,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "UseShiftShiftOptions",
     "category": "type-export",
@@ -2865,7 +2865,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "UseShiftShiftResult",
     "category": "type-export",
@@ -2878,7 +2878,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "useShortcut",
     "category": "nonvisual-function",
@@ -2949,7 +2949,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "UseShortcutOptions",
     "category": "type-export",
@@ -2962,7 +2962,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "UseShortcutResult",
     "category": "type-export",
@@ -2975,7 +2975,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "useQuickSearchShortcut",
     "category": "nonvisual-function",
@@ -3040,7 +3040,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "UseQuickSearchShortcutOptions",
     "category": "type-export",
@@ -3053,7 +3053,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "UseQuickSearchShortcutResult",
     "category": "type-export",
@@ -3066,7 +3066,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DialogOptions",
     "category": "type-export",
@@ -3079,7 +3079,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DetailDialogProps",
     "category": "type-export",
@@ -3092,7 +3092,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "FormDialogProps",
     "category": "type-export",
@@ -3105,7 +3105,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ConfirmDialogProps",
     "category": "type-export",
@@ -3118,7 +3118,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SearchPalette",
     "category": "visual-component",
@@ -3183,7 +3183,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SearchPaletteProps",
     "category": "type-export",
@@ -3196,7 +3196,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SearchPaletteOption",
     "category": "type-export",
@@ -3209,7 +3209,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SearchPaletteFilter",
     "category": "type-export",
@@ -3222,7 +3222,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CycleModeToggle",
     "category": "visual-component",
@@ -3286,7 +3286,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SearchAddToggle",
     "category": "visual-component",
@@ -3350,7 +3350,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CycleModeToggleProps",
     "category": "type-export",
@@ -3363,7 +3363,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SearchAddToggleProps",
     "category": "type-export",
@@ -3376,7 +3376,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "useLongPress",
     "category": "nonvisual-function",
@@ -3422,7 +3422,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "LongPressGesture",
     "category": "type-export",
@@ -3435,7 +3435,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "UseLongPressOptions",
     "category": "type-export",
@@ -3448,7 +3448,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "UseLongPressResult",
     "category": "type-export",
@@ -3461,7 +3461,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "RadialMenu",
     "category": "visual-component",
@@ -3507,7 +3507,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "RadialMenuItem",
     "category": "type-export",
@@ -3571,7 +3571,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "RadialMenuProps",
     "category": "type-export",
@@ -3584,7 +3584,46 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
+    "entry": ".",
+    "name": "InputCombobox",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.5.1",
+    "entry": ".",
+    "name": "InputComboboxItem",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.5.1",
+    "entry": ".",
+    "name": "InputComboboxProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-components",
+    "version": "0.5.1",
     "entry": ".",
     "name": "AlertDialog",
     "category": "visual-component",
@@ -3648,7 +3687,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "AlertDialogAction",
     "category": "visual-component",
@@ -3661,7 +3700,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "AlertDialogCancel",
     "category": "visual-component",
@@ -3724,7 +3763,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "AlertDialogContent",
     "category": "visual-component",
@@ -3788,7 +3827,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "AlertDialogDescription",
     "category": "visual-component",
@@ -3851,7 +3890,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "AlertDialogFooter",
     "category": "visual-component",
@@ -3914,7 +3953,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "AlertDialogHeader",
     "category": "visual-component",
@@ -3977,7 +4016,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "AlertDialogMedia",
     "category": "visual-component",
@@ -3990,7 +4029,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "AlertDialogOverlay",
     "category": "visual-component",
@@ -4003,7 +4042,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "AlertDialogPortal",
     "category": "visual-component",
@@ -4016,7 +4055,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "AlertDialogTitle",
     "category": "visual-component",
@@ -4080,7 +4119,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "AlertDialogTrigger",
     "category": "visual-component",
@@ -4093,7 +4132,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Badge",
     "category": "visual-component",
@@ -4140,7 +4179,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "badgeVariants",
     "category": "nonvisual-function",
@@ -4153,7 +4192,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Button",
     "category": "visual-component",
@@ -4266,7 +4305,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "buttonVariants",
     "category": "nonvisual-function",
@@ -4279,7 +4318,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ButtonGroup",
     "category": "visual-component",
@@ -4292,7 +4331,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ButtonGroupSeparator",
     "category": "visual-component",
@@ -4305,7 +4344,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ButtonGroupText",
     "category": "visual-component",
@@ -4318,7 +4357,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "buttonGroupVariants",
     "category": "nonvisual-function",
@@ -4331,7 +4370,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Collapsible",
     "category": "visual-component",
@@ -4344,7 +4383,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CollapsibleTrigger",
     "category": "visual-component",
@@ -4357,7 +4396,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CollapsibleContent",
     "category": "visual-component",
@@ -4370,7 +4409,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Card",
     "category": "visual-component",
@@ -4414,7 +4453,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CardHeader",
     "category": "visual-component",
@@ -4455,7 +4494,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CardFooter",
     "category": "visual-component",
@@ -4496,7 +4535,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CardTitle",
     "category": "visual-component",
@@ -4537,7 +4576,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CardAction",
     "category": "visual-component",
@@ -4578,7 +4617,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CardDescription",
     "category": "visual-component",
@@ -4619,7 +4658,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CardContent",
     "category": "visual-component",
@@ -4662,7 +4701,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Checkbox",
     "category": "visual-component",
@@ -4702,7 +4741,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Command",
     "category": "visual-component",
@@ -4741,7 +4780,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CommandDialog",
     "category": "visual-component",
@@ -4804,7 +4843,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CommandInput",
     "category": "visual-component",
@@ -4843,7 +4882,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CommandList",
     "category": "visual-component",
@@ -4881,7 +4920,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CommandEmpty",
     "category": "visual-component",
@@ -4919,7 +4958,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CommandGroup",
     "category": "visual-component",
@@ -4957,7 +4996,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CommandItem",
     "category": "visual-component",
@@ -4996,7 +5035,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CommandShortcut",
     "category": "visual-component",
@@ -5034,7 +5073,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "CommandSeparator",
     "category": "visual-component",
@@ -5072,7 +5111,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Dialog",
     "category": "visual-component",
@@ -5143,7 +5182,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DialogClose",
     "category": "visual-component",
@@ -5206,7 +5245,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DialogContent",
     "category": "visual-component",
@@ -5277,7 +5316,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DialogDescription",
     "category": "visual-component",
@@ -5342,7 +5381,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DialogFooter",
     "category": "visual-component",
@@ -5355,7 +5394,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DialogHeader",
     "category": "visual-component",
@@ -5420,7 +5459,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DialogOverlay",
     "category": "visual-component",
@@ -5433,7 +5472,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DialogPortal",
     "category": "visual-component",
@@ -5446,7 +5485,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DialogTitle",
     "category": "visual-component",
@@ -5517,7 +5556,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DialogTrigger",
     "category": "visual-component",
@@ -5530,7 +5569,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DropdownMenu",
     "category": "visual-component",
@@ -5600,7 +5639,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DropdownMenuPortal",
     "category": "visual-component",
@@ -5613,7 +5652,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DropdownMenuTrigger",
     "category": "visual-component",
@@ -5683,7 +5722,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DropdownMenuContent",
     "category": "visual-component",
@@ -5752,7 +5791,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DropdownMenuGroup",
     "category": "visual-component",
@@ -5765,7 +5804,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DropdownMenuLabel",
     "category": "visual-component",
@@ -5778,7 +5817,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DropdownMenuItem",
     "category": "visual-component",
@@ -5848,7 +5887,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DropdownMenuCheckboxItem",
     "category": "visual-component",
@@ -5861,7 +5900,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DropdownMenuRadioGroup",
     "category": "visual-component",
@@ -5874,7 +5913,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DropdownMenuRadioItem",
     "category": "visual-component",
@@ -5887,7 +5926,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DropdownMenuSeparator",
     "category": "visual-component",
@@ -5951,7 +5990,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DropdownMenuShortcut",
     "category": "visual-component",
@@ -5964,7 +6003,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DropdownMenuSub",
     "category": "visual-component",
@@ -6027,7 +6066,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DropdownMenuSubTrigger",
     "category": "visual-component",
@@ -6090,7 +6129,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "DropdownMenuSubContent",
     "category": "visual-component",
@@ -6153,7 +6192,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "HoverCard",
     "category": "visual-component",
@@ -6166,7 +6205,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "HoverCardTrigger",
     "category": "visual-component",
@@ -6179,7 +6218,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "HoverCardContent",
     "category": "visual-component",
@@ -6192,7 +6231,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Input",
     "category": "visual-component",
@@ -6260,7 +6299,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "InputGroup",
     "category": "visual-component",
@@ -6273,7 +6312,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "InputGroupAddon",
     "category": "visual-component",
@@ -6286,7 +6325,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "InputGroupButton",
     "category": "visual-component",
@@ -6299,7 +6338,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "InputGroupText",
     "category": "visual-component",
@@ -6312,7 +6351,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "InputGroupInput",
     "category": "visual-component",
@@ -6325,7 +6364,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "InputGroupTextarea",
     "category": "visual-component",
@@ -6338,7 +6377,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Label",
     "category": "visual-component",
@@ -6401,7 +6440,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Popover",
     "category": "visual-component",
@@ -6445,7 +6484,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "PopoverContent",
     "category": "visual-component",
@@ -6488,7 +6527,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "PopoverDescription",
     "category": "visual-component",
@@ -6551,7 +6590,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "PopoverHeader",
     "category": "visual-component",
@@ -6614,7 +6653,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "PopoverTitle",
     "category": "visual-component",
@@ -6677,7 +6716,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "PopoverTrigger",
     "category": "visual-component",
@@ -6720,7 +6759,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ScrollArea",
     "category": "visual-component",
@@ -6762,7 +6801,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "ScrollBar",
     "category": "visual-component",
@@ -6775,7 +6814,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Select",
     "category": "visual-component",
@@ -6838,7 +6877,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SelectContent",
     "category": "visual-component",
@@ -6901,7 +6940,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SelectGroup",
     "category": "visual-component",
@@ -6914,7 +6953,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SelectItem",
     "category": "visual-component",
@@ -6977,7 +7016,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SelectLabel",
     "category": "visual-component",
@@ -6990,7 +7029,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SelectScrollDownButton",
     "category": "visual-component",
@@ -7003,7 +7042,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SelectScrollUpButton",
     "category": "visual-component",
@@ -7016,7 +7055,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SelectSeparator",
     "category": "visual-component",
@@ -7029,7 +7068,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SelectTrigger",
     "category": "visual-component",
@@ -7092,7 +7131,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SelectValue",
     "category": "visual-component",
@@ -7155,7 +7194,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Separator",
     "category": "visual-component",
@@ -7186,7 +7225,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Sheet",
     "category": "visual-component",
@@ -7249,7 +7288,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SheetTrigger",
     "category": "visual-component",
@@ -7262,7 +7301,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SheetClose",
     "category": "visual-component",
@@ -7275,7 +7314,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SheetContent",
     "category": "visual-component",
@@ -7338,7 +7377,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SheetHeader",
     "category": "visual-component",
@@ -7351,7 +7390,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SheetFooter",
     "category": "visual-component",
@@ -7364,7 +7403,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SheetTitle",
     "category": "visual-component",
@@ -7427,7 +7466,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "SheetDescription",
     "category": "visual-component",
@@ -7440,7 +7479,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Skeleton",
     "category": "visual-component",
@@ -7473,7 +7512,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Toaster",
     "category": "visual-component",
@@ -7486,7 +7525,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Switch",
     "category": "visual-component",
@@ -7526,7 +7565,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Table",
     "category": "visual-component",
@@ -7565,7 +7604,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "TableHeader",
     "category": "visual-component",
@@ -7604,7 +7643,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "TableBody",
     "category": "visual-component",
@@ -7643,7 +7682,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "TableFooter",
     "category": "visual-component",
@@ -7682,7 +7721,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "TableHead",
     "category": "visual-component",
@@ -7723,7 +7762,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "TableRow",
     "category": "visual-component",
@@ -7762,7 +7801,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "TableCell",
     "category": "visual-component",
@@ -7803,7 +7842,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "TableCaption",
     "category": "visual-component",
@@ -7842,7 +7881,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Tabs",
     "category": "visual-component",
@@ -7885,7 +7924,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "TabsList",
     "category": "visual-component",
@@ -7928,7 +7967,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "TabsTrigger",
     "category": "visual-component",
@@ -7971,7 +8010,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "TabsContent",
     "category": "visual-component",
@@ -8014,7 +8053,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "tabsListVariants",
     "category": "nonvisual-function",
@@ -8027,7 +8066,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Textarea",
     "category": "visual-component",
@@ -8091,7 +8130,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "Tooltip",
     "category": "visual-component",
@@ -8122,7 +8161,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "TooltipTrigger",
     "category": "visual-component",
@@ -8153,7 +8192,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "TooltipContent",
     "category": "visual-component",
@@ -8184,7 +8223,7 @@
   },
   {
     "package": "@hollis-labs/design-components",
-    "version": "0.4.0",
+    "version": "0.5.1",
     "entry": ".",
     "name": "TooltipProvider",
     "category": "visual-component",
@@ -8215,7 +8254,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "PageHeader",
     "category": "visual-component",
@@ -8260,7 +8299,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "NavRail",
     "category": "visual-component",
@@ -8291,7 +8330,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "NavRailItem",
     "category": "type-export",
@@ -8304,7 +8343,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "StatusBadge",
     "category": "visual-component",
@@ -8343,7 +8382,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "PriorityBadge",
     "category": "visual-component",
@@ -8356,7 +8395,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "DashboardTypographyProvider",
     "category": "visual-component",
@@ -8369,7 +8408,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "useDashboardTypography",
     "category": "nonvisual-function",
@@ -8382,7 +8421,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "DashboardTypographyProfile",
     "category": "type-export",
@@ -8395,7 +8434,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "SummaryCards",
     "category": "visual-component",
@@ -8427,7 +8466,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "SummaryCard",
     "category": "type-export",
@@ -8440,7 +8479,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "SettingsField",
     "category": "visual-component",
@@ -8453,7 +8492,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "SettingsGrid",
     "category": "visual-component",
@@ -8466,7 +8505,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "SettingsNotice",
     "category": "visual-component",
@@ -8479,7 +8518,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "SettingsPanel",
     "category": "visual-component",
@@ -8492,7 +8531,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "SettingsStatusPill",
     "category": "visual-component",
@@ -8505,7 +8544,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "SettingsFieldProps",
     "category": "type-export",
@@ -8518,7 +8557,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "SettingsGridProps",
     "category": "type-export",
@@ -8531,7 +8570,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "SettingsNoticeProps",
     "category": "type-export",
@@ -8544,7 +8583,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "SettingsPanelProps",
     "category": "type-export",
@@ -8557,7 +8596,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "SettingsStatusPillProps",
     "category": "type-export",
@@ -8570,7 +8609,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "ThemeSwitcher",
     "category": "visual-component",
@@ -8583,7 +8622,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "STATUS_KEYS",
     "category": "runtime-value",
@@ -8596,7 +8635,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "STATUS_TONES",
     "category": "runtime-value",
@@ -8609,7 +8648,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "DEFAULT_STATUS_TONE",
     "category": "runtime-value",
@@ -8622,7 +8661,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "statusTone",
     "category": "nonvisual-function",
@@ -8635,7 +8674,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "StatusKey",
     "category": "type-export",
@@ -8648,7 +8687,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "StatusTone",
     "category": "type-export",
@@ -8661,7 +8700,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "THEME_STORAGE_KEY",
     "category": "runtime-value",
@@ -8674,7 +8713,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "DEFAULT_THEME",
     "category": "runtime-value",
@@ -8687,7 +8726,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "THEME_OPTIONS",
     "category": "runtime-value",
@@ -8700,7 +8739,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "isThemeName",
     "category": "nonvisual-function",
@@ -8713,7 +8752,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "resolveTheme",
     "category": "nonvisual-function",
@@ -8726,7 +8765,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "readStoredTheme",
     "category": "nonvisual-function",
@@ -8739,7 +8778,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "persistTheme",
     "category": "nonvisual-function",
@@ -8752,7 +8791,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "applyTheme",
     "category": "nonvisual-function",
@@ -8816,7 +8855,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "getInitialTheme",
     "category": "nonvisual-function",
@@ -8829,7 +8868,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "ThemeName",
     "category": "type-export",
@@ -8842,7 +8881,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": ".",
     "name": "DASHBOARD_DEPRECATED_TOKENS",
     "category": "runtime-value",
@@ -8855,7 +8894,33 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
+    "entry": ".",
+    "name": "useDashboardDocumentScale",
+    "category": "nonvisual-function",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.6.1",
+    "entry": ".",
+    "name": "DashboardDocumentScale",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "PageHeader",
     "category": "visual-component",
@@ -8904,7 +8969,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "NavRail",
     "category": "visual-component",
@@ -8935,7 +9000,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "NavRailItem",
     "category": "type-export",
@@ -8948,7 +9013,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "StatusBadge",
     "category": "visual-component",
@@ -8984,7 +9049,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "PriorityBadge",
     "category": "visual-component",
@@ -9031,7 +9096,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "DashboardTypographyProvider",
     "category": "visual-component",
@@ -9044,7 +9109,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "useDashboardTypography",
     "category": "nonvisual-function",
@@ -9090,7 +9155,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "DashboardTypographyProfile",
     "category": "type-export",
@@ -9103,7 +9168,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "SummaryCards",
     "category": "visual-component",
@@ -9135,7 +9200,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "SummaryCard",
     "category": "type-export",
@@ -9181,7 +9246,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "SettingsField",
     "category": "visual-component",
@@ -9194,7 +9259,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "SettingsGrid",
     "category": "visual-component",
@@ -9207,7 +9272,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "SettingsNotice",
     "category": "visual-component",
@@ -9220,7 +9285,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "SettingsPanel",
     "category": "visual-component",
@@ -9233,7 +9298,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "SettingsStatusPill",
     "category": "visual-component",
@@ -9246,7 +9311,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "SettingsFieldProps",
     "category": "type-export",
@@ -9259,7 +9324,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "SettingsGridProps",
     "category": "type-export",
@@ -9272,7 +9337,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "SettingsNoticeProps",
     "category": "type-export",
@@ -9285,7 +9350,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "SettingsPanelProps",
     "category": "type-export",
@@ -9298,7 +9363,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "SettingsStatusPillProps",
     "category": "type-export",
@@ -9311,7 +9376,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "ThemeSwitcher",
     "category": "visual-component",
@@ -9324,7 +9389,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "STATUS_KEYS",
     "category": "runtime-value",
@@ -9337,7 +9402,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "STATUS_TONES",
     "category": "runtime-value",
@@ -9350,7 +9415,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "DEFAULT_STATUS_TONE",
     "category": "runtime-value",
@@ -9363,7 +9428,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "statusTone",
     "category": "nonvisual-function",
@@ -9409,7 +9474,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "StatusKey",
     "category": "type-export",
@@ -9422,7 +9487,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "StatusTone",
     "category": "type-export",
@@ -9435,7 +9500,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "THEME_STORAGE_KEY",
     "category": "runtime-value",
@@ -9448,7 +9513,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "DEFAULT_THEME",
     "category": "runtime-value",
@@ -9461,7 +9526,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "THEME_OPTIONS",
     "category": "runtime-value",
@@ -9474,7 +9539,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "isThemeName",
     "category": "nonvisual-function",
@@ -9487,7 +9552,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "resolveTheme",
     "category": "nonvisual-function",
@@ -9500,7 +9565,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "readStoredTheme",
     "category": "nonvisual-function",
@@ -9513,7 +9578,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "persistTheme",
     "category": "nonvisual-function",
@@ -9526,7 +9591,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "applyTheme",
     "category": "nonvisual-function",
@@ -9572,7 +9637,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "getInitialTheme",
     "category": "nonvisual-function",
@@ -9585,7 +9650,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "ThemeName",
     "category": "type-export",
@@ -9598,7 +9663,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./ui",
     "name": "DASHBOARD_DEPRECATED_TOKENS",
     "category": "runtime-value",
@@ -9611,7 +9676,33 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
+    "entry": "./ui",
+    "name": "useDashboardDocumentScale",
+    "category": "nonvisual-function",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.6.1",
+    "entry": "./ui",
+    "name": "DashboardDocumentScale",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.6.1",
     "entry": "./layout",
     "name": "ListPageLayout",
     "category": "visual-component",
@@ -9646,7 +9737,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./layout",
     "name": "DetailHeader",
     "category": "visual-component",
@@ -9692,7 +9783,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./layout",
     "name": "TabStrip",
     "category": "visual-component",
@@ -9742,7 +9833,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./layout",
     "name": "OperationsTablePage",
     "category": "visual-component",
@@ -9786,7 +9877,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./layout",
     "name": "TabStripItem",
     "category": "type-export",
@@ -9832,7 +9923,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./layout",
     "name": "OperationsListPage",
     "category": "visual-component",
@@ -9869,7 +9960,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./layout",
     "name": "OperationsListPageProps",
     "category": "type-export",
@@ -9882,7 +9973,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./layout",
     "name": "OperationsFacet",
     "category": "type-export",
@@ -9928,7 +10019,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./layout",
     "name": "OperationsInspector",
     "category": "type-export",
@@ -9941,7 +10032,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./layout",
     "name": "OperationsActionScope",
     "category": "type-export",
@@ -9988,7 +10079,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./layout",
     "name": "DashboardToolbar",
     "category": "visual-component",
@@ -10039,7 +10130,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./layout",
     "name": "DashboardField",
     "category": "visual-component",
@@ -10091,7 +10182,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./layout",
     "name": "DashboardSection",
     "category": "visual-component",
@@ -10137,7 +10228,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./layout",
     "name": "DashboardFieldProps",
     "category": "type-export",
@@ -10150,7 +10241,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./layout",
     "name": "DashboardSearchToolbar",
     "category": "visual-component",
@@ -10197,7 +10288,33 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
+    "entry": "./layout",
+    "name": "DashboardViewTabs",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.6.1",
+    "entry": "./layout",
+    "name": "DashboardViewTab",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.6.1",
     "entry": "./data",
     "name": "FilterBar",
     "category": "visual-component",
@@ -10242,7 +10359,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./data",
     "name": "FilterChipGroup",
     "category": "visual-component",
@@ -10286,7 +10403,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./data",
     "name": "FilterCycleToggle",
     "category": "visual-component",
@@ -10329,7 +10446,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./data",
     "name": "FilterEntityCombobox",
     "category": "visual-component",
@@ -10376,7 +10493,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./data",
     "name": "CycleOption",
     "category": "type-export",
@@ -10389,7 +10506,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./data",
     "name": "FilterChip",
     "category": "type-export",
@@ -10402,7 +10519,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./data",
     "name": "FilterEntityComboboxItem",
     "category": "type-export",
@@ -10415,7 +10532,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./data",
     "name": "DataTable",
     "category": "visual-component",
@@ -10450,7 +10567,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./data",
     "name": "DataTableRow",
     "category": "visual-component",
@@ -10463,7 +10580,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./data",
     "name": "DataTableCell",
     "category": "visual-component",
@@ -10509,7 +10626,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./data",
     "name": "RecordSummary",
     "category": "visual-component",
@@ -10558,7 +10675,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./data",
     "name": "DataTableCellProps",
     "category": "type-export",
@@ -10571,7 +10688,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./data",
     "name": "RecordSummaryProps",
     "category": "type-export",
@@ -10584,7 +10701,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./data",
     "name": "TableDensity",
     "category": "type-export",
@@ -10630,7 +10747,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./data",
     "name": "useArrowNav",
     "category": "nonvisual-function",
@@ -10643,7 +10760,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./data",
     "name": "ArrowNavOptions",
     "category": "type-export",
@@ -10656,7 +10773,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./data",
     "name": "useListNavigation",
     "category": "nonvisual-function",
@@ -10669,7 +10786,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./data",
     "name": "ListNavigationOptions",
     "category": "type-export",
@@ -10682,7 +10799,59 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
+    "entry": "./data",
+    "name": "RecordListContent",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.6.1",
+    "entry": "./data",
+    "name": "RecordListHeader",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.6.1",
+    "entry": "./data",
+    "name": "RecordTag",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.6.1",
+    "entry": "./data",
+    "name": "RankBadge",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-dashboard",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "Sparkbars",
     "category": "visual-component",
@@ -10724,7 +10893,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "SparkbarsProps",
     "category": "type-export",
@@ -10737,7 +10906,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "SignalBars",
     "category": "visual-component",
@@ -10780,7 +10949,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "SignalBarsProps",
     "category": "type-export",
@@ -10793,7 +10962,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "BarList",
     "category": "visual-component",
@@ -10825,7 +10994,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "BarListItem",
     "category": "type-export",
@@ -10838,7 +11007,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "BarListProps",
     "category": "type-export",
@@ -10851,7 +11020,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "CompositionBars",
     "category": "visual-component",
@@ -10883,7 +11052,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "CompositionBarsProps",
     "category": "type-export",
@@ -10896,7 +11065,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "DonutChart",
     "category": "visual-component",
@@ -10939,7 +11108,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "DonutChartProps",
     "category": "type-export",
@@ -10952,7 +11121,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "DonutSegment",
     "category": "type-export",
@@ -10998,7 +11167,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "BarMeter",
     "category": "visual-component",
@@ -11030,7 +11199,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "BarMeterProps",
     "category": "type-export",
@@ -11043,7 +11212,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "BarMeterRow",
     "category": "type-export",
@@ -11056,7 +11225,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "ActivityHeatmap",
     "category": "visual-component",
@@ -11077,7 +11246,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "ActivityHeatmapProps",
     "category": "type-export",
@@ -11090,7 +11259,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "HourlyPulse",
     "category": "visual-component",
@@ -11111,7 +11280,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "HourlyPulseProps",
     "category": "type-export",
@@ -11124,7 +11293,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "RecentList",
     "category": "visual-component",
@@ -11167,7 +11336,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "RecentListProps",
     "category": "type-export",
@@ -11180,7 +11349,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "Panel",
     "category": "visual-component",
@@ -11224,7 +11393,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "PanelProps",
     "category": "type-export",
@@ -11237,7 +11406,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "Kpi",
     "category": "visual-component",
@@ -11282,7 +11451,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "KpiProps",
     "category": "type-export",
@@ -11295,7 +11464,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "KpiGrid",
     "category": "visual-component",
@@ -11339,7 +11508,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "KpiGridProps",
     "category": "type-export",
@@ -11352,7 +11521,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "MiniTrend",
     "category": "visual-component",
@@ -11396,7 +11565,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "MiniTrendProps",
     "category": "type-export",
@@ -11409,7 +11578,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "IntelligenceRow",
     "category": "visual-component",
@@ -11453,7 +11622,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./widgets",
     "name": "IntelligenceRowProps",
     "category": "type-export",
@@ -11466,7 +11635,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./charts",
     "name": "TimeSeriesChart",
     "category": "visual-component",
@@ -11487,7 +11656,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./charts",
     "name": "TimeSeriesChartProps",
     "category": "type-export",
@@ -11500,7 +11669,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./charts",
     "name": "TimeSeriesSeries",
     "category": "type-export",
@@ -11513,7 +11682,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./charts",
     "name": "TimestampSampleChart",
     "category": "visual-component",
@@ -11536,7 +11705,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./charts",
     "name": "TimestampSampleChartProps",
     "category": "type-export",
@@ -11549,7 +11718,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./charts",
     "name": "TimestampSample",
     "category": "type-export",
@@ -11562,7 +11731,7 @@
   },
   {
     "package": "@hollis-labs/kit-dashboard",
-    "version": "0.4.0",
+    "version": "0.6.1",
     "entry": "./charts",
     "name": "SampleUnit",
     "category": "type-export",
@@ -18613,7 +18782,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "PayloadBinding",
     "category": "type-export",
@@ -18626,7 +18795,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "FallbackBinding",
     "category": "type-export",
@@ -18639,7 +18808,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "BindingState",
     "category": "type-export",
@@ -18652,7 +18821,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "BindingRequest",
     "category": "type-export",
@@ -18674,7 +18843,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "Binding",
     "category": "type-export",
@@ -18687,7 +18856,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "RendererClass",
     "category": "type-export",
@@ -18700,7 +18869,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "Isolation",
     "category": "type-export",
@@ -18713,7 +18882,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "Origin",
     "category": "type-export",
@@ -18726,7 +18895,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "TrustProfile",
     "category": "type-export",
@@ -18739,7 +18908,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "TRUST_PROFILES",
     "category": "runtime-value",
@@ -18752,7 +18921,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "trustProfileFor",
     "category": "nonvisual-function",
@@ -18765,7 +18934,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "isolationPermits",
     "category": "nonvisual-function",
@@ -18778,7 +18947,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "HostDecision",
     "category": "type-export",
@@ -18791,7 +18960,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "HostPolicy",
     "category": "type-export",
@@ -18804,7 +18973,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ResolverConfig",
     "category": "type-export",
@@ -18817,7 +18986,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "BindingTableSpec",
     "category": "type-export",
@@ -18830,7 +18999,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "BindingTable",
     "category": "type-export",
@@ -18843,7 +19012,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "defineBindingTable",
     "category": "nonvisual-function",
@@ -18865,7 +19034,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "constantTrust",
     "category": "nonvisual-function",
@@ -18887,7 +19056,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "bindingKey",
     "category": "nonvisual-function",
@@ -18900,7 +19069,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "MissCode",
     "category": "type-export",
@@ -18913,7 +19082,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "Drawable",
     "category": "type-export",
@@ -18926,7 +19095,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "Miss",
     "category": "type-export",
@@ -18939,7 +19108,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "Resolution",
     "category": "type-export",
@@ -18952,7 +19121,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ResolveOptions",
     "category": "type-export",
@@ -18965,7 +19134,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ParsedEntry",
     "category": "type-export",
@@ -18978,7 +19147,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "resolve",
     "category": "nonvisual-function",
@@ -19000,7 +19169,7 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "safeFallbackOf",
     "category": "nonvisual-function",
@@ -19013,9 +19182,178 @@
   },
   {
     "package": "@hollis-labs/design-bindings",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "parseEntry",
+    "category": "nonvisual-function",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "CatalogRow",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "RendererCatalog",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "HostProfile",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "BindingDemand",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "GeneratedRow",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "UnresolvedCode",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "UnresolvedEntry",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "GeneratedBindingTable",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "GenerateInput",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "BINDING_TABLE_FORMAT",
+    "category": "runtime-value",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "generateBindingTable",
+    "category": "nonvisual-function",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "serializeBindingTable",
+    "category": "nonvisual-function",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/design-bindings",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "tableVersionOf",
     "category": "nonvisual-function",
     "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
     "disposition": "deferred",
@@ -20916,7 +21254,7 @@
   },
   {
     "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "entry": ".",
     "name": "ObservationStatus",
     "category": "visual-component",
@@ -20973,7 +21311,7 @@
   },
   {
     "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "entry": ".",
     "name": "ObservationStatusProps",
     "category": "type-export",
@@ -20998,7 +21336,7 @@
   },
   {
     "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "entry": ".",
     "name": "HealthSummary",
     "category": "visual-component",
@@ -21055,7 +21393,7 @@
   },
   {
     "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "entry": ".",
     "name": "HealthSummaryProps",
     "category": "type-export",
@@ -21080,7 +21418,7 @@
   },
   {
     "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "entry": ".",
     "name": "HealthCheck",
     "category": "type-export",
@@ -21105,7 +21443,7 @@
   },
   {
     "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "entry": ".",
     "name": "StatCollection",
     "category": "visual-component",
@@ -21162,7 +21500,7 @@
   },
   {
     "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "entry": ".",
     "name": "StatCollectionProps",
     "category": "type-export",
@@ -21187,7 +21525,7 @@
   },
   {
     "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "entry": ".",
     "name": "StatObservation",
     "category": "type-export",
@@ -21212,7 +21550,7 @@
   },
   {
     "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "entry": ".",
     "name": "DiagnosticPanel",
     "category": "visual-component",
@@ -21237,7 +21575,7 @@
   },
   {
     "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "entry": ".",
     "name": "DiagnosticPanelProps",
     "category": "type-export",
@@ -21250,7 +21588,7 @@
   },
   {
     "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "entry": ".",
     "name": "ObservationState",
     "category": "type-export",
@@ -21277,7 +21615,7 @@
   },
   {
     "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "entry": ".",
     "name": "HealthStatus",
     "category": "type-export",
@@ -21303,7 +21641,7 @@
   },
   {
     "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "entry": ".",
     "name": "ObservationUnit",
     "category": "type-export",
@@ -21316,7 +21654,7 @@
   },
   {
     "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "entry": ".",
     "name": "ObservationKind",
     "category": "type-export",
@@ -21329,7 +21667,7 @@
   },
   {
     "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "entry": ".",
     "name": "DiagnosticValue",
     "category": "type-export",
@@ -21354,7 +21692,7 @@
   },
   {
     "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "entry": ".",
     "name": "DiagnosticValidation",
     "category": "type-export",
@@ -21379,7 +21717,7 @@
   },
   {
     "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "entry": "./charts",
     "name": "SampleSeriesView",
     "category": "visual-component",
@@ -21437,7 +21775,7 @@
   },
   {
     "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "entry": "./charts",
     "name": "SampleSeriesViewProps",
     "category": "type-export",
@@ -21463,7 +21801,7 @@
   },
   {
     "package": "@hollis-labs/kit-observe",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "entry": "./charts",
     "name": "SampleSeriesPoint",
     "category": "type-export",
@@ -21476,7 +21814,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "AccountProfile",
     "category": "visual-component",
@@ -21523,7 +21861,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "AccountProfileProps",
     "category": "type-export",
@@ -21548,7 +21886,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "AccountProfileValue",
     "category": "type-export",
@@ -21575,7 +21913,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "AccountPreferences",
     "category": "visual-component",
@@ -21622,7 +21960,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "AccountPreferencesProps",
     "category": "type-export",
@@ -21647,7 +21985,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "WhoamiBadge",
     "category": "visual-component",
@@ -21694,7 +22032,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "AccountIdentity",
     "category": "type-export",
@@ -21719,7 +22057,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "WhoamiBadgeProps",
     "category": "type-export",
@@ -21744,7 +22082,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ApiTokenManager",
     "category": "visual-component",
@@ -21791,7 +22129,58 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.1.0",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "API_TOKEN_EXPIRIES",
+    "category": "runtime-value",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "API_TOKEN_STATUSES",
+    "category": "runtime-value",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "EMPTY_API_TOKEN_DRAFT",
+    "category": "runtime-value",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Account.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/administration/Account.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ApiTokenDraft",
     "category": "type-export",
@@ -21817,7 +22206,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ApiTokenManagerProps",
     "category": "type-export",
@@ -21842,7 +22231,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ApiTokenRecord",
     "category": "type-export",
@@ -21867,7 +22256,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ApiTokenScope",
     "category": "type-export",
@@ -21892,7 +22281,46 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.1.0",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "ApiTokenExpiry",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "ApiTokenStatus",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "partial",
+    "reason": "Exact public-entry import and representative family evidence; independent export/state acceptance is incomplete.",
+    "nextAction": "Review this export against its own supported states and interactions before marking reviewed.",
+    "evidence": {
+      "pages": [
+        "frontend/src/administration/Account.tsx"
+      ],
+      "checks": [
+        "frontend/tests/administration.spec.ts"
+      ],
+      "stories": [
+        "frontend/src/administration/Administration.stories.tsx"
+      ]
+    },
+    "importEvidence": [
+      "frontend/src/account-review/model.ts",
+      "frontend/src/administration/Account.tsx"
+    ]
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.3.0",
     "entry": ".",
     "name": "NewTokenDisclosure",
     "category": "visual-component",
@@ -21905,7 +22333,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "NewTokenDisclosureProps",
     "category": "type-export",
@@ -21918,7 +22346,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ConnectedAccounts",
     "category": "visual-component",
@@ -21965,7 +22393,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ConnectedAccount",
     "category": "type-export",
@@ -21990,7 +22418,7 @@
   },
   {
     "package": "@hollis-labs/kit-account",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "entry": ".",
     "name": "ConnectedAccountsProps",
     "category": "type-export",
@@ -22012,6 +22440,123 @@
     "importEvidence": [
       "frontend/src/account-review/contracts.ts"
     ]
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "SignInRequired",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "SessionExpired",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "SIGN_IN_REASONS",
+    "category": "runtime-value",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "STEP_UP_STATUSES",
+    "category": "runtime-value",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review deterministic utility/runtime contracts with focused nonvisual checks when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "SignInReason",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "StepUpStatus",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "SignInRequiredProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "StepUpDialog",
+    "category": "visual-component",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Inspect public props/CSS and add a bounded controlled story and keyboard/state check if this component is adopted.",
+    "evidence": {},
+    "importEvidence": []
+  },
+  {
+    "package": "@hollis-labs/kit-account",
+    "version": "0.3.0",
+    "entry": ".",
+    "name": "StepUpDialogProps",
+    "category": "type-export",
+    "classification": "React declaration symbol identity/call return/forward-ref analysis; uppercase callable names are visual; use* nonvisual",
+    "disposition": "deferred",
+    "reason": "Public export tracked; no direct adoption or independent behavior proof.",
+    "nextAction": "Review its public type contract with an appropriate positive/negative consumer assertion when adopted.",
+    "evidence": {},
+    "importEvidence": []
   },
   {
     "package": "@hollis-labs/kit-code",

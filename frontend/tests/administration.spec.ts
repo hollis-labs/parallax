@@ -175,7 +175,15 @@ test("account candidate drafts and related directories stay local with fail-clos
     await page.getByLabel("Account state").selectOption(state)
     await expect(page.getByRole("button", { name: "Save profile", exact: true })).toHaveCount(0)
     await page.getByRole("button", { name: "Access metadata", exact: true }).click()
-    await expect(page.getByRole("button", { name: "Create token", exact: true })).toHaveCount(0)
+    // kit-account 0.2.0 keeps a disabled Create token with its reason when creation is denied (locked);
+    // unknown and error render no token manager at all.
+    if (state === "locked") {
+      await expect(page.getByRole("button", { name: "Create token", exact: true })).toBeDisabled()
+      await expect(
+        page.getByText("You do not have permission to create API tokens.", { exact: true }),
+      ).toBeVisible()
+    } else
+      await expect(page.getByRole("button", { name: "Create token", exact: true })).toHaveCount(0)
   }
   await page.getByLabel("Account state").selectOption("denied")
   await expect(page.getByText("Account access denied", { exact: true })).toBeVisible()

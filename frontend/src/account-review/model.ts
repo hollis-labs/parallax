@@ -4,6 +4,7 @@ import type {
   ApiTokenDraft,
   ApiTokenRecord,
   ApiTokenScope,
+  ApiTokenStatus,
   ConnectedAccount,
 } from "@hollis-labs/kit-account"
 import fixture from "../fixtures/administration.json" with { type: "json" }
@@ -87,14 +88,17 @@ export function accountReviewModel(
             scopes: ["records.read"],
             status: "active",
             canRevoke: editable,
+            createdAt: "2026-10-01T09:00:00Z",
             detail: `Author annotation linked to ${principal.id}; no credential value, prefix or hash exists`,
           },
           {
             id: "TOKEN-UNKNOWN",
             name: "Unclassified authored token",
             scopes: [],
-            status: "future-status",
+            // A value outside the closed set, as a newer host could send it: the kit renders it as Unknown.
+            status: "future-status" as ApiTokenStatus,
             canRevoke: false,
+            createdAt: "2026-10-01T09:00:00Z",
             detail: "Unknown status is neutral; no revoke action",
           },
         ]
@@ -132,6 +136,7 @@ export function accountReviewModel(
   const draft: ApiTokenDraft = {
     name: state === "unavailable-scope" ? "Scope review" : "",
     scopes: state === "unavailable-scope" ? ["retired.scope"] : [],
+    expiry: "90d",
   }
   return {
     fixture,

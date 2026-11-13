@@ -3,7 +3,9 @@ import {
   AccountPreferences,
   AccountProfile,
   ApiTokenManager,
+  type ApiTokenStatus,
   ConnectedAccounts,
+  EMPTY_API_TOKEN_DRAFT,
   WhoamiBadge,
 } from "@hollis-labs/kit-account"
 import { Panel } from "@hollis-labs/kit-dashboard/widgets"
@@ -75,7 +77,8 @@ function AccountPresentation({
     email: state === "unknown" || state === "error" ? "" : user.email,
   })
   const [density, setDensity] = useState("comfortable"),
-    [tokenDraft, setTokenDraft] = useState({ name: "", scopes: [] as string[] }),
+    [tokenDraft, setTokenDraft] = useState(EMPTY_API_TOKEN_DRAFT),
+    [createOpen, setCreateOpen] = useState(false),
     [revoke, setRevoke] = useState<string | null>(null)
   if (!model.accessible)
     return (
@@ -295,21 +298,29 @@ function AccountPresentation({
                   scopes: ["records.read"],
                   status: "active",
                   canRevoke: !model.readOnly,
+                  createdAt: "2026-10-01T09:00:00Z",
                   detail: "Authored metadata only; no token value exists",
                 },
                 {
                   id: "TOKEN-UNKNOWN",
                   name: "Unknown fixture token",
                   scopes: [],
-                  status: "future-state",
+                  // A value outside the closed set, as a newer host could send it: the kit renders it as Unknown.
+                  status: "future-state" as ApiTokenStatus,
                   canRevoke: false,
+                  createdAt: "2026-10-01T09:00:00Z",
                 },
               ]}
               scopeOptions={[{ id: "records.read", label: "Inspect records" }]}
               draft={tokenDraft}
-              onDraftChange={(d) => setTokenDraft({ name: d.name, scopes: [...d.scopes] })}
-              onCreate={(d) => onIntent("Token creation intent inspected", JSON.stringify(d))}
+              onDraftChange={(d) => setTokenDraft({ ...d, scopes: [...d.scopes] })}
+              onCreate={(d) => {
+                onIntent("Token creation intent inspected", JSON.stringify(d))
+                setCreateOpen(false)
+              }}
               canCreate={!model.readOnly}
+              createOpen={createOpen}
+              onCreateOpenChange={setCreateOpen}
               revokeTargetId={revoke}
               onRevokeTargetChange={setRevoke}
               onRevoke={(id) => {

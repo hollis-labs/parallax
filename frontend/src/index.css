@@ -6,12 +6,12 @@
 @import "tailwindcss";
 @import "@hollis-labs/kit-dashboard/theme.css";
 @import "@hollis-labs/design-app-runtime/shell-reset.css";
-/* app-shell ships TypeScript source with Tailwind classes and no source.css of its own. */
-@source "../node_modules/@hollis-labs/app-shell/src";
 @import "@hollis-labs/design-components/source.css";
 @import "@hollis-labs/kit-dashboard/source.css";
 @import "@hollis-labs/kit-chat/source.css";
 @import "@hollis-labs/kit-voice/source.css";
+/* app-shell ships TypeScript source with Tailwind classes and no source.css of its own. */
+@source "../node_modules/@hollis-labs/app-shell/src";
 @source "../node_modules/@hollis-labs/kit-code/dist/**/*.js";
 @source "../node_modules/@hollis-labs/kit-workflow/dist/**/*.js";
 :root {

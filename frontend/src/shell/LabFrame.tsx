@@ -11,14 +11,9 @@ export function LabFrame({ header, children }: { header?: ReactNode; children?: 
     <div className="flex h-dvh w-dvw overflow-hidden bg-bg text-fg">
       <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
         {header}
-        <div
-          role="region"
-          aria-label="Lab content"
-          data-lab-body
-          className="flex min-h-0 flex-1 flex-col"
-        >
+        <section aria-label="Lab content" data-lab-body className="flex min-h-0 flex-1 flex-col">
           {children}
-        </div>
+        </section>
       </div>
     </div>
   )

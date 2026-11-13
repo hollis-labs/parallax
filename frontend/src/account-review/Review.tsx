@@ -179,6 +179,7 @@ function Instance({
     [preferences, setPreferences] = useState({ density: "comfortable", annotations: false }),
     [draft, setDraft] = useState(data.draft),
     [revoke, setRevoke] = useState<string | null>(null),
+    [createOpen, setCreateOpen] = useState(false),
     [plan, setPlan] = useState<CandidateIntent | null>(null),
     [result, setResult] = useState(""),
     [, rerender] = useState(0)
@@ -248,7 +249,7 @@ function Instance({
   function editDraft(value: ApiTokenDraft) {
     if (!admitted() || !data.editable) return
     retire()
-    current.current.draft = { name: value.name, scopes: [...value.scopes] }
+    current.current.draft = { ...value, scopes: [...value.scopes] }
     setDraft(current.current.draft)
   }
   function editPreference(value: typeof preferences) {
@@ -427,8 +428,13 @@ function Instance({
                 scopeOptions={data.scopes}
                 draft={draft}
                 onDraftChange={editDraft}
-                onCreate={(value) => inspect("create", "", value)}
+                onCreate={(value) => {
+                  setCreateOpen(false)
+                  inspect("create", "", value)
+                }}
                 canCreate={data.editable || data.busy}
+                createOpen={createOpen}
+                onCreateOpenChange={setCreateOpen}
                 creating={data.busy}
                 loading={data.state === "metadata-loading"}
                 error={
