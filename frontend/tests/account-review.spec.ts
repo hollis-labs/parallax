@@ -56,12 +56,14 @@ test("account candidates preserve fictional principal and metadata and refuse in
     accountCandidate(data, "preferences", data.profile, preferences, data.draft, "")?.value,
   ).toEqual(preferences)
   expect(accountReviewModel("recorded", "populated", "USER-002").principal.id).toBe("USER-002")
+  // kit-account 0.2.0 made createdAt a required ApiTokenRecord field.
   expect(Object.keys(data.tokens[0])).toEqual([
     "id",
     "name",
     "scopes",
     "status",
     "canRevoke",
+    "createdAt",
     "detail",
   ])
 })
@@ -142,20 +144,26 @@ test("token scope create revoke confirmation and provider callbacks preserve imm
 }, info) => {
   await page.goto("/?view=Account%20Review")
   await page.getByLabel("Account composition").selectOption("metadata")
-  await page.getByLabel("Token name", { exact: true }).fill("Local scope proposal")
-  await expect(page.getByRole("button", { name: "Create token", exact: true })).toBeDisabled()
-  await page.getByRole("checkbox", { name: "Inspect fixture records", exact: true }).check()
+  // kit-account 0.2.0 moved token creation into a dialog opened from the header's Create token button.
   await page.getByRole("button", { name: "Create token", exact: true }).click()
+  const create = page.getByRole("dialog", { name: "Create API token", exact: true })
+  await create.getByLabel("Token name", { exact: true }).fill("Local scope proposal")
+  await expect(create.getByRole("button", { name: "Create token", exact: true })).toBeDisabled()
+  await create.getByRole("checkbox", { name: "Inspect fixture records", exact: true }).check()
+  await create.getByRole("button", { name: "Create token", exact: true }).click()
   await expect(page.locator(".evidence-json")).toContainText("records.read")
   await page.keyboard.press("Escape")
   const trigger = page.getByRole("button", { name: "Revoke Authored review token", exact: true })
   await trigger.click()
-  await expect(page.getByRole("dialog")).toContainText("This token will stop granting access")
+  // kit-account 0.2.0 changed the revoke dialog to the k-revoke wording.
+  await expect(page.getByRole("dialog")).toContainText(
+    "Anything using this key stops working immediately",
+  )
   await capture(page.getByRole("button", { name: "Revoke token", exact: true }), "oldConfirm")
   await page.keyboard.press("Escape")
   await trigger.click()
   await invoke(page, "oldConfirm")
-  await expect(page.getByRole("dialog")).toContainText("Revoke API token?")
+  await expect(page.getByRole("dialog")).toContainText("Revoke “Authored review token”?")
   await page.getByRole("button", { name: "Revoke token", exact: true }).click()
   await expect(page.getByRole("dialog")).toHaveCount(1)
   await expect(page.getByRole("dialog")).toContainText("Local account candidate intent")
@@ -178,16 +186,21 @@ test("token scope create revoke confirmation and provider callbacks preserve imm
   await page.getByRole("button", { name: "Disconnect Fictional archive", exact: true }).click()
   await expect(page.locator(".evidence-json")).toContainText("connected")
   await page.keyboard.press("Escape")
-  await expect(page.getByText("future-status", { exact: true })).toHaveCount(2)
+  // kit-account 0.2.0 renders a token status outside its closed set as "Unknown" and never echoes it;
+  // the provider row (ConnectedAccounts) still shows its unknown status as given.
+  await expect(page.getByText("future-status", { exact: true })).toHaveCount(1)
+  await expect(page.getByText("Unknown", { exact: true })).toHaveCount(1)
   await expect(page.locator(".settings-plan-dialog")).toHaveCount(0)
   await page.getByRole("heading", { name: "API tokens", exact: true }).scrollIntoViewIfNeeded()
   await page.screenshot({ path: info.outputPath("account-metadata-desktop.png") })
   await page.getByLabel("Account appearance").selectOption("unavailable-scope")
+  // kit-account 0.2.0: the draft and its scope alert live in the Create dialog.
+  await page.getByRole("button", { name: "Create token", exact: true }).click()
   await expect(
-    page.getByRole("alert").filter({ hasText: "Some selected scopes are unavailable" }),
+    create.getByRole("alert").filter({ hasText: "Some selected scopes are unavailable" }),
   ).toBeVisible()
-  await page.getByRole("button", { name: "Clear unavailable scopes" }).click()
-  await expect(page.getByRole("button", { name: "Create token", exact: true })).toBeDisabled()
+  await create.getByRole("button", { name: "Clear unavailable scopes" }).click()
+  await expect(create.getByRole("button", { name: "Create token", exact: true })).toBeDisabled()
 })
 test("source principal draft reset unmount and StrictMode fence held inspections and stale native callbacks", async ({
   page,
@@ -238,7 +251,7 @@ test("source principal draft reset unmount and StrictMode fence held inspections
   await expect(page.getByLabel("Current identity")).toContainText("Identity unavailable")
   await page.getByLabel("Account appearance").selectOption("denied")
   await expect(page.getByText("Account evidence withheld")).toBeVisible()
-  await page.getByRole("button", { name: "Activity", exact: true }).click()
+  await page.getByRole("link", { name: "Activity", exact: true }).click()
   await invoke(page, "beforeUnmount")
   await expect(page.getByRole("dialog")).toHaveCount(0)
 })
@@ -247,7 +260,7 @@ test("narrow dark account metadata dialog and portable supported states are read
 }, info) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto("/?view=Account%20Review&theme=p1-green-phosphor&mode=dark")
-  await page.getByRole("navigation", { name: "Application navigation" }).waitFor()
+  await page.getByRole("navigation", { name: "Primary" }).waitFor()
   await page.getByRole("heading", { name: "Profile", exact: true }).scrollIntoViewIfNeeded()
   await page.screenshot({ path: info.outputPath("account-profile-narrow.png") })
   await page.getByLabel("Account composition").selectOption("metadata")

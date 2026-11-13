@@ -174,7 +174,7 @@ test("source panel_signal dismiss and user ownership remain local with no delive
     "fictional draft",
   )
 })
-test("inspection admits focus return and nested menu/dialog own Escape before rail", async ({
+test("inspection admits focus return and nested menu/dialog own Escape before rail @popup-timing", async ({
   page,
 }) => {
   await page.goto("/?example=flux-rail")

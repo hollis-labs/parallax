@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test"
 import { ports } from "./ports"
+import { shellLink } from "./shell-nav"
 
 test("contact identities link conversations, attachments and transient send intent", async ({
   page,
@@ -137,7 +138,8 @@ test("chat flow has one page scroll owner and themed narrow cards", async ({ pag
   expect(await transcript.evaluate((el) => getComputedStyle(el).overflowY)).toBe("visible")
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
   const owners = await page.evaluate(() =>
-    [...document.querySelectorAll<HTMLElement>("main *")]
+    // The lab's page body (the header control strip scrolls inside itself at narrow widths and is not the page body).
+    [...document.querySelectorAll<HTMLElement>("[data-lab-body] *")]
       .filter(
         (el) =>
           el.scrollHeight > el.clientHeight + 1 &&
@@ -158,7 +160,7 @@ test("chat flow has one page scroll owner and themed narrow cards", async ({ pag
     path: testInfo.outputPath("chat-cards-narrow.png"),
   })
   await page.getByLabel("Scenario", { exact: true }).selectOption("long-labels")
-  await page.getByRole("button", { name: "Messages", exact: true }).click()
+  await (await shellLink(page, "Messages")).click()
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
   await page.screenshot({
     animations: "disabled",

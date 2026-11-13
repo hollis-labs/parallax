@@ -121,7 +121,7 @@ test("actual widget normalized paint geometry denominator and recent keyboard in
   })
   page.on("pageerror", (e) => errors.push(e.message))
   await page.goto("/?view=Widgets&theme=p4-white&mode=light")
-  await page.getByRole("navigation", { name: "Application navigation" }).waitFor()
+  await page.getByRole("navigation", { name: "Primary" }).waitFor()
   await geometry(page)
   await expect(page.getByTestId("widget-actual-peak")).toHaveText("2")
   const circles = page.locator(".widget-gallery svg circle[stroke]")
@@ -249,7 +249,7 @@ test("narrow dark long list and portable fixed-prefix widgets preserve bounds an
   page,
 }, info) => {
   await page.goto("/?view=Widgets&theme=p1-green-phosphor&mode=dark")
-  await page.getByRole("navigation", { name: "Application navigation" }).waitFor()
+  await page.getByRole("navigation", { name: "Primary" }).waitFor()
   await page.getByLabel("Widget state").selectOption("long")
   await page.getByLabel("Widget layout").selectOption("stack")
   await page.setViewportSize({ width: 390, height: 844 })

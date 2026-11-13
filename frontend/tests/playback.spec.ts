@@ -156,7 +156,7 @@ test("cursor retirement fences real plugin/observation producers and truthful ov
     await expect(page.getByLabel("Plugin widget")).toHaveCount(0)
   }
   await page.getByLabel("Resource override").selectOption("scenario")
-  await page.getByRole("button", { name: "Observability", exact: true }).click()
+  await page.getByRole("link", { name: "Observability", exact: true }).click()
   await page.getByRole("button", { name: "Preview held refresh failure" }).click()
   await page.getByRole("button", { name: "Reset playback", exact: true }).click()
   await page.getByRole("button", { name: "Release retired refresh outcome" }).click()

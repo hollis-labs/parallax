@@ -133,7 +133,7 @@ test("operations graph joins real messages, tools, logs and trace; selection sur
   await page.getByTestId("page-scroll").evaluate((el) => {
     el.scrollTop = 300
   })
-  await page.getByRole("button", { name: "Usage", exact: true }).click()
+  await page.getByRole("link", { name: "Usage", exact: true }).click()
   await expect.poll(() => page.getByTestId("page-scroll").evaluate((el) => el.scrollTop)).toBe(0)
   await expect(page.getByRole("region", { name: "Selected run" })).toContainText(
     "TASK-001 / RUN-001",
@@ -150,7 +150,7 @@ test("shared gateway navigation, modal target and reset fence a late scripted co
   await page.goto("/")
   await page.getByRole("button", { name: "Open Usage through plugin action" }).click()
   await expect(page.getByRole("heading", { name: "Usage", exact: true })).toBeVisible()
-  await page.getByRole("button", { name: "Activity", exact: true }).click()
+  await page.getByRole("link", { name: "Activity", exact: true }).click()
   await page.getByRole("button", { name: "Inspect plugin detail" }).click()
   await expect(page.getByRole("dialog").getByText("Plugin admission evidence")).toBeVisible()
   await page.keyboard.press("Escape")
@@ -251,7 +251,7 @@ test("historical trend compositions show numeric variation and survive narrow re
     animations: "disabled",
     path: testInfo.outputPath("mission-control.png"),
   })
-  await page.getByRole("button", { name: "Usage", exact: true }).click()
+  await page.getByRole("link", { name: "Usage", exact: true }).click()
   await expect(page.getByRole("img", { name: "14-day cost with coverage gaps" })).toBeVisible()
   await expect(page.getByText("Provider / model attribution", { exact: true })).toBeVisible()
   await page.getByTestId("page-scroll").evaluate((el) => {

@@ -160,7 +160,7 @@ test("portable observation stories and narrow theme preserve shared chart CSS an
 }, info) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto("/?view=Observability&theme=p3-amber-phosphor&mode=dark")
-  await page.getByRole("navigation", { name: "Application navigation" }).waitFor()
+  await page.getByRole("navigation", { name: "Primary" }).waitFor()
   await page
     .getByRole("region", { name: "Exact cumulative token samples", exact: true })
     .scrollIntoViewIfNeeded()
@@ -175,7 +175,8 @@ test("portable observation stories and narrow theme preserve shared chart CSS an
   ).not.toBe("auto")
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
   const owners = await page.evaluate(() =>
-    [...document.querySelectorAll<HTMLElement>("main *")]
+    // The lab's page body (the header control strip scrolls inside itself at narrow widths and is not the page body).
+    [...document.querySelectorAll<HTMLElement>("[data-lab-body] *")]
       .filter(
         (e) =>
           e.scrollHeight > e.clientHeight + 1 &&

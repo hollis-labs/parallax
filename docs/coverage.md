@@ -98,3 +98,10 @@ detail local action semantics and upstream second-consumer boundaries. Exact
 imports and generated inventory reconcile from actual source after sibling landing.
 
 CW-20261010-0113 adds the fixture-only Tachyon navigation composition and nine portable states. Its eight actual manifest groups/fifteen items, guarded hash sub-navigation, local typed menu slots and background context gestures add bounded composition evidence to the existing AppShell/runtime/Operations/menu families. [Source, replay and limits](tachyon-nav-example.md) distinguish actual source metadata from fixture contributions and record the public Tabs orientation/compatibility-mousedown adaptations. Existing disposition boundaries remain; no shared export promotion, owner visual approval, live Tachyon adoption or 0114 acceptance is claimed.
+
+## Known failures in the browser suite (not counted as passing evidence)
+
+Six tests are Playwright expected failures, each holding only its failing assertion, so those assertions are not claimed as passing evidence: two Layouts
+`layout-scroll` heights at 390x844 (drawer and header variants, Torque CW-20261112-0134), the Layouts narrow-short single-`main` check (CW-20261112-0135), and the
+Torque board's compact search-field height at roots 16, 20 and 24 (CW-20261112-0113). One test is `fixme` (Escape on a note form while its inspection is held,
+CW-20261113-0027). See `frontend/CONVERSION_NOTES.md` "Expected failures".

@@ -242,7 +242,7 @@ test("actual StrictMode held inspection current leases close selection popup sou
   await page.goto(`http://127.0.0.1:${ports.dev}/?view=Usage%20Evidence`)
   await preview.click()
   await capture(inspect, "unmountInspectUsage")
-  await page.getByRole("button", { name: "Activity", exact: true }).click()
+  await page.getByRole("link", { name: "Activity", exact: true }).click()
   await invoke(page, "unmountInspectUsage")
   await expect(page.getByLabel("Usage Evidence review")).toHaveCount(0)
 })

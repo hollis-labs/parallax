@@ -190,7 +190,7 @@ test("StrictMode fresh system listener survives ordinary controls and obsolete l
       ).appearanceMediaRecords.filter((r) => r.removed).length,
   )
   expect(removed).toBeGreaterThan(0)
-  await page.getByRole("button", { name: "Review Workbench", exact: true }).click()
+  await page.getByRole("link", { name: "Review Workbench", exact: true }).click()
   const count = await page.evaluate(
     () =>
       (
@@ -219,7 +219,7 @@ test("current playback frame and resource replacements retire prior local contro
     ;(window as unknown as { oldAppearanceMode: () => void }).oldAppearanceMode()
   })
   await expect(sample).toHaveAttribute("data-mode", "light")
-  await page.getByRole("button", { name: "Review Workbench", exact: true }).click()
+  await page.getByRole("link", { name: "Review Workbench", exact: true }).click()
   await page.getByRole("button", { name: "Open Appearance Review", exact: true }).click()
   await expect(sample).toHaveAttribute("data-theme", "p4-white")
   await page.getByLabel("Scenario", { exact: true }).selectOption("permission-denied")

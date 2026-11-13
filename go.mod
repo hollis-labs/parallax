@@ -8,7 +8,7 @@ require (
 	github.com/hollis-labs/libs/core/util v0.6.0
 	github.com/hollis-labs/libs/mcp/plugin-mcp v0.6.0
 	github.com/hollis-labs/libs/security/auth v0.3.1
-	github.com/hollis-labs/substrate v0.1.1-0.20261112164520-da9f59bb59b7
+	github.com/hollis-labs/substrate v0.1.1-0.20261113184959-add408c4baa9
 	github.com/spf13/cobra v1.10.2
 	github.com/spf13/pflag v1.0.9
 )

@@ -11,7 +11,7 @@ test("developer route keeps canvas ANSI and highlighting out of Activity and sou
   expect(requests.filter((u) => /\/(Output|Workflow)-|shiki|ansi-to-react|xyflow/.test(u))).toEqual(
     [],
   )
-  await page.getByRole("button", { name: "Developer", exact: true }).click()
+  await page.getByRole("link", { name: "Developer", exact: true }).click()
   await expect(page.getByLabel("Transient source draft")).toHaveValue(
     "export const mode = 'inspect'\n",
   )

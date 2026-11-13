@@ -10,6 +10,8 @@
 @import "@hollis-labs/kit-dashboard/source.css";
 @import "@hollis-labs/kit-chat/source.css";
 @import "@hollis-labs/kit-voice/source.css";
+/* app-shell ships TypeScript source with Tailwind classes and no source.css of its own. */
+@source "../node_modules/@hollis-labs/app-shell/src";
 @source "../node_modules/@hollis-labs/kit-code/dist/**/*.js";
 @source "../node_modules/@hollis-labs/kit-workflow/dist/**/*.js";
 :root {
@@ -63,6 +65,10 @@
   justify-content: space-between;
   align-items: center;
   gap: calc(var(--spacing) * 3);
+}
+/* The lab title is an h2 under the shell's h1 and keeps the h1 size kit-dashboard gives page headings. */
+.page-title h2 {
+  font-size: var(--dash-page-heading-size);
 }
 .eyebrow {
   font-size: var(--dash-support-size);
@@ -1181,4 +1187,19 @@
 }
 .explorer-title {
   white-space: normal;
+}
+
+/* The lab's own AppShell (the header controls, the aside, the navigation demo) sits inside the app-shell
+   page, so it fills that page instead of the viewport. */
+.lab-host {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
+.lab-host > .h-dvh {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  flex: 1 1 auto;
 }

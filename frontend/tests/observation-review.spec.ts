@@ -259,7 +259,7 @@ test("native retry current resource receipt clock policy source and retained cal
   await page.getByLabel("Observation appearance").selectOption("denied")
   await expect(page.getByText("Observation evidence withheld", { exact: true })).toBeVisible()
   await expect(page.locator("figure")).toHaveCount(0)
-  await page.getByRole("button", { name: "Activity", exact: true }).click()
+  await page.getByRole("link", { name: "Activity", exact: true }).click()
   await invoke(page, "oldRetry")
   await expect(page.getByRole("dialog")).toHaveCount(0)
   expect(writes).toEqual([])

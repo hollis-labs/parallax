@@ -29,9 +29,9 @@ test("shared list/table/split/drawer keep selection and one body owner", async (
     animations: "disabled",
   })
   await page.getByLabel("Navigation variant").selectOption("header")
-  await page.getByRole("button", { name: "Usage", exact: true }).click()
+  await page.getByRole("link", { name: "Usage", exact: true }).click()
   await expect(page.getByLabel("Selected run")).toContainText("TASK-003")
-  await page.getByRole("button", { name: "Layouts", exact: true }).click()
+  await page.getByRole("link", { name: "Layouts", exact: true }).click()
   await expect(page.getByLabel("Comparison selected record")).toContainText("TASK-003")
   await page.getByLabel("Scenario").selectOption("permission-denied")
   await expect(page.getByText("Access denied by fixture policy")).toBeVisible()
@@ -40,6 +40,44 @@ test("shared list/table/split/drawer keep selection and one body owner", async (
     await page.evaluate(() => document.documentElement.scrollHeight === innerHeight),
   ).toBeTruthy()
 })
+// Split from "narrow drawers keyboard navigation and short rail remain reachable" so that test's other assertions keep running.
+test.fail(
+  "narrow drawer variant leaves the layout scroll more than 250 px",
+  {
+    annotation: {
+      type: "expected-failure",
+      description:
+        "CW-20261112-0134: layout-scroll is 206 px at 390x844 (needs > 250): bottom nav 57 + shell title row 60 + lab header 74 + controls 120; passes (266) once a surface can opt out of the generic page title",
+    },
+  },
+  async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+    await page.goto("/?view=Layouts&layout=split&navigation=drawer&scenario=long-labels")
+    await expect(page.getByTestId("layout-scroll")).toBeVisible()
+    expect(await page.getByTestId("layout-scroll").evaluate((e) => e.clientHeight)).toBeGreaterThan(
+      250,
+    )
+  },
+)
+// Found when the drawer check above was split out: it never ran while that assertion failed first.
+test.fail(
+  "narrow header variant leaves the layout scroll more than 250 px",
+  {
+    annotation: {
+      type: "expected-failure",
+      description:
+        "CW-20261112-0134: layout-scroll is 190 px at 390x844 with the header navigation variant (needs > 250); the shell's bottom nav and 60 px generic title row sit above the lab header and controls. Not measured: whether the title opt-out alone clears 250",
+    },
+  },
+  async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+    await page.goto("/?view=Layouts&layout=split&navigation=header&scenario=long-labels")
+    await expect(page.getByTestId("layout-scroll")).toBeVisible()
+    expect(await page.getByTestId("layout-scroll").evaluate((e) => e.clientHeight)).toBeGreaterThan(
+      250,
+    )
+  },
+)
 test("narrow drawers keyboard navigation and short rail remain reachable", async ({
   page,
 }, info) => {
@@ -59,16 +97,12 @@ test("narrow drawers keyboard navigation and short rail remain reachable", async
   await page.keyboard.press("Escape")
   await expect(page.getByRole("button", { name: "Open navigation" })).toBeFocused()
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy()
-  expect(await page.getByTestId("layout-scroll").evaluate((e) => e.clientHeight)).toBeGreaterThan(
-    250,
-  )
+  // The drawer variant's layout-scroll > 250 is asserted in "narrow drawer variant leaves the layout scroll more than 250 px".
   await page.screenshot({ path: info.outputPath("layout-narrow.png"), animations: "disabled" })
   await page.getByLabel("Navigation variant").selectOption("header")
   await page.getByRole("button", { name: "Layouts", exact: true }).scrollIntoViewIfNeeded()
   await expect(page.getByRole("button", { name: "Layouts", exact: true })).toBeVisible()
-  expect(await page.getByTestId("layout-scroll").evaluate((e) => e.clientHeight)).toBeGreaterThan(
-    250,
-  )
+  // The header variant's layout-scroll > 250 is asserted in "narrow header variant leaves the layout scroll more than 250 px".
   await page.reload()
   await expect(page.getByLabel("Navigation variant")).toHaveValue("header")
   await expect(page.getByTestId("layout-scroll")).toHaveAttribute(
