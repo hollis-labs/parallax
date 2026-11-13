@@ -1,9 +1,9 @@
 import { ManifestShell, type PageComponent } from "@hollis-labs/app-shell"
+import { SignOutPage } from "@hollis-labs/kit-identity"
 import { Activity, Compass, Gauge, Layers, LogOut, Mail, MessageSquare, Users } from "lucide-react"
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react"
 import { App } from "../App"
 import manifest from "../generated/frontend.manifest.json"
-import { SignOutPage } from "../identity/SignOut"
 import { legacyViewRedirect, routeFor, viewForKey, viewForPath } from "./routes"
 
 // Kit icon names app.ui.json uses, resolved by the shell.

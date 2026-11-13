@@ -27,6 +27,7 @@
     "@hollis-labs/kit-chat": "0.8.0",
     "@hollis-labs/kit-code": "file:../third_party/hollis-labs-kit-code-0.0.0.tgz",
     "@hollis-labs/kit-dashboard": "0.6.2",
+    "@hollis-labs/kit-identity": "0.1.3",
     "@hollis-labs/kit-observe": "0.1.2",
     "@hollis-labs/kit-settings": "0.2.0",
     "@hollis-labs/kit-voice": "file:../third_party/hollis-labs-kit-voice-0.0.0.tgz",

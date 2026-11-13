@@ -116,8 +116,13 @@ test("actual profile preferences native validity and fixed identity permit only 
   await page.screenshot({ path: info.outputPath("account-plan-desktop.png") })
   await page.keyboard.press("Escape")
   await expect(page.getByRole("dialog")).toHaveCount(0)
-  await expect(page.getByLabel("Current identity")).toContainText("Adaline Rivera")
-  await expect(page.getByLabel("Current identity")).toContainText("Local")
+  // The page's fixture identity, inside the lab body: the shell header also shows the signed-in session's badge (kit-identity).
+  await expect(page.locator("[data-lab-body]").getByLabel("Current identity")).toContainText(
+    "Adaline Rivera",
+  )
+  await expect(page.locator("[data-lab-body]").getByLabel("Current identity")).toContainText(
+    "Local",
+  )
   await page.getByLabel("Review density").selectOption("compact")
   await page.getByLabel("Show authored annotations").check()
   await page.getByRole("button", { name: "Save preferences", exact: true }).click()
@@ -248,7 +253,9 @@ test("source principal draft reset unmount and StrictMode fence held inspections
   await expect(page.getByRole("button", { name: "Save profile", exact: true })).toHaveCount(0)
   await page.getByLabel("Account appearance").selectOption("unknown-identity")
   await expect(page.getByLabel("Display name", { exact: true })).toHaveCount(0)
-  await expect(page.getByLabel("Current identity")).toContainText("Identity unavailable")
+  await expect(page.locator("[data-lab-body]").getByLabel("Current identity")).toContainText(
+    "Identity unavailable",
+  )
   await page.getByLabel("Account appearance").selectOption("denied")
   await expect(page.getByText("Account evidence withheld")).toBeVisible()
   await page.getByRole("link", { name: "Activity", exact: true }).click()
