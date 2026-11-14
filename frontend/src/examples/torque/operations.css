@@ -82,6 +82,8 @@
   cursor: pointer;
 }
 .torque-search-field {
+  /* Compact header: size the field to its content (kit-dashboard README; owner decision on CW-20261112-0113). */
+  --dash-search-min-height: auto;
   flex: 1;
   flex-basis: calc(var(--spacing) * 25);
 }

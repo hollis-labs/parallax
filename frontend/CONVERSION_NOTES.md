@@ -12,10 +12,9 @@ Owner-facing. Each gap stops the work it touches until the driver decides.
      the candidate features; kit-dashboard 0.6.x defaults to its reviewed fixed geometry (4px spacing, 12px controls, 14px menus), and the lab, built on
      the earlier root-relative default, opts back in once for the whole app: `<html data-dashboard-scale="root-relative">` in `frontend/index.html`
      (the kit README: set it at the application boundary, never per route). Typography stays the kit's default compact profile.
-     What still differs from the candidates (CW-20261112-0113): kit-dashboard 0.6.x gives `.dash-search-field` a `min-height` of 8 spacing units, so the
-     Torque board's search field is 32/40/48px at roots 16/20/24 (the reference is 26/32/38). 0.6.2 adds a `--dash-search-min-height` token
-     (default: the control height, so it renders as 0.6.1); the lab leaves it at the default until the owner decides; and design-components 0.5.1 `FormDialog` ignores Escape and
-     close while `submitting`, so the gallery's note form no longer closes while an inspection is held.
+     Two kit behaviours differ from the candidates, both settled by the owner on 2026-11-14: kit-dashboard 0.6.2's `--dash-search-min-height` token is set to `auto`
+     on `.torque-search-field` (`src/examples/torque/operations.css`), which restores the 26/32/38px search field (CW-20261112-0113); and design-components 0.5.1
+     `FormDialog` stays undismissible while `submitting` (CW-20261113-0027), so the gallery's tests settle an inspection before pressing Escape.
    - **kit-settings 0.2.0** still depends on design-tokens ^0.4 and design-components ^0.4 (BOM `kit_exceptions`). `package.json` `overrides`, scoped to
      kit-settings, point both at the root versions so no nested 0.4 copy installs for it.
    - **kit-chat 0.8.0** (was 0.4.0 outside the BOM, CW-20261113-0024) is built for design-bindings ^0.3, design-components ^0.5 and design-tokens ^0.5, so its
@@ -97,18 +96,9 @@ the closed select emits no `change` in current Chromium), `messaging-example.spe
 same control family, unproven), `nil-example.spec.ts` "complete native bounds and scroll" at 1280x800 and 390x844 (the inspection body no longer overflows its
 box; not root-caused; the 390x420 variant passes and stays on).
 
-One more is `test.fixme` against its own design-components task (CW-20261113-0027, driver rulings 2026-11-13): `primitives.spec.ts` "Escape closes the note
-form while its inspection is held, and task or scenario replacement retires the held outcome". design-components 0.5.1 `FormDialog` ignores Escape and close while
-`submitting`; the test presses Escape while the "Review local note" form holds an inspection, so the dialog stays open, the page behind it stays inert and the next
-step times out (30 s). The 0.4.0 candidate closed regardless. A timeout does not count as an expected failure in Playwright, so `test.fail` cannot hold it. What
-is parked there: closing the form while an inspection is held, and the held outcome's retirement when the source is replaced (another task, another scenario),
-because those controls sit behind the modal. The rest runs:
-- "a held note inspection is retired by editing the note or resetting the gallery context while the form stays open" proves held-outcome retirement without
-  Escape (releasing the queued producer afterwards reports "Retired producer ignored").
-- "gallery entry ignores operations filter, clears completed outcomes on task and scenario replacement, and returns focus" releases each inspection with the
-  form's "Release oldest scripted outcome" before Escape.
-The lab still passes `submitting={busy.form}`; whether a held local inspection counts as submitting is the question on CW-20261113-0027 (the reviewer's reading,
-documented kit behaviour, is recorded there).
+`FormDialog` (design-components 0.5.1) ignores Escape and close while `submitting`, and the owner kept that (CW-20261113-0027, 2026-11-14; no kit release). The
+lab passes `submitting={busy.form}`. `primitives.spec.ts` "Escape closes the note form once its inspection is settled..." releases each inspection with the form's
+"Release oldest scripted outcome" before Escape, then replaces the task and the scenario; held-outcome retirement with the form open is its own test.
 
 ## Shell wrap: how it is built (app-shell 0.11.0)
 
@@ -222,9 +212,6 @@ runs normally, with a comment naming the split test.
 - `app-shell-aside.spec.ts` "narrow-short 390x420 viewport keeps one main landmark with geometry" (from "narrow-short 390x420 viewport preserves geometry and usability"):
   the Layouts page demonstrates the kit AppShell's aside and navigation variants, so it keeps the real design-components `AppShell`, which always renders its own `<main>`
   inside the shell's `main` (two `main` elements). Needs an AppShell content mode without `main`: Torque CW-20261112-0135 (design-components).
-- `torque-board.spec.ts` "compact search field keeps the audited height" at root 16, 20 and 24 (from "compact header and filters preserve audited scaling"; Torque
-  CW-20261112-0113): `.torque-search-field` is 32/40/48px high, the reference 26/32/38. kit-dashboard 0.6.1 sets `.dash-search-field { min-height: calc(var(--spacing) * 8) }`;
-  the candidate had none. kit-dashboard 0.6.2 adds a `--dash-search-min-height` token; whether the lab sets it to `auto` is the owner's decision.
 
 ## App snapshots on a normal instance: the live capture is installed by configuration
 

@@ -251,35 +251,23 @@ test("large browser text keeps the short mobile table and portalled actions reac
   await expect(trigger).toBeFocused()
 })
 
-// Expected failure at the BOM pin kit-dashboard 0.6.1, with the lab's root-relative document scale (index.html).
-// Split from "compact header and filters preserve audited scaling" so that test's other assertions keep running.
-const searchFieldHeight: Record<number, number> = { 16: 32, 20: 40, 24: 48 }
+// The lab sets --dash-search-min-height to auto on the search field (operations.css), so the compact height holds.
 const auditedSearchFieldHeight: Record<number, number> = { 16: 26, 20: 32, 24: 38 }
 for (const rootSize of [16, 20, 24]) {
-  test.fail(
-    `compact search field keeps the audited height at root ${rootSize}`,
-    {
-      annotation: {
-        type: "expected-failure",
-        description: `CW-20261112-0113: .torque-search-field is ${searchFieldHeight[rootSize]}px high at root ${rootSize} (needs ${auditedSearchFieldHeight[rootSize]}px); kit-dashboard 0.6.1 gives .dash-search-field min-height calc(var(--spacing) * 8), which the candidate did not have`,
-      },
-    },
-    async ({ page }) => {
-      await page.setViewportSize({ width: 1536, height: 936 })
-      await page.goto(entry)
-      await page.getByRole("heading", { name: "Operations", exact: true }).waitFor()
-      await page.evaluate((size) => {
-        document.documentElement.style.fontSize = `${size}px`
-      }, rootSize)
-      expect((await page.locator(".torque-search-field").boundingBox())!.height).toBeCloseTo(
-        auditedSearchFieldHeight[rootSize],
-        1,
-      )
-    },
-  )
+  test(`compact search field keeps the audited height at root ${rootSize}`, async ({ page }) => {
+    await page.setViewportSize({ width: 1536, height: 936 })
+    await page.goto(entry)
+    await page.getByRole("heading", { name: "Operations", exact: true }).waitFor()
+    await page.evaluate((size) => {
+      document.documentElement.style.fontSize = `${size}px`
+    }, rootSize)
+    expect((await page.locator(".torque-search-field").boundingBox())!.height).toBeCloseTo(
+      auditedSearchFieldHeight[rootSize],
+      1,
+    )
+  })
 }
 
-// The search field's height is its own expected failure (below); every other assertion here runs.
 for (const rootSize of [16, 20, 24]) {
   test(`compact header and filters preserve audited scaling at root ${rootSize}`, async ({
     page,
