@@ -86,8 +86,7 @@ test.describe("signed out", () => {
     )
     await page.goto("/")
     await expect(page.getByRole("heading", { name: "No owner yet", exact: true })).toBeVisible()
-    // Not its command text: kit-identity 0.1.3 shows `parallax identity setup` without the required --username
-    // (CW-20261113-0035); Parallax takes the kit's fix as a pin bump.
+    await expect(page.getByText("parallax identity setup --username NAME")).toBeVisible()
     await expect(page.getByLabel("Password")).toHaveCount(0)
   })
 

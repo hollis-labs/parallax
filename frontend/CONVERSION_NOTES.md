@@ -4,10 +4,10 @@ Owner-facing. Each gap stops the work it touches until the driver decides.
 
 ## Framework gaps
 
-0. **Where the kits stand against the BOM (`bom/bom.yaml` `kits:`, Substrate c224093a).** Every BOM kit the app uses is pinned exactly:
+0. **Where the kits stand against the BOM (`bom/bom.yaml` `kits:`, Substrate d064f53).** Every BOM kit the app uses is pinned exactly:
    app-shell 0.11.0, design-app-runtime 0.6.0, design-bindings 0.3.0, design-components 0.5.1, design-tokens 0.5.0, kit-account 0.3.0, kit-admin 0.2.0,
    kit-chat 0.8.0, kit-dashboard 0.6.2, kit-observe 0.1.2, kit-settings 0.2.0, plugin-host-ui 0.3.0, plugin-registry 0.2.0 (`make pins`: "app pins match the
-   bom"); kit-cards 0.3.0 comes in through kit-chat (the lab does not import it). kit-identity 0.1.3 is the identity UI (CW-20261113-0034). `@hollis-labs/eslint-config-design` 0.5.0 is not a BOM kit.
+   bom"); kit-cards 0.3.0 comes in through kit-chat (the lab does not import it). kit-identity 0.1.4 is the identity UI (CW-20261113-0034). `@hollis-labs/eslint-config-design` 0.5.0 is not a BOM kit.
    - **The candidate tarballs for design-components and kit-dashboard are gone (driver ruling 2026-11-13: BOM-exact wins).** The released kits carry
      the candidate features; kit-dashboard 0.6.x defaults to its reviewed fixed geometry (4px spacing, 12px controls, 14px menus), and the lab, built on
      the earlier root-relative default, opts back in once for the whole app: `<html data-dashboard-scale="root-relative">` in `frontend/index.html`
@@ -40,7 +40,7 @@ Owner-facing. Each gap stops the work it touches until the driver decides.
 1b. **A lab that is itself a shell nests badly.** The lab's own design-components `AppShell` is sized `h-dvh w-dvw`; inside an app-shell page it
    overflows unless the host overrides the size. The override is small (`.lab-host > .h-dvh`) but it is the host working around the kit.
 
-2. **Identity is kit-identity 0.1.3** (CW-20261113-0034; the interim `src/identity/` is gone). `src/shell/Signed.tsx` wraps the two signed-in entries
+2. **Identity is kit-identity 0.1.4** (CW-20261113-0034; the interim `src/identity/` is gone). `src/shell/Signed.tsx` wraps the two signed-in entries
    (the shell and `?example=snapshots`) in `IdentityProvider` + `IdentityGate appName="parallax"`, which render boot, the no-owner screen and sign-in outside
    the shell. A 401 on the app's own `/api` and `/plugins` calls (`src/http/request.ts` `apiFetch`, used by the snapshots page and the plugin runtime) raises
    `parallax:unauthorized`; a bridge then asks the kit something only a live session answers, so its own 401 shows "session expired" (Loom's wiring). The
@@ -145,8 +145,7 @@ The test measures the cells' `--activity-weight`; waiting for the first cell to 
 
 `GET /api/setup` answers `{setup_required, setup_over_http}`; `POST /api/setup` is refused (`403 setup_offline`). kit-identity's gate therefore shows,
 when no owner exists and setup is closed (or after a `setup_offline` answer), a plain no-owner screen with no form; the owner form only for a backend that reports
-`setup_over_http: true`. The screen's command lacks `--username NAME` (CW-20261113-0035), so `tests/identity.spec.ts` asserts that the screen renders, not its
-command. The interim helpers' unit test (`identity-api.spec.ts`, Retry-After parsing) went with them; the kit's client owns that now, and the 429 browser test
+`setup_over_http: true`. The screen's command is `parallax identity setup --username NAME` (kit-identity 0.1.4, CW-20261113-0035), and `tests/identity.spec.ts` asserts it. The interim helpers' unit test (`identity-api.spec.ts`, Retry-After parsing) went with them; the kit's client owns that now, and the 429 browser test
 still covers it.
 
 ## Unproven CI failure (operations-list-candidate "runs")
